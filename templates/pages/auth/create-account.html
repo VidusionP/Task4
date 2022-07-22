@@ -1,0 +1,108 @@
+{{inject 'passwordRequirements' settings.password_requirements}}
+{{#partial "page"}}
+<style>
+    .notice-canada {
+        margin: 0 auto 2rem;
+        background-color: #ffff00;
+        text-align: center;
+        font-size: 17px;
+        padding: 20px 10px;
+        max-width: calc(66.66667% + 1.5rem);
+        word-wrap: break-word;
+    }
+    @media only screen and (max-width: 800px) {
+        .notice-canada {
+            max-width: calc(100% + 1.5rem);
+            width: calc(100% + 1.5rem);
+            margin-left: -0.75rem;
+        }
+    }
+</style>
+    {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+    <h1 class="page-heading">{{lang 'create_account.heading' }}</h1>
+    <div class="notice-canada">This website is for Canadian only. If you are from other countries, please visit: <a href="//www.superhairpieces.com">www.superhairpieces.com</a></div>
+    <div class="account account--fixed">
+        <div class="account-body">
+            {{#if forms.create_account.error}}
+                {{> components/common/alert-error forms.create_account.error}}
+            {{/if}}
+            <div custom-create-account-error style="display: none;">
+                {{> components/common/alert-error}}
+            </div>
+            {{#if settings.account_creation_enabled}}
+                <form class="login-form form" action="{{urls.auth.check_login}}" method="post" style="display: none;">                    
+                    <input class="form-input" name="login_email" id="login_email" type="email">
+                    <input class="form-input" id="login_pass" type="password" name="login_pass">
+                    <input type="submit" class="button button--primary" value="{{lang 'login.submit_value' }}">
+                </form>
+                <form action="{{urls.auth.save_new_account}}" data-create-account-form method="post" class="form">
+                    <div class="form-row form-row--half">
+                        <div class="form-field form-field--input form-field--inputText" id="FormField_4" data-validation='{"type":"singleline","label":"First Name","required":true,"maxlength":0}' data-type="FirstName">
+                            <label class="form-label" for="FormField_4_input">First Name
+                                <small>Required</small>
+                            </label>
+                            <input type="text" id="FormField_4_input" data-label="First Name" name="FormField[2][4]" class="form-input" aria-required="true" data-field-type="FirstName">
+                        </div>
+                        <div class="form-field form-field--input form-field--inputText" id="FormField_5" data-validation='{"type":"singleline","label":"Last Name","required":true,"maxlength":0}' data-type="LastName">
+                            <label class="form-label" for="FormField_5_input">Last Name
+                                <small>Required</small>
+                            </label>
+                            <input type="text" id="FormField_5_input" data-label="Last Name" name="FormField[2][5]" class="form-input" aria-required="true" data-field-type="LastName">
+                        </div>
+                        {{#each forms.create_account.account_fields }}
+                            {{{dynamicComponent 'components/common/forms'}}}
+                        {{/each}}
+                        <!-- {{#each forms.create_account.address_fields }}
+                            {{{dynamicComponent 'components/common/forms'}}}
+                        {{/each}} -->                        
+                        {{inject 'required' (lang 'common.required')}}
+                        {{inject 'state_error' (lang 'errors.state_error')}}
+                    </div>
+                    {{{ forms.create_account.recaptcha.markup}}}
+                    <div class="form-actions">
+                        <input type="submit" class="button button--primary" value="{{lang 'forms.create_account.submit_value' }}" />
+                    </div>
+                </form>
+            {{/if}}
+        </div>
+    </div>
+    <script>        
+        // function createCustomer() {
+        //     if ($(".form-inlineMessage").length==0) {
+        //         let body = JSON.stringify({
+        //             "firstName": "Nana",
+        //             "lastName": "Phan",
+        //             "email": "nha1234@superhairpieces.com",
+        //             "password": "nana19486790"
+        //         })
+        //         fetch(`/api/storefront/customers`,{
+        //             method: 'POST',
+        //             credentials: 'include',
+        //             headers: {
+        //                 'Content-Type': 'application/json'                    
+        //             },
+        //             body
+        //         })
+        //         .then(r=>{
+        //             if (r.status==200) {
+        //                 location.href="/login.php";
+        //             } else {
+        //                 fetch(`//shp-webserver-temp.glitch.me/bc-customer-exist?email=nha1234@superhairpieces.com&store_id=999745060`)
+        //                 .then(r=>r.json())
+        //                 .then(r=>{
+        //                     console.log(r);
+        //                     if (r.exist) {
+        //                         const $messageBox = $("[custom-create-account-error]");
+        //                         $('p.alertBox-message', $messageBox).text(`The email address nha1234@superhairpieces.com is already in use. Please enter a different one.`);
+        //                         $messageBox.show();
+        //                     }
+        //                 })
+        //                 .catch(e=>console.log(e));
+        //             }
+        //         })            
+        //         .catch(e=>console.log(e));
+        //     }            
+        // }
+    </script>
+{{/partial}}
+{{> layout/base}}

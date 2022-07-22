@@ -1,0 +1,112 @@
+<style>
+    :root {
+        --color1: rgba(145, 99, 99, 1);
+    }
+    .embla {
+        overflow: hidden;
+        margin-bottom: 10px;
+    }
+    .embla__container {
+        display: flex;
+    }
+    .embla__slide {
+        position: relative;
+        flex: 0 0 100%;
+        display: grid;
+        grid-template-columns: 40% 60%;
+        grid-column-gap: 8px;
+        align-items: center;
+        text-decoration: none;
+        padding: 0 15px;
+    }
+    .embla__slide img {
+        width: 100%;
+    }
+    .embla__slide .name {
+        font-weight: bold;
+        font-size: 15px;
+    }
+    .embla__slide .location {
+        color: var(--color1);
+        font-size: 13px;
+        font-style: italic;
+    }
+    .embla__slide .date {
+        font-size: 13px;
+    }
+    @media (min-width:600px) {
+        .embla__slide {
+            flex: 0 0 50%;
+        }
+    }
+    @media (min-width:900px) {
+        .embla__slide {
+            flex: 0 0 33.33%;
+        }
+    }
+    @media (min-width:1200px) {
+        .embla__slide {
+            flex: 0 0 25%;
+        }
+        .embla__slide .name {
+            font-size: 13px;
+        }
+        .embla__slide .date {
+            margin-top: 5px;
+            font-size: 11px;
+        }
+    }
+    @media (min-width:1500px) {
+        .embla__slide {
+            flex: 0 0 20%;
+        }        
+    }
+</style>
+<div class="embla">
+    <div class="embla__container">
+        <!-- <div class="embla__slide">Slide 1</div>
+        <div class="embla__slide">Slide 2</div>
+        <div class="embla__slide">Slide 3</div> -->
+    </div>
+</div>
+<script src="/content/js/embla/embla-carousel.umd.js" defer></script>
+<script src="/content/js/embla/embla-carousel-autoplay.umd.js" defer></script>
+<script>
+    window.addEventListener("DOMContentLoaded", function () {
+        fetch("/content/data/media-partners.json")
+            .then((r) => r.json())
+            .then((r) => {
+                if (r.length) {
+                    let hl = "";
+                    for (let i=0; i<r.length; i++) {
+                        let c = r[i];
+                        hl+=`<a class="embla__slide" href="${c.pageUrl}">
+                                <img src="${c.imgUrl}" alt="${c.name}" loading="lazy"/>
+                                <div>
+                                    <div class="name">${c.name}</div>
+                                    <div class="location">${c.location}</div>
+                                    <div class="date">Partner since ${c.joinDate}</div>
+                                </div>
+                            </a>`;
+                    }
+                    $(".embla__container").html(hl);
+                } 
+                let emblaNode = document.querySelector(".embla");
+                let options = { 
+                    loop: true, 
+                    dragFree: true, 
+                    containScroll: "trimSnaps", 
+                    align: "start"                    
+                };
+                let autoplayOptions = {
+                    delay: 3000,
+                    stopOnInteraction: false,
+                    stopOnMouseEnter: true
+                }
+                let plugins = [EmblaCarouselAutoplay(autoplayOptions)]
+
+                let embla = EmblaCarousel(emblaNode, options, plugins);
+            })
+            .catch((e) => console.log(e));
+    });
+</script>

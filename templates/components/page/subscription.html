@@ -1,0 +1,973 @@
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Fugaz+One&display=swap" rel="stylesheet" />
+<style>
+    :root {
+        --element-margin: 15px;
+        --element-section-margin: 25px;
+        --section-margin: 35px;
+        --main-color: #ff8c00;
+        --second-color: #fbfbfb;
+        --third-color: #e3e3e3;
+        --fourth-color: #272727;
+        --fifth-color: #b5b5b5;
+        --color6: #023859;
+        --color7: #ffa800;
+        --color8: #666666;
+        --color9: #e9e8e4;
+        --border-radius1: 3px;
+        --border-radius2: 32px;
+        --font-large1: 25px;
+        --font-large2: 20px;
+        --font-small1: 12px;
+        --font-normal1: 13px;
+        --font-size5: 22px;
+        --font-size6: 16px;
+        --font-size7: 64px;
+        --font-size8: 14px;
+        --font-size9: 26px;
+        --icon-size1: 100px;
+        --icon-size2: 20px;
+    }
+    .page-heading {
+        display: none;
+    }
+    .s-wrap {
+        width: calc(100% + 3rem);
+        margin-left: -1.5rem;
+        background-color: var(--color9);
+    }
+    .header-top-wrap {
+        position: relative;
+        /* margin-left: -1.5rem;
+        width: calc(100% + 3rem); */
+        width: 100%;
+        margin-top: -3.5rem;
+        height: calc(100vw / 1.80555555);
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        text-transform: capitalize;
+        padding: 0 3rem;
+        background-color: transparent;
+    }
+    .header-top-wrap .content-wrap {
+        z-index: 9;
+    }
+    .header-top-wrap h2 {
+        font-size: var(--font-size5);
+        color: var(--second-color);
+        font-family: "Roboto", sans-serif;
+        letter-spacing: 0.1rem;
+        margin-top: 0;
+        font-weight: bold;
+        width: 165px;
+    }
+    .header-label {
+        z-index: 1;
+    }
+    .header-top-wrap picture {
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+    .header-top-wrap img {
+        width: 100vw;
+    }
+    .s-content-wrap {
+        margin-top: var(--section-margin);
+        color: var(--fourth-color);
+        font-family: "Roboto", sans-serif;
+    }
+    .span-top {
+        margin-top: calc(var(--section-margin) * 2);
+    }
+    .s-title {
+        font-size: var(--font-large2);
+        margin-bottom: var(--element-margin);
+        padding-bottom: var(--element-margin);
+        text-align: center;
+        position: relative;
+        font-weight: 700;
+    }
+    .s-title::after {
+        content: "";
+        width: 55px;
+        height: 1px;
+        background-color: var(--fifth-color);
+        position: absolute;
+        bottom: 0;
+        left: calc(50% - 27.5px);
+    }
+    .s-desp {
+        font-size: var(--font-small1);
+        margin-bottom: var(--element-section-margin);
+        text-align: center;
+    }
+    .s-desp span {
+        display: none;
+    }
+    .s-faq-wrap .faq {
+        background-color: var(--third-color);
+        border-radius: var(--border-radius1);
+        padding: var(--element-margin) calc(var(--element-margin) + var(--icon-size2) + 5px) var(--element-margin) calc(var(--element-margin) + 15px);
+        margin-bottom: var(--element-margin);
+    }
+    .s-faq-question {
+        position: relative;
+        font-size: var(--font-size6);
+        font-weight: 500;
+        margin-left: 5px;
+    }
+    .s-faq-question::before {
+        content: attr(number);
+        display: inline-block;
+        position: absolute;
+        left: -20px;
+        top: 0;
+    }
+    .s-faq-question::after {
+        content: "";
+        background-size: var(--icon-size2) var(--icon-size2);
+        background-repeat: no-repeat;
+        width: var(--icon-size2);
+        height: var(--icon-size2);
+        position: absolute;
+        right: calc(-1 * var(--icon-size2) - 5px);
+        top: 0;
+    }
+    .s-faq-question[status="open"]::after {
+        background-image: url("/content/images/marketing/subscription/minus.svg");
+    }
+    .s-faq-question[status="close"]::after {
+        background-image: url("/content/images/marketing/subscription/plus.svg");
+    }
+    .s-faq-answer {
+        font-size: var(--font-size8);
+        margin-top: calc(var(--element-margin) / 2);
+    }
+    .s-faq-answer ul {
+        margin-top: calc(var(--element-margin) / 3);
+    }
+    .s-faq-question[status="close"] + .s-faq-answer {
+        display: none;
+    }
+    .s-icon {
+        margin: var(--section-margin) auto var(--element-section-margin);
+        display: flex;
+        justify-content: center;
+    }
+    .s-icon img {
+        width: var(--icon-size1);
+    }
+    .s-form-wrap .content-wrap input {
+        width: 100%;
+        margin-bottom: var(--element-margin);
+        border: 1px solid var(--second-color);
+        border-radius: var(--border-radius1);
+        padding: var(--element-margin);
+        text-align: center;
+        color: var(--second-color);
+        background-color: var(--color6);
+    }
+    .s-form-wrap .content-wrap input::placeholder {
+        color: var(--second-color);
+    }
+    .s-form-wrap .content-wrap button {
+        background-color: var(--main-color);
+        color: var(--second-color);
+        border-radius: 3px;
+        padding: calc(var(--element-margin) / 2);
+        margin: calc(-1 * var(--element-margin) + var(--element-section-margin)) auto 0;
+        width: 150px;
+        text-align: center;
+        display: block;
+        font-size: var(--font-size6);
+        font-weight: bold;
+    }
+    .s-benefit-wrap {
+        background-color: var(--color7);
+        z-index: 9;
+        position: relative;
+        border-radius: 4px;
+        margin-top: -2rem;
+        padding: var(--element-margin);
+    }
+    section:not(.s-benefit-wrap) {
+        margin-top: var(--section-margin);
+    }
+    section.s-faq-wrap {
+        margin-left: 0;
+        margin-right: 0;
+        background-color: #fff;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+        margin-top: 0;
+        padding-top: var(--section-margin);
+    }
+    section .title {
+        font-size: var(--font-size5);
+        text-transform: uppercase;
+        font-weight: bold;
+        text-align: center;
+        padding-bottom: var(--element-margin);
+        margin-bottom: var(--element-margin);
+        position: relative;
+    }
+    section .title::after {
+        content: "";
+        display: block;
+        max-width: 100%;
+        width: 72px;
+        height: 1px;
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    section.s-benefit-wrap .title::after {
+        background-color: var(--color8);
+    }
+    section .desp {
+        font-size: var(--font-size6);
+        margin-bottom: var(--element-margin);
+        text-align: center;
+    }
+    .s-benefit-wrap .content-wrap {
+        display: grid;
+        grid-row-gap: var(--element-margin);
+    }
+    .s-benefit-wrap .content {
+        display: grid;
+        grid-template-columns: 48px;
+        grid-template-rows: 43px;
+        padding: var(--element-margin);
+        border-radius: 20px;
+        grid-column-gap: var(--element-margin);
+        background-color: var(--second-color);
+        align-items: center;
+        justify-content: center;
+    }    
+    .s-benefit-wrap .content img {
+        grid-row: 1 / span 2;
+        grid-column-start: 1;
+        width: 48px;
+    }    
+    .s-benefit-wrap .content .name {
+        grid-column-start: 2;
+        font-size: var(--font-normal1);
+        font-weight: bold;
+    }
+    .s-benefit-wrap .content .c-desp {
+        grid-column-start: 2;
+        grid-row-start: 2;
+        font-size: var(--font-normal1);
+    }
+    .s-benefit-wrap .content .link {
+        grid-column: 1 / span 2;
+        grid-row-start: 3;
+        display: block;
+        width: 100%;
+        margin-top: var(--element-margin);
+        background-color: var(--color7);
+        border-radius: 4px;
+        padding: 8px 3px;
+        color: inherit;
+        text-transform: capitalize;
+        text-align: center;
+        text-decoration: none;
+    }
+    .s-benefit-wrap .content .c-desp .link:focus,.s-benefit-wrap .content .c-desp .link:active {
+        outline: none !important;
+    }
+    section.s-plan-wrap .title::after,
+    section.s-how-wrap .title::after,
+    section.s-faq-wrap .title::after {
+        background-color: var(--fifth-color);
+    }
+    .s-plan-wrap .content-wrap {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        justify-content: center;
+        align-items: center;
+        grid-gap: var(--element-margin);
+    }
+    .s-plan-wrap .content-wrap .content {
+        text-align: center;
+        font-family: "Fugaz One";
+        color: var(--color6);
+        font-size: var(--font-size7);
+    }
+    .s-plan-wrap .content-wrap .content::after {
+        content: "pieces a year";
+        display: block;
+        font-family: "Poppins";
+        color: var(--fourth-color);
+        font-size: var(--font-size6);
+        margin-top: -1rem;
+    }
+    .s-how-wrap {
+        display: grid;
+        grid-row-gap: var(--section-margin);
+        overflow: hidden;
+    }
+    .s-how-wrap img {
+        width: 100%;
+        height: auto;
+        border-radius: 4px;
+    }
+    .s-how-wrap .desp a {
+        color: var(--main-color);
+        font-weight: bold;
+    }
+    section.s-form-wrap {
+        background-color: var(--color6);
+        color: var(--second-color);
+        width: 100%;
+        margin-top: calc(var(--section-margin) + 4rem);
+        padding: 50vw 1.5rem var(--section-margin);
+        position: relative;
+        margin-left: 0;
+        margin-right: 0;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+    .s-form-wrap .title::after {
+        background-color: var(--second-color);
+    }
+    .s-form-wrap img {
+        position: absolute;
+        border-radius: 4px;
+        width: calc(100% - 3rem);
+        height: auto;
+        top: -5rem;
+        display: block;
+        z-index: 9;
+    }
+    section {
+        margin-left: 1.5rem;
+        margin-right: 1.5rem;
+    }
+    .body.page .page-content p:first-child {
+        margin-bottom: 0;
+    }
+    @media (min-width: 320px) {
+        .header-top-wrap h2 {
+            font-size: var(--font-size5);
+        }
+        .s-benefit-wrap {
+            padding: var(--section-margin);
+        }
+        .s-benefit-wrap .content .name {
+            font-size: var(--font-size6);
+        }
+    }
+    @media (min-width: 414px) {
+        .s-benefit-wrap .content {
+            grid-template-rows: 30px;
+        }
+    }
+    @media (min-width: 480px) {
+        :root {
+            --element-margin: 25px;
+            --element-section-margin: 30px;
+            --section-margin: 55px;
+            --font-large1: 25px;
+        }
+        .s-title {
+            margin-bottom: calc(var(--element-margin) / 2);
+            padding-bottom: calc(var(--element-margin) / 2);
+        }
+        .s-form-wrap .content-wrap input {
+            padding: calc(var(--element-margin) / 2);
+        }
+        .s-faq-wrap .faq {
+            cursor: pointer;
+        }
+        .s-benefit-wrap {
+            padding: var(--element-margin);
+        }
+        section.s-form-wrap {
+            padding-top: 63vw;
+        }
+    }
+    @media (min-width: 551px) {
+        .breadcrumbs {
+            display: none;
+        }
+        .s-form-wrap .content-wrap {
+            max-width: 550px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .s-benefit-wrap .content-wrap {
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: var(--element-margin);
+        }
+        .s-benefit-wrap .content {
+            grid-template-rows: 50px;
+            grid-gap: calc(var(--element-margin) / 2);
+        }
+        .s-benefit-wrap .content .link {
+            margin-top: 0;
+        }
+        .s-benefit-wrap .content img {
+            grid-column-start: 1;
+            grid-row-start: 1;
+            grid-row-end: 1;
+        }
+        .s-benefit-wrap .content .name {
+            color: var(--color6);
+        }
+        .s-benefit-wrap .content .c-desp {
+            grid-column: 1 / span 2;
+        }
+        .header-top-wrap h2 {
+            font-size: var(--font-size9);
+        }
+    }
+    @media (min-width: 620px) {
+        :root {
+            --font-size9: 28px;
+        }
+        .s-plan-wrap .content-wrap {
+            grid-template-columns: repeat(4, 1fr);
+        }
+        .s-wrap {
+            background-color: #fff;
+        }
+        .s-how-wrap {
+            grid-template-columns: auto 200px;
+            align-items: center;
+            margin-left: 0;
+            margin-right: 0;
+            background-color: var(--color9);
+            grid-column-gap: var(--element-margin);
+        }
+        .s-how-wrap img {
+            height: 100%;
+            object-fit: cover;
+            object-position: right;
+            border-radius: 0;
+        }
+        .s-how-wrap .content-wrap {
+            order: -1;
+            padding: var(--section-margin) 0 var(--section-margin) 1.5rem;
+        }
+        .s-how-wrap .content-wrap p {
+            margin-bottom: 1rem;
+        }
+        .s-how-wrap .content-wrap p:last-child {
+            margin-bottom: 0;
+        }
+        .s-form-wrap .title,
+        .s-how-wrap .title {
+            text-align: left;
+        }
+        .s-form-wrap .title::after,
+        .s-how-wrap .title::after {
+            left: 0;
+            transform: translateX(0);
+        }
+        .s-how-wrap .desp {
+            font-size: var(--font-size8);
+            margin-bottom: 0;
+            text-align: left;
+        }
+        section.s-form-wrap {
+            padding-left: 200px;
+            padding-top: 0;
+            padding-bottom: 0;
+            background-color: inherit;
+            padding-right: 0;
+            margin-top: var(--section-margin);
+        }
+        .s-form-wrap img {
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 250px;
+            border-radius: 0;
+        }
+        .s-form-wrap .c-content {
+            background-color: var(--color6);
+            padding: var(--element-margin);
+            padding-left: 5rem;
+        }
+        .s-form-wrap .desp {
+            display: none;
+            text-align: left;
+        }
+        .s-form-wrap .content-wrap {
+            margin-left: 0;
+        }
+    }
+    @media (min-width: 779px) {
+        .s-benefit-wrap .content-wrap {
+            grid-template-columns: repeat(3, 1fr);
+        }
+        .s-how-wrap {
+            grid-template-columns: auto 331px;
+        }
+        .s-form-wrap img {
+            width: 331px;
+        }
+        section.s-form-wrap {
+            padding-left: 290px;
+        }
+    }
+    @media (min-width: 801px) {
+        :root {
+            --font-large1: 35px;
+            --font-large2: 25px;
+            --font-normal1: 15px;
+            --font-small1: 13px;
+            --font-size5: 24px;
+        }
+        .header-top-wrap {
+            margin-left: -2rem;
+            width: calc(100% + 4rem);
+            padding: 0 5rem;
+        }
+        .header-top-wrap h2 {
+            font-weight: 700;
+            font-size: var(--font-large1);
+            width: 400px;
+        }
+        .s-content-wrap {
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .container {
+            max-width: 100% !important;
+        }
+        .s-form-wrap .content-wrap button:hover {
+            background-color: var(--fourth-color);
+            transition: all 0.2s ease;
+        }
+        .s-how-wrap,
+        section.s-form-wrap {
+            width: calc(100% + 4rem);
+            margin-left: -2rem;
+        }
+        .s-form-wrap .desp {
+            display: block;
+            font-size: var(--font-size8);
+        }
+        .s-how-wrap .content-wrap {
+            padding-left: 3.5rem;
+        }
+        .s-form-wrap .c-content {
+            padding-right: 3.5rem;
+        }
+        .s-how-wrap .desp,
+        .s-form-wrap .desp {
+            font-size: var(--font-size6);
+        }
+    }
+    @media (min-width: 820px) {
+        :root {
+            --font-large1: 40px;
+        }
+        .s-benefit-wrap {
+            margin-top: -10vw;
+        }
+    }
+    @media (min-width: 1024px) {
+        :root {
+            --element-margin: 30px;
+            --section-margin: 50px;
+            --font-large1: 50px;
+        }
+        .s-how-wrap .content-wrap {
+            padding-left: 5rem;
+        }
+        .s-form-wrap .c-content {
+            padding-right: 5rem;
+            padding-left: 12rem;
+        }
+        .s-benefit-wrap {
+            display: grid;
+            grid-template-rows: 40px auto;
+            grid-template-columns: 120px auto;
+            grid-gap: var(--element-margin);
+        }
+        .s-benefit-wrap .title {
+            grid-column-start: 1;
+            height: calc(var(--font-size5) + var(--element-margin));
+            text-align: left;
+        }
+        .s-benefit-wrap .title::after {
+            left: 0;
+            transform: translateX(0);
+        }
+        .s-benefit-wrap .desp {
+            grid-column-start: 1;
+            grid-row-start: 2;
+            text-align: left;
+        }
+        .s-benefit-wrap .content-wrap {
+            grid-column-start: 2;
+            grid-row: 1 / span 2;
+        }
+        .s-how-wrap {
+            grid-template-columns: auto 400px;
+        }
+        .s-form-wrap img {
+            width: 400px;
+        }
+        section.s-form-wrap {
+            padding-left: 300px;
+        }
+    }
+    @media (min-width: 1200px) {
+        :root {
+            --font-large1: 50px;
+            --font-large2: 25px;
+            --font-normal1: 16px;
+            --font-small1: 15px;
+        }
+        .header-top-wrap {
+            padding-left: 10%;
+        }
+        .s-faq-wrap .faq {
+            padding-left: calc(var(--element-margin) + 20px);
+        }
+        .s-faq-question::before {
+            left: -20px;
+        }
+    }
+    @media (min-width: 1261px) {
+        :root {
+            --font-large1: 64px;
+        }
+        .body.page .container {
+            padding: 0;
+        }
+        .s-how-wrap,
+        section.s-form-wrap {
+            width: calc(100% + 1rem);
+            margin-left: -0.5rem;
+        }
+        .header-top-wrap {
+            margin-left: -0.5rem;
+            width: calc(100% + 1rem);
+            padding: 0;
+        }
+        .header-top-wrap .content-wrap {
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+        }
+        .s-benefit-wrap {
+            max-width: 1280px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .s-plan-wrap .content-wrap {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+        .s-faq-section-wrap {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+        .s-how-wrap {
+            grid-template-columns: 60% 40%;
+        }
+        .s-form-wrap img {
+            width: 35%;
+        }
+        section.s-form-wrap {
+            padding-left: 30%;
+        }
+        .s-form-wrap .c-content {
+            padding-top: 5rem;
+            padding-bottom: 5rem;
+        }
+        .s-how-wrap .content-wrap {
+            padding-left: 2rem;
+        }
+    }
+    @media (min-width: 1320px) {
+        .header-top-wrap .content-wrap {
+            max-width: 1280px;
+        }
+        .s-how-wrap .content-wrap {
+            padding-left: calc(50vw - 640px);
+        }
+        .s-form-wrap .c-content {
+            padding-left: 20rem;
+            padding-top: 8rem;
+            padding-bottom: 8rem;
+        }
+    }
+    @media (min-width: 1400px) {
+        :root {
+            --font-large2: 29px;
+        }
+    }
+</style>
+<img src="/content/images/marketing/subscription/thumbnail.jpg" style="opacity: 0; width: 0; height: 0" />
+<div class="s-wrap">
+    <div class="header-top-wrap">
+        <div class="content-wrap"><h2 class="header-label">hair system subscription program</h2></div>
+        <picture>
+            <source media="(min-width:820px)" type="image/webp" srcset="/content/images/marketing/subscription/banner-pc1.webp" />
+            <source media="(min-width:820px)" type="image/jpeg" srcset="/content/images/marketing/subscription/banner-pc1.jpg" />
+            <source media="(min-width:480px)" type="image/webp" srcset="/content/images/marketing/subscription/banner-tablet1.webp" />
+            <source media="(min-width:480px)" type="image/jpeg" srcset="/content/images/marketing/subscription/banner-tablet1.jpg" />
+            <source type="image/webp" srcset="/content/images/marketing/subscription/banner-mobile1.webp" />
+            <source type="image/jpeg" srcset="/content/images/marketing/subscription/banner-mobile1.jpg" />
+            <img src="/content/images/marketing/subscription/banner-mobile1.jpg" alt="Subscription" />
+        </picture>
+    </div>
+    <section class="s-benefit-wrap">
+        <div class="title">benefits</div>
+        <div class="desp">Here are the benefits of using our subscription program!</div>
+        <div class="content-wrap">
+            <div class="content link">
+                <img src="/content/images/marketing/subscription/icon2.svg" />
+                <div class="name">No cost to join</div>
+                <div class="c-desp">You don't need to pay for our subscription</div>
+                <a href="#faq-focus" class="link">learn more</a>
+            </div>
+            <div class="content">
+                <img src="/content/images/marketing/subscription/icon1.svg" />
+                <div class="name">No price changes</div>
+                <div class="c-desp">Fixed price for your hair systems regardless of stock price changes</div>
+            </div>
+            <div class="content">
+                <img src="/content/images/marketing/subscription/icon3.svg" />
+                <div class="name">Make your choice</div>
+                <div class="c-desp">Choose between men's/women's stock and custom units</div>
+            </div>            
+            <div class="content">
+                <img src="/content/images/marketing/subscription/icon4.svg" />
+                <div class="name">Automatic payments</div>
+                <div class="c-desp">Your card will only be charged when your order is ready</div>
+            </div>
+            <div class="content">
+                <img src="/content/images/marketing/subscription/icon5.svg" />
+                <div class="name">Peace of mind</div>
+                <div class="c-desp">Your units will always be in stock, ordered and delivered on time</div>
+            </div>
+            <div class="content">
+                <img src="/content/images/marketing/subscription/icon6.svg" />
+                <div class="name">Consistent quality</div>
+                <div class="c-desp">Get all your systems made by the same ventilation worker</div>
+            </div>
+        </div>
+    </section>
+    <section class="s-plan-wrap">
+        <div class="title">choose your plan</div>
+        <div class="desp">Customize your subscription as per your requirements!</div>
+        <div class="content-wrap">
+            <div class="content">12</div>
+            <div class="content">6</div>
+            <div class="content">4</div>
+            <div class="content">3</div>
+        </div>
+    </section>
+    <section class="s-how-wrap">
+        <picture>
+            <source media="(min-width:1280px)" srcset="/content/images/marketing/subscription/pic1-pc2.webp" type="image/webp" />
+            <source media="(min-width:1280px)" srcset="/content/images/marketing/subscription/pic1-pc2.jpg" type="image/jpeg" />
+            <source media="(min-width:480px)" srcset="/content/images/marketing/subscription/pic1-pc.webp" type="image/webp" />
+            <source media="(min-width:480px)" srcset="/content/images/marketing/subscription/pic1-pc.jpg" type="image/jpeg" />
+            <source srcset="/content/images/marketing/subscription/pic1-mobile.webp" type="image/webp" />
+            <source srcset="/content/images/marketing/subscription/pic1-mobile.jpg" type="image/jpeg" />
+            <img src="/content/images/marketing/subscription/pic1-mobile.jpg" alt="" />
+        </picture>
+        <div class="content-wrap">
+            <div class="title">how to subscribe</div>
+            <div class="desp">
+                <p>Sign up with the <a href="#s-form">initial form</a> below!</p>
+                <p>Our customer support team will contact you</p>
+                <p>We will then take care of the rest! You will receive your next system based on your subscription plan.</p>
+            </div>
+        </div>
+    </section>
+    <section class="s-form-wrap" id="s-form">
+        <picture>
+            <source media="(min-width:1280px)" srcset="/content/images/marketing/subscription/pic2-pc2.webp" type="image/webp" />
+            <source media="(min-width:1280px)" srcset="/content/images/marketing/subscription/pic2-pc2.jpg" type="image/jpeg" />
+            <source media="(min-width:480px)" srcset="/content/images/marketing/subscription/pic2-pc.webp" type="image/webp" />
+            <source media="(min-width:480px)" srcset="/content/images/marketing/subscription/pic2-pc.jpg" type="image/jpeg" />
+            <source srcset="/content/images/marketing/subscription/pic2-mobile.webp" type="image/webp" />
+            <source srcset="/content/images/marketing/subscription/pic2-mobile.jpg" type="image/jpeg" />
+            <img src="/content/images/marketing/subscription/pic2-mobile.jpg" alt="" />
+        </picture>
+        <div class="c-content">
+            <div class="title">get a subscription today</div>
+            <div class="desp">Our customer support team will get back to you with the necessary documents to confirm your subscription!</div>
+            <form class="content-wrap">
+                <input type="text" name="name" maxlength="100" placeholder="Your name" />
+                <input type="text" name="email" placeholder="Email Address" maxlength="100" />
+                <button type="submit">Submit Now</button>
+            </form>
+        </div>
+    </section>
+    <section class="s-faq-wrap">
+        <div class="title">FAQs</div>
+        <div class="desp">Questions? Look here!</div>
+        <div class="s-faq-section-wrap">
+            <div class="faq">
+                <div class="s-faq-question" status="open" number="1." id="faq-focus">How much does the subscription program cost?</div>
+                <div class="s-faq-answer" style="display: block;">
+                    There is no additional cost to join our subscription program. We only charge you for each unit before we send it out based on your scheduled delivery dates. We simply just want to
+                    help you out by placing advanced orders for your stock/custom units. No trick, only treats (with good service from our experienced customer support team!)
+                </div>
+            </div>
+            <div class="faq">
+                <div class="s-faq-question" status="close" number="2.">What are the benefits for joining this Subscription program?</div>
+                <div class="s-faq-answer">
+                    <div>
+                        It's possible your hair system is reaching its lifespan in a month or so and your supplier does not have the system and combination of color+ gray % in stock. It is the reality
+                        now considering how much the pandemic has affected the hair industry.
+                    </div>
+                    <ul>
+                        <li>By joining the Subscription program, you can ensure the system you prefer is ready for you exactly when you need it.</li>
+                        <li>
+                            Even though prices can change at any time as the labor cost, raw material and shipping costs have gone up massively due to the pandemic, Superhairpieces can lock in the
+                            same price for the piece that you choose for the duration of your subscription.
+                        </li>
+                        <li>No longer worrying about making payments or placing orders every few weeks or months.</li>
+                    </ul>
+                </div>
+            </div>            
+
+            <div class="faq">
+                <div class="s-faq-question" status="close" number="3.">Is the subscription program for stock or custom orders?</div>
+                <div class="s-faq-answer">We offer the program for both stock and custom orders.</div>
+            </div>
+
+            <div class="faq">
+                <div class="s-faq-question" status="close" number="4.">Can I cancel my subscription before the end date?</div>
+                <div class="s-faq-answer">
+                    Yes, you can for a subscription with stock hair system and stock color/gray %. We know things might change at any time, so the subscription can be canceled with a small fee of
+                    <strong>$100</strong>.<br /><br />Custom-made order subscriptions are non-cancelable. The reason is, once you join the program, our factory will work on all of your pieces at once
+                    to keep the consistency.
+                </div>
+            </div>
+            <div class="faq">
+                <div class="s-faq-question" status="close" number="5.">
+                    If there is any price change in the future for the piece I choose, do I still pay the same price at the time the form was signed ?
+                </div>
+                <div class="s-faq-answer">Yes, Superhairpieces will lock in the price of the piece and color you choose when you sign the subscription form for the duration of your subscription.</div>
+            </div>
+            <div class="faq">
+                <div class="s-faq-question" status="close" number="6.">Can I choose online haircuts service for the subscription program?</div>
+                <div class="s-faq-answer">
+                    Yes you can. Please keep in mind that once the piece is cut and styled, it is final sale. Further information can be found here:
+                    <a href="/shipping/" target="_blank">https://superhairpieces.com/shipping/</a>
+                </div>
+            </div>
+            <div class="faq">
+                <div class="s-faq-question" status="close" number="7.">Is there a notification if the credit card used for subscription is declined or expired?</div>
+                <div class="s-faq-answer">Yes, both the Superhairpieces Customer Support team and the client whose credit card is declined or expired will be notified.</div>
+            </div>
+            <div class="faq">
+                <div class="s-faq-question" status="close" number="8.">What if I want to receive my next hair system sooner than the expected shipment date?</div>
+                <div class="s-faq-answer">
+                    In case you need your next hair system sooner than the scheduled shipping date, you can always send us a message anytime to speed up the next shipment. You can also choose to
+                    receive a few hair systems all at once (subject to availability at the time of request). For custom-made order subscriptions, there is a rush fee. Please reach out to our Custom
+                    Order Department for further information.
+                </div>
+            </div>
+            <div class="faq">
+                <div class="s-faq-question" status="close" number="9.">Do I need to confirm my shipping address with Superhairpieces before an order is sent out?</div>
+                <div class="s-faq-answer">
+                    We send out orders for the subscription program to the Shipping address in your Subscription form. If you have a different shipping address, please inform us before an order is
+                    shipped out. <br /><br />You will also receive an email notification two weeks before your scheduled shipping date to ensure the shipping information is still the same as the
+                    address in the subscription form.
+                </div>
+            </div>
+            <div class="faq">
+                <div class="s-faq-question" status="close" number="10.">&nbsp; I subscribed for 4 pieces per year, but now I want 6. How can I change it?</div>
+                <div class="s-faq-answer">
+                    Please reach out to our Customer Support team if you wish to change your Subscription Details. For stock subscriptions, we will always hold at least two extra units for you at your
+                    designated bin in our warehouses as a backup. <br /><br />For custom-made order subscriptions, we produce all at once and make sure your units always look identical during the
+                    annual period.
+                </div>
+            </div>
+            <div class="faq">
+                <div class="s-faq-question" status="close" number="11.">&nbsp; Can I change to another hair system model after I join the subscription program?</div>
+                <div class="s-faq-answer" style="display: none">
+                    You can do so if you choose a stock subscription with stock hair system and stock color/gray %。 <br /><br />If you choose a stock piece with custom color+ gray%, it is considered
+                    as custom unit.For Custom order subscription, since our factory will produce all at once, we cannot change the order details.
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<script>
+    function ValidateEmail(email) {
+        if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
+            return true;
+        }
+        alert("You have entered an invalid email address!");
+        return false;
+    }
+    window.addEventListener("DOMContentLoaded", function () {
+        $(".s-faq-wrap .faq").on("click", function () {
+            if ($(this).find(".s-faq-question").attr("status") == "open") {
+                $(this).find(".s-faq-answer").slideUp();
+                $(this).find(".s-faq-question").attr("status", "close");
+            } else {
+                $(this).find(".s-faq-answer").slideDown();
+                $(this).find(".s-faq-question").attr("status", "open");
+            }
+        });
+        $("form").on("submit", function (e) {
+            e.preventDefault();
+            if ($("[name=email]").length > 0 && $("[name=name]").length > 0) {
+                if ($("[name=email]").val().length > 0 && $("[name=name]").val().length > 0) {
+                    if (ValidateEmail($("[name=email]").val())) {
+                        $(this).find("input").attr("readonly", true);
+                        $(this).find("button[type=submit]").attr("disabled", "disabled").css({ filter: "brightness(0.8)" }).html("Sending...");
+                        fetch(`https://shp-webserver-temp.glitch.me/send-docusign-subscription`, {
+                            method: "POST",
+                            headers: {
+                                accept: "application/json",
+                                "content-type": "application/json",
+                            },
+                            body: JSON.stringify({
+                                email: $("[name=email]").val(),
+                                name: $("[name=name]").val(),
+                                storeId: 742053,
+                            }),
+                        })
+                            .then((r) => r.json())
+                            .then((r) => {
+                                console.log(r);
+                                if (r.status) {
+                                    if (r.status == "sent") {
+                                        alert("We sent you a digital document through email. Please sign this document");
+                                        location.reload();
+                                    } else {
+                                        $(this).find("button[type=submit]").html("Error");
+                                        alert("We could not send a digital document to your email. Please contact our customer support");
+                                    }
+                                } else {
+                                    $(this).find("button[type=submit]").html("Error");
+                                    alert("We could not send a digital document to your email. Please contact our customer support");
+                                }
+                            })
+                            .catch((e) => {
+                                console.log(e);
+                                $(this).find("button[type=submit]").html("Error");
+                                alert("We could not send a digital document to your email. Please contact our customer support");
+                            });
+                    }
+                } else {
+                    alert("Please fill email and name");
+                }
+            } else {
+                alert("The server has error, please try again later or contact our customer support");
+            }
+        });
+    });
+</script>

@@ -1,0 +1,39 @@
+{{#if show_hover}}
+<ul class="productGrid {{breadcrumbs1}}">    
+    <!-- {{inject "products" products}} -->
+    {{#each products}}        
+        {{#contains name "Virtual" }}
+        {{else}}                
+            {{#contains 'CMH,SMLACE,SMMONO,CMLACEPOLY,CMSKIN' sku}}
+            <li class="product " style="position: relative;">                
+                {{>components/products/card show_compare=../show_compare show_rating=../settings.show_product_rating theme_settings=../theme_settings customer=../customer show_hover=true rush=true}}
+            </li>
+            {{else}}
+            <li class="product">
+                {{>components/products/card show_compare=../show_compare show_rating=../settings.show_product_rating theme_settings=../theme_settings customer=../customer show_hover=true rush=false}}
+            </li>
+            {{/contains}}
+        {{/contains}}
+    {{/each}}
+    <!-- <script>
+        var jsContext = JSON.parse({{jsContext}});
+        console.log(jsContext);
+    </script> -->
+</ul>
+{{else}}
+<ul class="productGrid {{breadcrumbs1}}">    
+    <!-- {{inject "products" products}} -->
+    {{#each products}}        
+        {{#contains name "Virtual" }}
+        {{else}}                
+        <li class="product">
+            {{>components/products/card show_compare=../show_compare show_rating=../settings.show_product_rating theme_settings=../../theme_settings customer=../customer breadcrumbs1=../breadcrumbs1 rush=false}}
+        </li>
+        {{/contains}}
+    {{/each}}
+    <!-- <script>
+        var jsContext = JSON.parse({{jsContext}});
+        console.log(jsContext);
+    </script> -->
+</ul>
+{{/if}}

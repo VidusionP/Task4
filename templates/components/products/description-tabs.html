@@ -1,0 +1,1193 @@
+<style>
+    .faq-container {
+        margin: 0 auto;
+    }
+
+    .faq-accordion .faq-accordion-item {
+        border-bottom: 1px solid #e5e5e5;
+    }
+
+    .faq-accordion .faq-accordion-item button[aria-expanded="true"] {
+        border-bottom: 1px solid #333333;
+    }
+    .faq-accordion button {
+        position: relative;
+        display: block;
+        text-align: left;
+        width: 100%;
+        padding-top: 1em;
+        color: #7288a2;
+        font-size: 1.15rem;
+        font-weight: 400;
+        border: none;
+        background: none;
+        outline: none;
+    }
+    .faq-accordion button:hover,
+    .faq-accordion button:focus {
+        cursor: pointer;
+        color: #333333;
+    }
+    .faq-accordion button:hover::after,
+    .faq-accordion button:focus::after {
+        cursor: pointer;
+        color: #333333;
+        border: 1px solid #333333;
+    }
+    .faq-accordion button .faq-accordion-title {
+        padding-top: 1rem;
+        margin-top: -1rem;
+        padding-right: 20px;
+    }
+    .faq-accordion button .faq-icon {
+        display: inline-block;
+        position: absolute;
+        top: 18px;
+        right: 0;
+        width: 22px;
+        height: 22px;
+        border: 1px solid;
+        border-radius: 22px;
+    }
+    .faq-accordion button .faq-icon::before {
+        display: block;
+        position: absolute;
+        content: "";
+        top: 9px;
+        left: 5px;
+        width: 10px;
+        height: 2px;
+        background: currentColor;
+    }
+    .faq-accordion button .faq-icon::after {
+        display: block;
+        position: absolute;
+        content: "";
+        top: 5px;
+        left: 9px;
+        width: 2px;
+        height: 10px;
+        background: currentColor;
+    }
+    .faq-accordion button[aria-expanded="true"] {
+        color: #333333;
+    }
+    .faq-accordion button[aria-expanded="true"] .faq-icon::after {
+        width: 0;
+    }
+    .faq-accordion button[aria-expanded="true"] + .faq-accordion-content {
+        opacity: 1;
+        max-height: fit-content;
+        padding: 0 0.3rem;
+        -webkit-transition: all 200ms linear;
+        transition: all 200ms linear;
+        will-change: opacity, max-height;
+    }
+    .faq-accordion .faq-accordion-content {
+        opacity: 0;
+        max-height: 0;
+        overflow: hidden;
+        -webkit-transition: opacity 200ms linear, max-height 200ms linear;
+        transition: opacity 200ms linear, max-height 200ms linear;
+        will-change: opacity, max-height;
+    }
+    .faq-accordion .faq-accordion-content p {
+        font-size: 1rem;
+        margin: 2em 0;
+    }
+    .faq-accordion .faq-accordion-content img {
+        max-width: 800px;
+        width: 100%;
+        cursor: pointer;
+    }
+</style>
+<style>
+    .tab-guide::before {
+        content: '';
+        background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0NDggNTEyIj48IS0tIEZvbnQgQXdlc29tZSBGcmVlIDUuMTUuMSBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSAtLT48cGF0aCBkPSJNNDI0LjQgMjE0LjdMNzIuNCA2LjZDNDMuOC0xMC4zIDAgNi4xIDAgNDcuOVY0NjRjMCAzNy41IDQwLjcgNjAuMSA3Mi40IDQxLjNsMzUyLTIwOGMzMS40LTE4LjUgMzEuNS02NC4xIDAtODIuNnoiLz48L3N2Zz4=);
+        background-size: 10px 10px;
+        width: 10px;
+        height: 10px;
+        display: inline-block;
+        margin-right: 5px;
+        transition: all 0.33s;
+    }
+    .tab-guide::after {
+        content: '';
+        background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTYgNTEyIj48IS0tIEZvbnQgQXdlc29tZSBGcmVlIDUuMTUuMSBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSAtLT48cGF0aCBkPSJNMjI0LjMgMjczbC0xMzYgMTM2Yy05LjQgOS40LTI0LjYgOS40LTMzLjkgMGwtMjIuNi0yMi42Yy05LjQtOS40LTkuNC0yNC42IDAtMzMuOWw5Ni40LTk2LjQtOTYuNC05Ni40Yy05LjQtOS40LTkuNC0yNC42IDAtMzMuOUw1NC4zIDEwM2M5LjQtOS40IDI0LjYtOS40IDMzLjkgMGwxMzYgMTM2YzkuNSA5LjQgOS41IDI0LjYuMSAzNHoiLz48L3N2Zz4=);
+        background-size: 0 20px;
+        width: 0;
+        height: 20px;
+        display: inline-block;        
+        transform: translateY(5px);
+        transition: all 0.33s;
+    }
+    .tab-guide a{
+        text-decoration: none;
+    }
+    .tab-guide:hover::before {
+        width: 0;
+        background-size: 0 10px;
+        margin-right: 0;
+    }
+    .tab-guide:hover::after {        
+        background-size: 20px 20px;
+        width: 20px;
+        margin-left: 5px;
+    }
+</style>
+{{inject "product" product.sku}}
+<ul class="tabs" data-tab>
+    <li class="tab is-active">
+        <a class="tab-title" href="#tab-description"
+            >{{lang 'products.description'}}</a
+        >
+    </li>
+    <is-active></is-active>
+    <li class="tab">
+        <a href="#tab-shipping-return" class="tab-title">
+            {{lang 'products.shipping_return'}}
+        </a>
+    </li>
+    {{#if product.warranty}}
+    <li class="tab">
+        <a class="tab-title" href="#tab-warranty"
+            >{{lang 'products.warranty'}}</a
+        >
+    </li>
+    {{/if}}
+    {{#if breadcrumbs.[3].name "==" "Pre-Order"}}
+    <li class="tab">
+        <a href="#tab-faq" class="tab-title">{{lang 'faq.title'}}</a>
+    </li>
+    {{/if}}    
+    {{#if product.title "==" "Tape in Hair Extensions 20 Pieces 50 grams Hair"}}
+    <li class="tab">
+        <a href="#tab-faq" class="tab-title">{{lang 'faq.title'}}</a>
+    </li>
+    {{/if}}
+    {{#if product.title "==" 'Clip In Hair Extensions 100 Grams Human hair'}}
+    <li class="tab">
+        <a href="#tab-faq" class="tab-title">{{lang 'faq.title'}}</a>
+    </li>
+    {{/if}}
+    {{#if breadcrumbs.[2].name "==" "Custom Made"}}
+    <li class="tab">
+        <a href="#tab-faq" class="tab-title">{{lang 'faq.title'}}</a>
+    </li>
+    {{/if}}    
+    {{#if product.title '==' '20" Tape In Hair Extensions 20 Pieces 4A Root Color'}}
+    <li class="tab">
+        <a href="#tab-guide" class="tab-title">Guide</a>
+    </li>
+    {{/if}}
+</ul>
+<div class="tabs-contents">
+    <div class="tab-content is-active" id="tab-description">
+        {{{product.description}}} {{{snippet 'product_description'}}}
+    </div>
+    <div class="tab-content" id="tab-shipping-return">
+        <h4>Shipping Policy</h4>
+        <ul>
+            <li>Shipping charges are automatically calculated based on the shipping method, weight of the products, the destination and the number of items in your shopping cart.</li>
+            <li>Please allow 24-72 hours if you select an online styling (base cut and/or haircut).  After completion, your order will be shipped depending on the shipping method you have selected.</li>
+            <li>ALL orders placed online with Overnight Ship must be submitted and received before 4:30pm Eastern Time. Any order placed on the weekend, or on a holiday, will be processed the next business day on the calendar. Please expect delays during holiday season.</li>
+            <li>Please refer to our <a href="/terms-conditions/" target="_blank">shipping page</a> for more detailed information.</li>
+        </ul>
+        <h4>
+            Return Policy: Stock Hairpieces
+        </h4>
+        <ul>
+            <li>You have 15 days from the date of purchase to return your untouched hairpiece for a full refund, minus the shipment paid.</li>
+            <li>A restocking charge of $15.00 or more per item will be automatic applied if the returned item is not in its original condition and packaging.</li>
+            <li>If you have selected a final sale option, such as base cut, hair styling, bleached knots, perm, or any service that alters the hairpiece permanently, the hairpiece can no longer be returned or exchanged.</li>
+            <li>Any special requirements need to be addressed at the time of the order being placed.</li>
+        </ul>
+        <h4>Return Policy: Hair Extensions</h4>
+        <ul>
+            <li>Returns accepted within 2 weeks of ordering, they must be in their original condition and packaging.</li>
+            <li>After 2 weeks an 80% credit of the value will be added to your account towards future orders.</li>
+            <li>Large returns are subject to a handling fee.</li>
+            <li>No returns after 3 months of ordering.</li>
+        </ul>
+        <h4>Return Policy: Supplies</h4>
+        <ul>
+            <li>All supplies are final sale and cannot be returned or exchanged under any circumstances. This policy is strictly enforced.</li>
+        </ul>
+        <h4>Overstock and Final Sales Items:</h4>
+        <ul>
+            <li>All items located in the overstock and clearance category are final sale, no return, no exchange, no refund.</li>
+            <li>All online services items including base cuts, haircuts, perms, bleached knots, and coloring are all final sale. There is no return, no refund and no warranty once the hairpiece has been permanently altered.</li>
+        </ul>
+        <div><a href="/shipping/" target="_blank">Click to check for details</a></div>
+    </div>
+    {{#if product.warranty}}
+    <div class="tab-content" id="tab-warranty">{{{product.warranty}}}</div>
+    {{/if}}
+    {{#if breadcrumbs.[3].name "==" "Pre-Order"}}
+    <style>
+        .modal1 {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            padding-top: 100px; /* Location of the box */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0, 0, 0); /* Fallback color */
+            background-color: rgba(0, 0, 0, 0.9); /* Black w/ opacity */
+        }
+
+        /* Modal Content (Image) */
+        .modal-content1 {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 900px;
+        }
+
+        @keyframes zoom {
+            from {
+                transform: scale(0);
+            }
+            to {
+                transform: scale(1);
+            }
+        }
+
+        /* The Close Button */
+        .close1 {
+            position: absolute;
+            top: 55px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .close1:hover,
+        .close1:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* 100% Image Width on Smaller Screens */
+        @media only screen and (max-width: 900px) {
+            .modal-content1 {
+                width: 100%;
+            }
+            .close1{
+                right: 10px;
+            }
+        }
+    </style>
+    <div class="tab-content" id="tab-faq">
+        <div class="faq-container">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-accordion">
+                <div class="faq-accordion-item">
+                    <button aria-expanded="true">
+                        <h3 class="faq-accordion-title">Pre-Order fulfillment rate during the pandemic, how long do you I to wait?</h3>
+                        <span class="faq-icon" aria-hidden="false"></span>
+                    </button>
+                    <div class="faq-accordion-content">
+                        <p>
+                            The average waiting time for pre-orders is still <strong>3-4 months for lace-based</strong> hairpieces and <strong>2-3 months for skin-based</strong> hairpieces. However, your order may arrive much sooner if the factory was already working on that particular unit before you placed the order.
+                        </p>
+                        <p>Here’s how it looks now in May 2021:</p>
+                        <center>
+                            <img src="/product_images/uploaded_images/pre-orders-chart1.jpg" alt="pre-orders May 2021" loading="lazy" onclick="onZoomImg(event)" />
+                        </center>
+                        <p>And here's the progress we have made since March:</p>
+                        <center>
+                            <img src="/product_images/uploaded_images/pre-orders-chart.jpg" alt="pre-order" loading="lazy" onclick="onZoomImg(event)" />
+                        </center>
+                    </div>
+                </div>
+                <div class="faq-accordion-item">
+                    <button aria-expanded="false">
+                        <h3 class="faq-accordion-title"
+                            >How do I know when I will receive my pre-order?</h3
+                        ><span class="faq-icon" aria-hidden="true"></span>
+                    </button>
+                    <div class="faq-accordion-content">
+                        {{#if breadcrumbs.[1].name "==" "Men"}}
+                        <p>
+                            Pre-order might take up to 3 months, or 4 months for Lace and Men's stock hairpieces . Once we receive your pre-order in our warehouse in Florida, US, and the hair system is ready to ship out, you will receive a notification email from us.
+                        </p>
+                        {{else}}
+                        <p>
+                            Pre-order might take up to 3 months, or 4 months for Lace and Women's stock hairpieces . Once we receive your pre-order in our warehouse in Florida, US, and the hair system is ready to ship out, you will receive a notification email from us.
+                        </p>
+                        {{/if}}
+                    </div>
+                </div>
+                <div class="faq-accordion-item">
+                    <button aria-expanded="false">
+                        <h3 class="faq-accordion-title"
+                            >Why should I need to place a pre-order?</h3
+                        ><span class="faq-icon" aria-hidden="true"></span>
+                    </button>
+                    <div class="faq-accordion-content">
+                        <p>
+                            That is the best option at the moment considering the issue with inventory availability caused by COVID-19 pandemic, and the very high demand for hair systems.
+                        </p>
+                        <p>By placing a pre-order, you can sleep soundly ensuring that a few months from now, the hair system and the color that you prefer will be available when you need it most, rather than looking around for a similar hair system with a color that you have never tried before!</p>
+                    </div>
+                </div>
+                <div class="faq-accordion-item">
+                    <button aria-expanded="false">
+                        <h3 class="faq-accordion-title"
+                            >Why did my pre-order come before the given 3-4 months?</h3
+                        ><span class="faq-icon" aria-hidden="true"></span>
+                    </button>
+                    <div class="faq-accordion-content">
+                        <p>
+                            If your order came earlier, that means the stock unit you ordered was one of the ones the factory was already working on before you placed your order. At the time we do not know the progress of each unit the factory is currently working on. By placing a pre-order, you are placed on a priority list which is a first come first serve list.
+                        </p>
+                    </div>
+                </div>
+                <div class="faq-accordion-item">
+                    <button aria-expanded="false">
+                        <h3 class="faq-accordion-title"
+                            >Can I cancel a pre-order?</h3
+                        ><span class="faq-icon" aria-hidden="true"></span>
+                    </button>
+                    <div class="faq-accordion-content">
+                        <p>
+                            Yes, you can cancel a pre-order as long as the pre-order has the standard stock specifications. Meaning, when you ordered it, you did not change the density and size of the stock unit. If the density or size were changed, then the pre-order is the final sale and cannot be cancelled.
+                        </p>
+                    </div>
+                </div>                
+            </div>
+        </div>
+    </div>
+    <div id="myModal1" class="modal1">
+        <span class="close1">&times;</span>
+    
+        <img class="modal-content1" id="img01" />
+    </div>
+    <script>
+        let modal1 = document.getElementById("myModal1");
+        let modalImg = document.getElementById("img01");    
+
+        function onZoomImg(e) {
+            console.log(e.target.src);
+            modal1.style.display = "block";
+            modalImg.src = e.target.src;
+        }    
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close1")[0];
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function () {
+            modal1.style.display = "none";
+        };
+        modal1.onclick = function() {
+            modal1.style.display = "none";
+        }
+        modal1.querySelector(".modal-content1").onclick = function() {
+            event.stopPropagation();
+        }
+    </script>
+    {{/if}}
+    {{#if product.title "==" "Tape in Hair Extensions 20 Pieces 50 grams Hair"}}
+    <div class="tab-content" id="tab-faq">
+        <div class="faq-container">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-accordion">
+                <div class="faq-accordion-item">
+                    <button aria-expanded="true">
+                        <h3 class="faq-accordion-title"
+                            >How long do tape in hair extensions last?</h3
+                        ><span class="faq-icon" aria-hidden="false"></span>
+                    </button>
+                    <div class="faq-accordion-content">
+                        <p>
+                            Each installation lasts 6-8 weeks depending on the speed of the client's hair growth. You need to book your clients to do a re-taping and reinstallation service to move the tape in extension up to the root for the hair again. Depending on the quality of the hair, and the clients wearing and maintenance habits, the tape in extension can be reinstalled 3-6 times. We recommend 3 reinstallations for our 3A/4A hair extensions and 6 reinstallations for our 5A/6A hair extensions. Overall, 3A/4A tape in extensions will last 3-5 months and 5A/6A tape in extensions will last 6-10 months.
+                        </p>
+                    </div>
+                </div>
+                <div class="faq-accordion-item">
+                    <button aria-expanded="false">
+                        <h3 class="faq-accordion-title"
+                            >How much does tape in hair extensions cost?</h3
+                        ><span class="faq-icon" aria-hidden="true"></span>
+                    </button>
+                    <div class="faq-accordion-content">
+                        <p>
+                            The cost of tape extensions depends on 3 factors; the length, quality, and colour. Depending on what length, quality, and colour you select, the price will change.
+                        </p>                        
+                    </div>
+                </div>
+                <div class="faq-accordion-item">
+                    <button aria-expanded="false">
+                        <h3 class="faq-accordion-title"
+                            >How to put in tape in hair extensions?</h3
+                        ><span class="faq-icon" aria-hidden="true"></span>
+                    </button>
+                    <div class="faq-accordion-content">
+                        <p>
+                            First, wash and dry your hair so your extensions last longer. Then part your hair at the back and apply the extension right near the scalp where your hair is parted. Take a thin portion of your hair and place it below the extension before applying another extension to sandwich it. Make sure to press the tape in extensions firmly for 10-20 seconds and then you're all set. Repeat the process for others.
+                        </p>
+                    </div>
+                </div>
+                <div class="faq-accordion-item">
+                    <button aria-expanded="false">
+                        <h3 class="faq-accordion-title"
+                            >How to wash tape in hair extensions?</h3
+                        ><span class="faq-icon" aria-hidden="true"></span>
+                    </button>
+                    <div class="faq-accordion-content">
+                        <p>
+                            Hair extensions tend to tangle so it's important to brush your hair regularly. When you take a shower, apply shampoo right at the roots of your hair extensions and work your way down. Apply conditioner, wash, and dry your hair with a towel carefully. Use a hair dryer to ensure none of your hair extensions are wet.
+                        </p>
+                    </div>
+                </div>
+                <div class="faq-accordion-item">
+                    <button aria-expanded="false">
+                        <h3 class="faq-accordion-title"
+                            >How to remove tape in hair extensions at home?</h3
+                        ><span class="faq-icon" aria-hidden="true"></span>
+                    </button>
+                    <div class="faq-accordion-content">
+                        <p>
+                            Tie your hair up so your extensions are in full view. Apply a non-chemical tape glue remover to the extension tape and let it seep for a bit before removing the extension. You can also apply the remover for any leftover residue on your hair. <a href="https://www.superhairpieces.com/toupee-wig-hair-system-blog/how-to-remove-clean-prep-tape-extensions/">Read More</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{/if}}
+    {{#if product.title "==" 'Clip In Hair Extensions 100 Grams Human hair'}}
+    <div class="tab-content" id="tab-faq">
+        <div class="faq-container">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-accordion">
+                <div class="faq-accordion-item">
+                    <button aria-expanded="true">
+                        <h3 class="faq-accordion-title">How many clip-in extensions do I need?</h3><span class="faq-icon" aria-hidden="false"></span>
+                    </button>
+                    <div class="faq-accordion-content">
+                        <p>
+                            For a full head installation, we typically recommend 100g - 150g. Each pack of our clip in extensions is 100g so 1-2 packs for a full head installation should be fine.
+                        </p>
+                    </div>
+                </div>
+                <div class="faq-accordion-item">
+                    <button aria-expanded="false">
+                        <h3 class="faq-accordion-title">How do I select which hair extensions are perfect for me? Are they all human hair?</h3><span class="faq-icon" aria-hidden="true"></span>
+                    </button>
+                    <div class="faq-accordion-content">
+                        <p>
+                            All our hair extensions are made with real human hair. As for which hair extension you should go for, it ultimately depends on your hair and needs. If you have thin hair, you may require a different hair extension than someone who might have more thick hair. Or if you’re looking for hair extensions for special occasions, a particular hair extension may suit you more than one which is for a more permanent basis. For more information, <a href="https://superhairpieces.ca/blog/what-are-the-different-types-of-hair-extensions/" target="_blank">click here</a>.
+                        </p>                        
+                    </div>
+                </div>
+                <div class="faq-accordion-item">
+                    <button aria-expanded="false">
+                        <h3 class="faq-accordion-title">How long do clip-in hair extensions last?</h3><span class="faq-icon" aria-hidden="true"></span>
+                    </button>
+                    <div class="faq-accordion-content">
+                        <p>
+                            It's hard to say. It depends on the grade and how often they are worn. For someone who wears theirs every day vs. someone who only wears it occasionally, the one who wears it only occasionally will last longer.
+                        </p>
+                    </div>
+                </div>
+                <div class="faq-accordion-item">
+                    <button aria-expanded="false">
+                        <h3 class="faq-accordion-title">What is the cost of clip-in hair extensions?</h3><span class="faq-icon" aria-hidden="true"></span>
+                    </button>
+                    <div class="faq-accordion-content">
+                        <p>
+                            The cost of tape extensions depends on three factors; the length, quality, and colour. Depending on what length, quality, and colour you select, the price will change.
+                        </p>
+                    </div>
+                </div>
+                <div class="faq-accordion-item">
+                    <button aria-expanded="false">
+                        <h3 class="faq-accordion-title">How do you install clip-in hair extensions?</h3><span class="faq-icon" aria-hidden="true"></span>
+                    </button>
+                    <div class="faq-accordion-content">
+                        <p>
+                            Brush your hair first. Part your hair so that it is in line with your ears. Clip in the middle part of the hair extension onto the parting line first before clipping in the sides. Brush the hair extensions before blending it with your own hair. <a href="https://superhairpieces.ca/blog/clip-in-vs-tape-in-hair-extensions-which-one-should-you-go-for/" target="_blank">Read More</a>
+                        </p>
+                    </div>
+                </div>                
+                <div class="faq-accordion-item">
+                    <button aria-expanded="false">
+                        <h3 class="faq-accordion-title">How do you wash clip-in hair extensions?</h3><span class="faq-icon" aria-hidden="true"></span>
+                    </button>
+                    <div class="faq-accordion-content">
+                        <p>
+                            Brush your extensions. Then holding the wefts from the top, submerge the hair in water and apply shampoo gently. Set it aside on a towel to dry before applying conditioner and doing the same. Rinse it out and use a hair dryer to ensure it's not wet anymore.
+                        </p>
+                    </div>
+                </div>
+                <div class="faq-accordion-item">
+                    <button aria-expanded="false">
+                        <h3 class="faq-accordion-title">How do you take care of clip-in extensions?</h3><span class="faq-icon" aria-hidden="true"></span>
+                    </button>
+                    <div class="faq-accordion-content">
+                        <p>
+                            Store your hair extensions properly when not in use. Regularly brush your extensions carefully. Don't wash the extensions too frequently but when it is washed, make sure to do it gently and not overwash otherwise it can be dry and damaged. Use shampoo and conditioner and a hair dryer after the wash to make sure it's not wet.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{/if}}
+    {{#if breadcrumbs.[2].name "==" "Custom Made"}}
+    <style>
+        .modal1 {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            padding-top: 100px; /* Location of the box */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0, 0, 0); /* Fallback color */
+            background-color: rgba(0, 0, 0, 0.9); /* Black w/ opacity */
+        }
+
+        /* Modal Content (Image) */
+        .modal-content1 {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 900px;
+        }
+
+        @keyframes zoom {
+            from {
+                transform: scale(0);
+            }
+            to {
+                transform: scale(1);
+            }
+        }
+
+        /* The Close Button */
+        .close1 {
+            position: absolute;
+            top: 55px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .close1:hover,
+        .close1:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* 100% Image Width on Smaller Screens */
+        @media only screen and (max-width: 900px) {
+            .modal-content1 {
+                width: 100%;
+            }
+            .close1{
+                right: 10px;
+            }
+        }
+    </style>
+    <div class="tab-content" id="tab-faq">
+        <div class="faq-container">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-accordion">
+                <div class="faq-accordion-item">
+                    <button aria-expanded="true">
+                        <h3 class="faq-accordion-title">Custom Order fulfillment rate during the pandemic, how long do you I to wait?</h3>
+                        <span class="faq-icon" aria-hidden="false"></span>
+                    </button>
+                    <div class="faq-accordion-content">
+                        <p>There's a good chance you will get your custom order placed in January or February in May (2-3 months waiting time).</p>
+                        <p>However, with all the disruptions and uncertainties during the pandemic —and depending on the type of hairpiece you order— the average waiting time for custom orders is <strong> 5-6 months</strong>.</p>
+                        <p>Here’s how it looks now <strong>in May 2021</strong></p>
+                        <center>
+                            <img src="/product_images/uploaded_images/custom-order-chart1.jpg" alt="custom order May 2021" loading="lazy" onclick="onZoomImg(event)" />
+                        </center>
+                        <p>And here's our custom order fulfillment progress in 3 months (since March):</p>
+                        <center>
+                            <img src="/product_images/uploaded_images/custom-order-chart.jpg" alt="custom order" loading="lazy" onclick="onZoomImg(event)" />
+                        </center>
+                    </div>
+                </div>                       
+            </div>
+        </div>
+    </div>
+    <div id="myModal1" class="modal1">
+        <span class="close1">&times;</span>
+    
+        <img class="modal-content1" id="img01" />
+    </div>
+    <script>
+        let modal1 = document.getElementById("myModal1");
+        let modalImg = document.getElementById("img01");    
+
+        function onZoomImg(e) {
+            console.log(e.target.src);
+            modal1.style.display = "block";
+            modalImg.src = e.target.src;
+        }    
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close1")[0];
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function () {
+            modal1.style.display = "none";
+        };
+        modal1.onclick = function() {
+            modal1.style.display = "none";
+        }
+        modal1.querySelector(".modal-content1").onclick = function() {
+            event.stopPropagation();
+        }
+    </script>
+    {{/if}}
+    {{#if product.title '==' '20" Tape In Hair Extensions 20 Pieces 4A Root Color'}}
+    <div class="tab-content" id="tab-guide">
+        <div class="tab-guide">
+            <a href="//www.superhairpieces.com/toupee-wig-hair-system-blog/guide-how-to-choose-the-correct-length-of-hair-extensions/" target="_blank">Hair Extension Length Guide</a>
+        </div>
+    </div>
+    {{/if}}
+</div>
+<!-- <script>
+const items = document.querySelectorAll(".faq-accordion button");
+
+function toggleAccordion() {
+  const itemToggle = this.getAttribute('aria-expanded');
+  
+//   for (i = 0; i < items.length; i++) {
+//     items[i].setAttribute('aria-expanded', 'false');
+//   }
+  
+  if (itemToggle == 'false') {
+    this.setAttribute('aria-expanded', 'true');
+  } else {
+    this.setAttribute('aria-expanded', 'false');
+  }
+}
+
+items.forEach(item => item.addEventListener('click', toggleAccordion));
+</script> -->
+<style>
+    .table-inventory td {
+        background: white !important;
+        text-align: center !important;
+        border-bottom: 1px solid #a0a0a0 !important;
+        font-weight: 400 !important;
+        width: auto !important;
+    }
+    .table-inventory {
+      border-color: black;
+    }
+    .table-inventory th {
+        padding: 1.1rem 0.5rem;
+        font-size: 1rem;
+        background: #99cc00;
+    }
+    .table-inventory .special {
+        color: #0000ff !important;
+        font-size: 1.1rem;
+        font-weight: 500;
+    }
+    .table-inventory tbody tr td {
+      background-color: #cfe2f3 !important;
+    }
+    .table-inventory tbody tr.button-wrap td:nth-child(1) {
+      background-color: white !important;
+      font-size: 1.2rem;
+    }
+    .table-inventory tbody tr td:nth-child(1) {
+      background-color: #c27ba0 !important;
+    }
+    .table-inventory tbody tr td:nth-child(2) {
+      background-color: white !important;
+    }
+    @media only screen and (max-width: 600px) {
+        .table-inventory tbody tr td {
+            display: block;
+            width: 100%;
+        }
+        .table-inventory thead {
+            display: none;
+        }
+        .table-inventory tbody tr td:nth-child(5n+2)::before {
+            content: 'Color name: '
+        }
+        .table-inventory tbody tr td:nth-child(5n+3)::before {
+            content: 'In Canada Warehouse: '
+        }
+        .table-inventory tbody tr td:nth-child(5n+4)::before {
+            content: 'In USA Warehouse: '
+        }        
+    }
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    var jsContext = JSON.parse({{jsContext}});
+var authtoken = "BEA2566590EF4D14AA8D35AD0E2CEA77";
+var baseurl = "https://www.teamdesk.net/secure/api/v2/56554/";
+const color_base = {
+    "#1": "Jet Black",
+    "#11B": "Off Black",
+    "#1B": "Off Black/Brown Black",    
+    "#2": "Darkest Brown",    
+    "#3": "Dark Brown",
+    "#4": "Medium Brown",
+    "#5": "Medium Light Brown",
+    "#5R": "Medium Light Warm Brown",
+    "#6": "Light Brown",
+    "#6R": "Light Warm Brown",
+    "#7": "Very Light Brown",
+    "#8": "Light Chestnut Brown",
+    "#8R": "Warm Brown Blonde",
+    "#10": "Golden brown",
+    "#12": "Sunset brown",
+    "#14": "Dark wheat blonde",
+    "#16": "Dark shade blonde",
+    "#17": "Dark Ash Blonde",    
+    "#18": "Medium Blonde",
+    "#20": "Light Ash Blonde",
+    "#20R": "Light Warm Blonde",
+    "#22": "Light ash blonde",
+    "#22R": "Very Light Warm Blonde",
+    "#23": "Most Blonde",
+    "#24": "Ginger Blonde",
+    "#25": "Champagne Blonde",
+    "#26": "Light Honey Blonde",
+    "#27": "Rose Gold",
+    "#28": "Bronde",
+    "#30": "Auburn",
+    "#30R": "Cooper Blonde",
+    "#33": "Dark Auburn",
+    "#59": "Grey White",
+    "#60": "Synthetic All Grey",
+    "#613": "Pale blonde",
+    "#617": "Platinum Blonde",
+    "#99J": "Dark Red Wine",
+    "#W16": "Light Brown",
+    "#BUG": "Burgundy",
+    "#S1": "Espresso",
+    "#S2": "Chocolate Truffle (Dark Chocolate)",
+    "#S3": "Mocha Caramel (Light Chocolate)",
+    "#S4": "Blonde Mocha (Amber Gold)",
+    "#S7": "Blonde Butterscotch (Golden Blonde)",
+    "#S9": "Ash Blonde",
+    "#S10": "Caramel Champagne (Sandy Blonde Rooted)",
+    "#S11": "Spiced Cinnamon (Cooper Red)",
+    "#S16": "White Tiramisu (Platinum Blonde Rooted)",
+    "#S18": "Honey Caramel (Golden Brown Rooted)",
+    "#4R59": "Color #59 (Close to Grey White) with #4 (Medium Brown) Rooted",
+    "#4R617": "Color #617 (Platinum Blonde) with #4 (Medium Brown) Rooted"
+}
+// const color = {
+//     "#1": "Jet Black",
+//     "#11B": "Natural Black",
+//     "#1B": "Off Black/Black Brown",
+//     "#1BASH": "#1B in ash tone",
+//     "#2": "Darkest Brown",
+//     "#2ASH": "#2 in ash tone",
+//     "#3": "Dark Brown",
+//     "#3ASH": "#3 in ash tone",
+//     "#4": "Medium Brown",
+//     "#4ASH": "#4 in ash tone",
+//     "#5": "Medium Light Brown",
+//     "#5R": "Medium Light Warm Brown",
+//     "#6": "Light Brown",
+//     "#6R": "Light Warm Brown",
+//     "#7": "Very Light Brown",
+//     "#8R": "Warm Brown Blonde",
+//     "#17": "Dark Ash Blonde",
+//     "#18": "Medium Ash Blonde",
+//     "#20": "Light Ash Blonde",
+//     "#20R": "Light Warm Blonde",
+//     "#22R": "Very Light Warm Blonde",
+//     "#30R": "Cooper Blonde",
+//     "#60": "Synthetic All Grey",
+//     "#60H": "Human All Grey",
+//     "#105": "Jet black + 5% Grey",
+//     "#110": "Jet black + 10% Grey",
+//     "#120": "Jet black + 20% Grey",
+//     "#130": "Jet black + 30% Grey",
+//     "#140": "Jet black + 40% Grey",
+//     "#160": "Jet black + 60% Grey",
+//     "#180": "Jet black + 80% Grey",
+//     "#11B05": "Natural Black + 5% Grey",
+//     "#11B10": "Natural Black + 10% Grey",
+//     "#11B15": "Natural Black + 15% Grey",
+//     "#11B20": "Natural Black + 20% Grey",
+//     "#11B30": "Natural Black + 30% Grey",
+//     "#11B40": "Natural Black + 40% Grey",
+//     "#11B40H": "Natural Black + 40% Grey Human Hair",
+//     "#11B50": "Natural Black + 50% Grey",
+//     "#11B60": "Natural Black + 60% Grey",
+//     "#11B70H": "Natural Black + 70% Grey(Human)",
+//     "#11B80": "Natural Black + 80% Grey",
+//     "#1B05": "Off black + 5% Grey",
+//     "#1B10": "Off black + 10% Grey",
+//     "#1B15": "Off black + 15% Grey",
+//     "#1B20": "Off black + 20% Grey",
+//     "#1B30": "Off black + 30% Grey",
+//     "#1B40": "Off black + 40% Grey",
+//     "#1B50": "Off black + 50% Grey",
+//     "#1B60": "Off black + 60% Grey",
+//     "#1B70": "Off black + 70% Grey",
+//     "#1B80": "Off black + 80% Grey",
+//     "#1B80H": "#1B + 80% Human Hair Grey",
+//     "#1BASH10": "Off Black Ash Tone + 10% Grey",
+//     "#1BASH20": "Off Black Ash Tone + 20% Grey",
+//     "#1BASH30": "Off Black Ash Tone + 30% Grey",
+//     "#1BASH40": "Off Black Ash Tone + 40% Grey",
+//     "#1BASH50": "Off Black Ash Tone + 50% Grey",
+//     "#1BASH60": "Off Black Ash Tone + 60% Grey",
+//     "#1BASH70": "Off Black Ash Tone + 70% Grey",
+//     "#1BASH80": "Off Black Ash Tone + 80% Grey",
+//     "#205": "#2 + 5% Grey",
+//     "#210": "#2 + 10% Grey",
+//     "#215": "#2 + 15% Grey",
+//     "#220": "#2 + 20% Grey",
+//     "#230": "#2 + 30% Grey",
+//     "#240": "#2 + 40% Grey",
+//     "#240H": "#2 + 40% Grey Human Hair",
+//     "#250": "#2 + 50% Grey",
+//     "#260": "#2 + 60% Grey",
+//     "#270H": "#2 + 20% Human Hair Grey",
+//     "#280": "#2 + 80% Grey",
+//     "#2ASH05": "#2 Ash Tone + 5% Grey",
+//     "#2ASH10": "#2 Ash Tone + 10% Grey",
+//     "#2ASH15": "#2 Ash Tone + 15% Grey",
+//     "#2ASH20": "#2 Ash Tone + 20% Grey",
+//     "#2ASH30": "#2 Ash Tone + 30% Grey",
+//     "#2ASH40": "#2 Ash Tone + 40% Grey",
+//     "#2ASH60": "#2 Ash Tone + 60% Grey",
+//     "#2ASH70": "#2 Ash Tone + 70% Grey",
+//     "#2ASH80": "#2 Ash Tone + 80% Grey",
+//     "#305": "#3 + 5% Grey",
+//     "#310": "#3 + 10% Grey",
+//     "#320": "#3 + 20% Grey",
+//     "#330": "#3 + 30% Grey",
+//     "#340": "#3 + 40% Grey",
+//     "#350": "#3 + 50% Grey",
+//     "#360": "#3 + 60% Grey",
+//     "#370": "#3 + 70% Grey",
+//     "#380": "#3 + 80% Grey",
+//     "#3ASH10": "#3 Ash Tone + 10% Grey",
+//     "#3ASH20": "#3 Ash Tone + 20% Grey",
+//     "#3ASH30": "#3 Ash Tone + 30% Grey",
+//     "#3ASH30H": "#3 Ash Tone + 30% Grey Human hair",
+//     "#3ASH40": "#3 Ash Tone + 40% Grey",
+//     "#3ASH50": "#3 Ash Tone + 50% Grey",
+//     "#3ASH60": "#3 Ash Tone + 60% Grey",
+//     "#3ASH70": "#3 Ash Tone + 70% Grey",
+//     "#3ASH80": "#3 Ash Tone + 80% Grey",
+//     "#405": "#4 + 5% Grey",
+//     "#410": "#4 + 10% Grey",
+//     "#415": "#4 + 15% Grey",
+//     "#420": "#4 + 20% Grey",
+//     "#430": "#4 + 30% Grey",
+//     "#430H": "#4 + 30% Grey Human Hair",
+//     "#440": "#4 + 40% Grey",
+//     "#450": "#4 + 50% Grey",
+//     "#460": "#4 + 60% Grey",
+//     "#470H": "#4 + 70% Human Hair Grey",
+//     "#480": "#4 + 80% Grey",
+//     "#4ASH10": "#4 Ash Tone + 10% Grey",
+//     "#4ASH20": "#4 Ash Tone + 20% Grey",
+//     "#4ASH30": "#4 Ash Tone + 30% Grey",
+//     "#4ASH40": "#4 Ash Tone + 40% Grey",
+//     "#4ASH50": "#4 Ash Tone + 50% Grey",
+//     "#4ASH60": "#4 Ash Tone + 60% Grey",
+//     "#4ASH70": "#4 Ash Tone + 70% Grey",
+//     "#4ASH80": "#4 Ash Tone + 80% Grey",
+//     "#505": "#5 + 5% Grey",
+//     "#510": "#5 + 10% Grey",
+//     "#515": "#5 + 15% Grey",
+//     "#520": "#5 + 20% Grey",
+//     "#530": "#5 + 30% Grey",
+//     "#540": "#5 + 40% Grey",
+//     "#550": "#5 + 50% Grey",
+//     "#560": "#5 + 60% Grey",
+//     "#570": "#5 + 70% Grey",
+//     "#580": "#5 + 80% Grey",
+//     "#580H": "#5 + 80% Human Hair Grey",
+//     "#605": "#6 + 5% Grey",
+//     "#610": "#6 + 10% Grey",
+//     "#615": "#6 + 15% Grey",
+//     "#620": "#6 + 20% Grey",
+//     "#630": "#6 + 30% Grey",
+//     "#640": "#6 + 40% Grey",
+//     "#650": "#6 + 50% Grey",
+//     "#660": "#6 + 60% Grey",
+//     "#670": "#6 + 70% Grey",
+//     "#680": "#6 + 80% Grey",
+//     "#705": "#7 + 5% Grey",
+//     "#710": "#7 + 10% Grey",
+//     "#715": "#7 + 15% Grey",
+//     "#720": "#7 + 20% Grey",
+//     "#730": "#7 + 30% Grey",
+//     "#740": "#7 + 40% Grey",
+//     "#750": "#7 + 50% Grey",
+//     "#760": "#7 + 60% Grey",
+//     "#770H": "#7 + 70% Human Hair Grey",
+//     "#780": "#7 + 80% Grey",
+//     "#1710": "#17 + 10% Grey",             
+//     "#1720": "#17 + 20% Grey",
+//     "#1730": "#17 + 30% Grey",
+//     "#1740": "#17 + 40% Grey",
+//     "#1750": "#17 + 50% Grey",
+//     "#1760": "#17 + 60% Grey",  
+//     "#1770": "#17 + 70% Grey",             
+//     "#1780": "#17 + 80% Grey",
+//     "#1810": "#18 + 10% Grey",             
+//     "#1820": "#18 + 20% Grey",      
+//     "#1830": "#18 + 30% Grey",             
+//     "#1840": "#18 + 40% Grey",
+//     "#1850": "#18 + 50% Grey",
+//     "#1860": "#18 + 60% Grey",
+//     "#1870": "#18 + 70% Grey",
+//     "#1880": "#18 + 80% Grey",
+//     "#2010": "#20 + 10% Grey",             
+//     "#2020": "#20 + 20% Grey",
+//     "#2030": "#20 + 30% Grey",
+//     "#2040": "#20 + 40% Grey",
+//     "#2050": "#20 + 50% Grey",
+//     "#2060": "#20 + 60% Grey",
+//     "#2070": "#20 + 70% Grey",
+//     "#2080": "#20 + 80% Grey",
+// };
+
+function isNumNull(value) {
+    if (value == null) {
+    return 0;
+    } else return value;
+}
+
+function isNumLarge(value) {
+    if (value>0) return " class='special'"
+    else return "";
+}
+let inItems = [];
+let poItems = [];
+let invIdx = Array.from($('ul[role="tablist"]').find(".shogun-tab-title")).findIndex(i=>i.innerHTML.includes("Inventory"));
+function embeddedTable(sku, init = true) {
+    console.log(sku);
+    let loaded = false;
+    let tb = '';
+    if (init) {
+        tb = "<table class='table-inventory'>"+
+            "<thead>"+
+            "<tr>"+
+                "<th>"+sku+"</th>"+
+                "<th>Color name"+"</th>"+                    
+                "<th>In Canada Warehouse</th>" +
+                "<th>In USA Warehouse</th>" +
+                "<th>Restocking Arrival in Weeks</th>" +
+            "</tr>"+
+            "</thead><tbody>";
+    }
+    $.each(inItems, function(index, value) {
+        if (sku.toUpperCase().includes('PERM')==false && value.SKU.toUpperCase().match(/MM[0-9][0-9]/g)) {
+            return;
+        }
+        if (index==35) {
+            inItems = inItems.slice(35);
+            if (init) {
+                tb+=`<tr class="button-wrap"><td colspan="5"><center><button onclick="loadMore('${sku}')">Show more</button></center></td></tr>`;
+            } else {
+                loaded = true;                
+                $(".table-inventory tbody tr.button-wrap").before(tb);
+                $(".table-inventory tbody tr.button-wrap button").html("Show more");
+            }                        
+            return false;
+        }
+        let title = value.SKU.toUpperCase().substring(value.SKU.indexOf('#'));        
+        let c = title;
+        let cArr = [];
+        if (c.includes('_')==false) {            
+            if (c[c.length-1]=='H' && c[c.length-2]!='S') {
+                cArr.push("Human Hair");
+                c = c.substring(0, c.length-1);                    
+            }
+            if (c.substring(c.length-4).match(/MM[0-9][0-9]/g)) {
+                let mm = c.substring(c.length-2)
+                cArr = [`Wavy ${mm}mm`, ...cArr];
+                c = c.substring(0, c.length-4);                
+            }
+            if (c.includes('#E')) {                
+                c= c.replace('#E', '#');                
+            }
+            if (color_base[c]) {                    
+                cArr=[color_base[c], ...cArr];
+            } else {                        
+                if (c[c.length-1].match(/[0-9]/g)) {
+                    if (c.substring(c.length-2).match(/[A-Z][0-9]/g)) {
+                        cArr=[`+ ${c[c.length-1]}% Grey`, ...cArr];
+                        c= c.substring(0, c.length-1);
+                    } else {
+                        cArr=[`+ ${c[c.length-2]}${c[c.length-1]}% Grey`, ...cArr];
+                        c= c.substring(0, c.length-2);
+                    }                                            
+                }                                                
+                if (c.includes('ASH')) {
+                    cArr=[`Ash Tone`, ...cArr];
+                    c = c.substring(0,c.length-3);
+                }
+                if (c.includes('A')) {
+                    cArr=[`Ash Tone`, ...cArr];
+                    c = c.substring(0,c.length-1);
+                }
+                cArr=[color_base[c], ...cArr];
+            }
+        }
+        // console.log(cArr);
+        // let desp = color[value.SKU.replace(jsContext.product, "").toUpperCase()];
+        // desp = desp?desp:"";                
+        let po = poItems.filter(p=>p.SKU==value.SKU && p["Ordered Quantity"]>p["Quantity Received To Warehouse"]);
+        // console.log(po);
+        let poS = "";
+        if (po.length>0) {                    
+            po = po[0];
+            let unit = po["Ordered Quantity"]-po["Quantity Received To Warehouse"];
+            if (po["Arrival Due Date"]) {                        
+                poS = `${unit} unit${unit>1?"s":""} in order ${po["PO#"]} arrive on ${po["Arrival Due Date"]}`;
+            } else {
+                poS = `${unit} unit${unit>1?"s":""} in order ${po["PO#"]}`;
+            }
+        }
+        let posStyle = poS.length>0?" class='special'":'';
+        tb=tb+"<tr>"+
+        "<td>"+title+"</td>"+
+        "<td>"+cArr.join(" ")+"</td>"+                
+        "<td"+isNumLarge(isNumNull(value["Quantity Canada"]))+">"+isNumNull(value["Quantity Canada"])+"</td>"+
+        "<td"+isNumLarge(isNumNull(value["Quantity USA"]))+">"+isNumNull(value["Quantity USA"])+"</td>"+
+        "<td"+posStyle+">"+poS+"</td>"+
+        "</tr>";
+    })            
+    if (init) {
+        tb = tb + "</tbody></table>";
+        $(".shogun-tabs-body").children().eq(invIdx).html(tb)
+    } else {
+        if (loaded == false) {
+            $(".table-inventory tbody tr.button-wrap").before(tb);
+            $(".table-inventory tbody tr.button-wrap").remove();
+        }
+    }
+}
+function loadMore(sku) {
+    $(".table-inventory tbody tr.button-wrap button").html(`<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin: auto; background: none; display: block; shape-rendering: auto;" width="20px" height="20px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
+        <rect x="17.5" y="30" width="15" height="40" fill="#832f0e">
+        <animate attributeName="y" repeatCount="indefinite" dur="1s" calcMode="spline" keyTimes="0;0.5;1" values="18;30;30" keySplines="0 0.5 0.5 1;0 0.5 0.5 1" begin="-0.2s"></animate>
+        <animate attributeName="height" repeatCount="indefinite" dur="1s" calcMode="spline" keyTimes="0;0.5;1" values="64;40;40" keySplines="0 0.5 0.5 1;0 0.5 0.5 1" begin="-0.2s"></animate>
+        </rect>
+        <rect x="42.5" y="30" width="15" height="40" fill="#0c0a08">
+        <animate attributeName="y" repeatCount="indefinite" dur="1s" calcMode="spline" keyTimes="0;0.5;1" values="20.999999999999996;30;30" keySplines="0 0.5 0.5 1;0 0.5 0.5 1" begin="-0.1s"></animate>
+        <animate attributeName="height" repeatCount="indefinite" dur="1s" calcMode="spline" keyTimes="0;0.5;1" values="58.00000000000001;40;40" keySplines="0 0.5 0.5 1;0 0.5 0.5 1" begin="-0.1s"></animate>
+        </rect>
+        <rect x="67.5" y="30" width="15" height="40" fill="#594a40">
+        <animate attributeName="y" repeatCount="indefinite" dur="1s" calcMode="spline" keyTimes="0;0.5;1" values="20.999999999999996;30;30" keySplines="0 0.5 0.5 1;0 0.5 0.5 1"></animate>
+        <animate attributeName="height" repeatCount="indefinite" dur="1s" calcMode="spline" keyTimes="0;0.5;1" values="58.00000000000001;40;40" keySplines="0 0.5 0.5 1;0 0.5 0.5 1"></animate>
+        </rect>
+        </svg>`);        
+    embeddedTable(sku, false);    
+}
+function loadPO(sku, filter, skip=0, top=50) {    
+    if (invIdx<0) {
+        return false;
+    }
+    $.getJSON(`${baseurl}${authtoken}/t_763479/select.json?filter=Begins([SKU], '${filter}')&skip=${skip}&top=${top}`, function(d){
+        if (d.length>0) {            
+            poItems = [...poItems, ...d];
+            loadPO(sku, filter, skip+top, top);
+        } else {                                    
+            inItems.sort(function (a, b) {
+                var nameA = a["@row.id"];
+                var nameB = b["@row.id"];
+                if (nameA < nameB) {
+                    return -1;
+                }
+                if (nameA > nameB) {
+                    return 1;
+                }
+                return 0;
+            });              
+            embeddedTable(sku);
+            $(".shogun-tabs-body").children().eq(invIdx).on("mousedown mousemove", (e) => {
+                e.preventDefault();
+            })   
+        }
+    })
+}
+
+$(function() {
+    // let sku = jsContext.product.replaceAll(' ','');
+    // let fI = sku.indexOf('#');
+    // if (fI>0) {
+    //     sku = sku.substring(0,fI);
+    // }
+    // let filter = sku+"%23";    
+    // // let filter = jsContext.product.includes("#")?jsContext.product.replace("#","%23"):jsContext.product+"%23";
+    // let url;
+    // if (sku.toUpperCase().includes('PERM')) {
+    //     url = baseurl + authtoken + `/Inventory/select.json?filter=Ends([Part Number], '${sku}')`;
+    //     filter = sku.substring(0,sku.length-4) + "%23";
+    // } else {
+    //     url = baseurl + authtoken + `/Inventory/select.json?filter=Begins([SKU], '${filter}')`
+    // }
+    // $.getJSON(
+    //     url,
+    //     function (data) {
+    //         console.log(data);
+    //         // console.log(jsContext.product);
+    //         // console.log($(".shogun-tabs-body").children().eq(3));
+    //         // $(".shogun-tabs-body").children().eq(2).html("<div>Demo</div>")
+    //         inItems = data;
+    //         loadPO(sku, filter);
+    //     }
+    // );
+})
+</script>
+<script>
+    // var requestOptions = {
+    //     method: 'GET'                
+    // };
+
+    // fetch("https://shp-webserver.glitch.me/ip-china", requestOptions)
+    //     .then(response => response.json())
+    //     .then(result => {            
+    //         if (result.result) {
+    //             let timerDesp = setInterval(() => {
+    //                 let productDesp = document.querySelector(".productView-description");
+    //                 if (productDesp) {
+    //                     clearInterval(timerDesp);
+    //                     let labels = productDesp.querySelector(".tabs-contents").querySelectorAll(".shogun-tab-title");            
+    //                     for (i=0; i<labels.length; i++) {                                
+    //                         if (labels[i].innerHTML.includes("Inventory List")) {
+    //                             productDesp.querySelector(".tabs-contents").querySelectorAll(".shogun-tab")[i].remove();
+    //                             productDesp.querySelector(".tabs-contents").querySelector(".shogun-tabs-body").querySelectorAll(".shogun-tab-content")[i].remove();                    
+    //                             break;
+    //                         }
+    //                     }            
+    //                 }        
+    //             }, 300);
+    //         }
+    //     })
+    //     .catch(error => console.log('error', error));
+</script>

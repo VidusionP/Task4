@@ -1,0 +1,72 @@
+<style>
+    [in-alert-wishlist-section] {
+        display: none;
+    }
+    [in-alert-wishlist-section] .button {
+        margin-bottom: 0;
+        background-color: #444;
+        color: #fff;
+        border: 1px solid #444;
+    }
+    [in-alert-wishlist-section] .button:hover {
+        color: #000;
+        background: #fff;
+    }
+</style>
+<table class="table table--line wishlists-table" in-alert-wishlist-section>
+    <thead class="table-thead">
+        <tr>
+            <th>SKU</th>            
+            <th>In-stock qty</th>
+            <th>In transit qty</th>
+            <th>In production qty</th>
+            <th>Pre-order available</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody class="table-tbody" in-alert>        
+    </tbody>
+</table>
+<script>
+    window.addEventListener("DOMContentLoaded", function() {
+        function loadScript(url, callback) {
+            let scrp = document.createElement("script");
+            scrp.setAttribute("src", url);
+            document.body.appendChild(scrp);
+
+            scrp.addEventListener("load", callback);
+        }
+        function loadList() {
+            fetch(`http://54.211.22.136/teamdesk-wishlist?email=avizad@gmail.com`)
+            .then(r=>r.json())
+            .then(r=>{
+                console.log(r);
+                if (r.length>0) {
+                    let tbd = "";
+                    for (let rr of r) {                        
+                        tbd+=`
+                            <tr>
+                                <td>${rr.SKU}</td>
+                                <td>${Number(rr["2"])+Number(rr["WH1"])-Number(rr["Quantity Pending"])>0?Number(rr["2"])+Number(rr["WH1"])-Number(rr["Quantity Pending"]):0}</td>
+                                <td>${rr["Lock Status"]!='Locked for processing'&&Number(rr["Unlocked for sale quantity"])-Number(rr["Quantity Pending"])>0?Number(rr["Unlocked for sale quantity"])-Number(rr["Quantity Pending"]):0}</td>
+                                <td>${Number(rr["Quantity Incoming"])-Number(rr["Total Request Quantity"])-2-Number(rr["Quantity Pending"])>0?Number(rr["Quantity Incoming"])-Number(rr["Total Request Quantity"])-2-Number(rr["Quantity Pending"]):0}</td>
+                                <td>${Number(rr["Virtual Quantity"])-Number(rr["Quantity Pending"])>0?Number(rr["Virtual Quantity"])-Number(rr["Quantity Pending"]):0}</td>
+                                <td>${Number(rr["Total Quantity (with Virtual)"])>0?`<a href="/cart.php?action=add&sku=${encodeURIComponent(rr.SKU)}" target="_blank" class="button button--small">Add to Cart</a>`:''}</td>
+                            </tr>
+                        `;
+                    }
+                    $(".table-tbody[in-alert]").html(tbd);
+                    $("[in-alert-wishlist-section]").show();
+                }
+            })
+            .catch(e=>console.log(e));
+        }
+        if (window.jQuery) {
+            loadList();
+        } else {
+            loadScript("https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js", function() {
+                loadList();
+            })
+        }
+    })
+</script>

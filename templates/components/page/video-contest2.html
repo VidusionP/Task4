@@ -1,0 +1,1270 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Roboto:wght@700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/content/css/plyr.css">
+<link rel="preload" as="image" href="/content/images/marketing/videoContest2022/thumbnail.jpg">
+<style>
+@font-face {font-family: "Eras Bold ITC";
+    src: url("/content/fonts/eras-bold-itc.eot"); /* IE9*/
+    src: url("/content/fonts/eras-bold-itc.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    url("/content/fonts/eras-bold-itc.woff2") format("woff2"), /* chrome firefox */
+    url("/content/fonts/eras-bold-itc.woff") format("woff"), /* chrome firefox */
+    url("/content/fonts/eras-bold-itc.ttf") format("truetype"), /* chrome firefox opera Safari, Android, iOS 4.2+*/
+    url("/content/fonts/eras-bold-itc.svg#Eras Bold ITC") format("svg"); /* iOS 4.1- */
+}
+:root {
+    --border-radius: 5px;
+    --color1: #FCD832;
+    --color2: #f8f9fa;
+    --color3: #080808;
+    --color4: #FF4E43;
+    --color5: #504B49;
+    --color6: #CEA46F;
+    --color7: #F29555;
+    --color8: #D6D6D6;
+    --color9: #c08a45;
+    --element-margin: 1.3rem;
+    --element-margin-l: 2rem;
+    --section-margin: 2.3rem;
+    --font-size1: 24px;
+    --font-size2: 13px;
+    --font-size3: 12px;
+    --font-size4: 20px;
+    --font-size5: 16px;
+    --font-size6: 18px;
+    --showoff-height: 94px;
+}
+.page-heading {
+    display: none;
+}
+.vc-container {
+    width: calc(100% + 3rem);
+    margin-left: -1.5rem;
+    margin-top: -2rem;
+    font-family: 'Lato', sans-serif;
+    color: var(--color3);
+}
+.vc-container a{
+    text-decoration: none;
+}
+.body.page .page-content p:first-child{
+    display: none;
+}
+.vc-header-wrap {
+    position: relative;    
+}
+.vc-header-wrap .timeline {
+    background-color: var(--color1);
+    text-align: center;
+    padding: var(--element-margin) 0;
+    font-size: var(--font-size2);
+    font-weight: bold;
+}
+#player{    
+    width: 100%;    
+}
+#player .plyr__control--overlaid {
+    background: var(--color2);
+}
+#player .plyr__control--overlaid svg {
+    color: rgba(8, 8, 8, 0.62)
+}
+.plyr--full-ui input[type=range] {
+    color: var(--color1);
+}
+.menu-wrap {
+    margin-top: var(--section-margin);
+    padding: 0 var(--element-margin);
+}
+.menu-items {
+    border-top: 3px solid var(--color3);
+    border-bottom: 3px solid var(--color3);
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    justify-content: center;
+    padding: calc(var(--element-margin) / 2) 0;
+    text-align: center;
+    font-size: var(--font-size4);
+    font-weight: bold;
+    margin: 0;
+}
+.menu-items li[pc] {
+    display: none;
+}
+section:not(.vc-header-wrap) {
+    margin-top: var(--section-margin);
+    text-align: center;    
+}
+#st-prizes {
+    padding: 0 var(--section-margin);
+}
+#st-prizes .prize {    
+    margin-bottom: var(--element-margin-l);
+}
+#st-prizes .title {
+    font-family: "Eras Bold ITC";
+    font-size: var(--font-size1);
+    margin-bottom: var(--element-margin-l);
+}
+#st-prizes .title[pc] {
+    display: none;
+}
+#st-prizes .prize .icon {
+    width: 130px;
+    height: auto;
+    margin: 0 auto var(--element-margin);
+    display: block;
+}
+#st-prizes .prize .level {
+    width: 93px;
+    height: auto;
+    margin: 0 auto var(--element-margin);
+    display: block;
+}
+#st-prizes .prizes[pc] {
+    display: none;
+}
+#st-prizes .desp[pc] {
+    display: none;
+}
+#st-prizes .prize .button-level {
+    background-color: var(--color4);
+    color: var(--color2);
+    text-align: center;
+    width: 171px;
+    border-radius: var(--border-radius);
+    padding: calc(var(--element-margin) / 2) 0;
+    text-transform: uppercase;
+    margin: 0 auto var(--element-margin);
+    display: block;
+    font-weight: bold;
+}
+#st-prizes .desp {
+    font-size: var(--font-size5);
+}
+#st-prizes .criteria-wrap {
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    margin-bottom: var(--element-margin-l);
+}
+#st-prizes .criteria-wrap .sub-title {
+    font-size: var(--font-size4);
+    margin: var(--element-margin-l) 0;
+}
+#st-prizes .cr-items {    
+    font-size: var(--font-size5);
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-row-gap: var(--element-margin);
+    grid-column-gap: 10px;
+}
+#st-prizes .cr-items .label {
+    text-align: right;
+}
+#st-prizes .cr-items .value {
+    color: var(--color4);
+    text-align: left;
+}
+#st-rule .top, #st-vote .top {
+    padding: var(--element-margin) 0;
+    background-color: var(--color1);
+    font-family: "Eras Bold ITC";
+    font-size: 32px;
+    color: var(--color3);
+}
+#st-rule .content-wrap {
+    background-color: var(--color5);
+    color: var(--color2);
+    padding: var(--section-margin);
+    font-size: var(--font-size5);    
+}
+#st-rule .content-wrap .desp {
+    margin-bottom: var(--element-margin-l);
+}
+#st-rule .title {
+    font-family: "Eras Bold ITC";
+    color: var(--color1);
+    font-size: var(--font-size6);
+    position: relative;
+    width: fit-content;
+    padding-top: var(--element-margin);
+    text-transform: uppercase;
+    margin: 0 auto;
+}
+#st-rule .title::before {
+    content: "";
+    height: 3px;
+    width: 91px;
+    background-color: var(--color1);
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+#st-rule .rule .sub-title {
+    font-weight: bold;
+    margin: var(--element-margin-l) auto;
+}
+#st-rule .rule div:not(:last-child) {
+    margin-bottom: var(--element-margin);
+}
+#st-rule .rules-wrap {
+    position: relative;
+    padding-bottom: 250px;
+}
+#st-rule .rules-img {
+    position: absolute;    
+    width: 100%;
+    margin-top: var(--element-margin-l);
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: var(--element-margin);
+    grid-row-gap: var(--element-margin);
+}
+#st-rule .rules-img img {
+    width: 100%;
+    height: auto;    
+}
+#st-rule .rules-img .img2, #st-rule .rules-img .img4 {
+    transform: translateY(var(--element-margin-l));
+}
+#st-apply {
+    padding: 80px var(--section-margin) 0;
+    position: relative;
+}
+#st-apply::before {
+    content: "";
+    position: absolute;
+    left: 10px;
+    top: 80px;
+    width: 150px;
+    height: 126px;
+    background-image: url(/content/images/marketing/videoContest2022/htrn.svg);
+    background-size: 150px 126px;    
+    background-repeat: no-repeat; 
+    transform: rotate(3.46deg);    
+}
+#st-apply .content-wrap {
+    margin-top: 70px;
+    border: 5px solid var(--color6);
+    border-radius: 8px;
+    padding: var(--element-margin);
+    text-align: left;
+    background-color: #fff;
+    position: relative;
+}
+#st-apply .content-wrap .title {
+    text-transform: uppercase;
+    font-size: var(--font-size4);
+    margin-top: var(--element-margin-l);
+    text-align: center;
+}
+#st-apply .content-wrap .item {
+    margin-bottom: var(--element-margin);    
+}
+#st-apply .content-wrap .item label {
+    margin-bottom: 8px;
+    display: block;    
+}
+#st-apply .content-wrap .item label[for=file] {
+    width: 100%;
+    border: 1px solid var(--color3);
+    border-radius: 2px;
+    height: 37.19px;
+    position: relative;
+    cursor: pointer;
+}
+#st-apply .content-wrap .item label[for=file]::after {
+    content: "upload";
+    display: inline-block    ;
+    background-color: var(--color3);
+    color: var(--color2);
+    height: 100%;
+    width: 80px;
+    text-align: center;
+    text-transform: uppercase;
+    padding: 6px 0;
+    position: absolute;
+    right: -1px;
+    top: 0;
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+}
+#st-apply .content-wrap label[for=term]::before {
+    content: "";
+    background-color: #fff;
+    border: 1px solid var(--color3);
+    height: 17px;
+    width: 17px;
+    margin-right: 10px;
+    display: inline-block;
+    transform: translateY(3px);
+}
+#st-apply .content-wrap input[type="checkbox"]:checked + label::before {
+    background-image: url(/content/images/common/check1.svg);
+    background-size: 12px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+#st-apply .content-wrap .item input {
+    width: 100%;
+    padding: calc(var(--element-margin) / 2);
+    border: 1px solid var(--color3);
+    border-radius: 2px;
+}
+#st-apply .term {
+    text-align: right;
+}
+#st-apply .term .special {
+    color: var(--color7);
+}
+#st-apply .button-wrap {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: var(--element-margin);
+}
+#st-apply .button-wrap button {    
+    background-color: var(--color3);
+    color: var(--color2);
+    text-align: center;
+    width: 80px;
+    border-radius: 2px;
+    padding: 6px 0;
+    height: 37.19px;
+    text-transform: uppercase;
+}
+#st-elig {
+    padding: 0 var(--section-margin);
+}
+#st-elig .title {
+    font-size: var(--font-size1);
+    font-weight: bold;
+    margin-bottom: var(--element-margin-l);    
+}
+#st-elig .desp {
+    font-size: var(--font-size5);
+}
+#st-vote .video-wrap {
+    padding: var(--section-margin) var(--section-margin) 0;
+}
+#st-vote .video-wrap iframe {
+    width: 100%;
+    height: calc((100vw - var(--section-margin) * 2) / 1.78);
+}
+#st-term {
+    background-color: var(--color8);
+    padding: var(--section-margin);
+}
+#st-term .title {
+    font-family: "Eras Bold ITC";
+    font-size: var(--font-size1);
+    margin-bottom: var(--element-margin-l);
+}
+#st-term .desp {
+    font-size: var(--font-size5);
+    text-align: justify;    
+    margin-bottom: var(--element-margin-l);  
+}
+#st-term .desp.long {
+    display: none;
+}
+#st-term .desp div {
+    margin-bottom: var(--element-margin);    
+}
+/* #st-term .desp div:first-child {
+    -webkit-line-clamp: 8;    
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+}
+#st-term .desp div:not(:first-child) {
+    display: none;
+} */
+#st-term .see-more {
+    text-decoration: underline;   
+    font-weight: bold; 
+    font-size: var(--font-size5);
+    cursor: pointer;
+}
+.er {
+    color: var(--color4);
+    font-size: var(--font-size2);    
+}
+.vc-preview-wrap video {
+    margin-bottom: var(--element-margin);
+    width: 100%;
+}
+.vc-preview-wrap .plus {
+    width: 100%;
+    min-height: 100px;
+    border: 1px solid var(--color3);    
+    margin-left: auto;
+    margin-right: auto;
+    cursor: pointer;
+    position: relative;
+    margin-bottom: var(--element-margin);
+    color: #fff;
+}
+.vc-preview-wrap .plus::after {
+    content: "";
+    background-image: url("/content/images/common/plus.svg");
+    background-size: 50px 50px;
+    position: absolute;    
+    width: 50px;
+    height: 50px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    cursor: pointer;    
+}
+.v-preview {
+    position: relative;
+}
+.v-preview button.delete {
+    position: absolute;
+    right: 0;
+    top: -10;
+    cursor: pointer;
+    z-index: 9;
+}
+.v-preview button.delete:hover{    
+    filter: brightness(120%);
+}
+.v-preview button.delete img {
+    width: 50px;
+    height: auto;
+}
+.vc-overloading-wrap, .vc-popup-thankyou {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    /* background-color: rgba(255,255,255,0.7); */
+    left: 0;
+    top: 0;
+    /* display: flex; */
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 99;
+}
+.vc-popup-thankyou {
+    /* display: flex; */
+    background-color: rgba(0,0,0,0.7);
+    backdrop-filter: blur(8px);
+    text-align: center;
+}
+.vc-popup-thankyou img {
+    width: 80px;
+    height: auto;
+    margin-bottom: var(--section-margin);
+}
+.vc-popup-thankyou .content-wrap {
+    padding: var(--element-margin-l);
+    max-width: 80%;
+    max-height: 70%;
+    background-color: var(--color2);
+    border-radius: var(--border-radius);
+}
+.vc-popup-thankyou .main-content {
+    font-size: var(--font-size1);
+    margin-bottom: var(--element-margin-l);
+    font-weight: bold;
+    font-family: "Eras Bold ITC";    
+}
+.vc-popup-thankyou .desp {
+    font-size: var(--font-size5);
+}
+.vc-overloading-wrap .overloading {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255,255,255,0.7);
+    left: 0;
+    top: 0;
+    backdrop-filter: blur(8px);
+}
+.vc-overloading-wrap .content .loader {
+	--color: white;
+	--size-mid: 6vmin;
+	--size-dot: 1.5vmin;
+	--size-bar: 0.4vmin;
+	--size-square: 3vmin;
+	
+	display: block;
+	position: relative;
+	width: 50%;
+	display: grid;
+	place-items: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.vc-overloading-wrap .content .loader::before,
+.vc-overloading-wrap .content .loader::after {
+	content: '';
+	box-sizing: border-box;
+	position: absolute;
+}
+.vc-overloading-wrap .content .loader.--3::before,
+.vc-overloading-wrap .content .loader.--3::after {
+	width: var(--size-dot);
+	height: var(--size-dot);
+	background-color: var(--color3);
+	border-radius: 50%;
+	animation: loader-3 1.2s ease-in-out infinite;
+}
+
+.vc-overloading-wrap .content .loader.--3::before {
+	left: calc(50% - 1.6vmin - var(--size-dot));
+}
+
+.vc-overloading-wrap .content .loader.--3::after {
+	left: calc(50% + 1.6vmin);
+	animation-delay: -0.4s;
+}
+.vc-overloading-wrap .content [content] {
+    transform: translateY(50px);
+    font-size: var(--font-size1);    
+    font-weight: bold;    
+}
+
+@keyframes loader-3 {
+	0%, 100% {
+		transform: translateY(-2.6vmin);
+	}
+	
+	44% {
+		transform: translateY(2.6vmin);
+	}
+}
+@media (min-width: 320px) {
+    #st-prizes .cr-items {    
+        font-size: var(--font-size6);        
+    }
+}
+@media (min-width: 410px) {
+    .vc-header-wrap .timeline {
+        font-size: var(--font-size5);
+    }
+    #st-prizes .cr-items {
+        font-size: var(--font-size1);
+    }
+    #st-rule .title {
+        font-size: var(--font-size1);
+    }
+    #st-rule .rules-wrap {
+        padding-bottom: 85vw;
+    }
+}
+@media (min-width: 551px) {
+    .breadcrumbs {
+        display: none;
+    }
+}
+@media (min-width: 600px) {    
+    #st-rule .rules {        
+        text-align: left;
+        padding-left: 50%;
+    }
+    #st-rule .rules-img {
+        width: 40%;
+        top: 0;
+        left: 0;
+    }
+    #st-rule .title{
+        width: inherit;
+    }
+    #st-rule .title::before {
+        left: 0;
+        transform: translateX(0);
+    }
+    #st-rule .rules-wrap {
+        padding-bottom: 0;
+    }
+    #st-apply {
+        padding-top: var(--section-margin);
+    }
+    #st-apply::before {
+        top: 0;
+    }
+    #st-apply .content-wrap {
+        margin-top: 0;
+    }
+    .vc-preview-wrap {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-column-gap: var(--element-margin);
+    }
+}
+@media (min-width: 801px) {        
+    :root {
+        --section-margin: 3rem;
+    }
+    .vc-header-wrap .timeline {
+        font-size: var(--font-size6);
+    }
+    #st-prizes .prizes[pc] {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+    #st-prizes .prizes[mobile] {
+        display: none;
+    }
+    #st-prizes .desp[pc] {
+        display: block;
+        font-size: var(--font-size2);
+        margin-bottom: var(--section-margin);
+    }
+    #st-prizes .title[mobile] {
+        display: none;
+    }
+    #st-prizes .title[pc] {
+        display: block;
+    }
+    #st-prizes .prize .icon {
+        height: 109px;
+    }    
+    .vc-container {
+        width: calc(100% + 7rem);
+        margin-top: -2rem;
+        margin-left: -3.5rem;
+    }
+    .menu-items {
+        grid-template-columns: repeat(6, 1fr);
+        border-color: var(--color9);        
+    }
+    .menu-items li[pc] {
+        display: block;
+    }
+    .menu-items a{
+        color: var(--color9);
+    }
+    .v-preview button.delete {
+        right: 0;
+        top: 10;        
+    }
+    .v-preview button.delete img {
+        width: 35px;        
+    }
+}
+@media (min-width: 850px) {   
+    #st-apply {
+        overflow: hidden;
+    } 
+    #st-apply .content-wrap {
+        margin-top: 10vw;
+    }
+    #st-apply::before {
+        left: unset;
+        right: 0;
+        transform: rotate(38.69deg);
+        width: 50vw;
+        height: 50vw;
+        background-position: right 10vw top 2vw;
+        background-size: 40vw 34vw;        
+        /* z-index: 9; */
+    }
+}
+@media (min-width: 900px) {
+    .menu-wrap, #st-prizes, #st-rule .content-wrap div, #st-apply .content-wrap, #st-elig, #st-vote .video-wrap, #st-term .desp {
+        max-width: 872px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    #st-vote .video-wrap iframe {
+        max-height: 490px;
+    }
+    .vc-header-wrap .plyr__video-embed {
+        max-height: 720px;
+    }
+    #st-prizes .desp[pc] {
+        font-size: var(--font-size5);
+    }
+}
+@media (min-width: 1261px) {
+    .body.page .container {
+        padding: 0;
+        max-width: unset !important;
+    }
+    .vc-container {
+        width: calc(100% + 4rem);        
+        margin-left: -2rem;        
+    }
+    #st-apply .content-wrap .item label[for=file] span, #st-apply .button-wrap button {
+        width: 120px;
+    }
+}
+</style>
+<div class="vc-container">
+    <img src="/content/images/marketing/videoContest2022/thumbnail.jpg" style="display:none"/>
+    <section class="vc-header-wrap">        
+        <div class="plyr__video-embed" id="player">
+            <iframe
+              src="https://www.youtube.com/embed/Av698ZcnShw?origin=https://plyr.io&amp;iv_load_policy=3&amp;modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1"
+              allowfullscreen
+              allowtransparency
+              allow="autoplay"
+              youtube
+            ></iframe>
+        </div>
+        <div class="timeline">
+            Contest runs from April 4 to August 31, 2022!
+        </div>
+    </section>
+    <div class="menu-wrap">
+        <ul class="menu-items">
+            <li>
+                <a href="#st-prizes">Prizes</a>
+            </li>
+            <li>
+                <a href="#st-rule">Rules</a>
+            </li>
+            <li>
+                <a href="#st-apply">Apply</a>                
+            </li>
+            <li pc>
+                <a href="#st-elig">Eligibility</a>
+            </li>
+            <li>
+                <a href="#st-vote">2021</a>
+            </li>
+            <li pc>
+                <a href="#st-term">Terms</a>
+            </li>
+        </ul>
+    </div>
+    <section id="st-prizes">
+        <div class="title">What are the prizes</div>
+        <div class="prizes" mobile>
+            <div class="prize">            
+                <img src="/content/images/marketing/videoContest2022/win1.svg" alt="Win first price" class="icon">
+                <img src="/content/images/marketing/videoContest2022/win1.jpg" alt="Win first price" class="level">
+                <div class="button-level">winner</div>
+                <div class="desp"><strong>The winner</strong> will receive the grand prize of a <strong>$1,000 USD</strong> Amazon gift card!</div>
+            </div>
+            <div class="prize">            
+                <img src="/content/images/marketing/videoContest2022/win2.svg" alt="Win second price" class="icon">
+                <img src="/content/images/marketing/videoContest2022/win2.jpg" alt="Win second price" class="level">
+                <div class="button-level">second place</div>
+                <div class="desp"><strong>The second place winner</strong> will receive a <strong>$300 USD</strong> Amazon gift card or a mystery box valued at <strong>$300 USD!</strong></div>
+            </div>
+            <div class="prize">            
+                <img src="/content/images/marketing/videoContest2022/win3.svg" alt="random" class="icon">
+                <img src="/content/images/marketing/videoContest2022/win3.jpg" alt="random" class="level">
+                <div class="button-level">one random</div>
+                <div class="desp"><strong>One random early bird</strong> submission will also receive a mystery box!</div>
+            </div>
+        </div>
+        <div class="prizes" pc>
+            <div class="prize">            
+                <img src="/content/images/marketing/videoContest2022/win1.svg" alt="Win first price" class="icon">
+                <img src="/content/images/marketing/videoContest2022/win1.jpg" alt="Win first price" class="level">
+                <div class="button-level">winner</div>                
+            </div>
+            <div class="prize">            
+                <img src="/content/images/marketing/videoContest2022/win2.svg" alt="Win second price" class="icon">
+                <img src="/content/images/marketing/videoContest2022/win2.jpg" alt="Win second price" class="level">
+                <div class="button-level">second place</div>                
+            </div>
+            <div class="prize">            
+                <img src="/content/images/marketing/videoContest2022/win3.svg" alt="random" class="icon">
+                <img src="/content/images/marketing/videoContest2022/win3.jpg" alt="random" class="level">
+                <div class="button-level">one random</div>                
+            </div>
+        </div>
+        <div class="desp" pc>
+            <div><strong><u>The winner</u></strong> will receive the grand prize of a <strong>$1,000 USD</strong> Amazon gift card!</div>
+            <div><strong><u>The second place winner</u></strong> will receive a <strong>$300 USD</strong> Amazon gift card or a mystery box valued at <strong>$300 USD!</strong></div>
+            <div><strong><u>One random early bird</u></strong> submission will also receive a mystery box!</div>
+        </div>
+        <div class="title" mobile>What are the prizes</div>
+        <div class="title" pc>How the winners are chosen</div>
+        <div class="desp">
+            <div>All submissions will be uploaded to our YouTube channel.</div>
+            <div>The video with the most points at the end of contest will be declared the winner.</div>
+        </div>
+        <div class="criteria-wrap">
+            <div class="sub-title">The criteria is as follows:</div>
+            <div class="cr-items">
+                <div class="label">1 View =</div>
+                <div class="value">1 Point</div>
+                <div class="label">1 Like =</div>
+                <div class="value">5 Points</div>
+                <div class="label">1 Comment =</div>
+                <div class="value">10 Points</div>
+            </div>            
+        </div>
+        <div class="desp">
+            Note: The earlier you submit, the more chances you have of earning points while you can also have a chance to win a mystery box as an early bird applicant.
+        </div>
+    </section>
+    <section id="st-rule">
+        <div class="top">Enter Now !</div>
+        <div class="content-wrap">
+            <div class="desp">All you have to do is submit a HD quality video of your before and after transformation. Multiple submissions are allowed.</div>
+            <div class="desp">
+                <div>Note: The subject should have their face visible.</div>
+                <div>However, the subject does not need to be the contest entrant.</div>
+            </div>            
+            <div class="rules-wrap">                
+                <div class="rules">
+                    <div class="title">early bird special</div>
+                    <div class="rule">
+                        <div class="sub-title">Before June 30:</div>
+                        <div>$50 store credit for videos at least 60 seconds</div>
+                        <div>$100 store credit for videos at least 3 minutes</div>
+                    </div>
+                    <div class="rule">
+                        <div class="sub-title">After July 1:</div>
+                        <div>$25 store credit for videos at least 60 seconds</div>
+                        <div>$50 store credit for videos at least 3 minutes</div>
+                    </div>
+                </div>
+                <div class="rules-img">
+                    <picture>
+                        <source srcset="/content/images/marketing/videoContest2022/r2.webp" type="image/webp">
+                        <source srcset="/content/images/marketing/videoContest2022/r2.jpg" type="image/jpeg">
+                        <img src="/content/images/marketing/videoContest2022/r2.jpg" class="img1">
+                    </picture>
+                    <picture>
+                        <source srcset="/content/images/marketing/videoContest2022/r3.webp" type="image/webp">
+                        <source srcset="/content/images/marketing/videoContest2022/r3.jpg" type="image/jpeg">
+                        <img src="/content/images/marketing/videoContest2022/r3.jpg" class="img2">
+                    </picture>
+                    <picture>
+                        <source srcset="/content/images/marketing/videoContest2022/r4.webp" type="image/webp">
+                        <source srcset="/content/images/marketing/videoContest2022/r4.jpg" type="image/jpeg">
+                        <img src="/content/images/marketing/videoContest2022/r4.jpg" class="img3">
+                    </picture>
+                    <picture>
+                        <source srcset="/content/images/marketing/videoContest2022/r1.webp" type="image/webp">
+                        <source srcset="/content/images/marketing/videoContest2022/r1.jpg" type="image/jpeg">
+                        <img src="/content/images/marketing/videoContest2022/r1.jpg" class="img4">
+                    </picture>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="st-apply">
+        <div class="content-wrap">
+            <div class="title">sign up</div>
+            <form action="">
+                <div class="item">
+                    <label for=""><strong>Your name</strong> *</label>
+                    <input type="text" name="name" maxlength="100" placeholder="Your name" required>
+                </div>
+                <div class="item">
+                    <label for=""><strong>Phone number</strong></label>
+                    <input name="phone" type="text" maxlength="50" placeholder="For example: +123456789">
+                </div>
+                <div class="item">
+                    <label for=""><strong>Email address</strong> * (the one associated with your Superhairpieces account)</label>
+                    <input name="email" type="text" maxlength="100" placeholder="For example: name@example.com" required>
+                </div>
+                <div class="item">
+                    <label for=""><strong>Upload your file(s)</strong></label>
+                    <input id="file" type="file" style="display: none;" accept=".mp4, .mov, .mpeg4, .avi, .wmv, .mpeg" multiple>
+                    <label for="file">
+                        <!-- <span>upload</span> -->
+                    </label>
+                </div>
+                <div class="item">
+                    <label for="">You can also <strong>paste your cloud file link</strong> with the videos (make sure we have permisison to view it)</label>
+                    <input name="link" type="text" maxlength="100" placeholder="Your cloud link">
+                </div>
+                <div class="term">
+                    <input id="term" type="checkbox" style="display:none">                
+                    <label for="term">I agree with the <a href="#st-term" class="special">Terms and conditions</a>.</label>
+                </div>
+                <div class="button-wrap">
+                    <button type="submit">submit</button>
+                </div>
+            </form>
+        </div>
+    </section>
+    <section id="st-elig">
+        <div class="title">Eligibility</div>
+        <div class="desp">
+            <div>Only those who have purchased a Superhairpieces product are eligible to enter this contest.</div>
+            <div>Eligible Superhairpieces products include hair systems, wigs, hair toppers, hair extensions and eyelash extensions.</div>
+            <div>Contest open to residents worldwide provided they are at least 18 years of age.</div>
+        </div>
+    </section>
+    <section id="st-vote">
+        <div class="top">Last Year's Winners</div>
+        <div class="video-wrap">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/YgaUJBl5Mhg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </section>
+    <section id="st-term">
+        <div class="title">Terms and conditions</div>
+        <div class="desp short">
+            <div>Superhairpieces (SHP) will get full rights to the video(s) the Participant (“You”) submits. By submitting an entry to this Contest, you grant SHP a worldwide, royalty-free, perpetual, non-exclusive right and license to copy, distribute, and display each submitted entry, in any ...</div>
+        </div>
+        <div class="desp long">
+            <div>Superhairpieces (SHP) will get full rights to the video(s) the Participant (“You”) submits. By submitting an entry to this Contest, you grant SHP a worldwide, royalty-free, perpetual, non-exclusive right and license to copy, distribute, and display each submitted entry, in any media including posting in an online gallery, publication(s), and various marketing materials, and with right to use, copy, modify, edit, and create derivative works therefrom. By entering the contest, you understand that your entry (or portion thereof) may be posted online, and to be viewed by members of the general public.</div>
+            <div>Always get express permission from anyone who will appear in your video, in its original form as submitted and also in any (derivative) form SHP may later create the video. Entries must be original work and not violate anyone's proprietary or intellectual property rights. Failure to follow this rule can result in your disqualification. You agree to defend or settle against any claims that arise as a result of infringement at your sole expense, and you shall indemnify, defend and hold harmless Superhairpieces from any impending suit or dispute as a result.</div>
+            <div>No offensive or sensitive content is tolerated, that includes religious or anti/religious, racial, political, obscene, violent, or pornographic content.</div>
+            <div>By entering this contest, you agree to abide by the contest's official rules and decisions, which are fully and unconditionally binding in all respects. SHP reserves the right to refuse, withdraw, or disqualify any entry at any time at our sole discretion.</div>
+            <div>The contest begins on April 4, 2022 at 12:00 a.m. EST and ends on August 31, 2021 at 12:00 a.m. EST (“Entry Period”). To be eligible for the contest, entries must be received within the specified Entry Period.</div>
+            <div>Prizes: There will be two ("Winners") in this contest. One Grand Prize shall be awarded to the participant with the most engagement points. The Grand Prize consists of an Amazon gift card worth $1,000 USD. The participant with the second-most engagement points will be awarded with an Amazon gift card worth $300 USD or a mystery box. Additionally, one early bird applicant will earn a mystery box based on a random drawing. Prizes will be awarded only upon verification and approval by Superhairpieces. The winner will be notified by email within seven days after the engagement points are calculated. If the winner is unable to be contacted within 30 days after being selected or is ineligible, the prize will be forfeited. There shall be no cash or other prize substitution permitted except at our discretion. The prize is non-transferable. The Winners, upon acceptance of their prizes, are solely responsible for all expenses related to the prize, including without limitation any and all local, state, and federal taxes. The Grand Prize Winner may have provided us with a valid taxpayer-identification number before we can award the prize.</div>
+            <div>The Contest is subject to change and may be withdrawn or amended by Superhairpieces without notice at any time at Superhairpieces' sole discretion.</div>
+            <div>By entering this contest, you acknowledge you are eligible to participate based on the eligibility requirements explained. You also agree to accept the decisions of the Sponsor as final and binding as it relates to the content of this contest. Lastly, you also agree you have affirmatively reviewed, accepted, and agreed to all of the Official Rules.</div>
+        </div>
+        <button class="see-more">See More</button>
+    </section>
+</div>
+<div class="vc-overloading-wrap">
+    <div class="overloading"></div>
+    <div class="content">
+        <i class="loader --3"></i>
+        <div content></div>
+    </div>
+</div>
+<div class="vc-popup-thankyou">
+    <div class="content-wrap">
+        <div><img src="/content/images/common/video.svg"></div>
+        <div class="main-content">Thank you for your submission!</div>
+        <div class="desp">
+            <div>We have received your video(s).</div>
+            <div>We will reach out to you shortly.</div>
+        </div>        
+    </div>
+</div>
+<!-- <input
+    type="file"
+    accept=".jpeg, .jpg, .mp4, .mov, .mpeg4, .avi, .wmv, .mpeg"
+    multiple
+/>
+<button action="submit">Submit</button> -->
+<!-- <script src="/content/js/video.min.js"></script>
+<script src="/content/js/Youtube.min.js" defer></script> -->
+<script src="/content/js/plyr.js" defer></script>
+<script>
+    let files={};
+    let fIdx = 0;
+    /**
+     * @summary Show submitted popup
+    */
+   function onSubmitted() {
+       $(".vc-overloading-wrap").hide();
+       $(".vc-popup-thankyou").css({display: "flex"});       
+   }
+    /**
+     * @summary send email to marketing team
+    */
+    function sendClientEmail() {
+        let cusEmail = $("[name=email]").val();
+        let cusName = $("[name=name]").val();
+        fetch(`https://shp-webserver-temp.glitch.me/send-omn-vc-cemail`, {
+            method: 'POST',
+            headers: {
+                accept: 'application/json',
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify({cusEmail, cusName, domain:"com"})
+        })
+        .then(r=>r.json())
+        .then(r=>{
+            onSubmitted();
+        })
+        .catch(e=>{
+            console.log(e);
+            onSubmitted();
+        })
+    }
+    /**
+     * @summary send email to marketing team
+    */
+    function sendUsEmail() {
+        $(".vc-overloading-wrap .content [content]").html("Sending form");
+        let cusEmail = $("[name=email]").val();
+        let cusName = $("[name=name]").val();
+        let cusPhone = $("[name=phone]").val()?$("[name=phone]").val():"";
+        let cusLink = $("[name=link]").val()?$("[name=link]").val():"";
+        fetch(`https://shp-webserver-temp.glitch.me/send-omn-vc-email`, {
+            method: 'POST',
+            headers: {
+                accept: 'application/json',
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify({cusEmail, cusName, cusPhone, cusLink})
+        })
+        .then(r=>r.json())
+        .then(r=>{
+            if (r) {
+                sendClientEmail();
+            } else {
+                alert("There is an error when applying your file, please contact customer support");
+                onSubmitted();
+            }
+        })
+        .catch(e=>console.log(e))
+    }
+    /**
+     * @summary uploadFile to dropbox
+     *
+     * @param {Array} files Files to upload
+     * @param {int} idx Index of current working file
+     * @param {string} token Token to upload to dropbox
+     */
+    function uploadFile(files, idx, token) {
+        let email = $("[name=email]").val();
+        if (idx == files.length) {
+            sendUsEmail();
+            return false;
+        }
+        let file = files[idx];
+        let reader = new FileReader();
+
+        reader.readAsArrayBuffer(file);
+
+        reader.onload = function (e) {
+            let binaryString = new Blob([new Uint8Array(e.target.result)], {
+                type: file.type,
+            });
+            var myHeaders = new Headers();
+            myHeaders.append("Content-Type", "application/octet-stream");
+            let type = file.type.split("/")[1];
+            if (type.includes("wmv")) {
+                type = "wmv";
+            } else if (type.includes("quicktime")) {
+                type = "mov";
+            }
+            myHeaders.append(
+                "Dropbox-API-Arg",
+                `{"path":"/${Date.now()}-${
+                    email ? email + "." + type : file.name
+                }","mode":"add"}`
+            );
+            // myHeaders.append("Authorization", "Bearer efBkx9F2X5kAAAAAAAAAAVYcy7QFMX5yr6LJHJEueWPr2ity62cJoNhIbq_9vULW");
+            myHeaders.append("Authorization", token);
+            // myHeaders.append("Authorization", "Bearer L1Z4mFVCvbUAAAAAAAAAAbns_073JOBKLGGDt21G_H5qbb1D99S_AiTxw2bPr875");
+            var requestOptions = {
+                method: "POST",
+                headers: myHeaders,
+                body: binaryString,
+            };
+
+            fetch(
+                "https://content.dropboxapi.com/2/files/upload",
+                requestOptions
+            )
+                .then((response) => response.text())
+                .then((result) => {
+                    // console.log(result);
+                    uploadFile(files, idx + 1, token);
+                })
+                .catch((error) => {
+                    console.log("error", error);
+                    // uploadFile(files, idx + 1, token);
+                    alert("There is an error when applying your file, please contact customer support");
+                    onSubmitted();
+                });
+        };
+
+        reader.onerror = function () {
+            // uploadFile(files, idx + 1, token);
+            alert("There is an error when applying your file, please contact customer support");
+            onSubmitted();
+            console.log(reader.error);
+        };
+    }
+    /**
+     * @summary Check if the input value is in phone format
+     * 
+     * @param {jQuery DOM object} input The input of phone
+    */
+    function checkPhone(input) {
+        if (input.val().match(/\+[0-9]+/g)) return true;
+        else return false;
+    }
+    /**
+     * @summary Check if the input value is in email format
+     * 
+     * @param {jQuery DOM object} input The input of phone
+    */
+    function checkEmail(input) {
+        if (input.val().match(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g)) return true;
+        else return false;
+    }
+    /**
+     * @summary Remove video from preview and list
+     * 
+     * @param {integer} idx The index/key of video in the list
+    */
+   function removeVideo(idx) {
+        // files.splice(idx,1);
+        delete files[idx];
+        console.log(files);
+        $(`.v-preview[index=${idx}]`).remove();
+        $(".vc-preview-wrap").append(`<label class="plus" idx="${fIdx}" for="${fIdx}-add">Add</label><input type="file" index="${fIdx}" id="${fIdx}-add" onchange="addVideo(this)" accept=".mp4, .mov, .mpeg4, .avi, .wmv, .mpeg"  style="display:none"/>`);
+        fIdx++;
+   }
+    /**
+     * @summary Add video to list
+     * 
+     * @param {DOM object} input The clickable content to add file
+    */
+    function addVideo(input) {
+        let f = input.files[0];
+        console.log(files);
+        // files.push(f);       
+        let id =  $(input).attr("index");
+        $(`label[idx=${id}]`).remove();
+        $(input).remove();
+        if ($(".vc-preview-wrap video").length>0) {
+            $(".vc-preview-wrap video").eq($(".vc-preview-wrap video").length-1).parents(".v-preview").after(`<div class="v-preview" index="${id}"><button type="button" class="delete" onclick="removeVideo(${id})"><img src="/content/images/common/delete1.svg"/></button><img  class="pv" src="/content/images/marketing/videoContest2022/video.jpg"/></div>`);
+        } else {
+            $(".vc-preview-wrap").prepend(`<div class="v-preview" index="${id}"><button type="button" class="delete" onclick="removeVideo(${id})"><img src="/content/images/common/delete1.svg"/></button><img  class="pv" src="/content/images/marketing/videoContest2022/video.jpg"/></div>`);
+        }
+        files[id]=f;
+        // files.push({
+        //     id,
+        //     file: f
+        // })
+        let reader = new FileReader();
+        reader.readAsArrayBuffer(f);
+        reader.onload = function(e) {
+            let binaryString = new Blob([new Uint8Array(e.target.result)], { type:f.type });
+            // $(input).parents(".plus").remove();
+            // $(".vc-preview-wrap video").eq($(".vc-preview-wrap video").length-1).after(`<div class="v-preview" index="${id}"><img src="/content/images/marketing/videoContest2022/video.jpg"/><video idx="${id}" id="v-${id}" src="${URL.createObjectURL(binaryString)}" controls/></div>`);
+            $(".vc-preview-wrap").find(`.v-preview[index=${id}]`).find("img.pv").remove();
+            $(".vc-preview-wrap").find(`.v-preview[index=${id}]`).append(`<video idx="${id}" src="${URL.createObjectURL(binaryString)}" controls/>`);
+            // let v = document.getElementById(`v-${id}`);
+            // if (v.readyState === 4) {
+            //     $(v).parents(".preview").find("img").remove();
+            // }
+        }
+        reader.onerror = function () {
+            console.log(reader.error);
+        };
+    }
+    /**
+     * @summary Add videos to the list
+     * 
+     * @param {File list} fs List of the files
+     * @param {integer} idx The index of the current focus file
+    */
+    function addVideos(fs, idx) {
+        if (idx==fs.length) {
+            for (i=fs.length+1; i<=3; i++) {
+                let id = fIdx++;                
+                $(".vc-preview-wrap").append(`<label class="plus" idx="${id}" for="${id}-add">Add</label><input type="file" index="${id}" id="${id}-add" onchange="addVideo(this)" accept=".mp4, .mov, .mpeg4, .avi, .wmv, .mpeg"  style="display:none"/>`);                
+            }
+        } else {            
+            let f = fs[idx];
+            // files.push(f);
+            files[fIdx++]=f;
+            // files.push({
+            //     id: fIdx++,
+            //     file: f
+            // })            
+            $(".vc-preview-wrap").append(`<div class="v-preview" index="${idx}"><button type="button" class="delete" onclick="removeVideo(${idx})"><img src="/content/images/common/delete1.svg"/></button><img class="pv" src="/content/images/marketing/videoContest2022/video.jpg"/></div>`);
+            let reader = new FileReader();
+            reader.readAsArrayBuffer(f);
+            reader.onload = function(e) {
+                let binaryString = new Blob([new Uint8Array(e.target.result)], { type:f.type });
+                // $(".vc-preview-wrap").append(`<video idx="${idx}" src="${URL.createObjectURL(binaryString)}" controls/>`);
+                // $(".vc-preview-wrap").append(`<div class="v-preview" index="${idx}"><video idx="${idx}" src="${URL.createObjectURL(binaryString)}" controls/></div>`);
+                $(".vc-preview-wrap").find(`.v-preview[index=${idx}]`).find("img.pv").remove();
+                $(".vc-preview-wrap").find(`.v-preview[index=${idx}]`).append(`<video idx="${idx}" src="${URL.createObjectURL(binaryString)}" controls/>`);
+                addVideos(fs,idx+1);
+            }
+            reader.onerror = function () {
+                console.log(reader.error);
+            };
+        }
+    }
+    window.addEventListener("DOMContentLoaded", function () {
+        const player = new Plyr('#player');
+        $(".vc-popup-thankyou").on("click", function() {
+            $(".vc-popup-thankyou").hide();
+        });
+        $("#file").on("change", function() {                                 
+            if (document.querySelector("#file").files.length>3) {
+                alert("Maximum number of files should be 3");
+            } else {
+                $("label[for=file]").hide();
+                $("label[for=file]").after(`<div class="vc-preview-wrap"></div>`);
+                addVideos(document.querySelector("#file").files, 0)
+            }
+        });
+        $("form").on("submit", function(event) {
+            $(".er").remove();
+            event.preventDefault();
+            if ($(this).find("input[name=phone]").val() &&  checkPhone($(this).find("input[name=phone]"))==false) {
+                $(this).find("input[name=phone]").after(`<div class="er">Please input the correct phone format (i.e +123456789)</div>`);
+            } else if (checkEmail($(this).find("input[name=email]"))==false) {
+                $(this).find("input[name=email]").after(`<div class="er">Please input the correct email format (i.e name@example.com)</div>`);
+            } else if (Object.keys(files).length==0 && $(this).find("input[name=link]").val().length==0) {
+                $(this).find("label[for=file]").after(`<div class="er">Please choose a file or give us a link.</div>`);
+                $(this).find("input[name=link]").after(`<div class="er">Please choose a file or give us a link.</div>`);                
+            } else if (document.getElementById("term").checked==false) {
+                alert("Please read and check Tearms and conditions");
+            } else {
+                let fs = [];
+                for (let p of Object.keys(files)) {                    
+                    fs.push(files[p]);
+                }
+                $(".vc-overloading-wrap .content [content]").html("Uploading");
+                $(".vc-overloading-wrap").css({display: "flex"});
+                fetch(`https://shp-webserver-temp.glitch.me/dropbox-token`)
+                .then(r=>r.json())
+                .then(r=>{
+                    if (r.token) {
+                        $("input").prop("disabled","disabled");
+                        $("form button").prop("disabled", "disabled");
+                        if (fs.length>0) {
+                            uploadFile(fs, 0, r.token);   
+                        } else {
+                            sendUsEmail();
+                        }
+                    } else {
+                        alert("There is an error when applying your file, please contact customer support");
+                    }
+                })
+                .catch(e=>{
+                    console.log(e);
+                    alert("There is an error when applying your file, please contact customer support");
+                });
+                // let token = "Bearer efBkx9F2X5kAAAAAAAAAAVYcy7QFMX5yr6LJHJEueWPr2ity62cJoNhIbq_9vULW";
+                // uploadFile(fs, idx, token);
+            }
+        })
+        $("[action=submit]").on("click", function () {
+            let input = document.querySelector("input[type=file]");
+            let token = "Bearer efBkx9F2X5kAAAAAAAAAAVYcy7QFMX5yr6LJHJEueWPr2ity62cJoNhIbq_9vULW";
+            console.log("start uploading");
+            uploadFile(input.files, 0, token);
+        });
+
+        $("#st-term .see-more").on("click", function() {
+            if ($(this).text()=="See More") {
+                $("#st-term .desp.long").show();
+                $("#st-term .desp.short").hide();
+                $("#st-term .see-more").text("See Less");
+            } else {
+                $("#st-term .desp.long").hide();
+                $("#st-term .desp.short").show();
+                $("#st-term .see-more").text("See More");
+            }
+        })
+
+        // fetch(`https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet%2CcontentDetails&maxResults=25&playlistId=PLZR8iVgNY2TcyzlM-Rj6TjXJ_cSfVti0E&key=AIzaSyCdvig2zr2DzZWyYc0zfueOujfJaAj_nLE`)
+        // .then(r=>r.json())
+        // .then(r=>{
+        //     console.log(r);
+        // })
+        // .catch(e=>console.log(e));
+
+        fetch(`https://youtube.googleapis.com/youtube/v3/videos?part=snippet,statistics&id=Av698ZcnShw,tv0ttp0bS8A&key=AIzaSyCdvig2zr2DzZWyYc0zfueOujfJaAj_nLE`)
+        .then(r=>r.json())
+        .then(r=>{
+            console.log(r);
+        })
+        .catch(e=>console.log(e));
+    });
+</script>

@@ -1,0 +1,1548 @@
+<style>
+    #s-9db044ca-f446-4eea-8094-4a518ba7acb0 .show-photo{
+        order: 2;
+    }
+    #s-9db044ca-f446-4eea-8094-4a518ba7acb0 .show-content{
+        order: 1;
+        overflow-wrap: break-word;
+    }
+    #s-263c1ba3-a699-47e9-ba04-999e46a26322 {
+        margin-bottom: 1rem !important;
+    }
+    #s-5b1aaea8-6dce-477b-bbbd-b32c98031939 {
+        margin-bottom: 2.3rem !important;
+    }
+    #s-885b1f57-1930-4040-8a05-64d47a22c4d8 {
+        padding-top: 0 !important;
+    }
+    #s-cd0b4d6e-6c6a-4b31-b62a-8c5a3bea0c56 {
+        padding-bottom: 0 !important;
+    }
+    @media only screen and (max-width: 1506px) {
+        #s-6f422cd8-6a4c-4b5a-ba68-80989ed1f058 .shogun-heading-component h1 {
+            font-size: 40px !important;
+        }
+    }
+    @media only screen and (max-width: 1385px) {
+        #s-580d15d9-8d2b-43e8-8964-047f61d689be {
+            margin: 0 30px !important;
+        }
+        #s-597def93-1b85-4bc0-8560-81c67b16add1 {
+            margin: 30px 0 !important;
+        }
+        [id="s-580d15d9-8d2b-43e8-8964-047f61d689be"] > .shg-row > .shg-c-lg-4 {
+            width: calc(33% - 15px) !important;
+        }
+        [id="s-580d15d9-8d2b-43e8-8964-047f61d689be"] > .shg-row > .shg-c-lg-8 {
+            width: calc(66% - 15px) !important;
+        }
+        #s-6f422cd8-6a4c-4b5a-ba68-80989ed1f058 .shogun-heading-component h1 {
+            font-size: 35px !important;
+        }
+    }
+    @media only screen and (max-width: 1124px) {
+        #s-9db044ca-f446-4eea-8094-4a518ba7acb0 .shg-row {
+            display: block;
+        }
+        #s-9db044ca-f446-4eea-8094-4a518ba7acb0 .show-content, #s-9db044ca-f446-4eea-8094-4a518ba7acb0 .show-photo{
+            width: 100% !important;
+        }
+        #s-6f422cd8-6a4c-4b5a-ba68-80989ed1f058 {
+            margin: 0px 0 30px !important;
+        }
+    }
+    @media only screen and (max-width: 520px) {
+        #s-9db044ca-f446-4eea-8094-4a518ba7acb0 h1{
+            font-size: 30px !important;            
+        }
+    }
+    @media only screen and (max-width: 401px) {
+        #s-6f422cd8-6a4c-4b5a-ba68-80989ed1f058 .shogun-heading-component h1 {
+            font-size: 28px !important;
+        }
+    }
+    @media only screen and (max-width: 400px) {
+        #s-6f422cd8-6a4c-4b5a-ba68-80989ed1f058 .shogun-heading-component h1 {
+            font-size: 26px !important;
+        }
+        #s-6b3d0e28-2101-47c0-8064-eda1fb030e5d {
+            padding: 10px !important;
+        }
+    }
+    @media only screen and (max-width: 345px) {
+        #s-580d15d9-8d2b-43e8-8964-047f61d689be {
+            margin: 0 20px !important;
+        }
+        #s-597def93-1b85-4bc0-8560-81c67b16add1 {
+            margin: 20px 0 !important;
+        }
+        #s-6f422cd8-6a4c-4b5a-ba68-80989ed1f058 {
+            margin: 0 0 20px !important;
+        }
+    }
+    /**
+    * only .ca (may not need)
+    */
+    /* .container {
+        max-width: 110rem !important;
+    } */
+
+    /**
+    * Menu navigation
+    */    
+    .menu-wrap {                
+        width: 100%;        
+        margin-bottom: 20px;
+        display: none;
+        overflow-x: auto;        
+    }    
+    @media only screen and (min-width: 1025px) {
+        .menu-wrap {
+            overflow-x: hidden;
+        }
+        .menu-wrap:hover {
+            overflow-x: auto;
+        }
+    }
+    .menu-items {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px 0 0;        
+        margin: 0 auto;
+        flex-wrap: wrap;        
+    }
+    .menu-item {
+        font-size: 15px;
+        margin: 0 20px 20px;
+        position: relative;
+        cursor: pointer;        
+    }
+    .menu-item a, .menu-submenu-item a{
+        text-decoration: none;
+    }
+    .menu-item:hover {
+        color: #825d41;
+    }
+    .menu-item.active a {        
+        color: #825d41;
+        /* background: rgb(186,160,144);
+        background: -moz-linear-gradient(141deg, rgba(186,160,144,1) 0%, rgba(90,75,76,1) 45%, rgba(171,139,116,1) 100%, rgba(2,0,36,1) 255%);
+        background: -webkit-linear-gradient(141deg, rgba(186,160,144,1) 0%, rgba(90,75,76,1) 45%, rgba(171,139,116,1) 100%, rgba(2,0,36,1) 255%);
+        background: linear-gradient(141deg, rgba(186,160,144,1) 0%, rgba(90,75,76,1) 45%, rgba(171,139,116,1) 100%, rgba(2,0,36,1) 255%);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#baa090",endColorstr="#020024",GradientType=1);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent; */
+    }
+    .menu-submenu-items {                
+        padding: 20px 0 0;                
+        position: absolute;
+        display: none;
+        background-color: #fff;
+        box-shadow: 1px 1px 9px 0 #e6e6e6;
+        width: fit-content;
+        z-index: 9;
+    }
+    /* .menu-submenu-items::before {
+        content: '';
+        width: 100px;
+        height: 2px;
+        background-color: #000;
+        position: absolute;
+        top: 0;
+        left: calc(50% - 50px);
+    } */
+    .menu-submenu-item {
+        font-size: 15px;
+        margin: 0 20px 20px;
+        position: relative;
+        cursor: pointer;
+    }
+    .menu-submenu-item:hover, .menu-item:hover {
+        color: #825d41;
+    }
+</style>
+<div
+    class="shogun-root"
+    data-shogun-id="6060d7fef00d8800e45fb097"
+    data-shogun-site-id="fb8c6090-a908-45e2-8617-89b82d7a20e6"
+    data-shogun-page-id="6060d7fef00d8800e45fb097"
+    data-shogun-page-version-id="607084d219471b00de47d16a"
+    data-shogun-platform-type="big_commerce"
+    data-shogun-variant-id="607084d219471b00de47d4e7"
+    data-region="main"
+>
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Montserrat:700|Poppins:400|Poppins:" />
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.getshogun.com/shogun-font-awesome.min.css" />
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.getshogun.com/607084d219471b00de47d4e7.css" />    
+
+    <script type="text/javascript" src="https://lib.getshogun.com/lazysizes/2.0.0/shogun-lazysizes.js" async></script>
+
+    <div class="menu-wrap">
+        <div class="menu-items">            
+        </div>
+        <!-- <div class="menu-submenu-items">
+            <div class="menu-submenu-item">
+                Nancy Sauers
+            </div>
+            <div class="menu-submenu-item">
+                Annie Scott
+            </div>
+        </div> -->
+    </div>
+    <div class="shg-box-vertical-align-wrapper">        
+        <div class="shg-box shg-c" id="s-9db044ca-f446-4eea-8094-4a518ba7acb0">
+            <div class="shg-box-overlay"></div>
+            <div class="shg-box-content">
+                <div class="shg-box-vertical-align-wrapper">
+                    <div class="shg-box shg-c" id="s-7d11bfa5-cfbc-484c-a711-b29e5e1fb35c">
+                        <div class="shg-box-overlay"></div>
+                        <div class="shg-box-content">
+                            <div class="shg-c" id="s-580d15d9-8d2b-43e8-8964-047f61d689be">
+                                <div class="shg-row" data-col-grid-mode-on="">                                        
+                                    <div class="shg-c-lg-8 shg-c-md-8 shg-c-sm-8 shg-c-xs-12 show-photo">
+                                        <div class="shg-box-vertical-align-wrapper">
+                                            <div class="shg-box shg-c" id="s-597def93-1b85-4bc0-8560-81c67b16add1">
+                                                <div class="shg-box-overlay"></div>
+                                                <div class="shg-box-content"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="shg-c-lg-4 shg-c-md-4 shg-c-sm-4 shg-c-xs-12 show-content">
+                                        <div id="s-6f422cd8-6a4c-4b5a-ba68-80989ed1f058" class="shg-c shg-align-right">
+                                            <div class="shogun-heading-component">
+                                                <h1>Show off <br />Your <br />SUPER Transformation and <br />Win $1000<br /></h1>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="shg-box-vertical-align-wrapper">
+                    <div class="shg-box shg-c" id="s-4fa28479-10eb-47b1-9245-e2735e090fbb">
+                        <div class="shg-box-overlay"></div>
+                        <div class="shg-box-content">
+                            <div class="shg-box-vertical-align-wrapper">
+                                <div class="shg-box shg-c" id="s-54af362b-9487-4872-ab63-676142e6d1c5">
+                                    <div class="shg-box-overlay"></div>
+                                    <div class="shg-box-content"></div>
+                                </div>
+                            </div>
+                            <div class="shg-c" id="s-21f743e2-5a7b-4b6a-8bcc-f4ef0d1aa043">
+                                <div class="shg-row" data-col-grid-mode-on="">
+                                    <div class="shg-c-lg-1 shg-c-md-1 shg-c-sm-1 shg-c-xs-12"></div>
+                                    <div class="shg-c-lg-10 shg-c-md-10 shg-c-sm-10 shg-c-xs-12">
+                                        <div id="s-263c1ba3-a699-47e9-ba04-999e46a26322" class="shg-c">
+                                            <div class="shg-rich-text shg-theme-text-content">
+                                                <p>
+                                                    <span style="font-size: 18px"
+                                                        ><span style="font-weight: 400"
+                                                            >We love to see our customers transform themselves and look and feel more confident with our products. To show our appreciation for our
+                                                            loyal customers, we are excited to announce the Superhairpieces video contest! This is your chance to</span
+                                                        >
+                                                        show off your SUPER transformation<span style="font-weight: 400"> and get rewards at the same time!</span></span
+                                                    >
+                                                </p>
+                                            </div>
+                                        </div>                                        
+                                    </div>
+
+                                    <div class="shg-c-lg-1 shg-c-md-1 shg-c-sm-1 shg-c-xs-12"></div>
+                                </div>
+                            </div>
+                            <div id="s-cd0b4d6e-6c6a-4b31-b62a-8c5a3bea0c56" class="shg-c shg-align-center">
+                                <div class="shogun-heading-component">
+                                    <h1>Sign Up Now</h1>
+                                </div>
+                            </div>
+
+                            <div class="shg-c" id="s-5b1aaea8-6dce-477b-bbbd-b32c98031939">
+                                <div class="shg-row" data-col-grid-mode-on="">
+                                    <div class="shg-c-lg-2 shg-c-md-2 shg-c-sm-2 shg-c-xs-12"></div>
+                                    <div class="shg-c-lg-8 shg-c-md-8 shg-c-sm-8 shg-c-xs-12">
+                                        <div id="s-885b1f57-1930-4040-8a05-64d47a22c4d8" class="shg-c">
+                                            <form class="shogun-form-box" method="post" action="https://forms.getshogun.com" novalidate>
+                                                <div id="s-ab912783-1a45-479a-8c3b-a35e6fd4af71" class="shg-c">
+                                                    <div class="shogun-form-text-input">
+                                                        <label class="shogun-form-label">Your name</label>
+
+                                                        <input
+                                                            id="input-s-ab912783-1a45-479a-8c3b-a35e6fd4af71"
+                                                            class="shogun-form-box-field shogun-form-text-input-field"
+                                                            name="Your name"
+                                                            placeholder=""
+                                                            type="text"
+                                                            required="true"
+                                                        />
+
+                                                        <div class="shogun-form-field-error-msg">
+                                                            <svg viewBox="0 0 26 26" width="26px" height="26px">
+                                                                <path
+                                                                    d="M13 1c6.627 0 12 5.373 12 12s-5.373 12-12 12S1 19.627 1 13 6.373 1 13 1zm0 1.5C7.201 2.5 2.5 7.201 2.5 13S7.201 23.5 13 23.5 23.5 18.799 23.5 13 18.799 2.5 13 2.5zm0 14.25l.123.007a1.125 1.125 0 11-.246 0L13 16.75zM13 5.5a.75.75 0 01.743.648l.007.102v8.25a.75.75 0 01-1.493.102l-.007-.102V6.25A.75.75 0 0113 5.5z"
+                                                                    fill="#000"
+                                                                    fillRule="nonzero"
+                                                                />
+                                                            </svg>
+                                                            <span>Value is required</span>
+                                                        </div>
+                                                    </div>
+
+                                                    <script type="text/javascript">
+                                                        window.SHOGUN_FORM_TEXTAREA_ELEMENTS = window.SHOGUN_FORM_TEXTAREA_ELEMENTS || new Array();
+                                                        window.SHOGUN_FORM_TEXTAREA_ELEMENTS.push({ uuid: "s-ab912783-1a45-479a-8c3b-a35e6fd4af71" });
+                                                    </script>
+                                                </div>
+                                                <div id="s-618a938d-230b-40c8-a834-f7e3b5867595" class="shg-c">
+                                                    <div class="shogun-form-text-input">
+                                                        <label class="shogun-form-label">Email address (the one associated with your Superhairpieces account)</label>
+
+                                                        <input
+                                                            id="input-s-618a938d-230b-40c8-a834-f7e3b5867595"
+                                                            class="shogun-form-box-field shogun-form-text-input-field"
+                                                            name="Email address (the one associated with your Superhairpieces account)"
+                                                            placeholder=""
+                                                            type="text"
+                                                            required="true"
+                                                        />
+
+                                                        <div class="shogun-form-field-error-msg">
+                                                            <svg viewBox="0 0 26 26" width="26px" height="26px">
+                                                                <path
+                                                                    d="M13 1c6.627 0 12 5.373 12 12s-5.373 12-12 12S1 19.627 1 13 6.373 1 13 1zm0 1.5C7.201 2.5 2.5 7.201 2.5 13S7.201 23.5 13 23.5 23.5 18.799 23.5 13 18.799 2.5 13 2.5zm0 14.25l.123.007a1.125 1.125 0 11-.246 0L13 16.75zM13 5.5a.75.75 0 01.743.648l.007.102v8.25a.75.75 0 01-1.493.102l-.007-.102V6.25A.75.75 0 0113 5.5z"
+                                                                    fill="#000"
+                                                                    fillRule="nonzero"
+                                                                />
+                                                            </svg>
+                                                            <span>Value is required</span>
+                                                        </div>
+                                                    </div>
+
+                                                    <script type="text/javascript">
+                                                        window.SHOGUN_FORM_TEXTAREA_ELEMENTS = window.SHOGUN_FORM_TEXTAREA_ELEMENTS || new Array();
+                                                        window.SHOGUN_FORM_TEXTAREA_ELEMENTS.push({ uuid: "s-618a938d-230b-40c8-a834-f7e3b5867595" });
+                                                    </script>
+                                                </div>
+                                                <div class="shg-c">
+                                                    <div class="shogun-form-text-input">
+                                                        <label class="shogun-form-label">Products(s) used</label>
+
+                                                        <input
+                                                            id="custom-input--product"
+                                                            class="shogun-form-box-field shogun-form-text-input-field"
+                                                            name="Product(s) used"
+                                                            placeholder=""
+                                                            type="text"
+                                                            required="true"
+                                                            style="font-size: 20px;; border-width: 1px; border-color: #000; color: #000;"
+                                                        />
+
+                                                        <div class="shogun-form-field-error-msg">
+                                                            <svg viewBox="0 0 26 26" width="26px" height="26px">
+                                                                <path
+                                                                    d="M13 1c6.627 0 12 5.373 12 12s-5.373 12-12 12S1 19.627 1 13 6.373 1 13 1zm0 1.5C7.201 2.5 2.5 7.201 2.5 13S7.201 23.5 13 23.5 23.5 18.799 23.5 13 18.799 2.5 13 2.5zm0 14.25l.123.007a1.125 1.125 0 11-.246 0L13 16.75zM13 5.5a.75.75 0 01.743.648l.007.102v8.25a.75.75 0 01-1.493.102l-.007-.102V6.25A.75.75 0 0113 5.5z"
+                                                                    fill="#000"
+                                                                    fillRule="nonzero"
+                                                                />
+                                                            </svg>
+                                                            <span>Value is required</span>
+                                                        </div>
+                                                    </div>                                                    
+                                                </div>
+                                                <div id="s-f9b5c57d-93c1-481e-a741-91258c576db0" class="shg-c">
+                                                    <div class="shogun-form-text-input">
+                                                        <label class="shogun-form-label">Phone Number</label>
+
+                                                        <input
+                                                            id="input-s-f9b5c57d-93c1-481e-a741-91258c576db0"
+                                                            class="shogun-form-box-field shogun-form-text-input-field"
+                                                            name="Phone Number"
+                                                            placeholder=""
+                                                            type="text"
+                                                        />
+                                                    </div>
+
+                                                    <script type="text/javascript">
+                                                        window.SHOGUN_FORM_TEXTAREA_ELEMENTS = window.SHOGUN_FORM_TEXTAREA_ELEMENTS || new Array();
+                                                        window.SHOGUN_FORM_TEXTAREA_ELEMENTS.push({ uuid: "s-f9b5c57d-93c1-481e-a741-91258c576db0" });
+                                                    </script>
+                                                </div>
+                                                <!-- <div class="shogun-form-success-msg">
+                                                    <svg width="24" height="24" viewBox="-1 -1 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path
+                                                            d="M18.48 6.45a1.25 1.25 0 00-1.747.264l-5.924 8.04-3.767-3.014a1.251 1.251 0 00-1.563 1.953l4.783 3.826a1.263 1.263 0 001.787-.235l6.7-9.087a1.25 1.25 0 00-.269-1.748z"
+                                                            fill="#000"
+                                                        />
+                                                        <path
+                                                            fill-rule="evenodd"
+                                                            clip-rule="evenodd"
+                                                            d="M0 12C0 5.373 5.373 0 12 0c6.625.007 11.993 5.375 12 12 0 6.627-5.373 12-12 12S0 18.627 0 12zm2 0c0 5.523 4.477 10 10 10 5.52-.006 9.994-4.48 10-10 0-5.523-4.477-10-10-10S2 6.477 2 12z"
+                                                            fill="#000"
+                                                        />
+                                                    </svg>
+                                                    <span>Thank you!</span>
+                                                </div> -->
+                                                <style>
+                                                    #s-7fb45759-cda0-4650-b566-aa21e8058601 .shg-row {
+                                                        position: relative;
+                                                    }                                            
+                                                    .browse-guide {
+                                                        font-style: italic;
+                                                        font-size: 0.95rem;
+                                                    }
+                                                    .browse-file-wrap {
+                                                        width: 100%;                                                                                                                  
+                                                        padding: 0;
+                                                    }
+                                                    .browse-file-action {
+                                                        width: 100%;
+                                                        display: flex;
+                                                    }                             
+                                                    .browse-file-wrap input[type="text"]{
+                                                        width: calc(100% - 145px);                                                
+                                                        padding: 11px 17px;
+                                                        border: 1px solid #000;
+                                                        transition: all .2s ease-in;
+                                                        -webkit-transition: all .2s ease-in;
+                                                        -moz-transition: all .2s ease-in;
+                                                        -o-transition: all .2s ease-in;                                                
+                                                    }
+                                                    .browse-file-wrap svg {
+                                                        display: none;
+                                                        position: sticky;
+                                                        left: calc(47% - 100px);
+                                                    }
+                                                    .browse-file-wrap label {
+                                                        cursor: pointer;
+                                                        color: #fff;
+                                                        text-transform: uppercase;
+                                                        padding: 12px 0;
+                                                        text-align: center;
+                                                        width: 145px;
+                                                        border: none;
+                                                        background-color: #000;
+                                                        transition: all .2s ease-in;
+                                                        -webkit-transition: all .2s ease-in;
+                                                        -moz-transition: all .2s ease-in;
+                                                        -o-transition: all .2s ease-in;
+                                                    }
+                                                    .browse-file-wrap label:hover {
+                                                        background-color: #939393;
+                                                    }
+                                                    .browse-file-preview {
+                                                        display: none;
+                                                        flex-wrap: wrap;
+                                                        justify-content: center;
+                                                        align-items: center;
+                                                        margin: 0 auto;
+                                                    }
+                                                    .browse-file-preview div {
+                                                        max-width: 100%;
+                                                        max-height: 100px;
+                                                        margin: 10px;
+                                                        position: relative;
+                                                        padding: 20px;
+                                                        box-sizing: content-box;
+                                                    }
+                                                    .browse-file-preview img, .browse-file-preview video {
+                                                        max-width: 100%;
+                                                        max-height: 100px;
+                                                        margin: 10px;
+                                                        position: relative;
+                                                    }
+                                                    .browse-file-preview div.preview::after {
+                                                        content: url("data:image/svg+xml; utf8, <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><path d='M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5 0-200-89.5-200-200S145.5 56 256 56s200 89.5 200 200-89.5 200-200 200zm101.8-262.2L295.6 256l62.2 62.2c4.7 4.7 4.7 12.3 0 17l-22.6 22.6c-4.7 4.7-12.3 4.7-17 0L256 295.6l-62.2 62.2c-4.7 4.7-12.3 4.7-17 0l-22.6-22.6c-4.7-4.7-4.7-12.3 0-17l62.2-62.2-62.2-62.2c-4.7-4.7-4.7-12.3 0-17l22.6-22.6c4.7-4.7 12.3-4.7 17 0l62.2 62.2 62.2-62.2c4.7-4.7 12.3-4.7 17 0l22.6 22.6c4.7 4.7 4.7 12.3 0 17z'/></svg>");
+                                                        position: absolute;
+                                                        right: 10px;
+                                                        top: 10px;
+                                                        width: 30px;
+                                                        box-shadow: 0 0 50px 0 #fff;
+                                                        cursor: pointer;
+                                                    }
+                                                    .browse-file-preview div.done::after {
+                                                        content: url("data:image/svg+xml; utf8, <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><path style='fill: green' d='M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z'/></svg>");
+                                                        position: absolute;
+                                                        right: 10px;
+                                                        bottom: 10px;
+                                                        width: 30px;
+                                                        box-shadow: 0 0 50px 0 #fff;                                                
+                                                    }
+                                                    .browse-file-preview div.add {
+                                                        height: 100px;
+                                                        width: 100px;
+                                                        border: 1px solid #ccc;
+                                                        position: relative;                                                
+                                                    }
+                                                    .browse-file-preview div.add:hover, .browse-file-preview div.add:hover svg {
+                                                        border-color: #000;
+                                                        fill: #000;
+                                                    }
+                                                    .browse-file-preview div.add svg {
+                                                        fill: #585858;
+                                                        cursor: pointer;
+                                                        /* position: absolute;
+                                                        top: 50%;
+                                                        left: 50%;
+                                                        width: 30px;
+                                                        transform: translate(-50%, -50%); */
+                                                        display: block;
+                                                    }
+                                                    .btn-submit-total {
+                                                        display: inline-block;
+                                                        width: 120px;
+                                                        height: 41px;
+                                                        overflow: hidden;
+                                                        margin-top: 15px;
+                                                        margin-bottom: 15px;
+                                                        /* padding-top: 10px;
+                                                        padding-left: 20px;
+                                                        padding-bottom: 10px;
+                                                        padding-right: 20px; */
+                                                        padding: 10px 0;
+                                                        text-align: center;
+                                                        border-radius: 2px;
+                                                        color: #FFFFFF;
+                                                        background-color: #252525;
+                                                        text-align: center;
+                                                        cursor: pointer;
+                                                        border-width: 0;
+                                                    }
+                                                    .btn-submit-total:hover, .btn-submit-total:focus, .btn-submit-total:active {
+                                                        background-color: #ccc;
+                                                    }
+                                                    /* .browse-file-submit {
+                                                        margin-top: 20px 0;
+                                                        text-align: center;
+                                                        width: 100%;
+                                                        display: none;                                                
+                                                    }
+                                                    .browse-file-submit button {
+                                                        padding: 10px 20px;
+                                                        background: #000;
+                                                        color: #fff;                                                
+                                                        cursor: pointer;                                                
+                                                    }
+                                                    .browse-file-submit button:hover {
+                                                        background-color: #585858;
+                                                    } */
+                                                    #s-94983584-1546-40a9-8960-45609b1e0121 li {
+                                                        list-style: none;
+                                                    }
+                                                    .browse-file-preview .add label {
+                                                        display: block;
+                                                        position: absolute;
+                                                        top: 50%;
+                                                        left: 50%;
+                                                        width: 30px;
+                                                        transform: translate(-50%, -50%);
+                                                        background-color: transparent;
+        
+                                                        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"/></svg>');
+                                                        background-repeat: no-repeat;
+                                                        background-size: contain;
+                                                        width: 30px;
+                                                        height: 30px;
+                                                        color: transparent;
+                                                    }
+                                                    #s-1608cfd0-84ab-4e9f-bfa2-64407724adeb {
+                                                        padding: 13px 0 !important;
+                                                        position: relative;
+                                                    }
+                                                    #s-f9b5c57d-93c1-481e-a741-91258c576db0 .shogun-form-text-input-field {
+                                                        font-size: 20px;
+                                                    }
+                                                    @media only screen and (max-width: 445px) {
+                                                        .browse-file-action input[type="text"] {
+                                                            display: none;
+                                                        }
+                                                        .browse-file-action label {
+                                                            width: 100%;
+                                                        }
+                                                    }
+                                                </style>
+                                                <div style="margin: 20px 0 5px">                                            
+                                                    <label class="shogun-form-label">Upload your file(s):</label>
+                                                    <div class="browse-guide">Please remember to <strong>"Submit"</strong> and do not close the window until the upload is complete (<svg style="width: 15px; margin-left: 5px; margin-top: 5px;" xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><path style='fill: green' d='M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z'/></svg> will show)</div>
+                                                </div>
+                                                <div class="browse-file-wrap">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin: auto; background: rgb(255, 255, 255); shape-rendering: auto;" width="200px" height="200px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
+                                                        <circle cx="50" cy="50" r="32" stroke-width="8" stroke="#ca1e5c" stroke-dasharray="50.26548245743669 50.26548245743669" fill="none" stroke-linecap="round">
+                                                            <animateTransform attributeName="transform" type="rotate" repeatCount="indefinite" dur="2.6315789473684212s" keyTimes="0;1" values="0 50 50;360 50 50"></animateTransform>
+                                                        </circle>
+                                                    </svg>
+                                                    <div class="browse-file-preview"></div>
+                                                    <!-- <div class="browse-file-submit">
+                                                        <button>Submit</button>
+                                                    </div> -->
+                                                    <!-- <input type="file" id="btn-choose-file" onchange="readFile(this)" style="display: none;" accept=".png, .jpeg, .jpg, .mp4" multiple/> -->
+                                                    <div class="browse-file-action">
+                                                        <input type="text" readonly/>
+                                                        <label for="btn-choose-file">Upload</label>
+                                                        <input type="file" id="btn-choose-file" required="true" style="display: none;" onchange="readFile(this)" accept=".jpeg, .jpg, .mp4, .mov, .mpeg4, .avi, .wmv, .mpeg" size="145"/>
+                                                        <!-- <button onclick="document.getElementById('btn-choose-file').click()">Upload</button> -->
+                                                    </div>
+                                                </div>
+                                                <div id="s-e1c42feb-6a43-495d-bc84-6d66223bc0ea" class="shg-c" style="margin: 20px 0 0;">
+                                                    <div class="shogun-form-text-input">                                                        
+                                                        <label class="shogun-form-label">Or Paste your cloud file link with the photos and videos below (make sure we have permission to view it)</label>
+
+                                                        <textarea
+                                                            id="form-textarea-s-e1c42feb-6a43-495d-bc84-6d66223bc0ea"
+                                                            class="shogun-form-box-field shogun-form-text-input-field"
+                                                            name="Show your cloud file link"
+                                                            placeholder=""
+                                                        ></textarea>
+                                                    </div>
+
+                                                    <script type="text/javascript">
+                                                        window.SHOGUN_FORM_TEXTAREA_ELEMENTS = window.SHOGUN_FORM_TEXTAREA_ELEMENTS || new Array();
+                                                        window.SHOGUN_FORM_TEXTAREA_ELEMENTS.push({ uuid: "s-e1c42feb-6a43-495d-bc84-6d66223bc0ea" });
+                                                    </script>
+                                                </div>
+                                                <div id="s-02eefe6c-0049-49a3-9ca5-4578bf363d33-btn-wrapper" class="shg-c shg-btn-wrapper shg-align-center" style="display: none;">
+                                                    <button id="s-02eefe6c-0049-49a3-9ca5-4578bf363d33" class="shg-btn shg-cse shogun-form-box-submit" type="submit">Submit</button>
+                                                </div>
+                                            </form>
+
+                                            <script type="text/javascript">
+                                                window.SHOGUN_FORM_BOX = window.SHOGUN_FORM_BOX || new Array();
+                                                window.SHOGUN_FORM_BOX.push({
+                                                    uuid: "s-885b1f57-1930-4040-8a05-64d47a22c4d8",
+                                                    domain: "https://forms.getshogun.com",
+                                                    form_submission_email: `9iepXpwN4MMcMbIpKskYj0L/DnmijfvzZVQh4u8DjLw=
+  `,
+                                                    form_name: `Sign up for video contest`,
+                                                    site_id: "fb8c6090-a908-45e2-8617-89b82d7a20e6",
+                                                    form_href: "",
+                                                    form_same_window: "true",
+                                                });
+                                            </script>                                                                                                                                     
+                                            <div class="shg-c shg-btn-wrapper shg-align-center">
+                                                <button class="btn-submit-total" type="button" onclick="SubmitSignUp()">Submit</button>
+                                            </div>
+
+                                                <!-- <div class="shogun-form-success-msg">
+                                                    <svg width="24" height="24" viewBox="-1 -1 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path
+                                                            d="M18.48 6.45a1.25 1.25 0 00-1.747.264l-5.924 8.04-3.767-3.014a1.251 1.251 0 00-1.563 1.953l4.783 3.826a1.263 1.263 0 001.787-.235l6.7-9.087a1.25 1.25 0 00-.269-1.748z"
+                                                            fill="#000"
+                                                        />
+                                                        <path
+                                                            fill-rule="evenodd"
+                                                            clip-rule="evenodd"
+                                                            d="M0 12C0 5.373 5.373 0 12 0c6.625.007 11.993 5.375 12 12 0 6.627-5.373 12-12 12S0 18.627 0 12zm2 0c0 5.523 4.477 10 10 10 5.52-.006 9.994-4.48 10-10 0-5.523-4.477-10-10-10S2 6.477 2 12z"
+                                                            fill="#000"
+                                                        />
+                                                    </svg>
+                                                    <span>Thank you!</span>
+                                                </div>-->                                                                                                                      
+                                        </div>
+                                    </div>
+
+                                    <div class="shg-c-lg-2 shg-c-md-2 shg-c-sm-2 shg-c-xs-12"></div>
+                                </div>
+                            </div>
+
+                            <div class="shg-c" id="s-21f743e2-5a7b-4b6a-8bcc-f4ef0d1aa043">
+                                <div class="shg-row" data-col-grid-mode-on="">
+                                    <div class="shg-c-lg-1 shg-c-md-1 shg-c-sm-1 shg-c-xs-12"></div>
+                                    <div class="shg-c-lg-10 shg-c-md-10 shg-c-sm-10 shg-c-xs-12">
+                                        <div class="shg-c" id="s-4af02259-0b3c-4f62-ae48-7f30dd4605c7">
+                                            <div class="shg-row" data-col-grid-mode-on="">
+                                                <div class="shg-c-lg-6 shg-c-md-6 shg-c-sm-6 shg-c-xs-12">
+                                                    <div id="s-351c1405-9fe3-4130-a06f-abb698e0846c" class="shg-c shg-align-center">
+                                                        <div class="shogun-heading-component">
+                                                            <h1>Ends October 31 2021</h1>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="shg-c-lg-6 shg-c-md-6 shg-c-sm-6 shg-c-xs-12">
+                                                    <div id="s-368db5e2-1ae0-4eea-bc42-fc6492717726" class="shg-c">
+                                                        <div id="countdown-s-368db5e2-1ae0-4eea-bc42-fc6492717726" class="shogun-countdown shogun-countdown-medium">
+                                                            <div>
+                                                                <span class="days">00</span>
+                                                                <label>DAYS</label>
+                                                            </div>
+                                                            <span>:</span>
+                                                            <div>
+                                                                <span class="hours">00</span>
+                                                                <label>HOURS</label>
+                                                            </div>
+                                                            <span>:</span>
+                                                            <div>
+                                                                <span class="minutes">00</span>
+                                                                <label>MIN</label>
+                                                            </div>
+                                                            <span>:</span>
+                                                            <div>
+                                                                <span class="seconds">00</span>
+                                                                <label>SEC</label>
+                                                            </div>
+                                                        </div>
+
+                                                        <script type="text/javascript">
+                                                            if (window.SHOGUN_COUNTDOWNS === undefined) window.SHOGUN_COUNTDOWNS = new Array();
+
+                                                            window.SHOGUN_COUNTDOWNS.push({
+                                                                id: "#countdown-s-368db5e2-1ae0-4eea-bc42-fc6492717726",
+                                                                uuid: "s-368db5e2-1ae0-4eea-bc42-fc6492717726",
+                                                                isStatic: "",
+                                                                date: "1635652800000",
+                                                                days: 0,
+                                                                hours: 22,
+                                                                minutes: 45,
+                                                                seconds: 59,
+                                                            });
+                                                        </script>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div id="s-e7e2dbbb-44c0-4551-a7ce-a540ec04b505" class="shg-c shg-align-left">
+                                            <div class="shogun-heading-component">
+                                                <h1>
+                                                    The contest will close on October 31st 2021. We will then calculate the engagement points (view, likes and comments) the day after with the two
+                                                    participants with the highest points being named the 1st and 2nd place winners respectively.
+                                                </h1>
+                                            </div>
+                                        </div>
+
+                                        <div class="shg-c" id="s-3b1fedb0-b190-4e05-8b60-4e8c847a2a81">
+                                            <div class="shg-row" data-col-grid-mode-on="">
+                                                <div class="shg-c-lg-4 shg-c-md-4 shg-c-sm-4 shg-c-xs-12">
+                                                    <div id="s-37ecf8ad-8a1d-4601-8a71-18b10facf262" class="shg-c">
+                                                        <div class="shogun-icon-wrapper">
+                                                            <div class="shg-fa shg-fa-leaf shogun-icon"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div id="s-5d813eed-d7a4-40a6-881c-e9d1d63aab0b" class="shg-c">
+                                                        <div class="shg-rich-text shg-theme-text-content">
+                                                            <p style="text-align: center">
+                                                                <span style="font-size: 28px"><strong>1 point </strong><span style="font-weight: 400">for each view</span></span>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="shg-c-lg-4 shg-c-md-4 shg-c-sm-4 shg-c-xs-12">
+                                                    <div id="s-ac20d190-83af-4ce8-8f20-86860bfab0fe" class="shg-c">
+                                                        <div class="shogun-icon-wrapper">
+                                                            <div class="shg-fa shg-fa-thumbs-up shogun-icon"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div id="s-a47d95ab-efed-419e-b65b-b7b6f9ae6ecb" class="shg-c">
+                                                        <div class="shg-rich-text shg-theme-text-content">
+                                                            <p style="text-align: center">
+                                                                <span style="font-size: 28px"><strong>5 points</strong><span style="font-weight: 400"> for each like</span></span>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="shg-c-lg-4 shg-c-md-4 shg-c-sm-4 shg-c-xs-12">
+                                                    <div id="s-f9df3f8b-fef3-4aea-b33c-a0ea4c165f4a" class="shg-c">
+                                                        <div class="shogun-icon-wrapper">
+                                                            <div class="shg-fa shg-fa-certificate shogun-icon"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div id="s-662e580d-00e5-4478-aa33-d7d14e9bc225" class="shg-c">
+                                                        <div class="shg-rich-text shg-theme-text-content">
+                                                            <p style="text-align: center">
+                                                                <span style="font-size: 28px"><strong>10 points </strong><span style="font-weight: 400">for each comment</span></span>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="shg-c-lg-1 shg-c-md-1 shg-c-sm-1 shg-c-xs-12"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="shg-box-vertical-align-wrapper">
+                    <div class="shg-box shg-c" id="s-e2ff78aa-57c6-4f52-accd-d881eeaa49f7">
+                        <div class="shg-box-overlay"></div>
+                        <div class="shg-box-content">
+                            <div id="s-d1550ebd-2763-4f86-8e5e-db43c26be330" class="shg-c shg-align-center">
+                                <div class="shogun-heading-component">
+                                    <h1>Winners</h1>
+                                </div>
+                            </div>
+
+                            <div class="shg-c" id="s-693a8303-a211-482a-8634-88e881f0fed8">
+                                <div class="shg-row" data-col-grid-mode-on="">
+                                    <div class="shg-c-lg-4 shg-c-md-4 shg-c-sm-4 shg-c-xs-12">
+                                        <div id="s-91c3a06e-9395-4dd0-a630-4e94ac5f7ae8" class="shg-c">
+                                            <div class="shg-rich-text shg-theme-text-content">
+                                                <p style="text-align: center"><span style="color: #000000">- 1 -</span></p>
+                                                <p style="text-align: center">
+                                                    <span style="font-size: 24px"><strong>The 1st winner will get </strong><span style="font-weight: 400">US$1,000 Amazon gift card</span></span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="shg-c-lg-4 shg-c-md-4 shg-c-sm-4 shg-c-xs-12">
+                                        <div id="s-5486d2cd-3fa0-4f11-aab5-17d22c88717f" class="shg-c">
+                                            <div class="shg-rich-text shg-theme-text-content">
+                                                <p style="text-align: center"><span style="color: #000000">- 2 -</span></p>
+                                                <p style="text-align: center">
+                                                    <span style="font-size: 24px"><strong>The 2nd winner will get </strong><span style="font-weight: 400">US$300 Amazon gift card</span></span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="shg-c-lg-4 shg-c-md-4 shg-c-sm-4 shg-c-xs-12">
+                                        <div id="s-4eb85cd0-a8b6-43b0-a3cb-92c9edfe301a" class="shg-c">
+                                            <div class="shg-rich-text shg-theme-text-content">
+                                                <p style="text-align: center"><span style="color: #000000">- 3 -</span></p>
+                                                <p>
+                                                    <span style="font-size: 24px"><strong>All participants also get:</strong></span>
+                                                </p>
+                                                <p style="text-align: left"><span style="font-weight: 400">$50 store credit for submitting a video AND before/after photo</span></p>
+                                                <p style="text-align: left"><span style="font-weight: 400">$100 store credit for submitting a how-to video AND before/after photo</span></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="shg-box-vertical-align-wrapper">
+                    <div class="shg-box shg-c" id="s-5d429ae5-9453-4590-ad89-d1b77b508332">
+                        <div class="shg-box-overlay"></div>
+                        <div class="shg-box-content">
+                            <div class="shg-c" id="s-c3c17010-5349-4f38-927b-3803e994e9d3">
+                                <div class="shg-row" data-col-grid-mode-on="">
+                                    <div class="shg-c-lg-5 shg-c-md-5 shg-c-sm-5 shg-c-xs-12">
+                                        <div id="s-d1547aa8-f1b5-4a3c-a034-4c1b2f6712a4" class="shg-c shg-align-center">
+                                            <div class="shogun-heading-component">
+                                                <h1>Overview</h1>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="shg-c-lg-7 shg-c-md-7 shg-c-sm-7 shg-c-xs-12">
+                                        <div id="s-776236a7-bf35-4881-993c-5f68ab15905e" class="shg-c">
+                                            <div class="shg-rich-text shg-theme-text-content">
+                                                <p style="text-align: center">
+                                                    <span style="font-weight: 400; font-size: 18px"
+                                                        >All you have to do is submit a video in addition to photos of you before and after you put on a Superhairpieces product whether it's a wig,
+                                                        toupee, topper, hair extensions or even eyelash extensions!</span
+                                                    >
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div id="s-4c7dbe82-e4f3-4736-a1a8-f3f8f31f7672" class="shg-c">
+                                            <div class="shg-rich-text shg-theme-text-content">
+                                                <p>
+                                                    <span style="font-size: 18px"
+                                                        ><strong
+                                                            ><span style="color: #000000"
+                                                                ><span style="font-weight: 400">We will then upload these videos on the </span>official Superhairpieces YouTube channel<span
+                                                                    style="font-weight: 400"
+                                                                >
+                                                                    and whoever gets the </span
+                                                                >most engagement points <span style="font-weight: 400">by the contest deadline will receive a grand prize of a </span>US$1,000 Amazon
+                                                                gift card.</span
+                                                            ></strong
+                                                        ></span
+                                                    >
+                                                </p>
+                                                <p>
+                                                    <span style="font-weight: 400; font-size: 18px">-- You will receive $50 in store credit just for submitting a video AND before/after photos</span>
+                                                </p>
+                                                <p>
+                                                    <span style="font-weight: 400; font-size: 18px"
+                                                        >-- You will receive $100 in store credit for submitting a video of the step-by-step process of you installing the product AND before/after
+                                                        photos</span
+                                                    >
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="s-3bf4bbf6-8e07-4774-8fb5-eafb0a223b98" class="shg-c shg-align-center">
+                    <div class="shogun-heading-component">
+                        <h1>Eligibility</h1>
+                    </div>
+                </div>
+                <div id="s-114e2e57-c895-4136-8932-ce8b4398d000" class="shg-c shg-align-center">
+                    <div class="shogun-heading-component">
+                        <h1>To participate, the Participant (“You”) must be an existing or new Superhairpieces customer and have purchased our product(s).</h1>
+                    </div>
+                </div>
+                <div id="s-a000c5ba-7fde-4476-9fc0-cbf6bda4b1d8" class="shg-c shg-align-center">
+                    <div class="shogun-heading-component">
+                        <h1>The video contest is open to residents worldwide. Participants must be 18 years of age as of their date of entry in this contest in order to qualify.</h1>
+                    </div>
+                </div>
+                <div class="shg-box-vertical-align-wrapper">
+                    <div class="shg-box shg-c" id="s-e4cbd89e-1979-46a3-b792-737ec33c287b">
+                        <div class="shg-box-overlay"></div>
+                        <div class="shg-box-content">
+                            <div class="shg-c" id="s-4aedee56-7b7f-45df-aced-08761de8a9f2">
+                                <div class="shg-row" data-col-grid-mode-on="">
+                                    <div class="shg-c-lg-5 shg-c-md-5 shg-c-sm-5 shg-c-xs-12">
+                                        <div id="s-ed03a4bf-07c3-4458-934f-bb878026710f" class="shg-c shg-align-left">
+                                            <div class="shogun-heading-component">
+                                                <h1>How to Enter</h1>
+                                            </div>
+                                        </div>
+                                        <div id="s-02bc507d-e67b-44c3-aab6-4bddbfa5794e" class="shg-c">
+                                            <div class="shg-rich-text shg-theme-text-content">
+                                                <ol>
+                                                    <ul>
+                                                        <li style="font-weight: 400" aria-level="1">
+                                                            <span style="font-weight: 400; font-size: 16px"
+                                                                >Fill out your details in the contest at the bottom so we can link your video with your account details when you submit it.</span
+                                                            >
+                                                        </li>
+                                                        <li style="font-weight: 400" aria-level="1">
+                                                            <span style="font-size: 16px"
+                                                                ><span style="font-weight: 400"
+                                                                    >Upload your video(s) and photos to the designated Dropbox link which we will provide along with the photos. See </span
+                                                                ><strong>Photo and Video Requirements.</strong></span
+                                                            >
+                                                        </li>
+                                                        <li style="font-weight: 400" aria-level="1">
+                                                            <span style="font-weight: 400; font-size: 16px"
+                                                                >If everything fits the requirements, we will upload your video on our YouTube channel within a few days of your submission and apply
+                                                                the store credit to your Superhairpieces account!</span
+                                                            >
+                                                        </li>
+                                                    </ul>
+                                                </ol>
+                                                <ul>
+                                                    <li aria-level="1">
+                                                        <span style="font-size: 16px"
+                                                            ><strong>Note: The earlier you submit your video, the more chances you will have of getting engagement points!</strong></span
+                                                        >
+                                                    </li>
+                                                </ul>
+                                                <p> </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="shg-c-lg-7 shg-c-md-7 shg-c-sm-7 shg-c-xs-12">
+                                        <div class="shg-c shogun-image-container shg-align-center" style="" id="s-38d00055-b416-4326-a6d6-437c0f58f822">
+                                            <img
+                                                data-src="https://i.shgcdn.com/7d9a53c5-da44-464a-85dc-daa0d7c12b78/-/format/auto/-/preview/3000x3000/-/quality/lighter/"
+                                                width=""
+                                                height=""
+                                                style=""
+                                                alt=""
+                                                class="shogun-image shogun-lazyload"
+                                            />
+                                        </div>
+
+                                        <script type="text/javascript">
+                                            window.SHOGUN_IMAGE_ELEMENTS = window.SHOGUN_IMAGE_ELEMENTS || new Array();
+                                            window.SHOGUN_IMAGE_ELEMENTS.push({ hoverImage: "", uuid: "s-38d00055-b416-4326-a6d6-437c0f58f822" });
+                                        </script>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="s-50d2cad9-7a44-4ebb-a2b9-03106088a339" class="shg-c shg-align-center">
+                    <div class="shogun-heading-component">
+                        <h1>Photo and Video Requirements</h1>
+                    </div>
+                </div>
+                <div class="shg-box-vertical-align-wrapper">
+                    <div class="shg-box shg-c" id="s-ac444482-adf2-4d11-8545-92d81464cff3">
+                        <div class="shg-box-overlay"></div>
+                        <div class="shg-box-content">
+                            <div class="shg-c" id="s-7a0cefba-93b5-408c-b51c-757a56eaef50">
+                                <div class="shg-row" data-col-grid-mode-on="">
+                                    <div class="shg-c-lg-5 shg-c-md-5 shg-c-sm-5 shg-c-xs-12">
+                                        <div id="s-d0637160-700c-45fe-971f-82e78408f23f" class="shg-c shg-align-left">
+                                            <div class="shogun-heading-component">
+                                                <h1>To get $50 store credit</h1>
+                                            </div>
+                                        </div>
+                                        <div id="s-778e6221-cc2f-4946-8326-270f9e3f9ed0" class="shg-c">
+                                            <div class="shg-rich-text shg-theme-text-content">
+                                                <p><span style="font-weight: 400; font-size: 16px">Submit a video AND before/after photos</span></p>
+                                                <ul>
+                                                    <li aria-level="1">
+                                                        <span style="font-size: 16px"><strong>Photo requirements</strong></span>
+                                                    </li>
+                                                    <ul>
+                                                        <ul>
+                                                            <li style="font-weight: 400" aria-level="2">
+                                                                <span style="font-weight: 400; font-size: 16px"
+                                                                    >The photo's shorter side shouldn't be smaller than 1200 px and show the before/after hair from front, back, and top.
+                                                                </span>
+                                                            </li>
+                                                            <li style="font-weight: 400" aria-level="2"><span style="font-weight: 400; font-size: 16px">Format: JPG, JPEG</span></li>
+                                                        </ul>
+                                                    </ul>
+                                                </ul>
+                                                <ul>
+                                                    <li aria-level="1">
+                                                        <span style="font-size: 16px"><strong>Video requirements</strong></span>
+                                                    </li>
+                                                </ul>
+                                                <ul>
+                                                    <ul>
+                                                        <li style="font-weight: 400" aria-level="2">
+                                                            <span style="font-size: 16px"
+                                                                ><span style="font-weight: 400">The video should be </span><strong>landscape </strong
+                                                                ><span style="font-weight: 400"
+                                                                    >and can either be about: 1) a quick before and after video 2) a short review about the hair system/extension, or 3) you rocking
+                                                                    your new hair while doing different activities</span
+                                                                ></span
+                                                            >
+                                                        </li>
+                                                        <li style="font-weight: 400" aria-level="2"><span style="font-weight: 400; font-size: 16px">Format: MP4, MOV, MPEG4, AVI, WMV, MPEG</span></li>
+                                                        <li style="font-weight: 400" aria-level="2"><span style="font-weight: 400; font-size: 16px">Size: at least 1920×1080 pixels.</span></li>
+                                                        <li style="font-weight: 400" aria-level="2">
+                                                            <span style="font-size: 16px"><span style="font-weight: 400">The minimum duration of the video is </span><strong>60 seconds</strong></span>
+                                                        </li>
+                                                    </ul>
+                                                    <li style="font-weight: 400" aria-level="1">
+                                                        <span style="font-size: 16px"
+                                                            ><span style="font-weight: 400">Your face </span><strong>should be visible</strong
+                                                            ><span style="font-weight: 400">
+                                                                in both the video and photos. (If the participant is a professional or salon, the person or client in the photos and video should have
+                                                                their face visible)</span
+                                                            ></span
+                                                        >
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="shg-c-lg-7 shg-c-md-7 shg-c-sm-7 shg-c-xs-12">
+                                        <div class="shg-c shogun-image-container shg-align-center" style="" id="s-c740a4ea-e321-4c7e-9bff-e2baf020632b">
+                                            <img
+                                                data-src="https://i.shgcdn.com/dde61aa4-cdac-422a-b9d1-5715ce2da992/-/format/auto/-/preview/3000x3000/-/quality/lighter/"
+                                                width=""
+                                                height=""
+                                                style=""
+                                                alt=""
+                                                class="shogun-image shogun-lazyload"
+                                            />
+                                        </div>
+
+                                        <script type="text/javascript">
+                                            window.SHOGUN_IMAGE_ELEMENTS = window.SHOGUN_IMAGE_ELEMENTS || new Array();
+                                            window.SHOGUN_IMAGE_ELEMENTS.push({ hoverImage: "", uuid: "s-c740a4ea-e321-4c7e-9bff-e2baf020632b" });
+                                        </script>
+
+                                        <div class="shg-c shogun-image-container shg-align-center" style="" id="s-57b82199-a77c-499e-a90b-e366311bc7cd">
+                                            <img
+                                                data-src="https://i.shgcdn.com/e44a8b8a-89f1-4787-8f11-86b0732855db/-/format/auto/-/preview/3000x3000/-/quality/lighter/"
+                                                width=""
+                                                height=""
+                                                style=""
+                                                alt=""
+                                                class="shogun-image shogun-lazyload"
+                                            />
+                                        </div>
+
+                                        <script type="text/javascript">
+                                            window.SHOGUN_IMAGE_ELEMENTS = window.SHOGUN_IMAGE_ELEMENTS || new Array();
+                                            window.SHOGUN_IMAGE_ELEMENTS.push({ hoverImage: "", uuid: "s-57b82199-a77c-499e-a90b-e366311bc7cd" });
+                                        </script>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="shg-c" id="s-643a318a-0286-4db9-9492-67b6157e3d50">
+                                <div class="shg-row" data-col-grid-mode-on="">
+                                    <div class="shg-c-lg-5 shg-c-md-5 shg-c-sm-5 shg-c-xs-12">
+                                        <div id="s-fe25efb2-8993-441b-b7ad-a5b1c63d79dd" class="shg-c shg-align-left">
+                                            <div class="shogun-heading-component">
+                                                <h1>To get $100 store credit</h1>
+                                            </div>
+                                        </div>
+                                        <div id="s-9037a473-64a2-44bd-bf28-856cb0b9777f" class="shg-c">
+                                            <div class="shg-rich-text shg-theme-text-content">
+                                                <p><span style="font-weight: 400; font-size: 16px">Submit a video AND before/after photos</span></p>
+                                                <ul>
+                                                    <li aria-level="1">
+                                                        <span style="font-size: 16px"><strong>Photo requirements</strong></span>
+                                                    </li>
+                                                    <ul>
+                                                        <ul>
+                                                            <li style="font-weight: 400" aria-level="2">
+                                                                <span style="font-weight: 400; font-size: 16px"
+                                                                    >The photo's shorter side shouldn't be smaller than 1200 px and show the before/after hair from front, back, and top.
+                                                                </span>
+                                                            </li>
+                                                            <li style="font-weight: 400" aria-level="2"><span style="font-weight: 400; font-size: 16px">Format: JPG, JPEG</span></li>
+                                                        </ul>
+                                                    </ul>
+                                                </ul>
+                                                <ul>
+                                                    <li aria-level="1">
+                                                        <span style="font-size: 16px"><strong>Video requirements</strong></span>
+                                                    </li>
+                                                </ul>
+                                                <ul>
+                                                    <ul>
+                                                        <li style="font-weight: 400" aria-level="2">
+                                                            <span style="font-size: 16px"
+                                                                ><span style="font-weight: 400">The video should be in landscape and shows </span><strong>step by step process</strong
+                                                                ><span style="font-weight: 400"> of installing the hair system/extensions from beginning to end</span></span
+                                                            >
+                                                        </li>
+                                                        <li style="font-weight: 400" aria-level="2"><span style="font-weight: 400; font-size: 16px">Format: MP4, MOV, MPEG4, AVI, WMV, MPEG</span></li>
+                                                        <li style="font-weight: 400" aria-level="2"><span style="font-weight: 400; font-size: 16px">Size: at least 1920×1080 pixels.</span></li>
+                                                        <li style="font-weight: 400" aria-level="2">
+                                                            <span style="font-size: 16px"><span style="font-weight: 400">The minimum duration of the video is </span><strong>2 minutes</strong></span>
+                                                        </li>
+                                                    </ul>
+                                                    <li style="font-weight: 400" aria-level="1">
+                                                        <span style="font-size: 16px"
+                                                            ><span style="font-weight: 400">Your face </span><strong>should be visible</strong
+                                                            ><span style="font-weight: 400">
+                                                                in both the video and photos. (If the participant is a professional or salon, the person or client in the photos and video should have
+                                                                their face visible)</span
+                                                            ></span
+                                                        >
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="shg-c-lg-7 shg-c-md-7 shg-c-sm-7 shg-c-xs-12">
+                                        <div class="shg-c shogun-image-container shg-align-center" style="" id="s-05a90ac6-b9e2-4e5a-9781-1732049e2946">
+                                            <img
+                                                data-src="https://i.shgcdn.com/b0f0cb90-204c-4ec8-9862-8a4bf554a97c/-/format/auto/-/preview/3000x3000/-/quality/lighter/"
+                                                width=""
+                                                height=""
+                                                style=""
+                                                alt=""
+                                                class="shogun-image shogun-lazyload"
+                                            />
+                                        </div>
+
+                                        <script type="text/javascript">
+                                            window.SHOGUN_IMAGE_ELEMENTS = window.SHOGUN_IMAGE_ELEMENTS || new Array();
+                                            window.SHOGUN_IMAGE_ELEMENTS.push({ hoverImage: "", uuid: "s-05a90ac6-b9e2-4e5a-9781-1732049e2946" });
+                                        </script>
+
+                                        <div class="shg-c shogun-image-container shg-align-center" style="" id="s-378c532c-8e74-4c89-a38c-1139cac37a68">
+                                            <img
+                                                data-src="https://i.shgcdn.com/daa44435-79e8-4ecc-804e-a430481f386b/-/format/auto/-/preview/3000x3000/-/quality/lighter/"
+                                                width=""
+                                                height=""
+                                                style=""
+                                                alt=""
+                                                class="shogun-image shogun-lazyload"
+                                            />
+                                        </div>
+
+                                        <script type="text/javascript">
+                                            window.SHOGUN_IMAGE_ELEMENTS = window.SHOGUN_IMAGE_ELEMENTS || new Array();
+                                            window.SHOGUN_IMAGE_ELEMENTS.push({ hoverImage: "", uuid: "s-378c532c-8e74-4c89-a38c-1139cac37a68" });
+                                        </script>
+                                    </div>
+                                </div>
+                            </div>                            
+
+                            <div id="s-25b03269-cb43-48e7-9dd7-b589db2558c3" class="shg-c shg-align-center">
+                                <div class="shogun-heading-component">
+                                    <h1>All set. You are in.</h1>
+                                </div>
+                            </div>
+                            <div id="s-df8d6f8e-2378-4da6-a132-3e1177724810" class="shg-c">
+                                <hr />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="shg-box-vertical-align-wrapper">
+                    <div
+                        class="shg-box shg-c shogun-lazyload"
+                        data-bgset="https://i.shgcdn.com/10b1b5f6-df70-4604-9077-e37b3722f94f/-/format/auto/-/preview/3000x3000/-/quality/lighter/"
+                        id="s-2952ce8f-9732-40a1-87bf-1c0479cd05ab"
+                    >
+                        <div class="shg-box-overlay"></div>
+                        <div class="shg-box-content">
+                            <div class="shg-c" id="s-ab7a67bd-a07b-4a9f-b723-2f2426d79b80">
+                                <div class="shg-row" data-col-grid-mode-on="">
+                                    <div class="shg-c-lg-2 shg-c-md-2 shg-c-sm-2 shg-c-xs-12"></div>
+                                    <div class="shg-c-lg-8 shg-c-md-8 shg-c-sm-8 shg-c-xs-12">
+                                        <div id="s-65021203-6d07-4ce6-b97e-f2b50fe1e220" class="shg-c">
+                                            <div class="shogun-icon-wrapper">
+                                                <div class="shg-fa shg-fa-free-code-camp shogun-icon"></div>
+                                            </div>
+                                        </div>
+                                        <div id="s-9eab977c-3cdb-4795-91c6-90eff5c2cbbe" class="shg-c shg-align-center">
+                                            <div class="shogun-heading-component">
+                                                <h1>Other Terms and Conditions</h1>
+                                            </div>
+                                        </div>
+                                        <div id="s-94983584-1546-40a9-8960-45609b1e0121" class="shg-c">
+                                            <div class="shg-rich-text shg-theme-text-content">
+                                                <ul>
+                                                    <li style="font-weight: 400" aria-level="1">
+                                                        <span style="font-weight: 400; color: #ffffff"
+                                                            >Superhairpieces (SHP) will get full rights to the photo(s) and video(s) the Participant (“You”) submits. By submitting an entry to this
+                                                            Contest, you grant SHP a worldwide, royalty-free, perpetual, non-exclusive right and license to copy, distribute, and display each submitted
+                                                            entry, in any media including posting in an online gallery, publication(s), and various marketing materials, and with right to use, copy,
+                                                            modify, edit, and create derivative works therefrom. By entering the contest, you understand that your entry (or portion thereof) may be
+                                                            posted online, and to be viewed by members of the general public.</span
+                                                        >
+                                                    </li>
+                                                </ul>
+                                                <p style="text-align: center"> </p>
+                                                <ul>
+                                                    <li style="font-weight: 400" aria-level="1">
+                                                        <span style="font-weight: 400; color: #ffffff"
+                                                            >Always get express permission from anyone who will appear in your video, in its original form as submitted and also in any (derivative)
+                                                            form SHP may later create of the video. Entries must be original work and not violate anyone’s proprietary or intellectual property rights.
+                                                            Failure to follow this rule can result in your disqualification. You agree to defend or settle against any claims that arise as a result of
+                                                            infringement at your sole expense, and you shall indemnify, defend and hold harmless Superhairpieces from any impending suit or dispute as a
+                                                            result.</span
+                                                        >
+                                                    </li>
+                                                </ul>
+                                                <p style="text-align: center"> </p>
+                                                <ul>
+                                                    <li style="font-weight: 400" aria-level="1">
+                                                        <span style="font-weight: 400; color: #ffffff"
+                                                            >No offensive or sensitive content is tolerated, that includes religious or anti/religious, racial, political, obscene, violent, or
+                                                            pornographic content.</span
+                                                        >
+                                                    </li>
+                                                </ul>
+                                                <p style="text-align: center"> </p>
+                                                <ul>
+                                                    <li style="font-weight: 400" aria-level="1">
+                                                        <span style="font-weight: 400; color: #ffffff"
+                                                            >By entering this contest, you agree to abide by the contest’s official rules and decisions, which are fully and unconditionally binding in
+                                                            all respects. SHP reserves the right to refuse, withdraw, or disqualify any entry at any time at our sole discretion.</span
+                                                        >
+                                                    </li>
+                                                </ul>
+                                                <p style="text-align: center"> </p>
+                                                <ul>
+                                                    <li style="font-weight: 400" aria-level="1">
+                                                        <span style="font-weight: 400; color: #ffffff"
+                                                            >The contest begins on April 1, 2021 at 12:00 a.m. EST and ends on October 31, 2021 at 12:00 a.m. EST (“Entry Period”). To be eligible for
+                                                            the contest, entries must be received within the specified Entry Period.</span
+                                                        >
+                                                    </li>
+                                                </ul>
+                                                <p style="text-align: center"> </p>
+                                                <ul>
+                                                    <li style="font-weight: 400" aria-level="1">
+                                                        <span style="font-weight: 400; color: #ffffff"
+                                                            >Prizes: There will be two (“Winners”) in this contest. One Grand Prize shall be awarded to the participant with the most engagement points.
+                                                            The Grand Prize consists of an Amazon gift card worth $1,000 USD. The participant with the second-most engagement points will be awarded
+                                                            with an Amazon gift card worth $300 USD. Prizes will be awarded only upon winner verification and approval by Superhairpieces. The winner
+                                                            will be notified by email within seven days after the engagement points are calculated. If the winner is unable to be contacted within 30
+                                                            days after being selected or is ineligible, the prize will be forfeited. There shall be no cash or other prize substitution permitted except
+                                                            at our discretion. The prize is non-transferable. The Winners, upon acceptance of their prizes, are solely responsible for all expenses
+                                                            related to the prize, including without limitation any and all local, state, and federal taxes. The Grand Prize Winner may have provide us
+                                                            with a valid taxpayer-identification number before we can award the prize.</span
+                                                        >
+                                                    </li>
+                                                </ul>
+                                                <p style="text-align: center"> </p>
+                                                <ul>
+                                                    <li style="font-weight: 400" aria-level="1">
+                                                        <span style="font-weight: 400; color: #ffffff"
+                                                            >By entering this contest, you acknowledge you are eligible to participate based on the eligibility requirements explained. You also agree
+                                                            to accept the decisions of the Sponsor as final and binding as it relates to the content of this contest. Lastly, you also agree you have
+                                                            affirmatively reviewed, accepted, and agreed to all of the Official Rules.</span
+                                                        >
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="shg-c-lg-2 shg-c-md-2 shg-c-sm-2 shg-c-xs-12"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="https://cdn.getshogun.com/607084d219471b00de47d4e7.js" async></script>    
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    let uploadFiles = [];
+    let email=null;    
+    $("#input-s-618a938d-230b-40c8-a834-f7e3b5867595").change(() => {        
+        email = $("#input-s-618a938d-230b-40c8-a834-f7e3b5867595").val();
+    });
+    // $(".browse-file-submit button").click(()=> {
+    //     $(".browse-file-wrap svg").show();
+    //     $(".browse-file-preview").hide();
+    //     $(".browse-file-submit").hide();
+    //     uploadFile(uploadFiles, 0);        
+    // })
+    function SubmitSignUp() {
+        // $(".browse-file-submit").hide();
+        $("#s-02eefe6c-0049-49a3-9ca5-4578bf363d33").trigger("click");
+        $("#s-02eefe6c-0049-49a3-9ca5-4578bf363d33").trigger('touchstart');
+
+        if ($("#input-s-618a938d-230b-40c8-a834-f7e3b5867595").val().length>0 &&
+        $("#input-s-ab912783-1a45-479a-8c3b-a35e6fd4af71").val().length>0 && 
+        $("#custom-input--product").val().length>0) {            
+            // $(".btn-submit-total").hide();
+            $(".btn-submit-total").html(`<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin: auto; background: rgb(37, 37, 37); display: block; shape-rendering: auto; transform: translateY(-38%);" width="80px" height="80px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid"> <circle cx="84" cy="50" r="10" fill="#905a39"> <animate attributeName="r" repeatCount="indefinite" dur="0.3846153846153846s" calcMode="spline" keyTimes="0;1" values="6;0" keySplines="0 0.5 0.5 1" begin="0s"></animate> <animate attributeName="fill" repeatCount="indefinite" dur="1.5384615384615383s" calcMode="discrete" keyTimes="0;0.25;0.5;0.75;1" values="#905a39;#ffdcb5;#fabb95;#c78d69;#905a39" begin="0s"></animate> </circle><circle cx="16" cy="50" r="10" fill="#905a39"> <animate attributeName="r" repeatCount="indefinite" dur="1.5384615384615383s" calcMode="spline" keyTimes="0;0.25;0.5;0.75;1" values="0;0;6;6;6" keySplines="0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1" begin="0s"></animate> <animate attributeName="cx" repeatCount="indefinite" dur="1.5384615384615383s" calcMode="spline" keyTimes="0;0.25;0.5;0.75;1" values="16;16;16;50;84" keySplines="0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1" begin="0s"></animate> </circle><circle cx="50" cy="50" r="10" fill="#c78d69"> <animate attributeName="r" repeatCount="indefinite" dur="1.5384615384615383s" calcMode="spline" keyTimes="0;0.25;0.5;0.75;1" values="0;0;6;6;6" keySplines="0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1" begin="-0.3846153846153846s"></animate> <animate attributeName="cx" repeatCount="indefinite" dur="1.5384615384615383s" calcMode="spline" keyTimes="0;0.25;0.5;0.75;1" values="16;16;16;50;84" keySplines="0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1" begin="-0.3846153846153846s"></animate> </circle><circle cx="84" cy="50" r="10" fill="#fabb95"> <animate attributeName="r" repeatCount="indefinite" dur="1.5384615384615383s" calcMode="spline" keyTimes="0;0.25;0.5;0.75;1" values="0;0;6;6;6" keySplines="0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1" begin="-0.7692307692307692s"></animate> <animate attributeName="cx" repeatCount="indefinite" dur="1.5384615384615383s" calcMode="spline" keyTimes="0;0.25;0.5;0.75;1" values="16;16;16;50;84" keySplines="0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1" begin="-0.7692307692307692s"></animate> </circle><circle cx="16" cy="50" r="10" fill="#ffdcb5"> <animate attributeName="r" repeatCount="indefinite" dur="1.5384615384615383s" calcMode="spline" keyTimes="0;0.25;0.5;0.75;1" values="0;0;6;6;6" keySplines="0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1" begin="-1.1538461538461537s"></animate> <animate attributeName="cx" repeatCount="indefinite" dur="1.5384615384615383s" calcMode="spline" keyTimes="0;0.25;0.5;0.75;1" values="16;16;16;50;84" keySplines="0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1" begin="-1.1538461538461537s"></animate> </circle> </svg>`);
+            $(".btn-submit-total").attr("disabled", true);                    
+            if (uploadFiles.length>0) {
+                $(".browse-file-wrap svg").show();
+                $(".browse-file-preview").hide();
+                fetch('https://shp-webserver.glitch.me/dropbox-token')
+                .then(r=>r.json())        
+                .then(d=>{
+                    if (d.token) {
+                        uploadFile(uploadFiles, 0, d.token);
+                    }
+                })
+                .catch(e=>{
+                    console.log(e);
+                    alert('Error in getting permission for uploading. Please contact Administrator');
+                }); 
+            } else {
+                $(".btn-submit-total").html('Sent');
+                $(".btn-submit-total").css({"background-color": "#ccc", "color": "#000"});
+            }
+        }
+        /////////////////////////////////   
+        // console.log(typeof getAllFieldValues);
+        // if (typeof submitForm == 'function') { 
+            
+        //     let form1 = window.SHOGUN_FORM_BOX.filter(f=>f.uuid=='s-885b1f57-1930-4040-8a05-64d47a22c4d8');
+        //     if (form1.length>0) {
+        //         submitForm(form1[0]);
+        //     }                
+        //     if ($("#form-textarea-s-e1c42feb-6a43-495d-bc84-6d66223bc0ea").val().length>0) {            
+        //         let form2 = window.SHOGUN_FORM_BOX.filter(f=>f.uuid=='s-1608cfd0-84ab-4e9f-bfa2-64407724adeb');
+        //         if (form2.length>0) {
+        //             submitForm(form2[0]);                
+        //         }
+        //     }      
+        // }                 
+    }
+    function uploadFile(files, idx, token) {
+        if (idx == files.length) {
+            let els = $(".browse-file-preview .preview");
+            for (let el of els) {
+                $(el).removeClass("preview");
+                $(el).addClass("done");
+            }
+            document.querySelector(".browse-file-preview").style.display = "flex";
+            $(".browse-file-wrap svg").hide();
+            // $(".browse-file-submit").hide();
+            $(".browse-file-preview .add").hide();      
+            $(".btn-submit-total").html('Sent');
+            $(".btn-submit-total").css({"background-color": "#ccc", "color": "#000"});      
+            return false;
+        }
+        let file = files[idx];
+        let reader = new FileReader();
+
+        reader.readAsArrayBuffer(file);
+
+        reader.onload = function (e) {    
+            let binaryString = new Blob([new Uint8Array(e.target.result)], { type: file.type });
+            var myHeaders = new Headers();
+            myHeaders.append("Content-Type", "application/octet-stream");
+            let type = file.type.split('/')[1];
+            if (type.includes("wmv")) {
+                type="wmv";
+            } else if (type.includes("quicktime")) {
+                type="mov";
+            }
+            myHeaders.append("Dropbox-API-Arg", `{"path":"/${Date.now()}-${email?email+'.'+type:file.name}","mode":"add"}`);
+            // myHeaders.append("Authorization", "Bearer efBkx9F2X5kAAAAAAAAAAVYcy7QFMX5yr6LJHJEueWPr2ity62cJoNhIbq_9vULW");
+            myHeaders.append("Authorization", token);
+            // myHeaders.append("Authorization", "Bearer L1Z4mFVCvbUAAAAAAAAAAbns_073JOBKLGGDt21G_H5qbb1D99S_AiTxw2bPr875");            
+            var requestOptions = {
+                method: "POST",
+                headers: myHeaders,
+                body: binaryString,
+            };
+
+            fetch("https://content.dropboxapi.com/2/files/upload", requestOptions)
+                .then((response) => response.text())
+                .then((result) => {
+                    // console.log(result);                    
+                    uploadFile(files, idx + 1, token);
+                })
+                .catch((error) => {
+                    console.log("error", error);
+                    uploadFile(files, idx + 1, token);
+                });
+        };        
+
+        reader.onerror = function () {
+            uploadFile(files, idx + 1, token);
+            console.log(reader.error);
+        };
+    }
+    function addFile(input) {
+        let el = document.getElementsByName(input.id)[0];
+        el.remove();
+        let file = input.files[0];
+        uploadFiles.push(file);
+        let reader = new FileReader();                
+        reader.readAsArrayBuffer(file);
+        let idx = uploadFiles.length;
+        reader.onload = function (e) {            
+            let binaryString = new Blob([new Uint8Array(e.target.result)], { type:file.type });
+            if ($(".browse-file-preview .add").length>0) {
+                if (file.type.includes("mp4") || file.type.includes("quicktime") || file.type.includes("mpeg4") || file.type.includes("avi") || file.type.includes("wmv") || file.type.includes("mpeg")) {
+                    $(".browse-file-preview .add").eq(0).before(`<div class="preview" data-name="${file.name}" onclick="removeFile(event)"><video src="${URL.createObjectURL(binaryString)}" controls/></div>`);
+                } else {
+                    $(".browse-file-preview .add").eq(0).before(`<div class="preview" data-name="${file.name}" onclick="removeFile(event)"><img src="${URL.createObjectURL(binaryString)}"/></div>`);
+                }                
+            } else {
+                if (file.type.includes("mp4") || file.type.includes("mov") || file.type.includes("mpeg4") || file.type.includes("avi") || file.type.includes("wmv") || file.type.includes("mpeg")) {
+                    document.querySelector(".browse-file-preview").innerHTML += `<div class="preview" data-name="${file.name}" onclick="removeFile(event)"><video src="${URL.createObjectURL(binaryString)}" controls/></div>`;
+                } else {
+                    document.querySelector(".browse-file-preview").innerHTML += `<div class="preview" data-name="${file.name}" onclick="removeFile(event)"><img src="${URL.createObjectURL(binaryString)}"/></div>`;
+                }
+            }            
+        };
+
+        reader.onerror = function () {
+            console.log(reader.error);
+        };
+    }
+    function removeFile(e) { 
+        let el = e.currentTarget;   
+        if (el.classList.contains("done")) return false;
+        let idx = Date.now();                
+        let elName = el.getAttribute("data-name");
+        uploadFiles = uploadFiles.filter(file => file.name != elName);
+        el.remove();
+        // console.log(uploadFiles);
+        document.querySelector(".browse-file-preview").innerHTML += `<div class="add" name="${idx}-add"><label for="${idx}-add">Add</label><input type="file" id="${idx}-add" onchange="addFile(this)" accept=".jpeg, .jpg, .mp4, .mov, .mpeg4, .avi, .wmv, .mpeg"  style="display:none"/></div>`;
+    }
+    function previewFile(files) {        
+        document.querySelector(".browse-file-preview").style.display = "flex";
+        // document.querySelector(".browse-file-submit").style.display = "block";
+        for (var i = 0; i < files.length; i++) {
+            (function(file) {
+                let reader = new FileReader();               
+                // console.log(file.type) ;
+                reader.readAsArrayBuffer(file);
+                reader.onload = function (e) {                    
+                    uploadFiles.push(file);
+                    let binaryString = new Blob([new Uint8Array(e.target.result)], { type: file.type });                    
+                    if (file.type.includes("mp4") || file.type.includes("mov") || file.type.includes("mpeg4") || file.type.includes("avi") || file.type.includes("wmv") || file.type.includes("mpeg")) {
+                        document.querySelector(".browse-file-preview").innerHTML += `<div class="preview" data-name="${file.name}" onclick="removeFile(event)"><video src="${URL.createObjectURL(binaryString)}" controls/></div>`;
+                    } else {
+                        document.querySelector(".browse-file-preview").innerHTML += `<div class="preview" data-name="${file.name}" onclick="removeFile(event)"><img src="${URL.createObjectURL(binaryString)}"/></div>`;
+                    }
+                };
+
+                reader.onerror = function () {
+                    console.log(reader.error);
+                };                
+            })(files[i]);
+        }        
+        setTimeout(() => {
+            if (files.length<3) {
+                for(let i=0; i<3-files.length; i++) {
+                    let idx = Date.now();
+                    // document.querySelector(".browse-file-preview").innerHTML += `<div class="add" name="${idx}-add"><label for="${idx}-add"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"/></svg></label><input type="file" id="${idx}-add" onchange="addFile(this)" accept=".png, .jpeg, .jpg, .mp4"/></div>`;
+                    document.querySelector(".browse-file-preview").innerHTML += `<div class="add" name="${idx}-add"><label for="${idx}-add">Add</label><input type="file" id="${idx}-add" onchange="addFile(this)" accept=".jpeg, .jpg, .mp4, .mov, .mpeg4, .avi, .wmv, .mpeg" style="display:none"/></div>`;
+                }
+            }                        
+            // let els = document.querySelectorAll(".browse-file-preview .preview");        
+            // for (let el of els) {                
+            //     el.addEventListener("click", removeFile);
+            // }
+        }, 500);
+    }
+    function readFile(input) {
+        if (input.files.length > 3) {
+            alert("Please choose at max 3 files");
+            return false;
+        }
+        document.querySelector(".browse-file-action").style.display = "none";
+        previewFile(input.files);
+        // document.querySelector(".browse-file-wrap svg").style.display = "block";
+        // uploadFile(input.files, 0);
+    }
+</script>
+<script type="text/javascript">
+    let submenu = [];
+
+    function openSubMenu(name) {
+        if ($(event.currentTarget).hasClass("active")) {
+            $(event.currentTarget).removeClass("active");
+            $(".menu-submenu-items").remove();
+        } else {
+            $(".menu-item .active").removeClass("active");
+            $(event.currentTarget).addClass("active");
+            let mns = submenu.filter(mn => mn.name==name);        
+            if (mns.length>0) {
+                $(".menu-submenu-items").remove();
+                let div = `<div class="menu-submenu-items">`;
+                if (mns[0].menu) {
+                    for (let menu of mns[0].menu) {
+                        div+=`<div class="menu-submenu-item"><a href="${menu.link}">${menu.name}</a></div>`;
+                    }
+                }
+                div+="</div>";
+                $(".menu-wrap").append(div);
+                let position = $(event.currentTarget).offset();
+                if (position.left+$(".menu-submenu-items").width()<=$(window).width()) {
+                    $(".menu-submenu-items").css({"left": (position.left-$(".menu-wrap").offset().left)+"px", "top": (position.top+30-$(".menu-wrap").offset().top)+"px"});
+                } else {
+                    $(".menu-submenu-items").css({"right": "0px", "top": (position.top+30-$(".menu-wrap").offset().top)+"px"});
+                }
+                $(".menu-submenu-items").slideDown();
+                // console.log($(event.currentTarget).offset());
+                // console.log($(event.currentTarget).width());
+                // console.log($(window).width());
+            }
+        }        
+    }    
+
+    window.addEventListener("DOMContentLoaded", (event)=> {        
+
+        fetch("/content/data/custom-menu.json")
+        .then(result=>result.json())
+        .then(data=>{
+            console.log(data);
+            if (data.menu) {
+                for (let menu of data.menu) {
+                    if (menu.hasOwnProperty("link")) {
+                        if (menu.link.includes(window.location.pathname) && menu.link.length-window.location.pathname.length<=2) {
+                            $('.menu-items').append(`<div class="menu-item active"><a href="${menu.link}">${menu.name}</a></div>`);
+                        } else {
+                            $('.menu-items').append(`<div class="menu-item"><a href="${menu.link}">${menu.name}</a></div>`);
+                        }
+                    } else {
+                        submenu.push({"name": menu.name, "menu": menu.subMenu});
+                        $('.menu-items').append(`<div class="menu-item"><a href="#" onclick="openSubMenu('${menu.name}')">${menu.name}</a></div>`)
+                    }
+                }
+                $(".menu-wrap").show();
+            }
+        })
+        .catch(err=>console.log(err));
+    })
+</script>
+

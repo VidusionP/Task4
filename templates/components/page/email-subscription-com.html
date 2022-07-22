@@ -1,0 +1,25 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Poppins&display=swap" rel="stylesheet">
+<style>
+    :root{--main-color:#efe9e9;--second-color:#202124;--third-color:#f1e4b1;--fourth-color:#f2ffff;--font-size-large1:36px;--font-size-normal1:14px;--font-size-normal2:18px;--font-size-small1:14px;--font-family1:'Josefin Sans',sans-serif;--font-family2:Poppins,sans-serif;--element-margin:1.5rem;--section-margin:2rem}.c-signup-wrap{width:100%;height:550px;position:relative;overflow:hidden;display:flex;justify-content:center;align-items:center;padding-top:7%}.c-signup-wrap img.logo{position:absolute;width:76px;left:calc(50% - 38px);top:5%;z-index:2}.c-signup-wrap img.background{position:absolute;left:0;top:0;width:100vw;height:100vh;object-fit:cover}.c-signup-content-wrap{background-color:var(--main-color);color:var(--second-color);width:85%;padding:var(--section-margin);text-align:center;z-index:1}.c-signup-content-wrap .title{font-family:var(--font-family2);font-size:var(--font-size-large1);text-transform:uppercase;margin-bottom:var(--element-margin)}.c-signup-content-wrap .desp{font-size:var(--font-size-normal1);margin-bottom:var(--element-margin)}.c-signup-content-wrap .desp1{font-family:var(--font-family1);text-transform:uppercase}.c-signup-content-wrap .desp2{font-family:var(--font-family2)}.c-signup-content-wrap input{width:100%;border:0;border-bottom:1px solid var(--third-color);text-transform:uppercase;font-family:var(--font-family1);background-color:transparent;padding:5px;text-align:center}.c-signup-content-wrap button{background-color:var(--second-color);color:var(--fourth-color);font-size:var(--font-size-normal2);text-transform:uppercase;padding:10px;text-align:center;width:100%;margin-top:-12px;transform:translateY(calc(var(--element-margin) + 24px));font-family:var(--font-family1)}.c-signup-content-wrap input::placeholder{color:var(--second-color)}@media (min-width: 475px){.c-signup-wrap img.logo{width:100px;left:calc(50% - 50px)}}@media (min-width:600px){.c-signup-wrap img.logo{top:10%}.c-signup-content-wrap input,.c-signup-content-wrap button{max-width:300px;display:block;margin-left:auto;margin-right:auto}}@media (min-width:800px){:root{--font-size-large1:40px}.c-signup-wrap img.logo{width:130px;left:calc(50% - 65px)}.c-signup-wrap{padding-top:10%}.c-signup-content-wrap{max-width:600px}}
+</style>
+<div class="c-signup-wrap">
+    <img class="logo" src="/content/images/marketing/email/logo.svg" alt="Superhairpieces">
+    <picture>
+        <source media="(min-width: 600px)" type="image/webp" srcset="/content/images/marketing/email/background-us-pc.webp">
+        <source media="(min-width: 600px)" type="image/jpeg" srcset="/content/images/marketing/email/background-us-pc.jpg">
+        <source type="image/webp" srcset="/content/images/marketing/email/background-us-mobile.webp">
+        <source type="image/jpeg" srcset="/content/images/marketing/email/background-us-mobile.jpg">
+        <img class="background" src="/content/images/marketing/email/background-us-mobile.jpg" alt="US Signup form for email confirmation">
+    </picture>
+    <div class="c-signup-content-wrap">
+        <div class="title">sign up</div>
+        <div class="desp desp1">stay tuned, we always have something for you!</div>
+        <div class="desp desp2">Subscribe today to be the first to see our articles, tips, video uploads, resources and special offers! </div>
+        <form>
+            <input type="text" maxlength="100" placeholder="enter your email" name="email">
+            <button type="submit">subscribe</button>
+        </form>
+    </div>
+</div>

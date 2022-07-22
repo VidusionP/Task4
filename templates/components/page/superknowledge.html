@@ -1,0 +1,261 @@
+<style>
+    section {
+        padding: 1rem;
+    }
+    [section-header] {
+        display: flex;
+    }
+    [section-header] .title-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40%;
+        padding: 0 1rem;
+    }
+    [section-header] .img-wrapper {
+        border: 1px solid #d5d5d5;
+        display: flex;
+        padding-top: 10px;
+        justify-content: center;
+        width: 60%;
+    }
+    [section-header] .img-wrapper img {
+        max-width: 100%;
+    }
+    [section-header] .title-content {
+        font-size: 1.5rem;
+        text-align: center;
+        margin: 0 auto;
+        color: #525252;        
+    }
+    [section-header] .section-highlight {
+        text-transform: uppercase;
+        font-size: 1.3rem;
+        color: #fff;
+        background: #545454;
+        padding: 5px 20px;        
+        width: fit-content;
+        margin: 0 auto;        
+    }
+    [section-description] {
+        max-width: 500px;
+        margin: 0 auto;
+        text-align: center;
+    }
+    [section-list] .list-title {
+        color: #fff;
+        font-size: 1.2rem;        
+        padding: 10px 15px;
+        padding-left: 35px;
+        position: relative;
+        cursor: pointer;
+    }
+    [section-list] .list-title svg {
+        width: 15px;        
+        fill: #fff;
+        position: absolute;
+        left: 10px;
+        top: 10px;
+    }
+    [section-list] .title1 {
+        background: #545454;
+    }
+    [section-list] .title2 {
+        background: #083a7d;
+    }
+    [section-list] .title3 {
+        background: #03989e;
+    }
+    [section-list] .title4 {
+        background: #28566b;
+    }
+    [section-list] .title5 {
+        background: #0d3c57;
+    }
+    [section-list] .list-content {
+        padding: 10px 15px;
+        padding-left: 35px;
+    }    
+    [section-list] .list-item .list-content {
+        max-height: 0px;
+        visibility: hidden;
+    }
+    [section-list] .list-item.open .list-title svg {
+        transform: rotate(90deg);
+    }
+    [section-list] .list-item.open .list-content {
+        max-height: max-content;
+        transition: max-height .2s linear;
+        visibility: visible;
+    }    
+    [section-list] .list-content .list-content-title {
+        font-weight: bold;
+    }
+    [section-list] .list-content .list-content-title:not(:first-child) {        
+        margin-top: 1rem;
+    }
+    [section-journey] {
+        padding: 2rem 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #f8f5ed;
+    }
+    [section-journey] .section-content {
+        text-align: center;
+        width: max-content;
+    }
+    [section-journey] .btn-link {
+        background: #545454;
+        color: #fff;
+        text-decoration: none;
+        padding: 10px 15px;
+        display: block;
+        margin: 0 auto;
+    }
+    [section-shopping] .title{
+        text-align: center;
+        font-size: 1.2rem;
+        text-transform: capitalize;
+    }
+    [section-shopping] .content-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    [section-shopping] .content-wrapper .item {
+        width: 250px;
+        height: 263px;
+        margin: 0 10px;        
+    }
+    [section-shopping] .content-wrapper .item-wrapper.men {
+        background-image: url('/product_images/uploaded_images/superhairknowledge-men-q30-w250.jpg');
+    }
+    [section-shopping] .content-wrapper .item-wrapper.women {
+        background-image: url('/product_images/uploaded_images/superhairknowledge-women-q30-w250.jpg');
+    }
+    [section-shopping] .content-wrapper .item-wrapper .item::before {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: rgba(90, 115, 146, .5);
+        left: 0;
+        top: 0;
+    }
+    [section-shopping] .content-wrapper .item-wrapper .item {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        bottom: 10px;
+        text-align: center;
+        color: #fff;
+    }
+</style>
+<section section-header>
+    <div class="title-wrapper">
+        <div class="title-content">
+            <div class="section-highlight">#superhairknowledge</div>
+            <div>Everything you need to know<br/> about<br/> Hair Systems</div>
+        </div>
+    </div>
+    <div class="img-wrapper">
+        <img src="/product_images/uploaded_images/superknowledge-heading-q25-w600.jpg" alt="Superhairknowledge">
+    </div>
+</section>
+<section section-description>
+    Whether you're about to start your hair journey for the first time or you've purchased your first few men's toupees, the world of hair systems can be daunting as there is so much to learn. That is why we have provided the following resources to help you navigate through your hair system journey.
+</section>
+<section section-list>
+    <div class="list-wrapper">
+        <div class="list-item">
+            <div class="list-title title1">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M21 12l-18 12v-24z"/></svg>
+                <span>Hair System and Product Knowledge</span>
+            </div>
+            <div class="list-content">
+                <div class="list-content-title">Blog</div>
+                <div><a href="https://www.superhairpieces.com/toupee-wig-hair-system-blog/skin-base-hairpieces-why-you-should-buy-from-superhairpieces/" target="_blank">Skin Base Hairpieces - Why you should buy from Superhairpieces</a></div>                
+            </div>
+        </div>
+        <div class="list-item open">
+            <div class="list-title title2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M21 12l-18 12v-24z"/></svg>
+                <span>Choosing The Right Hair System</span>
+            </div>
+            <div class="list-content">
+                <div class="list-content-title">Blog</div>
+                <div><a href="https://www.superhairpieces.com/toupee-wig-hair-system-blog/3-common-mistakes-when-measuring-the-hair-system-base/" target="_blank">3 Common Mistakes When Measuring the Hair System Base</a></div>                
+                <div class="list-content-title">Youtube videos</div>
+                <div><a href="https://www.youtube.com/watch?v=GDilw0Dist8&list=PLZR8iVgNY2TcrIohuywEULWD6p0WwA-sA&index=1" target="_blank">Choose the Perfect Hair System | 6 Steps to Follow When Looking For The Most Suitable Toupee or Wig</a></div>
+            </div>
+        </div>
+        <div class="list-item">
+            <div class="list-title title3">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M21 12l-18 12v-24z"/></svg>
+                <span>Prep, Attach, Remove, and Style Your Hair System</span>
+            </div>
+            <div class="list-content">                
+            </div>
+        </div>
+        <div class="list-item">
+            <div class="list-title title4">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M21 12l-18 12v-24z"/></svg>
+                <span>Taking Care of Your Hair System</span>
+            </div>
+            <div class="list-content"></div>
+        </div>
+        <div class="list-item">
+            <div class="list-title title5">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M21 12l-18 12v-24z"/></svg>
+                <span>Hair Loss Management</span>
+            </div>
+            <div class="list-content"></div>
+        </div>
+    </div>
+</section>
+<section section-journey>
+    <div class="section-content">
+        <div>Ready to start your hair system journey?</div>
+        <div>Book your consultation today!</div>
+        <a href="https://www.superhairpieces.com/starting-a-hair-system-journey" class="btn-link">Start your hair system journey</a>
+    </div>
+</section>
+<section section-shopping>
+    <div class="title">shop now</div>
+    <div class="content-wrapper">
+        <div class="item-wrapper men">
+            <div class="item">Men's</div>
+        </div>
+        <div class="item-wrapper women">
+            <div class="item">Women's</div>
+        </div>
+    </div>
+</section>
+<script>
+    function bindEvents() {
+        $(".list-title").on("click", (event)=> {
+            let el = event.currentTarget;            
+            if ($(el).parent(".list-item").hasClass("open")) {
+                $(el).parent(".list-item").removeClass("open");
+            } else {
+                $(el).parent(".list-item").addClass("open");
+            }
+        })
+    }
+    window.addEventListener("DOMContentLoaded", function() {
+        function loadScript(url, callback) {
+            let scrp = document.createElement("script");
+            scrp.setAttribute("src", url);
+            document.body.appendChild(scrp);
+
+            scrp.addEventListener("load", callback);
+        }
+        if (window.jQuery) {
+            bindEvents();
+        } else {
+            loadScript("https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js", function() {
+                bindEvents();
+            })
+        }
+    })
+</script>

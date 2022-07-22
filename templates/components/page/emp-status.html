@@ -1,0 +1,261 @@
+<style>
+    select {
+        width: 100%;
+    }
+    #postBreak {
+        border: 1px solid rgb(255, 99, 132);
+        padding: 1rem 3rem;
+        border-radius: 1rem;
+        color: rgb(255, 99, 132);
+        display: none;
+        margin: 2rem auto;
+    }
+    #postBreak:hover {
+        background-color: rgb(255, 99, 132);
+        border-color: #fff;
+        color: #fff;
+        transition: 1s;
+    }
+</style>
+<div>
+    <button id="authorize_button" style="display: none">Authorize</button>
+    <button id="signout_button" style="display: none">Sign Out</button>
+    <div class="select-wrapper">
+        <label for="emp-list">
+            Select your name:
+            <select name="emp-list" id="emp-list" onchange="showButton()"></select>
+        </label>
+    </div>
+    <button id="postBreak" onclick="postExcel()"></button>
+</div>
+<canvas id="emp-chart" width="600" height="300"></canvas>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+<script type="text/javascript">
+    // Client ID and API key from the Developer Console
+    var API_KEY = "AIzaSyC392WKTmNbLIcmQV-j7dfZb4fkgcnC7CI";
+    var CLIENT_ID = "317925190484-nrgh0tur3072rrhqpu0adagh2n37cpir.apps.googleusercontent.com";
+
+    //Spread information
+    var SPREAD_ID = "12JPORPbb2FsaJFj3V4EFw0Sf_ssM53Yg7mh37GZfsIY";
+    var RANGE_NAME = "Sheet1";
+
+    // Array of API discovery doc URLs for APIs used by the quickstart
+    var DISCOVERY_DOCS = ["https://sheets.googleapis.com/$discovery/rest?version=v4"];
+    // Authorization scopes required by the API; multiple scopes can be
+    // included, separated by spaces.
+    var SCOPES = "https://www.googleapis.com/auth/spreadsheets";
+
+    var authorizeButton = document.getElementById("authorize_button");
+    var signoutButton = document.getElementById("signout_button");
+
+    var emp_list = [];
+    var emp_data = [];
+    var onPost = false;
+    /**
+     *  On load, called to load the auth2 library and API client library.
+     */
+    function handleClientLoad() {
+        gapi.load("client:auth2", initClient);
+    }
+
+    /**
+     *  Initializes the API client library and sets up sign-in state
+     *  listeners.
+     */
+    function initClient() {
+        gapi.client
+            .init({
+                apiKey: API_KEY,
+                clientId: CLIENT_ID,
+                discoveryDocs: DISCOVERY_DOCS,
+                scope: SCOPES,
+            })
+            .then(
+                function () {
+                    // Listen for sign-in state changes.
+                    gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
+
+                    // Handle the initial sign-in state.
+                    updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
+                    authorizeButton.onclick = handleAuthClick;
+                    signoutButton.onclick = handleSignoutClick;
+                },
+                function (error) {
+                    console.log(error);
+                }
+            );
+    }
+
+    /**
+     *  Called when the signed in status changes, to update the UI
+     *  appropriately. After a sign-in, the API is called.
+     */
+    function updateSigninStatus(isSignedIn) {
+        if (isSignedIn) {
+            authorizeButton.style.display = "none";
+            signoutButton.style.display = "block";
+            var timer = setInterval(getData, 30000);
+            getData();
+        } else {
+            authorizeButton.style.display = "block";
+            signoutButton.style.display = "none";
+        }
+    }
+
+    /**
+     *  Sign in the user upon button click.
+     */
+    function handleAuthClick(event) {
+        gapi.auth2.getAuthInstance().signIn();
+    }
+
+    /**
+     *  Sign out the user upon button click.
+     */
+    function handleSignoutClick(event) {
+        gapi.auth2.getAuthInstance().signOut();
+    }
+
+    function getData() {
+        if (onPost) {
+            return false;
+        }
+        emp_data = [];
+        emp_list = [];
+        let options = "<option value='' selected disabled>Select</option>";
+        let current = new Date();
+        gapi.client.sheets.spreadsheets.values
+            .get({
+                spreadsheetId: SPREAD_ID,
+                range: RANGE_NAME,
+            })
+            .then(
+                function (response) {
+                    var range = response.result;
+                    if (range.values.length > 0) {
+                        for (i = 0; i < range.values.length; i++) {
+                            let row = range.values[i];
+                            options += "<option value='" + row[0] + "-" + i + "'>" + row[0] + "</option>";
+                            emp_list.push(row[0]);
+                            if (current.getHours() >= 17) {
+                                emp_data.push(0);
+                            } else {
+                                emp_data.push(row.length > 1 ? 0 : 1);
+                            }
+                        }
+                        document.querySelector("#emp-list").innerHTML = options;
+                        drawChart();
+                    } else {
+                        console.log("No data found.");
+                    }
+                },
+                function (response) {
+                    console.log("Error: " + response.result.error.message);
+                }
+            );
+    }
+    function drawChart() {
+        var config = {
+            type: "line",
+            data: {
+                labels: emp_list,
+                datasets: [
+                    {
+                        label: "Available",
+                        backgroundColor: "rgb(255, 99, 132)",
+                        borderColor: "rgb(255, 99, 132)",
+                        data: emp_data,
+                        fill: false,
+                    },
+                ],
+            },
+            options: {
+                responsive: true,
+                title: {
+                    display: true,
+                    text: "Employee status",
+                },
+                tooltips: {
+                    mode: "index",
+                    intersect: false,
+                },
+                hover: {
+                    mode: "nearest",
+                    intersect: true,
+                },
+                scales: {
+                    xAxes: [
+                        {
+                            display: true,
+                            scaleLabel: {
+                                display: true,
+                                labelString: "Name",
+                            },
+                        },
+                    ],
+                    yAxes: [
+                        {
+                            display: true,
+                            scaleLabel: {
+                                display: true,
+                                labelString: "Value",
+                            },
+                            ticks: {
+                                min: 0,
+                                max: 1,
+                                stepSize: 1,
+                            },
+                        },
+                    ],
+                },
+            },
+        };
+        var ctx = document.getElementById("emp-chart").getContext("2d");
+        var empChart = new Chart(ctx, config);
+    }
+    function showButton() {
+        let empName = document.getElementById("emp-list").value;
+        let idx = empName.substring(empName.indexOf("-") + 1);
+        if (emp_data[idx] == 1) {
+            document.getElementById("postBreak").innerText = "Start Break";
+        } else {
+            document.getElementById("postBreak").innerText = "End Break";
+        }
+        document.getElementById("postBreak").style.display = "block";
+    }
+    function postExcel() {
+        onPost = true;
+        let values = [];
+        let empName = document.getElementById("emp-list").value;
+        let idx = empName.substring(empName.indexOf("-") + 1);
+        if (emp_data[idx] == 0) {
+            emp_data[idx] = 1;
+        } else {
+            emp_data[idx] = 0;
+        }
+        for (i = 0; i < emp_list.length; i++) {
+            if (emp_data[i] == 0) {
+                values.push([emp_list[i], "Break"]);
+            } else {
+                values.push([emp_list[i], ""]);
+            }
+        }
+        let body = { values: values };
+        console.log(body);
+        gapi.client.sheets.spreadsheets.values
+            .update({
+                spreadsheetId: SPREAD_ID,
+                range: RANGE_NAME,
+                valueInputOption: "USER_ENTERED",
+                resource: body,
+            })
+            .then((response) => {
+                var result = response.result;
+                onPost = false;
+                getData();
+                console.log(`${result.updatedCells} cells updated.`);
+            });
+    }
+</script>
+
+<script async defer src="https://apis.google.com/js/api.js" onload="this.onload=function(){};handleClientLoad()" onreadystatechange="if (this.readyState === 'complete') this.onload()"></script>

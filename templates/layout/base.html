@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html class="no-js" lang="{{ locale_name }}">
+    <head>
+        <title>{{ head.title }}</title>
+        {{{ head.meta_tags }}} {{{ head.config }}} {{#block "head"}} {{/block}}
+        <link href="{{ head.favicon }}" rel="shortcut icon" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+        {{{stylesheet '/assets/css/theme.css' rel='preload' as='style'}}}
+
+        <link href="https://fonts.googleapis.com/css?family=Poppins:200,400,700,900" rel="preload" as="style" />
+        {{!-- {{ getFontsCollection }} --}}
+        <script src="{{cdn 'assets/modernizr-custom.js'}}"></script>
+
+        {{{head.scripts}}} {{{head.rsslinks}}} {{inject 'themeSettings' theme_settings}} {{inject 'genericError' (lang 'common.generic_error')}} {{inject 'maintenanceMode' settings.maintenance}}
+        {{inject 'urls' urls}} {{{snippet 'htmlhead'}}}
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Poppins:200,400,700,900" rel="stylesheet" />
+        <link rel="stylesheet" href="https://cdn1.stamped.io/files/widget.min.css">
+        {{{stylesheet '/assets/css/theme.css' rel='stylesheet'}}}
+        <link rel="stylesheet" href="/content/css/base.us.min.css">
+        
+        <script type="text/javascript" src="https://cdn.weglot.com/weglot.min.js"></script>
+        <script>
+            Weglot.initialize({
+                api_key: "wg_df9ad41df7c8b7fa823bf401bebdf1c64",
+            });
+        </script>
+    </head>
+    <body>
+        <!-- {{#if customer.name}}
+            <div>Demo</div>
+        {{else}}
+            <div>Empty</div>
+        {{/if}} -->
+        <!-- <div class="banner-top-ani-wrap">
+            <div class="banner-top-content-wrap">                
+                <div>
+                    <img src="/content/images/common/canada-flag-round-white.svg" loading="lazy" alt="canada">
+                    <span>Canada office off Dec 2, 28, 31, Jan 3</span>
+                </div>
+                <br/>
+                <div>
+                    <img src="/content/images/common/us-flag-round-white.svg" loading="lazy" alt="united state">
+                    <span>US off on Dec 24, 31</span>
+                </div>
+                <br/>
+                <div>
+                    <img src="/content/images/common/canada-flag-round-white.svg" loading="lazy" alt="canada">
+                    <span>Canada office off Dec 2, 28, 31, Jan 3</span>
+                </div>
+            </div>
+        </div> -->
+        {{{snippet 'header'}}}
+        <div class="icons-svg-sprite">{{> components/common/icons/icon-defs }}</div>
+
+        {{#if settings.privacy_cookie}} {{> components/common/cookie}} {{/if}} {{> components/common/header }} {{> components/common/body }} {{> components/common/footer }}
+        <div class="popup-country">
+            <div class="popup-country-overlay"></div>
+            <div class="popup-country-content">
+                <div class="popup-country-title">hi there</div>
+                <div>Are you visiting Superhairpieces.ca from outside Canada?<br/>Visit our official global site for more relevant pricing, promotions and events.</div>
+                <a href="//www.superhairpieces.com">take me there</a>
+                <div class="popup-country-continue">
+                    <div>No, I am from Canada</div>
+                    <div class="popup-country-continue-link">Continue browsing!</div>
+                </div>
+            </div>
+        </div>
+        <script>
+            window.__webpack_public_path__ = "{{cdn 'assets/dist/'}}";
+        </script>
+        <script src="{{cdn 'assets/dist/theme-bundle.main.js'}}"></script>
+
+        <script>
+            // Exported in app.js
+            window.stencilBootstrap("{{page_type}}", {{jsContext}}).load();
+        </script>
+
+        {{{footer.scripts}}} {{{snippet 'footer'}}}
+
+        <script>
+            function heightsEqualizer(selector) {
+                var elements = document.querySelectorAll(selector),
+                    max_height = 0,
+                    len = 0,
+                    i;
+
+                if (elements && elements.length > 0) {
+                    len = elements.length;
+
+                    for (i = 0; i < len; i++) {
+                        // get max height
+                        elements[i].style.height = ""; // reset height attr
+                        if (elements[i].clientHeight > max_height) {
+                            max_height = elements[i].clientHeight;
+                        }
+                    }
+
+                    for (i = 0; i < len; i++) {
+                        // set max height to all elements
+                        elements[i].style.height = max_height + "px";
+                    }
+                }
+            }
+
+            if (document.addEventListener) {
+                document.addEventListener("DOMContentLoaded", function () {
+                    heightsEqualizer(".eq-h");
+                });
+                window.addEventListener("resize", function () {
+                    heightsEqualizer(".eq-h");
+                });
+            }
+
+            setTimeout(function () {
+                // set 1 second timeout for having all fonts loaded
+                heightsEqualizer(".eq-h");
+            }, 1000);
+        </script>        
+        <script src="/content/js/base.us.min.js" defer></script>        
+        <!-- <div id="___ratingbadge_0" style="border: 1px none rgb(245, 245, 245); z-index: 2147483647; position: fixed; left: 0px; bottom: 0px; box-shadow: rgb(162, 162, 162) 1px 1px 3px; text-indent: 0px; margin: 0px; padding: 0px; background: transparent; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; display: inline-block; width: 165px; height: 54px;"><iframe ng-non-bindable="" frameborder="0" hspace="0" marginheight="0" marginwidth="0" scrolling="no" style="position: static; top: 0px; width: 165px; margin: 0px; border-style: none; display: block; left: 0px; visibility: visible; height: 54px;" tabindex="0" vspace="0" width="100%" id="I1_1627581811043" name="I1_1627581811043" src="https://www.google.com/shopping/customerreviews/badge?usegapi=1&amp;merchant_id=6097017&amp;position=BOTTOM_LEFT&amp;hl=PAGE_LANGUAGE&amp;origin=https%3A%2F%2Fwww.superhairpieces.com&amp;gsrc=3p&amp;jsh=m%3B%2F_%2Fscs%2Fapps-static%2F_%2Fjs%2Fk%3Doz.gapi.en.-B-Yl1giugs.O%2Fam%3DAQ%2Fd%3D1%2Frs%3DAGLTcCONWTFvihGrQAtWDoeeH_UUFfCMQg%2Fm%3D__features__#_methods=onPlusOne%2C_ready%2C_close%2C_open%2C_resizeMe%2C_renderstart%2Concircled%2Cdrefresh%2Cerefresh&amp;id=I1_1627581811043&amp;_gfid=I1_1627581811043&amp;parent=https%3A%2F%2Fwww.superhairpieces.com&amp;pfname=&amp;rpctoken=32210108" data-gapiattached="true" title="Google Customer Reviews"></iframe></div> -->        
+        
+    </body>
+</html>

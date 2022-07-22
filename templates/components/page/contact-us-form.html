@@ -1,0 +1,234 @@
+<form data-contact-form class="form" action="{{urls.contact_us_submit}}" method="post">
+    {{inject 'contactEmail' (lang 'forms.validate.contact.email_address')}} {{inject 'contactQuestion' (lang 'forms.validate.contact.question')}} {{#if forms.contact.error}} {{>
+    components/common/alert-error forms.contact.error}} {{/if}}
+    <input type="hidden" name="page_id" id="page_id" value="{{forms.contact.page_id}}" />
+    <div class="form-row form-row--half">
+        {{#if forms.contact.name}}
+        <div class="form-field">
+            <label class="form-label" for="contact_fullname">{{lang 'forms.contact_us.full_name'}}</label>
+            <input class="form-input" type="text" id="contact_fullname" name="contact_fullname" value="{{customer.name}}" />
+        </div>
+        {{/if}} {{#if forms.contact.phone}}
+        <div class="form-field">
+            <label class="form-label" for="contact_phone">{{lang 'forms.contact_us.phone'}}</label>
+            <input class="form-input" type="text" id="contact_phone" name="contact_phone" value="{{customer.phone}}" />
+        </div>
+        {{/if}}
+
+        <div class="form-field">
+            <label class="form-label" for="contact_email"
+                >{{lang 'forms.contact_us.email'}}
+                <small>{{lang 'common.required' }}</small>
+            </label>
+            <input class="form-input" type="text" id="contact_email" name="contact_email" value="{{customer.email}}" />
+        </div>
+
+        {{#if forms.contact.order}}
+        <div class="form-field">
+            <label class="form-label" for="contact_orderno">{{lang 'forms.contact_us.order'}}</label>
+            <input class="form-input" type="text" id="contact_orderno" name="contact_orderno" />
+        </div>
+        {{/if}} {{#if forms.contact.company}}
+        <div class="form-field">
+            <label class="form-label" for="contact_companyname">{{lang 'forms.contact_us.company'}}</label>
+            <input class="form-input" type="text" id="contact_companyname" name="contact_companyname" />
+        </div>
+        {{/if}} {{#if forms.contact.rma}}
+        <div class="form-field">
+            <label class="form-label" for="contact_rma">{{lang 'forms.contact_us.rma'}}</label>
+            <input class="form-input" type="text" id="contact_rma" name="contact_rma" />
+        </div>
+        {{/if}}
+    </div>
+
+    <div class="form-field">
+        <label class="form-label" for="contact_question"
+            >{{lang 'forms.contact_us.question'}}
+            <small>{{lang 'common.required' }}</small>
+        </label>
+        <textarea name="contact_question" id="contact_question" rows="5" cols="50" class="form-input"></textarea>
+    </div>
+
+    {{{forms.contact.recaptcha.markup}}}
+
+    <div class="form-actions">
+        <input class="button button--primary" type="submit" value="{{lang 'forms.contact_us.submit' }}" />
+    </div>
+</form>
+<!--Zoom meeting web sdk-->
+<!-- <link type="text/css" rel="stylesheet" href="https://source.zoom.us/1.9.0/css/bootstrap.css" />
+<link type="text/css" rel="stylesheet" href="https://source.zoom.us/1.9.0/css/react-select.css" />
+<style>
+    .sdk-select {
+        height: 34px;
+        border-radius: 4px;
+    }
+
+    .websdktest button {
+        float: right;
+        margin-left: 5px;
+    }
+
+    #nav-tool {
+        margin-bottom: 0px;
+    }
+
+    #show-test-tool {
+        position: absolute;
+        top: 100px;
+        left: 0;
+        display: none;
+        z-index: 99999;
+    }
+
+    #display_name {
+        width: 250px;
+    }
+
+    #websdk-iframe {
+        width: 700px;
+        height: 500px;
+        border: 1px;
+        border-color: red;
+        border-style: dashed;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        left: 50%;
+        margin: 0;
+    }
+    #zmmtg-root {
+        width: auto !important;
+        height: auto !important;
+        position: relative !important;
+        top: 0;
+        left: 0;
+        background-color: transparent !important;
+    }
+    #nav-tool {
+        background-color: transparent !important;
+        border-color: transparent !important;
+        border: none !important;
+        top: auto !important;
+    }
+</style>
+
+<nav id="nav-tool" class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Zoom WebSDK</a>
+        </div>
+        <div id="navbar" class="websdktest">
+            <form class="navbar-form navbar-right" id="meeting_form">
+                <div class="form-group">
+                    <input type="text" name="display_name" id="display_name" value="1.9.0#CDN" maxlength="100" placeholder="Name" class="form-control" required />
+                </div>
+                <div class="form-group">
+                    <input type="text" name="meeting_number" id="meeting_number" value="" maxlength="200" style="width: 150px" placeholder="Meeting Number" class="form-control" required />
+                </div>
+                <div class="form-group">
+                    <input type="text" name="meeting_pwd" id="meeting_pwd" value="" style="width: 150px" maxlength="32" placeholder="Meeting Password" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <input type="text" name="meeting_email" id="meeting_email" value="" style="width: 150px" maxlength="32" placeholder="Email option" class="form-control" />
+                </div>
+
+                <div class="form-group">
+                    <select id="meeting_role" class="sdk-select">
+                        <option value="0">Attendee</option>
+                        <option value="1">Host</option>
+                        <option value="5">Assistant</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <select id="meeting_china" class="sdk-select">
+                        <option value="0">Global</option>
+                        <option value="1">China</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <select id="meeting_lang" class="sdk-select">
+                        <option value="en-US">English</option>
+                        <option value="de-DE">German Deutsch</option>
+                        <option value="es-ES">Spanish Español</option>
+                        <option value="fr-FR">French Français</option>
+                        <option value="jp-JP">Japanese 日本語</option>
+                        <option value="pt-PT">Portuguese Portuguese</option>
+                        <option value="ru-RU">Russian Русский</option>
+                        <option value="zh-CN">Chinese 简体中文</option>
+                        <option value="zh-TW">Chinese 繁体中文</option>
+                        <option value="ko-KO">Korean 한국어</option>
+                        <option value="vi-VN">Vietnamese Tiếng Việt</option>
+                        <option value="it-IT">Italian italiano</option>
+                    </select>
+                </div>
+
+                <input type="hidden" value="" id="copy_link_value" />
+                <button type="submit" class="btn btn-primary" id="join_meeting">Join</button>
+                <button type="submit" class="btn btn-primary" id="clear_all">Clear</button>
+                <button type="button" link="" onclick="window.copyJoinLink('#copy_join_link')" class="btn btn-primary" id="copy_join_link">Copy Direct join link</button>
+            </form>
+        </div>        
+    </div>
+</nav>
+
+<div id="show-test-tool">
+    <button type="submit" class="btn btn-primary" id="show-test-tool-btn" title="show or hide top test tool">Show</button>
+</div>
+<script>
+    document.getElementById("show-test-tool-btn").addEventListener("click", function (e) {
+        var textContent = e.target.textContent;
+        if (textContent === "Show") {
+            document.getElementById("nav-tool").style.display = "block";
+            document.getElementById("show-test-tool-btn").textContent = "Hide";
+        } else {
+            document.getElementById("nav-tool").style.display = "none";
+            document.getElementById("show-test-tool-btn").textContent = "Show";
+        }
+    });
+</script>
+
+<script src="https://source.zoom.us/1.9.0/lib/vendor/react.min.js"></script>
+<script src="https://source.zoom.us/1.9.0/lib/vendor/react-dom.min.js"></script>
+<script src="https://source.zoom.us/1.9.0/lib/vendor/redux.min.js"></script>
+<script src="https://source.zoom.us/1.9.0/lib/vendor/redux-thunk.min.js"></script>
+<script src="https://source.zoom.us/1.9.0/lib/vendor/lodash.min.js"></script>
+<script src="https://source.zoom.us/zoom-meeting-1.9.0.min.js"></script>
+<script src="/content/js/zoom/tool.js"></script>
+<script src="/content/js/zoom/vconsole.min.js"></script>
+<script src="/content/js/zoom/index.js"></script> -->
+<script>
+    var channelID = "UCjlv-ImGtbOMwK74L6KQnTw";
+    var requestOptions = {
+        method: "GET",
+        redirect: "follow"
+    };    
+    fetch("https://www.googleapis.com/youtube/v3/search?part=snippet&channelId="+channelID+"&type=video&eventType=live&key=AIzaSyCdvig2zr2DzZWyYc0zfueOujfJaAj_nLE&videoLicense=any", requestOptions)
+        .then((response) => response.text())
+        .then((result) => {
+            console.log(result);
+            let data = JSON.parse(result);
+            if (data.items.length>0) {
+                let youtubeBanner = document.createElement("div");
+                youtubeBanner.innerHTML = 'We are live now <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" style="width: 2.7rem; vertical-align: middle; fill: #ff0000;"><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></svg>';
+                youtubeBanner.style.background = "rgba(255,255,255,.7)";
+                youtubeBanner.style.padding = "1rem";
+                youtubeBanner.style.margin = "0 auto";
+                youtubeBanner.style.textAlign = "center";
+                youtubeBanner.style.fontSize = "1.5rem";
+                youtubeBanner.style.cursor = "pointer";
+                youtubeBanner.style.position = "fixed";
+                youtubeBanner.style.width = "100%";
+                youtubeBanner.style.zIndex = "999";
+                youtubeBanner.style.bottom = "0";
+                youtubeBanner.style.textShadow = "-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black";
+                youtubeBanner.style.borderTop = "1px solid #ccc";
+                youtubeBanner.onclick = function() {
+                    window.open("//youtube.com/channel/"+channelID+"/live",'_blank');
+                }
+                document.querySelector("header").before(youtubeBanner);
+            }
+        })
+        .catch((error) => console.log("error", error));
+</script>

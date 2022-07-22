@@ -1,0 +1,495 @@
+<link rel="stylesheet" href="/content/css/jodit.min.css">
+<link rel="stylesheet" href="/content/css/jstree/style.min.css">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<style>
+    .modal-progress {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: 9;
+        display: none;
+        justify-content: center;
+        align-items: center;
+    }
+    .modal-overlay {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, .8);
+    }    
+    .modal-content {
+        background-color: #fff;
+        width: 250px;
+        height: auto;
+        padding: 1rem;
+        z-index: 9;
+    }
+    .wrap {
+        display: grid;
+        grid-template-columns: 1fr 3fr;
+        grid-column-gap: 10px;
+    }
+    #jstree_category {
+        overflow: auto;
+    }
+    .content-wrap {
+        display: none;
+        padding-left: 2rem;
+    }
+    .content-wrap input, .content-wrap textarea, .content-wrap select {
+        border-radius: 8px;
+        width: 100%;        
+        margin-bottom: 1rem;
+        padding: 5px;
+        border: 1px solid #000;
+    }
+    .edited {
+        font-style: italic;
+        color: #ed0000;
+        font-size: 0.8rem;
+        margin-left: 5px;
+    }
+    .button-wrap {
+        display: none;        
+    }
+    .button-wrap button[data-test='button-save-one'], .button-wrap button[data-test='button-save-all'] {
+        float: right;
+        margin: auto 5px;
+    }
+    .button-wrap button {
+        width: 100px;
+        text-align: center;
+        padding: 8px 0;        
+        color: #fff;
+        background-color: #000;
+        border: 1px solid #000;
+    }    
+    .button-wrap button[data-test=button-discard] {
+        color: #000;
+        background-color: #fff;
+    }    
+    .button-wrap button:hover {
+        color: #000;
+        background-color: #fff;
+        transition: all 0.2s;
+    }
+    .button-wrap button[data-test=button-discard]:hover{
+        color: #fff;
+        background: #ccc;        
+    }
+    .group-wrap {
+        padding: 15px;
+        border: 1px solid #767676;
+        margin-bottom: 10px;
+        position: relative;
+    }    
+    .desp-preview {
+        margin-bottom: 20px;
+    }
+
+    /*
+    ** img video content style
+    **/
+    .banner2-wrap {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-column-gap: 2rem;
+        position: relative;
+        background-color: transparent;
+        --background-color: #efe9e5;
+    }
+    .banner2-wrap::before {
+        content: "";            
+        width: 90%;
+        height: 90%;
+        background-color: var(--background-color);
+        position: absolute;
+        top: 5%;
+        left: 5%;
+    }
+    .banner-graphic {
+        position: relative; 
+    }
+    .banner2-img {
+        position: absolute;
+        bottom: 10%;
+        left: 0;
+        max-width: 80%;
+        transition: all 0.2s ease;
+        border: 1px solid #f5f5f5;
+        z-index: 2;
+    }        
+    .banner-video {
+        position: absolute;
+        right: 0;
+        top: 0;
+        height: 75%;
+        width: 70%;
+        z-index: 1;
+        transition: all 0.2s ease;
+    }
+    .banner-video:hover {
+        z-index: 9;
+        transform: scale(1.1);
+    }          
+    .banner2-img:hover {
+        transform: scale(1.1);
+        z-index: 10;
+    }        
+    .banner2-desp {
+        position: relative;
+        padding: 7rem 0;
+        text-align: justify;
+    }
+    @media only screen and (max-width: 1024px) {
+        .banner2-wrap {
+            display: block;
+        }
+        .banner2-wrap::before {                
+            content: none;
+        }
+        .banner2-desp {
+            padding: 1rem 0 0;
+        }
+        .banner-graphic {
+            height: 250px;
+        }
+        .banner-video {
+            width: 50%;
+            z-index: 10;
+        }
+        .banner2-img {
+            max-width: 60%;
+        }
+    }
+    @media only screen and (max-width: 575px) {
+        .category-description-wrap-top .banner2-desp {
+            display: none;
+        }                        
+        .banner2-img {
+            width: 100%;
+            position: relative;
+            border: none;
+        }
+        .banner-video {
+            display: none;
+        }
+        .banner-graphic {
+            height: auto;
+        }
+    }
+    /*
+    ** Image content type
+    **/
+    .banner1-wrap {
+        display: flex;        
+    }
+    .banner1-image-wrap {
+        width: 600px;
+        display: flex;
+        justify-content: center;
+        align-items: center;            
+    }                
+    .banner1-image {
+        width: 100%;
+    }
+    .banner1-desp {
+        width: calc(100% - 600px);
+        padding: 25px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    @media only screen and (max-width: 1200px) {
+        .banner1-image-wrap, .banner1-desp {
+            width: 50%;
+        }            
+    }
+    @media only screen and (max-width: 900px) {
+        .banner1-wrap {
+            background-color: transparent;
+        }
+        .banner1-image-wrap {
+            width: 100%;
+            padding: 0;
+            margin-bottom: 20px;
+        }
+        .banner1-wrap, .banner1-desp {
+            display: block;     
+            width: 100%;
+            padding: 0;
+            margin-bottom: 20px;           
+        }
+        .banner1-image {
+            max-width: 600px;
+        }
+    }  
+</style>
+<div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
+<div class="modal-progress">
+    <div class="modal-overlay"></div>
+    <div class="modal-content">
+        <div class="w3-light-grey progress-save-all">
+            <div class="w3-container w3-green w3-center" modal-progress="data" style="width:0%">0%</div>
+        </div>            
+    </div>    
+</div>
+<div class="wrap">    
+    <div id="jstree_category"></div>
+    <div class="content-wrap">
+        <div><label for="product-url">URL</label></div>
+        <div>            
+            <input type="text" name="url" readonly id="product-url">            
+        </div>        
+        <div class="group-wrap" data-test="group-editor">            
+            <div>
+                <label>Editor</label>
+            </div>
+            <textarea id="editor" name="editor"></textarea>
+        </div>
+        <div>
+            <div><label>Preview</label></div>
+            <div class="desp-preview"></div>
+        </div>
+        <div class="button-wrap">
+            <button data-test="button-discard">Discard</button>            
+            <button data-test="button-save-all">Save All</button>
+            <button data-test="button-save-one">Save</button>
+        </div>
+    </div>    
+</div>
+<script src="/content/js/jodit.min.js"></script>
+<script src="/content/js/jstree.min.js"></script>
+<!-- <script src="https://accounts.google.com/gsi/client" async defer></script> -->
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<script>    
+    var edited=[];
+    var editor;
+    var g_data;
+    var ge_edit;
+    var g_desp;    
+    var g_discard=false;
+    var gc_data;          
+    function save(data, anchor=null, anchorIdx=null, idx=0) {
+        if (idx==data.length) {            
+            $(".modal-progress").hide();
+            if (anchor) {
+                let editedEl = $(anchor).find(".edited");
+                if (editedEl.length>0) {
+                    editedEl.remove();
+                }
+                edited.splice(anchorIdx,1);
+                if (edited.length==0) {
+                    $(".button-wrap").hide();
+                }
+                $("button[data-test='button-save-one']").hide();
+                $("button[data-test='button-discard']").hide();
+            } else {
+                $(".edited").remove();
+                edited = [];
+                $(".button-wrap").hide();
+            }
+        } else {
+            let desp = data[idx].desp;
+            fetch("//shp-webserver-temp.glitch.me/update-bc-product", {
+                method: 'POST',
+                headers: {
+                    accept: 'application/json',
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify({
+                    store_id: 742053,
+                    data: {
+                        id: data[idx].id,
+                        desp
+                    }
+                })
+            })
+            .then(r=>r.json())
+            .then(d=>{
+                console.log(d);
+                let pr = Math.floor((idx+1)/data.length*100);
+                $("[modal-progress='data']").css("width", `${pr}%`).html(`${pr}%`);  
+                data[idx].desp = desp;          
+                save(data, anchor, anchorIdx, idx+1);
+            })
+            .catch(e=>{
+                console.log(e);
+                save(data, anchor, anchorIdx, idx+1);
+            })
+        }        
+    }    
+    function setFields(id, desp) {    
+        let testEdit = edited.find(e=>e.id==id);        
+        if (testEdit && !g_discard) {
+            editor.value = testEdit.desp;
+        } else {            
+            editor.value = desp;
+            document.querySelector(".desp-preview").innerHTML = desp;
+            $(".content-wrap").css({"display":"block"});
+            $("button[data-test='button-save-one']").hide();
+            $("button[data-test='button-discard']").hide();            
+        }        
+    }
+    var ulList = document.createElement("ul");
+    ulList.setAttribute("data-id", 0);
+    function applyProducts(c_data) {
+        for (let li of c_data) {
+            let liEl = document.createElement("li");
+            liEl.setAttribute("data-node-id", li.id);
+            liEl.innerHTML = `${li.sku} - ${li.name}`;
+            ulList.appendChild(liEl);
+        }
+
+        $("[data-test='loading']").hide();         
+        $("#jstree_category").append(ulList);
+        $("#jstree_category").jstree({
+            core: {
+                multiple: false
+            }
+        });
+        $('#jstree_category').on("changed.jstree", function (e, data) {
+            g_data=data;
+            ge_edit = true;
+            let el = data.instance.get_node(data.selected[0]);
+            console.log(el);                
+            if (el) {                    
+                let item = gc_data.filter(ci=>ci.id==el.data.nodeId);
+                console.log(item);
+                if (item.length>0) {     
+                    g_desp = item[0].description;   
+                    $("#product-url").val(item[0].custom_url.url);
+                    setFields(el.id.nodeId, item[0].description);
+                }                                     
+            }
+        });               
+    }
+    function loadProducts() {
+        fetch('//shp-webserver-temp.glitch.me/get-bc-products?id=742053&page=1')
+        .then(r=>r.json())
+        .then(d=>{            
+            // d.sort((a,b)=>(a.parent_id > b.parent_id) ? 1 : -1);            
+            gc_data = [...d];
+            applyProducts(d); 
+        })
+        .catch(e=>{
+            console.log(e);
+        })
+    }    
+    function onSignIn(googleUser) {
+        let emailList = [
+            "dushyant@superhairpieces.com",
+            "george@superhairpieces.com",
+            "james@superhairpieces.com",
+            "nha@superhairpieces.com",
+            "ryan.l@superhairpieces.com",
+            "jung@superhairpieces.com"
+        ];
+        let profile = googleUser.getBasicProfile();
+        let email = profile.getEmail().toLowerCase();
+        if (emailList.includes(email)) {
+            $(".g-signin2").hide();
+            $(".g-signin2").after(`
+            <svg data-test="loading" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin: auto; background: none; display: block; shape-rendering: auto;" width="200px" height="200px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid"> <circle cx="50" cy="50" r="32" stroke-width="8" stroke="#85a2b6" stroke-dasharray="50.26548245743669 50.26548245743669" fill="none" stroke-linecap="round"> <animateTransform attributeName="transform" type="rotate" dur="1.5384615384615383s" repeatCount="indefinite" keyTimes="0;1" values="0 50 50;360 50 50"></animateTransform> </circle> <circle cx="50" cy="50" r="23" stroke-width="8" stroke="#bbcedd" stroke-dasharray="36.12831551628262 36.12831551628262" stroke-dashoffset="36.12831551628262" fill="none" stroke-linecap="round"> <animateTransform attributeName="transform" type="rotate" dur="1.5384615384615383s" repeatCount="indefinite" keyTimes="0;1" values="0 50 50;-360 50 50"></animateTransform> </circle> </svg>
+            `);
+            loadProducts();
+        } else {
+            $(".g-signin2").after("<div>You have no permission to edit</div>");
+        }
+    }
+    function logInWrap() {
+        $('head').append('<meta name="google-signin-client_id" content="1048779469611-c5sb2jblvpsfngf92dv63iiv4b303r98.apps.googleusercontent.com">');        
+    }
+    window.addEventListener("DOMContentLoaded", (event) => {
+        editor = new Jodit('#editor', {
+            defaultMode: Jodit.MODE_SOURCE
+        });
+        
+        //Change in jodit section
+        function onChangeEditor() {            
+            if (ge_edit) {
+                ge_edit = false;
+                return false;
+            }                        
+            let anchor = document.getElementById(g_data.selected[0]+"_anchor");
+            let el = g_data.instance.get_node(g_data.selected[0]);            
+            if (anchor) {
+                if (edited.length==0) {
+                    $(".button-wrap").show();
+                }
+                $("button[data-test='button-save-one']").show();
+                $("button[data-test='button-discard']").show();
+                let editedEl = $(anchor).find(".edited");
+                if (editedEl.length==0) {
+                    $(anchor).append(`<span class="edited">Edited</span>`);                                    
+                }
+                let ei = edited.findIndex(ed=>ed.id==el.data.nodeId);
+                if (ei>=0) {
+                    if (edited[ei].img) {
+                        edited.splice(ei, 1);
+                    }
+                    edited[ei].desp = $("#editor").val();                    
+                } else {
+                    edited.push({
+                        id: el.data.nodeId,
+                        desp: $("#editor").val()
+                    })
+                }                
+                document.querySelector(".desp-preview").innerHTML = $("#editor").val();                
+            }
+        }
+        $("[data-test='group-editor'] textarea").on("change", onChangeEditor);
+        $("button[data-test='button-save-one']").on("click", () => {
+            $(".modal-progress").css({"display": "flex"});
+            let el = g_data.instance.get_node(g_data.selected[0]);            
+            let anchor = document.getElementById(g_data.selected[0]+"_anchor");
+            if (anchor) {                                                                
+                let ei = edited.findIndex(ed=>ed.id==el.data.nodeId);                
+                if (ei>=0) {
+                    save([edited[ei]], anchor, ei);                                    
+                }
+            }
+        });
+        $("button[data-test='button-save-all']").on("click", () => {
+            $(".modal-progress").css({"display": "flex"});
+            save(edited);            
+        });
+        $("button[data-test='button-discard']").on("click", ()=> {            
+            let el = g_data.instance.get_node(g_data.selected[0]);            
+            let anchor = document.getElementById(g_data.selected[0]+"_anchor");
+            if (anchor) {
+                if (edited.length==1) {
+                    // $(".button-wrap").hide();
+                }
+                $("button[data-test='button-save-one']").hide();
+                $("button[data-test='button-discard']").hide();
+                let editedEl = $(anchor).find(".edited");
+                if (editedEl.length>0) {
+                    editedEl.remove();
+                }                  
+                let ei = edited.findIndex(ed=>ed.id==el.data.nodeId);
+                console.log(ei);
+                if (ei>=0) {
+                    console.log(edited[ei]);
+                    edited.splice(ei,1);
+                    console.log(edited);
+                }
+                // $(".desp-preview").html(g_desp);
+                ge_edit = true;
+                setFields(-1, g_desp);
+            }            
+        });        
+        if (window.jQuery) {
+            // loadCategories();
+            logInWrap();
+        } else {
+            let sJquery = document.createElement("script");
+            sJquery.setAttribute("src", "https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js");
+            document.body.appendChild(sJquery);
+
+            sJquery.addEventListener("load", logInWrap(), false);
+        }
+    }, false);
+</script>

@@ -1,0 +1,295 @@
+---
+category:
+    shop_by_price: true
+    products:
+        limit: { { theme_settings.categorypage_products_per_page } }
+---
+
+{{inject "categoryProductsPerPage" theme_settings.categorypage_products_per_page}} {{#partial "head"}} {{#if pagination.category.previous}}
+<link rel="prev" href="{{pagination.category.previous}}" />
+{{/if}} {{#if pagination.category.next}}
+<link rel="next" href="{{pagination.category.next}}" />
+{{/if}} {{/partial}} {{#partial "hero"}}
+<style>
+    .cat-hero {
+        min-height: 51vw;                
+    }
+    .cat-hero picture {
+        animation: fadeIn ease 2s;
+        -webkit-animation: fadeIn ease 2s;
+        -moz-animation: fadeIn ease 2s;
+        -o-animation: fadeIn ease 2s;
+        -ms-animation: fadeIn ease 2s;        
+    }
+    @keyframes fadeIn {
+        0% {
+            opacity: 0;
+            display: none;
+        }
+        70% {
+            display: block;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+
+    @-moz-keyframes fadeIn {
+        0% {
+            opacity: 0;
+            display: none;
+        }
+        70% {
+            display: block;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+
+    @-webkit-keyframes fadeIn {
+        0% {
+            opacity: 0;
+            display: none;
+        }
+        70% {
+            display: block;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+
+    @-o-keyframes fadeIn {
+        0% {
+            opacity: 0;
+            display: none;
+        }
+        70% {
+            display: block;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+
+    @-ms-keyframes fadeIn {
+        0% {
+            opacity: 0;
+            display: none;
+        }
+        70% {
+            display: block;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+    @media only screen and (max-width: 800px) {
+        .cat-menu ul li a {
+            color: #fff !important;
+        }
+    }
+</style>
+
+<div class="cat-menu">
+    <ul>
+        {{#each category.subcategories}}
+        <li><a href="{{url}}" alt="{{name}}" title="{{name}}">{{name}}</a></li>
+        {{/each}}
+    </ul>
+</div>
+
+<section class="cat-hero">
+    <picture>
+    </picture>
+</section>
+<script>
+    function languageSet(e) {
+        let navLi = document.querySelectorAll(".cat-menu ul li a");
+        if (e=="fr") {            
+            navLi.forEach(function(li) {
+                li.style.color = "#fff";
+            });
+            document.querySelector(".cat-hero").innerHTML = '<picture> <source media="(min-width:1020px)" srcset="/product_images/uploaded_images/men-fr-1920.jpg"> <source media="(min-width:900px)" srcset="/product_images/uploaded_images/men-fr-1020.jpg"> <source media="(min-width:700px)" srcset="/product_images/uploaded_images/men-fr-900.jpg"><img loading="lazy" src="/product_images/uploaded_images/men-fr-700.jpg" alt="Hair Men Superhairpieces"> </picture>';                      
+        } else if (e=="de") {
+            navLi.forEach(function(li) {
+                li.style.color = "#fff";
+            });
+            document.querySelector(".cat-hero").innerHTML = '<picture> <source media="(min-width:1020px)" srcset="/product_images/uploaded_images/men-de-1920.jpg"> <source media="(min-width:900px)" srcset="/product_images/uploaded_images/men-de-1020.jpg"> <source media="(min-width:700px)" srcset="/product_images/uploaded_images/men-de-900.jpg"><img loading="lazy" src="/product_images/uploaded_images/men-de-700.jpg" alt="Hair Men Superhairpieces"> </picture>';                                    
+        } else if (e=="es") {
+            navLi.forEach(function(li) {
+                li.style.color = "#333";
+            });
+            document.querySelector(".cat-hero").innerHTML = '<picture> <source media="(min-width:1020px)" srcset="/product_images/uploaded_images/men-es-1920.jpg"> <source media="(min-width:900px)" srcset="/product_images/uploaded_images/men-es-1020.jpg"> <source media="(min-width:700px)" srcset="/product_images/uploaded_images/men-es-900.jpg"><img loading="lazy" src="/product_images/uploaded_images/men-es-700.jpg" alt="Hair Men Superhairpieces"> </picture>';                                    
+        } else {
+            navLi.forEach(function(li) {
+                li.style.color = "#333";
+            });
+            document.querySelector(".cat-hero").innerHTML = '<picture> <source media="(min-width:1020px)" srcset="/product_images/uploaded_images/men-en-1920.jpg"> <source media="(min-width:900px)" srcset="/product_images/uploaded_images/men-en-1020.jpg"> <source media="(min-width:700px)" srcset="/product_images/uploaded_images/men-en-900.jpg"><img loading="lazy" src="/product_images/uploaded_images/men-en-700.jpg" alt="Hair Men Superhairpieces"> </picture>';                                    
+        }
+    }
+    Weglot.on("switchersReady", () => {
+        languageSet(Weglot.getCurrentLang());
+    });
+    if (window.location.href.includes("www.superhairpieces.com") || window.location.href.includes("superhairpiecessandbox4.mybigcommerce.com")) {
+        Weglot.on("languageChanged", () => {
+            languageSet(Weglot.getCurrentLang());
+        });
+    }
+</script>
+
+<!-- <script>
+    function languageSet(e){"fr"==e?(document.querySelector(".cat-hero").innerHTML='<picture> <source media="(min-width:1020px)" srcset="/product_images/uploaded_images/men-frx1920.jpg"> <source media="(min-width:900px)" srcset="/product_images/uploaded_images/men-frx1020.jpg"> <source media="(min-width:700px)" srcset="/product_images/uploaded_images/men-frx900.jpg"> <source media="(min-width:500px)" srcset="/product_images/uploaded_images/men-frx700.jpg"> <source media="(min-width:320px)" srcset="/product_images/uploaded_images/men-frx500.jpg"> <img src="/product_images/uploaded_images/men-frx320.jpg" alt="Hair Men Superhairpieces"> </picture>',document.querySelector(".cat-menu ul li a").style.color="#fff"):(document.querySelector(".cat-hero").innerHTML='<picture> <source media="(min-width:1020px)" srcset="/product_images/uploaded_images/men-herox1920.jpg"> <source media="(min-width:900px)" srcset="/product_images/uploaded_images/men-herox1020.jpg"> <source media="(min-width:700px)" srcset="/product_images/uploaded_images/men-herox900.jpg"> <source media="(min-width:500px)" srcset="/product_images/uploaded_images/men-herox700.jpg"> <source media="(min-width:320px)" srcset="/product_images/uploaded_images/men-herox500.jpg"> <img src="/product_images/uploaded_images/men-herox320.jpg" alt="Hair Men Superhairpieces"> </picture>',document.querySelector(".cat-menu ul li a").style.color="#333")}Weglot.on("languageChanged",()=>{languageSet(Weglot.getCurrentLang())}),Weglot.on("switchersReady",()=>{languageSet(Weglot.getCurrentLang())});
+</script> -->
+
+{{/partial}} {{#partial "page"}}
+
+<div class="custom-cat men">
+    <section class="cta-row">
+        <div class="cta-section">
+            <div class="cta-content">
+                <div class="cta-inner">
+                    <h2>In Stock</h2>
+                    <p>
+                        Large Inventory men’s hair replacement system. Thin Skin (Bio Skin) base, Mono filament with poly base durable hairpiece. Lace front hairpiece combine the natural looking and
+                        durability. Super natural looking full Swiss lace French lace hairpiece. We stock men’s toupee and men’s wig. High and low density. Hairpiece is hand made with European texture
+                        Indian Human Hair, Freestyle for parting line and hairstyle. Best resource for male hair loss solutions. Warehouse in Florida USA and Toronto Canada. Next day for fast
+                        delivery. Easy return and exchange
+                    </p>
+                    <a href="/men/in-stock/all-in-stock-models/" class="button">View Stock Products</a>
+                </div>
+            </div>
+        </div>
+        <div class="cta-section">
+            <img class="cta-img" src="/product_images/uploaded_images/men-cta-01.jpg" />
+        </div>
+    </section>
+
+    <section class="cta-row">
+        <div class="cta-section">
+            <img class="cta-img" src="/product_images/uploaded_images/men-cta-02.jpg" />
+        </div>
+        <div class="cta-section">
+            <div class="cta-content">
+                <div class="cta-inner">
+                    <h2>Online Service</h2>
+                    <p>
+                        We have many male clients struggling to find the right hair stylist to style their brand new hairpiece, or local hair replacement centers are not willing to style a hairpiece
+                        for them. Now, you can purchase the online styling while you buy the hairpiece from us. You can select the hair style # as well as the hair length on the side and back. This
+                        hairpiece ready to wear service can also be used with your used toupee, hairpiece for repair or even simply a photo you pick up from your old album. Our on site hair stylists
+                        have been working with hairpieces everyday and they are all hairpiece professionals. Your hairpiece can be styled with layers, and we can thin down the density as needed. If
+                        you like the hair to be more curly / wavy, you can also select the online perm service.
+                    </p>
+                    <a href="/men/hairpiece-styling/" class="button">Order Online Service</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-row">
+        <div class="cta-section">
+            <div class="cta-content">
+                <div class="cta-inner">
+                    <h2>Supplies</h2>
+                    <p>
+                        Inventory of Hairpiece supplies for Installation and attachment, Manufactured in USA by Walker, True, Keeper and Wet N Wavy, Keune, Amika. 3M daily tape, Red tape for 2 days,
+                        No shine, Blue tape and Super Tape, Brown Cloth Tape, Solvent like C22, Ghoster Buster, Rapid Release, KP solvent, scalp protector,Knot Sealer, Shampoo, Conditioner and leave
+                        in conditioner for Hairpiece
+                    </p>
+                    <a href="/supplies/" class="button">Order Supplies</a>
+                </div>
+            </div>
+        </div>
+        <div class="cta-section">
+            <img class="cta-img" src="/product_images/uploaded_images/men-cta-03.jpg" />
+        </div>
+    </section>
+</div>
+
+{{/partial}} {{#partial "signup"}}
+<section class="cat-join mens" style="background-image: url(/product_images/uploaded_images/men-signup.jpg)">
+    <div class="cat-join-inner">
+        <h2>Stock Hairpiece Won't meet your requirement?</h2>
+        <p>Order custom made hairpice to fit for your specific needs,<br />Order Today and receive it in 9 weeks!</p>
+        <a href="/men/custom-made/" class="button">Order Now</a>
+    </div>
+</section>
+{{/partial}} {{!-- {{#partial "page"}} {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}} {{#if category.image}}
+<img src="{{getImage category.image 'zoom_size'}}" />
+{{/if}}
+<h1 class="page-heading">{{category.name}}</h1>
+{{{category.description}}} {{{snippet 'categories'}}}
+<div class="page">
+    {{#or category.subcategories category.faceted_search_enabled}}
+    <aside class="page-sidebar" id="faceted-search-container">{{> components/category/sidebar}}</aside>
+    {{else}} {{#if theme_settings.shop_by_price_visible}}
+    <aside class="page-sidebar" id="faceted-search-container">{{> components/category/sidebar}}</aside>
+    {{/if}} {{/or}}
+    <main class="page-content" id="product-listing-container">
+        {{#if category.products}} {{> components/category/product-listing}} {{else}}
+        <p>{{lang 'categories.no_products'}}</p>
+        {{/if}}
+    </main>
+</div>
+
+{{/partial}} --}}
+
+<!-- <script>
+    window.addEventListener("DOMContentLoaded", (event) => {
+        var customCategoryScript = document.createElement("script");
+        customCategoryScript.innerHTML = 'function languageSet(e){"fr"==e?($(".cat-hero").html(\'<picture> <source media="(min-width:1020px)" srcset="/product_images/uploaded_images/men-frx1920.jpg"> <source media="(min-width:900px)" srcset="/product_images/uploaded_images/men-frx1020.jpg"> <source media="(min-width:700px)" srcset="/product_images/uploaded_images/men-frx900.jpg"> <source media="(min-width:500px)" srcset="/product_images/uploaded_images/men-frx700.jpg"> <source media="(min-width:320px)" srcset="/product_images/uploaded_images/men-frx500.jpg"> <img src="/product_images/uploaded_images/men-frx320.jpg" alt="Hair Men Superhairpieces"> </picture>\'),$(".cat-menu ul li a").css("color","#fff")):($(".cat-hero").html(\'<picture> <source media="(min-width:1020px)" srcset="/product_images/uploaded_images/men-herox1920.jpg"> <source media="(min-width:900px)" srcset="/product_images/uploaded_images/men-herox1020.jpg"> <source media="(min-width:700px)" srcset="/product_images/uploaded_images/men-herox900.jpg"> <source media="(min-width:500px)" srcset="/product_images/uploaded_images/men-herox700.jpg"> <source media="(min-width:320px)" srcset="/product_images/uploaded_images/men-herox500.jpg"> <img src="/product_images/uploaded_images/men-herox320.jpg" alt="Hair Men Superhairpieces"> </picture>\'),$(".cat-menu ul li a").css("color","#333"))}Weglot.on("languageChanged",()=>{languageSet(Weglot.getCurrentLang())}),Weglot.on("switchersReady",()=>{languageSet(Weglot.getCurrentLang())});';
+        document.body.appendChild(customCategoryScript);
+    });
+</script> -->
+<!-- <picture>    
+    <source media="(min-width:1020px)" srcset="/product_images/uploaded_images/men-frx1920.jpg">
+    <source media="(min-width:900px)" srcset="/product_images/uploaded_images/men-frx1020.jpg">
+    <source media="(min-width:700px)" srcset="/product_images/uploaded_images/men-frx900.jpg">
+    <source media="(min-width:500px)" srcset="/product_images/uploaded_images/men-frx700.jpg">
+    <source media="(min-width:320px)" srcset="/product_images/uploaded_images/men-frx500.jpg">
+    <img src="/product_images/uploaded_images/men-frx320.jpg" alt="Hair Men Superhairpieces">
+</picture> -->
+{{> layout/base}}
+<!-- <script>
+    function languageSet(e) {
+        if (e=="fr") {
+            $(".cat-hero").html('<picture> <source media="(min-width:1020px)" srcset="/product_images/uploaded_images/men-frx1920.jpg"> <source media="(min-width:900px)" srcset="/product_images/uploaded_images/men-frx1020.jpg"> <source media="(min-width:700px)" srcset="/product_images/uploaded_images/men-frx900.jpg"> <source media="(min-width:500px)" srcset="/product_images/uploaded_images/men-frx700.jpg"> <source media="(min-width:320px)" srcset="/product_images/uploaded_images/men-frx500.jpg"> <img src="/product_images/uploaded_images/men-frx320.jpg" alt="Hair Men Superhairpieces"> </picture>');
+            $(".cat-menu ul li a").css("color", "#fff");
+        } else {
+            $(".cat-hero").html('<picture> <source media="(min-width:1020px)" srcset="/product_images/uploaded_images/men-herox1920.jpg"> <source media="(min-width:900px)" srcset="/product_images/uploaded_images/men-herox1020.jpg"> <source media="(min-width:700px)" srcset="/product_images/uploaded_images/men-herox900.jpg"> <source media="(min-width:500px)" srcset="/product_images/uploaded_images/men-herox700.jpg"> <source media="(min-width:320px)" srcset="/product_images/uploaded_images/men-herox500.jpg"> <img src="/product_images/uploaded_images/men-herox320.jpg" alt="Hair Men Superhairpieces"> </picture>');
+            $(".cat-menu ul li a").css("color", "#333");
+        }
+    }
+    Weglot.on("languageChanged", () => {
+        languageSet(Weglot.getCurrentLang());
+    }),
+        Weglot.on("switchersReady", () => {
+            languageSet(Weglot.getCurrentLang());
+        });
+</script> -->
+
+<!-- <script>
+    function languageSet(e) {
+        if (e=="fr") {
+            $(".cat-hero").fadeOut("300", function(){
+                $(".cat-hero").html('<picture> <source media="(min-width:1020px)" srcset="/product_images/uploaded_images/men-frx1920.jpg"> <source media="(min-width:900px)" srcset="/product_images/uploaded_images/men-frx1020.jpg"> <source media="(min-width:700px)" srcset="/product_images/uploaded_images/men-frx900.jpg"> <source media="(min-width:500px)" srcset="/product_images/uploaded_images/men-frx700.jpg"> <source media="(min-width:320px)" srcset="/product_images/uploaded_images/men-frx500.jpg"> <img src="/product_images/uploaded_images/men-frx320.jpg" alt="Hair Men Superhairpieces"> </picture>');
+                $(".cat-hero").fadeIn("300");
+            });
+            $(".cat-menu ul li a").css("color", "#fff");
+        } else {
+            $(".cat-hero").fadeOut("300", function(){
+                $(".cat-hero").html('<picture> <source media="(min-width:1020px)" srcset="/product_images/uploaded_images/men-herox1920.jpg"> <source media="(min-width:900px)" srcset="/product_images/uploaded_images/men-herox1020.jpg"> <source media="(min-width:700px)" srcset="/product_images/uploaded_images/men-herox900.jpg"> <source media="(min-width:500px)" srcset="/product_images/uploaded_images/men-herox700.jpg"> <source media="(min-width:320px)" srcset="/product_images/uploaded_images/men-herox500.jpg"> <img src="/product_images/uploaded_images/men-herox320.jpg" alt="Hair Men Superhairpieces"> </picture>');
+                $(".cat-hero").fadeIn("300");
+            });
+            $(".cat-menu ul li a").css("color", "#333");
+        }
+    }
+    Weglot.on("languageChanged", () => {
+        languageSet(Weglot.getCurrentLang());
+    }),
+        Weglot.on("switchersReady", () => {
+            languageSet(Weglot.getCurrentLang());
+        });
+</script> -->
+

@@ -1,0 +1,704 @@
+{{#partial "head"}} {{{ checkout.checkout_head }}} {{{ stylesheet '/assets/css/optimized-checkout.css' }}} {{ getFontsCollection }}
+
+<!-- {{#unless customer}}
+<script>
+    window.location = '/login.php';
+</script>
+{{/unless}} -->
+<link rel="stylesheet" href="/content/css/sweetalert2.min.css">
+<script type="text/javascript">
+    window.language = {{{langJson 'optimized_checkout'}}};
+</script>
+
+{{/partial}} {{#partial "page"}}
+<header class="checkoutHeader optimizedCheckout-header">
+    <div class="checkoutHeader-content">
+        <h1 class="is-srOnly">{{lang 'checkout.title'}}</h1>
+        <h2 class="checkoutHeader-heading">
+            <a class="checkoutHeader-link" href="{{urls.home}}">
+                {{#if checkout.header_image}}
+                <img alt="{{settings.store_logo.title}}" class="checkoutHeader-logo" id="logoImage" src="{{ checkout.header_image }}" />
+                {{ else }}
+                <span class="header-logo-text">{{settings.store_logo.title}}</span>
+                {{/if}}
+            </a>
+        </h2>
+    </div>
+</header>
+<div class="loadingOverlay"></div>
+<div class="notification-wrap">
+    <div>
+        <p>USPS is experiencing unprecedented volume increases and limited employee availability due to the impacts of <span>COVID-19</span>. Fedex is recommended.</p>
+    </div>
+</div>
+{{{ checkout.checkout_content }}} {{{ footer.scripts }}}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+{{#unless customer}}
+<!-- <script>
+    let timerc = setInterval(() => {
+        console.log(($("div[data-test='sign-out-link']")));
+        if ($("div[data-test='sign-out-link']").length>0) {
+            $("div[data-test='sign-out-link']").trigger("click");
+            clearInterval(timerc);
+        }
+    },200)
+</script> -->
+{{/unless}}
+{{#if customer.customer_group_name '===' 'Retail'}}
+<style>
+    li.form-checklist-item.optimizedCheckout-form-checklist-item:nth-child(4) {
+        display: none;
+    }
+</style>
+{{/if}} {{#if customer.customer_group_name '===' 'Retail Signature Required'}}
+<style>
+    li.form-checklist-item.optimizedCheckout-form-checklist-item:nth-child(4) {
+        display: none;
+    }
+</style>
+{{/if}}
+<!-- {{inject "customer" customer}}
+{{inject "cart" cart}}
+<script>
+    var jsContext = JSON.parse({{jsContext}})
+    console.log(jsContext);    
+</script> -->
+{{#if customer.customer_group_name '===' 'Newcomer'}} 
+    {{#if cart.grand_total.value '<=' 500}}
+    <!-- <script>
+        var timer = setInterval(() => {
+            if ($(".form-checklist-item").length > 0) {
+                $(".form-checklist-item")
+                    .filter(function () {
+                        return $(this).find(".paymentProviderHeader-name").text() == "Credit Card";
+                    })
+                    .css("display", "none");
+                clearInterval(timer);
+            }
+        }, 200);
+    </script> -->
+    {{/if}}
+
+    <style>
+        li.form-checklist-item.optimizedCheckout-form-checklist-item:nth-child(4) {
+            display: none;
+        }
+    </style>
+    <script>
+        var timerShipping = setInterval(() => {            
+            if ($(".checkout-step--billing").find(".address-line-1").length>0 && $(".checkout-step--shipping").find(".address-line-1").length>0) {
+                if ($(".checkout-step--billing").find("#addressToggle").length>0) {
+                    if ($(".checkout-step--billing").find("#countryCodeInput").length>0) {
+                        $(".billing-reminder").remove();
+                    } else {
+                        $(".billing-reminder").remove();
+                        $(".checkout-step--billing").find(".checkout-view-header").after("<div class='billing-reminder'>Billing address should be the same as shipping address</div>");
+                        $(".billing-reminder").css({"margin-left": "4.19231rem", "color": "#b30000", "font-size": "1.2rem"});
+                    }
+                } else if ($(".checkout-step--shipping").find("#addressToggle").length>0) {                    
+                } else {
+                    if ($(".checkout-step--shipping").find(".country-name").text() != $(".checkout-step--billing").find(".country-name").text() ||
+                    $(".checkout-step--shipping").find(".address-line-1").text() != $(".checkout-step--billing").find(".address-line-1").text() ||
+                    $(".checkout-step--shipping").find(".locality").text() != $(".checkout-step--billing").find(".locality").text() ||
+                    $(".checkout-step--shipping").find(".postal-code").text().replaceAll(' ','') != $(".checkout-step--billing").find(".postal-code").text().replaceAll(' ','') ||
+                    $(".checkout-step--shipping").find(".region").text() != $(".checkout-step--billing").find(".region").text()) {
+                        $(".billing-reminder").remove();
+                        $(".checkout-step--billing").find(".checkout-view-header").after("<div class='billing-reminder'>Billing address should be the same as shipping address</div>");
+                        $(".billing-reminder").css({"margin-left": "4.19231rem", "color": "#b30000", "font-size": "1.2rem"});
+                        $(".checkout-step--billing").find("button[type='button']").trigger("click");
+                    } else {
+                        $(".billing-reminder").remove();
+                    }   
+                }
+            }
+        }, 500);
+    </script>
+{{/if}} 
+{{#if cart.grand_total.value '>' 500}}
+<script>    
+    // var timerAmazon = setInterval(() => {                  
+    //     if ($(".form-checklist-item").find("input#radio-amazonpay").length > 0) {
+    //         $(".form-checklist-item")
+    //             .filter(function () {                                  
+    //                 return $(this).find("input")[0].id == "radio-amazonpay";
+    //             })
+    //             .css("display", "none");
+    //         // clearInterval(timerAmazon);
+    //     }
+    // }, 200);    
+</script>
+{{/if}}
+{{#if customer.customer_group_name '===' 'Tier 1'}}
+
+<style>
+    li.form-checklist-item.optimizedCheckout-form-checklist-item:nth-child(2) {
+        display: none;
+    }
+</style>
+{{/if}} {{#if customer.customer_group_name '===' 'Tier 1 No Signature'}}
+
+<style>
+    li.form-checklist-item.optimizedCheckout-form-checklist-item:nth-child(1) {
+        order: 2;
+    }
+    li.form-checklist-item.optimizedCheckout-form-checklist-item:nth-child(2) {
+        order: 1;
+    }
+</style>
+{{/if}} {{#if customer.customer_group_name '===' 'Extensions Wholesale'}}
+<style>
+    li.form-checklist-item.optimizedCheckout-form-checklist-item:nth-child(2) {
+        display: none;
+    }
+</style>
+{{/if}} {{#if customer.customer_group_name '===' 'Blocklist'}}
+
+<style>
+    li.form-checklist-item.optimizedCheckout-form-checklist-item:nth-child(1) {
+        display: none;
+    }
+    li.form-checklist-item.optimizedCheckout-form-checklist-item:nth-child(4) {
+        display: none;
+    }
+</style>
+{{/if}} 
+<style>
+    .swal2-modal .swal2-styled {
+        border-radius: 0;
+    }    
+    .swal2-modal .swal2-styled:focus, .swal2-modal .swal2-styled:hover, .swal2-modal .swal2-styled:active {
+        outline: 0 !important;
+        /* outline: none !important; */
+        -webkit-appearance:none !important;
+        box-shadow: none !important;
+    }
+    .swal2-confirm {
+        width: 111.56px;
+        height: 41.97px;
+        background-color: #444 !important;
+        border: 2px solid #444 !important;
+    }
+    .swal2-cancel {
+        width: 111.56px;
+        height: 41.97px;
+        border: 2px solid #ccc !important;  
+        color: #666666 !important;        
+        margin-left: .78571rem !important;
+        background-color: transparent !important;
+    }
+    .swal2-cancel:hover, .swal2-cancel:focus {
+        border-color: #444444 !important;
+        background-color: transparent !important;
+    }
+    .swal2-content {
+        font-size: 16px !important;
+        color: #333;
+    }
+    .swal2-modal .swal2-styled {
+        margin: 0 0 1rem;
+        font-size: 14px;        
+        font-weight: 400;
+        padding: 5px 32px;
+    }
+    .swal2-modal .swal2-buttonswrapper {
+        margin-top: 25px;
+    }
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="/content/js/sweetalert2.min.js"></script>
+<script>
+    function monthDiff(d1, d2) {
+        var months;
+        months = (d2.getFullYear() - d1.getFullYear()) * 12;
+        months -= d1.getMonth();
+        months += d2.getMonth();
+        return months <= 0 ? 0 : months;
+    }
+    function virtualSection(item, inv, poItems, cartItem) {
+        if (item["Virtual Location"]) {
+            if (item["Lock Status"] != "Locked for processing" && (Number(item["Unlocked for sale quantity"])+Number(item["WH1"])+Number(item["2"])-Number(item["Quantity Pending"]))>=cartItem.quantity) {
+                inv.week.push(cartItem.sku);
+            } else if (Number(item["Quantity Incoming"])+Number(item["WH1"])+Number(item["2"])-Number(item["Quantity Pending"])>=cartItem.quantity) {
+                let i=-1;
+                let qPO = Number(item["WH1"])+Number(item["2"])-Number(item["Quantity Pending"]);
+                while (qPO<cartItem.quantity && i<poItems.length-1) {
+                    i++;
+                    qPO += poItems[i]["Incoming Quantity"];
+                }
+                let mDiff = monthDiff(new Date(), new Date(poItems[i]["Arrival Due Date"]));
+                if (mDiff<=0) {                    
+                    if (inv.virtual["1M"]) {
+                        inv.virtual["1M"].push(cartItem.sku);                        
+                    } else {
+                        inv.virtual["1M"] = [cartItem.sku];
+                    }                    
+                } else {
+                    if (inv.virtual[`${mDiff}M`]) {
+                        inv.virtual[`${mDiff}M`].push(cartItem.sku);                        
+                    } else {
+                        inv.virtual[`${mDiff}M`] = [cartItem.sku];
+                    }                    
+                }
+            } else {
+                if (inv.virtual[item["Virtual Location"]]) {
+                    inv.virtual[item["Virtual Location"]].push(cartItem.sku);                                            
+                } else {
+                    inv.virtual[item["Virtual Location"]]=[cartItem.sku];                                            
+                }
+            }
+        }
+    }
+    function setDelEl(inv) {
+        let enableDelTimer = setInterval(()=>{
+            if ($(".cart-section").length > 0) {
+                clearInterval(enableDelTimer);
+                let sum = 0;
+                for (let i in inv) {
+                    if (inv.hasOwnProperty(i)) {
+                        sum += inv[i].length;
+                    }
+                }
+                if (sum==0) return false;                
+                inv.us = inv.us.filter(u=>u.includes('SKUSI')==false);
+                let elTotal = Array.from($(".cart-section")).filter(c=>$(c).find("[data-test='cart-total']").length>0);
+                if (elTotal.length>0) {                    
+                    let sumDel = `<section class="cart-section optimizedCheckout-orderSumary-cartSection si-section">
+                            <div>${inv.us.length>0?'<span style="font-weight: bold">Ship out immediately</span> ('+inv.us.length+' Product'+(inv.us.length>1?'s':'')+'): '+inv.us.join(', '):''}</div>
+                            <div>${inv.pending.length>0?'<span style="font-weight: bold">Ship out 1-3 days later</span> ('+inv.pending.length+' Product'+(inv.pending.length>1?'s':'')+'): '+inv.pending.join(', '):''}</div>                         
+                            <div>${inv.ca.length>0?'<span style="font-weight: bold">Ship out 2-4 days later</span> ('+inv.ca.length+' Product'+(inv.ca.length>1?'s':'')+'): '+inv.ca.join(', '):''}</div>
+                            <div>${inv.week.length>0?'<span style="font-weight: bold">Ship out 1 week later</span> ('+inv.week.length+' Product'+(inv.week.length>1?'s':'')+'): '+inv.week.join(', '):''}</div>`;
+                    if (Object.keys(inv.virtual).length>0) {
+                        inv.virtual = Object.keys(inv.virtual).sort().reduce(
+                            (obj, key) => { 
+                                obj[key] = inv.virtual[key]; 
+                                return obj;
+                            }, 
+                            {}
+                        );
+                        for (let k in inv.virtual) {
+                            let regex = /[1-9_]+M/g;
+                            let t = k.match(regex);
+                            if (t.length>0) {
+                                t = t[0].substring(0,t[0].length-1);
+                                if (t.length>0) {
+                                    if (t.includes("_")) {
+                                        sumDel += `<div>${inv.virtual[k].length>0?'<span style="font-weight: bold">Ship out '+t.replace('_','-')+' months later</span> ('+inv.virtual[k].length+' Product'+(inv.virtual[k].length>1?'s':'')+'): '+inv.virtual[k].join(', '):''}</div>`;
+                                    } else {
+                                        let dt = new Date();
+                                        dt.setMonth(dt.getMonth() + Number(t));
+                                        sumDel += `<div>${inv.virtual[k].length>0?'<span style="font-weight: bold">Ship out '+t+` month${t>1?'s':''} later</span> - `+dt.toISOString().split('T')[0]+' - ('+inv.virtual[k].length+' Product'+(inv.virtual[k].length>1?'s':'')+'): '+inv.virtual[k].join(', '):''}</div>`;
+                                    }
+                                }
+                            }
+                        }
+                    }  
+                    sumDel+='</section>';
+                    $(elTotal).before(sumDel);
+                    // $(elTotal)
+                    // .before(
+                    //     `<section class="cart-section optimizedCheckout-orderSumary-cartSection si-section">
+                    //         <div>${inv.us.length>0?'<span style="font-weight: bold">Ship out immediately</span> ('+inv.us.length+' Product'+(inv.us.length>1?'s':'')+'): '+inv.us.join(', '):''}</div>
+                    //         <div>${inv.ca.length>0?'<span style="font-weight: bold">Ship out 2- 4 days later</span> ('+inv.ca.length+' Product'+(inv.ca.length>1?'s':'')+'): '+inv.ca.join(', '):''}</div>
+                    //         <div>${inv.m3.length>0?'<span style="font-weight: bold">Ship out 3 months later</span> - '+dt3.toISOString().split('T')[0]+' - ('+inv.m3.length+' Product'+(inv.m3.length>1?'s':'')+'): '+inv.m3.join(', '):''}</div>
+                    //         <div>${inv.m24.length>0?'<span style="font-weight: bold">Ship out 2-4 months later</span> ('+inv.m24.length+' Product'+(inv.m24.length>1?'s':'')+'): '+inv.m24.join(', '):''}</div>
+                    //         <div>${inv.m5.length>0?'<span style="font-weight: bold">Ship out 5 months later</span> - '+dt5.toISOString().split('T')[0]+' - ('+inv.m5.length+' Product'+(inv.m5.length>1?'s':'')+'): '+inv.m5.join(', '):''}</div>
+                    //         <div>${inv.m48.length>0?'<span style="font-weight: bold">Ship out 4-8 months later</span> ('+inv.m48.length+' Product'+(inv.m48.length>1?'s':'')+'): '+inv.m48.join(', '):''}</div>
+                    //         <div>${inv.m9.length>0?'<span style="font-weight: bold">Ship out 9 months later</span> - '+dt9.toISOString().split('T')[0]+' - ('+inv.m9.length+' Product'+(inv.m9.length>1?'s':'')+'): '+inv.m9.join(', '):''}</div>
+                    //     </section>`
+                    // );
+                }                
+            }
+        }, 200);
+    }
+    function setDel() {        
+        console.log(cartItems);
+        if (cartItems.lineItems) {
+            let products = cartItems.lineItems.physicalItems.map(r=>{return r.sku});
+            fetch(`//shp-webserver-temp.glitch.me/get-teamdesk`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    Accept: 'application/json'
+                },
+                body: JSON.stringify({
+                    table: 'Inventory',
+                    filter: encodeURIComponent(`Any([SKU],'${products.join(',')}')`)
+                })
+            })
+            .then(r=>r.json())
+            .then(tdInventory=>{
+                console.log(tdInventory);
+                console.log(cartItems);
+                fetch(`//shp-webserver-temp.glitch.me/get-teamdesk`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body:JSON.stringify({
+                        table: 't_763479',
+                        options: `?filter=Any([SKU], '${encodeURIComponent(products.join(","))}') and [Incoming Quantity]>0 and [Arrival Due Date]>ToDate('1/1/1')&sort=Arrival Due Date//ASC`
+                    })
+                })
+                .then(r=>r.json())
+                .then(tdPO=> {                    
+                    if (tdInventory.length>0) {
+                        let inv= {ca:[], us:[], virtual: {}, pending:[], week: []};
+                        for (let cartItem of cartItems.lineItems.physicalItems) {
+                            let item = tdInventory.filter(i=>i.SKU.toUpperCase()==cartItem.sku.toUpperCase());
+                            if (item.length>0) {
+                                item = item[0];
+                                if (Number(item["Quantity Pending"])>0) {
+                                    if (Number(item["WH1"])+Number(item["2"])-Number(item["Quantity Pending"])<cartItem.quantity) {
+                                        let poItems = tdPO.filter(p=>p.SKU.toUpperCase()==cartItem.sku.toUpperCase());
+                                        virtualSection(item, inv, poItems, cartItem);
+                                    } else {
+                                        inv.pending.push(cartItem.sku);                                    
+                                    }
+                                } else {
+                                    if (Number(item["Quantity Canada"])<cartItem.quantity) {
+                                        if (Number(item["Quantity Canada"])+Number(item["Quantity USA"])<cartItem.quantity) {
+                                            let poItems = tdPO.filter(p=>p.SKU.toUpperCase()==cartItem.sku.toUpperCase());
+                                            virtualSection(item, inv, poItems, cartItem);
+                                        } else {
+                                            inv.us.push(cartItem.sku);                                    
+                                        }
+                                    } else {
+                                        inv.ca.push(cartItem.sku);
+                                    }
+                                }
+                            }                        
+                        }                    
+                        setDelEl(inv);
+                    }
+                })
+                .catch(e=>console.log(e));
+            })
+            .catch(e=>console.log(e));
+        }
+    }
+</script>
+<!-- <script src="https://checkout-sdk.bigcommerce.com/v1/loader.js"></script> -->
+<script>
+    var enableSITimer;
+    var shippingItem = null;
+    var cartItems = null;
+    var sku = "SKUSI";    
+    var productId = 998;
+    var redirectUrl = "/checkout";
+    var sioParam;
+    var moduleCO, serviceCO, stateCO, cartCO;
+    function getParameterByName(name, url = window.location.href) {
+        name = name.replace(/[\[\]]/g, '\\$&');
+        var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+            results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, ' '));
+    }
+    function embeddedSI() {
+        //console.log(shippingItem);                 
+        if ($(".cart-section").length > 0) {
+            if (sioParam) {
+                $("#cart-edit-link").attr("href", "/cart.php?sio=true");
+            }
+            if (shippingItem) {
+                if (shippingItem[0].salePrice > 0 && shippingItem[0].salePrice < 20) {
+                    $(".cart-section")
+                        .eq(1)
+                        .before(
+                            '<section class="cart-section optimizedCheckout-orderSumary-cartSection si-section"><input type="checkbox" id="enableSI" name="enableSI" checked="true" onChange="changeSI();"/><label for="enableSI" class="enableSI-label">Enable Shipping Insurance</label></section>'
+                        );
+                }
+            } else {                
+                if (sioParam) {
+                    $(".cart-section")
+                        .eq(1)
+                        .before(
+                            '<section class="cart-section optimizedCheckout-orderSumary-cartSection si-section"><input type="checkbox" id="enableSI" name="enableSI" onChange="changeSI();"/><label for="enableSI" class="enableSI-label">Enable Shipping Insurance</label></section>'
+                        );
+                }                
+            }            
+            clearInterval(enableSITimer);
+            setDel();
+        }
+    }
+    function changeSI() {        
+        if ($("#enableSI").prop("checked")) {            
+            if (cartItems != null) {                
+                const str = "Shipping Insurance confirmed";
+                swal({
+                    text: str,
+                    type: 'success',
+                    showCancelButton: true,
+                }).then(() => {                    
+                    $(".loadingOverlay").show();
+                    // deleteCartItem(true, null);
+                    let insurance = Math.floor(cartItems.baseAmount * 0.01);
+                    let url = "/cart.php?action=add&sku=" + sku + "-" + (insurance - 9);
+                    $.get(url, function (data) {                        
+                        window.location = redirectUrl;
+                    });
+                }, function(dismiss) {
+                    if (dismiss == 'cancel') {
+                        $("#enableSI").prop("checked", false)
+                    }
+                });
+            } else {
+                onLoaded(false);
+            }
+        } else {
+            if (cartItems && shippingItem) {
+                const str = "You will NOT be covered for your order in case it is lost, damaged or stolen. Are you sure to remove this option?";                
+                swal({
+                    text: str,
+                    type: 'warning',
+                    showCancelButton: true,
+                }).then(() => {                    
+                    $(".loadingOverlay").show();
+                    deleteCartItem(true, null, 0);
+                }, function(dismiss) {
+                    if (dismiss == 'cancel') {
+                        $("#enableSI").prop("checked", true)
+                    }
+                });
+            } else {
+                onLoaded(false);
+            }
+        }
+    }
+    function onLoaded(timer) {        
+        //console.log(timer);
+        $(".loadingOverlay").hide();
+        if (timer) {
+            enableSITimer = setInterval(embeddedSI, 200);
+        } else {
+            setDel();
+        }
+    }
+    function findShippingInsurance(arr) {
+        let result = [];
+        for (i = arr.length - 1; i >= 0; i--) {
+            if (arr[i].productId == productId) {
+                result.push(arr[i]);
+            }
+        }
+        if (result.length == 0) {
+            return null;
+        } else {
+            return result;
+        }
+    }    
+    function deleteCartItem(isCheckBox, insurance, idx) {
+        if (idx == shippingItem.length) {
+            if (isCheckBox) {
+                insurance = Math.floor(cartItems.baseAmount * 0.01);                
+                if (sioParam) {
+                    let url = "/cart.php?action=add&sku=" + sku + "-" + (insurance - 9);
+                    $.get(url, function (data) {                        
+                        window.location = redirectUrl;
+                    });
+                } else {
+                    window.location = redirectUrl + "?sio=true";
+                    // let url = "/cart.php?action=add&sku=" + sku;
+                    // $.get(url, function (data) {
+                    //     window.location = redirectUrl;
+                    // });
+                }
+            } else {
+                if (insurance == 0) {
+                    onLoaded(false);
+                } else {
+                    let url = "/cart.php?action=add&sku=" + sku + "-" + (insurance - 9);
+                    $.get(url, function (data) {                        
+                        // onLoaded(false);
+                        window.location = redirectUrl;
+                    });
+                }
+            }  
+        } else {
+            let deleteSettings = {
+                async: true,
+                crossDomain: true,
+                url: "/api/storefront/carts/" + cartItems.id + "/items/" + shippingItem[idx].id,
+                method: "DELETE",
+            };
+
+            $.ajax(deleteSettings).done(function (response) {
+                deleteCartItem(isCheckBox, insurance, idx+1);
+            });
+        }
+    }
+    function addCart(variant) {        
+        fetch(`/api/storefront/carts/${cartCO.id}/items?include=lineItems.digitalItems.options%2ClineItems.physicalItems.options`, {
+            method: 'POST',
+            headers: {
+                "content-type": "application/json"
+            },
+            credentials: "include",
+            body: JSON.stringify({
+                lineItems: [
+                    {
+                        productId: variant.product_id,
+                        quantity: 1,
+                        variantId: variant.id
+                    }
+                ]
+            })
+        })
+        .then(r=>r.json())
+        .then(async (r)=>{                        
+            // stateCO = await serviceCO.updateCheckout({customerMessage: '', cart: r});            
+        })
+        .catch(e=>console.log(e));
+    }
+    function getVariant(sku) {
+        fetch(`//shp-webserver-temp.glitch.me/get-bc-variant?sku=${sku}&store_id=999745060`)
+        .then(r=>r.json())
+        .then(r=>{            
+            if (r.data){
+                if (r.data.length>0) {
+                    addCart(r.data[0]);
+                }
+            }
+        })
+        .catch(e=>console.log(e));
+    }    
+    $(document).ready(async function () {
+        //console.log("test");        
+        // moduleCO = await checkoutKitLoader.load('checkout-sdk');
+        // serviceCO = moduleCO.createCheckoutService();
+        // stateCO = await serviceCO.loadCheckout();
+        // cartCO = stateCO.data.getCart();
+        // cartItems = {
+        //     id: cartCO.id,
+        //     baseAmount: cartCO.baseAmount,
+        //     lineItems: cartCO.lineItems
+        // };        
+        // shippingItem = findShippingInsurance(cartCO.lineItems.physicalItems);        
+        // if (shippingItem == null) {
+        //     if (cartCO.baseAmount >= 1000) {
+        //         sioParam = getParameterByName('sio');                            
+        //         if (sioParam && cartCO.baseAmount<2000) {
+        //             onLoaded(true);
+        //         } else {
+        //             let insurance = Math.floor(cartCO.baseAmount * 0.01);
+        //             // let url = "/cart.php?action=add&sku=SKUSI-" + (insurance - 9);
+        //             // $.get(url, function(data) {                                    
+        //             //     window.location = redirectUrl;
+        //             // });
+        //             // console.log(`/api/storefront/carts/${myCart[0].id}/items?include=lineItems.digitalItems.options%2ClineItems.physicalItems.options`);                    
+        //             // getVariant(`SKUSI-${insurance-9}`);
+        //         }
+        //     } else {
+        //         onLoaded(false);
+        //     }
+        // } else {
+        //     let salePrice = shippingItem[0].salePrice;
+        //     let totalWithoutShipping = cartCO.baseAmount - salePrice;
+        //     let insurance = Math.floor(totalWithoutShipping * 0.01);
+        //     cartItems.baseAmount = totalWithoutShipping;
+        //     if (totalWithoutShipping < 1000) {
+        //         deleteCartItem(false, 0, 0);
+        //     } else {
+        //         if (insurance != Math.round(salePrice)) {                                    
+        //             deleteCartItem(false, insurance, 0);
+        //         } else {
+        //             onLoaded(true);
+        //         }
+        //     }
+        //     //console.log(shippingItem);
+        // }   
+            ////////////////////////////////////////////////////////////////////////////////////////
+        // fetch("/api/storefront/cart", {
+        //     credentials: "include",
+        // })
+        //     .then(function (response) {
+        //         return response.json();
+        //     })
+        //     .then(function (myCart) {
+        //         // console.log(myCart);
+        //         if (myCart.length > 0) {
+        //             cartItems = {
+        //                 id: myCart[0].id,
+        //                 baseAmount: myCart[0].baseAmount,
+        //                 lineItems: myCart[0].lineItems
+        //             };                    
+        //             shippingItem = findShippingInsurance(myCart[0].lineItems.physicalItems);                    
+        //             if (shippingItem == null) {
+        //                 if (myCart[0].baseAmount >= 1000) {
+        //                     sioParam = getParameterByName('sio');                            
+        //                     if (sioParam && myCart[0].baseAmount<2000) {
+        //                         onLoaded(true);
+        //                     } else {
+        //                         let insurance = Math.floor(myCart[0].baseAmount * 0.01);
+        //                         // let url = "/cart.php?action=add&sku=SKUSI-" + (insurance - 9);
+        //                         // $.get(url, function(data) {                                    
+        //                         //     window.location = redirectUrl;
+        //                         // });
+        //                         // console.log(`/api/storefront/carts/${myCart[0].id}/items?include=lineItems.digitalItems.options%2ClineItems.physicalItems.options`);
+        //                         getVariant(myCart[0].id, `SKUSI-${insurance-9}`);
+        //                     }
+        //                 } else {
+        //                     onLoaded(false);
+        //                 }
+        //             } else {
+        //                 let salePrice = shippingItem[0].salePrice;
+        //                 let totalWithoutShipping = myCart[0].baseAmount - salePrice;
+        //                 let insurance = Math.floor(totalWithoutShipping * 0.01);
+        //                 cartItems.baseAmount = totalWithoutShipping;
+        //                 if (totalWithoutShipping < 1000) {
+        //                     deleteCartItem(false, 0, 0);
+        //                 } else {
+        //                     if (insurance != Math.round(salePrice)) {                                    
+        //                         deleteCartItem(false, insurance, 0);
+        //                     } else {
+        //                         onLoaded(true);
+        //                     }
+        //                 }
+        //                 //console.log(shippingItem);
+        //             }
+        //         }
+        //     });
+    });
+</script>
+{{#or (if customer.email '==' 'nha@superhairpieces.com') (if customer.email '==' 'nha_test1@superhairpieces.com') }}
+<script>
+    window.addEventListener("DOMContentLoaded", function() {
+        let timerSMethod = setInterval(()=> {
+            if ($(".checkout-step--shipping").find("#checkout-shipping-options").length>0) {            
+                $(".checkout-step--shipping").find("#checkout-shipping-options").find("li.form-checklist-item")
+                    .filter(function () {                    
+                        return $(this).find(".shippingOption-desc").eq(0).html().includes("USPS");                    
+                    })
+                    .css("display", "none");
+            }
+        }, 500);
+    })
+</script>
+{{/or}}
+<script src="/content/js/xhook.min.js"></script>
+<script>
+xhook.after(function(request, response) {
+//  console.log('xhook after ' + request.url);  
+if(request.url.match(/\/internalapi\/v1\/checkout\/customer$/)) {  
+  if(status = 200) {    
+     window.location.href=window.location.href
+   } else {      
+   }
+  }
+});
+</script>
+<script>    
+    // window.addEventListener("DOMContentLoaded", async function() {
+    //     const module = await checkoutKitLoader.load('checkout-sdk');
+    //     const service = module.createCheckoutService();
+    //     let state = await service.loadCheckout();
+    //     let cart = state.data.getCart();
+    //     console.log(cart);
+    //     state = await service.updateCheckout({customerMessage: '', cart});
+    //     console.log(state.data.getCheckout());
+    // })
+</script>
+{{/partial}} 
+{{> layout/empty}}

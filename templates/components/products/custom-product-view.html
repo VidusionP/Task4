@@ -1,0 +1,1797 @@
+<style>
+    .cmh-wrap {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-column-gap: 2rem;
+        grid-row-gap: 1rem;
+        position: relative;
+    }
+    .cmh-wrap {
+        display: none;
+    }
+    .cmh-section-wrap {
+        width: 100%;
+        float: left;
+    }
+    .cmh-wrap select {
+        border: 1px solid #ccc;
+        color: #666;
+        cursor: pointer;
+        outline: 0;
+        background-color: #fff;
+        -webkit-appearance: none;
+        border-radius: 4px;
+        max-width: 20rem;
+        height: 2.28571rem;
+        line-height: 1rem;
+        padding: 0.57143rem 0.78571rem;
+        font-size: 13px;
+        background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z' fill='rgba(117, 117, 117, 0.999)' /%3E%3C/svg%3E");
+        background-position: right .5rem top .5rem;
+        background-size: 1.28571rem;
+        background-repeat: no-repeat;
+    }
+    .cmh-checkbox-wrap, .cmh-radio-wrap {
+        position: relative;
+    }
+    .cmh-checkbox-label, .cmh-radio-label {
+        color: #666;
+        cursor: pointer;
+        display: block;
+        line-height: 1.5;
+        margin-left: 1.5rem;
+    }
+    .cmh-checkbox, .cmh-radio {
+        clip: rect(1px, 1px, 1px, 1px);
+        height: 1px;
+        overflow: hidden;
+        position: absolute;
+        width: 1px;
+    }
+    .cmh-checkbox+.cmh-checkbox-label::before, .cmh-radio+.cmh-radio-label::before {
+        top: .21429rem;        
+        background-color: #fff;
+        border: 1px solid #ccc;
+        height: 1.14286rem;
+        left: 0;
+        width: 1.14286rem;
+        content: "";
+        display: block;
+        position: absolute;
+        transition: all 50ms ease-out;
+    }
+    .cmh-checkbox+.cmh-checkbox-label::before {
+        border-radius: 4px;
+    }
+    .cmh-radio+.cmh-radio-label::before {
+        border-radius: 50%;
+    }
+    
+    .cmh-checkbox+.cmh-checkbox-label::after, .cmh-radio+.cmh-radio-label::after {
+        top: .28571rem;
+        height: 1rem;
+        left: 1px;
+        opacity: 0;
+        transform: scale(0);
+        width: 1rem;
+        display: block;
+        position: absolute;
+        transition: all 50ms ease-out;
+        content: "";
+    }
+    .cmh-checkbox+.cmh-checkbox-label::after {        
+        background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z' fill='rgba(51, 51, 51, 0.999)' /%3E%3C/svg%3E");
+        background-position: 50%;
+        background-repeat: no-repeat;
+        background-size: 100%;
+        color: rgba(51,51,51,.999);        
+        font-size: 1rem;
+        line-height: 1;
+        text-align: center;        
+    }
+    .cmh-radio+.cmh-radio-label::after {
+        background: rgba(51,51,51,.999);
+        border: 3px solid #fff;
+        border-radius: 1rem;
+    }
+    .cmh-checkbox:checked+.cmh-checkbox-label::after, .cmh-radio:checked+.cmh-radio-label::after {
+        opacity: 1;
+        transform: scale(1);        
+    }
+    .cmh-radio-label-category {
+        width: 100px;
+        height: 100px;
+        margin: 0 10px;
+        background-size: contain;
+        position: relative;
+    }
+    .cmh-radio-label-category > * {
+        position: absolute;
+        width: 100%;
+        bottom: 10px;
+        text-align: center;
+        color: #fff;
+    }
+    .cmh-radio-label-category[men-section] {
+        background-image: url("/content/images/products/CMH/cmh-men.png");        
+    }
+    .cmh-radio-label-category[women-section] {
+        background-image: url("/content/images/products/CMH/cmh-women.png");        
+    }
+    .cmh-radio+.cmh-radio-label-category::after, .cmh-radio:checked+.cmh-radio-label-category::after {
+        display: none;
+    }
+    .cmh-radio+.cmh-radio-label-category::before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        background-color: rgba(0, 0, 0, 0.5);
+        content: "";
+    }   
+    .cmh-radio:checked+.cmh-radio-label-category::before {
+        display: none;
+    }
+    .cmh-radio:checked+.cmh-radio-label-category > * {
+        display: none;
+    }
+    .cmh-radio-label-category:hover::before {
+        display: none;
+    }
+    .cmh-price-add-cart-wrap {        
+        grid-column: 1/span 2;
+        text-align: center;        
+    }
+    .cmh-price {
+        font-size: 25px;
+        font-weight: 400;
+        line-height: 1.5;
+        margin: 0 auto 10px;
+    }
+    #cmh-add-cart.disabled {
+        background-color: #888;
+    }
+    .cmh-radio-picture-group-wrap {
+        border-top: 1px solid #ddd;
+        border-left: 1px solid #ddd;
+        border-right: 1px solid #ddd;
+
+    }
+    .cmh-radio-picture-wrap {
+        display: flex;        
+        align-items: center;
+        padding: 5px 10px;
+        border-bottom: 1px solid #ddd;
+    }
+    .cmh-radio-picture-wrap img {
+        margin-right: 10px;
+        max-width: 80px;
+        max-height: 50px;
+        border-radius: 50px;
+    }
+    .cmh-input {
+        width: 100%;
+        border: 1px solid #ccc;
+        padding: 0.57143rem 0.78571rem;
+        border-radius: 4px;
+        font-size: 13px;
+        color: #666;
+    }
+    input.cmh-input {
+        max-height: 31px;
+    }
+    .cmh-label {
+        margin: 1.5rem 0 .8rem;
+        position: relative;
+        width: max-content;
+        background-color: transparent;
+    }
+    .cmh-label-order-type {
+        margin: 1rem auto .8rem;        
+    }
+    .cmh-label > * {
+        position: relative;
+    }
+    .cmh-label::before {        
+        content: "";
+        display: block;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        background-color: #d7f5ef;
+        width: 100%;
+        transform: rotate(-1deg);
+        height: 10px;
+        transition: transform 120ms cubic-bezier(0.23, 1, 0.32, 1) 0s, background 120ms cubic-bezier(0.23, 1, 0.32, 1) 0s;        
+        opacity: .8;
+    }
+    [order-type-section] {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 1.5rem;
+    }
+    .cmh-error {
+        position: relative
+    }
+    .cmh-error::after {
+        content: attr(error-content);
+        display: block;
+        position: absolute;
+        font-size: 12px;
+        color: #D2386C;
+    }
+</style>
+<div class="productView">
+    <section class="productView-details">
+        <div class="productView-product">
+            <h1 class="productView-title" {{#if schema}}itemprop="name"{{/if}}>{{product.title}}</h1>
+
+            <h2 class="productView-brand"{{#if schema}} itemprop="brand" itemscope itemtype="http://schema.org/Brand"{{/if}}>
+                <a href="{{product.brand.url}}"{{#if schema}} itemprop="url"{{/if}}><span{{#if schema}} itemprop="name"{{/if}}>{{product.brand.name}}</span></a>
+            </h2>                        
+            {{{region name="product_below_price"}}}
+            <div class="productView-rating"{{#if schema}} itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating"{{/if}}>
+                {{#if settings.show_product_rating}}
+                    {{#if product.num_reviews '>' 0}}
+                        {{#if schema}}
+                            <meta itemprop="ratingValue" content="{{product.rating}}">
+                            <meta itemprop="ratingCount" content="{{product.num_reviews}}">
+                            <meta itemprop="reviewCount" content="{{product.num_reviews}}">
+                        {{/if}}
+                    {{/if}}
+                    {{> components/products/ratings rating=product.rating}}
+                    <span class="productView-reviewLink">
+                        {{#if product.num_reviews '>' 0}}
+                            <a href="{{product.url}}#product-reviews">
+                                {{lang 'products.reviews.link_to_review' total=product.num_reviews}}
+                            </a>
+                        {{else}}
+                            {{lang 'products.reviews.link_to_review' total=product.num_reviews}}
+                        {{/if}}
+                    </span>
+                {{/if}}
+                {{#if settings.show_product_reviews}}
+                    <span class="productView-reviewLink">
+                        <a href="{{product.url}}{{#if is_ajax}}#write_review{{/if}}"
+                           {{#unless is_ajax }}data-reveal-id="modal-review-form"{{/unless}}>
+                           {{lang 'products.reviews.new'}}
+                        </a>
+                    </span>
+                    {{> components/products/modals/writeReview}}
+                {{/if}}
+            </div>
+            {{product.detail_messages}}
+            <dl class="productView-info">
+                {{#if product.sku}}
+                    <dt class="productView-info-name">{{lang 'products.sku'}}</dt>
+                    <dd class="productView-info-value" data-product-sku>{{product.sku}}</dd>
+                {{/if}}
+                {{#if product.upc}}
+                    <dt class="productView-info-name">{{lang 'products.upc'}}</dt>
+                    <dd class="productView-info-value" data-product-upc>{{product.upc}}</dd>
+                {{/if}}                                
+
+                {{#each product.custom_fields}}
+                    <dt class="productView-info-name">{{name}}:</dt>
+                    <dd class="productView-info-value">{{{value}}}</dd>
+                {{/each}}
+            </dl>
+        </div>
+    </section>
+
+    <section class="productView-images" data-image-gallery>
+        <figure class="productView-image"
+                data-image-gallery-main
+                data-zoom-image="{{getImage product.main_image 'zoom_size' (cdn theme_settings.default_image_product)}}"
+                >
+            <a href="{{getImage product.main_image 'zoom_size' (cdn theme_settings.default_image_product)}}">
+                <img class="productView-image--default"
+                     src="{{getImage product.main_image 'product_size' (cdn theme_settings.default_image_product)}}"
+                     alt="{{product.main_image.alt}}" title="{{product.main_image.alt}}" data-main-image>
+            </a>
+        </figure>        
+    </section>
+
+    <section class="cmh-section-wrap">
+        <div>
+            <div class="cmh-label cmh-label-order-type">
+                <div>Hair Order Type</div>
+            </div>
+            <div order-type-section>
+                <div class="cmh-radio-wrap">
+                    <input type="radio" id="cmh-hair-type-male" name="hair-type" value="male" class="cmh-radio">
+                    <label for="cmh-hair-type-male" class="cmh-radio-label cmh-radio-label-category" men-section>                        
+                        <div>Male</div>
+                    </label>
+                </div>
+                <div class="cmh-radio-wrap">
+                    <input type="radio" id="cmh-hair-type-female" name="hair-type" value="female" class="cmh-radio">
+                    <label for="cmh-hair-type-female" class="cmh-radio-label cmh-radio-label-category" women-section>
+                        <div>Female</div>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="cmh-wrap" men-section>
+            <div>
+                <div class="cmh-label">
+                    <div>Base Type</div>
+                </div>
+                <div>
+                    <select name="" id="cmh-men-base-type">
+                        <option value="M100" data-price="238" selected>M100</option>
+                        <option value="M101" data-price="238">M101</option>
+                        <option value="M102" data-price="238">M102</option>
+                        <option value="M103" data-price="298">M103</option>
+                        <option value="M104" data-price="248">N104</option>
+                        <option value="M105" data-price="282">M105</option>
+                        <option value="M106" data-price="278">M106</option>
+                        <option value="M106Z" data-price="278">M106Z (Custom made French Lace Poly Zigzag Side Back Toupee)</option>
+                        <option value="M107" data-price="288">M107</option>
+                        <option value="M108" data-price="238">M108</option>
+                        <option value="M109" data-price="248">M109</option>
+                        <option value="M110" data-price="258">M110</option>
+                        <option value="M111" data-price="238">M111</option>
+                        <option value="M112" data-price="248">M112</option>
+                        <option value="M115" data-price="279">M115</option>
+                        <option value="M116" data-price="278">M116</option>
+                        <option value="M158" data-price="258">M158</option>                        
+                    </select>
+                </div>
+            </div>
+            <div>
+                <div class="cmh-label">
+                    <div>I will Provide the following Sample List</div>
+                </div>
+                <div>
+                    <select name="" id="cmh-men-sample-list">                    
+                        <option value="No Sample Mail in, No Manual Support Needed">No Sample Mail in, No Manual Support Needed</option>
+                        <option value="Template / Manual Support Needed" selected>Template / Manual Support Needed</option>
+                        <option value="Color Sample / Manual Support Needed">Color Sample / Manual Support Needed</option>
+                        <option value="Template + Color Sample / Manual Support Needed">Template + Color Sample / Manual Support Needed</option>
+                        <option value="Old Unit to Duplicate / Manual Support Needed">Old Unit to Duplicate / Manual Support Needed</option>
+                        <option value="Old Unit used as Template + Color Sample / Manual Support Needed">Old Unit used as Template + Color Sample / Manual Support Needed</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <div class="cmh-label">
+                    <div>Size: Left - Right</div>
+                </div>
+                <div>
+                    <select name="" id="cmh-men-left-right">
+                        <option value="Per Sample" selected>Per Sample</option>
+                        <option value='4"'>4"</option>
+                        <option value='4.25"'>4.25"</option>
+                        <option value='4.5"'>4.5"</option>
+                        <option value='4.75"'>4.75"</option>
+                        <option value='5"'>5"</option>
+                        <option value='5.25"'>5.25"</option>
+                        <option value='5.5"'>5.5"</option>
+                        <option value='5.75"'>5.75"</option>
+                        <option value='6"'>6"</option>
+                        <option value='6.25"'>6.25"</option>
+                        <option value='6.5"'>6.5"</option>
+                        <option value='6.75"'>6.75"</option>
+                        <option value='7"'>7"</option>
+                        <option value='7.25"'>7.25"</option>
+                        <option value='7.5"'>7.5"</option>
+                        <option value='7.75"'>7.75"</option>
+                        <option value='8"'>8"</option>
+                        <option value='8.25" Oversize'>8.25" Oversize</option>
+                        <option value='8.5" Oversize'>8.5" Oversize</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <div class="cmh-label">
+                    <div>Size: Front - Back</div>
+                </div>
+                <div>
+                    <select id="cmh-men-front-back">                        
+                        <option value="Per Sample" selected>Per Sample</option>
+                        <option value='4"'>4"</option>
+                        <option value='4.25"'>4.25"</option>
+                        <option value='4.5"'>4.5"</option>
+                        <option value='4.75"'>4.75"</option>
+                        <option value='5"'>5"</option>
+                        <option value='5.25"'>5.25"</option>
+                        <option value='5.5"'>5.5"</option>
+                        <option value='5.75"'>5.75"</option>
+                        <option value='6"'>6"</option>
+                        <option value='6.25"'>6.25"</option>
+                        <option value='6.5"'>6.5"</option>
+                        <option value='6.75"'>6.75"</option>
+                        <option value='7"'>7"</option>
+                        <option value='7.25"'>7.25"</option>
+                        <option value='7.5"'>7.5"</option>
+                        <option value='7.75"'>7.75"</option>
+                        <option value='8"'>8"</option>
+                        <option value='8.25"'>8.25"</option>
+                        <option value='8.5"'>8.5"</option>
+                        <option value='8.75"'>8.75"</option>
+                        <option value='9"'>9"</option>
+                        <option value='9.25"'>9.25"</option>
+                        <option value='9.5"'>9.5"</option>
+                        <option value='9.75"'>9.75"</option>
+                        <option value='10"'>10"</option>
+                        <option value='10.25"'>10.25</option>
+                        <option value='10.5"'>10.5"</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <div class="cmh-label">
+                    <div>Hair Length</div>
+                </div>
+                <div>
+                    <select id="cmh-men-hair-length">                        
+                        <option value='6" Most Popular Choice' selected>6" Most Popular Choice</option>
+                        <option value='8"'>8"</option>
+                        <option value='10"'>10"</option>
+                        <option value='12"'>12"</option>
+                        <option value='14"'>14"</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <div class="cmh-label">
+                    <div>Mens Hair Color</div>
+                </div>
+                <div>
+                    <select id="cmh-men-hair-color">
+                        <option value="#1" selected>#1 Black</option>
+                        <option value="#11B">#11B Natural Black</option>
+                        <option value="#1B">#1B Off black</option>
+                        <option value="#1BASH">#1BASh Off Black / Brown Ash Black</option>
+                        <option value="#2">#2 Darkest brown</option>
+                        <option value="#2ASH">#2ASH Darkest Ash Brown</option>
+                        <option value="#3">#3 Dark brown</option>
+                        <option value="#3ASH">#3ASH Dark Ash Brown</option>
+                        <option value="#4">#4 Medium Brown</option>
+                        <option value="#4ASH">#4ASH Medium Ash Brown</option>
+                        <option value="#5">#5 Medium Light Brown (Ash Tone)</option>
+                        <option value="#5R">#5R Medium Light Brown (Warm Tone)</option>
+                        <option value="#6">#6 Light Brown (Ash Tone)</option>
+                        <option value="#6R">#6R Light Brown (Warm Tone)</option>
+                        <option value="#7">#7 Very Light Brown</option>
+                        <option value="#8R">#8R Very Light Brown Warm Tone</option>
+                        <option value="#17">#17 Dark Ash Blonde</option>
+                        <option value="#17R">#17R Brown / Blonde mix Warm Tone</option>
+                        <option value="#18">#18  Medium Blonde</option>
+                        <option value="#20">#20 Light Ash Blonde</option>
+                        <option value="#20R">#20R Light Blonde with Warm Tone</option>
+                        <option value="#22R">#22R Most Blonde Hair for Men</option>
+                        <option value="#30R">#30R Bronz Blonde</option>
+                        <option value="#60">#60 100% Synthetic Grey Kanekalon Hair</option>
+                        <option value="#60H">#60H 100% Human Grey Hair</option>
+                        <option value="Per Sample">Per Sample</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <div class="cmh-label">
+                    <div>Grey Hair %</div>
+                </div>
+                <div>
+                    <select id="cmh-men-grey-hair">
+                        <option value="Solid Color Only" selected>Solid Color Only</option>
+                        <option value="5%">5%</option>
+                        <option value="10%">10%</option>
+                        <option value="15%">15%</option>
+                        <option value="20%">20%</option>
+                        <option value="30%">30%</option>
+                        <option value="40%">40%</option>
+                        <option value="50%">50%</option>
+                        <option value="60%">60%</option>
+                        <option value="70%">70%</option>
+                        <option value="70% Human Hair Grey">70% Human Hair Grey</option>
+                        <option value="80%">80%</option>
+                        <option value="80% Human Hair Grey">80% Human Hair Grey</option>
+                        <option value="90%">90%</option>
+                        <option value="100%">100%</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <div class="cmh-label">
+                    <div>Hair Type</div>
+                </div>
+                <div>
+                    <select id="cmh-men-hair-type">
+                        <option value="Soft Fine European Texture Indian Human Hair (Most Popular for Men)" selected>Soft Fine European Texture Indian Human Hair (Most Popular for Men)</option>
+                        <option value="Synthetic Hair">Synthetic Hair</option>
+                        <option value="Soft Fine Chinese Hair">Soft Fine Chinese Hair</option>
+                        <option value="Coarse Chinese Hair">Coarse Chinese Hair</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <div class="cmh-label">
+                    <div>Grey / White Hair Type</div>
+                </div>
+                <div>
+                    <select id="cmh-men-grey-white-hair-type">                        
+                        <option value="Synthetic Japanese Kanekalon Grey">Synthetic Japanese Kanekalon Grey</option>
+                        <option value="Human Hair Grey">Human Hair Grey</option>
+                        <option value="Yaki Hair Grey">Yaki Hair Grey</option>
+                        <option value="No Grey" selected>No Grey</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <div class="cmh-label">
+                    <div>Hair Density</div>
+                </div>
+                <div>
+                    <select id="cmh-men-hair-density">
+                        <option value="50%">50%</option>
+                        <option value="55%">55%</option>
+                        <option value="60%">60%</option>
+                        <option value="65%">65% Extra Light ( 65% and lower for Lace base or Ultra Thin Skin only)</option>
+                        <option value="70%">70% (70%-125% can work with any base)</option>
+                        <option value="75%">75%</option>
+                        <option value="80%">80%</option>
+                        <option value="85%">85%</option>
+                        <option value="90%">90%</option>
+                        <option value="95%">95%</option>
+                        <option value="100%" selected>100% Light to Medium density (the most popular)</option>
+                        <option value="105%">105%</option>
+                        <option value="110%">110%</option>
+                        <option value="115%">115%</option>
+                        <option value="120%">120% Medium Density</option>
+                        <option value="125%">125% (70%-125% can work with any base)</option>
+                        <option value="130%">130% (130% and above for Mono silk base or Thick skin only)</option>
+                        <option value="135%">135%</option>
+                        <option value="140%">140%</option>
+                        <option value="150%">150%</option>
+                        <option value="160%">160%</option>
+                        <option value="180%">180% Super Heavy Density</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <div class="cmh-label">
+                    <div>Hair Direction</div>
+                </div>
+                <div>
+                    <select id="cmh-men-hair-direction">                        
+                        <option value="Freestyle" selected>Freestyle (Most Popular)</option>
+                        <option value="Left Part">Left Part</option>
+                        <option value="Right Part">Right Part</option>
+                        <option value="Center Part">Center Part</option>
+                        <option value="Left Part without Parting Line">Left Part without Parting Line</option>
+                        <option value="Right Part without Parting Line">Right Part without Parting Line</option>
+                        <option value="Center Part without Parting Line">Center Part without Parting Line</option>
+                        <option value="Left Crown">Left Crown</option>
+                        <option value="Right Crown">Right Crown</option>
+                        <option value="Center Crown">Center Crown</option>
+                        <option value="Flat Back">Flat Back</option>
+                        <option value="Forward Pampadour">Forward Pampadour</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <div class="cmh-label">
+                    <div>Additional Options</div>
+                </div>
+                <div>
+                    <select id="cmh-men-additional-options">
+                        <option value="">Choose Options</option>
+                        <option value="Go Standard or Factory Suggested">Go Standard or Factory Suggested</option>
+                        <option value="03-04 mills Thinnest Skin (V Loop Only)">03-04 mills Thinnest Skin (V Loop Only)</option>
+                        <option value="04-06 mills Super Thin">04-06 mills Super Thin</option>
+                        <option value="06-08 mills Thin">06-08 mills Thin</option>
+                        <option value="08-10 mills Medium">08-10 mills Medium</option>
+                        <option value="10-12 mills Medium to Thick">10-12 mills Medium to Thick</option>
+                        <option value="12-14 mills Thick">12-14 mills Thick</option>
+                        <option value="14-16 mills Super Thick">14-16 mills Super Thick (not recommended)</option>
+                        <option value="Full Head Bleach Knot (Not Including color #1, #11B or lighter color above #7)">Full Head Bleach Knot (Not Including color #1, #11B or lighter color above #7)</option>
+                        <option value='Front 1" Bleach Knot'>Front 1" Bleach Knot (Not Including color #1, #11B or lighter color above #7)</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <div class="cmh-label">
+                    <div>Hair Style Final Sale Option</div>
+                </div>
+                <div class="cmh-radio-picture-group-wrap">
+                    <div class="cmh-radio-picture-wrap">
+                        <div class="cmh-radio-wrap">
+                            <input type="radio" value="None" id="cmh-men-hair-style-none" name="cmh-men-hair-style" class="cmh-radio" checked>
+                            <label for="cmh-men-hair-style-none" class="cmh-radio-label">None</label>
+                        </div>
+                    </div>
+                    <div class="cmh-radio-picture-wrap">
+                        <img src="/content/images/products/CMH/cmh-men-hair-style-1.jpg" alt="style" loading="lazy">
+                        <div class="cmh-radio-wrap">
+                            <input type="radio" value="2 inch Hair Cut #221" id="cmh-men-hair-style-221" name="cmh-men-hair-style" class="cmh-radio">
+                            <label for="cmh-men-hair-style-221" class="cmh-radio-label">2 inch Hair Cut #221</label>
+                        </div>
+                    </div>
+                    <div class="cmh-radio-picture-wrap">
+                        <img src="/content/images/products/CMH/cmh-men-hair-style-2.jpg" alt="style" loading="lazy">
+                        <div class="cmh-radio-wrap">
+                            <input type="radio" value="2 to 2.5 Inch Hair Cut #222" id="cmh-men-hair-style-222" name="cmh-men-hair-style" class="cmh-radio">
+                            <label for="cmh-men-hair-style-222" class="cmh-radio-label">2 to 2.5 Inch Hair Cut #222</label>
+                        </div>
+                    </div>
+                    <div class="cmh-radio-picture-wrap">
+                        <img src="/content/images/products/CMH/cmh-men-hair-style-3.jpg" alt="style" loading="lazy">
+                        <div class="cmh-radio-wrap">
+                            <input type="radio" value="3 to 3.5 Inch Hair Cut #231" id="cmh-men-hair-style-231" name="cmh-men-hair-style" class="cmh-radio">
+                            <label for="cmh-men-hair-style-231" class="cmh-radio-label">3 to 3.5 Inch Hair Cut #231</label>
+                        </div>
+                    </div>
+                    <div class="cmh-radio-picture-wrap">
+                        <img src="/content/images/products/CMH/cmh-men-hair-style-4.jpg" alt="style" loading="lazy">
+                        <div class="cmh-radio-wrap">
+                            <input type="radio" value="2.5 to 3 Inch Hair Cut #232" id="cmh-men-hair-style-232" name="cmh-men-hair-style" class="cmh-radio">
+                            <label for="cmh-men-hair-style-232" class="cmh-radio-label">2.5 to 3 Inch Hair Cut #232</label>
+                        </div>
+                    </div>
+                    <div class="cmh-radio-picture-wrap">
+                        <img src="/content/images/products/CMH/cmh-men-hair-style-5.jpg" alt="style" loading="lazy">
+                        <div class="cmh-radio-wrap">
+                            <input type="radio" value="2.5 Inch Hair Cut #233" id="cmh-men-hair-style-233" name="cmh-men-hair-style" class="cmh-radio">
+                            <label for="cmh-men-hair-style-233" class="cmh-radio-label">2.5 Inch Hair Cut #233</label>
+                        </div>
+                    </div>
+                    <div class="cmh-radio-picture-wrap">
+                        <img src="/content/images/products/CMH/cmh-men-hair-style-6.jpg" alt="style" loading="lazy">
+                        <div class="cmh-radio-wrap">
+                            <input type="radio" value="2.5 to 3 Inch Hair Cut #234" id="cmh-men-hair-style-234" name="cmh-men-hair-style" class="cmh-radio">
+                            <label for="cmh-men-hair-style-234" class="cmh-radio-label">2.5 to 3 Inch Hair Cut #234</label>
+                        </div>
+                    </div>
+                    <div class="cmh-radio-picture-wrap">
+                        <img src="/content/images/products/CMH/cmh-men-hair-style-7.jpg" alt="style" loading="lazy">
+                        <div class="cmh-radio-wrap">
+                            <input type="radio" value="2 to 2.5 Inch Hair Cut #251" id="cmh-men-hair-style-251" name="cmh-men-hair-style" class="cmh-radio">
+                            <label for="cmh-men-hair-style-251" class="cmh-radio-label">2 to 2.5 Inch Hair Cut #251</label>
+                        </div>
+                    </div>
+                    <div class="cmh-radio-picture-wrap">
+                        <img src="/content/images/products/CMH/cmh-men-hair-style-8.jpg" alt="style" loading="lazy">
+                        <div class="cmh-radio-wrap">
+                            <input type="radio" value="3 Inch Hair Cut #331" id="cmh-men-hair-style-331" name="cmh-men-hair-style" class="cmh-radio">
+                            <label for="cmh-men-hair-style-331" class="cmh-radio-label">3 Inch Hair Cut #331</label>
+                        </div>
+                    </div>
+                    <div class="cmh-radio-picture-wrap">
+                        <img src="/content/images/products/CMH/cmh-men-hair-style-9.jpg" alt="style" loading="lazy">
+                        <div class="cmh-radio-wrap">
+                            <input type="radio" value="3 Inch Hair Cut #332" id="cmh-men-hair-style-332" name="cmh-men-hair-style" class="cmh-radio">
+                            <label for="cmh-men-hair-style-332" class="cmh-radio-label">3 Inch Hair Cut #332</label>
+                        </div>
+                    </div>
+                    <div class="cmh-radio-picture-wrap">
+                        <img src="/content/images/products/CMH/cmh-men-hair-style-13.jpg" alt="style" loading="lazy">
+                        <div class="cmh-radio-wrap">
+                            <input type="radio" value="3 Inch Hair Cut #334" id="cmh-men-hair-style-334" name="cmh-men-hair-style" class="cmh-radio">
+                            <label for="cmh-men-hair-style-334" class="cmh-radio-label">3 Inch Hair Cut #334</label>
+                        </div>
+                    </div>
+                    <div class="cmh-radio-picture-wrap">
+                        <img src="/content/images/products/CMH/cmh-men-hair-style-14.jpg" alt="style" loading="lazy">
+                        <div class="cmh-radio-wrap">
+                            <input type="radio" value="3 to 3.5 Inch Hair Cut #335" id="cmh-men-hair-style-335" name="cmh-men-hair-style" class="cmh-radio">
+                            <label for="cmh-men-hair-style-335" class="cmh-radio-label">3 to 3.5 Inch Hair Cut #335</label>
+                        </div>
+                    </div>
+                    <div class="cmh-radio-picture-wrap">
+                        <img src="/content/images/products/CMH/cmh-men-hair-style-10.jpg" alt="style" loading="lazy">
+                        <div class="cmh-radio-wrap">
+                            <input type="radio" value="3 To 4 Inch Hair Cut #341" id="cmh-men-hair-style-341" name="cmh-men-hair-style" class="cmh-radio">
+                            <label for="cmh-men-hair-style-341" class="cmh-radio-label">3 To 4 Inch Hair Cut #341</label>
+                        </div>
+                    </div>
+                    <div class="cmh-radio-picture-wrap">
+                        <img src="/content/images/products/CMH/cmh-men-hair-style-11.jpg" alt="style" loading="lazy">
+                        <div class="cmh-radio-wrap">
+                            <input type="radio" value="3.5 To 4 Inch Hair Cut #342" id="cmh-men-hair-style-342" name="cmh-men-hair-style" class="cmh-radio">
+                            <label for="cmh-men-hair-style-342" class="cmh-radio-label">3.5 To 4 Inch Hair Cut #342</label>
+                        </div>
+                    </div>
+                    <div class="cmh-radio-picture-wrap">
+                        <img src="/content/images/products/CMH/cmh-men-hair-style-12.jpg" alt="style" loading="lazy">
+                        <div class="cmh-radio-wrap">
+                            <input type="radio" value="3 To 4.5 Inch Hair Cut #343" id="cmh-men-hair-style-343" name="cmh-men-hair-style" class="cmh-radio">
+                            <label for="cmh-men-hair-style-343" class="cmh-radio-label">3 To 4.5 Inch Hair Cut #343</label>
+                        </div>
+                    </div>                    
+                    <div class="cmh-radio-picture-wrap">
+                        <img src="/content/images/products/CMH/cmh-men-hair-style-15.jpg" alt="style" loading="lazy">
+                        <div class="cmh-radio-wrap">
+                            <input type="radio" value="5 Inch Hair Cut #551" id="cmh-men-hair-style-551" name="cmh-men-hair-style" class="cmh-radio">
+                            <label for="cmh-men-hair-style-551" class="cmh-radio-label">5 Inch Hair Cut #551</label>
+                        </div>
+                    </div>
+                    <div class="cmh-radio-picture-wrap">
+                        <img src="/content/images/products/CMH/cmh-men-hair-style-16.jpg" alt="style" loading="lazy">
+                        <div class="cmh-radio-wrap">
+                            <input type="radio" value="5 to 5.5 Inch Hair Cut #552" id="cmh-men-hair-style-552" name="cmh-men-hair-style" class="cmh-radio">
+                            <label for="cmh-men-hair-style-552" class="cmh-radio-label">5 to 5.5 Inch Hair Cut #552</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div>
+                    <div class="cmh-label">
+                        <div>Straight or Wavy</div>
+                    </div>
+                    <div class="cmh-radio-picture-group-wrap">
+                        <div class="cmh-radio-picture-wrap">
+                            <img src="/content/images/products/CMH/cmh-men-wavy-1.jpg" alt="wavy" loading="lazy">
+                            <div class="cmh-radio-wrap">
+                                <input type="radio" value="36mm Straight" id="cmh-men-straight-36mm" name="cmh-men-straight-wavy" class="cmh-radio" checked>
+                                <label for="cmh-men-straight-36mm" class="cmh-radio-label">
+                                    36mm Straight
+                                </label>
+                            </div>
+                        </div>
+                        <div class="cmh-radio-picture-wrap">
+                            <img src="/content/images/products/CMH/cmh-men-wavy-2.jpg" alt="wavy" loading="lazy">
+                            <div class="cmh-radio-wrap">
+                                <input type="radio" value="Slightly wavy 32mm" id="cmh-men-wavy-32mm" name="cmh-men-straight-wavy" class="cmh-radio">
+                                <label for="cmh-men-wavy-32mm" class="cmh-radio-label">
+                                    Slightly wavy 32mm
+                                </label>
+                            </div>
+                        </div>
+                        <div class="cmh-radio-picture-wrap">
+                            <img src="/content/images/products/CMH/cmh-men-wavy-3.jpg" alt="wavy" loading="lazy">
+                            <div class="cmh-radio-wrap">
+                                <input type="radio" value="Body wavy 28mm" id="cmh-men-wavy-28mm" name="cmh-men-straight-wavy" class="cmh-radio">
+                                <label for="cmh-men-wavy-28mm" class="cmh-radio-label">
+                                    Body wavy 28mm
+                                </label>
+                            </div>
+                        </div>
+                        <div class="cmh-radio-picture-wrap">
+                            <img src="/content/images/products/CMH/cmh-men-wavy-4.jpg" alt="wavy" loading="lazy">
+                            <div class="cmh-radio-wrap">
+                                <input type="radio" value="Medium wavy 25mm" id="cmh-men-wavy-25mm" name="cmh-men-straight-wavy" class="cmh-radio">
+                                <label for="cmh-men-wavy-25mm" class="cmh-radio-label">
+                                    Medium wavy 25mm
+                                </label>
+                            </div>
+                        </div>
+                        <div class="cmh-radio-picture-wrap">
+                            <img src="/content/images/products/CMH/cmh-men-wavy-5.jpg" alt="wavy" loading="lazy">
+                            <div class="cmh-radio-wrap">
+                                <input type="radio" value="Tight wavy 22mm" id="cmh-men-wavy-22mm" name="cmh-men-straight-wavy" class="cmh-radio">
+                                <label for="cmh-men-wavy-22mm" class="cmh-radio-label">
+                                    Tight wavy 22mm
+                                </label>
+                            </div>
+                        </div>
+                        <div class="cmh-radio-picture-wrap">
+                            <img src="/content/images/products/CMH/cmh-men-wavy-6.jpg" alt="wavy" loading="lazy">
+                            <div class="cmh-radio-wrap">
+                                <input type="radio" value="Loose curl 18mm" id="cmh-men-curl-18mm" name="cmh-men-straight-wavy" class="cmh-radio">
+                                <label for="cmh-men-curl-18mm" class="cmh-radio-label">
+                                    Loose curl 18mm
+                                </label>
+                            </div>
+                        </div>
+                        <div class="cmh-radio-picture-wrap">
+                            <img src="/content/images/products/CMH/cmh-men-wavy-7.jpg" alt="wavy" loading="lazy">
+                            <div class="cmh-radio-wrap">
+                                <input type="radio" value="Medium curl 15mm" id="cmh-men-curl-15mm" name="cmh-men-straight-wavy" class="cmh-radio">
+                                <label for="cmh-men-curl-15mm" class="cmh-radio-label">
+                                    Medium curl 15mm
+                                </label>
+                            </div>
+                        </div>
+                        <div class="cmh-radio-picture-wrap">
+                            <img src="/content/images/products/CMH/cmh-men-wavy-8.jpg" alt="wavy" loading="lazy">
+                            <div class="cmh-radio-wrap">
+                                <input type="radio" value="Tight curl 12mm" id="cmh-men-curl-12mm" name="cmh-men-straight-wavy" class="cmh-radio">
+                                <label for="cmh-men-curl-12mm" class="cmh-radio-label">
+                                    Tight curl 12mm
+                                </label>
+                            </div>
+                        </div>
+                        <div class="cmh-radio-picture-wrap">
+                            <img src="/content/images/products/CMH/cmh-men-wavy-9.jpg" alt="wavy" loading="lazy">
+                            <div class="cmh-radio-wrap">
+                                <input type="radio" value="Afro hair 8mm" id="cmh-men-afro-8mm" name="cmh-men-straight-wavy" class="cmh-radio">
+                                <label for="cmh-men-afro-8mm" class="cmh-radio-label">
+                                    Afro hair 8mm
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="cmh-label">
+                        <div>Front Hairline</div>
+                    </div>
+                    <div class="cmh-radio-picture-group-wrap">
+                        <div class="cmh-radio-picture-wrap">
+                            <img src="/content/images/products/CMH/cmh-men-front-hairline-1.jpg" alt="hairline" loading="lazy">
+                            <div class="cmh-radio-wrap">
+                                <input type="radio" value="A" id="cmh-men-front-hairline-a" name="cmh-men-front-hairline" class="cmh-radio" checked>
+                                <label for="cmh-men-front-hairline-a" class="cmh-radio-label">
+                                    A - Most popular
+                                </label>
+                            </div>
+                        </div>
+                        <div class="cmh-radio-picture-wrap">
+                            <img src="/content/images/products/CMH/cmh-men-front-hairline-2.jpg" alt="hairline" loading="lazy">
+                            <div class="cmh-radio-wrap">
+                                <input type="radio" value="CC" id="cmh-men-front-hairline-c" name="cmh-men-front-hairline" class="cmh-radio">
+                                <label for="cmh-men-front-hairline-c" class="cmh-radio-label">
+                                    CC
+                                </label>
+                            </div>
+                        </div>
+                        <div class="cmh-radio-picture-wrap">
+                            <img src="/content/images/products/CMH/cmh-men-front-hairline-3.jpg" alt="hairline" loading="lazy">
+                            <div class="cmh-radio-wrap">
+                                <input type="radio" value="AA" id="cmh-men-front-hairline-aa" name="cmh-men-front-hairline" class="cmh-radio">
+                                <label for="cmh-men-front-hairline-aa" class="cmh-radio-label">
+                                    AA - More Recession
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>                
+                <div>
+                    <div class="cmh-label">
+                        <div>Match the Base with Your Skin Tone</div>
+                    </div>
+                    <div>
+                        <select id="cmh-men-match-skin-tone">
+                            <option value="">Choose Options</option>
+                            <option value="Light Pink">Light Pink (We will match with clear or flesh color Base)</option>
+                            <option value="Medium / Dark Brown">Medium / Dark Brown (We will match with brown color Base)</option>
+                            <option value="Black">Black (We will match with very dark brown color base)</option>
+                        </select>
+                    </div>
+                </div>
+                <div>
+                    <div class="cmh-label">
+                        <div>Additional Services $</div>
+                    </div>
+                    <div>
+                        <select id="cmh-men-additional-services">
+                            <option value="">Choose Options</option>
+                            <option value="Complete Trim Off Empty Lace">Complete Trim Off Empty Lace</option>
+                            <option value='Trim Off Empty Lace but keep 1/8" Empty Front'>Trim Off Empty Lace but keep 1/8" Empty Front</option>
+                            <option value="Complete Trim Off Empty Skin">Complete Trim Off Empty Skin</option>
+                            <option value='Trim Off Empty Skin but keep 1/8" Empty Front'>Trim Off Empty Skin but keep 1/8" Empty Front</option>
+                            <option value="Sew 2 Clips On">Sew 2 Clips On</option>
+                            <option value="Sew 3 Clips On">Sew 3 Clips On</option>
+                            <option value="Sew 4 Clips On">Sew 4 Clips On</option>
+                        </select>
+                    </div>
+                </div>                
+            </div>
+        </div>
+        <div class="cmh-wrap" women-section>
+            <div>
+                <div class="cmh-label">
+                    <div>Base Type</div>
+                </div>
+                <div>
+                    <select name="" id="cmh-women-base-type">
+                        <option value="T40V2" data-price="250">T40V2</option>
+                        <option value="T41" data-price="320" selected>T41</option>
+                        <option value="T43" data-price="268">T43</option>
+                        <option value="T44" data-price="310">T44</option>
+                        <option value="T45" data-price="365">T45</option>
+                        <option value="T46" data-price="320">T46</option>
+                        <option value="T47" data-price="268">T47</option>
+                        <option value="T48" data-price="268">T48</option>
+                        <option value="T49" data-price="250">T49</option>
+                        <option value="T51" data-price="251">T51</option>
+                        <option value="T52" data-price="250">T52</option>
+                        <option value="T53V1" data-price="268">T53V1</option>
+                        <option value="T53V2" data-price="268">T53V2</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <div class="cmh-label">
+                    <div>I will Provide the following Sample List</div>
+                </div>
+                <div>
+                    <select name="" id="cmh-women-sample-list">                    
+                        <option value="No Sample Mail in, No Manual Support Needed">No Sample Mail in, No Manual Support Needed</option>
+                        <option value="Template / Manual Support Needed" selected>Template / Manual Support Needed</option>
+                        <option value="Color Sample / Manual Support Needed">Color Sample / Manual Support Needed</option>
+                        <option value="Template + Color Sample / Manual Support Needed">Template + Color Sample / Manual Support Needed</option>
+                        <option value="Sample Unit to Duplicate / Manual Support Needed">Sample Unit to Duplicate / Manual Support Needed</option>
+                        <option value="Sample Unit used as Template + Color Sample / Manual Support Needed">Sample Unit used as Template + Color Sample / Manual Support Needed</option>
+                        <option value="Repair + Duplication Bundle">Repair + Duplication Bundle</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <div class="cmh-label">
+                    <div>Base Size</div>                    
+                </div>
+                <div>
+                    <select name="" id="cmh-women-base-size">
+                        <option value='Per sample' selected>Per sample</option>
+                        <option value='4" x 4"'>4" x 4"</option>
+                        <option value='4" x 5"'>4" x 5"</option>
+                        <option value='4" x 6"'>4" x 6"</option>
+                        <option value='5" x 5"'>5" x 5" Round</option>
+                        <option value='5" x 6"'>5" x 6"</option>
+                        <option value='5" x 7"'>5" x 7"</option>
+                        <option value='6" x 6"'>6" x 6" Round</option>
+                        <option value='6" x 7"'>6" x 7"</option>
+                        <option value='6" x 8"'>6" x 8"</option>
+                        <option value='6" x 9"'>6" x 9"</option>
+                        <option value='7" x 8"'>7" x 8"</option>
+                        <option value='7" x 9"'>7" x 9"</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <div class="cmh-label">
+                    <div>Density</div>
+                </div>
+                <div>
+                    <select name="" id="cmh-women-density">
+                        <option value="60%">60% super light</option>
+                        <option value="65%">65%</option>
+                        <option value="70%">70%</option>
+                        <option value="75%">75%</option>
+                        <option value="80%">80% light</option>
+                        <option value="85%">85%</option>
+                        <option value="90%">90%</option>
+                        <option value="95%">95%</option>
+                        <option value="100%">100% light medium</option>
+                        <option value="105%">105%</option>
+                        <option value="110%">110%</option>
+                        <option value="115%">115%</option>
+                        <option value="120%">120% medium</option>
+                        <option value="125%">125%</option>
+                        <option value="130%">130% medium heavy</option>
+                        <option value="135%">135%</option>
+                        <option value="140%">140%</option>
+                        <option value="145%">145%</option>
+                        <option value="150%">150% heavy</option>
+                        <option value="160%">160%</option>
+                        <option value="180%">180% super heavy</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <div class="cmh-label">
+                    <div>Hair Type</div>
+                </div>
+                <div>
+                    <select id="cmh-women-hair-type">
+                        <option value="" selected>Choose Options</option>
+                        <option value="Soft Fine Indian human hair">Soft Fine Indian human hair</option>
+                        <option value="Chinese human hair">Chinese human hair</option>
+                        <option value="Yaki human hair">Yaki human hair</option>
+                        <option value="Synethic Japanese Kankalon">Synethic Japanese Kankalon</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <div class="cmh-label">
+                    <div>Hair Style</div>
+                </div>
+                <div>
+                    <select id="cmh-women-hair-style">
+                        <option value="" selected>Choose Options</option>
+                        <option value="Freestyle">Freestyle ( Parts anywhere)</option>
+                        <option value="Center part">Center part</option>
+                        <option value="Left part">Left part</option>
+                        <option value="Right part">Right part</option>
+                        <option value="Flat brush back">Flat brush back</option>
+                        <option value="Comb down">Comb down</option>
+                        <option value="Center crown">Center crown</option>
+                        <option value="Right Crown">Right Crown</option>
+                        <option value="Left crown">Left crown</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <div class="cmh-label">
+                    <div>Finished Length</div>
+                </div>
+                <div>
+                    <select name="" id="cmh-women-finished-length">
+                        <option value='8"' selected>8"</option>
+                        <option value='10"'>10"</option>
+                        <option value='12"'>12"</option>
+                        <option value='14"'>14"</option>
+                        <option value='16"'>16"</option>
+                        <option value='18"'>18"</option>
+                        <option value='20"'>20"</option>
+                        <option value='22"'>22"</option>                        
+                    </select>
+                </div>
+            </div>
+            <div>
+                <div class="cmh-label">
+                    <div>Women's wigs color</div>
+                </div>
+                <div>
+                    <select id="cmh-women-wigs-color">
+                        <option value="#1">#1-Jet Black</option>
+                        <option value="#1B">#1B-Off black</option>
+                        <option value="#2">#2-Darkest brown</option>
+                        <option value="#3">#3-Dark brown</option>
+                        <option value="#4">#4-Medium dark brown</option>
+                        <option value="#5">#5-Warm chocolate</option>
+                        <option value="#6">#6-Chestnut brown</option>
+                        <option value="#8">#8 Light Chestnut Brown</option>
+                        <option value="#10">#10-Golden brown</option>
+                        <option value="#10_16">#10/#16</option>
+                        <option value="#12">#12-Sunset brown</option>
+                        <option value="#14">#14-Dark wheat blonde</option>
+                        <option value="#14_24">#14/#24</option>
+                        <option value="#16">#16-Dark shade blonde</option>
+                        <option value="#16_613">#16/#613</option>
+                        <option value="#18">#18-Ash blonde</option>
+                        <option value="#22">#22-Light ash blonde</option>
+                        <option value="#24">#24 Ginger Blonde</option>
+                        <option value="#25">#25 Champagne Blonde</option>
+                        <option value="#26">#26-Light honey blonde</option>
+                        <option value="#27">#27 Rose Gold</option>
+                        <option value="#28">#28  Bronde</option>
+                        <option value="#30">#30 Auburn</option>
+                        <option value="#33">#33 Dark Auburn</option>
+                        <option value="#613">#613 Pale blonde</option>
+                        <option value="#BUG">#BUG Burgundy</option>
+                        <option value="Per sample" selected>Per sample</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <div class="cmh-label">
+                    <div>Wave / Curl</div>
+                </div>
+                <div>
+                    <select id="cmh-women-wave-curl">
+                        <option value="Straight or 36mm">Straight or 36mm</option>
+                        <option value="Slight Wavy 32mm">Slight Wavy 32mm</option>
+                        <option value="Body Wavy 28mm">Body Wavy 28mm</option>
+                        <option value="Medium Wavy 25mm">Medium Wavy 25mm</option>
+                        <option value="Tight Wave 22mm">Tight Wave 22mm</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <div class="cmh-label">
+                    <div>Need highlight? Write here</div>
+                </div>
+                <div>
+                    <input type="text" maxlength="100" class="cmh-input" id="cmh-women-highlight">
+                </div>
+            </div>
+            <div>
+                <div class="cmh-label">
+                    <div>Skin Tone Base</div>
+                </div>
+                <div>
+                    <select id="cmh-women-skin-tone-base">                        
+                        <option value="" selected>-- No Special Requirements --</option>
+                        <option value="Light Pink">Light Pink (We will match with clear or flesh color Base)</option>
+                        <option value="Medium / Dark Brown">Medium / Dark Brown (We will match with brown color Base)</option>
+                        <option value="Black">Black (We will match with very dark brown color base)</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="cmh-label">
+                <div>Additional information</div>
+            </div>
+            <div>
+                <textarea name="" id="cmh-additional-infomation" rows="1" class="cmh-input"></textarea>
+            </div>
+        </div>
+        <div>
+            <div class="cmh-label">
+                <div>Accept Custom Order Store Policy</div>
+            </div>
+            <div class="cmh-checkbox-wrap">
+                <input type="checkbox" id="cmh-policy" value="yes" class="cmh-checkbox">
+                <label for="cmh-policy" class="cmh-checkbox-label">Please Keep in mind that it might take us 4-6 MONTHS to make your custom order right now during the tough situation. All custom orders are final sale, no return, no refund or no exchange. Please understand this before placing your order!</label>
+            </div>
+        </div>
+        <div class="cmh-price-add-cart-wrap">            
+            {{#or customer (if theme_settings.restrict_to_login '!==' true)}}
+                <div class="cmh-price">
+                    Total price: {{product.price.without_tax.currency}}<span id="cmh-price">{{product.price.without_tax.formatted}}</span>
+                </div>
+                <div>
+                    <button class="button button--primary disabled" id="cmh-add-cart" disabled>Add to cart</button>
+                </div>
+            {{else}}
+                {{> components/common/login-for-pricing}}
+            {{/or}}
+        </div>
+        <!-- <div>
+            <div>
+                Base Size:
+            </div>
+            <div>
+                <select name="base-size" id="cmh-base-size">
+                    <option value="toupee" selected>Toupee</option>
+                    <option value="80">80 < size <= 85</option>
+                    <option value="85">85 < size <= 90</option>
+                    <option value="full">Full Cap Wig</option>
+                </select>
+            </div>
+        </div>
+        <div>
+            <div>
+                Hair Length:
+            </div>
+            <div>
+                <select name="hair-length" id="cmh-hair-length">
+                    <option value="6" selected>6" and less</option>
+                    <option value="8">8"</option>
+                    <option value="10">10"</option>
+                    <option value="12">12"</option>
+                    <option value="14">14"</option>
+                    <option value="16">16"</option>
+                    <option value="18">18"</option>
+                    <option value="20">20"</option>
+                    <option value="22">22" (Need to verify with factory)</option>
+                </select>
+            </div>
+        </div>
+        <div>
+            <div>
+                Hair Density:
+            </div>
+            <div>
+                <select name="hair-density" id="cmh-hair-density">
+                    <option value="regular" selected>Regular</option>
+                    <option value="140">140%</option>
+                    <option value="150">150%</option>
+                    <option value="160">160%</option>
+                    <option value="180">180%</option>
+                </select>
+            </div>
+        </div>
+        <div>
+            <div>
+                Base Type:
+            </div>
+            <div>
+                <select name="base-type" id="cmh-base-type">
+                    <option value="regular" selected>Regular</option>
+                    <option value="french">French Lace / Swiss Lace</option>
+                    <option value="lace">Lace Front</option>
+                    <option value="m103">M103 Fine Welded Mono</option>
+                    <option value="m107">M107 Fine Welded Mono</option>
+                    <option value="m110">M110 Invisible Knot</option>
+                    <option value="inject_skin">Inject Skin</option>
+                    <option value="inject_silk">Inject Silk Top (Jewish Wig Top/ Glueless Top)</option>
+                    <option value="silicon">Silicon Base (Fiona Wig)</option>
+                </select>
+            </div>
+        </div>
+        <div>
+            <div>
+                Upgrade Premium Hair (Women Only):
+            </div>
+            <div>
+                <select name="upgrade" id="cmh-upgrade">
+                    <option value="no" selected>No</option>
+                    <option value="yes">Yes</option>
+                </select>
+            </div>
+        </div>
+        <div>
+            <div>Perm Option:</div>
+            <div class="cmh-checkbox-wrap">
+                <input type="checkbox" id="cmh-perm" value="yes" class="cmh-checkbox">
+                <label for="cmh-perm" class="cmh-checkbox-label">Perm -25mm and more curl</label>
+            </div>
+        </div>
+        <div>
+            <div>New Root Technology:</div>
+            <div class="cmh-checkbox-wrap">
+                <input type="checkbox" id="cmh-tech" value="yes" class="cmh-checkbox">
+                <label for="cmh-tech" class="cmh-checkbox-label">Bleach Before Vent at Front (BBVF) / Dark Root (DR)</label>
+            </div>
+        </div>
+        <div>
+            <div>Accept Store Policy:</div>
+            <div class="cmh-checkbox-wrap">
+                <input type="checkbox" id="cmh-policy" value="yes" class="cmh-checkbox">
+                <label for="cmh-policy" class="cmh-checkbox-label">Please Keep in mind that it might take us 4-6 MONTHS to make your custom order right now during the tough situation. All custom orders are final sale, no return, no refund or no exchange. Please understand this before placing your order!</label>
+            </div>
+        </div>
+        <div class="cmh-price-add-cart-wrap">            
+            {{#or customer (if theme_settings.restrict_to_login '!==' true)}}
+                <div class="cmh-price">
+                    Total price: {{product.price.without_tax.currency}}<span id="cmh-price">{{product.price.without_tax.formatted}}</span>
+                </div>
+                <div>
+                    <button class="button button--primary disabled" id="cmh-add-cart" disabled>Add to cart</button>
+                </div>
+            {{else}}
+                {{> components/common/login-for-pricing}}
+            {{/or}}
+        </div> -->
+    </section>
+
+    <article class="productView-description"{{#if schema}} itemprop="description"{{/if}}>
+        {{> components/products/description-tabs}}
+    </article>
+</div>
+{{inject 'cart_id' cart_id}}
+{{inject 'product_title' product.title}}
+<div id="previewModal" class="modal modal--large" data-reveal>
+    <a href="#" class="modal-close" aria-label="{{lang 'common.close'}}" role="button">
+        <span aria-hidden="true">&#215;</span>
+    </a>
+    <div class="modal-content"></div>
+    <div class="loadingOverlay"></div>
+</div>
+<script>
+    var jsContext = JSON.parse({{jsContext}});    
+    var priceShown = 0;
+    var currency;
+    function selectionOnChange() {
+        $("[order-type-section] input[name='hair-type']").on("change", function(event) {                    
+            let el = event.currentTarget;            
+            if ($(el).val()=="male") {                
+                $(".cmh-wrap[women-section]").hide();
+                $(".cmh-wrap[men-section]").css({display: "grid"});
+                priceToShowMen();
+            } else {                
+                $(".cmh-wrap[women-section]").css({display: "grid"});
+                $(".cmh-wrap[men-section]").hide();
+                priceToShowWomen();
+            }
+        });
+        priceOnChange();
+        // $("body").on("change", "#cmh-men-base-type, #cmh-women-base-type", function(event) {            
+        //     let el = event.currentTarget;            
+        //     price = Number(el.options[el.selectedIndex].getAttribute("data-price"));            
+        // })
+    }
+    function checkWomenAvailability() {
+        let $baseEl = $("#cmh-men-base-type");
+        let base = $baseEl.val();
+        let $sampleEl = $("#cmh-women-sample-list");
+        let sample = $sampleEl.val();        
+        let $baseSizeEl = $("#cmh-women-base-size");
+        let baseSize = $baseSizeEl.val();
+        let $colorEl = $("#cmh-women-wigs-color");
+        let color = $colorEl.val();
+        if (sample == 'Template + Color Sample / Manual Support Needed'
+        || sample == 'Sample Unit to Duplicate / Manual Support Needed'
+        || sample == 'Sample Unit used as Template + Color Sample / Manual Support Needed'
+        || sample == 'Template / Manual Support Needed'){
+            if (baseSize != 'Per sample') {
+                $sampleEl.parent().parent().addClass("cmh-error").attr("error-content", `x The combination of this option and "Base Size" option is not available`);
+                $baseSizeEl.parent().parent().addClass("cmh-error").attr("error-content", `x The combination of this option and "Sample List" option is not available`);                        
+                available = false;
+            }
+        } else if (sample == 'Color Sample / Manual Support Needed') {
+            if (color != 'Per sample') {
+                $sampleEl.parent().parent().addClass("cmh-error").attr("error-content", `x The combination of this option and "Women's wigs color" option is not available`);
+                $colorEl.parent().parent().addClass("cmh-error").attr("error-content", `x The combination of this option and "Sample List" option is not available`);                        
+                available = false;
+            }
+        } else if (sample=='No Sample Mail in, No Manual Support Needed') {
+            if (baseSize == 'Per sample') {
+                $sampleEl.parent().parent().addClass("cmh-error").attr("error-content", `x The combination of this option and "Base Size" option is not available`);
+                $baseSizeEl.parent().parent().addClass("cmh-error").attr("error-content", `x The combination of this option and "Sample List" option is not available`);                        
+                available = false;
+            }
+        }
+    }
+    function checkMenAvailability() {
+        let $baseEl = $("#cmh-men-base-type");
+        let base = $baseEl.val();
+        let $hairLengthEl = $("#cmh-men-hair-length");
+        let hairLength = $hairLengthEl.val();
+        let $hairDensityEl = $("#cmh-men-hair-density");
+        let hairDensity = $hairDensityEl.val();
+        let $addOptionsEl = $("#cmh-men-additional-options");
+        let addOptions = $addOptionsEl.val();
+        let $addServiceEl = $("#cmh-men-additional-services")
+        let addService = $addServiceEl.val();
+        let $sampleEl = $("#cmh-men-sample-list");
+        let sample = $sampleEl.val();
+        let $sizeFrontBackEl = $("#cmh-men-front-back");
+        let sizeFrontBack = $sizeFrontBackEl.val();
+        let $sizeLeftRightEl = $("#cmh-men-left-right");
+        let sizeLeftRight = $sizeLeftRightEl.val();
+        let $greyHairEl = $("#cmh-men-grey-hair");
+        let greyHair = $greyHairEl.val();
+        let $greyWhiteHairTypeEl = $("#cmh-men-grey-white-hair-type");
+        let greyWhiteHairType = $greyWhiteHairTypeEl.val();
+        let $colorEl = $("#cmh-men-hair-color");
+        let color = $colorEl.val();
+        let available = true;
+        if (sample == "Template / Manual Support Needed" ||
+            sample == "Template + Color Sample / Manual Support Needed" ||
+            sample == "Old Unit to Duplicate / Manual Support Needed" ||
+            sample == "Old Unit used as Template + Color Sample / Manual Support Needed") {
+            if (sizeFrontBack!='Per Sample') {
+                if (sizeLeftRight != "Per Sample") {
+                    $sampleEl.parent().parent().addClass("cmh-error").attr("error-content", `x The combination of this option and "Size:Front-Back" option and "Size:Left-Right" is not available`);
+                    $sizeFrontBackEl.parent().parent().addClass("cmh-error").attr("error-content", `x The combination of this option and "Sample List" option is not available`);
+                    $sizeLeftRightEl.parent().parent().addClass("cmh-error").attr("error-content", `x The combination of this option and "Sample List" option is not available`);
+                    available = false;
+                } else {
+                    $sampleEl.parent().parent().addClass("cmh-error").attr("error-content", `x The combination of this option and "Size:Front-Back" option is not available`);
+                    $sizeFrontBackEl.parent().parent().addClass("cmh-error").attr("error-content", `x The combination of this option and "Sample List" option is not available`);                        
+                    available = false;
+                }
+            } else if (sizeLeftRight != "Per Sample") {
+                $sampleEl.parent().parent().addClass("cmh-error").attr("error-content", `x The combination of this option and "Size:Left-Right" option is not available`);
+                $sizeLeftRightEl.parent().parent().addClass("cmh-error").attr("error-content", `x The combination of this option and "Sample List" option is not available`);                        
+                available = false;                    
+            }
+        } else if (sample == "No Sample Mail in, No Manual Support Needed") {
+            if (sizeFrontBack=='Per Sample') {
+                if (sizeLeftRight == "Per Sample") {
+                    $sampleEl.parent().parent().addClass("cmh-error").attr("error-content", `x The combination of this option and "Size:Front-Back" option and "Size:Left-Right" is not available`);
+                    $sizeFrontBackEl.parent().parent().addClass("cmh-error").attr("error-content", `x The combination of this option and "Sample List" option is not available`);
+                    $sizeLeftRightEl.parent().parent().addClass("cmh-error").attr("error-content", `x The combination of this option and "Sample List" option is not available`);
+                    available = false;
+                } else {
+                    $sampleEl.parent().parent().addClass("cmh-error").attr("error-content", `x The combination of this option and "Size:Front-Back" option is not available`);
+                    $sizeFrontBackEl.parent().parent().addClass("cmh-error").attr("error-content", `x The combination of this option and "Sample List" option is not available`);                        
+                    available = false;
+                }
+            } else if (sizeLeftRight == "Per Sample") {
+                $sampleEl.parent().parent().addClass("cmh-error").attr("error-content", `x The combination of this option and "Size:Left-Right" option is not available`);
+                $sizeLeftRightEl.parent().parent().addClass("cmh-error").attr("error-content", `x The combination of this option and "Sample List" option is not available`);                        
+                available = false;
+            }
+        } else if (sample=="Color Sample / Manual Support Needed") {
+            if (color != "Per Sample") {
+                $sampleEl.parent().parent().addClass("cmh-error").attr("error-content", `x The combination of this option and "Color" option is not available`);
+                $colorEl.parent().parent().addClass("cmh-error").attr("error-content", `x The combination of this option and "Sample List" option is not available`);                        
+                available = false;
+            }
+        }
+        if (greyHair=="Solid Color Only") {
+            if (greyWhiteHairType!="No Grey") {
+                $greyHairEl.parent().parent().addClass("cmh-error").attr("error-content", `x The combination of this option and "Grey/White Hair Type" option is not available`);
+                $greyWhiteHairTypeEl.parent().parent().addClass("cmh-error").attr("error-content", `x The combination of this option and "Grey Hair %" option is not available`);                        
+                available = false;
+            }
+        }
+        if (addOptions == "Full Head Bleach Knot (Not Including color #1, #11B or lighter color above #7)"
+        || addOptions == 'Front 1" Bleach Knot') {
+            if (color == "#1" || color == "#11B" || color == "#8R" || color == "17" || color == "#18" || color == "#20" || color == "#20R"
+            || color == "#22R" || color == "#30R" || color == "#60" || color == "#60H") {
+                $addOptionsEl.parent().parent().addClass("cmh-error").attr("error-content", `x The combination of this option and "Color" option is not available for ${base}`);
+                $colorEl.parent().parent().addClass("cmh-error").attr("error-content", `x The combination of this option and "Additional Options" option is not available for ${base}`);                        
+                available = false;
+            }
+        }
+        if (base == "M100") {
+            if (addOptions == "03-04 mills Thinnest Skin (V Loop Only)" || addOptions=="Full Head Bleach Knot (Not Including color #1, #11B or lighter color above #7)"
+            || addOptions == "04-06 mills Super Thin") {
+                $addOptionsEl.parent().parent().addClass("cmh-error").attr("error-content", `x This option is not available for ${base}`);
+                available = false;
+            }     
+            if (addService == "Complete Trim Off Empty Lace" || addService=='Trim Off Empty Lace but keep 1/8" Empty Front'
+            || addService=='Complete Trim Off Empty Skin' || addService == 'Trim Off Empty Skin but keep 1/8" Empty Front'){
+                $addServiceEl.parent().parent().addClass("cmh-error").attr("error-content", `x This option is not available for ${base}`);
+                available = false;
+            }
+            if (hairDensity =="50%" || hairDensity =="55%" || hairDensity =="60%" || hairDensity =="65%" || hairDensity =="70%" || hairDensity =="75%") {
+                $hairDensityEl.parent().parent().addClass("cmh-error").attr("error-content", `x This option is not available for ${base}`);
+                available = false;
+            }
+        } else if (base == "M101") {
+            if (addOptions == "03-04 mills Thinnest Skin (V Loop Only)" || addOptions=="Full Head Bleach Knot (Not Including color #1, #11B or lighter color above #7)") {
+                $addOptionsEl.parent().parent().addClass("cmh-error").attr("error-content", `x This option is not available for ${base}`);
+                available = false;
+            }
+            if (addService != 'Complete Trim Off Empty Skin' && addService != 'Trim Off Empty Skin but keep 1/8" Empty Front'){
+                $addServiceEl.parent().parent().addClass("cmh-error").attr("error-content", `x This option is not available for ${base}`);
+                available = false;
+            }
+        } else if (base == "M102") {
+            if (addOptions == "03-04 mills Thinnest Skin (V Loop Only)" || addOptions=="Full Head Bleach Knot (Not Including color #1, #11B or lighter color above #7)"
+            || addOptions == "04-06 mills Super Thin" || addOptions == 'Front 1" Bleach Knot') {
+                $addOptionsEl.parent().parent().addClass("cmh-error").attr("error-content", `x This option is not available for ${base}`);
+                available = false;
+            }
+            if (addService == "Complete Trim Off Empty Lace" || addService=='Trim Off Empty Lace but keep 1/8" Empty Front'
+            || addService=='Complete Trim Off Empty Skin' || addService == 'Trim Off Empty Skin but keep 1/8" Empty Front'){
+                $addServiceEl.parent().parent().addClass("cmh-error").attr("error-content", `x This option is not available for ${base}`);
+                available = false;
+            }
+            if (hairDensity =="50%" || hairDensity =="55%" || hairDensity =="60%" || hairDensity =="65%" || hairDensity =="70%" || hairDensity =="75%") {
+                $hairDensityEl.parent().parent().addClass("cmh-error").attr("error-content", `x This option is not available for ${base}`);
+                available = false;
+            }
+        } else if (base == "M103") {
+            if (addOptions != 'Full Head Bleach Knot (Not Including color #1, #11B or lighter color above #7)' && addOptions != 'Front 1" Bleach Knot') {
+                $addOptionsEl.parent().parent().addClass("cmh-error").attr("error-content", `x This option is not available for ${base}`);
+                available = false;
+            }
+            if (addService=='Complete Trim Off Empty Skin' || addService == 'Trim Off Empty Skin but keep 1/8" Empty Front' ){
+                $addServiceEl.parent().parent().addClass("cmh-error").attr("error-content", `x This option is not available for ${base}`);
+                available = false;
+            }
+        } else if (base == "M104") {
+            if (hairDensity =="50%" || hairDensity =="55%" || hairDensity =="60%" || hairDensity =="65%" || hairDensity =="70%" || hairDensity =="75%" ||
+            hairDensity == "160%" || hairDensity == "180%") {
+                $hairDensityEl.parent().parent().addClass("cmh-error").attr("error-content", `x This option is not available for ${base}`);
+                available = false;
+            }
+            if (addOptions!='Front 1" Bleach Knot') {
+                $addOptionsEl.parent().parent().addClass("cmh-error").attr("error-content", `x This option is not available for ${base}`);
+                available = false;
+            }
+            if (addService != 'Complete Trim Off Empty Lace' && addService!= 'Trim Off Empty Lace but keep 1/8" Empty Front') {
+                $addServiceEl.parent().parent().addClass("cmh-error").attr("error-content", `x This option is not available for ${base}`);
+                available = false;
+            }
+        } else if (base == "M105" || base == "M106" || base == "M106Z") {
+            if (hairDensity =="140%" || hairDensity =="150%" || hairDensity == "160%" || hairDensity == "180%") {
+                $hairDensityEl.parent().parent().addClass("cmh-error").attr("error-content", `x This option is not available for ${base}`);
+                available = false;
+            }
+            if (addOptions!='Front 1" Bleach Knot') {
+                $addOptionsEl.parent().parent().addClass("cmh-error").attr("error-content", `x This option is not available for ${base}`);
+                available = false;
+            }
+            if (addService != 'Complete Trim Off Empty Lace' && addService!= 'Trim Off Empty Lace but keep 1/8" Empty Front') {
+                $addServiceEl.parent().parent().addClass("cmh-error").attr("error-content", `x This option is not available for ${base}`);
+                available = false;
+            }
+        } 
+        return available;
+    }    
+    function priceToShowMen() {
+        let menBaseElement = $("#cmh-men-base-type");
+        
+        let price = Number($("#cmh-men-base-type option:selected").attr("data-price"));
+        priceShown = price;
+        if (checkMenAvailability()) {            
+            let $hairLengthEl = $("#cmh-men-hair-length");
+            let hairLength = $hairLengthEl.val();
+            let $sizeLeftRightEl = $("#cmh-men-left-right");
+            let sizeLeftRight = $sizeLeftRightEl.val();
+            let $sizeFrontBackEl = $("#cmh-men-front-back");
+            let sizeFrontBack = $sizeFrontBackEl.val();
+            let $greyWhiteHairTypeEl = $("#cmh-men-grey-white-hair-type");
+            let greyWhiteHairType = $greyWhiteHairTypeEl.val();
+            let $addServiceEl = $("#cmh-men-additional-services");
+            let addService = $addServiceEl.val();
+            let $addOptionsEl = $("#cmh-men-additional-options");
+            let addOptions = $addOptionsEl.val();
+            let $sampleEl = $("#cmh-men-sample-list");
+            let sample = $sampleEl.val();
+            let $straightWavyEl = $("[name='cmh-men-straight-wavy']:checked");
+            let straightWavy = $straightWavyEl.val();
+            let $hairDensityEl = $("#cmh-men-hair-density");
+            let hairDensity = $hairDensityEl.val();
+            switch (hairLength) {                
+                case '6" Most Popular Choice':
+                    if (greyWhiteHairType=="Human Hair Grey" || greyWhiteHairType=="Yaki Hair Grey") {
+                        priceShown = Number(priceShown) + 10;
+                    }
+                    break;
+                case '8"':
+                    priceToShow = Number(priceShown) + Number(price) * 0.25;
+                    if (greyWhiteHairType=="Human Hair Grey" || greyWhiteHairType=="Yaki Hair Grey") {
+                        priceShown = Number(priceShown) + 10;
+                    }
+                    break;
+                case '10"': 
+                    priceShown = Number(priceShown) + Number(price) * 0.44; 
+                    if (greyWhiteHairType=="Human Hair Grey" || greyWhiteHairType=="Yaki Hair Grey") {
+                        priceShown = Number(priceShown) + Number(price) * 0.15;
+                    }
+                    break;
+                case '12"':
+                    priceShown = Number(priceShown) + Number(price) * 0.56; 
+                    if (greyWhiteHairType=="Human Hair Grey" || greyWhiteHairType=="Yaki Hair Grey") {
+                        priceShown = Number(priceShown) + Number(price) * 0.15;
+                    }
+                    break;
+                case '14"': 
+                    priceShown = Number(priceShown) + Number(price) * 0.75; 
+                    if (greyWhiteHairType=="Human Hair Grey" || greyWhiteHairType=="Yaki Hair Grey") {
+                        priceShown = Number(priceShown) + Number(price) * 0.15;
+                    }
+                    break;
+            }
+            switch (sizeLeftRight) {                
+                case '8.5" Oversize': 
+                    if (sizeFrontBack == '10"' || sizeFrontBack=='10.25"' || sizeFrontBack=='10.5"') {
+                        priceShown = Number(priceShown) + Number(price) * 0.2; 
+                    }
+                    break;
+                case '8.25" Oversize':
+                    if (sizeFrontBack == '9.75"' || sizeFrontBack=='10"' || sizeFrontBack=='10.25"') {
+                        priceShown = Number(priceShown) + Number(price) * 0.1; 
+                    } else if (sizeFrontBack == '10.5"') {
+                        priceShown = Number(priceShown) + Number(price) * 0.2; 
+                    }
+                    break;
+                case '8"':
+                    if (sizeFrontBack=='10.25"' || sizeFrontBack=='10.5"') {
+                        priceShown = Number(priceShown) + Number(price) * 0.1;
+                    }
+                    break;
+                case '7.75"':
+                    if (sizeFrontBack=='10.5"') {
+                        priceShown = Number(priceShown) + Number(price) * 0.1;
+                    }
+                    break;
+            }
+            switch (addService) {
+                case 'Complete Trim Off Empty Lace': 
+                case 'Trim Off Empty Lace but keep 1/8" Empty Front': 
+                case 'Complete Trim Off Empty Skin': 
+                case 'Trim Off Empty Skin but keep 1/8" Empty Front': 
+                    priceShown = Number(priceShown) + 5;
+                    break;
+                case 'Sew 2 Clips On': 
+                    priceShown = Number(priceShown) + 10;
+                    break;
+                case 'Sew 3 Clips On': 
+                    priceShown = Number(priceShown) + 15;
+                    break;
+                case 'Sew 4 Clips On': 
+                    priceShown = Number(priceShown) + 20;
+                    break;
+            }
+            switch (addOptions) {
+                case 'Full Head Bleach Knot (Not Including color #1, #11B or lighter color above #7)': 
+                case 'Front 1" Bleach Knot':
+                    priceShown = Number(priceShown)+10;
+                    break;
+            }
+            if (sample != 'No Sample Mail in, No Manual Support Needed') {
+                priceShown = Number(priceShown)+20;
+            }
+            if (straightWavy!='Body wavy 28mm' && straightWavy!='Slightly wavy 32mm' && straightWavy!='36mm Straight') {
+                priceShown = Number(priceShown)+20;
+            }
+            switch (hairDensity) {
+                case '140%': 
+                    priceShown = Number(priceShown) + Number(price) * 0.2;
+                    break;
+                case '150%': 
+                    priceShown = Number(priceShown) + Number(price) * 0.3;
+                    break;
+                case '160%': 
+                    priceShown = Number(priceShown) + Number(price) * 0.4;
+                    break;
+                case '180%': 
+                    priceShown = Number(priceShown) + Number(price) * 0.6;
+                    break;
+            }
+            $("#cmh-price").html(priceShown);            
+            $("#cmh-add-cart").prop("disabled",false);
+            $("#cmh-add-cart").removeClass("disabled");
+        } else {
+            // add to cart unavailable
+            $("#cmh-add-cart").prop("disabled",true);
+            $("#cmh-add-cart").addClass("disabled");
+        }
+    }
+    function priceToShowWomen() {
+        let menBaseElement = $("#cmh-women-base-type");
+        
+        let price = Number($("#cmh-women-base-type option:selected").attr("data-price"));
+        priceShown = price;
+        if (checkWomenAvailability()) {
+            let $finishedLengthEl = $("#cmh-women-finished-length");
+            let finishedLength = $finishedLengthEl.val();
+            let $densityEl = $("#cmh-women-density");
+            let density = $densityEl.val();
+            let $wavyEl = $("#cmh-women-wave-curl");
+            let wavy = $wavyEl.val();
+            let $colorEl = $("#cmh-women-wigs-color");
+            let color = $colorEl.val();
+            let $skinToneBaseEl = $("#cmh-women-skin-tone-base");
+            let skinToneBase=$skinToneBaseEl.val();
+            let $sampleEl = $("#cmh-women-sample-list");
+            let sample = $sampleEl.val();
+            switch (finishedLength) {
+                case '8"': 
+                    priceShown = Number(priceShown) + Number(price)*0.25;
+                    break;
+                case '10"': 
+                    priceShown = Number(priceShown) + Number(price)*0.44;
+                    break;
+                case '12"': 
+                    priceShown = Number(priceShown) + Number(price)*0.56;
+                    break;
+                case '14"': 
+                    priceShown = Number(priceShown) + Number(price)*0.75;
+                    break;
+                case '16"': 
+                    priceShown = Number(priceShown) + Number(price);
+                    break;
+                case '18"': 
+                    priceShown = Number(priceShown) + Number(price)*1.31;
+                    break;
+                case '20"': 
+                    priceShown = Number(priceShown) + Number(price)*1.81;
+                    break;
+                case '22"': 
+                    priceShown = Number(priceShown) + Number(price)*2.69;
+                    break;                
+            }
+            switch (density) {
+                case '140%': 
+                case '145%': 
+                    priceShown = Number(priceShown) + Number(price)*0.2;
+                    break;
+                case '150%': 
+                    priceShown = Number(priceShown) + Number(price)*0.3;
+                    break;
+                case '160%': 
+                    priceShown = Number(priceShown) + Number(price)*0.4;
+                    break;
+                case '180%': 
+                    priceShown = Number(priceShown) + Number(price)*0.6;
+                    break;
+            }
+            switch (wavy) {
+                case 'Body Wavy 28mm': 
+                case 'Medium Wavy 25mm': 
+                case 'Tight Wave 22mm':
+                    priceShown = Number(priceShown) + 20;
+                    break;
+            }
+            switch (color) {
+                case '#10_16': 
+                case '#12': 
+                case '#14': 
+                case '#14_24': 
+                case '#16': 
+                case '#16_613': 
+                case '#18': 
+                case '#22': 
+                case '#24': 
+                case '#26': 
+                case '#27': 
+                case '#28': 
+                case '#30': 
+                case '#33': 
+                case '#613': 
+                    priceShown = Number(priceShown) + Number(price)*0.1;
+                    break;
+            }
+            switch (skinToneBase) {
+                case 'Medium / Dark Brown': 
+                case 'Black': 
+                    priceShown = Number(priceShown)+10;
+                    break;
+            }
+            if (sample != 'No Sample Mail in, No Manual Support Needed' && sample != 'Repair + Duplication Bundle') {
+                priceShown = Number(priceShown) + 10;
+            }
+            $("#cmh-price").html(priceShown);
+            $("#cmh-add-cart").prop("disabled",false);
+            $("#cmh-add-cart").removeClass("disabled");
+        } else {
+            // add to cart unavailable
+            $("#cmh-add-cart").prop("disabled",true);
+            $("#cmh-add-cart").addClass("disabled");
+        }
+    }
+    function priceToShow() {
+        $(".cmh-error").removeClass("cmh-error");
+        if ($("input[name='hair-type']:checked").val()=="male") {
+            priceToShowMen();
+        } else {
+            priceToShowWomen();
+        }        
+    }
+    function priceOnChange() {
+        // price = $("#cmh-price").html().match(/[0-9.]+/g)[0];
+        // currency = $("#cmh-price").html().replace(price,"");
+        $("body").on("change", 
+        `#cmh-policy,
+        #cmh-men-base-type,
+        #cmh-men-sample-list,
+        #cmh-men-left-right,
+        #cmh-men-front-back,
+        #cmh-men-hair-length,
+        #cmh-men-hair-color,
+        #cmh-men-grey-hair,
+        #cmh-men-hair-type,
+        #cmh-men-grey-white-hair-type,
+        #cmh-men-hair-density,        
+        #cmh-men-additional-options,
+        input[name="cmh-men-hair-style"],
+        input[name="cmh-men-straight-wavy"],
+        input[name="cmh-men-front-hairline"],
+        #cmh-men-match-skin-tone,
+        #cmh-men-additional-services,
+        #cmh-women-base-type,
+        #cmh-women-sample-list,
+        #cmh-women-base-size,
+        #cmh-women-density,
+        #cmh-women-hair-type,
+        #cmh-women-hair-style,
+        #cmh-women-finished-length,
+        #cmh-women-wigs-color,
+        #cmh-women-wave-curl,
+        #cmh-women-skin-tone-base,
+        #cmh-additional-infomation`, 
+        function(){
+            priceToShow();
+        });
+        $("body").on("click", "#cmh-add-cart", function() {
+            let gender = $("input[name='hair-type']:checked").val()=="female"?0:1;
+            fetch('//shp-webserver-temp.glitch.me/bc-add-custom-made', {
+                method: 'post',
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    store_id: 742053,                    
+                    data: {
+                        name: 'Custom Made Toupee Quick Order',
+                        quantity: 1,
+                        price: priceShown.toFixed(2),
+                        cart_id: jsContext.cart_id,
+                        gender,
+                        toupeeBase: gender?$("#cmh-men-base-type").val():$("#cmh-women-base-type").val(),
+                        sampleType:gender?$("#cmh-men-sample-list").val():$("#cmh-women-sample-list").val(),
+                        leftRightSize:gender?$("#cmh-men-left-right").val():"",
+                        frontBackSize:gender?$("#cmh-men-front-back").val():"",
+                        hairLength:gender?$("#cmh-men-hair-length").val():$("#cmh-women-finished-length").val(),
+                        hairColor:gender?$("#cmh-men-hair-color").val():$("#cmh-women-wigs-color").val(),
+                        greyPercentage:gender?$("#cmh-men-grey-hair").val():"",
+                        hairType:gender?$("#cmh-men-hair-type").val():$("#cmh-women-hair-type").val(),
+                        greyHairType:gender?$("#cmh-men-grey-white-hair-type").val():"",
+                        density:gender?$("#cmh-men-hair-density").val():$("#cmh-women-density").val(),
+                        hairStyle:gender?`${$("#cmh-men-hair-direction").val()} ${$("#cmh-men-additional-options").val()} ${$("input[name='cmh-men-hair-style']:checked").val()}`:$("#cmh-women-hair-style").val(),
+                        waveCurl:gender?$("input[name='cmh-men-straight-wavy']:checked").val():$("#cmh-women-wave-curl").val(),
+                        frontHairline:gender?$("input[name='cmh-men-front-hairline']:checked").val():"",
+                        baseMaterialColor:gender?$("#cmh-men-match-skin-tone").val():$("#cmh-women-skin-tone-base").val(),
+                        additionalService:gender?$("#cmh-men-additional-services").val():"",
+                        notes:gender?$("#cmh-additional-infomation").val():`${$("#cmh-women-highlight").val()} ${$("#cmh-additional-infomation").val()}`,
+                        baseSize:gender?"":$("#cmh-women-base-size").val()                         
+                    }
+                })                
+            })
+            .then(r=>r.json())
+            .then(d=> {
+                console.log(d);
+                if (d.data) {                    
+                    if (d.data.redirect_urls) {
+                        location.href = d.data.redirect_urls.cart_url.replace("superhairpiecessandbox4.mybigcommerce.com","localhost:3000").replace("https","http");
+                    }  else {
+                        location.href = "/cart.php";
+                    }
+                }
+            })
+            .catch(e=>console.log(e));
+        });
+    }
+    window.addEventListener("DOMContentLoaded", (event) => {
+        if (window.jQuery) {
+            selectionOnChange()
+        } else {
+            let sJquery = document.createElement("script");
+            sJquery.setAttribute("src", "https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js");
+            document.body.appendChild(sJquery);
+
+            sJquery.addEventListener("load", selectionOnChange, false);
+        }
+    }, false);
+</script>

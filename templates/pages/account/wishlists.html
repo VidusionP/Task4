@@ -1,0 +1,14 @@
+{{#partial "page"}}
+{{#if settings.show_wishlist}}
+    <div class="account account--fixedLarge">
+        {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+        <h2 class="page-heading">{{lang 'account.wishlists.heading' }}</h2>
+        {{> components/account/navigation account_page='wishlists'}}
+        <h4 class="page-heading" in-alert-wishlist-section>In Alert Wishlist</h4>
+        {{> components/account/in-alert-wishlist}}        
+        <h4 class="page-heading">Product Wishlist</h4>
+        {{> components/account/wishlist-list}}        
+    </div>
+{{/if}}
+{{/partial}}
+{{> layout/base}}

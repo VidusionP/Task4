@@ -1,0 +1,61 @@
+{
+    "tabs": [
+        {
+            "title": "Color Chart",
+            "img": [
+                {
+                    "alt": "Color 1",
+                    "link": "https://i.shgcdn.com/20364bc7-1854-45ba-9b2b-591541cb4b1c/-/format/auto/-/preview/3000x3000/-/quality/lighter/"
+                },
+                {
+                    "alt": "Color 2",
+                    "link": "https://i.shgcdn.com/2bf27ae4-aeae-4ff3-b237-bdb628c52985/-/format/auto/-/preview/3000x3000/-/quality/lighter/"
+                },
+                {
+                    "alt": "Color 3",
+                    "link": "https://i.shgcdn.com/33b51e21-b4cb-4674-a3f0-bc350a2b2f2d/-/format/auto/-/preview/3000x3000/-/quality/lighter/"
+                },
+                {
+                    "alt": "Color 4",
+                    "link": "https://i.shgcdn.com/5cf3b0e8-e855-4d43-8405-c7e95c4e08d1/-/format/auto/-/preview/3000x3000/-/quality/lighter/"
+                },
+                {
+                    "alt": "Color 5",
+                    "link": "https://i.shgcdn.com/1811d36f-7d96-4845-9819-795696406cf5/-/format/auto/-/preview/3000x3000/-/quality/lighter/"
+                },
+                {
+                    "alt": "Color 6",
+                    "link": "https://i.shgcdn.com/45be3c24-9fc9-4ea7-99c0-231cef1a9e03/-/format/auto/-/preview/3000x3000/-/quality/lighter/"
+                },
+                {
+                    "alt": "Color 7",
+                    "link": "https://i.shgcdn.com/d9e0bf6c-7750-45ff-978d-4dce6cca7af5/-/format/auto/-/preview/3000x3000/-/quality/lighter/"
+                },
+                {
+                    "alt": "Color 8",
+                    "link": "https://i.shgcdn.com/3d25ae3d-f36c-49c7-a0ef-da59c949aa8a/-/format/auto/-/preview/3000x3000/-/quality/lighter/"
+                },
+                {
+                    "alt": "Color 9",
+                    "link": "https://i.shgcdn.com/8f87f257-271a-4a0b-9cab-e464553e8475/-/format/auto/-/preview/3000x3000/-/quality/lighter/"
+                },
+                {
+                    "alt": "Color 10",
+                    "link": "https://i.shgcdn.com/0235460e-3e83-4788-8d23-3f44a2c5524f/-/format/auto/-/preview/3000x3000/-/quality/lighter/"
+                },
+                {
+                    "alt": "Color 11",
+                    "link": "https://i.shgcdn.com/4f3aaf23-6fc1-48cb-a9c1-9c2792739a3f/-/format/auto/-/preview/3000x3000/-/quality/lighter/"
+                },
+                {
+                    "alt": "Color 12",
+                    "link": "https://i.shgcdn.com/acd6c0e9-a767-46cf-9303-25d707087e20/-/format/auto/-/preview/3000x3000/-/quality/lighter/"
+                }
+            ]
+        },
+        {
+            "title": "Color Chart Video",
+            "link": "https://www.youtube.com/embed/XKI7Oh_WD1U"
+        }
+    ]
+}

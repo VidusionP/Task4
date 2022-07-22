@@ -1,0 +1,471 @@
+<style>
+    :root {
+        --border-instock: #34568B;
+        --border-transit: #6B5B95;
+        --border-incoming: #955251;
+    }
+    .search-section {
+        margin: 1.3rem;
+    }
+    .search-section:not([data-display]) {
+        display: none;
+    }
+    .search-label {
+        font-size: 1.3rem;
+        text-transform: uppercase;
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+    [data-search-color], [data-search-grey] {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+    .search-selection {        
+        border: 1px solid rgb(228, 228, 228);        
+        margin: 1rem;
+        width: 22%;
+    }    
+    .search-selection, .search-selection > * {
+        cursor: pointer;
+    }
+    .search-selection:hover {
+        border: 1px solid #000;        
+        transform: translateY(-10px);
+        box-shadow: 0 0 12px 0 #ccc;
+        transition: all .2s ease;
+    }
+    .search-selection img {
+        width: 130px;
+        height: 130px;
+        object-fit: cover;
+        border-radius: 50%;        
+    }
+    .search-selection-name {
+        font-size: 1.2rem;
+        margin: .8rem 0;
+    }
+    .search-button-wrap {
+        display: none;
+        justify-content: flex-end;
+        align-items: flex-end;
+        margin-top: 1rem;        
+    }
+    .search-button-wrap button {
+        padding: .8rem 0;
+        text-align: center;
+        width: 150px;
+        background-color: #444;
+        color: #fff;
+        border: 1px solid #444;
+    }
+    .search-button-wrap button:hover {
+        background: #fff;
+        color: #000;
+        border-color: #ccc;
+        transition: all .2s ease;
+    }
+    [data-input-select] {
+        display: none;
+    }
+    [data-label-select] {
+        padding: 1rem;
+        text-align: center;
+        display: block;
+        position: relative;
+    }
+    [data-input-select]:checked + [data-label-select]::after {
+        content: url("data:image/svg+xml;base64,PHN2ZyBhcmlhLWhpZGRlbj0idHJ1ZSIgZm9jdXNhYmxlPSJmYWxzZSIgZGF0YS1wcmVmaXg9ImZhcyIgZGF0YS1pY29uPSJjaGVjayIgY2xhc3M9InN2Zy1pbmxpbmUtLWZhIGZhLWNoZWNrIGZhLXctMTYiIHJvbGU9ImltZyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiI+PHBhdGggZmlsbD0iIzljNWM2NCIgZD0iTTE3My44OTggNDM5LjQwNGwtMTY2LjQtMTY2LjRjLTkuOTk3LTkuOTk3LTkuOTk3LTI2LjIwNiAwLTM2LjIwNGwzNi4yMDMtMzYuMjA0YzkuOTk3LTkuOTk4IDI2LjIwNy05Ljk5OCAzNi4yMDQgMEwxOTIgMzEyLjY5IDQzMi4wOTUgNzIuNTk2YzkuOTk3LTkuOTk3IDI2LjIwNy05Ljk5NyAzNi4yMDQgMGwzNi4yMDMgMzYuMjA0YzkuOTk3IDkuOTk3IDkuOTk3IDI2LjIwNiAwIDM2LjIwNGwtMjk0LjQgMjk0LjQwMWMtOS45OTggOS45OTctMjYuMjA3IDkuOTk3LTM2LjIwNC0uMDAxeiI+PC9wYXRoPjwvc3ZnPg==");        
+        width: 25px;
+        display: inline-block;
+        position: absolute;
+        right: 5px;
+        bottom: 5px;
+    }
+    .search-result-wrap {
+        display: none;
+    }
+    .search-result-wrap .search-button-wrap {
+        display: none;
+        align-items: center;
+        justify-content: center;
+    }    
+    [data-search-content] .search-item-wrap{
+        display: flex;
+        flex-wrap: wrap;        
+        justify-content: center;
+    }
+    [data-search-content] .search-item{
+        margin: 1rem;
+        position: relative;
+        cursor: pointer;        
+        width: 22%;         
+        border: 1px solid #ccc; 
+        background: transparent;
+        text-decoration: none;
+        padding-bottom: calc(100px + 2rem);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }    
+    [data-search-content] .search-item-title-wrap{
+        padding: 1rem;
+        font-size: 20px;
+        font-weight: bold;
+        text-transform: uppercase;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        border-top: 1px solid #ccc;
+    }
+    [data-search-content] .search-item-title-wrap img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        margin-right: 1rem;
+        object-fit: cover;
+    }
+    [data-search-content] .search-sku-wrap {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;       
+        margin-bottom: 1rem; 
+    }
+    [data-search-content] .search-sku {
+        padding: 1rem .5rem .5rem .5rem;
+        /* border-radius: 10px; */
+        /* border: 1px solid #444;         */
+        text-transform: uppercase;
+        font-size: 1.1rem;
+        margin: 0.3rem 0.3rem 0 0.3rem;
+        position: relative;
+    }    
+    [data-search-content] .search-header {
+        margin: 1rem 0 .3rem;
+        position: relative;
+        text-transform: uppercase;
+        width: fit-content;
+    }
+    [data-search-content] .search-header::after {
+        content: "";
+        width: 100%;
+        height: 2px;
+        display: inline-block;
+        background-color: #000;
+        position: absolute;
+        left: 0;
+        top: 20px;
+    }
+    .search-loading {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .search-loading svg{
+        width: 100px;
+        height: 100px;
+    }
+    .search-result-desp {
+        margin-bottom: .8rem;
+        color: #8b512d;
+    }
+    .swal2-modal .swal2-styled {
+        border-radius: 0;
+    }    
+    .swal2-modal .swal2-styled:focus, .swal2-modal .swal2-styled:hover, .swal2-modal .swal2-styled:active {
+        outline: 0 !important;
+        /* outline: none !important; */
+        -webkit-appearance:none !important;
+        box-shadow: none !important;
+    }
+    .swal2-confirm {
+        width: 111.56px;        
+        background-color: #444 !important;
+        border: 2px solid #444 !important;
+    }    
+    .swal2-cancel {
+        border-width: 2px !important;
+        background-color: transparent !important;
+    }
+    .swal2-cancel:hover, .swal2-cancel:focus {
+        border-color: #444444 !important;
+        background-color: transparent !important;
+    }
+    @media only screen and (max-width: 1225px) {
+        .search-selection, [data-search-content] .search-item {
+            width: 30%;
+        }
+    }
+    @media only screen and (max-width: 900px) {
+        .search-selection, [data-search-content] .search-item {
+            width: 40%;
+        }
+    }
+    @media only screen and (max-width: 675px) {
+        .search-selection, [data-search-content] .search-item {
+            width: 100%;
+        }
+    }
+    @media only screen and (min-width: 475px) {
+        [data-search-content] .search-sku:hover::after{
+            content: attr(data-content);
+            position: absolute;
+            width: max-content;
+            padding: .8rem 1rem;
+            background-color: #444;
+            color: #fff;
+            z-index: 9;
+            top: 20px;
+            font-size: .8rem;
+            text-transform: capitalize;
+        }
+    }
+</style>
+<div class="search-section" data-display="0" data-query>
+    <div class="search-label">
+        Choose your color
+    </div>
+    <div data-search-color></div>
+</div>
+<div class="search-section" data-query>
+    <div class="search-label">Choose your grey percentage</div>
+    <div data-search-grey></div>
+</div>
+<div class="search-button-wrap" data-query>
+    <button data-button="Next">Next</button>
+</div>
+<div class="search-result-wrap">
+    <div data-search-content></div>
+    <div class="search-loading">
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin: auto; background: none; display: block; shape-rendering: auto;" width="200px" height="200px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
+            <path d="M10 50A40 40 0 0 0 90 50A40 42 0 0 1 10 50" fill="#000" stroke="none">
+              <animateTransform attributeName="transform" type="rotate" dur="1s" repeatCount="indefinite" keyTimes="0;1" values="0 50 51;360 50 51"></animateTransform>
+            </path>
+        </svg>
+    </div>
+    <div class="search-button-wrap">
+        <button data-button-reload>Search again</button>
+    </div>
+</div>
+<script src="/content/js/sweetalert2.min.js" defer></script>
+<script>
+    window.addEventListener("DOMContentLoaded", () => {
+        fetch("/content/data/color-list.json")
+        .then(r=>r.json())
+        .then(d=>{
+            if (d.men) {
+                let color = "", grey = "";
+                for(let [idx, c] of d.men.color.entries()) {
+                    color+=`<div class="search-selection">                            
+                            <input data-input-select type="checkbox" id="c${idx}" name="color" value="${c.code}">
+                            <label data-label-select for="c${idx}">
+                                <img src="${c.img}"/>
+                                <div class="search-selection-name">${c.name}</div>
+                                <div>${c.code}</div>
+                            </label>
+                        </div>`;
+                }
+                $("[data-search-color]").append(color);
+                for(let [idx, c] of d.men.grey.entries()) {
+                    grey+=`<div class="search-selection">                                    
+                            <input data-input-select type="checkbox" id="g${idx}" name="grey" value="${c.code}">
+                            <label data-label-select for="g${idx}">${c.name}</label>
+                        </div>`;
+                }
+                $("[data-search-grey]").append(grey);
+                $(".search-button-wrap").css({"display":"flex"});
+                $("[data-button]").on("click", () => {                    
+                    if ($("[data-button]").attr("data-button")=="Next") {
+                        let cd = $(".search-section[data-display]");
+                        let cdx = Number(cd.attr("data-display"))+1;
+                        let cEl = $("[name=color]:checked");
+                        if (cEl.length==0) {
+                            swal({
+                                text: 'Please select at least one color',
+                                type: 'info'
+                            })
+                        } else {
+                            cd.removeAttr("data-display");
+                            $(".search-section").eq(cdx).attr("data-display",cdx);
+                            if (cdx == $(".search-section").length-1) {
+                                $("[data-button]").attr("data-button","Submit");
+                                $("[data-button]").html("Submit");
+                            }
+                        }                        
+                    } else { 
+                        $("[data-query]").hide();
+                        $(".search-result-wrap").show();
+                        let cEl = $("[name=color]:checked");
+                        let gEl = $("[name=grey]:checked");
+                        let q = [];                        
+                        if (gEl.length>0) {
+                            for (let c of Array.from(cEl)) {
+                                for (let g of Array.from(gEl)) {
+                                    q.push(`Contains([SKU],'${encodeURIComponent($(c).val()+$(g).val())}')`);
+                                }
+                            }
+                        } else if (cEl.length>0) {
+                            for (let c of Array.from(cEl)) {
+                                q.push(`Ends([SKU],'${encodeURIComponent($(c).val())}')`);
+                            }
+                        }
+                        let filter = `(${q.join(" or ")}) and [Classification]='Mens Toupee Instock' and (Sum([WH1],[2])>[Quantity Pending] or (Sum([WH1],[2],[Unlocked for sale quantity])>[Quantity Pending] and [Lock Status] <> "Locked for processing") or Sum([WH1],[2],[Quantity Incoming])>Sum([Total Request Quantity],[Quantity Pending],2))`;
+                        $(".search-loading").css({"display": "flex"});
+                        fetch(`//shp-webserver-temp.glitch.me/search-inventory`, {
+                            method: 'POST',
+                            headers: {
+                                'content-type': 'application/json',
+                                'accept': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                filter
+                            })
+                        })
+                        .then(r=>r.json())
+                        .then(d=> {
+                            console.log(d);
+                            let list = "";
+                            if (d.length>0) {
+                                let inv={stock:{}, week:{}, incoming:{}};
+                                for (let i of d) {
+                                    let product = i["SKU"].split("#")[0].toUpperCase();
+                                    if (Number(i["WH1"])+Number(i["2"])-Number(i["Quantity Pending"])>0) {                                            
+                                        if (inv.stock[product]) {
+                                            inv.stock[product].push({
+                                                code: i["SKU"],
+                                                img: i["URLImage"]?i["URLImage"]:"https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg",
+                                                link: i["URLUS"],
+                                                content: `Current stock: ${Number(i["WH1"])+Number(i["2"])-Number(i["Quantity Pending"])}`
+                                            });
+                                        } else {
+                                            inv.stock[product] = [{
+                                                code: i["SKU"],
+                                                img: i["URLImage"]?i["URLImage"]:"https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg",
+                                                link: i["URLUS"],
+                                                content: `Current stock: ${Number(i["WH1"])+Number(i["2"])-Number(i["Quantity Pending"])}`
+                                            }];
+                                        }                                            
+                                    } else if (i["Lock Status"]!="Locked for processing" && Number(i["Unlocked for sale quantity"])+Number(i["WH1"])+Number(i["2"])-Number(i["Quantity Pending"])>0) {
+                                        if (inv.week[product]) {
+                                            inv.week[product].push({
+                                                code: i["SKU"],
+                                                img: i["URLImage"]?i["URLImage"]:"https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg",
+                                                link: i["URLUS"],
+                                                content: `Qty in transit: ${Number(i["Unlocked for sale quantity"])+Number(i["WH1"])+Number(i["2"])-Number(i["Quantity Pending"])}`
+                                            });
+                                        } else {
+                                            inv.week[product] = [{
+                                                code: i["SKU"],
+                                                img: i["URLImage"]?i["URLImage"]:"https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg",
+                                                link: i["URLUS"],
+                                                content: `Qty in transit: ${Number(i["Unlocked for sale quantity"])+Number(i["WH1"])+Number(i["2"])-Number(i["Quantity Pending"])}`
+                                            }];
+                                        }             
+                                    } else if (Number(i["Quantity Incoming"])+Number(i["WH1"])+Number(i["2"])-Number(i["Quantity Pending"])-Number(i["Total Request Quantity"])-2>0) {
+                                        if (inv.incoming[product]) {
+                                            inv.incoming[product].push({
+                                                code: i["SKU"],
+                                                img: i["URLImage"]?i["URLImage"]:"https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg",
+                                                link: i["URLUS"],
+                                                content: `Qty in production: ${Number(i["Quantity Incoming"])+Number(i["WH1"])+Number(i["2"])-Number(i["Quantity Pending"])-Number(i["Total Request Quantity"])-2}`
+                                            });
+                                        } else {
+                                            inv.incoming[product] = [{
+                                                code: i["SKU"],
+                                                img: i["URLImage"]?i["URLImage"]:"https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg",
+                                                link: i["URLUS"],
+                                                content: `Qty in production: ${Number(i["Quantity Incoming"])+Number(i["WH1"])+Number(i["2"])-Number(i["Quantity Pending"])-Number(i["Total Request Quantity"])-2}`
+                                            }];
+                                        }         
+                                    }
+                                }
+                                console.log(inv);                                    
+                                if (Object.keys(inv.stock).length > 0) {
+                                    inv.stock = Object.keys(inv.stock)
+                                    .sort()
+                                    .reduce((t, e) => ((t[e] = inv.stock[e]), t), {});
+                                    list+=`<div class="search-header">In stock</div>`;
+                                    list+=`<div class="search-result-desp">These units are in stock and can be shipped out as soon as possible.</div>`;
+                                    list+=`<div class="search-item-wrap">`;
+                                    for (let p in inv.stock) {                                              
+                                        list+=`<a class="search-item" href="${inv.stock[p][0].link}" target="_blank">`;                                        
+                                        list+=`<div class="search-sku-wrap">`;
+                                        for (let n of inv.stock[p]) {
+                                            list+=`<div class="search-sku" data-content="${n.content}">${n.code}</div>`;
+                                        }
+                                        list+=`</div>`;
+                                        list+=`<div class="search-item-title-wrap">
+                                            <img src="${inv.stock[p][0].img}" alt="${p}"/>
+                                            <div class="search-item-title">${p}</div>
+                                        </div>`;
+                                        list+=`</a>`;
+                                    }
+                                    list+="</div>";
+                                }
+                                if (Object.keys(inv.week).length>0) {
+                                    inv.week = Object.keys(inv.week)
+                                    .sort()
+                                    .reduce((t, e) => ((t[e] = inv.week[e]), t), {});
+                                    list+=`<div class="search-header">In transit</div>`;
+                                        list+=`<div class="search-result-desp">These units are in transit to our warehouses and can be shipped out in a few days.</div>`;
+                                    list+=`<div class="search-item-wrap">`;
+                                    for (let p in inv.week) {                                              
+                                        list+=`<a class="search-item" href="${inv.week[p][0].link}" target="_blank">`;                                        
+                                        list+=`<div class="search-sku-wrap">`;
+                                        for (let n of inv.week[p]) {
+                                            list+=`<div class="search-sku" data-content="${n.content}">${n.code}</div>`;
+                                        }
+                                        list+=`</div>`;
+                                        list+=`<div class="search-item-title-wrap">
+                                            <img src="${inv.week[p][0].img}" alt="${p}"/>
+                                            <div class="search-item-title">${p}</div>
+                                        </div>`;
+                                        list+=`</a>`;
+                                    }
+                                    list+="</div>";
+                                }
+                                if (Object.keys(inv.incoming).length>0) {
+                                    inv.incoming = Object.keys(inv.incoming)
+                                    .sort()
+                                    .reduce((t, e) => ((t[e] = inv.incoming[e]), t), {});
+                                    list+=`<div class="search-header">In production</div>`;
+                                    list+=`<div class="search-result-desp">These units are still in production. Once they are complete, they will be in transit to our warehouses ready to be shipped out.</div>`;
+                                    list+=`<div class="search-item-wrap">`;
+                                    for (let p in inv.incoming) {                                              
+                                        list+=`<a class="search-item" href="${inv.incoming[p][0].link}" target="_blank">`;                                        
+                                        list+=`<div class="search-sku-wrap">`;
+                                        for (let n of inv.incoming[p]) {
+                                            list+=`<div class="search-sku" data-content="${n.content}">${n.code}</div>`;
+                                        }
+                                        list+=`</div>`;
+                                        list+=`<div class="search-item-title-wrap">
+                                            <img src="${inv.incoming[p][0].img}" alt="${p}"/>
+                                            <div class="search-item-title">${p}</div>
+                                        </div>`;
+                                        list+=`</a>`;
+                                    }
+                                    list+="</div>";
+                                }                                    
+                            } else {
+                                list = "There is no available data";
+                            }
+                            $("[data-search-content]").html(`${list}`);
+                            $(".search-loading").hide();                            
+                        })
+                        .catch(e=>console.log(e));                    
+                    }
+                })
+                $("[data-button-reload]").on("click", () => {
+                    location.reload();
+                })
+            }
+        })
+        .catch(e=>console.log(e));
+    })
+</script>

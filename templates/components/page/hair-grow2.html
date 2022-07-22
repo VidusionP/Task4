@@ -1,0 +1,497 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+    :root {
+        --element-margin:1.3rem;
+        --section-margin:2.3rem;
+        --font-family1: 'Montserrat', sans-serif;
+        --color1: #5EC2D2;
+        --color2: #f8f9fa;
+        --color3: #0D4060;
+        --color4: #878787;
+        --color5: #ebebeb;
+    }
+    .body.page .container {
+        padding: 0;        
+    }
+    .body.page .page {
+        margin: 0;
+    }
+    .body.page .page-content {
+        padding: 0;
+    }
+    .hg-wrap {
+        font-family: var(--font-family1);
+    }
+    section {
+        padding: var(--element-margin);
+        margin-bottom: var(--section-margin);
+    }
+    section .title {
+        font-size: 25px;
+        text-align: center;
+    }
+    .hg-header {
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        grid-gap: var(--element-margin);
+        padding: 0;
+        align-items: center;
+        justify-content: center;        
+    }        
+    .hg-header .c-img {
+        grid-column-start: 1;        
+        grid-row-start: 1;        
+    }
+    .hg-header img {
+        width: 100%;
+        height: auto;
+    }
+    .hg-header .c-content1 {
+        grid-column-start: 2;
+        grid-row-start: 1;
+        color: var(--color1);
+    }
+    .hg-header .c-content2 {
+        grid-row-start: 2;
+        grid-column: 1 / span 2;
+        font-size: 15px;
+        text-align: center;
+        padding: 0 var(--element-margin);
+    }
+    .hg-header .c-title {
+        font-size: 30px;        
+        font-weight: bold;
+    }
+    .hg-header .c-content {
+        font-size: 13px;
+    }
+    .hg-header .cc-content1 {
+        font-style: italic;
+        margin: var(--element-margin) 0;
+    }
+    .hg-wrap .desp {
+        text-align: center;
+        padding: var(--section-margin) var(--element-margin);
+        font-size: 15px;
+    }    
+    .hg-wrap .sub-desp {
+        display: none;
+    }
+    .hg-special {
+        background: var(--color1);
+        color: var(--color2);
+        text-align: center;
+        position: relative;
+        padding-bottom: 12rem;
+        margin-bottom: 40px;
+    }                
+    .hg-special .content {
+        margin-top: var(--element-margin);
+        font-size: 14px;
+    }
+    .hg-special .c-benefit {
+        position: absolute;
+        bottom: -40px;
+        text-align: left;
+        width: 80%;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #FFFFFF;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        padding: var(--section-margin);
+        color: var(--color1);
+        border-radius: 40px;
+        max-width: 450px;
+    }
+    .hg-steps {
+        padding: 0;
+    }
+    .hg-steps .cs-step {
+        filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+        color: var(--color2);
+        background-color: var(--color1);
+        border-radius: 42px;
+        margin: calc(var(--element-margin) / 2) auto;
+        padding: calc(var(--element-margin) / 2) var(--element-margin);
+        text-align: center;
+        max-width: 185px;
+        text-decoration: none;
+    }
+    .hg-steps .cs-step:focus, .hg-steps .cs-step:active {
+        outline: none !important;
+    }
+    .hg-steps .cs-step .c-title {
+        font-size: 13px;
+    }
+    .hg-steps .cs-step .c-content {
+        font-size: 17px;
+        font-weight: bold;
+    }
+    .hg-steps .c-step {
+        padding: var(--element-margin);
+        margin-top: var(--section-margin);
+    }
+    .hg-steps .c-step .title {
+        font-size: 27px;
+    }
+    .hg-steps .c-step .c-content {
+        font-size: 40px;
+        color: var(--color1);
+        font-weight: bold;
+        margin-bottom: var(--element-margin);
+    }
+    .hg-steps .c-step img {
+        width: 100%;
+        margin-bottom: var(--element-margin);
+    }
+    .hg-steps .cc-content {
+        font-size: 17px;
+    }
+    .hg-steps .c-step--grey {
+        background-color: var(--color5);
+    }
+    .hg-steps .c-step ul {
+        list-style-type: "- ";
+    }
+
+    .hg-goal .c-desp {
+        font-size: 16px;
+        margin-bottom: var(--element-margin);
+        text-align: center;
+    }
+    .hg-goal .c-title {
+        font-size: 23px;
+        font-weight: bold;
+        color: var(--color3);
+        margin-bottom: var(--element-margin);
+        text-align: center;
+    }
+    .hg-goal img {
+        display: block;
+        margin: 0 auto var(--element-margin);
+        width: 113px;
+        height: auto;
+    }
+    .hg-images a{
+        text-decoration: none;
+    }
+    .hg-images a:focus, .hg-images a:active {
+        outline: none !important;
+    }
+    .hg-images img {
+        width: 100%;
+    }
+    .hg-images img:first-of-type {
+        margin-top: var(--element-margin);
+    }
+    .hg-disclaimer {
+        color: var(--color4);
+        font-size: 12px;
+        text-align: center;
+    }
+    .hg-disclaimer .c-title {
+        font-weight: bold;
+        font-size: 15px;
+    }
+    .hg-steps .c-step a {
+        display: block;
+        margin: 0 auto;
+        max-width: 320px;
+    }
+    @media (min-width:475px) {
+        .hg-header .content, section .title{
+            font-size: 23px;
+        }
+        .hg-wrap .desp, .hg-disclaimer .c-title, .hg-special .content {
+            font-size: 17px;
+        }
+        .hg-disclaimer {
+            font-size: 14px;
+        }
+    }
+    @media (min-width: 600px) {        
+        .hg-header {
+            margin-bottom: 0;
+        }
+        .hg-header .c-img {
+            grid-row: 1 / span 2;
+        }
+        .hg-header .c-content2 {
+            grid-column-start: 2;
+            grid-row-start: 2;
+            text-align: left;
+            padding: 0;
+            padding-right: var(--element-margin);
+            align-self: flex-start;
+        }
+        .hg-header .c-content1 {
+            align-self: end;
+        }
+        .hg-header .c-content {
+            font-size: 15px;
+        }        
+    }
+    @media (min-width: 625px) {
+        .hg-steps .c-step-summary-wrap {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-column-gap: 5px;
+            padding: 0 var(--element-margin);
+        }
+        .hg-steps .c-step-summary-wrap .cs-step{
+            width: 100%;
+        }
+    }
+    @media (min-width: 801px) {
+        .body.page {
+            padding: 2rem 0;
+        }
+        .hg-header .c-title {
+            font-size: 35px;
+        }
+        .hg-header .c-content {
+            font-size: 20px;
+        }
+        section .title {
+            font-size: 27px;
+        }
+    }
+    @media (min-width: 900px) {           
+        .hg-header .content, section .title {
+            font-size: 25px;
+        }
+        .hg-special {
+            padding-bottom: var(--element-margin);
+        }
+        .hg-special .c-content .title {
+            text-align: left;
+        }
+        .hg-special .c-content {
+            margin-left: calc(450px + var(--element-margin) * 2);
+            text-align: left;
+        }
+        .hg-special .c-benefit {            
+            left: var(--element-margin);
+            transform: translateX(0);            
+        }
+        .hg-steps .c-step {
+            display: grid;            
+        }
+        .hg-steps .c-step .c-title {
+            align-self: flex-end;
+            font-size: 17px;
+        }
+        .hg-steps .c-step.c-step--grey div {
+            grid-column-start: 1;
+        }
+        .hg-steps .c-step.c-step--grey a {
+            grid-row: 1 / span 3;
+            grid-column-start: 2;
+        }
+        .hg-steps .c-step.c-step--white div {
+            grid-column-start: 2;
+        }
+        .hg-steps .c-step.c-step--white a {
+            grid-row: 1 / span 3;
+            grid-column-start: 1;
+        }
+    }
+    @media (min-width: 1024px) {                
+        .hg-header .content, section .title {
+            font-size: 30px;
+        }
+    }
+    @media (min-width: 1280px) {
+        .body.page .container {
+            max-width: unset !important;
+        }
+        .hg-wrap {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+        .hg-header {
+            grid-column-gap: var(--section-margin);
+        }
+        .hg-header .c-content1 {
+            padding-left: var(--section-margin);
+        }
+        .hg-special {
+            padding: var(--element-margin) var(--section-margin);
+        }
+        .hg-steps .c-step--grey {
+            padding-left: var(--section-margin);
+        }
+        .hg-steps .c-step--white {
+            padding-right: var(--section-margin);
+        }
+        .hg-special .c-benefit {
+            left: var(--section-margin);
+        }
+    }
+    /*
+    @media (min-width: 1024px) {
+        .hg-header .content, section .title{
+            font-size: 50px;
+        }
+        .hg-wrap .desp {
+            font-size: 25px;
+        }
+        .hg-disclaimer .c-title {
+            font-size: 24px;
+        }        
+        .hg-wrap .sub-desp, .hg-special .content, .hg-goal .c-desp {
+            font-size: 20px;
+        }
+        .hg-goal .item .c-desp {
+            font-size: 17px;
+        }
+        .hg-disclaimer {
+            font-size: 15px;
+        }        
+    }*/
+</style>
+<div class="hg-wrap">
+    <section class="hg-header">
+        <div class="c-img">
+            <picture>
+                <source media="(min-width:450px)" srcset="/content/images/marketing/hairGrow/banner2-pc.webp" type="image/webp">
+                <source media="(min-width:450px)" srcset="/content/images/marketing/hairGrow/banner2-pc.jpg" type="image/jpeg">
+                <source srcset="/content/images/marketing/hairGrow/banner2-mobile.webp" type="image/webp">
+                <source srcset="/content/images/marketing/hairGrow/banner2-mobile.jpg" type="image/jpeg">
+                <img src="/content/images/marketing/hairGrow/banner2-mobile.jpg" alt="">
+            </picture>
+        </div>
+        <div class="c-content1">
+            <div class="c-title">Therapy-G</div>
+            <div class="c-content">Hair loss treatment & regrowth</div>
+        </div>
+        <div class="c-content2">
+            <div class="cc-content1">Shampoos for men and women</div>
+            <div class="cc-content2">Helps to reduce hair loss and extend the growth cycle to stimulate renewed growth.</div>
+        </div>        
+    </section>    
+    <section class="hg-special">
+        <div class="c-content">
+            <div class="title">How it works</div>
+            <div class="content">
+                Therapy-G is not a drug and is made from all natural ingredients. Its patented formula includes unique advances such as tryptobond guard™, and the Moist Application Process (MAP)™. These technologies allows Therapy-G to be highly effective in the treatment of thinning and fine hair without subjecting you to the side-effects of drugs
+            </div>
+        </div>
+        <div class="c-benefit">
+            <div class="title">Benefits</div>
+            <div class="content">
+                <div class="item">✅ Natural ingredients</div>
+                <div class="item">✅ Patented formula</div>
+                <div class="item">✅ Designed to reduce hair loss</div>
+            </div>
+        </div>
+    </section>
+    <section class="hg-steps">
+        <div class="desp">Therapy-G will protect your hair, prevent further hair loss and also create thicker, fuller and healthy hair if you follow the recommended steps:</div>
+        <div class="c-step-summary-wrap">
+            <a href="#hg-step1" class="cs-step">
+                <div class="c-title">Step 1</div>
+                <div class="c-content">Cleansing</div>
+            </a>
+            <a href="#hg-step2" class="cs-step">
+                <div class="c-title">Step 2</div>
+                <div class="c-content">Nourishing</div>
+            </a>
+            <a href="#hg-step3" class="cs-step">
+                <div class="c-title">Step 3</div>
+                <div class="c-content">Conditioning</div>
+            </a>
+            <a href="#hg-step4" class="cs-step">
+                <div class="c-title">Step 4</div>
+                <div class="c-content">Volumizing</div>
+            </a>
+        </div>
+        <div class="c-step c-step--grey" id="hg-step1">
+            <div class="c-title">Step 1</div>
+            <div class="c-content">Cleansing</div>
+            <a href="/therapy-g/">
+                <picture>
+                    <source srcset="/content/images/marketing/hairGrow/therapy-cleansing.webp" type="image/webp">
+                    <source srcset="/content/images/marketing/hairGrow/therapy-cleansing.jpg" type="image/jpeg">
+                    <img src="/content/images/marketing/hairGrow/therapy-cleansing.jpg" alt="">
+                </picture>
+            </a>
+            <div class="cc-content">
+                <div><strong>Benefits</strong></div>
+                <ul>
+                    <li>Deep cleansing and neutralization of toxins</li>
+                    <li>Shampoo removes DHT</li>
+                    <li>The Antioxidants eliminates Free Radicals</li>
+                    <li>Stimulating renewed growth by nourishing the follicles and without drying the hair and scalp.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="c-step c-step--white" id="hg-step2">
+            <div class="c-title">Step 2</div>
+            <div class="c-content">Nourishing</div>
+            <a href="/therapy-g-follicle-stimulator-for-thinning-hair-8-5oz/">
+                <picture>
+                    <source srcset="/content/images/marketing/hairGrow/therapy-nourishing.webp" type="image/webp">
+                    <source srcset="/content/images/marketing/hairGrow/therapy-nourishing.jpg" type="image/jpeg">
+                    <img src="/content/images/marketing/hairGrow/therapy-nourishing.jpg" alt="">
+                </picture>
+            </a>
+            <div class="cc-content">
+                <div><strong>Benefits</strong></div>
+                <ul>
+                    <li>Delivers all the vitamins, minerals, and amino acids</li>
+                    <li>Increases your hair's mechanical strength, increases combability </li>
+                    <li>Stimulates blood circulation to the hair follicle</li>
+                    <li>Extends the Growth Cycle of hair</li>
+                    <li>Tryptobond Guard attaches itself to the hair to strengthen & protect from color fading</li>                       
+                </ul>
+            </div>
+        </div>
+        <div class="c-step c-step--grey" id="hg-step3">
+            <div class="c-title">Step 3</div>
+            <div class="c-content">Conditioning</div>
+            <a href="/therapy-g/">
+                <picture>
+                    <source srcset="/content/images/marketing/hairGrow/therapy-conditioning.webp" type="image/webp">
+                    <source srcset="/content/images/marketing/hairGrow/therapy-conditioning.jpg" type="image/jpeg">
+                    <img src="/content/images/marketing/hairGrow/therapy-conditioning.jpg" alt="">
+                </picture>
+            </a>
+            <div class="cc-content">
+                <div><strong>Benefits</strong></div>
+                <ul>
+                    <li>It produces incredible shine and manageability</li>
+                    <li>Instantly detangles</li>
+                    <li>Moisturizes the scalp & hair</li>
+                    <li>Stimulates the scalp, infuses moisture, relieves dryness flaking and itching</li>
+                </ul>
+            </div>
+        </div>
+        <div class="c-step c-step--white" id="hg-step4">
+            <div class="c-title">Step 4</div>
+            <div class="c-content">Volumizing</div>
+            <a href="/therapy-g-hair-volumizing-treatment-for-thinning-hair-8-5oz/">
+                <picture>
+                    <source srcset="/content/images/marketing/hairGrow/therapy-volumizing.webp" type="image/webp">
+                    <source srcset="/content/images/marketing/hairGrow/therapy-volumizing.jpg" type="image/jpeg">
+                    <img src="/content/images/marketing/hairGrow/therapy-volumizing.jpg" alt="">
+                </picture>
+            </a>
+            <div class="cc-content">
+                <div><strong>Benefits</strong></div>
+                <ul>
+                    <li>Instant Gratification for creating thicker, fuller hair</li>
+                    <li>Protects hair against styling stress</li>
+                    <li>It strengthens, nourishes, and improves the texture of thinning or fine hair.</li>                       
+                </ul>
+            </div>
+        </div>
+    </section>    
+    <section class="hg-disclaimer">
+        <div class="c-title">Disclaimer:</div>
+        <div>Superhairpieces does not bear any responsibility for the claims, safety, reliability, durability  and performance of any of the mentioned products. </div>
+        <div>Please make sure to read each product's label and instructions carefully before using.</div>
+    </section>
+</div>

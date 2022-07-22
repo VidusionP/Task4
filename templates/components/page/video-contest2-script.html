@@ -1,0 +1,314 @@
+<script>
+    let files={};
+    let fIdx = 0;
+    /**
+     * @summary Show submitted popup
+    */
+   function onSubmitted() {
+       $(".vc-overloading-wrap").hide();
+       $(".vc-popup-thankyou").css({display: "flex"});       
+   }
+    /**
+     * @summary send email to marketing team
+    */
+    function sendClientEmail() {
+        let cusEmail = $("[name=email]").val();
+        let cusName = $("[name=name]").val();
+        fetch(`https://shp-webserver.glitch.me/send-omn-vc-cemail`, {
+            method: 'POST',
+            headers: {
+                accept: 'application/json',
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify({cusEmail, cusName})
+        })
+        .then(r=>r.json())
+        .then(r=>{
+            onSubmitted();
+        })
+        .catch(e=>{
+            console.log(e);
+            onSubmitted();
+        })
+    }
+    /**
+     * @summary send email to marketing team
+    */
+    function sendUsEmail() {
+        $(".vc-overloading-wrap .content [content]").html("Sending form");
+        let cusEmail = $("[name=email]").val();
+        let cusName = $("[name=name]").val();
+        let cusPhone = $("[name=phone]").val()?$("[name=phone]").val():"";
+        let cusLink = $("[name=link]").val()?$("[name=link]").val():"";
+        fetch(`https://shp-webserver.glitch.me/send-omn-vc-email`, {
+            method: 'POST',
+            headers: {
+                accept: 'application/json',
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify({cusEmail, cusName, cusPhone, cusLink})
+        })
+        .then(r=>r.json())
+        .then(r=>{
+            if (r) {
+                sendClientEmail();
+            } else {
+                alert("There is an error when applying your file, please contact customer support");
+                onSubmitted();
+            }
+        })
+        .catch(e=>console.log(e))
+    }
+    /**
+     * @summary uploadFile to dropbox
+     *
+     * @param {Array} files Files to upload
+     * @param {int} idx Index of current working file
+     * @param {string} token Token to upload to dropbox
+     */
+    function uploadFile(files, idx, token) {
+        let email = $("[name=email]").val();
+        if (idx == files.length) {
+            sendUsEmail();
+            return false;
+        }
+        let file = files[idx];
+        let reader = new FileReader();
+
+        reader.readAsArrayBuffer(file);
+
+        reader.onload = function (e) {
+            let binaryString = new Blob([new Uint8Array(e.target.result)], {
+                type: file.type,
+            });
+            var myHeaders = new Headers();
+            myHeaders.append("Content-Type", "application/octet-stream");
+            let type = file.type.split("/")[1];
+            if (type.includes("wmv")) {
+                type = "wmv";
+            } else if (type.includes("quicktime")) {
+                type = "mov";
+            }
+            myHeaders.append(
+                "Dropbox-API-Arg",
+                `{"path":"/${Date.now()}-${
+                    email ? email + "." + type : file.name
+                }","mode":"add"}`
+            );
+            // myHeaders.append("Authorization", "Bearer efBkx9F2X5kAAAAAAAAAAVYcy7QFMX5yr6LJHJEueWPr2ity62cJoNhIbq_9vULW");
+            myHeaders.append("Authorization", token);
+            // myHeaders.append("Authorization", "Bearer L1Z4mFVCvbUAAAAAAAAAAbns_073JOBKLGGDt21G_H5qbb1D99S_AiTxw2bPr875");
+            var requestOptions = {
+                method: "POST",
+                headers: myHeaders,
+                body: binaryString,
+            };
+
+            fetch(
+                "https://content.dropboxapi.com/2/files/upload",
+                requestOptions
+            )
+                .then((response) => response.text())
+                .then((result) => {
+                    // console.log(result);
+                    uploadFile(files, idx + 1, token);
+                })
+                .catch((error) => {
+                    console.log("error", error);
+                    // uploadFile(files, idx + 1, token);
+                    alert("There is an error when applying your file, please contact customer support");
+                    onSubmitted();
+                });
+        };
+
+        reader.onerror = function () {
+            // uploadFile(files, idx + 1, token);
+            alert("There is an error when applying your file, please contact customer support");
+            onSubmitted();
+            console.log(reader.error);
+        };
+    }
+    /**
+     * @summary Check if the input value is in phone format
+     * 
+     * @param {jQuery DOM object} input The input of phone
+    */
+    function checkPhone(input) {
+        if (input.val().match(/\+[0-9]+/g)) return true;
+        else return false;
+    }
+    /**
+     * @summary Check if the input value is in email format
+     * 
+     * @param {jQuery DOM object} input The input of phone
+    */
+    function checkEmail(input) {
+        if (input.val().match(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g)) return true;
+        else return false;
+    }
+    /**
+     * @summary Remove video from preview and list
+     * 
+     * @param {integer} idx The index/key of video in the list
+    */
+   function removeVideo(idx) {
+        // files.splice(idx,1);
+        delete files[idx];
+        //console.log(files);
+        $(`.v-preview[index=${idx}]`).remove();
+        $(".vc-preview-wrap").append(`<label class="plus" idx="${fIdx}" for="${fIdx}-add">Add</label><input type="file" index="${fIdx}" id="${fIdx}-add" onchange="addVideo(this)" accept=".mp4, .mov, .mpeg4, .avi, .wmv, .mpeg"  style="display:none"/>`);
+        fIdx++;
+   }
+    /**
+     * @summary Add video to list
+     * 
+     * @param {DOM object} input The clickable content to add file
+    */
+    function addVideo(input) {
+        let f = input.files[0];
+       // console.log(files);
+        // files.push(f);       
+        let id =  $(input).attr("index");
+        $(`label[idx=${id}]`).remove();
+        $(input).remove();
+        if ($(".vc-preview-wrap video").length>0) {
+            $(".vc-preview-wrap video").eq($(".vc-preview-wrap video").length-1).parents(".v-preview").after(`<div class="v-preview" index="${id}"><button type="button" class="delete" onclick="removeVideo(${id})"><img src="/content/images/common/delete1.svg"/></button><img  class="pv" src="/content/images/marketing/videoContest2022/video.jpg"/></div>`);
+        } else {
+            $(".vc-preview-wrap").prepend(`<div class="v-preview" index="${id}"><button type="button" class="delete" onclick="removeVideo(${id})"><img src="/content/images/common/delete1.svg"/></button><img  class="pv" src="/content/images/marketing/videoContest2022/video.jpg"/></div>`);
+        }
+        files[id]=f;
+        // files.push({
+        //     id,
+        //     file: f
+        // })
+        let reader = new FileReader();
+        reader.readAsArrayBuffer(f);
+        reader.onload = function(e) {
+            let binaryString = new Blob([new Uint8Array(e.target.result)], { type:f.type });
+            // $(input).parents(".plus").remove();
+            // $(".vc-preview-wrap video").eq($(".vc-preview-wrap video").length-1).after(`<div class="v-preview" index="${id}"><img src="/content/images/marketing/videoContest2022/video.jpg"/><video idx="${id}" id="v-${id}" src="${URL.createObjectURL(binaryString)}" controls/></div>`);
+            $(".vc-preview-wrap").find(`.v-preview[index=${id}]`).find("img.pv").remove();
+            $(".vc-preview-wrap").find(`.v-preview[index=${id}]`).append(`<video idx="${id}" src="${URL.createObjectURL(binaryString)}" controls/>`);
+            // let v = document.getElementById(`v-${id}`);
+            // if (v.readyState === 4) {
+            //     $(v).parents(".preview").find("img").remove();
+            // }
+        }
+        reader.onerror = function () {
+            console.log(reader.error);
+        };
+    }
+    /**
+     * @summary Add videos to the list
+     * 
+     * @param {File list} fs List of the files
+     * @param {integer} idx The index of the current focus file
+    */
+    function addVideos(fs, idx) {
+        if (idx==fs.length) {
+            for (i=fs.length+1; i<=3; i++) {
+                let id = fIdx++;                
+                $(".vc-preview-wrap").append(`<label class="plus" idx="${id}" for="${id}-add">Add</label><input type="file" index="${id}" id="${id}-add" onchange="addVideo(this)" accept=".mp4, .mov, .mpeg4, .avi, .wmv, .mpeg"  style="display:none"/>`);                
+            }
+        } else {            
+            let f = fs[idx];
+            // files.push(f);
+            files[fIdx++]=f;
+            // files.push({
+            //     id: fIdx++,
+            //     file: f
+            // })            
+            $(".vc-preview-wrap").append(`<div class="v-preview" index="${idx}"><button type="button" class="delete" onclick="removeVideo(${idx})"><img src="/content/images/common/delete1.svg"/></button><img class="pv" src="/content/images/marketing/videoContest2022/video.jpg"/></div>`);
+            let reader = new FileReader();
+            reader.readAsArrayBuffer(f);
+            reader.onload = function(e) {
+                let binaryString = new Blob([new Uint8Array(e.target.result)], { type:f.type });
+                // $(".vc-preview-wrap").append(`<video idx="${idx}" src="${URL.createObjectURL(binaryString)}" controls/>`);
+                // $(".vc-preview-wrap").append(`<div class="v-preview" index="${idx}"><video idx="${idx}" src="${URL.createObjectURL(binaryString)}" controls/></div>`);
+                $(".vc-preview-wrap").find(`.v-preview[index=${idx}]`).find("img.pv").remove();
+                $(".vc-preview-wrap").find(`.v-preview[index=${idx}]`).append(`<video idx="${idx}" src="${URL.createObjectURL(binaryString)}" controls/>`);
+                addVideos(fs,idx+1);
+            }
+            reader.onerror = function () {
+                console.log(reader.error);
+            };
+        }
+    }
+    window.addEventListener("DOMContentLoaded", function () {
+        const player = new Plyr('#player');
+        $(".vc-popup-thankyou").on("click", function() {
+            $(".vc-popup-thankyou").hide();
+        });
+        $("#file").on("change", function() {                     
+            if (document.querySelector("#file").files.length>3) {
+                alert("Maximum number of files should be 3");
+            } else {
+                $("label[for=file]").hide();
+                $("label[for=file]").after(`<div class="vc-preview-wrap"></div>`);
+                addVideos(document.querySelector("#file").files, 0)
+            }
+        });
+        $("form").on("submit", function(event) {
+            $(".er").remove();
+            event.preventDefault();
+            if ($(this).find("input[name=phone]").val() &&  checkPhone($(this).find("input[name=phone]"))==false) {
+                $(this).find("input[name=phone]").after(`<div class="er">Please input the correct phone format (i.e +123456789)</div>`);
+            } else if (checkEmail($(this).find("input[name=email]"))==false) {
+                $(this).find("input[name=email]").after(`<div class="er">Please input the correct email format (i.e name@example.com)</div>`);
+            } else if (Object.keys(files).length==0 && $(this).find("input[name=link]").val().length==0) {
+                $(this).find("label[for=file]").after(`<div class="er">Please choose a file or give us a link.</div>`);
+                $(this).find("input[name=link]").after(`<div class="er">Please choose a file or give us a link.</div>`);                
+            } else if (document.getElementById("term").checked==false) {
+                alert("Please read and check Tearms and conditions");
+            } else {
+                let fs = [];
+                for (let p of Object.keys(files)) {                    
+                    fs.push(files[p]);
+                }
+                $(".vc-overloading-wrap .content [content]").html("Uploading");
+                $(".vc-overloading-wrap").css({display: "flex"});
+                fetch(`https://shp-webserver.glitch.me/dropbox-token`)
+                .then(r=>r.json())
+                .then(r=>{
+                    if (r.token) {
+                        $("input").prop("disabled","disabled");
+                        $("form button").prop("disabled", "disabled");
+                        if (fs.length>0) {
+                            uploadFile(fs, 0, r.token);   
+                        } else {
+                            sendUsEmail();
+                        }
+                    } else {
+                        alert("There is an error when applying your file, please contact customer support");
+                    }
+                })
+                .catch(e=>{
+                    console.log(e);
+                    alert("There is an error when applying your file, please contact customer support");
+                });
+                // let token = "Bearer efBkx9F2X5kAAAAAAAAAAVYcy7QFMX5yr6LJHJEueWPr2ity62cJoNhIbq_9vULW";
+                // uploadFile(fs, idx, token);
+            }
+        })
+
+        $("#st-term .see-more").on("click", function() {
+            if ($(this).text()=="See More") {
+                $("#st-term .desp.long").show();
+                $("#st-term .desp.short").hide();
+                $("#st-term .see-more").text("See Less");
+            } else {
+                $("#st-term .desp.long").hide();
+                $("#st-term .desp.short").show();
+                $("#st-term .see-more").text("See More");
+            }
+        })
+
+        // fetch(`https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet%2CcontentDetails&maxResults=25&playlistId=PLZR8iVgNY2TcyzlM-Rj6TjXJ_cSfVti0E&key=AIzaSyCdvig2zr2DzZWyYc0zfueOujfJaAj_nLE`)
+        // .then(r=>r.json())
+        // .then(r=>{
+        //     console.log(r);
+        // })
+        // .catch(e=>console.log(e));
+
+    });
+</script>

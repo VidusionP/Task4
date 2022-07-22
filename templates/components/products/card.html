@@ -1,0 +1,110 @@
+<article class="card {{#if alternate}}card--alternate{{/if}}" {{length images}}>    
+    <figure class="card-figure {{#if show_hover}}card-figure-hover{{/if}}">
+        {{#or price.non_sale_price_with_tax price.non_sale_price_without_tax}}
+            {{#if theme_settings.product_sale_badges '===' 'sash'}}
+                <div class="sale-flag-sash">
+                    <span class="sale-text">On Sale!</span>
+                </div>
+            {{else if theme_settings.product_sale_badges '===' 'topleft'}}
+                <div class="sale-flag-side">
+                    <span class="sale-text">On Sale!</span>
+                </div>
+            {{else if theme_settings.product_sale_badges '===' 'burst'}}
+                <div class="starwrap">
+                    <div class="sale-text-burst">On Sale!</div>
+                    <div class="sale-flag-star"></div>
+                </div>
+            {{/if}}
+        {{/or}}
+        {{#if demo}}
+            <img class="card-image lazyload" data-sizes="auto" src="{{cdn 'img/loading.svg'}}" data-src="{{getImage image 'productgallery_size' (cdn theme_settings.default_image_product)}}" alt="{{image.alt}}" title="{{image.alt}}">
+        {{else}}
+            <a href="{{url}}" style="position: relative;">
+                {{#if rush}}
+                <img src="/content/images/men/customorder/lighting.svg" alt="rush delivery" style="position: absolute; right: 10px; bottom: 10px; width: 50px;">
+                {{/if}}
+                <img class="card-image lazyload" data-sizes="auto" src="{{cdn 'img/loading.svg'}}" data-src="{{getImage image 'productgallery_size' (cdn theme_settings.default_image_product)}}" alt="{{image.alt}}" title="{{image.alt}}">
+                {{#if show_hover}}
+                    {{#if (length images) '>' 1}}
+                    <img class="card-image card-image-hover" data-sizes="auto" src="{{getImage images.[1] 'productgallery_size' (cdn theme_settings.default_image_product)}}" data-src="{{getImage images.[1] 'productgallery_size' (cdn theme_settings.default_image_product)}}" alt="{{images.[1].alt}}" title="{{images.[1].alt}}">
+                    {{else}}
+                    <img class="card-image card-image-hover" data-sizes="auto" src="{{getImage image 'productgallery_size' (cdn theme_settings.default_image_product)}}" data-src="{{getImage image 'productgallery_size' (cdn theme_settings.default_image_product)}}" alt="{{image.alt}}" title="{{image.alt}}">
+                    {{/if}}
+                {{/if}}                
+            </a>            
+        {{/if}} 
+        <!-- <img class="card-image lazyload" data-sizes="auto" src="{{cdn 'img/loading.svg'}}" data-src="{{getImage images.[1] 'productgallery_size' (cdn theme_settings.default_image_product)}}" alt="{{images.[1].alt}}" title="{{images.[1].alt}}">        -->                
+        {{#if theme_settings.show_product_quick_view}}            
+            <a href="{{url}}" class="card-figure-overlay-wrap quickview" data-product-id="{{id}}">
+                <!-- <div class="card-figure-overlay"></div> -->
+                <div class="card-link--alternate">Quick Add</div>
+            </a>
+        {{/if}}
+    </figure>    
+    <div class="card-body">
+        {{#if sku '==' 'M101'}}
+        <span class=" stamped-product-reviews-badge" data-id="437" data-product-sku="M101" style="display:block;"><span class="stamped-badge" data-rating="4.3" data-lang="" aria-label="Rated 4.3 out of 5 stars 147reviews"><span class="stamped-starrating stamped-badge-starrating" aria-hidden="true"><i class="stamped-fa stamped-fa-star" aria-hidden="true"></i><i class="stamped-fa stamped-fa-star" aria-hidden="true"></i><i class="stamped-fa stamped-fa-star" aria-hidden="true"></i><i class="stamped-fa stamped-fa-star" aria-hidden="true"></i><i class="stamped-fa stamped-fa-star-half-o" aria-hidden="true"></i></span><span class="stamped-badge-caption" data-reviews="147" data-rating="4.3" data-label="reviews" aria-label="147 reviews" data-version="2">147<span style="display:none;"> reviews</span></span></span></span>
+        <!-- <span class=" stamped-product-reviews-badge" data-id="{{id}}" data-product-sku="{{sku}}" style="display:block;"></span>  -->
+        {{else}}
+        <span class=" stamped-product-reviews-badge" data-id="{{id}}" data-product-sku="{{sku}}" style="display:block;">
+            <span class="stamped-badge">
+                <span class="stamped-starrating stamped-badge-starrating" aria-hidden="true">
+                    <i class="stamped-fa stamped-fa-star-o" aria-hidden="true"></i>
+                    <i class="stamped-fa stamped-fa-star-o" aria-hidden="true"></i>
+                    <i class="stamped-fa stamped-fa-star-o" aria-hidden="true"></i>
+                    <i class="stamped-fa stamped-fa-star-o" aria-hidden="true"></i>
+                    <i class="stamped-fa stamped-fa-star-o" aria-hidden="true"></i>
+                </span>
+            </span>
+        </span>
+        {{/if}}
+        {{#if brand.name}}
+            <!-- <p class="card-text" data-test-info-type="brandName">{{brand.name}}</p> -->
+        {{/if}}        
+        {{#if custom_fields}}            
+            {{#if (length custom_fields) '>' 0}}
+                {{#each custom_fields}}
+                    {{#if name '==' 'Highlight'}}
+                        <div class="card-highlight">{{value}}</div>
+                    {{/if}}
+                {{/each}}
+            {{/if}}
+        {{/if}}
+        <h4 class="card-title">
+            {{#if demo}}
+                {{name}}
+            {{else}}
+                <a href="{{url}}">{{name}}</a>
+            {{/if}}
+        </h4>
+        <div class="card-hp-text">
+            <div class="card-text" data-test-info-type="price">
+                {{#or customer (if theme_settings.restrict_to_login '!==' true)}}
+                    {{> components/products/price price=price customer=customer}}
+                {{else}}
+                    {{> components/common/login-for-pricing}}
+                {{/or}}        
+            </div>
+            {{> components/products/bulk-discount-rates}}    
+            <span class=" stamped-product-reviews-badge" data-id="{{id}}" data-product-sku="{{sku}}" style="display:block;"></span>    
+        </div>   
+    </div>    
+</article>
+<div class="card-price {{#if alternate}}card-price--alternate{{/if}}">
+    <div class="card-text" data-test-info-type="price">
+        {{#or customer (if theme_settings.restrict_to_login '!==' true)}}
+            {{> components/products/price price=price customer=customer}}
+        {{else}}
+            {{> components/common/login-for-pricing}}
+        {{/or}}        
+    </div>
+    {{> components/products/bulk-discount-rates}}
+    <!-- {{#if show_rating}}
+        <p class="card-text" data-test-info-type="productRating">
+            <span class="rating--small">
+                {{> components/products/ratings rating=rating}}
+            </span>
+        </p>
+    {{/if}} -->    
+    <a href="{{url}}" class="card-link">See Buying Options</a>
+</div>

@@ -1,0 +1,1036 @@
+<style>
+    :root {
+        --element-margin: 1rem;
+        --section-margin: 3rem;
+        --color1: #343434;
+        --color2: #f8f9fa;
+        --color3: #4F7ABA;
+        --color4: #E5E5E5;
+        --color5: #D2CFC7;
+        --color6: #e4e2dd;
+        --color7: #dbd9d2;
+        --font1: 24px;
+        --font2: 18px;
+        --font3: 16px;
+        --font4: 14px;
+        --font5: 13px;
+        --font6: 12px;
+        --font7: 10px;
+        --font8: 30px;
+        --font9: 27px;
+        --border-radius: 4px;
+    }
+    .page-content p:first-child {
+        display: none;
+    }
+    .page-heading {
+        display: none;
+    }
+    .body.page .container {
+        padding: 0;
+    }
+    main.page {
+        margin: 0;
+    }
+    .body.page .page-content {
+        padding: 0;
+    }
+    .hsj-container {
+        color: var(--color1);
+        margin-top: -2rem;        
+    }   
+    .hsj-header {
+        position: relative;
+    } 
+    .hsj-header img {
+        width: 100%;
+        height: auto;
+    }
+    .hsj-header.hsj-header .title {
+        font-size: var(--font4);
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        width: 100%;
+        color: var(--color4);
+        font-weight: 600;
+        text-transform: capitalize;
+        top: 0;
+        left: 0;
+    }
+    .hsj-header.hsj-header .title span {
+        margin-top: -8px;
+    }
+    section {
+        margin-bottom: var(--section-margin);
+    }
+    section:not(.hsj-header) {
+        padding: 0 var(--element-margin);
+    }
+    section:not(.hsj-header) .title {
+        font-size: var(--font1);
+        text-align: center;
+        margin-bottom: var(--element-margin);       
+        position: relative;
+        padding-bottom: var(--element-margin);
+        text-transform: capitalize;
+        font-weight: bold;
+    }
+    section:not(.hsj-header) .title::after {
+        content: "";
+        position: absolute;
+        width: 66px;
+        height: 2px;
+        background-color: var(--color3);
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    section .desp {
+        font-size: var(--font4);
+        text-align: center;
+        margin-bottom: var(--element-margin);
+    }    
+    .getting-start-wrap .item {
+        display: grid;
+        grid-template-columns: 20px 50px auto;
+        grid-gap: var(--element-margin);
+        border-radius: 4px;
+        padding: calc(var(--element-margin) + 8px) var(--element-margin);
+        position: relative;
+    }
+    .getting-start-wrap .item a{
+        /* text-decoration: none; */
+        display: block;
+    }
+    .getting-start-wrap .item a:focus, .getting-start-wrap .item a:active {
+        outline: none !important;
+    }
+    .getting-start-wrap .item .item-title {
+        font-size: var(--font3);
+        font-weight: bold;
+        text-decoration: underline;
+    }
+    .getting-start-wrap .item .item-desp {
+        font-size: var(--font5);
+    }
+    .getting-start-wrap .item .item-icon {
+        align-self: center;
+        justify-self: center;
+    }
+    .getting-start-wrap .item:not(:last-child)::after {
+        content: "";
+        width: 60px;
+        height: 23px;
+        position: absolute;
+        bottom: -18px;
+        left: 43px;
+        z-index: 1;
+        background-repeat: no-repeat;
+        background-position: top;
+        background-size: contain;
+    }
+    .getting-start-wrap .item--grey {
+        background: var(--color4);
+    }    
+    .getting-start-wrap .item--white::after {        
+        background-image: url(/content/images/marketing/hairjourney/arrow-down-gray.svg);        
+    }
+    .getting-start-wrap .item--grey::after {        
+        background-image: url(/content/images/marketing/hairjourney/arrow-down-white.svg);        
+    }
+    .lhs-comparison-label-wrapper {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);        
+        text-align: center;
+        font-size: var(--font-size-large3);
+    }
+    .lhs-comparison-label-wrapper .item {
+        padding: calc(var(--element-margin) / 2) 0;        
+        border-top-left-radius: var(--border-radius);
+        border-top-right-radius: var(--border-radius);
+        border: 1px solid var(--color3);
+        cursor: pointer;
+    }
+    .lhs-comparison-label-wrapper .select {
+        background-color: var(--color3);              
+        /* width: calc(100% + 8px); */
+        z-index: 1;
+        color: var(--color2);
+    }
+    .lhs-comparison-label-wrapper .left.select {        
+        /* transform: scaleX(1.05) scaleY(1.05) translate(4px); */
+        margin-right: -8px;
+    }
+    .lhs-comparison-label-wrapper .right.select {        
+        /* transform: scaleX(1.05) scaleY(1.05) translate(-4px); */
+        margin-left: -8px;
+    }
+    .lhs-comparison-content-wrapper {
+        padding: var(--element-margin);
+        padding-bottom: 0;
+        border: 1px solid var(--color3);        
+    }    
+    .lhs-comparison-content {
+        margin-bottom: var(--element-margin);
+    }
+    .lhs-comparison-content.picture {
+        max-width: fit-content;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .lhs-comparison-content-wrapper .c-title {
+        font-size: var(--font-size-large3);
+        margin-bottom: var(--element-margin);
+        text-transform: capitalize;
+        text-align: center;
+    }
+    .lhs-comparison-us {
+        background-color: var(--color3);        
+    }
+    .lhs-comparison-us .content {
+        border-radius: var(--border-radius);  
+        border: 1px solid var(--color3);    
+    }
+    .lhs-comparison-content .content {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        /* align-items: center; */
+        padding: var(--element-margin);
+        color: var(--color2);
+        font-weight: bold;
+    } 
+    .lhs-comparison-content .content .right {
+        text-align: right;
+    }
+    .lhs-comparison-content .minor {
+        font-size: var(--font6);
+        font-weight: normal;
+    }
+    /* .lhs-comparison-competitor {
+        background: var(--color1);
+        color: var(--font-color3);        
+    } */
+    .lhs-comparison-competitor .content {
+        margin-bottom: var(--element-margin);
+        border-radius: var(--border-radius);
+        background-color: var(--color5);
+        color: #000;
+    }
+    .lhs-comparison-content-wrapper[data-french] {
+        display: none;
+    }
+    section.section--color-dark {
+        background-color: var(--color1);
+        color: var(--color2);        
+    } 
+    section.section--color-dark a {
+        color: var(--color2);
+    }
+    section.section--color-dark a:visited {
+        color: var(--color4);
+    }    
+    .section-service .content-wrap{
+        padding: var(--element-margin) calc(var(--element-margin) * 2);
+        display: grid;
+        grid-gap: var(--element-margin);
+    }   
+    .section-service .item {
+        display: grid;
+        align-items: center;
+    }
+    .section-service .content-wrap .item .c-title {
+        margin-bottom: var(--element-margin);
+        font-weight: bold;
+        font-size: var(--font3);
+    }
+    .section-service .item .c-desp {
+        font-size: var(--font4);
+    }
+    .section-service .item img {
+        width: 96px;
+        height: auto;
+    }
+    .section-service .item--img-left {
+        margin-bottom: var(--element-margin);
+    }
+    .section-service .item.item--img-right picture{
+        grid-column: 2 / span 1;
+    }
+    .section-service .item.item--img-left picture{
+        grid-column: 1 / span 1;
+        margin-right: var(--element-margin);
+    }
+    .section-service .item.item--img-right .content{
+        grid-column: 1 / span 1;
+        grid-row: 1 / span 1;
+        margin-right: var(--element-margin);
+    }
+    .section-service .item.item--img-left .content{
+        grid-column: 2 / span 1;
+    }
+    section.section-review {
+        padding: var(--element-margin) calc(var(--element-margin) * 2);
+    }
+    .section-review .content-wrap {
+        display: grid;
+        grid-gap: var(--section-margin);
+    }
+    .section-review .item{
+        display: grid;
+        grid-gap: var(--element-margin);        
+    }
+    .section-review .item .profile, .section-review .item .quote {
+        grid-column: 1 / span 1;
+        width: 57px;
+    }
+    .section-review .item img {
+        width: 100%;
+        height: auto;
+    }
+    .section-review .item .author {
+        font-weight: bold;
+        align-self: center;
+        grid-column: 2 / span 1;
+    }
+    .section-review .item .quote {
+        grid-column: 1 / span 1;
+    }
+    .section-review .item .content {
+        grid-column: 2 / span 1;
+    }
+    .section-review .item a {
+        grid-column: 1 / span 2;
+        grid-row: 3 / span 1;
+    }
+    .section-blog .content-wrap {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: var(--element-margin);
+    }
+    .section-blog .content-wrap .item {
+        text-decoration: none;
+    }
+    .section-blog .content-wrap .item img {
+        width: 100%;
+    }
+    .section-blog .content-wrap .item:focus, .section-blog .content-wrap .item:active {
+        outline: none !important;
+    }
+    .section-blog .content-wrap .item .c-title {
+        font-weight: bold;
+        font-size: var(--font6);
+        margin: 5px 0;
+    }
+    .section-blog .content-wrap .item .timeline {
+        font-size: var(--font7);
+    }    
+    section[price-pc] {
+        display: none;
+    }
+    @media (min-width: 551px) {
+        .body.page {
+            padding: 0;
+        }
+        .breadcrumbs {
+            display: none;
+        }
+        .hsj-container {
+            margin-top: 0;
+        }
+        .body.page .container {
+            max-width: 100% !important;
+        }
+        .hsj-header.hsj-header .title {
+            font-size: var(--font2);
+        }
+        .section-blog .content-wrap .item .c-title {
+            font-size: var(--font4);
+        }
+        .section-blog .content-wrap .item .timeline {
+            font-size: var(--font5);
+        }
+    }
+    @media (min-width: 600px) {        
+        .section-review .item:nth-child(odd) {
+            grid-template-columns: 40% 57px auto;
+        }
+        .section-review .item:nth-child(odd) .profile {
+            grid-column: 2 / span 1;   
+            align-self: center;         
+        }
+        .section-review .item:nth-child(odd) .author {
+            grid-column: 3 / span 1;
+        }
+        .section-review .item:nth-child(odd) .quote {
+            display: none;
+        }
+        .section-review .item:nth-child(odd) .content {
+            grid-column: 2 / span 2;
+        }
+        .section-review .item:nth-child(odd) a {
+            grid-column: 1 / span 1;
+            grid-row: 1 / span 2;
+            width: 100%;
+            align-self: flex-end;
+        }
+
+        .section-review .item:nth-child(even) {
+            grid-template-columns: auto 57px 40%;
+        }
+        .section-review .item:nth-child(even) .profile {
+            grid-column: 2 / span 1;
+            grid-row: 1 / span 1;
+            align-self: center;
+        }
+        .section-review .item:nth-child(even) .author {
+            grid-column: 1 / span 1;
+            justify-self: flex-end;
+        }
+        .section-review .item:nth-child(even) .quote {
+            display: none;
+        }
+        .section-review .item:nth-child(even) .content {
+            grid-column: 1 / span 2;
+        }
+        .section-review .item:nth-child(even) a {
+            grid-column: 3 / span 1;
+            grid-row: 1 / span 2;
+            width: 100%;
+            align-self: flex-end;
+        }
+        .section-review .item .content::before, .section-review .item .content::after {
+            content: "";
+            display: inline-block;            
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            width: 24px;
+            height: 24px;            
+        }
+        .section-review .item .content::before {
+            background-image: url(/content/images/marketing/hairjourney/quote.svg);
+            transform: translateY(6px);
+            margin-right: 5px;
+        }
+        .section-review .item .content::after {
+            background-image: url(/content/images/marketing/hairjourney/quote.svg);
+            transform: translateY(-3px) rotate(180deg);
+            margin-left: 5px;  
+            position: absolute;          
+        }
+    }
+    @media (min-width:700px) {
+        :root {
+            --element-margin: 1.5rem;
+            --section-margin: 3.2rem;
+        }
+        .section-review .item {
+            grid-gap: 1rem;
+        }
+        section.section-service .content-wrap {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        .section-service .s-item {
+            display: grid;
+            grid-template-rows: repeat(2, 1fr);
+            width: 100%;            
+        }
+    }
+    @media (min-width: 801px) {
+        :root {
+            --element-margin: 1.8rem;
+            --section-margin: 3.5rem;
+        }
+        section[price-mobile] {
+            display: none;
+        }
+        section[price-pc] {
+            display: block;
+        }
+        section[price-pc] .lhs-comparison-wrapper {
+            display: grid;
+            grid-gap: var(--element-margin);
+            grid-template-columns: repeat(5, 1fr);
+        }
+        section[price-pc] .item {
+            text-align: center;
+            padding: 0 cal(var(--element-margin) / 2);            
+        }
+        section[price-pc] .item--grey {
+            position: relative;
+        }
+        section[price-pc] .item--grey::before {
+            content: "";
+            top: 0;
+            left: calc(var(--element-margin) / -2);
+            height: 100%;
+            width: 1px;
+            display: block;
+            position: absolute;
+        }
+        section[price-pc] .item--grey1::before {
+            background-color: var(--color6);
+        }
+        section[price-pc] .item--grey2::before {
+            background-color: var(--color7);
+        }
+        section[price-pc] .item--grey3::before {
+            background-color: var(--color5);
+        }
+        section[price-pc] .title-wrap {
+            filter: url('#goo');    
+            width: 100%;
+        }
+        section[price-pc] .c-title {
+            width: 100%;
+            height: 60px;            
+            display:flex;
+            align-items: center;
+            justify-content: center;            
+            /*   clip-path: polygon(100% 0%, 100% 50%, 100% 100%, 25% 100%, 0% 50%, 25% 0%); */
+            clip-path: polygon(0 0, 100% 0%, 100% 75%, 50% 100%, 0 75%);
+            text-align: center;
+            text-transform: capitalize;
+            padding-bottom: 10px;
+            font-size: var(--font4);
+            font-weight: bold;
+        }
+        section[price-pc] img {
+            width: 100%;
+        }
+        section[price-pc] .c-title--black {
+            background-color: var(--color1);
+            color: var(--color2);
+        }
+        section[price-pc] .c-title--blue {
+            background-color: var(--color3);
+            color: var(--color2);
+        }
+        section[price-pc] .c-title--grey1 {
+            background-color: var(--color6)
+        }
+        section[price-pc] .c-title--grey2 {
+            background-color: var(--color7)
+        }
+        section[price-pc] .c-title--grey3 {
+            background-color: var(--color5)
+        }
+        section[price-pc] .price {
+            font-size: var(--font1);
+            font-weight: bold;            
+        }
+        section[price-pc] .minor {
+            font-size: var(--font6);
+            font-weight: normal;
+            position: absolute;
+            bottom: 0;
+        }
+        section[price-pc] .content-wrap {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 90px;
+        }
+        section[price-pc] .minor--top {
+            bottom: unset;
+            top: 0;
+        }
+        section[price-pc] .title-wrap .minor {
+            bottom: 5px;
+        }
+        .getting-start-wrap {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            width: 100%;
+        }
+        .getting-start-wrap .item {
+            grid-template-columns: none;
+            text-align: center;
+            grid-template-rows: 30px 50px auto;
+        }
+        .getting-start-wrap .item .item-title {
+            margin-bottom: var(--element-margin);
+        }
+        .getting-start-wrap .item img {
+            justify-self: center;
+            align-self: center;
+            height: 100%;
+            width: auto;
+        }
+        .getting-start-wrap .item:not(:last-child)::after {
+            bottom: unset;
+            left: unset;
+            right: -35px;
+            transform: rotate(-90deg);
+            top: 100px;            
+        }   
+        .getting-start-wrap .item--white::after {
+            background-image: url(/content/images/marketing/hairjourney/arrow-down-white.svg);
+        }
+        .getting-start-wrap .item--grey {
+            background: #fff;
+        }
+        section:not(.hsj-header):not(.section-service), .section-service .content-wrap {
+            max-width: 1024px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .hsj-header.hsj-header .title {
+            font-size: var(--font1);
+        }
+        .section-blog .content-wrap .item .c-title {
+            font-size: var(--font3);
+        }
+        .section-blog .content-wrap .item .timeline {
+            font-size: var(--font4);
+        }
+    }
+    @media (min-width: 875px) {
+        .section-review .item:nth-child(even) a, .section-review .item:nth-child(odd) a {
+            align-self: flex-start;
+        }
+    }
+    @media (min-width: 1051px) {
+        section[price-pc] .c-title {
+            height: 70px;
+        }
+        section[price-pc] .content-wrap {
+            margin: 1rem 0;
+        }
+        section[price-pc] img {
+            width: 150px;
+            margin: 0 auto;
+        }     
+        section:not(.hsj-header) .title {
+            font-size: var(--font9);
+        }   
+    }
+    @media (min-width: 1240px) {
+        .hsj-header.hsj-header .title {
+            font-size: var(--font8);
+        }
+    }
+</style>
+<div class="hsj-container">
+    <section class="hsj-header">
+        <picture>
+            <source media="(min-width: 600px)" srcset="/content/images/marketing/hairjourney/banner-pc.webp" type="image/webp">
+            <source media="(min-width: 600px)" srcset="/content/images/marketing/hairjourney/banner-pc.jpg" type="image/jpeg">
+            <source srcset="/content/images/marketing/hairjourney/banner-mobile.webp" type="image/webp">
+            <source srcset="/content/images/marketing/hairjourney/banner-mobile.jpg" type="image/jpeg">
+            <img src="/content/images/marketing/hairjourney/banner-mobile.jpg" alt="Hair system journey">
+        </picture>
+        <div class="title">
+            <span>Starting A Hair System Journey</span>
+        </div>
+    </section>
+    <section>
+        <div class="title">Getting Started</div>
+        <div class="desp">Here at Superhairpieces, we make things easy for you and gradually settle you into the world of hair systems so you not only have a full head of hair, but reclaim your confidence.</div>
+        <div class="getting-start-wrap">
+            <div class="item item--grey">
+                <img src="/content/images/marketing/hairjourney/11.svg" alt="Step 1">
+                <img class="item-icon" src="/content/images/marketing/hairjourney/21.svg" alt="Step 1">
+                <div>
+                    <a href="/online-professional-hair-consultant-for-hair-pieces-toupee/" class="item-title">Book a Consultation</a>
+                    <div class="item-desp">Speak to one of our experts to determine the best hair system for you. You can also try our <a href="/hair-system-selector/">Hair System Selector</a></div>
+                </div>
+            </div>
+            <div class="item item--white">
+                <img src="/content/images/marketing/hairjourney/12.svg" alt="Step 2">
+                <img class="item-icon" src="/content/images/marketing/hairjourney/22.svg" alt="Step 2">
+                <div>
+                    <a href="/men-hair-pieces-toupees-by-model/" class="item-title">Order hair system </a>
+                    <div class="item-desp">Find your hair system. Need any help? Use the chat function on the bottom right corner!</div>
+                </div>
+            </div>
+            <div class="item item--grey">
+                <img src="/content/images/marketing/hairjourney/13.svg" alt="Step 3">
+                <img class="item-icon" src="/content/images/marketing/hairjourney/23.svg" alt="Step 3">
+                <div>
+                    <a href="https://www.superhairpieces.com/toupee-wig-hair-system-blog/how-to-attach-and-remove-a-hair-replacement-system/" class="item-title">Install hair system</a>
+                    <div class="item-desp">Install it yourself or get it done by a professional.</div>
+                </div>
+            </div>
+            <div class="item item--white">
+                <img src="/content/images/marketing/hairjourney/14.svg" alt="Step 4">
+                <img class="item-icon" src="/content/images/marketing/hairjourney/24.svg" alt="Step 4">
+                <div>
+                    <a href="/superhair-knowledge" class="item-title">Learn to maintain</a>
+                    <div class="item-desp">Check out our resources to learn how to take care and maintain your hair system.</div>
+                </div>
+            </div>
+            <div class="item item--grey">
+                <img src="/content/images/marketing/hairjourney/15.svg" alt="Step 5">
+                <img class="item-icon" src="/content/images/marketing/hairjourney/25.svg" alt="Step 5">
+                <div>
+                    <a href="/rewards-program" class="item-title">Earn incentives</a>
+                    <div class="item-desp">Happy with your purchase? Leave us a review and get rewarded!</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section price-mobile>
+        <div class="title">Our Prices</div>
+        <div class="desp">High quality, best price</div>
+        <div class="lhs-comparison-wrapper">
+            <div class="lhs-comparison-label-wrapper">
+                <div class="item left select" data-select="skin">Skin Base</div>
+                <div class="item right" data-select="french">French Lace</div>
+            </div>
+            <div class="lhs-comparison-content-wrapper" data-skin>
+                <div class="lhs-comparison-pc-content-wrapper">
+                    <div class="lhs-comparison-content picture">
+                        <picture>
+                            <img src="/content/images/marketing/hairjourney/7-300w.jpg" alt="skin base"/>
+                        </picture>
+                    </div>
+                    <div>
+                        <div class="lhs-comparison-content">
+                            <div class="c-title">our price</div>
+                            <div class="lhs-comparison-us">
+                                <div class="content">
+                                    <div>M101</div>
+                                    <div class="right">$199</div>
+                                </div>
+                            </div>                
+                        </div>
+                        <div class="lhs-comparison-content">
+                            <div class="c-title">competitor prices</div>
+                            <div class="lhs-comparison-competitor">
+                                <div class="content">
+                                    <div>Superskin</div>
+                                    <div class="right">
+                                        <div>$239</div>
+                                        <div class="minor">(after $30 discount)</div>
+                                    </div>
+                                </div>
+                                <div class="content">
+                                    <div>Mirage</div>
+                                    <div class="right">$299</div>
+                                </div>
+                                <div class="content">
+                                    <div>
+                                        <div>Medium Thickness</div>
+                                        <div class="minor">(0.15mm Poly Skin)</div>
+                                    </div>
+                                    <div class="right">
+                                        <div>$319</div>
+                                        <div class="minor">(on sale)</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="lhs-comparison-content-wrapper" data-french>
+                <div class="lhs-comparison-pc-content-title">Our Price vs Competitor Prices</div>
+                <div class="lhs-comparison-pc-content-wrapper">
+                    <div class="lhs-comparison-content picture">
+                        <picture>
+                            <img src="/content/images/marketing/hairjourney/8-300w.jpg" alt="skin base"/>
+                        </picture>
+                    </div>
+                    <div>
+                        <div class="lhs-comparison-content">
+                            <div class="c-title">our price</div>
+                            <div class="lhs-comparison-us">
+                                <div class="content">
+                                    <div>M105</div>
+                                    <div class="right">$259</div>
+                                </div>
+                            </div>                
+                        </div>
+                        <div class="lhs-comparison-content">
+                            <div class="c-title">competitor prices</div>
+                            <div class="lhs-comparison-competitor">
+                                <div class="content">
+                                    <div>Champion Remy</div>
+                                    <div class="right">
+                                        <div>$339</div>
+                                        <div class="minor">(after $30 discount)</div>
+                                    </div>
+                                </div>
+                                <div class="content">
+                                    <div>Thor</div>
+                                    <div class="right">$349</div>
+                                </div>
+                                <div class="content">
+                                    <div>
+                                        <div>Full French Lace</div>
+                                        <div class="minor">(N-French)</div>
+                                    </div>
+                                    <div class="right">
+                                        <div>$319</div>
+                                        <div class="minor">(on sale)</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>        
+    </section>
+    <section price-pc>
+        <div class="title">Our Price vs Competitor Prices</div>
+        <div class="desp">High quality, best price</div>
+        <div class="lhs-comparison-wrapper">
+            <div class="item">
+                <div class="title-wrap">
+                    <div class="c-title c-title--black">skin base</div>                    
+                </div>
+                <div class="content-wrap">
+                    <img src="/content/images/marketing/hairjourney/7-300w.jpg" alt="skin base"/>
+                </div>
+            </div>     
+            <div class="item">
+                <div class="title-wrap">
+                    <div class="c-title c-title--blue">M101</div>
+                </div>
+                <div class="content-wrap">
+                    <div class="price">$199</div>
+                </div>
+            </div>    
+            <div class="item item--grey item--grey1">
+                <div class="title-wrap">
+                    <div class="c-title c-title--grey1">superskin</div>
+                </div>
+                <div class="content-wrap">
+                    <div class="price">
+                        $239          
+                    </div>
+                    <div class="minor">(after $30 discount)</div>
+                </div>
+            </div>
+            <div class="item item--grey item--grey2">
+                <div class="title-wrap">
+                    <div class="c-title c-title--grey2">mirage</div>
+                </div>
+                <div class="content-wrap">
+                    <div class="price">$299</div>
+                </div>
+            </div>
+            <div class="item item--grey item--grey3">
+                <div class="title-wrap">
+                    <div class="c-title c-title--grey3">medium thickness</div>
+                </div>
+                <div class="content-wrap">
+                    <div class="minor minor--top">(0.15mm Poly Skin)</div>
+                    <div class="price">
+                        $319     
+                    </div>
+                    <div class="minor">(on sale)</div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="title-wrap">
+                    <div class="c-title c-title--black">french lace</div>                    
+                </div>
+                <div class="content-wrap">
+                    <img src="/content/images/marketing/hairjourney/8-300w.jpg" alt="french lace"/>
+                </div>
+            </div>     
+            <div class="item">
+                <div class="title-wrap">
+                    <div class="c-title c-title--blue">M105</div>
+                </div>
+                <div class="content-wrap">
+                    <div class="price">$259</div>
+                </div>
+            </div>    
+            <div class="item item--grey item--grey1">
+                <div class="title-wrap">
+                    <div class="c-title c-title--grey1">
+                        <div>Full French Lace</div>
+                        <div class="minor">(N-French)</div>
+                    </div>
+                </div>
+                <div class="content-wrap">
+                    <div class="price">
+                        $319          
+                    </div>
+                    <div class="minor">(on sale)</div>
+                </div>
+            </div>
+            <div class="item item--grey item--grey2">
+                <div class="title-wrap">
+                    <div class="c-title c-title--grey2">champion remy</div>
+                </div>
+                <div class="content-wrap">
+                    <div class="price">$339</div>
+                    <div class="minor">(after $30 discount)</div>
+                </div>
+            </div>
+            <div class="item item--grey item--grey3">
+                <div class="title-wrap">
+                    <div class="c-title c-title--grey3">thor</div>
+                </div>
+                <div class="content-wrap">                    
+                    <div class="price">
+                        $349
+                    </div>                    
+                </div>
+            </div>
+            <svg style="visibility: hidden; position: absolute;" width="0" height="0" xmlns="http://www.w3.org/2000/svg" version="1.1">
+                <defs>
+                    <filter id="goo"><feGaussianBlur in="SourceGraphic" stdDeviation="8" result="blur" />    
+                        <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur" />
+                        <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 19 -9" result="goo" />
+                        <feComposite in="SourceGraphic" in2="goo" operator="atop"/>
+                    </filter>
+                </defs>
+            </svg>
+        </div>
+    </section>
+    <section class="section-service section--color-dark">
+        <div class="content-wrap">
+            <div class="s-item">
+                <div class="item item--img-left">
+                    <picture>                
+                        <source srcset="/content/images/marketing/hairjourney/31-mobile.jpg" type="image/jpeg">
+                        <img src="/content/images/marketing/hairjourney/31-mobile.jpg" alt="Service">
+                    </picture>
+                    <div class="content">
+                        <div class="c-title">Reliable Service</div>
+                        <div class="c-desp">Our customer support team is here M-F to answer any questions or doublts you have about hair systems through live chat, text, email, or a call.
+                        </div>
+                    </div>
+                </div>
+                <div class="item item--img-right">
+                    <picture>                
+                        <source srcset="/content/images/marketing/hairjourney/32-mobile.jpg" type="image/jpeg">
+                        <img src="/content/images/marketing/hairjourney/32-mobile.jpg" alt="Service">
+                    </picture>
+                    <div class="content">
+                        <div class="c-title">Fast Shipping</div>
+                        <div class="c-desp">We also provide fast and reliable shipping from our warehouses in Florida and Canada. (Within 24 hours if you're in North America!)
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="s-item">
+                <div class="item item--img-left">
+                    <picture>                
+                        <source srcset="/content/images/marketing/hairjourney/33-mobile.jpg" type="image/jpeg">
+                        <img src="/content/images/marketing/hairjourney/33-mobile.jpg" alt="Service">
+                    </picture>
+                    <div class="content">
+                        <div class="c-title">Increasing Inventory</div>
+                        <div class="c-desp"><a href="/hair-systems-order-processing-time-during-the-pandemic/">Our inventory</a> was at 5% in June and has since increased to 23% by the end of November. The worst is behind us!
+                        </div>
+                    </div>
+                </div>
+                <div class="item item--img-right">
+                    <picture>                
+                        <source srcset="/content/images/marketing/hairjourney/34-mobile.jpg" type="image/jpeg">
+                        <img src="/content/images/marketing/hairjourney/34-mobile.jpg" alt="Service">
+                    </picture>
+                    <div class="content">
+                        <div class="c-title">Ethically Sourced Hair</div>
+                        <div class="c-desp">All our hair systems use 100% human hair that is <a href="https://www.superhairpieces.com/toupee-wig-hair-system-blog/where-superhairpieces-gets-its-ethically-sourced-hair/">ethically sourced</a>. We also make sure all hair providers are well-compensated.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section-review">
+        <div class="title">What Our Customers Say</div>
+        <div class="desp">Check out what some of our clients had to say!</div>
+        <div class="content-wrap">
+            <div class="item">
+                <img src="/content/images/marketing/hairjourney/41.jpg" alt="Review" class="profile">
+                <div class="author">Rick D. Verified Buyer</div>
+                <img src="/content/images/marketing/hairjourney/quote.svg" alt="quote" class="quote">
+                <div class="content">At first it was really just for a fluke, I wasn't convinced that it was gonna work, I didn't think it would be worth trying. I approached it more as a joke. But when it finished I thought, “It looks pretty good. As a matter of fact, that looks really good!</div>
+                <a href="https://www.youtube.com/embed/iyadjdZ4oGo">
+                    <picture>
+                        <source srcset="/content/images/marketing/hairjourney/42.webp" type="image/webp">
+                        <source srcset="/content/images/marketing/hairjourney/42.jpg" type="image/jpeg">
+                        <img src="/content/images/marketing/hairjourney/42.jpg" alt="video">
+                    </picture>
+                </a>                
+            </div>
+            <div class="item">
+                <img src="/content/images/marketing/hairjourney/43.jpg" alt="review" class="profile">
+                <div class="author">James T. Verified Buyer</div>
+                <img src="/content/images/marketing/hairjourney/quote.svg" alt="quote" class="quote">
+                <div class="content">This adventure from start to finish was exceptional, the service at the Mississauga location was beyond belief. I would like to thank everyone who involved in what has definitely been one of the best experiences of my life. </div>
+                <a href="https://www.youtube.com/watch?v=x4wiDYnV3xg">
+                    <picture>
+                        <source srcset="/content/images/marketing/hairjourney/44.webp" type="image/webp">
+                        <source srcset="/content/images/marketing/hairjourney/44.jpg" type="image/jpeg">
+                        <img src="/content/images/marketing/hairjourney/44.jpg" alt="video">
+                    </picture>
+                </a>                
+            </div>
+        </div>
+    </section>
+    <section class="section-blog">
+        <div class="title">Blog Posts</div>
+        <div class="desp">Read our blog for guides, tips and tricks, product recommendations and more!</div>
+        <div class="content-wrap">
+            <a class="item" href="https://www.superhairpieces.com/toupee-wig-hair-system-blog/how-to-attach-and-remove-a-hair-replacement-system/" target="_blank">
+                <picture>
+                    <source media="(min-width:600px)" srcset="/content/images/marketing/hairjourney/51-pc.webp" type="image/webp">
+                    <source media="(min-width:600px)" srcset="/content/images/marketing/hairjourney/51-pc.jpg" type="image/jpeg">
+                    <source srcset="/content/images/marketing/hairjourney/51-mobile.webp" type="image/webp">
+                    <source srcset="/content/images/marketing/hairjourney/51-mobile.jpg" type="image/jpeg">
+                    <img src="/content/images/marketing/hairjourney/51-mobile.jpg" alt="blog preview">
+                </picture>
+                <div class="c-title">How to attach and remove a hair replacement system</div>
+                <div class="timeline">2021 Aug 10th</div>                
+            </a>
+            <a class="item" href="https://www.superhairpieces.com/toupee-wig-hair-system-blog/beginners-guide-how-to-buy-toupee-or-wig-hairpieces/" target="_blank">
+                <picture>
+                    <source media="(min-width:600px)" srcset="/content/images/marketing/hairjourney/52-pc.webp" type="image/webp">
+                    <source media="(min-width:600px)" srcset="/content/images/marketing/hairjourney/52-pc.jpg" type="image/jpeg">
+                    <source srcset="/content/images/marketing/hairjourney/52-mobile.webp" type="image/webp">
+                    <source srcset="/content/images/marketing/hairjourney/52-mobile.jpg" type="image/jpeg">
+                    <img src="/content/images/marketing/hairjourney/52-mobile.jpg" alt="blog preview">
+                </picture>
+                <div class="c-title">Beginners Guide: How to Buy Toupee or Wig Hairpieces</div>
+                <div class="timeline">2021 June 23th</div>                
+            </a>
+            <a class="item" href="https://www.superhairpieces.com/toupee-wig-hair-system-blog/how-to-choose-the-right-hair-density-for-your-wig-or-toupee/" target="_blank">
+                <picture>
+                    <source media="(min-width:600px)" srcset="/content/images/marketing/hairjourney/53-pc.webp" type="image/webp">
+                    <source media="(min-width:600px)" srcset="/content/images/marketing/hairjourney/53-pc.jpg" type="image/jpeg">
+                    <source srcset="/content/images/marketing/hairjourney/53-mobile.webp" type="image/webp">
+                    <source srcset="/content/images/marketing/hairjourney/53-mobile.jpg" type="image/jpeg">
+                    <img src="/content/images/marketing/hairjourney/53-mobile.jpg" alt="blog preview">
+                </picture>                
+                <div class="c-title">How to choose the right hair density for your wig or toupee</div>
+                <div class="timeline">2021 June 8th</div>
+            </a><a class="item" href="https://www.superhairpieces.com/toupee-wig-hair-system-blog/what-are-the-differences-between-the-thin-skin-base-hair-systems/" target="_blank">
+                <picture>
+                    <source media="(min-width:600px)" srcset="/content/images/marketing/hairjourney/54-pc.webp" type="image/webp">
+                    <source media="(min-width:600px)" srcset="/content/images/marketing/hairjourney/54-pc.jpg" type="image/jpeg">
+                    <source srcset="/content/images/marketing/hairjourney/54-mobile.webp" type="image/webp">
+                    <source srcset="/content/images/marketing/hairjourney/54-mobile.jpg" type="image/jpeg">
+                    <img src="/content/images/marketing/hairjourney/54-mobile.jpg" alt="blog preview">
+                </picture>
+                <div class="c-title">What are the differences between the thin skin base hair system</div>
+                <div class="timeline">2021 Augh 5th</div>                
+            </a>        
+        </div>
+    </section>
+</div>
+<script>
+    window.addEventListener("DOMContentLoaded", function() {
+        $(".lhs-comparison-label-wrapper .item").on("click", function() {
+            $(".lhs-comparison-label-wrapper .select").removeClass("select");
+            $(this).addClass("select");
+            $(".lhs-comparison-content-wrapper").hide();
+            console.log($(this).attr("data-select"));
+            console.log(`.lhs-comparison-content-wrapper [data-${$(this).attr("data-select")}]`);
+            $(`.lhs-comparison-content-wrapper[data-${$(this).attr("data-select")}]`).show();
+        });
+    });
+</script>

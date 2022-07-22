@@ -1,0 +1,1034 @@
+<!--
+    Created by: Nana
+    Date created: 2021-01-14
+-->
+<style>
+    .faq-container {
+        margin: 0 auto;
+    }
+    .faq-accordion {
+        display: none;
+    }
+    .faq-tab-active {
+        display: block;
+    }
+    .faq-accordion .faq-accordion-item {
+        border-bottom: 1px solid #e5e5e5;
+    }
+
+    .faq-accordion .faq-accordion-item button[aria-expanded="true"] {
+        border-bottom: 1px solid #333333;
+    }
+    .faq-accordion button {
+        position: relative;
+        display: block;
+        text-align: left;
+        width: 100%;
+        padding: 1em 0;
+        color: #7288a2;
+        font-size: 1.15rem;
+        font-weight: 400;
+        border: none;
+        background: none;
+        outline: none;
+        padding-right: 1.5rem;
+    }
+    .faq-accordion button:hover,
+    .faq-accordion button:focus {
+        cursor: pointer;
+        color: #333333;
+    }
+    .faq-accordion button:hover::after,
+    .faq-accordion button:focus::after {
+        cursor: pointer;
+        color: #333333;
+        border: 1px solid #333333;
+    }
+    .faq-accordion button .faq-accordion-title {
+        padding: 1em 1.5em 1em 0;
+    }
+    .faq-accordion button .faq-icon {
+        display: inline-block;
+        position: absolute;
+        top: 18px;
+        right: 0;
+        width: 22px;
+        height: 22px;
+        border: 1px solid;
+        border-radius: 22px;
+    }
+    .faq-accordion button .faq-icon::before {
+        display: block;
+        position: absolute;
+        content: "";
+        top: 9px;
+        left: 5px;
+        width: 10px;
+        height: 2px;
+        background: currentColor;
+    }
+    .faq-accordion button .faq-icon::after {
+        display: block;
+        position: absolute;
+        content: "";
+        top: 5px;
+        left: 9px;
+        width: 2px;
+        height: 10px;
+        background: currentColor;
+    }
+    .faq-accordion button[aria-expanded="true"] {
+        color: #333333;
+    }
+    .faq-accordion button[aria-expanded="true"] .faq-icon::after {
+        width: 0;
+    }
+    .faq-accordion button[aria-expanded="true"] + .faq-accordion-content {
+        opacity: 1;
+        max-height: 40em;
+        -webkit-transition: all 200ms linear;
+        transition: all 200ms linear;
+        will-change: opacity, max-height;
+    }
+    .faq-accordion .faq-accordion-content {
+        opacity: 0;
+        max-height: 0;
+        overflow: hidden;
+        -webkit-transition: opacity 200ms linear, max-height 200ms linear;
+        transition: opacity 200ms linear, max-height 200ms linear;
+        will-change: opacity, max-height;
+    }
+    .faq-accordion .faq-accordion-content p {
+        font-size: 1rem;
+        margin: 2em 0;
+    }
+    .faq-search-wrap {
+        border-radius: 2rem;
+        margin: 0.5rem 0;
+        border: 1px solid #ccc;
+        padding: 1rem;
+        display: flex;
+    }
+    .faq-search-wrap svg {
+        width: 1rem;
+    }
+    #faq-search {
+        width: 100%;
+        border: 0;
+        background-color: transparent;
+    }
+    #faq-search:focus {
+        outline: none;
+    }
+    .page-content--centered {
+        width: 100% !important;
+    }
+    .faq-navigation-wrapper {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-top: 1px solid #ccc;
+        border-bottom: 1px solid #ccc;
+        height: 50px;        
+        margin: 2rem 0;
+        padding-top: 1.5rem;
+    }
+    .faq-navigation {
+        line-height: 4rem;                
+        overflow: hidden;        
+    }
+    .faq-navigation li.active {
+        font-size: 1.4rem;
+    }
+    .faq-navigation li.active svg {
+        display: block;
+    }
+    .faq-navigation ul {        
+        display: flex;
+        flex-flow: row nowrap;
+        list-style: none;
+        white-space: nowrap;
+        position: relative;
+        margin-left: 0 !important;
+    }
+    .faq-navigation li {
+        margin-right: 2rem;
+        position: relative;
+    }
+    .faq-navigation a {
+        text-decoration: none;
+    }
+    .faq-navigation svg {
+        display: none;
+        width: 0.5rem;
+        position: absolute;
+        bottom: 0.1rem;
+        left: 48%;
+    }
+</style>
+<div class="faq-container">
+    <div class="faq-search-wrap">
+        <input
+            id="faq-search"
+            type="text"
+            placeholder="Type keywords to find answers"
+        />
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+            <!-- Font Awesome Free 5.15.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) -->
+            <path
+                d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"
+            />
+        </svg>
+    </div>
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-navigation-wrapper">
+        <nav class="faq-navigation">
+            <ul>
+                <li class="active">
+                    <a href="#" onclick="tabClick('#adhesive-and-solvent', this)">Adhesive and Solvent</a>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                        <!-- Font Awesome Free 5.15.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) -->
+                        <path
+                            d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z"
+                        />
+                    </svg>
+                </li>
+                <li>
+                    <a href="#" onclick="tabClick('#hairpiece', this)"
+                        >Hairpiece</a
+                    >
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                        <!-- Font Awesome Free 5.15.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) -->
+                        <path
+                            d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z"
+                        />
+                    </svg>
+                </li>
+                <li>
+                    <a href="#" onclick="tabClick('#maintanence', this)"
+                        >Maintanence</a
+                    >
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                        <!-- Font Awesome Free 5.15.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) -->
+                        <path
+                            d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z"
+                        />
+                    </svg>
+                </li>
+                <li>
+                    <a href="#" onclick="tabClick('#shipping', this)">Shipping</a>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                        <!-- Font Awesome Free 5.15.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) -->
+                        <path
+                            d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z"
+                        />
+                    </svg>
+                </li>            
+            </ul>
+        </nav>
+    </div>
+    <div class="faq-accordion faq-tab-active" id="adhesive-and-solvent">
+        <div class="faq-accordion-item">
+            <button aria-expanded="true">
+                <span class="faq-accordion-title"
+                    >What could you suggest to a client that wants to use an acrylic base glue on a lace unit?</span
+                ><span class="faq-icon" aria-hidden="true"></span>
+            </button>
+            <div class="faq-accordion-content">
+                <p>
+                    Clients could use a tape that is safe for lace units, but the tape will be applied directly to the unit. The glue will be applied to the side which will stick to the scalp.
+                </p>
+            </div>
+        </div>
+        <div class="faq-accordion-item">
+            <button aria-expanded="false">
+                <span class="faq-accordion-title"
+                    >What should you avoid putting on lace units and why?</span
+                ><span class="faq-icon" aria-hidden="false"></span>
+            </button>
+            <div class="faq-accordion-content">
+                <p>
+                    You should avoid putting acrylic base glues on lace material or monofilament material as it can break down the hair and will cause shedding
+                </p>
+            </div>
+        </div>
+        <div class="faq-accordion-item">
+            <button aria-expanded="false">
+                <span class="faq-accordion-title"
+                    >What glues are safe to put directly on lace units?</span
+                ><span class="faq-icon" aria-hidden="false"></span>
+            </button>
+            <div class="faq-accordion-content">
+                <p>Water-based glue. Like Safe Grip or Ghost Bond.
+                    (Use a brush to apply a thin even layer and let it dry for exactly 7 mins - dries clear)</p>
+            </div>
+        </div>
+        <div class="faq-accordion-item">
+            <button aria-expanded="false">
+                <span class="faq-accordion-title"
+                    >How to clean your Wig?</span
+                ><span class="faq-icon" aria-hidden="false"></span>
+            </button>
+            <div class="faq-accordion-content">
+                <p>
+                    Gently Remove Your System: Try dipping it in solvent if you are having a hard time removing the tape.
+                </p>
+                <p>Soak your hair in Solvent Solution: Plastic or stainless steel containers in a well-ventilated area.</p>
+                <p>Cleaning Your Hair: To clean the lace area, use an old gift card and gently scrape outwards.</p>
+                <p>Next Comes A Through Rinsing: use a fingernail brush, gently gliding it through the full length of the hair.</p>
+                <p>Shampoo and Condition: Use a mild Shampoo like our Amika line to balance the acid level and last condition.</p>
+            </div>
+        </div>
+        <div class="faq-accordion-item">
+            <button aria-expanded="false">
+                <span class="faq-accordion-title"
+                    >What is the best tape you recommend to attach the M100?</span
+                ><span class="faq-icon" aria-hidden="false"></span>
+            </button>
+            <div class="faq-accordion-content">
+                <p>
+                    It depends on how long you plan on keeping the unit on. Please note that adhesives should only go on the poly perimeter and NOT the mono top area.
+                </p>
+                <p>Daily wear - Super 1522, Super Red Liner Tape</p>
+                <p>Weekly wear - German Brown Tape, Super Blue Tape, Duo Tac Tape</p>
+                <p>Monthly wear - No Shine Tape, Super Tape, Ultra Hold, Extendabond</p>
+            </div>
+        </div>
+        <div class="faq-accordion-item">
+            <button aria-expanded="false">
+                <span class="faq-accordion-title"
+                    >What is the best tape you recommend to attach the M108?</span
+                ><span class="faq-icon" aria-hidden="false"></span>
+            </button>
+            <div class="faq-accordion-content">
+                <p>
+                    It depends on how long you plan on keeping the unit on. Please note that adhesives should only go on the poly perimeter and NOT the mono top area.
+                </p>
+                <p>Daily wear - Super 1522, Super Red Liner Tape</p>
+                <p>Weekly wear - German Brown Tape, Super Blue Tape, Duo Tac Tape</p>
+                <p>Monthly wear - No Shine Tape, Super Tape, Ultra Hold, Extendabond</p>
+            </div>
+        </div>
+        <div class="faq-accordion-item">
+            <button aria-expanded="false">
+                <span class="faq-accordion-title"
+                    >What is the best tape you recommend to attach the M112?</span
+                ><span class="faq-icon" aria-hidden="false"></span>
+            </button>
+            <div class="faq-accordion-content">
+                <p>
+                    It depends on how long you plan on keeping the unit on. Please note that adhesives should only go on the poly perimeter and NOT the mono top area.
+                </p>
+                <p>Daily wear - Super 1522, Super Red Liner Tape</p>
+                <p>Weekly wear - German Brown Tape, Super Blue Tape, Duo Tac Tape</p>
+                <p>Monthly wear - No Shine Tape, Super Tape, Ultra Hold, Extendabond</p>
+            </div>
+        </div>
+        <div class="faq-accordion-item">
+            <button aria-expanded="false">
+                <span class="faq-accordion-title"
+                    >What is the best tape you recommend to attach the M102?</span
+                ><span class="faq-icon" aria-hidden="false"></span>
+            </button>
+            <div class="faq-accordion-content">
+                <p>
+                    It depends on how long you plan on keeping the unit on. Please note that adhesives should only go on the poly perimeter and NOT the mono top area.
+                </p>
+                <p>Daily wear - Super 1522, Super Red Liner Tape</p>
+                <p>Weekly wear - German Brown Tape, Super Blue Tape, Duo Tac Tape</p>
+                <p>Monthly wear - No Shine Tape, Super Tape, Ultra Hold, Extendabond</p>
+            </div>
+        </div>
+        <div class="faq-accordion-item">
+            <button aria-expanded="false">
+                <span class="faq-accordion-title"
+                    >What is the best tape you recommend to attach the M105?
+                </span
+                ><span class="faq-icon" aria-hidden="false"></span>
+            </button>
+            <div class="faq-accordion-content">
+                <p>
+                    It depends on how long you plan on keeping the unit on.
+                </p>
+                <p>Daily wear - No Shine (3 day hold)</p>
+                <p>Weekly wear - Super Blue Tape, Duo Tac Tape</p>
+                <p>Monthly wear - Super Tape, Ultra Hold, Extendabond</p>
+            </div>
+        </div>
+        <div class="faq-accordion-item">
+            <button aria-expanded="false">
+                <span class="faq-accordion-title"
+                    >What is the best tape you recommend to attach the M109?      
+                </span
+                ><span class="faq-icon" aria-hidden="false"></span>
+            </button>
+            <div class="faq-accordion-content">
+                <p>
+                    It depends on how long you plan on keeping the unit on. Please note that adhesives should only go on the poly perimeter and NOT the mono top area.
+                </p>
+                <p>For the poly perimeter:</p>
+                <p>Daily wear - Super 1522, Super Red Liner Tape</p>
+                <p>Weekly wear - German Brown Tape, Super Blue Tape, Duo Tac Tape</p>
+                <p>Monthly wear - No Shine Tape, Super Tape, Ultra Hold, Extendabond</p>
+                <p>
+                    For the lace front:
+                </p>
+                <p>Daily wear - No Shine (3 day hold)</p>
+                <p>Weekly wear - Super Blue Tape, Duo Tac Tape</p>
+                <p>Monthly wear - Super Tape, Ultra Hold, Extendabond	</p>
+            </div>
+        </div>
+        <div class="faq-accordion-item">
+            <button aria-expanded="false">
+                <span class="faq-accordion-title"
+                    >What is the best tape you recommend to attach the M104?
+                </span
+                ><span class="faq-icon" aria-hidden="false"></span>
+            </button>
+            <div class="faq-accordion-content">
+                <p>
+                    It depends on how long you plan on keeping the unit on. Please note that adhesives should only go on the poly perimeter and NOT the mono top area.
+                </p>
+                <p>For the poly perimeter:</p>
+                <p>Daily wear - Super 1522, Super Red Liner Tape</p>
+                <p>Weekly wear - German Brown Tape, Super Blue Tape, Duo Tac Tape</p>
+                <p>Monthly wear - No Shine Tape, Super Tape, Ultra Hold, Extendabond</p>
+                <p>For the lace front:</p>
+                <p>Daily wear - No Shine (3 day hold)</p>
+                <p>Weekly wear - Super Blue Tape, Duo Tac Tape</p>
+                <p>Monthly wear - Super Tape, Ultra Hold, Extendabond</p>
+            </div>
+        </div>
+    </div>
+    <div class="faq-accordion" id="hairpiece">
+        <div class="faq-accordion-item">
+            <button aria-expanded="true">
+                <span class="faq-accordion-title"
+                    >Which men’s model is the best hairpiece for men?
+                </span
+                ><span class="faq-icon" aria-hidden="true"></span>
+            </button>
+            <div class="faq-accordion-content">
+                <p>
+                    We design each model with a specific reason to solve a specific concern from the client, each material and technique comes with its good factors and side effects. The one you find an outfit for your specific need will be the best model that works for you.
+                </p>
+                <p>
+                    We have many clients who keep searching for the best solution and we would like to remind them each new model they try might solve one of their top concerns, however, there might be a new issue following with the new model you won’t realize until you have used it. So as long as the unit roughly works with you, do not try to always switch to a different model.
+                </p>
+            </div>
+        </div>
+        <div class="faq-accordion-item">
+            <button aria-expanded="false">
+                <span class="faq-accordion-title"
+                    >What quality of hair is used for the Women’s Extension Color Ring, Men’s Color Ring, Allure Color Ring, and Women’s Wig Color Ring?
+                </span
+                ><span class="faq-icon" aria-hidden="false"></span>
+            </button>
+            <div class="faq-accordion-content">
+                <p>
+                    5A Quality Hair- Extension Ring
+                </p>
+                <p>Premium Chinese Hair- Allure Color Ring</p>
+                <p>Regular Indian Hair- Women’s and Men’s Color Ring</p>
+            </div>
+        </div>
+        <div class="faq-accordion-item">
+            <button aria-expanded="false">
+                <span class="faq-accordion-title"
+                    >Can custom units be made with European Hair for both men’s and women’s hairpieces?
+                </span
+                ><span class="faq-icon" aria-hidden="false"></span>
+            </button>
+            <div class="faq-accordion-content">
+                <p>
+                    No, we do not take European hair custom made orders yet.
+                </p>
+            </div>
+        </div>
+        <div class="faq-accordion-item">
+            <button aria-expanded="false">
+                <span class="faq-accordion-title"
+                    >How to clean your Wig?
+                </span
+                ><span class="faq-icon" aria-hidden="false"></span>
+            </button>
+            <div class="faq-accordion-content">
+                <p>
+                    Gently Remove Your System: Try dipping it in solvent if you are having a hard time removing the tape.
+                </p>
+                <p>Soak your hair in Solvent Solution: Plastic or stainless steel containers in a well-ventilated area.</p>
+                <p>Cleaning Your Hair: To clean the lace area, use an old gift card and gently scrape outwards.</p>
+                <p>Next Comes A Through Rinsing: use a fingernail brush, gently gliding it through the full length of the hair.</p>
+                <p>Shampoo and Condition: Use a mild Shampoo like our Amika line to balance the acid level and last condition.</p>
+            </div>
+        </div>
+        <div class="faq-accordion-item">
+            <button aria-expanded="false">
+                <span class="faq-accordion-title"
+                    >Which stock unit comes with deep contour?
+                </span
+                ><span class="faq-icon" aria-hidden="false"></span>
+            </button>
+            <div class="faq-accordion-content">
+                <p>
+                    4 Full Lace base M103 M105 M110 M115
+                </p>
+                <p>1 Mono base M108</p>
+            </div>
+        </div>
+        <div class="faq-accordion-item">
+            <button aria-expanded="false">
+                <span class="faq-accordion-title"
+                    >Which stock unit comes with regular contour?
+                </span
+                ><span class="faq-icon" aria-hidden="false"></span>
+            </button>
+            <div class="faq-accordion-content">
+                <p>
+                    M100
+                </p>
+                <p>M104, M104F, M109, M110P, M161 (Lace front model)</p>
+                <p>M121(European hair)</p>
+                <p>P46</p>
+            </div>
+        </div>
+        <div class="faq-accordion-item">
+            <button aria-expanded="false">
+                <span class="faq-accordion-title"
+                    >Which stock unit comes with shallow contour?
+                </span
+                ><span class="faq-icon" aria-hidden="false"></span>
+            </button>
+            <div class="faq-accordion-content">
+                <p>
+                    M101, M111, HD111 (All Skin base)
+                </p>
+                <p>M158 (Skin with 4 panels French lace center)</p>
+                <p>M162 (V-loop skin front, rest Swiss lace)</p>
+                <p>M112, M102 (Poly coating - Heavy density)</p>
+                <p>HD105 (All lace - Medium density)</p>
+                <p>M106, M106L, M107, M116S, M116M, M116L (Lace with poly on sides & back)</p>
+                <p>M151 (Lace front - Dark root)</p>
+                <p>P45 (All French lace with double-layer lace perimeter)</p>
+                <p>P44 (Poly coating with mono center slits)</p>
+            </div>
+        </div>
+        <div class="faq-accordion-item">
+            <button aria-expanded="false">
+                <span class="faq-accordion-title"
+                    >What is the best tape you recommend to attach the M100?
+                </span
+                ><span class="faq-icon" aria-hidden="false"></span>
+            </button>
+            <div class="faq-accordion-content">
+                <p>
+                    It depends on how long you plan on keeping the unit on. Please note that adhesives should only go on the poly perimeter and NOT the mono top area.
+                </p>
+                <p>Daily wear - Super 1522, Super Red Liner Tape</p>
+                <p>Weekly wear - German Brown Tape, Super Blue Tape, Duo Tac Tape</p>
+                <p>Monthly wear - No Shine Tape, Super Tape, Ultra Hold, Extendabond</p>
+            </div>
+        </div>
+        <div class="faq-accordion-item">
+            <button aria-expanded="false">
+                <span class="faq-accordion-title"
+                    >What is the best tape you recommend to attach the M108?
+                </span
+                ><span class="faq-icon" aria-hidden="false"></span>
+            </button>
+            <div class="faq-accordion-content">
+                <p>
+                    It depends on how long you plan on keeping the unit on. Please note that adhesives should only go on the poly perimeter and NOT the mono top area.
+                </p>
+                <p>Daily wear - Super 1522, Super Red Liner Tape</p>
+                <p>Weekly wear - German Brown Tape, Super Blue Tape, Duo Tac Tape</p>
+                <p>Monthly wear - No Shine Tape, Super Tape, Ultra Hold, Extendabond</p>
+            </div>
+        </div>
+        <div class="faq-accordion-item">
+            <button aria-expanded="false">
+                <span class="faq-accordion-title"
+                    >What is the best tape you recommend to attach the M112?
+                </span
+                ><span class="faq-icon" aria-hidden="false"></span>
+            </button>
+            <div class="faq-accordion-content">
+                <p>
+                    It depends on how long you plan on keeping the unit on. Please note that adhesives should only go on the poly perimeter and NOT the mono top area.
+                </p>
+                <p>Daily wear - Super 1522, Super Red Liner Tape</p>
+                <p>Weekly wear - German Brown Tape, Super Blue Tape, Duo Tac Tape</p>
+                <p>Monthly wear - No Shine Tape, Super Tape, Ultra Hold, Extendabond</p>
+            </div>
+        </div>
+        <div class="faq-accordion-item">
+            <button aria-expanded="false">
+                <span class="faq-accordion-title"
+                    >What is the smallest size the M100 can be trimmed down to?
+                </span
+                ><span class="faq-icon" aria-hidden="false"></span>
+            </button>
+            <div class="faq-accordion-content">
+                <p>
+                    The M100 is 6.5" x 8.5" in size and the smallest it can be trimmed down to is 5.5" x 8".
+                </p>
+            </div>
+        </div>
+        <div class="faq-accordion-item">
+            <button aria-expanded="false">
+                <span class="faq-accordion-title"
+                    >What is the smallest size the M108 can be trimmed down to?
+                </span
+                ><span class="faq-icon" aria-hidden="false"></span>
+            </button>
+            <div class="faq-accordion-content">
+                <p>
+                    The M108 is 8" x 10" in size and the smallest it can be trimmed down to is 7" x 9".
+                </p>
+            </div>
+        </div>
+        <div class="faq-accordion-item">
+            <button aria-expanded="false">
+                <span class="faq-accordion-title"
+                    >What is the smallest size the M102 can be trimmed down to?
+                </span
+                ><span class="faq-icon" aria-hidden="false"></span>
+            </button>
+            <div class="faq-accordion-content">
+                <p>
+                    The M102 is 8" x 10" in size and the smallest it can be trimmed down to is 7" x 9".
+                </p>
+            </div>
+        </div>
+        <div class="faq-accordion-item">
+            <button aria-expanded="false">
+                <span class="faq-accordion-title"
+                    >What is the smallest size the M112 can be trimmed down to?
+                </span
+                ><span class="faq-icon" aria-hidden="false"></span>
+            </button>
+            <div class="faq-accordion-content">
+                <p>
+                    The M112 is 6" x 8" in size and the smallest it can be trimmed down to is 5" x 7".
+                </p>
+            </div>
+        </div>
+        <div class="faq-accordion-item">
+            <button aria-expanded="false">
+                <span class="faq-accordion-title"
+                    >What is the smallest size the M104 can be trimmed down to?
+                </span
+                ><span class="faq-icon" aria-hidden="false"></span>
+            </button>
+            <div class="faq-accordion-content">
+                <p>
+                    The M104 is 7" x 9" in size and the smallest it can be trimmed down to is 6" x 8.5".
+                </p>
+            </div>
+        </div>
+        <div class="faq-accordion-item">
+            <button aria-expanded="false">
+                <span class="faq-accordion-title"
+                    >What is the smallest size the M109 can be trimmed down to?
+                </span
+                ><span class="faq-icon" aria-hidden="false"></span>
+            </button>
+            <div class="faq-accordion-content">
+                <p>
+                    The M109 is 8" x 10" in size and the smallest it can be trimmed down to is 7" x 9.5".
+                </p>
+            </div>
+        </div>
+        <div class="faq-accordion-item">
+            <button aria-expanded="false">
+                <span class="faq-accordion-title"
+                    >What is the best tape you recommend to attach the M105?
+                </span
+                ><span class="faq-icon" aria-hidden="false"></span>
+            </button>
+            <div class="faq-accordion-content">
+                <p>
+                    It depends on how long you plan on keeping the unit on.
+                </p>
+                <p>
+                    Daily wear - No Shine (3 day hold)
+                </p>
+                <p>Weekly wear - Super Blue Tape, Duo Tac Tape</p>
+                <p>Monthly wear - Super Tape, Ultra Hold, Extendabond</p>
+            </div>
+        </div>
+        <div class="faq-accordion-item">
+            <button aria-expanded="false">
+                <span class="faq-accordion-title"
+                    >What is the best tape you recommend to attach the M109?
+                </span
+                ><span class="faq-icon" aria-hidden="false"></span>
+            </button>
+            <div class="faq-accordion-content">
+                <p>
+                    It depends on how long you plan on keeping the unit on. Please note that adhesives should only go on the poly perimeter and NOT the mono top area.
+                </p>
+                <p>For the poly perimeter:</p>
+                <p>Daily wear - Super 1522, Super Red Liner Tape</p>
+                <p>Weekly wear - German Brown Tape, Super Blue Tape, Duo Tac Tape</p>
+                <p>Monthly wear - No Shine Tape, Super Tape, Ultra Hold, Extendabond</p>
+                <p>For the lace front:</p>
+                <p>Daily wear - No Shine (3 day hold)</p>
+                <p>Weekly wear - Super Blue Tape, Duo Tac Tape</p>
+                <p>Monthly wear - Super Tape, Ultra Hold, Extendabond</p>
+            </div>
+        </div>
+        <div class="faq-accordion-item">
+            <button aria-expanded="false">
+                <span class="faq-accordion-title"
+                    >What is the best tape you recommend to attach the M104?
+                </span
+                ><span class="faq-icon" aria-hidden="false"></span>
+            </button>
+            <div class="faq-accordion-content">
+                <p>
+                    It depends on how long you plan on keeping the unit on. Please note that adhesives should only go on the poly perimeter and NOT the mono top area.
+                </p>
+                <p>For the poly perimeter:</p>
+                <p>Daily wear - Super 1522, Super Red Liner Tape</p>
+                <p>Weekly wear - German Brown Tape, Super Blue Tape, Duo Tac Tape</p>
+                <p>Monthly wear - No Shine Tape, Super Tape, Ultra Hold, Extendabond</p>
+                <p>For the lace front:</p>
+                <p>Daily wear - No Shine (3 day hold)</p>
+                <p>Weekly wear - Super Blue Tape, Duo Tac Tape</p>
+                <p>Monthly wear - Super Tape, Ultra Hold, Extendabond</p>
+            </div>
+        </div>
+    </div>
+    <div class="faq-accordion" id="maintanence">
+        <div class="faq-accordion-item">
+            <button aria-expanded="true">
+                <span class="faq-accordion-title"
+                    >What could you suggest to a client that wants to use an acrylic base glue on a lace unit?</span
+                ><span class="faq-icon" aria-hidden="true"></span>
+            </button>
+            <div class="faq-accordion-content">
+                <p>
+                    Clients could use a tape that is safe for lace units, but the tape will be applied directly to the unit. The glue will be applied to the side which will stick to the scalp.
+                </p>
+            </div>
+        </div>
+        <div class="faq-accordion-item">
+            <button aria-expanded="false">
+                <span class="faq-accordion-title"
+                    >What should you avoid putting on lace units and why?</span
+                ><span class="faq-icon" aria-hidden="false"></span>
+            </button>
+            <div class="faq-accordion-content">
+                <p>
+                    You should avoid putting acrylic base glues on lace material or monofilament material as it can break down the hair and will cause shedding
+                </p>
+            </div>
+        </div>
+        <div class="faq-accordion-item">
+            <button aria-expanded="false">
+                <span class="faq-accordion-title"
+                    >What glues are safe to put directly on lace units?</span
+                ><span class="faq-icon" aria-hidden="false"></span>
+            </button>
+            <div class="faq-accordion-content">
+                <p>
+                    Water-based glue. Like Safe Grip or Ghost Bond.
+                </p>
+                <p>(Use a brush to apply a thin even layer and let it dry for exactly 7 mins - dries clear)</p>
+            </div>
+        </div>
+        <div class="faq-accordion-item">
+            <button aria-expanded="false">
+                <span class="faq-accordion-title"
+                    >How to clean your Wig?
+                </span
+                ><span class="faq-icon" aria-hidden="false"></span>
+            </button>
+            <div class="faq-accordion-content">
+                <p>
+                    Gently Remove Your System: Try dipping it in solvent if you are having a hard time removing the tape.
+                </p>
+                <p>Soak your hair in Solvent Solution: Plastic or stainless steel containers in a well-ventilated area.</p>
+                <p>Cleaning Your Hair: To clean the lace area, use an old gift card and gently scrape outwards.</p>
+                <p>Next Comes A Through Rinsing: use a fingernail brush, gently gliding it through the full length of the hair.</p>
+                <p>Shampoo and Condition: Use a mild Shampoo like our Amika line to balance the acid level and last condition.</p>
+            </div>
+        </div>
+        <div class="faq-accordion-item">
+            <button aria-expanded="false">
+                <span class="faq-accordion-title"
+                    >What is the best tape you recommend to attach the M100?</span
+                ><span class="faq-icon" aria-hidden="false"></span>
+            </button>
+            <div class="faq-accordion-content">
+                <p>
+                    It depends on how long you plan on keeping the unit on. Please note that adhesives should only go on the poly perimeter and NOT the mono top area.
+                </p>
+                <p>Daily wear - Super 1522, Super Red Liner Tape</p>
+                <p>Weekly wear - German Brown Tape, Super Blue Tape, Duo Tac Tape</p>
+                <p>Monthly wear - No Shine Tape, Super Tape, Ultra Hold, Extendabond</p>
+            </div>
+        </div>
+        <div class="faq-accordion-item">
+            <button aria-expanded="false">
+                <span class="faq-accordion-title"
+                    >What is the best tape you recommend to attach the M108?</span
+                ><span class="faq-icon" aria-hidden="false"></span>
+            </button>
+            <div class="faq-accordion-content">
+                <p>
+                    It depends on how long you plan on keeping the unit on. Please note that adhesives should only go on the poly perimeter and NOT the mono top area.
+                </p>
+                <p>Daily wear - Super 1522, Super Red Liner Tape</p>
+                <p>Weekly wear - German Brown Tape, Super Blue Tape, Duo Tac Tape</p>
+                <p>Monthly wear - No Shine Tape, Super Tape, Ultra Hold, Extendabond</p>
+            </div>
+        </div>
+        <div class="faq-accordion-item">
+            <button aria-expanded="false">
+                <span class="faq-accordion-title"
+                    >What is the best tape you recommend to attach the M112?</span
+                ><span class="faq-icon" aria-hidden="false"></span>
+            </button>
+            <div class="faq-accordion-content">
+                <p>
+                    It depends on how long you plan on keeping the unit on. Please note that adhesives should only go on the poly perimeter and NOT the mono top area.
+                </p>
+                <p>Daily wear - Super 1522, Super Red Liner Tape</p>
+                <p>Weekly wear - German Brown Tape, Super Blue Tape, Duo Tac Tape</p>
+                <p>Monthly wear - No Shine Tape, Super Tape, Ultra Hold, Extendabond</p>
+            </div>
+        </div>
+        <div class="faq-accordion-item">
+            <button aria-expanded="false">
+                <span class="faq-accordion-title"
+                    >What is the best tape you recommend to attach the M102?</span
+                ><span class="faq-icon" aria-hidden="false"></span>
+            </button>
+            <div class="faq-accordion-content">
+                <p>
+                    It depends on how long you plan on keeping the unit on. Please note that adhesives should only go on the poly perimeter and NOT the mono top area.
+                </p>
+                <p>Daily wear - Super 1522, Super Red Liner Tape</p>
+                <p>Weekly wear - German Brown Tape, Super Blue Tape, Duo Tac Tape</p>
+                <p>Monthly wear - No Shine Tape, Super Tape, Ultra Hold, Extendabond</p>
+            </div>
+        </div>
+        <div class="faq-accordion-item">
+            <button aria-expanded="false">
+                <span class="faq-accordion-title"
+                    >What is the best tape you recommend to attach the M105?
+                </span
+                ><span class="faq-icon" aria-hidden="false"></span>
+            </button>
+            <div class="faq-accordion-content">
+                <p>
+                    It depends on how long you plan on keeping the unit on.
+                </p>
+                <p>Daily wear - No Shine (3 day hold)</p>
+                <p>Weekly wear - Super Blue Tape, Duo Tac Tape</p>
+                <p>Monthly wear - Super Tape, Ultra Hold, Extendabond</p>
+            </div>
+        </div>
+        <div class="faq-accordion-item">
+            <button aria-expanded="false">
+                <span class="faq-accordion-title"
+                    >What is the best tape you recommend to attach the M109?      
+                </span
+                ><span class="faq-icon" aria-hidden="false"></span>
+            </button>
+            <div class="faq-accordion-content">
+                <p>
+                    It depends on how long you plan on keeping the unit on. Please note that adhesives should only go on the poly perimeter and NOT the mono top area.
+                </p>
+                <p>For the poly perimeter:</p>
+                <p>Daily wear - Super 1522, Super Red Liner Tape</p>
+                <p>Weekly wear - German Brown Tape, Super Blue Tape, Duo Tac Tape</p>
+                <p>Monthly wear - No Shine Tape, Super Tape, Ultra Hold, Extendabond</p>
+                <p>
+                    For the lace front:
+                </p>
+                <p>Daily wear - No Shine (3 day hold)</p>
+                <p>Weekly wear - Super Blue Tape, Duo Tac Tape</p>
+                <p>Monthly wear - Super Tape, Ultra Hold, Extendabond	</p>
+            </div>
+        </div>
+        <div class="faq-accordion-item">
+            <button aria-expanded="false">
+                <span class="faq-accordion-title"
+                    >What is the best tape you recommend to attach the M104?
+                </span
+                ><span class="faq-icon" aria-hidden="false"></span>
+            </button>
+            <div class="faq-accordion-content">
+                <p>
+                    It depends on how long you plan on keeping the unit on. Please note that adhesives should only go on the poly perimeter and NOT the mono top area.
+                </p>
+                <p>For the poly perimeter:</p>
+                <p>Daily wear - Super 1522, Super Red Liner Tape</p>
+                <p>Weekly wear - German Brown Tape, Super Blue Tape, Duo Tac Tape</p>
+                <p>Monthly wear - No Shine Tape, Super Tape, Ultra Hold, Extendabond</p>
+                <p>For the lace front:</p>
+                <p>Daily wear - No Shine (3 day hold)</p>
+                <p>Weekly wear - Super Blue Tape, Duo Tac Tape</p>
+                <p>Monthly wear - Super Tape, Ultra Hold, Extendabond</p>
+            </div>
+        </div>
+    </div>
+    <div class="faq-accordion" id="shipping">
+        <div class="faq-accordion-item">
+            <button aria-expanded="true">
+                <span class="faq-accordion-title"
+                    >What are the shipping options and cost for U.S. Clients to have extensions shipped to them from Canada?</span
+                ><span class="faq-icon" aria-hidden="true"></span>
+            </button>
+            <div class="faq-accordion-content">
+                <p>
+                    The hair extension order to US client on Superhairpieces.com just set to flat rates recently
+                </p>
+                <p>FedEx Overnight - $18</p>
+                <p>FedEx 3 days saver - $12</p>
+            </div>
+        </div>
+        <div class="faq-accordion-item">
+            <button aria-expanded="false">
+                <span class="faq-accordion-title"
+                    >If a U.S. Client is placing an order for extensions, but toupee, topper or wig is in the Florida facility, how much will we charge for shipping?</span
+                ><span class="faq-icon" aria-hidden="false"></span>
+            </button>
+            <div class="faq-accordion-content">
+                <p>
+                    For overnight orders, if order items are located in two warehouses, we need to charge double shipping.
+                </p>
+                <p>DOUBLE SHIPPING COST: $28.00+$18.00:= $46.00</p>
+                <p>For 3 days saver, we will transfer everything to the USA which takes one day, then do the FedEx 2 days from the USA office.</p>
+            </div>
+        </div>
+        <div class="faq-accordion-item">
+            <button aria-expanded="false">
+                <span class="faq-accordion-title"
+                    >What is the shipping fee for United States/Canada salon and retail clients when placing a custom order online versus placing their order over the phone?</span
+                ><span class="faq-icon" aria-hidden="false"></span>
+            </button>
+            <div class="faq-accordion-content">
+                <p>
+                    US Salon via phone: shipping is included
+                </p>
+                <p>US Salon via the web: shipping is included</p>
+                <p>US Retail via phone: shipping is not included, will have to pay 12 dollars for FedEx 3 Day Saver</p>
+                <p>US Retail via the web: shipping is included</p>
+                <p>Summary: We only charge shipping for US retail client phone in custom made orders</p>
+            </div>
+        </div>
+        <div class="faq-accordion-item">
+            <button aria-expanded="false">
+                <span class="faq-accordion-title">
+                    In Florida for local pick up retail clients, How much do we charge as a convenience fee for placing an order and picking up and dropping off package?</span
+                ><span class="faq-icon" aria-hidden="false"></span>
+            </button>
+            <div class="faq-accordion-content">
+                <p>No $5 manual fee is charged only the $10 pick up fee. No charge for dropping off</p>
+            </div>
+        </div>
+        <div class="faq-accordion-item">
+            <button aria-expanded="false">
+                <span class="faq-accordion-title"
+                    >If a client is looking to do a local pick up in Canada how much does order have to be in order to receive free pick up?</span
+                ><span class="faq-icon" aria-hidden="false"></span>
+            </button>
+            <div class="faq-accordion-content">
+                <p>
+                    There is a $5 fee if the order value is below $30
+                </p>
+            </div>
+        </div>        
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            const items = document.querySelectorAll(".faq-accordion button");
+
+            function toggleAccordion() {
+                const itemToggle = this.getAttribute("aria-expanded");
+
+                if (itemToggle == "false") {
+                    this.setAttribute("aria-expanded", "true");
+                } else {
+                    this.setAttribute("aria-expanded", "false");
+                }
+            }
+
+            items.forEach((item) =>
+                item.addEventListener("click", toggleAccordion)
+            );
+            $("#faq-search").on("keyup", function () {
+                var value = $(this).val().toLowerCase();
+                $(".faq-accordion-item").filter(function () {
+                    $(this).toggle(
+                        $(this).children().text().toLowerCase().indexOf(value) >
+                            -1
+                    );
+                });
+            });
+
+            // const slider = document.querySelector(".faq-navigation");
+            const slider = $(".faq-navigation");
+            let isDown = false;
+            let startX;
+            let scrollLeft;
+
+            var pointerEventToXY = function (e) {
+                var out = { x: 0, y: 0 };
+                if (
+                    e.type == "touchstart" ||
+                    e.type == "touchmove" ||
+                    e.type == "touchend" ||
+                    e.type == "touchcancel"
+                ) {
+                    var touch =
+                        e.originalEvent.touches[0] ||
+                        e.originalEvent.changedTouches[0];
+                    out.x = touch.pageX;
+                    out.y = touch.pageY;
+                } else if (
+                    e.type == "mousedown" ||
+                    e.type == "mouseup" ||
+                    e.type == "mousemove" ||
+                    e.type == "mouseover" ||
+                    e.type == "mouseout" ||
+                    e.type == "mouseenter" ||
+                    e.type == "mouseleave"
+                ) {
+                    out.x = e.pageX;
+                    out.y = e.pageY;
+                }
+                return out;
+            };
+
+            slider.on("mousedown touchstart", (e) => {
+                isDown = true;
+                startX = pointerEventToXY(e).x - slider.offset().left;
+                scrollLeft = slider.scrollLeft();
+                console.log(scrollLeft);
+            });
+            slider.on("mouseleave mouseup touchend", () => {
+                isDown = false;
+            });
+            slider.on("mousemove touchmove", (e) => {
+                if (!isDown) return;
+                e.preventDefault();
+                const x = pointerEventToXY(e).x - slider.offset().left;
+                const walk = (x - startX) * 3;                
+                slider.scrollLeft(scrollLeft - walk);
+            });
+        });
+        function tabClick(tabID, curr) {
+            $(".faq-navigation li").removeClass("active");
+            $(curr).parent().addClass("active");
+            $(".faq-accordion").removeClass("faq-tab-active");
+            $(tabID).addClass("faq-tab-active");
+        }
+    </script>
+</div>

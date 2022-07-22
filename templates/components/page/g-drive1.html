@@ -1,0 +1,27 @@
+<input type="file" id="files" name="file">
+<button>Submit</button>
+<script>
+    window.addEventListener("DOMContentLoaded", function() {
+        document.querySelector("button").addEventListener("click", function() {
+            const files = document.getElementById("files").files;
+
+            const file = files[0];
+            const fr = new FileReader();
+            fr.readAsArrayBuffer(file);
+            fr.onload = (f) => {
+            const fileMetadata = {
+                name: file.name,
+                parents: this.currentDirectoryId ? [this.currentDirectoryId] : []  // This is from your script.
+            }
+            const form = new FormData();
+            form.append('metadata', new Blob([JSON.stringify(fileMetadata)], {type: 'application/json'}));
+            form.append('file', new Blob([new Uint8Array(f.target.result)], {type: file.type}));
+            fetch('https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart', {
+                method: 'POST',
+                headers: new Headers({'Authorization': 'Bearer ya29.A0ARrdaM82Jsy-Mzgli49ZehCmBo_ox-cKxAf6GicZdEGOL4jbLuL8YljOD1W76XKxIFQOT39f17ooENfbdYVWpK3VjRFVPwuyju2i9B5or6Stusa48vnGw8itn4qSz2Ltm5Mc-6vmeZV6RGnvFo-c-L8_JhXQ'}),
+                body: form
+            }).then(res => res.json()).then(res => console.log(res));
+            };
+        })
+    })
+</script>

@@ -1,0 +1,600 @@
+<div
+    class="shogun-root"
+    data-shogun-id="615cb3dc1f16c900a8a78d6b"
+    data-shogun-site-id="fb8c6090-a908-45e2-8617-89b82d7a20e6"
+    data-shogun-page-id="615cb3dc1f16c900a8a78d6b"
+    data-shogun-page-version-id="61686b00336a7400d6d01a51"
+    data-shogun-platform-type="big_commerce"
+    data-shogun-variant-id="61686b01336a7400d6d01c32"
+    data-region="main"
+>
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Poppins:600|Poppins:700|Poppins:400|Poppins:normal|Poppins:300" />
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.getshogun.com/css-4/61686b01336a7400d6d01c32.css" />
+
+    <script type="text/javascript" src="https://lib.getshogun.com/lazysizes/2.0.0/shogun-lazysizes.js" async></script>
+
+    <div id="s-5698b734-cb49-47d6-88bd-b13595b2210f" class="shg-c">
+        <style>
+            .menu-wrap {
+                width: 100%;
+                margin-bottom: 20px;
+                display: none;
+                overflow-x: auto;
+            }
+            @media only screen and (min-width: 1025px) {
+                .menu-wrap {
+                    overflow-x: hidden;
+                }
+                .menu-wrap:hover {
+                    overflow-x: auto;
+                }
+            }
+            .menu-items {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 20px 0 0;
+                margin: 0 auto;
+                flex-wrap: wrap;
+            }
+            .menu-item {
+                font-size: 15px;
+                margin: 0 20px 20px;
+                position: relative;
+                cursor: pointer;
+            }
+            .menu-item a,
+            .menu-submenu-item a {
+                text-decoration: none;
+            }
+            .menu-item:hover {
+                color: #825d41;
+            }
+            .menu-item.active a {
+                color: #825d41;
+            }
+            .menu-submenu-items {
+                padding: 20px 0 0;
+                position: absolute;
+                display: none;
+                background-color: #fff;
+                box-shadow: 1px 1px 9px 0 #e6e6e6;
+                width: fit-content;
+                z-index: 9;
+            }
+            .menu-submenu-item {
+                font-size: 15px;
+                margin: 0 20px 20px;
+                position: relative;
+                cursor: pointer;
+            }
+            .menu-submenu-item:hover,
+            .menu-item:hover {
+                color: #825d41;
+            }
+        </style>
+        <div style="position: relative">
+            <div class="menu-wrap">
+                <div class="menu-items"></div>
+            </div>
+        </div>
+        <script>
+            let submenu = [];
+            function openSubMenu(e) {
+                if ($(event.currentTarget).hasClass("active")) $(event.currentTarget).removeClass("active"), $(".menu-submenu-items").remove();
+                else {
+                    $(".menu-item .active").removeClass("active"), $(event.currentTarget).addClass("active");
+                    let n = submenu.filter((n) => n.name == e);
+                    if (n.length > 0) {
+                        $(".menu-submenu-items").remove();
+                        let e = '<div class="menu-submenu-items">';
+                        if (n[0].menu) for (let t of n[0].menu) e += `<div class="menu-submenu-item"><a href="${t.link}">${t.name}</a></div>`;
+                        (e += "</div>"), $(".menu-wrap").append(e);
+                        let t = $(event.currentTarget).offset();
+                        t.left + $(".menu-submenu-items").width() <= $(window).width()
+                            ? $(".menu-submenu-items").css({ left: t.left - $(".menu-wrap").offset().left + "px", top: t.top + 30 - $(".menu-wrap").offset().top + "px" })
+                            : $(".menu-submenu-items").css({ right: "0px", top: t.top + 30 - $(".menu-wrap").offset().top + "px" }),
+                            $(".menu-submenu-items").slideDown();
+                    }
+                }
+            }
+            window.addEventListener("DOMContentLoaded", (e) => {
+                fetch("/content/data/custom-menu.json")
+                    .then((e) => e.json())
+                    .then((e) => {
+                        if ((console.log(e), e.menu)) {
+                            for (let n of e.menu)
+                                n.hasOwnProperty("link")
+                                    ? n.link.includes(window.location.pathname) && n.link.length - window.location.pathname.length <= 2
+                                        ? $(".menu-items").append(`<div class="menu-item active"><a href="${n.link}">${n.name}</a></div>`)
+                                        : $(".menu-items").append(`<div class="menu-item"><a href="${n.link}">${n.name}</a></div>`)
+                                    : (submenu.push({ name: n.name, menu: n.subMenu }),
+                                      $(".menu-items").append(`<div class="menu-item"><a href="#" onclick="openSubMenu('${n.name}')">${n.name}</a></div>`));
+                            $(".menu-wrap").show();
+                        }
+                    })
+                    .catch((e) => console.log(e));
+            });
+        </script>
+    </div>
+
+    <div class="shg-box-vertical-align-wrapper">
+        <div class="shg-box shg-c" id="s-7b9312d9-cef3-4483-bfda-6bbbc9c0898b">
+            <div class="shg-box-overlay"></div>
+            <div class="shg-box-content">
+                <div class="shg-c" id="s-ff9d1c71-85e9-4838-83dc-91b144811509">
+                    <div class="shg-row" data-col-grid-mode-on="true">
+                        <div class="shg-c-lg-6 shg-c-md-6 shg-c-sm-6 shg-c-xs-12">
+                            <div class="shg-c shogun-image-container shg-align-center" style="" id="s-d2157771-8511-4de7-a15a-a4b71df28b04">
+                                <img
+                                    src="https://i.shgcdn.com/4f578105-0cb8-4cc1-9e04-adae73f0257f/-/format/auto/-/preview/3000x3000/-/quality/lighter/"
+                                    width=""
+                                    height=""
+                                    style=""
+                                    alt=""
+                                    class="shogun-image"
+                                />
+                            </div>
+
+                            <script type="text/javascript">
+                                window.SHOGUN_IMAGE_ELEMENTS = window.SHOGUN_IMAGE_ELEMENTS || new Array();
+                                window.SHOGUN_IMAGE_ELEMENTS.push({ hoverImage: "", uuid: "s-d2157771-8511-4de7-a15a-a4b71df28b04" });
+                            </script>
+                        </div>
+                        <div class="shg-c-lg-6 shg-c-md-6 shg-c-sm-6 shg-c-xs-12">
+                            <div class="shg-c shogun-image-container shg-align-center" style="" id="s-2dd31940-adfb-4f8a-a862-5c157f8ffe04">
+                                <img
+                                    src="https://i.shgcdn.com/a5c39074-7c56-4b7b-b446-b486e3893899/-/format/auto/-/preview/3000x3000/-/quality/lighter/"
+                                    width=""
+                                    height=""
+                                    style=""
+                                    alt=""
+                                    class="shogun-image"
+                                />
+                            </div>
+
+                            <script type="text/javascript">
+                                window.SHOGUN_IMAGE_ELEMENTS = window.SHOGUN_IMAGE_ELEMENTS || new Array();
+                                window.SHOGUN_IMAGE_ELEMENTS.push({ hoverImage: "", uuid: "s-2dd31940-adfb-4f8a-a862-5c157f8ffe04" });
+                            </script>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="shg-box-vertical-align-wrapper">
+        <div class="shg-box shg-c" id="s-c2b757b1-ed2b-4967-9762-048abc6149cf">
+            <div class="shg-box-overlay"></div>
+            <div class="shg-box-content">
+                <div id="s-43d4989a-b417-4b3a-8905-04b5ae3dbc61" class="shg-c">
+                    <div class="shg-rich-text shg-theme-text-content">
+                        <div style="text-align: center"><span style="font-size: 20px">Are you passionate about sharing your knowledge and experience with our hair systems?</span></div>
+                    </div>
+                </div>
+                <div id="s-02375e05-65e5-4d64-97ab-6561828275c1" class="shg-c shg-align-center">
+                    <div class="shogun-heading-component">
+                        <h2>Get $150 for a video!</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="shg-box-vertical-align-wrapper">
+        <div class="shg-box shg-c" id="s-9844740a-0e6d-403c-ae2f-efad9e6d8157">
+            <div class="shg-box-overlay"></div>
+            <div class="shg-box-content">
+                <div class="shg-c" id="s-38135146-03ca-4a26-bfe5-b85445b0f1b9">
+                    <div class="shg-row" data-col-grid-mode-on="">
+                        <div class="shg-c-lg-3 shg-c-md-3 shg-c-sm-3 shg-c-xs-12">
+                            <div class="shg-c shogun-image-container shg-align-center" style="" id="s-9b98de45-dd15-4a31-bc7a-1ed26a894c68">
+                                <img
+                                    data-src="https://i.shgcdn.com/e61ac4df-fba5-4208-9cef-87e7aa59927a/-/format/auto/-/preview/3000x3000/-/quality/lighter/"
+                                    width=""
+                                    height=""
+                                    style=""
+                                    alt=""
+                                    class="shogun-image shogun-lazyload"
+                                />
+                            </div>
+
+                            <script type="text/javascript">
+                                window.SHOGUN_IMAGE_ELEMENTS = window.SHOGUN_IMAGE_ELEMENTS || new Array();
+                                window.SHOGUN_IMAGE_ELEMENTS.push({ hoverImage: "", uuid: "s-9b98de45-dd15-4a31-bc7a-1ed26a894c68" });
+                            </script>
+                        </div>
+                        <div class="shg-c-lg-8 shg-c-md-8 shg-c-sm-8 shg-c-xs-12">
+                            <div id="s-7b9c2f52-884d-4268-9fa1-41b85036b1ff" class="shg-c shg-align-left">
+                                <div class="shogun-heading-component">
+                                    <h2>How to be a #SuperhairCreator?</h2>
+                                </div>
+                            </div>
+
+                            <div class="shg-c" id="s-44611dcc-1674-43fa-9f36-f6144b670bb7">
+                                <div class="shg-row" data-col-grid-mode-on="">
+                                    <div class="shg-c-lg-9 shg-c-md-9 shg-c-sm-9 shg-c-xs-12">
+                                        <div id="s-a19d84e6-ad4b-41c8-b720-e6edd5661227" class="shg-c">
+                                            <div class="shg-rich-text shg-theme-text-content">
+                                                <p>
+                                                    <span style="font-weight: 400; color: #ffffff; font-size: 18px">1. Fill out the application form </span
+                                                    ><span style="font-weight: 400; color: #ffffff; font-size: 18px">2. Get a call from our team </span
+                                                    ><span style="font-weight: 400; color: #ffffff; font-size: 18px">3. Answer a few questions so we get to know you better </span
+                                                    ><span style="color: #ffffff; font-size: 18px"
+                                                        ><em><span style="font-weight: 400">  -If you’re a good fit, you can start creating your #SuperhairCreator video </span></em></span
+                                                    ><span style="font-weight: 400; color: #ffffff; font-size: 18px">4. Send us the raw footage </span
+                                                    ><span style="font-weight: 400; color: #ffffff; font-size: 18px">5. Get your $150</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="shg-c-lg-3 shg-c-md-3 shg-c-sm-3 shg-c-xs-12">
+                                        <div class="shg-c shogun-image-container shg-align-center" style="" id="s-b494b6d5-d061-4c50-8e71-740854c30187">
+                                            <img
+                                                data-src="https://i.shgcdn.com/0bca9443-0d9a-4b52-b350-5005836c6d08/-/format/auto/-/preview/3000x3000/-/quality/lighter/"
+                                                width=""
+                                                height=""
+                                                style=""
+                                                alt=""
+                                                class="shogun-image shogun-lazyload"
+                                            />
+                                        </div>
+
+                                        <script type="text/javascript">
+                                            window.SHOGUN_IMAGE_ELEMENTS = window.SHOGUN_IMAGE_ELEMENTS || new Array();
+                                            window.SHOGUN_IMAGE_ELEMENTS.push({ hoverImage: "", uuid: "s-b494b6d5-d061-4c50-8e71-740854c30187" });
+                                        </script>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="shg-c-lg-1 shg-c-md-1 shg-c-sm-1 shg-c-xs-12"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="shg-box-vertical-align-wrapper">
+        <div class="shg-box shg-c" id="s-8ddca848-e895-44c0-a3c6-8976362c65a1">
+            <div class="shg-box-overlay"></div>
+            <div class="shg-box-content">
+                <div id="s-f8e5d520-3ef2-422f-a102-0259b324ce95" class="shg-c shg-align-center">
+                    <div class="shogun-heading-component">
+                        <h2>Examples from our #SuperhairCreators</h2>
+                    </div>
+                </div>
+
+                <div class="shg-c" id="s-dd804bef-26a5-4602-84a7-fcd463440b34">
+                    <div class="shg-row" data-col-grid-mode-on="">
+                        <div class="shg-c-lg-1 shg-c-md-1 shg-c-sm-1 shg-c-xs-6"></div>
+                        <div class="shg-c-lg-5 shg-c-md-5 shg-c-sm-5 shg-c-xs-6">
+                            <div id="s-87378d0d-86ac-447a-ba3e-ea50723228f5" class="shg-c">
+                                <div class="shogun-video shogun-video-16x9">
+                                    <iframe
+                                        class="shogun-video-embed shogun-lazyload"
+                                        data-src="https://www.youtube.com/embed/iyadjdZ4oGo?start=0&end=0&autoplay=0&loop=0&rel=1"
+                                        allowfullscreen
+                                        title="Embedded Youtube Video"
+                                    >
+                                    </iframe>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="shg-c-lg-5 shg-c-md-5 shg-c-sm-5 shg-c-xs-6">
+                            <div id="s-3174426c-2974-43e0-953f-186d23d6a458" class="shg-c">
+                                <div class="shogun-video shogun-video-16x9">
+                                    <iframe
+                                        class="shogun-video-embed shogun-lazyload"
+                                        data-src="https://www.youtube.com/embed/mkqoOBU9TO4?start=0&end=0&autoplay=0&loop=0&rel=1"
+                                        allowfullscreen
+                                        title="Embedded Youtube Video"
+                                    >
+                                    </iframe>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="shg-c-lg-1 shg-c-md-1 shg-c-sm-1 shg-c-xs-6"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="shg-box-vertical-align-wrapper">
+        <div class="shg-box shg-c" id="s-03841857-da8f-4504-807f-66eb59fc975f">
+            <div class="shg-box-overlay"></div>
+            <div class="shg-box-content">
+                <div id="s-2b18c0fa-c1f8-40c0-af57-c33efce2d10d" class="shg-c shg-align-center">
+                    <div class="shogun-heading-component">
+                        <h2>Don't worry about editing the video</h2>
+                    </div>
+                </div>
+
+                <div class="shg-c shogun-image-container shg-align-center" style="" id="s-77261657-8783-48db-88e2-73adf15d1284">
+                    <img
+                        data-src="https://i.shgcdn.com/0c011cf4-32cb-483c-8a13-1870ab020af0/-/format/auto/-/preview/3000x3000/-/quality/lighter/"
+                        width=""
+                        height=""
+                        style=""
+                        alt=""
+                        class="shogun-image shogun-lazyload"
+                    />
+                </div>
+
+                <script type="text/javascript">
+                    window.SHOGUN_IMAGE_ELEMENTS = window.SHOGUN_IMAGE_ELEMENTS || new Array();
+                    window.SHOGUN_IMAGE_ELEMENTS.push({ hoverImage: "", uuid: "s-77261657-8783-48db-88e2-73adf15d1284" });
+                </script>
+            </div>
+        </div>
+    </div>
+
+    <div class="shg-c shogun-image-container shg-align-center" style="" id="s-15712961-7500-41e2-9c8d-94b964e87b5f">
+        <img
+            data-src="https://i.shgcdn.com/e7bc0283-9624-4397-8f6a-a9c8e3ca64cf/-/format/auto/-/preview/3000x3000/-/quality/lighter/"
+            width=""
+            height=""
+            style=""
+            alt=""
+            class="shogun-image shogun-lazyload"
+        />
+    </div>
+
+    <script type="text/javascript">
+        window.SHOGUN_IMAGE_ELEMENTS = window.SHOGUN_IMAGE_ELEMENTS || new Array();
+        window.SHOGUN_IMAGE_ELEMENTS.push({ hoverImage: "", uuid: "s-15712961-7500-41e2-9c8d-94b964e87b5f" });
+    </script>
+
+    <div class="shg-box-vertical-align-wrapper">
+        <div class="shg-box shg-c" id="s-c7ce0dd5-8f31-4f69-bda4-a239fdbf4a0d">
+            <div class="shg-box-overlay"></div>
+            <div class="shg-box-content">
+                <div id="s-90a7136a-08f1-44df-a440-b0983487831f" class="shg-c shg-align-center">
+                    <div class="shogun-heading-component">
+                        <h2>#SuperhairCreator Application Form</h2>
+                    </div>
+                </div>
+                <div class="shg-box-vertical-align-wrapper">
+                    <div class="shg-box shg-c" id="s-c15e36eb-a4a2-494d-9706-5677b9fb3bae">
+                        <div class="shg-box-overlay"></div>
+                        <div class="shg-box-content">
+                            <div id="s-ece19036-636a-4d70-940c-0876991403aa" class="shg-c">
+                                <form class="shogun-form-box" method="post" action="https://forms.getshogun.com" novalidate>
+                                    <div class="shg-c" id="s-f616427c-57f3-4d12-a4b1-eeaa436d1592">
+                                        <div class="shg-row" data-col-grid-mode-on="">
+                                            <div class="shg-c-lg-3 shg-c-md-3 shg-c-sm-3 shg-c-xs-12"></div>
+                                            <div class="shg-c-lg-5 shg-c-md-5 shg-c-sm-5 shg-c-xs-12">
+                                                <div id="s-456cc3f3-18b5-48b0-bb13-65547be736cd" class="shg-c">
+                                                    <div class="shogun-form-text-input">
+                                                        <label class="shogun-form-label">Full Name*</label>
+
+                                                        <input
+                                                            id="input-s-456cc3f3-18b5-48b0-bb13-65547be736cd"
+                                                            class="shogun-form-box-field shogun-form-text-input-field"
+                                                            name="Full Name*"
+                                                            placeholder=""
+                                                            type="text"
+                                                            required="true"
+                                                        />
+
+                                                        <div class="shogun-form-field-error-msg">
+                                                            <svg viewBox="0 0 26 26" width="26px" height="26px">
+                                                                <path
+                                                                    d="M13 1c6.627 0 12 5.373 12 12s-5.373 12-12 12S1 19.627 1 13 6.373 1 13 1zm0 1.5C7.201 2.5 2.5 7.201 2.5 13S7.201 23.5 13 23.5 23.5 18.799 23.5 13 18.799 2.5 13 2.5zm0 14.25l.123.007a1.125 1.125 0 11-.246 0L13 16.75zM13 5.5a.75.75 0 01.743.648l.007.102v8.25a.75.75 0 01-1.493.102l-.007-.102V6.25A.75.75 0 0113 5.5z"
+                                                                    fill="#000"
+                                                                    fillRule="nonzero"
+                                                                />
+                                                            </svg>
+                                                            <span>Value is required</span>
+                                                        </div>
+                                                    </div>
+
+                                                    <script type="text/javascript">
+                                                        window.SHOGUN_FORM_TEXTAREA_ELEMENTS = window.SHOGUN_FORM_TEXTAREA_ELEMENTS || new Array();
+                                                        window.SHOGUN_FORM_TEXTAREA_ELEMENTS.push({ uuid: "s-456cc3f3-18b5-48b0-bb13-65547be736cd" });
+                                                    </script>
+                                                </div>
+                                                <div id="s-6412479c-6425-4b89-8f30-bd69e5f43723" class="shg-c">
+                                                    <div class="shogun-form-text-input">
+                                                        <label class="shogun-form-label">Email*</label>
+
+                                                        <input
+                                                            id="input-s-6412479c-6425-4b89-8f30-bd69e5f43723"
+                                                            class="shogun-form-box-field shogun-form-text-input-field"
+                                                            name="Email*"
+                                                            placeholder=""
+                                                            type="text"
+                                                            required="true"
+                                                        />
+
+                                                        <div class="shogun-form-field-error-msg">
+                                                            <svg viewBox="0 0 26 26" width="26px" height="26px">
+                                                                <path
+                                                                    d="M13 1c6.627 0 12 5.373 12 12s-5.373 12-12 12S1 19.627 1 13 6.373 1 13 1zm0 1.5C7.201 2.5 2.5 7.201 2.5 13S7.201 23.5 13 23.5 23.5 18.799 23.5 13 18.799 2.5 13 2.5zm0 14.25l.123.007a1.125 1.125 0 11-.246 0L13 16.75zM13 5.5a.75.75 0 01.743.648l.007.102v8.25a.75.75 0 01-1.493.102l-.007-.102V6.25A.75.75 0 0113 5.5z"
+                                                                    fill="#000"
+                                                                    fillRule="nonzero"
+                                                                />
+                                                            </svg>
+                                                            <span>Value is required</span>
+                                                        </div>
+                                                    </div>
+
+                                                    <script type="text/javascript">
+                                                        window.SHOGUN_FORM_TEXTAREA_ELEMENTS = window.SHOGUN_FORM_TEXTAREA_ELEMENTS || new Array();
+                                                        window.SHOGUN_FORM_TEXTAREA_ELEMENTS.push({ uuid: "s-6412479c-6425-4b89-8f30-bd69e5f43723" });
+                                                    </script>
+                                                </div>
+                                                <div id="s-f7458572-c602-42be-8e54-367bb53f9b59" class="shg-c">
+                                                    <div class="shogun-form-text-input">
+                                                        <label class="shogun-form-label">Phone Number*</label>
+
+                                                        <input
+                                                            id="input-s-f7458572-c602-42be-8e54-367bb53f9b59"
+                                                            class="shogun-form-box-field shogun-form-text-input-field"
+                                                            name="Phone Number*"
+                                                            placeholder=""
+                                                            type="text"
+                                                            required="true"
+                                                        />
+
+                                                        <div class="shogun-form-field-error-msg">
+                                                            <svg viewBox="0 0 26 26" width="26px" height="26px">
+                                                                <path
+                                                                    d="M13 1c6.627 0 12 5.373 12 12s-5.373 12-12 12S1 19.627 1 13 6.373 1 13 1zm0 1.5C7.201 2.5 2.5 7.201 2.5 13S7.201 23.5 13 23.5 23.5 18.799 23.5 13 18.799 2.5 13 2.5zm0 14.25l.123.007a1.125 1.125 0 11-.246 0L13 16.75zM13 5.5a.75.75 0 01.743.648l.007.102v8.25a.75.75 0 01-1.493.102l-.007-.102V6.25A.75.75 0 0113 5.5z"
+                                                                    fill="#000"
+                                                                    fillRule="nonzero"
+                                                                />
+                                                            </svg>
+                                                            <span>Value is required</span>
+                                                        </div>
+                                                    </div>
+
+                                                    <script type="text/javascript">
+                                                        window.SHOGUN_FORM_TEXTAREA_ELEMENTS = window.SHOGUN_FORM_TEXTAREA_ELEMENTS || new Array();
+                                                        window.SHOGUN_FORM_TEXTAREA_ELEMENTS.push({ uuid: "s-f7458572-c602-42be-8e54-367bb53f9b59" });
+                                                    </script>
+                                                </div>
+                                                <div id="s-34af7fcd-2d97-47c5-8802-46a4a33421ba" class="shg-c">
+                                                    <div class="shogun-form-check-box">
+                                                        <label class="shogun-form-label">Gender</label>
+
+                                                        <div class="shogun-form-checkbox-input-wrapper">
+                                                            <input id="form-checkbox-button-Gender-Male" class="shogun-form-box-field" name="Gender" type="checkbox" value="Male" required="true" />
+                                                            <label for="form-checkbox-button-Gender-Male">
+                                                                <span class="shogun-form-checkbox-outer">
+                                                                    <span class="shogun-form-checkbox-inner"></span>
+                                                                </span>
+                                                                <span class="shogun-form-checkbox-input-value">Male</span>
+                                                            </label>
+                                                        </div>
+
+                                                        <div class="shogun-form-checkbox-input-wrapper">
+                                                            <input id="form-checkbox-button-Gender-Female" class="shogun-form-box-field" name="Gender" type="checkbox" value="Female" required="true" />
+                                                            <label for="form-checkbox-button-Gender-Female">
+                                                                <span class="shogun-form-checkbox-outer">
+                                                                    <span class="shogun-form-checkbox-inner"></span>
+                                                                </span>
+                                                                <span class="shogun-form-checkbox-input-value">Female</span>
+                                                            </label>
+                                                        </div>
+
+                                                        <div class="shogun-form-checkbox-input-wrapper">
+                                                            <input id="form-checkbox-button-Gender-Other" class="shogun-form-box-field" name="Gender" type="checkbox" value="Other" required="true" />
+                                                            <label for="form-checkbox-button-Gender-Other">
+                                                                <span class="shogun-form-checkbox-outer">
+                                                                    <span class="shogun-form-checkbox-inner"></span>
+                                                                </span>
+                                                                <span class="shogun-form-checkbox-input-value">Other</span>
+                                                            </label>
+                                                        </div>
+
+                                                        <div class="shogun-form-field-error-msg">
+                                                            <svg viewBox="0 0 26 26" width="26px" height="26px">
+                                                                <path
+                                                                    d="M13 1c6.627 0 12 5.373 12 12s-5.373 12-12 12S1 19.627 1 13 6.373 1 13 1zm0 1.5C7.201 2.5 2.5 7.201 2.5 13S7.201 23.5 13 23.5 23.5 18.799 23.5 13 18.799 2.5 13 2.5zm0 14.25l.123.007a1.125 1.125 0 11-.246 0L13 16.75zM13 5.5a.75.75 0 01.743.648l.007.102v8.25a.75.75 0 01-1.493.102l-.007-.102V6.25A.75.75 0 0113 5.5z"
+                                                                    fill="#000"
+                                                                    fillRule="nonzero"
+                                                                />
+                                                            </svg>
+                                                            <span>Value is required</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div id="s-5cbc7f78-8e6b-4672-bf6d-8733b81e1102" class="shg-c">
+                                                    <div class="shogun-form-text-input">
+                                                        <label class="shogun-form-label">Age*</label>
+
+                                                        <input
+                                                            id="input-s-5cbc7f78-8e6b-4672-bf6d-8733b81e1102"
+                                                            class="shogun-form-box-field shogun-form-text-input-field"
+                                                            name="Age*"
+                                                            placeholder=""
+                                                            type="text"
+                                                            required="true"
+                                                        />
+
+                                                        <div class="shogun-form-field-error-msg">
+                                                            <svg viewBox="0 0 26 26" width="26px" height="26px">
+                                                                <path
+                                                                    d="M13 1c6.627 0 12 5.373 12 12s-5.373 12-12 12S1 19.627 1 13 6.373 1 13 1zm0 1.5C7.201 2.5 2.5 7.201 2.5 13S7.201 23.5 13 23.5 23.5 18.799 23.5 13 18.799 2.5 13 2.5zm0 14.25l.123.007a1.125 1.125 0 11-.246 0L13 16.75zM13 5.5a.75.75 0 01.743.648l.007.102v8.25a.75.75 0 01-1.493.102l-.007-.102V6.25A.75.75 0 0113 5.5z"
+                                                                    fill="#000"
+                                                                    fillRule="nonzero"
+                                                                />
+                                                            </svg>
+                                                            <span>Value is required</span>
+                                                        </div>
+                                                    </div>
+
+                                                    <script type="text/javascript">
+                                                        window.SHOGUN_FORM_TEXTAREA_ELEMENTS = window.SHOGUN_FORM_TEXTAREA_ELEMENTS || new Array();
+                                                        window.SHOGUN_FORM_TEXTAREA_ELEMENTS.push({ uuid: "s-5cbc7f78-8e6b-4672-bf6d-8733b81e1102" });
+                                                    </script>
+                                                </div>
+                                                <div id="s-4d908623-b75e-4b25-b5f0-a0820267b40b" class="shg-c">
+                                                    <div class="shogun-form-text-input">
+                                                        <label class="shogun-form-label">Social Media Handle(s)</label>
+
+                                                        <input
+                                                            id="input-s-4d908623-b75e-4b25-b5f0-a0820267b40b"
+                                                            class="shogun-form-box-field shogun-form-text-input-field"
+                                                            name="Social Media Handle(s)"
+                                                            placeholder=""
+                                                            type="text"
+                                                        />
+                                                    </div>
+
+                                                    <script type="text/javascript">
+                                                        window.SHOGUN_FORM_TEXTAREA_ELEMENTS = window.SHOGUN_FORM_TEXTAREA_ELEMENTS || new Array();
+                                                        window.SHOGUN_FORM_TEXTAREA_ELEMENTS.push({ uuid: "s-4d908623-b75e-4b25-b5f0-a0820267b40b" });
+                                                    </script>
+                                                </div>
+                                                <div id="s-87d9c627-a75c-4770-9446-d9e2b9960ed7-btn-wrapper" class="shg-c shg-btn-wrapper shg-align-center">
+                                                    <button id="s-87d9c627-a75c-4770-9446-d9e2b9960ed7" class="shg-btn shg-cse shogun-form-box-submit" type="submit">Submit</button>
+                                                </div>
+                                            </div>
+
+                                            <div class="shg-c-lg-4 shg-c-md-4 shg-c-sm-4 shg-c-xs-12"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="shogun-form-success-msg">
+                                        <svg width="24" height="24" viewBox="-1 -1 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M18.48 6.45a1.25 1.25 0 00-1.747.264l-5.924 8.04-3.767-3.014a1.251 1.251 0 00-1.563 1.953l4.783 3.826a1.263 1.263 0 001.787-.235l6.7-9.087a1.25 1.25 0 00-.269-1.748z"
+                                                fill="#000"
+                                            />
+                                            <path
+                                                fill-rule="evenodd"
+                                                clip-rule="evenodd"
+                                                d="M0 12C0 5.373 5.373 0 12 0c6.625.007 11.993 5.375 12 12 0 6.627-5.373 12-12 12S0 18.627 0 12zm2 0c0 5.523 4.477 10 10 10 5.52-.006 9.994-4.48 10-10 0-5.523-4.477-10-10-10S2 6.477 2 12z"
+                                                fill="#000"
+                                            />
+                                        </svg>
+                                        <span>Thank you!</span>
+                                    </div>
+                                </form>
+
+                                <script type="text/javascript">
+                                    window.SHOGUN_FORM_BOX = window.SHOGUN_FORM_BOX || new Array();
+                                    window.SHOGUN_FORM_BOX.push({
+                                        uuid: "s-ece19036-636a-4d70-940c-0876991403aa",
+                                        domain: "https://forms.getshogun.com",
+                                        form_submission_email: `0Caiz/6RDmjk8YSP9a3Ngk7bdnTW70nYV/6bHGEvGQ0=
+  `,
+                                        form_name: `#SuperhairCreator Application Form (Superhairpieces.com)`,
+                                        site_id: "fb8c6090-a908-45e2-8617-89b82d7a20e6",
+                                        form_href: "",
+                                        form_same_window: "",
+                                    });
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="https://cdn.getshogun.com/5/61686b01336a7400d6d01c32.js" async></script>
+</div>

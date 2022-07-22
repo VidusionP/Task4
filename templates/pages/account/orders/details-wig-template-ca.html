@@ -1,0 +1,182 @@
+<link rel="preconnect" href="https://fonts.googleapis.com" /> <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet"
+/>
+<style>
+    :root {
+        --section-margin: 3rem;
+        --font-family: Montserrat;
+        --element-margin: 1rem;
+        --title-size: 20px;
+        --content-width: 2rem;
+        --border-color: #ccc;
+        --element-margin-default: 0.3rem;
+        --font-size-default: 13px;
+    }
+    * {
+        margin-bottom: var(--element-margin-default);
+        box-sizing: border-box;
+    }
+    .content-wrapper {
+        font-family: var(--font-family);
+        padding: calc(var(--section-margin) / 2);
+        margin-bottom: 0;
+        font-size: var(--font-size-default);
+    }
+    .header-wrapper {
+        margin-bottom: var(--section-margin);
+        display: flex;
+    }
+    .header-wrapper .title {
+        margin-bottom: var(--element-margin);
+        text-transform: uppercase;
+    }
+    .header-wrapper .left {
+        text-transform: uppercase;
+        width: 45%;
+    }
+    .header-wrapper .right {
+        text-align: right;
+        width: 55%;
+    }
+    .content-title {
+        font-size: var(--title-size);
+        margin-bottom: var(--section-margin);
+        text-transform: uppercase;
+        text-align: center;
+        font-weight: 500;
+    }
+    table.item-wrapper {
+        width: 100%;
+        font-size: var(--font-size-default);
+    }
+    table.item-wrapper th {
+        font-weight: 500;
+        text-transform: uppercase;
+        padding-bottom: var(--element-margin);
+        border-bottom: 1px solid var(--border-color);
+    }
+    table.item-wrapper th.left {
+        text-align: left;
+    }
+    table.item-wrapper th.right {
+        text-align: right;
+    }
+    table.item-wrapper td {
+        padding-top: var(--element-margin);
+    }
+    table.item-wrapper td.middle {
+        text-align: center;
+    }
+    table.item-wrapper td.right {
+        text-align: right;
+    }
+    table.item-wrapper td.money {
+        min-width: 90px;
+    }
+    .total-section-wrapper {
+        margin-top: var(--element-margin);
+        padding: var(--element-margin) 0;
+        border-bottom: 1px solid var(--border-color);
+        border-top: 1px solid var(--border-color);
+        text-align: right;
+        margin-bottom: var(--section-margin);
+        display: flex;
+        justify-content: flex-end;
+    }
+    .total-section-wrapper .left {
+        text-transform: uppercase;
+        width: 200px;
+        font-weight: 500;
+        margin-bottom: 0;
+    }
+    .total-section-wrapper .right {
+        float: right;
+        text-align: right;
+        width: 150px;
+        margin-bottom: 0;
+    }
+    .billing-section-wrapper {
+        display: flex;
+    }
+    .billing-section-wrapper .title {
+        margin-bottom: var(--element-margin);
+        text-transform: uppercase;
+        font-weight: 500;
+    }
+    .billing-section-wrapper .name {
+        text-transform: uppercase;
+    }
+    .billing-section-wrapper .left {
+        width: 45%;
+    }
+    .billing-section-wrapper .left .highlight {
+        font-weight: 500;
+    }
+    .billing-section-wrapper .right {
+        width: 55%;
+    }
+</style>
+<div class="content-wrapper">
+    <div class="content-title">invoice for cranial prosthesis a9282</div>
+    <div class="header-wrapper">
+        <div class="left">
+            <div class="title">invoice no. ${ino}</div>
+            <div>issued:${new Date().toLocaleDateString("en-EN",dop)}</div>
+            <div>purchase date: ${new Date(r.date_created).toLocaleDateString("en-EN",dop)}</div>
+        </div>
+        <div class="right">
+            <div class="title">new frontier global ltd</div>
+            <div>7295 Rapistan Ct, Mississauga</div>
+            <div>ON L5N 5Z4, Canada</div>
+            <div>Tel: +1 866-814-7879</div>
+            <div>Business Number: 80942-4401</div>
+        </div>
+    </div>
+    <table class="item-wrapper">
+        <thead>
+            <tr>
+                <th class="left">item description</th>
+                <th>qty</th>
+                <th>price</th>
+                <th class="right">Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            ${items}
+        </tbody>
+    </table>
+    <div class="total-section-wrapper">
+        <div class="left">
+            <div>sub total</div>
+            <div>shipping fee</div>
+            <div>tax</div>
+            <div>grand total</div>
+            <div>amount paid</div>
+        </div>
+        <div class="right">
+            <div>$ ${Number(r.subtotal_ex_tax).toFixed(2)}</div>
+            <div>$ ${Number(r.base_shipping_cost).toFixed(2)}</div>
+            <div>$ ${Number(r.total_tax).toFixed(2)}</div>
+            <div>$ ${Number(r.total_inc_tax).toFixed(2)}</div>
+            <div>$ ${(Number(r.total_inc_tax) - Number(r.refunded_amount)).toFixed(2)}</div>
+        </div>
+    </div>
+    <div class="billing-section-wrapper">
+        <div class="left">
+            <div class="title">bill to</div>
+            <div class="name">${r.billing_address.first_name}${r.billing_address.last_name}</div>
+            <div>${r.billing_address.street_1}</div>
+            <div>${r.billing_address.street_2}</div>
+            <div>${r.billing_address.city}, ${r.billing_address.state}, ${r.billing_address.zip}</div>
+            <div>${r.billing_address.email}</div>
+            <!-- <div>Diagnosis code: <span class="highlight">${$(this).attr("invoice-code")}</span></div> -->
+            <div>Diagnosis code: <span class="highlight"></span></div>
+        </div>
+        <div class="right">
+            <div class="title">payment methods</div>
+            <div>${r.payment_method}</div>
+        </div>
+    </div>
+</div>

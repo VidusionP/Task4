@@ -1,0 +1,684 @@
+<link rel="preload" as="image" href="/content/images/common/loading.svg">
+<style>
+    :root {
+        --element-margin: 1.5rem;
+        --section-margin: 2rem;
+        --font-size-normal: 15px;
+        --font-size-medium: 18px;
+        --font-size-large: 24px;
+        --border-radius: 30px;
+        --color1: #202124;
+        --color2: #f8f9fa;
+        --color3: #929192;
+        --color4: #f4f3ef;
+    }    
+    .vcp-container {
+        text-align: center;
+    }
+    .desp {
+        font-size: var(--font-size-normal);
+        margin-bottom: var(--section-margin);
+    }
+    .title {
+        font-size: var(--font-size-large);
+        margin-bottom: var(--section-margin);
+    }
+    .vcp-button-wrap {
+        margin-bottom: var(--section-margin);
+    }
+    .vcp-button-wrap button {
+        border-radius: var(--border-radius);
+        width: 100%;
+        text-transform: uppercase;
+        position: relative;
+        padding: var(--element-margin) 0;
+        text-align: center;
+    }    
+    .vcp-button-wrap button[action=camera] {
+        background-color: var(--color1);
+        color: var(--color2);        
+        margin-bottom: var(--element-margin);
+    }
+    .vcp-button-wrap button[action=submit] {
+        background-color: var(--color1);
+        color: var(--color2);        
+        margin-bottom: var(--element-margin);
+    }
+    .vcp-button-wrap button[action=upload] {
+        color: var(--color1);
+        background-color: var(--color2);        
+    }
+    .vcp-button-wrap button[action=upload] input {
+        display: none;
+    }
+    .vcp-button-wrap button img {
+        position: absolute;
+        left: var(--element-margin);
+        top: var(--element-margin);
+        height: 20px;
+    }
+    .vcp-example-wrap {
+        text-align: left;
+        margin: 0 auto;
+        color: var(--color3);
+    }
+    .vcp-example-wrap .item {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        grid-column-gap: var(--element-margin);
+        margin-bottom: var(--element-margin);
+        align-items: center;
+    }
+    .vcp-example-wrap .item img {
+        width: 100%;
+    }
+    .vcp-example-wrap ul {
+        list-style: none;
+    }
+    .vcp-example-wrap li {
+        margin-bottom: var(--element-margin);
+    }
+    .vcp-example-wrap li::before {
+        content: '';                
+        background-repeat: no-repeat;
+        display: inline-block;
+        margin-right: 5px;
+        width: 13px;
+        height: 13px;
+    }
+    .vcp-example-wrap li[check]::before {        
+        background-image: url("/content/images/common/check.svg");        
+        background-size: 13px 13px;
+        
+    }
+    .vcp-example-wrap li[uncheck]::before {        
+        background-image: url("/content/images/common/close2.svg");        
+        background-size: 11px 11px;
+        background-position: bottom;
+    }
+    .vcp-example-wrap .item ul {
+        margin-bottom: 0;
+    }
+    .vcp-example-wrap .item li:last-child {
+        margin-bottom: 0;
+    }
+    .vcp-example-title {
+        font-size: var(--font-size-medium);
+        text-align: center;
+        margin-bottom: var(--section-margin);
+    }
+    .vcp-submit-wrap {
+        display: none;        
+    }
+    .vcp-submit-wrap [id^=vcp-pr] {
+        display: none;
+    }
+    .vcp-submit-wrap [id=vcp-preview] {
+        display: block;
+        margin-bottom: var(--element-margin);
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .vcp-submit-wrap button {
+        margin-bottom: var(--element-margin);
+    }
+    .vcp-match-wrap {
+        background-color: var(--color4);
+        text-align: center;
+        padding: var(--element-margin);
+        margin-bottom: var(--section-margin);
+    }
+    .vcp-match-wrap .el-title {
+        margin-bottom: var(--element-margin);
+        text-transform: capitalize;
+        font-size: var(--font-size-medium);
+    }
+    .vcp-match-wrap .el-match-image img {
+        border-radius: 50%;
+        margin-bottom: var(--element-margin);
+    }
+    .vcp-match-wrap .el-name {
+        font-size: var(--font-size-medium);
+    }
+    #vcp-preview-canvas {
+        display: none;
+    }
+    #vcp-preview-video {
+        margin-bottom: var(--element-margin);
+    }
+    @media (min-width: 500px) {
+        .vcp-preview-wrap.result {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            align-items: center;
+            justify-content: center;
+            grid-column-gap: var(--element-margin);
+            margin-bottom: var(--section-margin);
+        }
+
+        .vcp-preview-wrap.result #vcp-preview {
+            height: 100%;
+            object-fit: cover;
+            margin-bottom: 0;
+        }
+        .vcp-preview-wrap.result .vcp-match-wrap {
+            margin-bottom: 0;
+        }
+        .vcp-button-wrap {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-column-gap: var(--element-margin);
+            margin-bottom: var(--section-margin);
+        }
+        .vcp-button-wrap button, .vcp-button-wrap label {
+            height: 63px;
+            cursor: pointer;
+        }
+        .vcp-button-wrap button[action=camera] {
+            margin-bottom: 0;
+        }
+        .vcp-button-wrap button img {
+            height: 15px;
+        }
+    }    
+    @media (min-width: 600px) {
+        .vcp-button-wrap button img {
+            height: 20px;
+        }        
+    }
+    @media (min-width: 800px) {
+        :root {
+            --element-margin: 1.8rem;
+            --section-margin: 2.5rem;
+            --font-size-medium: 20px;
+            --font-size-large: 28px;
+        }
+        .vcp-container {
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .vcp-example-wrap ul {
+            max-width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: var(--section-margin);
+        }
+        .vcp-example-title {
+            text-transform: uppercase;
+        }
+        .vcp-button-wrap button {
+            padding-top: calc(var(--element-margin) - 5px);
+        }
+        .vcp-button-wrap button img {
+            top: calc(var(--element-margin) - 5px);
+        }
+    }
+</style>
+<div class="vcp-container">
+    <div class="desp">Virtual Color Match</div>
+    <div class="title">Share a photo of your relevant hair color</div>
+    <div class="vcp-init-wrap">
+        <div class="vcp-button-wrap">
+            <button action="camera" preview=true>
+                <img src="/content/images/common/camera-line.svg">
+                <span>live camera</span>
+            </button>
+            <button action="upload">
+                <img src="/content/images/common/upload.svg">
+                <label for="vcp-file-init">upload a photo</label>
+                <input type="file" accept="image/png, image/jpeg" id="vcp-file-init">
+            </button>
+        </div>    
+        <div class="vcp-example-wrap">
+            <ul>
+                <li check>Face the camera</li>
+                <li check>Hair is visible from root to tip</li>
+                <li check>Natural indirect light (near a window)</li>
+                <li check>1 person only in the photo</li>
+                <li uncheck>No filters or edited photos</li>
+                <li uncheck>Avoid harsh sunlight on your hair and face</li>
+            </ul>
+            <div class="vcp-example-title">Good Examples</div>
+            <div class="item">
+                <div>
+                    <picture>
+                        <source media="(min-width: 600px)" type="image/webp" srcset="/content/images/marketing/colorMatching/men/1-pc.webp">
+                        <source media="(min-width: 600px)" type="image/jpeg" srcset="/content/images/marketing/colorMatching/men/1-pc.jpg">
+                        <source type="image/webp" srcset="/content/images/marketing/colorMatching/men/1-mobile.webp">
+                        <source type="image/jpeg" srcset="/content/images/marketing/colorMatching/men/1-mobile.jpg">
+                        <img src="/content/images/marketing/colorMatching/men/1-mobile.jpg" loading="lazy" alt="Example 1">
+                    </picture>
+                </div>
+                <ul>
+                    <li check>Face the camera</li>
+                    <li check>Hair is visible on top</li>                
+                </ul>
+            </div>
+            <div class="item">
+                <div>
+                    <picture>
+                        <source type="image/webp" srcset="/content/images/marketing/colorMatching/men/3.webp">
+                        <source type="image/jpeg" srcset="/content/images/marketing/colorMatching/men/3.jpg">
+                        <img src="/content/images/marketing/colorMatching/men/2.jpg" loading="lazy" alt="Example 2">
+                    </picture>
+                </div>
+                <ul>                
+                    <li check>Hair is visible from root to tip</li>                
+                </ul>
+            </div>
+            <div class="item">
+                <div>
+                    <picture>
+                        <source type="image/webp" srcset="/content/images/marketing/colorMatching/men/4.webp">
+                        <source type="image/jpeg" srcset="/content/images/marketing/colorMatching/men/4.jpg">
+                        <img src="/content/images/marketing/colorMatching/men/4.jpg" loading="lazy" alt="Example 3">
+                    </picture>
+                </div>
+                <ul>                
+                    <li check>Hair is visible from root to tip</li>                    
+                </ul>
+            </div>
+        </div>    
+    </div>
+    <div class="vcp-submit-wrap">        
+        <div class="vcp-preview-wrap">
+            <img id="vcp-preview" />
+            <video id="vcp-preview-video" width="320" height="240" autoplay></video>
+            <canvas id="vcp-preview-canvas" width="320" height="240"></canvas>
+        </div>
+        <canvas id="vcp-pr1"></canvas>
+        <img src="" id="vcp-pr2">
+        <div class="vcp-button-wrap vcp-button-preview" action>
+            <button action="camera" preview=false>
+                <img src="/content/images/common/camera-line.svg">
+                <span>take photo</span>
+            </button>            
+            <button action="upload">
+                <img src="/content/images/common/upload.svg">
+                <label for="vcp-file-preview">upload new photo</label>
+                <input type="file" accept="image/png, image/jpeg" id="vcp-file-preview">
+            </button>
+            <button action="submit">
+                <img src="/content/images/common/click.svg">
+                submit
+            </button>
+        </div>
+    </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.2/color-thief.min.js" defer></script>
+<script src="/content/js/face-api.min.js" defer></script>
+<script>
+"use strict";
+const MODEL_URL = '/content/data/models';
+let loaded = false;
+let menBaseColor=[
+    {
+        "name": "1",
+        "color": [26,25,30]
+    },
+    {
+        "name": "1B",
+        "color": [61,57,56]
+    },
+    {
+        "name": "11B",
+        "color": [47,47,47]
+    },
+    {
+        "name": "1BASH",
+        "color": [57,57,57]
+    },
+    {
+        "name": "2",
+        "color": [54,44,42]
+    },
+    {
+        "name": "2ASH",
+        "color": [47,45,46]
+    },
+    {
+        "name": "3",
+        "color": [64,53,51]
+    },
+    {
+        "name": "3ASH",
+        "color": [59,55,54]
+    },
+    {
+        "name": "4",
+        "color": [65,52,46]
+    },
+    {
+        "name": "4ASH",
+        "color": [81,78,71]
+    },
+    {
+        "name": "5",
+        "color": [106,93,74]
+    },
+    {
+        "name": "5R",
+        "color": [72,55,39]
+    },
+    {
+        "name": "6",
+        "color": [75,66,53]
+    },
+    {
+        "name": "6R",
+        "color": [78,55,39]
+    },
+    {
+        "name": "7",
+        "color": [101,83,63]
+    },
+    {
+        "name": "8R",
+        "color": [120,97,65]
+    },
+    {
+        "name": "17",
+        "color": [101,82,71]
+    },
+    {
+        "name": "18",
+        "color": [149,125,94]
+    },
+    {
+        "name": "20",
+        "color": [135,115,78]
+    },
+    {
+        "name": "20R",
+        "color": [100,69,48]
+    },
+    {
+        "name": "22R",
+        "color": [125,99,86]
+    },
+    {
+        "name": "30R",
+        "color": [111,74,44]
+    },
+    {
+        "name": "60",
+        "color": [170,165,162]
+    },
+    {
+        "name": "60H",
+        "color": [155,150,147]
+    }
+];
+//[0,1,2]=[r,g,b]
+function distance(a, b) {
+    return Math.sqrt(Math.pow(a[0] - b[0], 2) + Math.pow(a[1] - b[1], 2) + Math.pow(a[2] - b[2], 2));
+    // return Math.sqrt(Math.pow(a.r - b.r, 2) + Math.pow(a.g - b.g, 2) + Math.pow(a.b - b.b, 2));
+}
+function nearestColor(inputColor){
+  var lowest = Number.POSITIVE_INFINITY;  
+  var tmp;
+  let index = 0;
+  menBaseColor.forEach( (el, i) => {
+      tmp = distance(inputColor, el.color);      
+      if (tmp < lowest) {
+        lowest = tmp;
+        index = i;
+      };
+      
+  })
+  return menBaseColor[index];
+}
+window.addEventListener("DOMContentLoaded", async function() {    
+
+    const colorThief = new ColorThief();
+    const image = document.getElementById('vcp-preview');
+    const video = document.getElementById("vcp-preview-video");
+    const vcan = document.getElementById("vcp-preview-canvas");
+    const image1 = document.getElementById('vcp-pr2');
+    const input = document.getElementById('vcp-file-init');
+    const input1 = document.getElementById('vcp-file-preview');
+    let orgW = 0, orgH = 0;
+    let can = document.getElementById('vcp-pr1');
+    let ctx = can.getContext('2d');    
+
+    function getHairColor(im) {
+        let color = colorThief.getColor(im);    
+        let result = nearestColor(color);
+        console.log(result);
+        $(".vcp-preview-wrap").addClass("result");
+        $(".vcp-preview-wrap").append(`
+            <div class="vcp-match-wrap">
+                <div class="el-title">your color match</div>
+                <div class="el-match-image">
+                    <img src="/content/images/marketing/colorMatching/data/men/${result.name}.jpg" alt="">
+                </div>
+                <div class="el-name">Color code: #${result.name}</div>
+            </div>
+        `);      
+        $(".vcp-button-wrap button[action=submit] img").prop("src", "/content/images/common/click.svg");
+        $(".vcp-button-wrap button").prop("disabled",false);
+        $(".vcp-button-wrap button input").prop("disabled",false);
+        $(".vcp-button-wrap button label").css({"cursor": "pointer"});
+        $(".vcp-button-wrap button").css({"cursor": "pointer"});
+    }
+
+    async function runSubmit() {
+        let fullFaceDescriptions = await faceapi.detectAllFaces(image).withFaceLandmarks().withFaceDescriptors()               
+
+        if (fullFaceDescriptions.length>0) {
+            let face1 = fullFaceDescriptions[0].alignedRect._box;
+            let y = face1.y>=face1.height/3*2?face1.y-face1.height/3*2:0;         
+            ctx.clearRect(0, 0, can.width, can.height);
+            ctx.canvas.width  = face1.width;
+            ctx.canvas.height = face1.height;
+            ctx.drawImage(image, face1.x, y, face1.width, face1.height/2, 0, 0, face1.width, face1.height/2);   
+            image1.src = can.toDataURL();         
+        } else {                   
+            ctx.clearRect(0, 0, can.width, can.height);                           
+            ctx.canvas.width  = image.width;
+            ctx.canvas.height = Math.ceil(image.height/2);
+            ctx.drawImage(image, 0, 0, image.width, image.height/2, 0, 0, image.width, image.height/2);   
+            image1.src = can.toDataURL();
+        }
+    }
+
+    function submit() {        
+        if (image.complete) {
+            runSubmit()
+        } else {
+            image.onload = () => {
+                runSubmit();
+            }
+        }
+    }
+
+    $("button[action=submit]").on("click", function(){
+        console.log("submit");        
+        $(".vcp-button-wrap button[action=submit] img").prop("src", "/content/images/common/loading.svg");
+        $(".vcp-button-wrap button").prop("disabled",true);
+        $(".vcp-button-wrap button input").prop("disabled",true);
+        $(".vcp-button-wrap button label").css({"cursor": "default"});
+        $(".vcp-button-wrap button").css({"cursor": "default"});
+        setTimeout(function(){
+            if (loaded) {
+            submit();
+            } else {
+                let timerRun = setInterval(() => {
+                    if (loaded) {
+                        clearInterval(timerRun);
+                        submit();
+                    }
+                }, 500);
+            }
+        },300);        
+    })
+    function clickedCamera() {
+        $(".vcp-init-wrap").hide();
+        $(".vcp-submit-wrap").show();
+        if ($(".vcp-button-preview").attr("action")!="camera") {
+            $(".vcp-button-preview").attr("action", "camera");
+            $(".vcp-button-preview").find("button[action=upload]").hide();
+            $(".vcp-button-preview").find("button[action=camera]").show();
+        }
+    }
+    $("button[action=camera]").on("click", async function() {                
+        $(".vcp-init-wrap").hide();
+        $(".vcp-submit-wrap").show();
+        $(".vcp-match-wrap").remove();
+        $(".vcp-preview-wrap").removeClass("result");
+        if ($(".vcp-button-preview").attr("action")!="camera") {
+            $(".vcp-button-preview").attr("action", "camera");
+            $(".vcp-button-preview").find("button[action=upload]").hide();
+            $(".vcp-button-preview").find("button[action=camera]").show();
+        }             
+        if ($(this).attr("preview")=="true") {
+            $("#vcp-preview").hide();
+            $("#vcp-preview-video").show();        
+            let stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: false });
+            video.srcObject = stream;
+            $(".vcp-button-wrap button[action=camera]").attr("preview",false);
+            $(".vcp-button-wrap button[action=camera] span").html("take photo");
+        } else {            
+            $("#vcp-preview-video").hide();
+            $("#vcp-preview").show();
+            vcan.getContext('2d').clearRect(0,0,vcan.width, vcan.height);
+            vcan.getContext('2d').drawImage(video, 0, 0, vcan.width, vcan.height);
+            image.src = vcan.toDataURL('image/jpeg');
+            $(".vcp-button-wrap button[action=camera]").attr("preview",true);            
+            $(".vcp-button-wrap button[action=camera] span").html("live camera");
+        }
+    });    
+    // $("button[action=camera][preview=true]").on("click", async function() {        
+    //     console.log("preview equal true");
+    //     clickedCamera();
+    //     $("#vcp-preview").hide();
+    //     $("#vcp-preview-video").show();        
+    //     let stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: false });
+    //     video.srcObject = stream;             
+    // });
+    // $("button[action=camera][preview=false]").on("click", function() {        
+    //     clickedCamera();
+    //     $("#vcp-preview-video").hide();
+    //     $("#vcp-preview").show();
+    //     vcan.getContext('2d').clearRect(0,0,vcan.width, vcan.height);
+    //     vcan.getContext('2d').drawImage(video, 0, 0, vcan.width, vcan.height);
+    //     image.src = vcan.toDataURL('image/jpeg');
+    //     $(".vcp-button-wrap button[action=camera]").attr("preview",true);
+    //     $(".vcp-button-wrap button[action=camera]").html("retake photo");
+    // });
+    input.onchange = e => {        
+        readImageFile(input.files[0]);
+    };
+    input1.onchange = e => {          
+        readImageFile(input1.files[0]);
+    };
+
+    // image.onload = async () => {
+    //     // URL.revokeObjectURL(image.src);             
+
+    //     let fullFaceDescriptions = await faceapi.detectAllFaces(image).withFaceLandmarks().withFaceDescriptors()               
+
+    //     // let color = colorThief.getColor(image);
+    //     // console.log(color);      
+    //     // let result = nearestColor(color);
+    //     // console.log(result);        
+        
+    //     if (fullFaceDescriptions.length>0) {
+    //         let face1 = fullFaceDescriptions[0].alignedRect._box;
+    //         let y = face1.y>=face1.height/3*2?face1.y-face1.height/3*2:0;         
+    //         ctx.clearRect(0, 0, can.width, can.height);
+    //         ctx.canvas.width  = face1.width;
+    //         ctx.canvas.height = face1.height;
+    //         ctx.drawImage(image, face1.x, y, face1.width, face1.height/2, 0, 0, face1.width, face1.height/2);   
+    //         image1.src = can.toDataURL();         
+    //     } else {
+    //         // getHairColor(image);            
+    //         ctx.clearRect(0, 0, can.width, can.height);                           
+    //         ctx.canvas.width  = image.width;
+    //         ctx.canvas.height = Math.ceil(image.height/2);
+    //         ctx.drawImage(image, 0, 0, image.width, image.height/2, 0, 0, image.width, image.height/2);   
+    //         image1.src = can.toDataURL();
+    //     }
+    // };
+    
+    image1.onload = async () => {        
+        getHairColor(image1);        
+    };
+
+    function readImageFile(file) {
+        console.log(file);
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            var img = new Image();      
+            img.src = e.target.result;
+
+            img.onload = function () {
+                orgW = this.width;
+                orgH = this.height;
+                
+                if (orgW>900 || orgH>900) {
+                    alert("Please choose an image with a width and height no larger than 900px");
+                } else {
+                    $("#vcp-preview-video").hide();
+                    URL.revokeObjectURL(image.src);
+                    image.src = URL.createObjectURL(file);                    
+                    $(".vcp-match-wrap").remove();
+                    $(".vcp-preview-wrap").removeClass("result");
+                    if ($(".vcp-button-preview").attr("action")!="upload") {
+                        $(".vcp-button-preview").attr("action", "upload");
+                        $(".vcp-button-preview").find("button[action=upload]").show();
+                        $(".vcp-button-preview").find("button[action=camera]").hide();
+                    }
+                    $(".vcp-init-wrap").hide();
+                    $(".vcp-submit-wrap").show();
+                }
+            }
+        };
+        reader.readAsDataURL(file);
+    }
+
+
+    await faceapi.loadSsdMobilenetv1Model(MODEL_URL);
+    await faceapi.loadFaceLandmarkModel(MODEL_URL);
+    await faceapi.loadFaceRecognitionModel(MODEL_URL);    
+
+    loaded = true;
+
+    // let img = document.getElementById('test');
+
+    // function loaded(img) {
+    //     console.log("loaded");
+    //     var tracker = new tracking.ObjectTracker(['face']);
+    //     tracker.setStepSize(1.7);
+
+    //     tracking.track('#test', tracker);
+
+    //     tracker.on('track', function(event) {
+    //         event.data.forEach(function(rect) {
+    //             console.log(rect);
+    //             window.plot(rect.x, rect.y, rect.width, rect.height);
+    //         });
+    //     });
+
+    //     window.plot = function(x, y, w, h) {
+    //         var rect = document.createElement('div');
+    //         document.querySelector('.demo-container').appendChild(rect);
+    //         rect.classList.add('rect');
+    //         rect.style.width = w + 'px';
+    //         rect.style.height = h + 'px';
+    //         rect.style.left = (img.offsetLeft + x) + 'px';
+    //         rect.style.top = (img.offsetTop + y) + 'px';
+    //     };        
+    // }
+    // if (img.complete) {
+    //     loaded(img);
+    // } else {
+    //     img.addEventListener("load", function() {
+    //         loaded(img);
+    //     })
+    // }
+})
+</script>

@@ -1,0 +1,80 @@
+<style>
+    .find-wrapper {
+        padding: 0.5rem 2rem 1rem;
+    }
+    .find-title {
+        text-transform: uppercase;        
+        font-weight: 400;
+        margin-bottom: 2rem;
+    }
+    .find-item-title {
+        margin: 2rem 0;
+    }
+    .find-select-label, .find-quantity-label {
+        text-transform: uppercase;
+        margin-bottom: 0.7rem;
+    }
+    .find-product {
+        font-style: italic;
+        font-weight: 400;
+        font-size: 1.2rem;
+    }
+    .find-email {
+        width: 100%;
+        padding: 1rem;
+        margin-bottom: 2rem;;
+    }
+    .find-select-wrapper, .find-quantity-wrapper {
+        margin-bottom: 2rem;
+    }
+    .find-select {
+        width: 100%;
+        padding: 1rem;
+    }
+    .find-quantity {
+        padding: 1rem;
+    }
+    .find-btn-apply {
+        text-transform: uppercase;
+    }
+</style>
+<div class="find-wrapper">
+    <h1 class="find-title">find my option</h1>
+    <div>Select your option and we'll email you if it's back in stock</div>
+    <div class="find-item-title">Product: <span class="find-product">20" Clip In Hair Extensions 100 Grams 4A</span></div>
+    <div class="find-select-wrapper">
+        <label for="select-color" class="find-select-label">Hair color</label>
+        <select name="select-color" class="find-select" onchange="setSelect(this)">            
+        </select>            
+    </div>
+    <div class="find-quantity-wrapper">
+        <label for="input-quantity" class="find-quantity-label">Quantity</label>
+        <div>
+            <input class="find-quantity" min="1" type="number" name="input-quantity" onkeyup="setQuantity(this)" max="99"/>
+        </div>
+    </div>
+    <div>
+        <input type="email" maxlength="100" placeholder="Email*" class="find-email" onkeyup="setEmail(this)"/>
+    </div>
+    <div class="find-btn-apply button button--primary">sign up</div>
+</div>
+<script>
+    function setQuantity(obj) {
+        document.querySelector(".find-btn-apply").setAttribute("data-book-quantity", obj.value);
+    }
+    function setSelect(obj) {        
+        document.querySelector(".find-btn-apply").setAttribute("data-book-option", obj.value);
+    }
+    function setEmail(obj) {
+        document.querySelector(".find-btn-apply").setAttribute("data-book-email", obj.value);
+    }
+</script>
+<style>
+    .sign-done {
+        text-align: center;
+        margin-top: 100px;
+        text-transform: uppercase;        
+        font-size: 1.4rem;
+    }
+</style>
+<div class="sign-done">sign up successfully</div>

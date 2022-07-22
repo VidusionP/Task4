@@ -1,0 +1,584 @@
+<link rel="preconnect" href="https://fonts.gstatic.com" /><link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&family=Open+Sans+Condensed:wght@700&display=swap"
+    rel="stylesheet"
+/>
+<link rel="stylesheet" href="/content/css/submenu.css">
+<style>
+    :root {        
+        /* --main-color: #23A455; */
+        --main-color: #d9d5d4;
+        /* --second-color: #1c8545; */
+        --second-color: #5e5d5d;
+        /* --third-color: #bff1d2; */
+        --third-color: #d9d5d4;
+        --main-text-color: #000;
+        --second-text-color: #fff;
+        --section-margin: 3rem;
+        --element-margin: 1.5rem;
+        --title-margin: 1.3rem;
+        --left-border-width: 1rem;
+        --left-border-distance: 3rem;
+        --navigation-btn-width: 2.85714rem;
+        --navigation-btn-height: 4.35714rem;
+        --title-font-size: 2.5rem;
+        --logo-font: 'Open Sans Condensed', sans-serif;
+        --border-radius: 20px;
+    }
+    .page-content--centered {
+        width: 100% !important;
+    }    
+    .featured-salon-title {
+        font-size: 1.3rem;
+        font-style: italic;
+        margin-bottom: 1rem;
+        letter-spacing: 0.1rem;
+        font-weight: 300;
+        padding-left: 1rem;
+    }
+    .featured-salon-item-description-wrap {        
+        border-left: 1rem solid var(--main-color);        
+        width: calc(100% + var(--left-border-distance) + var(--left-border-width));
+        transform: translateX(calc(-1 * var(--left-border-distance) - var(--left-border-width)));
+        padding-left: var(--left-border-distance);
+        /* padding-right: 1rem; */
+    }
+    .featured-salon-item-desp-top {
+        display: flex;        
+        margin-bottom: var(--section-margin);
+    }
+    .featured-salon-item-left {
+        width: 72%;
+    }
+    .featured-salon-item-right {
+        width: 28%;
+        position: relative;
+        padding-left: 3rem;
+        align-self: flex-end;
+    }
+    .featured-salon-item-right [title="YouTube video player"] {
+        max-width: 100%;
+    }
+    /* .featured-salon-item-right .featured-image-slide-wrapper {
+        position: absolute;
+        bottom: 0;
+        width: calc(100% - var(--element-margin) * 4);
+        padding: 0 calc(var(--element-margin) / 2);
+        overflow-x: hidden;
+    } */    
+    .featured-image-slide-wrapper {
+        height: fit-content;
+        display: none;
+        margin-bottom: var(--section-margin);
+    }
+    .featured-image-slide-wrapper .feature-image-slide {
+        padding: 0 calc(var(--element-margin) / 2);
+    }    
+    .featured-image-slide-wrapper .feature-image-slide img {
+        width: 100%;
+    }
+    .featured-salon-item-right img {
+        width: 100%;
+        /* margin: 0 5px; */
+        /* display: none; */
+    }
+    .featured-salon-item-right img[data-show] {
+        display: block;
+    }
+    .featured-salon-item-title {                
+        margin-bottom: var(--title-margin);
+        display: flex;
+        align-items: center;
+        text-transform: uppercase;
+        font-size: var(--title-font-size);        
+        color: var(--second-color);
+        font-family: var(--logo-font);
+    }
+    .featured-salon-item-title .highlight {
+        color: var(--main-color);
+        font-size: var(--title-font-size);
+        margin-left: var(--element-margin);
+        text-transform: uppercase;
+    }
+    .featured-salon-item-description {        
+        text-align: justify;
+    }    
+    .featured-salon-item-highlight {
+        color: var(--second-color);
+        font-size: 1.3rem;
+        font-style: italic;        
+        font-weight: 500;
+        margin: var(--title-margin) 0;
+    }
+    .featured-salon-item-owner,
+    .featured-salon-item-service-title,
+    .featured-salon-item-info-title,
+    .featured-salon-item-testimonial-title {
+        font-size: var(--title-font-size);
+        font-weight: 500;
+    }
+    .featured-salon-item-testimonial-title {
+        padding: 1rem 0 0.5rem 1rem;
+    }
+    .featured-salon-item-owner-description,
+    .featured-salon-item-service-description,
+    .featured-salon-item-info-description-wrap {
+        margin-top: var(--title-margin);
+    }
+    .featured-salon-review-highlight {
+        margin-top: var(--title-margin);
+        background: var(--main-color);
+        color: var(--second-text-color);
+        padding: 1rem;
+        margin-left: -1rem;        
+        border-radius: 2rem;
+        font-style: italic;
+    }
+    .featured-salon-review-bold {
+        font-weight: bold;
+        color: var(--main-second-color);
+    }
+    .featured-salon-item-info-description-wrap {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .featured-salon-item-info-description-wrap .item {
+        width: 25%;
+        padding-right: 2rem;
+        margin-bottom: var(--element-margin);
+    }
+    .featured-salon-item-info-description-wrap .title {
+        border-bottom: 1px solid var(--main-color);
+        margin-bottom: 0.5rem;
+        font-size: 1.3rem;
+        font-weight: 500;
+        width: fit-content;
+    }
+    .featured-salon-item-info-description-wrap a {
+        text-decoration: none;
+    }
+    .featured-salon-demo-wrap {
+        position: relative;
+        width: fit-content;
+    }
+    .featured-right-navigation {
+        position: absolute;
+        bottom: 10px;
+        z-index: 1;
+        left: 0;
+        padding: 0 calc(var(--element-margin) / 2);
+        width: 100%;
+    }
+    /* .featured-salon-demo-navigation {
+        position: absolute;
+        top: 45%;
+        z-index: 1;
+        left: 0;
+        padding: 0 10px;
+        width: 100%;
+    }
+    .featured-salon-demo-navigation .nav-left {
+        display: none;
+    }
+    .featured-right-navigation .nav-right, .featured-salon-demo-navigation .nav-right {
+        right: 10px;
+        position: absolute;        
+    }
+    .featured-right-navigation svg, .featured-salon-demo-navigation svg{
+        width: 30px;
+        cursor: pointer;
+        fill: var(--main-color);
+        stroke: var(--second-color);
+        stroke-width: 2px;        
+    }
+    .featured-right-navigation svg:hover, .featured-salon-demo-navigation svg:hover {
+        fill: var(--main-color);
+        stroke: var(--second-color);
+    }
+    .featured-salon-item-demo {
+        display: flex;
+        margin: 3rem 0;
+    }
+    .featured-salon-item-demo.demo-right {
+        display: none;
+    }
+    .featured-salon-item-demo-before,
+    .featured-salon-item-demo-after {        
+        position: relative;
+        color: var(--second-color);
+    }    
+    .featured-salon-item-demo-before::before {
+        content: "Before";
+        position: absolute;
+        top: 0.5rem;
+        left: 1rem;
+        font-weight: 600;
+        font-size: 1.3rem;
+    }
+    .featured-salon-item-demo-after::before {
+        content: "After";
+        position: absolute;
+        top: 0.5rem;
+        left: 1rem;
+        font-weight: 600;
+        font-size: 1.3rem;        
+    }
+    .featured-animate-left{
+        position:relative;
+        animation:animateleft 0.4s
+    }
+    @keyframes animateleft{
+        from{
+            left:-300px;
+            opacity:0
+        } 
+        to{
+            left:0;
+            opacity:1
+        }
+    }
+    .featured-animate-right{
+        position:relative;
+        animation:animateright 0.4s;
+    }
+    @keyframes animateright{
+        from{
+            right:-300px;opacity:0
+        } 
+        to{
+            right:0;opacity:1
+        }
+    } */
+    .featured-salon-item-logo {
+        position: absolute;
+        bottom: 15vw;        
+        right: 0;
+        z-index: -1;
+    }    
+    .featured-salon-item-service-description div::before {
+        content: "";
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        -moz-border-radius: 50%;
+        -webkit-border-radius: 50%;
+        background-color: var(--main-color);
+        display: inline-block;
+        margin-right: 0.4rem;
+    }
+    .featured-salon-item-service-wrap {
+        margin-bottom: var(--section-margin);
+    }
+    /* .splide__arrow {
+        position: absolute;
+        top: 50%;
+        z-index: 1;        
+    }
+    .splide__arrow--prev {
+        transform: rotate(180deg);
+    } */    
+    .featured-salon-review-wrapper {
+        padding-top: var(--title-margin);
+    }
+    .featured-salon-review-wrapper .item {        
+        padding: var(--element-margin);
+        background-color: var(--third-color);
+        border-radius: var(--border-radius);
+    }
+    .featured-salon-review-wrapper .item:nth-child(n+2) {
+        margin-top: var(--element-margin);        
+    }
+    .featured-salon-review-wrapper .item .author {        
+        margin-top: calc(var(--element-margin) / 2);
+        text-align: right;
+    }
+    .custom-slick-arrow {
+        background-color: transparent;
+        border: 0;        
+    }
+    .custom-slick-next, .custom-slick-prev {
+        z-index: 1;
+        height: var(--navigation-btn-height);
+        /* margin-top: -2.14286rem; */
+        padding: 0.71429rem;
+        width: var(--navigation-btn-width);
+        position: absolute;
+        display: block;
+        line-height: 0px;
+        font-size: 0px;
+        cursor: pointer;
+        background: transparent;
+        color: transparent;
+        /* top: 50%; */
+        bottom: 0;
+        /* transform: translate(0, -50%); */
+        outline: none;
+    }
+    .custom-slick-next {
+        right: calc(var(--left-border-distance) * -1) !important;
+    }
+    .custom-slick-prev {
+        left: calc(-1 * var(--left-border-distance)) !important
+    }
+    .custom-slick-next::before, .custom-slick-prev::before {
+        content: "";
+        background-position: 50%;
+        background-repeat: no-repeat;
+        background-size: 100%;
+        display: block;
+        height: 2.92857rem;
+        width: 1.42857rem;
+    }
+    .custom-slick-prev::before {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 512'%3E%3Cpath fill='%238e8d8d' d='M34.52 239.03L228.87 44.69c9.37-9.37 24.57-9.37 33.94 0l22.67 22.67c9.36 9.36 9.37 24.52.04 33.9L131.49 256l154.02 154.75c9.34 9.38 9.32 24.54-.04 33.9l-22.67 22.67c-9.37 9.37-24.57 9.37-33.94 0L34.52 272.97c-9.37-9.37-9.37-24.57 0-33.94z'/%3E%3C/svg%3E");
+    }
+    .custom-slick-prev:hover::before {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 512'%3E%3Cpath fill='%23d8d8d8' d='M34.52 239.03L228.87 44.69c9.37-9.37 24.57-9.37 33.94 0l22.67 22.67c9.36 9.36 9.37 24.52.04 33.9L131.49 256l154.02 154.75c9.34 9.38 9.32 24.54-.04 33.9l-22.67 22.67c-9.37 9.37-24.57 9.37-33.94 0L34.52 272.97c-9.37-9.37-9.37-24.57 0-33.94z'/%3E%3C/svg%3E");
+    }
+    .custom-slick-next::before {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 512'%3E%3Cpath fill='%238e8d8d' d='M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z'/%3E%3C/svg%3E");
+    }
+    .custom-slick-next:hover::before {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 512'%3E%3Cpath fill='%23d8d8d8' d='M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z'/%3E%3C/svg%3E");
+    }
+    @media (max-width: 1100px) {
+        .featured-salon-item-desp-top {
+            display: block;
+        }
+        .featured-salon-item-left, .featured-animate-right {
+            width: 100%;
+        }
+        .featured-salon-item-right {
+            padding: 0;
+            width: fit-content;
+            max-width: 100%;
+            margin-top: var(--section-margin);
+            margin-left: auto;
+            margin-right: auto;
+        }        
+    }
+    @media only screen and (max-width: 1024px) {
+        .featured-salon-item-info-description-wrap .item {
+            width: 50%;
+        }
+    }
+    /* @media (max-width: 950px) {
+        .featured-right-navigation {
+            display: block;
+            padding: 0;
+        }
+        .featured-salon-item-right {
+            width: fit-content;
+            max-width: 100%;
+            padding: 0 3rem;
+        }
+        .featured-salon-item-right .featured-image-slide-wrapper {
+            max-width: calc(100% - 2rem);
+        }
+        .featured-salon-item-right img {
+            display: none;
+            margin: 1rem;
+            max-width: 100%;
+        }
+    } */        
+    @media only screen and (max-width: 900px) {        
+        .featured-salon-item-description-wrap {
+            display: block;
+        }
+        .featured-salon-item-description,
+        .featured-salon-item-owner-description {
+            text-align: justify;
+        }      
+        .featured-salon-review-highlight {
+            margin-left: 0;  
+            margin-right: 0;
+        }         
+    }    
+    @media only screen and (max-width: 800px) {              
+        .featured-salon-item-demo-before,
+        .featured-salon-item-demo-after {
+            width: 50%;
+        }
+        /* .featured-salon-item-right {            
+            width: calc(100% - var(--left-border-distance));
+            padding-left: var(--left-border-distance);
+        } */
+        .featured-image-slide-wrapper {
+            margin-left: var(--element-margin);
+            margin-right: var(--element-margin);
+            width: calc(100% - 2 * var(--element-margin));
+        }
+        .featured-salon-item-description .hidden {
+            display: none;
+        }
+    }    
+    @media only screen and (max-width: 550px) {
+        .featured-salon-item-info-description-wrap .item {
+            width: 100%;
+            padding: 0;
+        }        
+        :root {
+            --title-font-size: 2rem;
+        }
+    }    
+</style>
+<div style="position: relative;">
+    <div class="menu-wrap">
+        <div class="menu-items">            
+        </div>    
+    </div>
+</div>
+<div class="featured-salon-title">
+    Our Digital Media Partners
+</div>
+<div class="featured-salon-item">
+    <div class="featured-salon-item-description-wrap">                
+        <div class="featured-salon-item-desp-top">
+            <div class="featured-salon-item-left">
+                <div class="featured-salon-item-title">
+                    dawn hairclub hair replacement
+                </div>
+                <div class="featured-salon-item-description">
+                    <div>
+                        My name is Dawn, and I have worked in the hair replacement business for over 25 years. It is my passion to make people look fabulous and feel confident within their own skin. I specialize in hair replacement techniques that are based on individualized customizing, fitting, styling and coloring of the hair replacement to naturally match a variety of appearances. My services are ensured to fit within your budget at a reasonable cost, without the worry of expensive fees. You can provide your own hair replacement system, and I will customize, fit and style it to your unique style at an affordable price. I also offer a full hair replacement system, plus service, with a free confidential consultation before your commitment. No contract or obligation required.
+                    </div>                    
+                </div>
+                <div class="featured-salon-item-highlight">
+                    Our Recent Reviews
+                </div>
+                <div class="featured-salon-review-wrapper">
+                    <div class="item">                        
+                        <div>Nice place for the haircut. Dawn is very nice person, she is very polite and professional.</div>
+                        <div class="author">George Mathew</div>
+                    </div>
+                    <div class="item">                        
+                        <div>I started with Dawn 5 years ago when she was with another salon. I decided to move to her when she opened her new salon because she is the best at what she does. She is affordable and her products and services are the BEST I’ve found! You won’t be disappointed. Dawn loves her customers and has become family to me.</div>
+                        <div class="author">Barbara Livermore</div>
+                    </div>                    
+                </div>
+            </div>
+            <div class="featured-salon-item-right">
+                <picture>
+                    <source media="(max-width:800px)" srcset="/content/images/marketing/featuredsalons/dv/2-1.jpg">
+                    <img src="/content/images/marketing/featuredsalons/dv/2.jpg" alt="Dawn"/>
+                </picture>
+            </div>
+        </div>        
+    </div>
+    <div class="featured-image-slide-wrapper">
+        <div class="feature-image-slide">
+            <picture>     
+                <source media="(max-width:1300px)" srcset="/content/images/marketing/featuredsalons/dv/3-300w.jpg">           
+                <img data-lazy="/content/images/marketing/featuredsalons/dv/3-400w.jpg" alt="dawn testimonial"/>
+            </picture>
+        </div>
+        <div class="feature-image-slide">
+            <picture>     
+                <source media="(max-width:1300px)" srcset="/content/images/marketing/featuredsalons/dv/4-300w.jpg">           
+                <img data-lazy="/content/images/marketing/featuredsalons/dv/4-400w.jpg" alt="dawn testimonial"/>
+            </picture>
+        </div>
+        <div class="feature-image-slide">
+            <picture>     
+                <source media="(max-width:1300px)" srcset="/content/images/marketing/featuredsalons/dv/5-300w.jpg">           
+                <img data-lazy="/content/images/marketing/featuredsalons/dv/5-400w.jpg" alt="dawn testimonial"/>
+            </picture>
+        </div>
+        <div class="feature-image-slide">
+            <picture>     
+                <source media="(max-width:1300px)" srcset="/content/images/marketing/featuredsalons/dv/6-300w.jpg">           
+                <img data-lazy="/content/images/marketing/featuredsalons/dv/6-400w.jpg" alt="dawn testimonial"/>
+            </picture>
+        </div>
+    </div>
+    <div class="featured-salon-item-service-wrap">
+        <div class="featured-salon-item-service-title">Services</div>
+        <div class="featured-salon-item-service-description">
+            <div>Basic service, buy your own hair pieces and I will customize, style and color</div>
+            <div>Full service, includes customized hair replacement system (hair piece) and service</div>
+            <div>Add-on service / Hair coloring</div>
+            <div>Free confidential consultation</div>
+        </div>
+    </div>
+    <div class="featured-salon-item-info-wrap">
+        <div class="featured-salon-item-info-title">Information</div>
+        <div class="featured-salon-item-info-description-wrap">
+            <div class="item">
+                <div class="title">Address</div>
+                <div>Pepper Square Shopping Center</div>
+                <div>14902 Preston Rd, Suite 506 (Unique Salon Suites) , #8, Dallas, Texas 75254</div>
+            </div>
+            <div class="item">
+                <div class="title">Email</div>
+                <div>
+                    <a href="mailto: dawnhairclub@gmail.com"
+                        >dawnhairclub@gmail.com</a
+                    >
+                </div>
+            </div>
+            <div class="item">
+                <div class="title">Website</div>
+                <div>
+                    <a href="https://dawnhairclub.com/" target="_blank"
+                        >https://dawnhairclub.com/</a
+                    >
+                </div>
+            </div>
+            <div class="item">
+                <div class="title">Tel</div>
+                <a href="tel:1-214-718-3678">214-718-3678</a>                
+            </div>
+        </div>
+    </div>    
+</div>
+<script src="/content/js/submenu.js"></script>
+<script
+    src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+    defer
+></script>
+<script>
+    function embededSlick() {
+        $(".featured-image-slide-wrapper").slick({
+            slidesToShow: 4,            
+            dots: false,
+            infinite: true,
+            speed: 300,
+            autoplay: true,
+            autoplaySpeed: 2000,
+            lazyLoad: 'ondemand',
+            prevArrow: "<button class='custom-slick-prev custom-slick-arrow' aria-label='Previous' type='button'>Previous</button>",
+            nextArrow: "<button class='custom-slick-next custom-slick-arrow' aria-label='Next' type='button'>Next</button>",
+            responsive: [                
+                {
+                    breakpoint: 1300,
+                    settings: {
+                        slidesToShow: 3
+                    }
+                },
+                {
+                    breakpoint: 600,
+                    settings: {
+                        slidesToShow: 2
+                    }
+                },
+                {
+                    breakpoint: 500,
+                    settings: {
+                        slidesToShow: 1
+                    }
+                }
+            ]
+        }); 
+        $(".featured-image-slide-wrapper").show();
+        console.log("here");
+    }
+    window.addEventListener("DOMContentLoaded", function() {        
+        let sSlick = document.createElement("script");
+        sSlick.setAttribute("src", "/content/js/slick.min.js");
+        document.body.appendChild(sSlick);
+
+        sSlick.addEventListener("load", embededSlick, false);
+    })
+    // window.addEventListener("resize", function() {
+    //     console.log($(window).width());
+    // })
+</script>

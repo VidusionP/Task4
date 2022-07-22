@@ -1,0 +1,309 @@
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+<style>
+    .main {
+        font-family: 'Montserrat', sans-serif;
+    }
+    .section-color {
+        background-color: #fdf8e4;
+    }
+    .section {
+        margin: 1rem auto;
+        padding: 1.5rem 2.5rem;
+        text-align: justify;
+        font-size: 14pt;
+        line-height: 18pt;
+    }
+    .section:nth-child(1) {
+        text-align: center;      
+        background-color: #fff;  
+    }
+    .section:nth-child(1) div:nth-child(1){        
+        font-size: 21pt;
+        line-height: initial;
+    }
+    .section:nth-child(1) div:nth-child(2){        
+        font-size: 33pt;
+        line-height: initial;
+    }
+    .section:nth-child(3) div {
+        font-size: 14pt;
+        margin: 1.5rem 0;
+    }
+    .section:nth-child(3) div:first-child {
+        margin-top: 0;
+    }
+    .section:nth-child(3) div:last-child {
+        margin-bottom: 0;
+    }
+    .section-img {
+        padding: 0 !important;
+    }
+    .section-2-chart {
+        display: flex;        
+    }
+    .section-2-chart .item {
+        width: 50%;
+        display: flex;
+        padding: 1.5rem 0;
+    }
+    .section-2-chart .item:nth-child(1) {        
+        border-right: 1px solid #9d9885;
+        padding-right: 2rem;
+    }
+    .section-2-chart .item:nth-child(2) {
+        padding-left: 2rem;
+    }
+    .section-2-chart .item img {
+        width: 20%;
+        height: fit-content;
+        margin-right: 2rem;
+        margin-top: 1.3rem;
+    }    
+    .section-2-chart .item div {
+        width: 80%;
+    }
+    .section:nth-child(4), .section:nth-child(5), .section:nth-child(6) {
+        padding: 2rem 0 4px;
+    }
+    .section:nth-child(4) div:nth-child(1), .section:nth-child(5) div:nth-child(1), .section:nth-child(6) div:nth-child(1) {
+        text-align: center;
+        font-size: 20pt;
+        line-height: initial;
+    }
+    .section:nth-child(4) div:nth-child(2), .section:nth-child(5) div:nth-child(2), .section:nth-child(6) div:nth-child(2) {
+        font-size: 14pt;
+        margin: 2rem 0 3rem;
+        padding: 0 2.5rem;
+    }
+    .section:nth-child(4) div:nth-child(3), .section:nth-child(5) div:nth-child(3) {
+        display: flex;
+    }
+    .pre-order-content {
+        display: block !important;
+    }
+    .section:nth-child(4) div:nth-child(3) .item, .section:nth-child(5) div:nth-child(3) .item {
+        background-color: #fff;
+        text-align: justify;
+    }
+    .section:nth-child(4) div:nth-child(3) .item:nth-child(1), .section:nth-child(5) div:nth-child(3) .item:nth-child(2) {
+        margin: 0 2px 0 4px;
+    }
+    .section:nth-child(4) div:nth-child(3) .item:nth-child(1), .section:nth-child(5) div:nth-child(3) .item:nth-child(1) {        
+        padding: 2.5rem;
+    }
+    .section:nth-child(4) div:nth-child(3) .item:nth-child(1) img, .section:nth-child(5) div:nth-child(3) .item:nth-child(1) img {
+        width: 100%;        
+    }
+    .section:nth-child(4) div:nth-child(3) .item:nth-child(2), .section:nth-child(5) div:nth-child(3) .item:nth-child(1) {
+        margin: 0 4px 0 2px;
+    }
+    .section:nth-child(4) div:nth-child(3) .item:nth-child(2), .section:nth-child(5) div:nth-child(3) .item:nth-child(2) {        
+        font-size: 14pt;          
+        padding: 6rem 2.5rem;
+    }
+    .section:nth-child(4) div:nth-child(3) .item:nth-child(1) {                
+        width: calc(55% - 6px);
+    }
+    .section:nth-child(4) div:nth-child(3) .item:nth-child(2) {                
+        width: calc(45% - 6px);                
+    }
+    .section:nth-child(5) div:nth-child(3) .item:nth-child(2) {                
+        width: calc(48% - 6px);                
+    }
+    .section:nth-child(5) div:nth-child(3) .item:nth-child(1) {                
+        width: calc(52% - 6px);             
+    }
+    .section:nth-child(4) div:nth-child(3) .item:nth-child(2) div, .section:nth-child(5) div:nth-child(3) .item:nth-child(2) div {
+        margin: 1rem 0;
+    }
+    .section:nth-child(4) div:nth-child(3) .item:nth-child(2) .title, .section:nth-child(5) div:nth-child(3) .item:nth-child(2) .title {
+        font-size: 20pt;
+        margin: 0;
+    }
+    .section:nth-child(4) div:nth-child(3) .item:nth-child(2) img, .section:nth-child(5) div:nth-child(3) .item:nth-child(2) img {
+        width: 100%;
+        max-width: 100%;
+        height: 4px;
+        margin: 2rem 0;
+    }
+    .section:nth-child(5) div:nth-child(3) .item:nth-child(1) {
+        order: 2;
+    }
+    .section:nth-child(5) div:nth-child(3) .item:nth-child(2) {
+        order: 1;
+    }
+    .section:nth-child(7) {
+        padding: 4px;
+    }
+    .section:nth-child(7) img {
+        width: 100%;        
+    }
+    .section:nth-child(7) .item {
+        background-color: #fff;
+        padding: 1rem 2rem;
+    }
+    .section:nth-child(8) {
+        padding: 0;
+        font-size: 14pt;
+    }
+    .section:nth-child(8) .item-picture {
+        padding: 4px;
+    }
+    .section:nth-child(8) .item-content {
+        padding: 1.5rem 2rem;
+    }
+    .section:nth-child(8) .note-bye {
+        margin-top: 2rem;
+        font-weight: 500;
+    }
+    .section:nth-child(8) .item {
+        background-color: #fff;
+        padding: 1rem 4rem;
+    }
+    @media only screen and (max-width: 1300px) {
+        .section:nth-child(4) div:nth-child(3) .item:nth-child(2), .section:nth-child(5) div:nth-child(3) .item:nth-child(2) {                    
+            padding: 3rem 2.5rem;
+        }
+    }
+    @media only screen and (max-width: 1260px) {
+        .section:nth-child(4) div:nth-child(3), .section:nth-child(5) div:nth-child(3) {
+            display: block;
+        }
+        .section:nth-child(4) div:nth-child(3) .item, .section:nth-child(5) div:nth-child(3) .item {
+            margin: 4px !important;
+            width: calc(100% - 8px) !important;
+        }
+        .section:nth-child(4) div:nth-child(3) .item:nth-child(1), .section:nth-child(5) div:nth-child(3) .item:nth-child(1) {
+            width: fit-content;
+            margin: 0 auto;
+        }
+        .section:nth-child(4) div:nth-child(3) .item img, .section:nth-child(5) div:nth-child(3) .item img {
+            max-width: 700px;
+        }
+        .section:nth-child(4), .section:nth-child(5) {
+            padding: 2rem 0 1px;
+        }
+    }
+    @media only screen and (max-width: 900px) {
+        .section, .section:nth-child(3) div, .section:nth-child(4) div:nth-child(2), .section:nth-child(5) div:nth-child(2), .section:nth-child(6) div:nth-child(2), .section:nth-child(4) div:nth-child(3) .item:nth-child(2), .section:nth-child(5) div:nth-child(3) .item:nth-child(2), .section:nth-child(8) {
+            font-size: 12pt;
+        }
+        .section:nth-child(1) div:nth-child(1), .section:nth-child(4) div:nth-child(1), .section:nth-child(5) div:nth-child(1), .section:nth-child(6) div:nth-child(1), .section:nth-child(4) div:nth-child(3) .item:nth-child(2) .title, .section:nth-child(5) div:nth-child(3) .item:nth-child(2) .title {
+            font-size: 18px;
+        }
+        .section:nth-child(1) div:nth-child(2) {
+            font-size: 28px;
+        }        
+    }
+    @media only screen and (max-width: 790px) {
+        .section-2-chart {
+            display: block;
+        }
+        .section-2-chart .item:nth-child(1) {
+            border: none;
+        }
+        .section-2-chart .item {
+            width: 100%;
+            padding: 0 !important;
+        }
+        .section-2-chart .item img {
+            max-width: 75px;
+        }
+    }
+    @media only screen and (max-width: 475px) {
+        .section {
+            padding: 1rem 1.5rem;
+        }
+        .section:nth-child(4), .section:nth-child(5), .section:nth-child(6) {
+            padding: 1rem 0 1px;
+        }
+        .section:nth-child(4) div:nth-child(2), .section:nth-child(5) div:nth-child(2), .section:nth-child(6) div:nth-child(2) {
+            padding: 0 1.5rem;
+        }
+        .section:nth-child(3) div {
+            margin: 1rem 0;
+        }
+        .section:nth-child(4) div:nth-child(3) .item:nth-child(2), .section:nth-child(5) div:nth-child(3) .item:nth-child(2), .section:nth-child(8) .item-content {
+            padding: 1.5rem;
+        }         
+    }
+</style>
+<div class="main">
+    <div class="section-color section">
+        <div>Ordering your hair pieces during the pandemic:</div>
+        <div>How long do you have to wait?</div>
+    </div>
+    <div class="section section-img">
+        <img src="/product_images/uploaded_images/landing-bodyimage1.jpg" alt="How long wait" loading="lazy">
+    </div>
+    <div class="section section-color">
+        <div>The pandemic is presenting a great challenge to the hair systems industry as fewer people are able to provide hair to the manufacturers.</div>
+        <div>While the strict COVID-19 rules in most countries have disrupted the manufacturing and delivering process, we at Superhairpieces continue to get orders out as soon as possible, while also protecting our employees and clients at the same time.</div>
+        <div>So how long do you have to wait for your custom order? On this page, we will take a look at:</div>
+        <div class="section-2-chart">
+            <div class="item">
+                <img src="/product_images/uploaded_images/landing-hand2.png" alt="Hand" loading="lazy">
+                <div>Our fulfillment rate during the pandemic (the waiting time to receive your order)</div>
+            </div>
+            <div class="item">
+                <img src="/product_images/uploaded_images/landing-chart3.png" alt="Chart" loading="lazy">
+                <div>Cheat sheet to estimate whether your hair piece(s) will take a longer/shorter time to process</div>
+            </div>
+        </div>
+    </div>
+    <div class="section section-color">
+        <div>What does Fulfillment Rate mean?</div>
+        <div>A fulfillment rate is the total number of orders processed divided by the number of orders that are received as a percentage. It should give you an idea on how long it will take for you to get your order.</div>
+        <div>
+            <div class="item">
+                <div>
+                    <img src="/product_images/uploaded_images/custom-order-chart.png" alt="Chart" loading="lazy">
+                </div>
+            </div>
+            <div class="item">
+                <div class="title">Custom Order Fulfillment Rate during The Pandemic</div>
+                <img src="/product_images/uploaded_images/landing-stroke5.png" alt="Separate" loading="lazy">
+                <div>As you can see, there’s a good chance you will get your custom order placed in January or February in April (1-2 months waiting time).</div>
+                <div>However, with all the disruptions and uncertainties during the pandemic — and depending on the type of hairpiece you order — the average waiting time for custom orders is around 5-6 months.</div>
+            </div>
+        </div>
+    </div>
+    <div class="section section-color">
+        <div>What about Pre-Orders?</div>
+        <div>Due to high demand as well as reduced inventory because of the pandemic, our Pre-Orders fulfillment rate is as follows:</div>
+        <div>
+            <div class="item">
+                <div>
+                    <img src="/product_images/uploaded_images/pre-orders-chart.png" alt="Chart" loading="lazy">
+                </div>
+            </div>
+            <div class="item">
+                <div class="title">Pre-Order Fulfillment Rate during The Pandemic</div>
+                <img src="/product_images/uploaded_images/landing-stroke5.png" alt="Separate" loading="lazy">
+                <div class="pre-order-content">The average waiting time for pre-orders is still <strong>3-4 months for lace-based</strong> hairpieces and <strong>2-3 months for skin-based</strong> hairpieces. However, your order may arrive much sooner if the factory was already working on that particular unit before you placed the order.</div>                
+            </div>            
+        </div>
+    </div>
+    <div class="section section-color">
+        <div>Why are some custom and Pre-Orders processed faster than others?</div>
+        <div>It depends on the type, base, density, and color of the hair piece you ordered. Here's the cheat sheet:</div>
+    </div>
+    <div class="section section-color">
+        <div class="item">
+            <img src="/product_images/uploaded_images/landing-chart6.jpg" alt="Chart" loading="lazy">
+        </div>
+    </div>
+    <div class="section section-color">
+        <div class="item-picture">
+            <div class="item">
+                <img src="/product_images/uploaded_images/landing-chart7.jpg" alt="Chart" loading="lazy">
+            </div>
+        </div>
+        <div class="item-content">
+            <div>You can be rest assured that we are doing everything we can to get your custom and Pre-Orders to you as quickly as possible. If you have any questions, please do not hesitate to reach out to our customer support team on our website and social media channels.</div>
+            <div class="note-bye">Stay safe and healthy,</div>
+            <div>Superhairpieces team</div>
+        </div>
+    </div>
+</div>

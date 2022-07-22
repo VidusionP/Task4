@@ -1,0 +1,362 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+    :root {
+        --element-margin:1.3rem;
+        --section-margin:2.3rem;
+        --font-family1: 'Montserrat', sans-serif;
+        --color1: #7299B5;
+        --color2: #f8f9fa;
+        --color3: #0D4060;
+        --color4: #878787;
+    }
+    .body.page .container {
+        padding: 0;        
+    }
+    .body.page .page {
+        margin: 0;
+    }
+    .body.page .page-content {
+        padding: 0;
+    }
+    .hg-wrap {
+        font-family: var(--font-family1);
+    }
+    section {
+        padding: var(--element-margin);
+        margin-bottom: var(--section-margin);
+    }
+    .hg-header {
+        display: flex;
+        padding: var(--section-margin) 50% var(--section-margin) var(--element-margin);
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        height: 54vw;
+        overflow: hidden;
+        border-bottom: 8px solid var(--color1);
+        margin-bottom: 0;
+    }
+    .hg-header .content {
+        z-index: 9;
+        font-size: 17px;
+    }
+    .hg-header img {
+        position: absolute;
+        width: 100%;
+        left: 0;
+        top: 0;
+    }
+    .hg-wrap .desp {
+        text-align: center;
+        padding: var(--section-margin) var(--element-margin);
+        font-size: 15px;
+    }    
+    .hg-wrap .sub-desp {
+        display: none;
+    }
+    .hg-special {
+        background: var(--color1);
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 42px;
+        color: var(--color2);
+    }        
+    section .title {
+        font-size: 25px;
+        text-align: center;
+    }
+    .hg-special .title {
+        text-align: left;
+    }
+    .hg-special .content {
+        margin-top: var(--element-margin);
+        font-size: 14px;
+    }
+    .hg-special .c-title {        
+        font-weight: bold;
+    }
+    .hg-special .content.special {
+        text-align: center;
+    }
+    .hg-special ul {
+        list-style-type: "- ";
+    }
+    .hg-special img {
+        display: none;
+    }
+    .hg-goal .c-desp {
+        font-size: 16px;
+        margin-bottom: var(--element-margin);
+        text-align: center;
+    }
+    .hg-goal .c-title {
+        font-size: 23px;
+        font-weight: bold;
+        color: var(--color3);
+        margin-bottom: var(--element-margin);
+        text-align: center;
+    }
+    .hg-goal img {
+        display: block;
+        margin: 0 auto var(--element-margin);
+        width: 113px;
+        height: auto;
+    }
+    .hg-goal a {
+        display: block;
+        text-decoration: none;
+    }
+    .hg-goal a:focus, .hg-goal a:active {
+        outline: none !important;
+    }
+    .hg-images a{
+        text-decoration: none;
+    }
+    .hg-images a:focus, .hg-images a:active {
+        outline: none !important;
+    }
+    .hg-images img {
+        width: 100%;
+    }
+    .hg-images img:first-of-type {
+        margin-top: var(--element-margin);
+    }
+    .hg-disclaimer {
+        color: var(--color4);
+        font-size: 12px;
+        text-align: center;
+    }
+    .hg-disclaimer .c-title {
+        font-weight: bold;
+        font-size: 15px;
+    }
+    @media (min-width:475px) {
+        .hg-header .content, section .title{
+            font-size: 23px;
+        }
+        .hg-wrap .desp, .hg-disclaimer .c-title, .hg-special .content {
+            font-size: 17px;
+        }
+        .hg-disclaimer {
+            font-size: 14px;
+        }
+    }
+    @media (min-width: 801px) {
+        .hg-header {
+            height: 29vw;
+            border-bottom: none;
+        }
+        .body.page {
+            padding: 0;
+        }
+        .hg-special + .desp {
+            padding-bottom: var(--element-margin);
+        }
+        .hg-wrap .sub-desp {
+            display: block;
+            font-size: 16px;
+            padding: 0 var(--element-margin) var(--section-margin);
+            text-align: center;
+        }
+        .hg-special .content.special {
+            display: none;
+        }
+        .hg-goal .content-wrap {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);   
+            grid-gap: 5px;         
+        }
+        .hg-images .content-wrap {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 5px;
+        }        
+        .body.page .page-content--centered {
+            padding: 0;
+        }
+    }
+    @media (min-width: 900px) {
+        .hg-header {
+            padding-right: 45%;
+            padding-left: var(--section-margin);            
+        }
+        .hg-header .content, section .title {
+            font-size: 25px;
+        }
+    }
+    @media (min-width: 1024px) {
+        .hg-special {
+            border-radius: 0px;
+            box-shadow: none;
+            position: relative;
+            padding-right: 55%;
+            overflow: hidden;
+        }
+        .hg-special img {
+            position: absolute;
+            right: 0;
+            top: 0;
+            object-fit: cover;
+            object-position: right;
+            display: block;
+            height: 100%;
+        }
+        .hg-special .content, .hg-special .title {
+            position: relative;
+        }
+        .hg-header .content, section .title {
+            font-size: 30px;
+        }
+    }
+    @media (min-width: 1280px) {
+        .body.page .container {
+            max-width: unset !important;
+        }
+        .hg-header {
+            padding: 0;
+        }
+        .hg-header .content {
+            max-width: 1280px;
+            padding: var(--section-margin) 45% var(--section-margin) var(--section-margin);
+        }
+        .hg-wrap .desp, .hg-wrap .sub-desp {
+            max-width: 1280px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .hg-header .content, section .title{
+            font-size: 32px;
+        }
+        .hg-special {
+            padding-right: var(--element-margin);            
+        }
+        .hg-special div {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding-right: 25%;
+        }
+        .hg-goal, .hg-images {
+            max-width: 1280px;
+            margin-left: auto;
+            margin-right: auto;
+        }        
+    }
+    /*
+    @media (min-width: 1024px) {
+        .hg-header .content, section .title{
+            font-size: 50px;
+        }
+        .hg-wrap .desp {
+            font-size: 25px;
+        }
+        .hg-disclaimer .c-title {
+            font-size: 24px;
+        }        
+        .hg-wrap .sub-desp, .hg-special .content, .hg-goal .c-desp {
+            font-size: 20px;
+        }
+        .hg-goal .item .c-desp {
+            font-size: 17px;
+        }
+        .hg-disclaimer {
+            font-size: 15px;
+        }        
+    }*/
+</style>
+<div class="hg-wrap">
+    <section class="hg-header">
+        <div class="content">Dealing with <strong>hair loss</strong>, <strong>balding</strong> or <strong>thinning</strong> for the first time?</div>
+        <picture>
+            <source media="(min-width:1280px)" srcset="/content/images/marketing/hairGrow/banner1-pc1.webp" type="image/webp">
+            <source media="(min-width:1280px)" srcset="/content/images/marketing/hairGrow/banner1-pc1.jpg" type="image/jpeg">
+            <source media="(min-width:801px)" srcset="/content/images/marketing/hairGrow/banner1-pc.webp" type="image/webp">
+            <source media="(min-width:801px)" srcset="/content/images/marketing/hairGrow/banner1-pc.jpg" type="image/jpeg">
+            <source srcset="/content/images/marketing/hairGrow/banner1-mobile.webp" type="image/webp">
+            <source srcset="/content/images/marketing/hairGrow/banner1-mobile.jpg" type="image/jpeg">
+            <img src="/content/images/marketing/hairGrow/banner1-mobile.jpg" alt="">
+        </picture>
+    </section>
+    <div class="desp">
+        You might be dealing with pattern baldness or alopecia. However, there could be many reasons for hair loss including stress or an infection.
+    </div>
+    <div class="sub-desp">
+        Determine the cause of your hair loss by visiting your doctor for a check-up first.
+    </div>
+    <section class="hg-special">
+        <picture>
+            <source srcset="/content/images/marketing/hairGrow/img1-pc.webp" type="image/webp">
+            <source srcset="/content/images/marketing/hairGrow/img1-pc.jpg" type="image/jpeg">
+            <img src="/content/images/marketing/hairGrow/img1-pc.jpg" alt="">
+        </picture>
+        <div class="title">The main causes</div>
+        <div class="content">
+            <div class="c-title">Men/Women</div>
+            <ul>
+                <li>Genetics</li>
+                <li>Styling stress such as tight hairstyles, pulling the hair back, overdyeing hair</li>
+                <li>General stress which can cause telogen effluvium</li>
+            </ul>
+        </div>
+        <div class="content">
+            <div class="c-title">
+                Women
+            </div>
+           <ul>
+               <li>Temporary situations such as diet, stress, illness, medication, pregnancy and menopause</li>
+           </ul>
+        </div>
+        <div class="content special">
+            Determine the cause of your hair loss by visiting your doctor for a check-up first.
+        </div>
+    </section>
+    <section class="hg-goal">        
+        <div class="title">Goals</div>
+        <div class="c-desp">What do you require for your hair?</div>        
+        <div class="content-wrap">
+            <div class="item">
+                <div class="c-title">Thicker Hair</div>
+                <img src="/content/images/marketing/hairGrow/thickerhair.svg" alt="">
+                <div class="c-desp">For those at an early stage of hair loss with thinning hair</div>
+            </div>
+            <div class="item">
+                <div class="c-title">Hair Regrowth</div>
+                <img src="/content/images/marketing/hairGrow/hairregrowth.svg" alt="">
+                <div class="c-desp">For those dealing with moderate hair loss and want their hair back</div>
+            </div>
+            <a href="/men-hair-pieces-toupees-in-stock/" class="item">
+                <div class="c-title">Cover Up Bald Spots</div>
+                <img src="/content/images/marketing/hairGrow/baldpatches.svg" alt="">
+                <div class="c-desp">For those at an advanced stage of hair loss with significant balding</div>
+            </a>
+        </div>             
+    </section>
+    <section class="hg-images">
+        <div class="title">Products that can help you</div>
+        <div class="content-wrap">
+            <a href="/pro-gen-active-care">
+                <picture>
+                    <source media="(min-width:450px)" srcset="/content/images/marketing/hairGrow/progen-pc.webp" type="image/webp">
+                    <source media="(min-width:450px)" srcset="/content/images/marketing/hairGrow/progen-pc.jpg" type="image/jpeg">
+                    <source srcset="/content/images/marketing/hairGrow/progen-mobile.webp" type="image/webp">
+                    <source srcset="/content/images/marketing/hairGrow/progen-mobile.jpg" type="image/jpeg">
+                    <img src="/content/images/marketing/hairGrow/progen-mobile.jpg" alt="progen">
+                </picture>
+            </a>
+            <a href="/therapyg">
+                <picture>
+                    <source media="(min-width:450px)" srcset="/content/images/marketing/hairGrow/therapyg-pc.webp" type="image/webp">
+                    <source media="(min-width:450px)" srcset="/content/images/marketing/hairGrow/therapyg-pc.jpg" type="image/jpeg">
+                    <source srcset="/content/images/marketing/hairGrow/therapyg-mobile.webp" type="image/webp">
+                    <source srcset="/content/images/marketing/hairGrow/therapyg-mobile.jpg" type="image/jpeg">
+                    <img src="/content/images/marketing/hairGrow/therapyg-mobile.jpg" alt="therapyg">
+                </picture>
+            </a>
+        </div>
+    </section>
+    <section class="hg-disclaimer">
+        <div class="c-title">Disclaimer:</div>
+        <div>Superhairpieces does not bear any responsibility for the claims, safety, reliability, durability  and performance of any of the mentioned products.</div>
+        <div>Please make sure to read each product's label and instructions carefully before using.</div>
+    </section>
+</div>

@@ -1,0 +1,12 @@
+{
+  "customLayouts": {
+    "brand": {},
+    "category": {},
+    "page": {
+      "test.html": "/test"
+    },
+    "product": {}
+  },
+  "normalStoreUrl": "https://store-mjczo26kh4.mybigcommerce.com/",
+  "port": "3000"
+}

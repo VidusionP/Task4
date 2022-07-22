@@ -1,0 +1,50 @@
+<script type="text/javascript" src="https://superhairpieces.com/content/js/instafeed.mod.js"></script>
+<script type="text/javascript" src="https://superhairpieces.com/content/js/slick.min.js"></script>
+<script type="text/javascript">
+    var userFeed = new Instafeed({
+        get: "user",
+        userId: "605065653",
+        accessToken: "605065653.5cf7999.c63d7b2fc1174afa87f348f500ac8da5",
+        resolution: "standard_resolution",
+        limit: 12,
+        target: "instafeed",
+        template: '<a href="[[link]]" target="_blank"><img src="[[image]]" /></a> [[square]]',
+        after: function () {
+            $("#instafeed").slick({
+                mobileFirst: true,
+                infinite: true,
+                dots: false,
+                arrows: false,
+                autoplay: true,
+                autoplaySpeed: 5000,
+                slidesToShow: 2,
+                slidesToScroll: 2,
+                responsive: [
+                    {
+                        breakpoint: 1024,
+                        settings: {
+                            slidesToShow: 6,
+                            slidesToScroll: 6,
+                        },
+                    },
+                    {
+                        breakpoint: 800,
+                        settings: {
+                            slidesToShow: 4,
+                            slidesToScroll: 4,
+                        },
+                    },
+                    {
+                        breakpoint: 480,
+                        settings: {
+                            slidesToShow: 3,
+                            slidesToScroll: 3,
+                        },
+                    },
+                ],
+            });
+        },
+    });
+
+    userFeed.run();
+</script>

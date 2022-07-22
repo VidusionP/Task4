@@ -1,0 +1,668 @@
+<div class="stamped-rewards-window">
+    <div class="stamped-rewards-background"></div>
+    <div class="stamped-rewards-header" style="height: auto">
+        <div class="stamped-rewards-header-close"></div>
+        <div class="stamped-rewards-header-container">
+            <div class="stamped-rewards-header-content">
+                <div class="stamped-rewards-header-main">
+                    <span class="stamped-rewards-header-main-title">Hi Nana 👋</span>
+                    <span class="stamped-rewards-header-main-points" data-name1="Points" data-points="0">0 Points</span>
+                    <span class="stamped-rewards-header-main-subtitle">
+                        <span>Welcome to Rewards Program</span>
+                    </span>
+                </div>
+                <div class="stamped-rewards-header-small">
+                    <span onclick="StampedFn.loadRewardsCards('main');" class="stamped-rewards-header-nav">
+                        <svg
+                            class="svg-inline--fa fa-chevron-left fa-w-10"
+                            data-prefix="fad"
+                            data-icon="chevron-left"
+                            role="img"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 320 512"
+                            data-fa-i2svg=""
+                        >
+                            <g class="fa-group">
+                                <path class="fa-secondary" fill="currentColor" d="M285.59 410.4a23.93 23.93 0 0 1 0 33.84l-22.7 22.65a24 24 0 0 1-33.94 0l-154.31-154L131.42 256z"></path>
+                                <path
+                                    class="fa-primary"
+                                    fill="currentColor"
+                                    d="M262.85 45.06l22.7 22.65a23.93 23.93 0 0 1 0 33.84L74.58 312.9l-40-40a23.94 23.94 0 0 1 0-33.84l194.33-194a24 24 0 0 1 33.94 0z"
+                                ></path>
+                            </g>
+                        </svg>
+                    </span>
+                    <span class="stamped-rewards-header-small-title"></span>
+                    <span class="stamped-rewards-header-small-points" data-name1="Points" data-points="0">0 Points</span>
+                </div>
+                <div class="stamped-rewards-header-menu">
+                    <span class="active" data-target="rewards"
+                        ><svg class="svg-inline--fa fa-gift fa-w-16" data-prefix="fad" data-icon="gift" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg="">
+                            <g class="fa-group">
+                                <path
+                                    class="fa-secondary"
+                                    fill="currentColor"
+                                    d="M224 320v160H64a32 32 0 0 1-32-32V320zm0-160H32a32 32 0 0 0-32 32v80a16 16 0 0 0 16 16h208zm256 0H288v128h208a16 16 0 0 0 16-16v-80a32 32 0 0 0-32-32zM288 480h160a32 32 0 0 0 32-32V320H288z"
+                                ></path>
+                                <path
+                                    class="fa-primary"
+                                    fill="currentColor"
+                                    d="M224 480h64V320h-64zM359.54 32c-41.82 0-68.86 21.3-103.54 68.3-34.68-47-61.72-68.3-103.54-68.3C103.71 32 64 71.5 64 120a85.65 85.65 0 0 0 10.15 40h78.21a40 40 0 1 1 0-80c20 0 34.78 3.3 86.55 80H224v128h64V160h-15c51.67-76.5 66-80 86.55-80a40 40 0 1 1 0 80h78.31A86.86 86.86 0 0 0 448 120c0-48.5-39.71-88-88.46-88z"
+                                ></path>
+                            </g>
+                        </svg>
+                        Rewards</span
+                    >
+                    <span data-target="reviews">
+                        <svg class="svg-inline--fa fa-star-half fa-w-18" data-prefix="fad" data-icon="star-half" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" data-fa-i2svg="">
+                            <g class="fa-group">
+                                <path
+                                    class="fa-secondary"
+                                    fill="currentColor"
+                                    d="M545.3 226L439.6 329l25 145.5c4.5 26.1-23 46-46.4 33.7l-130.7-68.6V0a31.62 31.62 0 0 1 28.7 17.8l65.3 132.4 146.1 21.2c26.2 3.8 36.7 36.1 17.7 54.6z"
+                                ></path>
+                                <path
+                                    class="fa-primary"
+                                    fill="currentColor"
+                                    d="M110.4 474.5l25-145.5L29.7 226c-19-18.5-8.5-50.8 17.7-54.6l146.1-21.2 65.3-132.4A31.62 31.62 0 0 1 287.5 0v439.6l-130.7 68.6c-23.4 12.3-50.9-7.6-46.4-33.7z"
+                                ></path>
+                            </g>
+                        </svg>
+                        Reviews</span
+                    >
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="stamped-rewards-content">
+        <div class="stamped-rewards-content-container">
+            <div class="stamped-rewards-cards">
+                <div id="stamped-rewards-cards" class="stamped-rewards-main">
+                    <div class="stamped-rewards-card stamped-rewards-card-main" data-title="Rewards Program" data-key="card-rewards">
+                        <span class="stamped-reward-card-title">Rewards Program</span>
+                        <div class="stamped-card-section-earning">
+                            <div>Earn Points for different actions, and turn those Points into awesome rewards!</div>
+
+                            <a href="javascript:;" onclick="StampedFn.loadLauncherView('view-earnings', this)" data-title="Earning Points" class="stamped-rewards-content-button">
+                                <svg
+                                    class="svg-inline--fa fa-hand-receiving fa-w-20"
+                                    aria-hidden="true"
+                                    data-prefix="fad"
+                                    data-icon="hand-receiving"
+                                    role="img"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 640 512"
+                                    data-fa-i2svg=""
+                                >
+                                    <g class="fa-group">
+                                        <path
+                                            class="fa-secondary"
+                                            fill="currentColor"
+                                            d="M204.8 230.4a32 32 0 1 0-51.2 38.4l38.1 50.8a16 16 0 0 1-1.5 20.9l-12.8 12.8a15.9 15.9 0 0 1-23.6-1.1L64 244.4V96a32 32 0 0 0-64 0v218.4a48.05 48.05 0 0 0 10.5 30l104.1 134.3a59.69 59.69 0 0 1 10.4 21.7 15.67 15.67 0 0 0 15.3 11.6H272a16 16 0 0 0 16-16V384a128.2 128.2 0 0 0-25.6-76.8zM608 64a32 32 0 0 0-32 32v148.4l-89.8 107.8a16.06 16.06 0 0 1-23.6 1.1l-12.8-12.8a16 16 0 0 1-1.5-20.9l38.1-50.8a32 32 0 1 0-51.2-38.4l-57.6 76.8A128.2 128.2 0 0 0 352 384v112a16 16 0 0 0 16 16h131.7a15.76 15.76 0 0 0 15.3-11.6 59.69 59.69 0 0 1 10.4-21.7l104.1-134.3a48.05 48.05 0 0 0 10.5-30V96a32 32 0 0 0-32-32z"
+                                        ></path>
+                                        <path
+                                            class="fa-primary"
+                                            fill="currentColor"
+                                            d="M201.2 150.4a31.51 31.51 0 0 1 0-44.7l96.4-96.4a31.63 31.63 0 0 1 44.8 0l96.3 96.3a31.63 31.63 0 0 1 0 44.8l-96.4 96.4a31.69 31.69 0 0 1-44.7 0z"
+                                        ></path>
+                                    </g>
+                                </svg>
+                                Earning Points
+                            </a>
+                        </div>
+
+                        <div class="stamped-card-section-spending">
+                            <div>Redeem your Points for awesome rewards, get a discount or a free gift from us!</div>
+
+                            <a href="javascript:;" onclick="StampedFn.loadLauncherView('view-spendings', this)" data-title="Redeem Points" class="stamped-rewards-content-button">
+                                <svg
+                                    class="svg-inline--fa fa-gift fa-w-16"
+                                    aria-hidden="true"
+                                    data-prefix="fad"
+                                    data-icon="gift"
+                                    role="img"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 512 512"
+                                    data-fa-i2svg=""
+                                >
+                                    <g class="fa-group">
+                                        <path
+                                            class="fa-secondary"
+                                            fill="currentColor"
+                                            d="M224 320v160H64a32 32 0 0 1-32-32V320zm0-160H32a32 32 0 0 0-32 32v80a16 16 0 0 0 16 16h208zm256 0H288v128h208a16 16 0 0 0 16-16v-80a32 32 0 0 0-32-32zM288 480h160a32 32 0 0 0 32-32V320H288z"
+                                        ></path>
+                                        <path
+                                            class="fa-primary"
+                                            fill="currentColor"
+                                            d="M224 480h64V320h-64zM359.54 32c-41.82 0-68.86 21.3-103.54 68.3-34.68-47-61.72-68.3-103.54-68.3C103.71 32 64 71.5 64 120a85.65 85.65 0 0 0 10.15 40h78.21a40 40 0 1 1 0-80c20 0 34.78 3.3 86.55 80H224v128h64V160h-15c51.67-76.5 66-80 86.55-80a40 40 0 1 1 0 80h78.31A86.86 86.86 0 0 0 448 120c0-48.5-39.71-88-88.46-88z"
+                                        ></path>
+                                    </g>
+                                </svg>
+                                Redeem Points
+                            </a>
+                        </div>
+                        <div class="stamped-card-section-donation" style="margin-top: 10px; border-top: 1px solid rgb(204, 204, 204); padding-top: 15px">
+                            <div>For every 10,000 points you choose to donate, Superhairpieces will donate $1 to our partnered charity!</div>
+                            <a href="javascript:;" onclick="console.log('donate')" data-title="Redeem Points" class="stamped-rewards-content-button"
+                                ><svg
+                                    class="svg-inline--fa fa-hand-holding-heart fa-w-16"
+                                    aria-hidden="true"
+                                    data-prefix="fad"
+                                    data-icon="gift"
+                                    role="img"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 576 512"
+                                    data-fa-i2svg=""
+                                    style="font-size: 20px; margin-right: 5px; margin-left: -15px"
+                                >
+                                    <g class="fa-group">
+                                        <path
+                                            class="fa-primary"
+                                            fill="currentColor"
+                                            d="M275.3 250.5c7 7.4 18.4 7.4 25.5 0l108.9-114.2c31.6-33.2 29.8-88.2-5.6-118.8-30.8-26.7-76.7-21.9-104.9 7.7L288 36.9l-11.1-11.6C248.7-4.4 202.8-9.2 172 17.5c-35.3 30.6-37.2 85.6-5.6 118.8l108.9 114.2zm290 77.6c-11.8-10.7-30.2-10-42.6 0L430.3 402c-11.3 9.1-25.4 14-40 14H272c-8.8 0-16-7.2-16-16s7.2-16 16-16h78.3c15.9 0 30.7-10.9 33.3-26.6 3.3-20-12.1-37.4-31.6-37.4H192c-27 0-53.1 9.3-74.1 26.3L71.4 384H16c-8.8 0-16 7.2-16 16v96c0 8.8 7.2 16 16 16h356.8c14.5 0 28.6-4.9 40-14L564 377c15.2-12.1 16.4-35.3 1.3-48.9z"
+                                        ></path>
+                                    </g>
+                                </svg>
+                                Donate Points
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div id="stamped-rewards-views" class="stamped-rewards-main"></div>
+            </div>
+        </div>
+    </div>
+    <div class="stamped-rewards-footer"></div>
+</div>
+<div class="stamped-rewards-window stamped-rewards-nav-small">
+    <div class="stamped-rewards-background"></div>
+    <div class="stamped-rewards-header" style="height: auto">
+        <div class="stamped-rewards-header-close"></div>
+        <div class="stamped-rewards-header-container">
+            <div class="stamped-rewards-header-content">
+                <div class="stamped-rewards-header-main" style="display: none">
+                    <span class="stamped-rewards-header-main-title">Hi Nana 👋</span>
+                    <span class="stamped-rewards-header-main-points" data-name1="Points" data-points="0">0 Points</span>
+                    <span class="stamped-rewards-header-main-subtitle">
+                        <span>Welcome to Rewards Program</span>
+                    </span>
+                </div>
+                <div class="stamped-rewards-header-small" style="display: block">
+                    <span onclick="StampedFn.loadLauncherView('main');" class="stamped-rewards-header-nav">
+                        <svg
+                            class="svg-inline--fa fa-chevron-left fa-w-10"
+                            data-prefix="fad"
+                            data-icon="chevron-left"
+                            role="img"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 320 512"
+                            data-fa-i2svg=""
+                        >
+                            <g class="fa-group">
+                                <path class="fa-secondary" fill="currentColor" d="M285.59 410.4a23.93 23.93 0 0 1 0 33.84l-22.7 22.65a24 24 0 0 1-33.94 0l-154.31-154L131.42 256z"></path>
+                                <path
+                                    class="fa-primary"
+                                    fill="currentColor"
+                                    d="M262.85 45.06l22.7 22.65a23.93 23.93 0 0 1 0 33.84L74.58 312.9l-40-40a23.94 23.94 0 0 1 0-33.84l194.33-194a24 24 0 0 1 33.94 0z"
+                                ></path>
+                            </g></svg>
+                    </span>
+                    <span class="stamped-rewards-header-small-title">Redeem Points</span>
+                    <span class="stamped-rewards-header-small-points" data-name1="Points" data-points="0">0 Points</span>
+                </div>
+                <div class="stamped-rewards-header-menu" style="display: none">
+                    <span class="active" data-target="rewards"
+                        ><svg class="svg-inline--fa fa-gift fa-w-16" data-prefix="fad" data-icon="gift" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg="">
+                            <g class="fa-group">
+                                <path
+                                    class="fa-secondary"
+                                    fill="currentColor"
+                                    d="M224 320v160H64a32 32 0 0 1-32-32V320zm0-160H32a32 32 0 0 0-32 32v80a16 16 0 0 0 16 16h208zm256 0H288v128h208a16 16 0 0 0 16-16v-80a32 32 0 0 0-32-32zM288 480h160a32 32 0 0 0 32-32V320H288z"
+                                ></path>
+                                <path
+                                    class="fa-primary"
+                                    fill="currentColor"
+                                    d="M224 480h64V320h-64zM359.54 32c-41.82 0-68.86 21.3-103.54 68.3-34.68-47-61.72-68.3-103.54-68.3C103.71 32 64 71.5 64 120a85.65 85.65 0 0 0 10.15 40h78.21a40 40 0 1 1 0-80c20 0 34.78 3.3 86.55 80H224v128h64V160h-15c51.67-76.5 66-80 86.55-80a40 40 0 1 1 0 80h78.31A86.86 86.86 0 0 0 448 120c0-48.5-39.71-88-88.46-88z"
+                                ></path>
+                            </g></svg>
+                        Rewards</span
+                    >
+                    <span data-target="reviews"
+                        ><svg class="svg-inline--fa fa-star-half fa-w-18" data-prefix="fad" data-icon="star-half" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" data-fa-i2svg="">
+                            <g class="fa-group">
+                                <path
+                                    class="fa-secondary"
+                                    fill="currentColor"
+                                    d="M545.3 226L439.6 329l25 145.5c4.5 26.1-23 46-46.4 33.7l-130.7-68.6V0a31.62 31.62 0 0 1 28.7 17.8l65.3 132.4 146.1 21.2c26.2 3.8 36.7 36.1 17.7 54.6z"
+                                ></path>
+                                <path
+                                    class="fa-primary"
+                                    fill="currentColor"
+                                    d="M110.4 474.5l25-145.5L29.7 226c-19-18.5-8.5-50.8 17.7-54.6l146.1-21.2 65.3-132.4A31.62 31.62 0 0 1 287.5 0v439.6l-130.7 68.6c-23.4 12.3-50.9-7.6-46.4-33.7z"
+                                ></path>
+                            </g></svg>
+                        Reviews</span
+                    >
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="stamped-rewards-content">
+        <div class="stamped-rewards-content-container">
+            <div class="stamped-rewards-cards">
+                <div id="stamped-rewards-cards" class="stamped-rewards-main" style="display: none">
+                    <div class="stamped-rewards-card stamped-rewards-card-main" data-title="Rewards Program" data-key="card-rewards">
+                        <span class="stamped-reward-card-title">Rewards Program</span>
+                        <div class="stamped-card-section-earning">
+                            <div>Earn Points for different actions, and turn those Points into awesome rewards!</div>
+
+                            <a href="javascript:;" onclick="StampedFn.loadLauncherView('view-earnings', this)" data-title="Earning Points" class="stamped-rewards-content-button">
+                                <svg
+                                    class="svg-inline--fa fa-hand-receiving fa-w-20"
+                                    aria-hidden="true"
+                                    data-prefix="fad"
+                                    data-icon="hand-receiving"
+                                    role="img"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 640 512"
+                                    data-fa-i2svg=""
+                                >
+                                    <g class="fa-group">
+                                        <path
+                                            class="fa-secondary"
+                                            fill="currentColor"
+                                            d="M204.8 230.4a32 32 0 1 0-51.2 38.4l38.1 50.8a16 16 0 0 1-1.5 20.9l-12.8 12.8a15.9 15.9 0 0 1-23.6-1.1L64 244.4V96a32 32 0 0 0-64 0v218.4a48.05 48.05 0 0 0 10.5 30l104.1 134.3a59.69 59.69 0 0 1 10.4 21.7 15.67 15.67 0 0 0 15.3 11.6H272a16 16 0 0 0 16-16V384a128.2 128.2 0 0 0-25.6-76.8zM608 64a32 32 0 0 0-32 32v148.4l-89.8 107.8a16.06 16.06 0 0 1-23.6 1.1l-12.8-12.8a16 16 0 0 1-1.5-20.9l38.1-50.8a32 32 0 1 0-51.2-38.4l-57.6 76.8A128.2 128.2 0 0 0 352 384v112a16 16 0 0 0 16 16h131.7a15.76 15.76 0 0 0 15.3-11.6 59.69 59.69 0 0 1 10.4-21.7l104.1-134.3a48.05 48.05 0 0 0 10.5-30V96a32 32 0 0 0-32-32z"
+                                        ></path>
+                                        <path
+                                            class="fa-primary"
+                                            fill="currentColor"
+                                            d="M201.2 150.4a31.51 31.51 0 0 1 0-44.7l96.4-96.4a31.63 31.63 0 0 1 44.8 0l96.3 96.3a31.63 31.63 0 0 1 0 44.8l-96.4 96.4a31.69 31.69 0 0 1-44.7 0z"
+                                        ></path>
+                                    </g></svg>
+                                Earning Points
+                            </a>
+                        </div>
+
+                        <div class="stamped-card-section-spending">
+                            <div>Redeem your Points for awesome rewards, get a discount or a free gift from us!</div>
+
+                            <a href="javascript:;" onclick="StampedFn.loadLauncherView('view-spendings', this)" data-title="Redeem Points" class="stamped-rewards-content-button">
+                                <svg
+                                    class="svg-inline--fa fa-gift fa-w-16"
+                                    aria-hidden="true"
+                                    data-prefix="fad"
+                                    data-icon="gift"
+                                    role="img"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 512 512"
+                                    data-fa-i2svg=""
+                                >
+                                    <g class="fa-group">
+                                        <path
+                                            class="fa-secondary"
+                                            fill="currentColor"
+                                            d="M224 320v160H64a32 32 0 0 1-32-32V320zm0-160H32a32 32 0 0 0-32 32v80a16 16 0 0 0 16 16h208zm256 0H288v128h208a16 16 0 0 0 16-16v-80a32 32 0 0 0-32-32zM288 480h160a32 32 0 0 0 32-32V320H288z"
+                                        ></path>
+                                        <path
+                                            class="fa-primary"
+                                            fill="currentColor"
+                                            d="M224 480h64V320h-64zM359.54 32c-41.82 0-68.86 21.3-103.54 68.3-34.68-47-61.72-68.3-103.54-68.3C103.71 32 64 71.5 64 120a85.65 85.65 0 0 0 10.15 40h78.21a40 40 0 1 1 0-80c20 0 34.78 3.3 86.55 80H224v128h64V160h-15c51.67-76.5 66-80 86.55-80a40 40 0 1 1 0 80h78.31A86.86 86.86 0 0 0 448 120c0-48.5-39.71-88-88.46-88z"
+                                        ></path>
+                                    </g></svg>
+                                Redeem Points
+                            </a>
+                        </div>
+                        <div class="stamped-card-section-donation" style="margin-top: 10px; border-top: 1px solid rgb(204, 204, 204); padding-top: 15px">
+                            <div>For every 10,000 points you choose to donate, Superhairpieces will donate $1 to our partnered charity!</div>
+                            <a href="javascript:;" onclick="console.log('donate')" data-title="Redeem Points" class="stamped-rewards-content-button"
+                                ><svg
+                                    class="svg-inline--fa fa-hand-holding-heart fa-w-16"
+                                    aria-hidden="true"
+                                    data-prefix="fad"
+                                    data-icon="gift"
+                                    role="img"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 576 512"
+                                    data-fa-i2svg=""
+                                    style="font-size: 20px; margin-right: 5px; margin-left: -15px"
+                                >
+                                    <g class="fa-group">
+                                        <path
+                                            class="fa-primary"
+                                            fill="currentColor"
+                                            d="M275.3 250.5c7 7.4 18.4 7.4 25.5 0l108.9-114.2c31.6-33.2 29.8-88.2-5.6-118.8-30.8-26.7-76.7-21.9-104.9 7.7L288 36.9l-11.1-11.6C248.7-4.4 202.8-9.2 172 17.5c-35.3 30.6-37.2 85.6-5.6 118.8l108.9 114.2zm290 77.6c-11.8-10.7-30.2-10-42.6 0L430.3 402c-11.3 9.1-25.4 14-40 14H272c-8.8 0-16-7.2-16-16s7.2-16 16-16h78.3c15.9 0 30.7-10.9 33.3-26.6 3.3-20-12.1-37.4-31.6-37.4H192c-27 0-53.1 9.3-74.1 26.3L71.4 384H16c-8.8 0-16 7.2-16 16v96c0 8.8 7.2 16 16 16h356.8c14.5 0 28.6-4.9 40-14L564 377c15.2-12.1 16.4-35.3 1.3-48.9z"
+                                        ></path>
+                                    </g>
+                                </svg>
+                                Donate Points</a
+                            >
+                        </div>
+                    </div>
+                </div>
+                <div id="stamped-rewards-views" class="stamped-rewards-main">
+                    <div class="stamped-rewards-spendings">
+                        <div class="stamped-rewards-card stamped-rewards-card-spend" data-campaign-id="11268" data-campaign-redeemable="false" data-coupon-type="FixedAmount">
+                            <span class="stamped-reward-card-button-spend"></span>
+
+                            <span class="stamped-reward-card-icon">
+                                <svg
+                                    class="svg-inline--fa fa-badge-dollar fa-w-16"
+                                    data-prefix="fal"
+                                    data-icon="badge-dollar"
+                                    role="img"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 512 512"
+                                    data-fa-i2svg=""
+                                >
+                                    <path
+                                        fill="currentColor"
+                                        d="M289.94 249.05l-59.06-16.86c-8.75-2.52-14.88-10.61-14.88-19.7 0-11.3 9.19-20.48 20.47-20.48h36.91c8.24 0 16.08 2.56 22.63 7.32 2.99 2.17 7.22 1.46 9.84-1.16l11.42-11.42c3.5-3.5 2.94-9.22-.99-12.23-12.26-9.41-27.18-14.51-42.9-14.51H272v-24c0-4.42-3.58-8-8-8h-16c-4.42 0-8 3.58-8 8v24h-3.53c-30.59 0-55.13 26.3-52.24 57.48 2.06 22.16 19.06 40.12 40.45 46.22l56.44 16.11c8.75 2.52 14.88 10.61 14.88 19.7 0 11.3-9.19 20.48-20.47 20.48h-36.91c-8.24 0-16.08-2.56-22.63-7.32-2.99-2.17-7.22-1.46-9.84 1.16l-11.42 11.42c-3.5 3.5-2.94 9.21.99 12.23 12.26 9.41 27.18 14.51 42.9 14.51H240v24c0 4.42 3.58 8 8 8h16c4.42 0 8-3.58 8-8v-24h1.36c22.81 0 44.33-13.59 51.72-35.17 10.15-29.65-7.28-59.8-35.14-67.78zM512 256c0-35.5-19.4-68.2-49.6-85.5 9.1-33.6-.3-70.4-25.4-95.5s-61.9-34.5-95.5-25.4C324.2 19.4 291.5 0 256 0s-68.2 19.4-85.5 49.6c-33.6-9.1-70.4.3-95.5 25.4s-34.5 61.9-25.4 95.5C19.4 187.8 0 220.5 0 256s19.4 68.2 49.6 85.5c-9.1 33.6.3 70.4 25.4 95.5 26.5 26.5 63.4 34.1 95.5 25.4 17.4 30.2 50 49.6 85.5 49.6s68.1-19.4 85.5-49.6c32.7 8.9 69.4.7 95.5-25.4 25.1-25.1 34.5-61.9 25.4-95.5 30.2-17.3 49.6-50 49.6-85.5zm-91.1 68.3c5.3 11.8 29.5 54.1-6.5 90.1-28.9 28.9-57.5 21.3-90.1 6.5C319.7 433 307 480 256 480c-52.1 0-64.7-49.5-68.3-59.1-32.6 14.8-61.3 22.2-90.1-6.5-36.8-36.7-10.9-80.5-6.5-90.1C79 319.7 32 307 32 256c0-52.1 49.5-64.7 59.1-68.3-5.3-11.8-29.5-54.1 6.5-90.1 36.8-36.9 80.8-10.7 90.1-6.5C192.3 79 205 32 256 32c52.1 0 64.7 49.5 68.3 59.1 11.8-5.3 54.1-29.5 90.1 6.5 36.8 36.7 10.9 80.5 6.5 90.1C433 192.3 480 205 480 256c0 52.1-49.5 64.7-59.1 68.3z"></path>
+                                </svg>
+                            </span>
+                            <span class="stamped-reward-card-title">$5 off discount</span>
+                            <span class="stamped-reward-card-subtitle">10000 Points</span>
+                        </div>
+
+                        <div class="stamped-rewards-card stamped-rewards-card-spend" data-campaign-id="11337" data-campaign-redeemable="false" data-coupon-type="FixedAmount">
+                            <span class="stamped-reward-card-button-spend"></span>
+
+                            <span class="stamped-reward-card-icon"
+                                ><svg
+                                    class="svg-inline--fa fa-badge-dollar fa-w-16"
+                                    data-prefix="fal"
+                                    data-icon="badge-dollar"
+                                    role="img"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 512 512"
+                                    data-fa-i2svg=""
+                                >
+                                    <path
+                                        fill="currentColor"
+                                        d="M289.94 249.05l-59.06-16.86c-8.75-2.52-14.88-10.61-14.88-19.7 0-11.3 9.19-20.48 20.47-20.48h36.91c8.24 0 16.08 2.56 22.63 7.32 2.99 2.17 7.22 1.46 9.84-1.16l11.42-11.42c3.5-3.5 2.94-9.22-.99-12.23-12.26-9.41-27.18-14.51-42.9-14.51H272v-24c0-4.42-3.58-8-8-8h-16c-4.42 0-8 3.58-8 8v24h-3.53c-30.59 0-55.13 26.3-52.24 57.48 2.06 22.16 19.06 40.12 40.45 46.22l56.44 16.11c8.75 2.52 14.88 10.61 14.88 19.7 0 11.3-9.19 20.48-20.47 20.48h-36.91c-8.24 0-16.08-2.56-22.63-7.32-2.99-2.17-7.22-1.46-9.84 1.16l-11.42 11.42c-3.5 3.5-2.94 9.21.99 12.23 12.26 9.41 27.18 14.51 42.9 14.51H240v24c0 4.42 3.58 8 8 8h16c4.42 0 8-3.58 8-8v-24h1.36c22.81 0 44.33-13.59 51.72-35.17 10.15-29.65-7.28-59.8-35.14-67.78zM512 256c0-35.5-19.4-68.2-49.6-85.5 9.1-33.6-.3-70.4-25.4-95.5s-61.9-34.5-95.5-25.4C324.2 19.4 291.5 0 256 0s-68.2 19.4-85.5 49.6c-33.6-9.1-70.4.3-95.5 25.4s-34.5 61.9-25.4 95.5C19.4 187.8 0 220.5 0 256s19.4 68.2 49.6 85.5c-9.1 33.6.3 70.4 25.4 95.5 26.5 26.5 63.4 34.1 95.5 25.4 17.4 30.2 50 49.6 85.5 49.6s68.1-19.4 85.5-49.6c32.7 8.9 69.4.7 95.5-25.4 25.1-25.1 34.5-61.9 25.4-95.5 30.2-17.3 49.6-50 49.6-85.5zm-91.1 68.3c5.3 11.8 29.5 54.1-6.5 90.1-28.9 28.9-57.5 21.3-90.1 6.5C319.7 433 307 480 256 480c-52.1 0-64.7-49.5-68.3-59.1-32.6 14.8-61.3 22.2-90.1-6.5-36.8-36.7-10.9-80.5-6.5-90.1C79 319.7 32 307 32 256c0-52.1 49.5-64.7 59.1-68.3-5.3-11.8-29.5-54.1 6.5-90.1 36.8-36.9 80.8-10.7 90.1-6.5C192.3 79 205 32 256 32c52.1 0 64.7 49.5 68.3 59.1 11.8-5.3 54.1-29.5 90.1 6.5 36.8 36.7 10.9 80.5 6.5 90.1C433 192.3 480 205 480 256c0 52.1-49.5 64.7-59.1 68.3z"
+                                    ></path></svg>
+                            >
+                            <span class="stamped-reward-card-title">$10 off discount</span>
+                            <span class="stamped-reward-card-subtitle">20000 Points</span>
+                        </div>
+
+                        <div class="stamped-rewards-card stamped-rewards-card-spend" data-campaign-id="11338" data-campaign-redeemable="false" data-coupon-type="FixedAmount">
+                            <span class="stamped-reward-card-button-spend"></span>
+
+                            <span class="stamped-reward-card-icon"
+                                ><svg
+                                    class="svg-inline--fa fa-badge-dollar fa-w-16"
+                                    data-prefix="fal"
+                                    data-icon="badge-dollar"
+                                    role="img"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 512 512"
+                                    data-fa-i2svg=""
+                                >
+                                    <path
+                                        fill="currentColor"
+                                        d="M289.94 249.05l-59.06-16.86c-8.75-2.52-14.88-10.61-14.88-19.7 0-11.3 9.19-20.48 20.47-20.48h36.91c8.24 0 16.08 2.56 22.63 7.32 2.99 2.17 7.22 1.46 9.84-1.16l11.42-11.42c3.5-3.5 2.94-9.22-.99-12.23-12.26-9.41-27.18-14.51-42.9-14.51H272v-24c0-4.42-3.58-8-8-8h-16c-4.42 0-8 3.58-8 8v24h-3.53c-30.59 0-55.13 26.3-52.24 57.48 2.06 22.16 19.06 40.12 40.45 46.22l56.44 16.11c8.75 2.52 14.88 10.61 14.88 19.7 0 11.3-9.19 20.48-20.47 20.48h-36.91c-8.24 0-16.08-2.56-22.63-7.32-2.99-2.17-7.22-1.46-9.84 1.16l-11.42 11.42c-3.5 3.5-2.94 9.21.99 12.23 12.26 9.41 27.18 14.51 42.9 14.51H240v24c0 4.42 3.58 8 8 8h16c4.42 0 8-3.58 8-8v-24h1.36c22.81 0 44.33-13.59 51.72-35.17 10.15-29.65-7.28-59.8-35.14-67.78zM512 256c0-35.5-19.4-68.2-49.6-85.5 9.1-33.6-.3-70.4-25.4-95.5s-61.9-34.5-95.5-25.4C324.2 19.4 291.5 0 256 0s-68.2 19.4-85.5 49.6c-33.6-9.1-70.4.3-95.5 25.4s-34.5 61.9-25.4 95.5C19.4 187.8 0 220.5 0 256s19.4 68.2 49.6 85.5c-9.1 33.6.3 70.4 25.4 95.5 26.5 26.5 63.4 34.1 95.5 25.4 17.4 30.2 50 49.6 85.5 49.6s68.1-19.4 85.5-49.6c32.7 8.9 69.4.7 95.5-25.4 25.1-25.1 34.5-61.9 25.4-95.5 30.2-17.3 49.6-50 49.6-85.5zm-91.1 68.3c5.3 11.8 29.5 54.1-6.5 90.1-28.9 28.9-57.5 21.3-90.1 6.5C319.7 433 307 480 256 480c-52.1 0-64.7-49.5-68.3-59.1-32.6 14.8-61.3 22.2-90.1-6.5-36.8-36.7-10.9-80.5-6.5-90.1C79 319.7 32 307 32 256c0-52.1 49.5-64.7 59.1-68.3-5.3-11.8-29.5-54.1 6.5-90.1 36.8-36.9 80.8-10.7 90.1-6.5C192.3 79 205 32 256 32c52.1 0 64.7 49.5 68.3 59.1 11.8-5.3 54.1-29.5 90.1 6.5 36.8 36.7 10.9 80.5 6.5 90.1C433 192.3 480 205 480 256c0 52.1-49.5 64.7-59.1 68.3z"
+                                    ></path></svg>
+                            >
+                            <span class="stamped-reward-card-title">$20 off discount</span>
+                            <span class="stamped-reward-card-subtitle">40000 Points</span>
+                        </div>
+                    </div>
+
+                    <style>
+                        [data-campaign-redeemable="true"] span.stamped-reward-card-button-spend:not(.stamped-button-disabled):before {
+                            content: "Redeem" !important;
+                        }
+                    </style>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="stamped-rewards-footer"></div>
+</div>
+<!--Script when logged in-->
+<script>
+    function donate(point, id) {
+        fetch("https://shp-webserver.glitch.me/stamped-donate", {
+            method: 'post',
+            headers: {
+                'content-type': 'application/json',
+                accept: 'application/json'
+            },
+            body: JSON.stringify({
+                id,
+                point,
+                storeId: 91914
+            })
+        })
+        .then(r=>r.json())
+        .then(d=>{
+            console.log(d);
+            point = document.querySelector(".stamped-rewards-header-main-points").getAttribute("data-points")-point;
+            document.querySelector(".stamped-rewards-header-main-points").setAttribute("data-points", 0);
+            document.querySelector(".stamped-rewards-header-main-points").innerHTML = point+" Points";
+            document.querySelector(".stamped-rewards-header-small-points").setAttribute("data-points", 0);
+            document.querySelector(".stamped-rewards-header-small-points").innerHTML = point+" Points";
+            document.getElementsByClassName("stamped-rewards-header-nav")[0].click();
+        })
+        .catch(e=>console.log(e))        
+    }
+    function setDonationView() {
+        let sc = null;
+        function setStyle(point, limit) {
+            return point>=limit?' style="display:block"':''
+        }
+        function setText(point, limit) {
+            return point>=limit?'Donate':'';
+        }
+        function setFunction(point, limit) {
+            return point>=limit&&sc?' onclick="donate('+limit+','+sc+')"':'';            
+        }        
+        function setView(point) {
+            let content = '<div class="stamped-rewards-spendings">'+
+                    '<div class="stamped-rewards-card stamped-rewards-card-spend" data-campaign-id="11268" data-campaign-redeemable="false" data-coupon-type="FixedAmount">'+
+                        '<span class="stamped-reward-card-button-spend"'+setStyle(point, 10000)+setFunction(point, 10000)+'>'+setText(point, 10000)+'</span>'+
+                        '<span class="stamped-reward-card-icon">'+
+                            '<svg '+
+                                'class="svg-inline--fa fa-badge-dollar fa-w-16" '+
+                                'data-prefix="fal" '+
+                                'data-icon="badge-dollar" '+
+                                'role="img" '+
+                                'xmlns="http://www.w3.org/2000/svg" '+
+                                'viewBox="0 0 512 512" '+
+                                'data-fa-i2svg="">'+
+                                '<path '+
+                                    'fill="#adadad" '+
+                                    'd="M289.94 249.05l-59.06-16.86c-8.75-2.52-14.88-10.61-14.88-19.7 0-11.3 9.19-20.48 20.47-20.48h36.91c8.24 0 16.08 2.56 22.63 7.32 2.99 2.17 7.22 1.46 9.84-1.16l11.42-11.42c3.5-3.5 2.94-9.22-.99-12.23-12.26-9.41-27.18-14.51-42.9-14.51H272v-24c0-4.42-3.58-8-8-8h-16c-4.42 0-8 3.58-8 8v24h-3.53c-30.59 0-55.13 26.3-52.24 57.48 2.06 22.16 19.06 40.12 40.45 46.22l56.44 16.11c8.75 2.52 14.88 10.61 14.88 19.7 0 11.3-9.19 20.48-20.47 20.48h-36.91c-8.24 0-16.08-2.56-22.63-7.32-2.99-2.17-7.22-1.46-9.84 1.16l-11.42 11.42c-3.5 3.5-2.94 9.21.99 12.23 12.26 9.41 27.18 14.51 42.9 14.51H240v24c0 4.42 3.58 8 8 8h16c4.42 0 8-3.58 8-8v-24h1.36c22.81 0 44.33-13.59 51.72-35.17 10.15-29.65-7.28-59.8-35.14-67.78zM512 256c0-35.5-19.4-68.2-49.6-85.5 9.1-33.6-.3-70.4-25.4-95.5s-61.9-34.5-95.5-25.4C324.2 19.4 291.5 0 256 0s-68.2 19.4-85.5 49.6c-33.6-9.1-70.4.3-95.5 25.4s-34.5 61.9-25.4 95.5C19.4 187.8 0 220.5 0 256s19.4 68.2 49.6 85.5c-9.1 33.6.3 70.4 25.4 95.5 26.5 26.5 63.4 34.1 95.5 25.4 17.4 30.2 50 49.6 85.5 49.6s68.1-19.4 85.5-49.6c32.7 8.9 69.4.7 95.5-25.4 25.1-25.1 34.5-61.9 25.4-95.5 30.2-17.3 49.6-50 49.6-85.5zm-91.1 68.3c5.3 11.8 29.5 54.1-6.5 90.1-28.9 28.9-57.5 21.3-90.1 6.5C319.7 433 307 480 256 480c-52.1 0-64.7-49.5-68.3-59.1-32.6 14.8-61.3 22.2-90.1-6.5-36.8-36.7-10.9-80.5-6.5-90.1C79 319.7 32 307 32 256c0-52.1 49.5-64.7 59.1-68.3-5.3-11.8-29.5-54.1 6.5-90.1 36.8-36.9 80.8-10.7 90.1-6.5C192.3 79 205 32 256 32c52.1 0 64.7 49.5 68.3 59.1 11.8-5.3 54.1-29.5 90.1 6.5 36.8 36.7 10.9 80.5 6.5 90.1C433 192.3 480 205 480 256c0 52.1-49.5 64.7-59.1 68.3z">'+
+                                '</path></svg>'+
+                        '</span>'+
+                        '<span class="stamped-reward-card-title">Donate $1</span>'+
+                        '<span class="stamped-reward-card-subtitle">10000 Points</span>'+
+                    '</div>'+
+                    '<div class="stamped-rewards-card stamped-rewards-card-spend" data-campaign-id="11337" data-campaign-redeemable="false" data-coupon-type="FixedAmount">'+
+                        '<span class="stamped-reward-card-button-spend"'+setStyle(point, 20000)+setFunction(point, 20000)+'>'+setText(point, 20000)+'</span>'+
+                        '<span class="stamped-reward-card-icon">'+
+                            '<svg '+
+                                'class="svg-inline--fa fa-badge-dollar fa-w-16" '+
+                                'data-prefix="fal" '+
+                                'data-icon="badge-dollar" '+
+                                'role="img" '+
+                                'xmlns="http://www.w3.org/2000/svg" '+
+                                'viewBox="0 0 512 512" '+
+                                'data-fa-i2svg="">'+
+                                '<path '+
+                                    'fill="#adadad" '+
+                                    'd="M289.94 249.05l-59.06-16.86c-8.75-2.52-14.88-10.61-14.88-19.7 0-11.3 9.19-20.48 20.47-20.48h36.91c8.24 0 16.08 2.56 22.63 7.32 2.99 2.17 7.22 1.46 9.84-1.16l11.42-11.42c3.5-3.5 2.94-9.22-.99-12.23-12.26-9.41-27.18-14.51-42.9-14.51H272v-24c0-4.42-3.58-8-8-8h-16c-4.42 0-8 3.58-8 8v24h-3.53c-30.59 0-55.13 26.3-52.24 57.48 2.06 22.16 19.06 40.12 40.45 46.22l56.44 16.11c8.75 2.52 14.88 10.61 14.88 19.7 0 11.3-9.19 20.48-20.47 20.48h-36.91c-8.24 0-16.08-2.56-22.63-7.32-2.99-2.17-7.22-1.46-9.84 1.16l-11.42 11.42c-3.5 3.5-2.94 9.21.99 12.23 12.26 9.41 27.18 14.51 42.9 14.51H240v24c0 4.42 3.58 8 8 8h16c4.42 0 8-3.58 8-8v-24h1.36c22.81 0 44.33-13.59 51.72-35.17 10.15-29.65-7.28-59.8-35.14-67.78zM512 256c0-35.5-19.4-68.2-49.6-85.5 9.1-33.6-.3-70.4-25.4-95.5s-61.9-34.5-95.5-25.4C324.2 19.4 291.5 0 256 0s-68.2 19.4-85.5 49.6c-33.6-9.1-70.4.3-95.5 25.4s-34.5 61.9-25.4 95.5C19.4 187.8 0 220.5 0 256s19.4 68.2 49.6 85.5c-9.1 33.6.3 70.4 25.4 95.5 26.5 26.5 63.4 34.1 95.5 25.4 17.4 30.2 50 49.6 85.5 49.6s68.1-19.4 85.5-49.6c32.7 8.9 69.4.7 95.5-25.4 25.1-25.1 34.5-61.9 25.4-95.5 30.2-17.3 49.6-50 49.6-85.5zm-91.1 68.3c5.3 11.8 29.5 54.1-6.5 90.1-28.9 28.9-57.5 21.3-90.1 6.5C319.7 433 307 480 256 480c-52.1 0-64.7-49.5-68.3-59.1-32.6 14.8-61.3 22.2-90.1-6.5-36.8-36.7-10.9-80.5-6.5-90.1C79 319.7 32 307 32 256c0-52.1 49.5-64.7 59.1-68.3-5.3-11.8-29.5-54.1 6.5-90.1 36.8-36.9 80.8-10.7 90.1-6.5C192.3 79 205 32 256 32c52.1 0 64.7 49.5 68.3 59.1 11.8-5.3 54.1-29.5 90.1 6.5 36.8 36.7 10.9 80.5 6.5 90.1C433 192.3 480 205 480 256c0 52.1-49.5 64.7-59.1 68.3z">'+
+                                '</path></svg>'+
+                        '</span>'+
+                        '<span class="stamped-reward-card-title">Donate $2</span>'+
+                        '<span class="stamped-reward-card-subtitle">20000 Points</span>'+
+                    '</div>'+
+                    '<div class="stamped-rewards-card stamped-rewards-card-spend" data-campaign-id="11338" data-campaign-redeemable="false" data-coupon-type="FixedAmount">'+
+                        '<span class="stamped-reward-card-button-spend"'+setStyle(point, 40000)+setFunction(point, 40000)+'>'+setText(point, 40000)+'</span>'+
+                        '<span class="stamped-reward-card-icon">'+
+                            '<svg '+
+                                'class="svg-inline--fa fa-badge-dollar fa-w-16" '+
+                                'data-prefix="fal" '+
+                                'data-icon="badge-dollar" '+
+                                'role="img" '+
+                                'xmlns="http://www.w3.org/2000/svg" '+
+                                'viewBox="0 0 512 512" '+
+                                'data-fa-i2svg="">'+                            
+                                '<path '+
+                                    'fill="#adadad" '+
+                                    'd="M289.94 249.05l-59.06-16.86c-8.75-2.52-14.88-10.61-14.88-19.7 0-11.3 9.19-20.48 20.47-20.48h36.91c8.24 0 16.08 2.56 22.63 7.32 2.99 2.17 7.22 1.46 9.84-1.16l11.42-11.42c3.5-3.5 2.94-9.22-.99-12.23-12.26-9.41-27.18-14.51-42.9-14.51H272v-24c0-4.42-3.58-8-8-8h-16c-4.42 0-8 3.58-8 8v24h-3.53c-30.59 0-55.13 26.3-52.24 57.48 2.06 22.16 19.06 40.12 40.45 46.22l56.44 16.11c8.75 2.52 14.88 10.61 14.88 19.7 0 11.3-9.19 20.48-20.47 20.48h-36.91c-8.24 0-16.08-2.56-22.63-7.32-2.99-2.17-7.22-1.46-9.84 1.16l-11.42 11.42c-3.5 3.5-2.94 9.21.99 12.23 12.26 9.41 27.18 14.51 42.9 14.51H240v24c0 4.42 3.58 8 8 8h16c4.42 0 8-3.58 8-8v-24h1.36c22.81 0 44.33-13.59 51.72-35.17 10.15-29.65-7.28-59.8-35.14-67.78zM512 256c0-35.5-19.4-68.2-49.6-85.5 9.1-33.6-.3-70.4-25.4-95.5s-61.9-34.5-95.5-25.4C324.2 19.4 291.5 0 256 0s-68.2 19.4-85.5 49.6c-33.6-9.1-70.4.3-95.5 25.4s-34.5 61.9-25.4 95.5C19.4 187.8 0 220.5 0 256s19.4 68.2 49.6 85.5c-9.1 33.6.3 70.4 25.4 95.5 26.5 26.5 63.4 34.1 95.5 25.4 17.4 30.2 50 49.6 85.5 49.6s68.1-19.4 85.5-49.6c32.7 8.9 69.4.7 95.5-25.4 25.1-25.1 34.5-61.9 25.4-95.5 30.2-17.3 49.6-50 49.6-85.5zm-91.1 68.3c5.3 11.8 29.5 54.1-6.5 90.1-28.9 28.9-57.5 21.3-90.1 6.5C319.7 433 307 480 256 480c-52.1 0-64.7-49.5-68.3-59.1-32.6 14.8-61.3 22.2-90.1-6.5-36.8-36.7-10.9-80.5-6.5-90.1C79 319.7 32 307 32 256c0-52.1 49.5-64.7 59.1-68.3-5.3-11.8-29.5-54.1 6.5-90.1 36.8-36.9 80.8-10.7 90.1-6.5C192.3 79 205 32 256 32c52.1 0 64.7 49.5 68.3 59.1 11.8-5.3 54.1-29.5 90.1 6.5 36.8 36.7 10.9 80.5 6.5 90.1C433 192.3 480 205 480 256c0 52.1-49.5 64.7-59.1 68.3z">'+
+                                '</path></svg>'+
+                        '</span>'+
+                        '<span class="stamped-reward-card-title">Donate $4</span>'+
+                        '<span class="stamped-reward-card-subtitle">40000 Points</span>'+
+                    '</div>'+
+                '</div>';
+            let script = document.createElement("script");                        
+            script.text = `function donate(e,t){fetch("https://shp-webserver.glitch.me/stamped-donate",{method:"post",headers:{"content-type":"application/json",accept:"application/json"},body:JSON.stringify({id:t,point:e,storeId:91914})}).then(e=>e.json()).then(t=>{console.log(t),e=document.querySelector(".stamped-rewards-header-main-points").getAttribute("data-points")-e,document.querySelector(".stamped-rewards-header-main-points").setAttribute("data-points",0),document.querySelector(".stamped-rewards-header-main-points").innerHTML=e+" Points",document.querySelector(".stamped-rewards-header-small-points").setAttribute("data-points",0),document.querySelector(".stamped-rewards-header-small-points").innerHTML=e+" Points",document.getElementsByClassName("stamped-rewards-header-nav")[0].click()}).catch(e=>console.log(e))}`;
+            document.body.appendChild(script);
+            document.getElementById("stamped-rewards-views").innerHTML = content;
+            document.getElementsByClassName("stamped-rewards-window")[0].classList.add("stamped-rewards-nav-small");
+            document.getElementsByClassName("stamped-rewards-header-main")[0].style.display = "none";
+            document.getElementsByClassName("stamped-rewards-header-small-title")[0].innerHTML = "Donate Points";
+            document.getElementsByClassName("stamped-rewards-header-small")[0].style.display = "block";        
+            document.getElementsByClassName("stamped-rewards-background")[0].style.height = "200px";
+            document.getElementsByClassName("stamped-rewards-header")[0].style.minHeight = "70px";
+            document.getElementById("stamped-rewards-cards").style.display = "none";
+            document.getElementById("stamped-rewards-views").style.display = "block";
+            document.getElementsByClassName("stamped-rewards-header-nav")[0].addEventListener("click", ()=> {StampedFn.loadLauncherView("main");}, true);                        
+        }
+        setView(document.querySelector(".stamped-rewards-header-main-points").getAttribute("data-points"));        
+    }
+    function donationDivInner() {        
+        return (
+            "<div>For every 10,000 points you choose to donate, Superhairpieces will donate $1 to our partnered charity!</div>" +
+            '<a href="javascript:;" onclick="setDonationView()" data-title="Donate Points" class="stamped-rewards-content-button">' +
+                '<svg class="svg-inline--fa fa-hand-holding-heart fa-w-16" aria-hidden="true" data-prefix="fad" data-icon="gift" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" data-fa-i2svg="" style="font-size: 20px; margin-right: 5px; margin-left: -15px">' +
+                    '<g class="fa-group">' +
+                        "<path " +
+                        'class="fa-primary" ' +            
+                        'style="fill: #adadad !important" '+
+                        'd="M275.3 250.5c7 7.4 18.4 7.4 25.5 0l108.9-114.2c31.6-33.2 29.8-88.2-5.6-118.8-30.8-26.7-76.7-21.9-104.9 7.7L288 36.9l-11.1-11.6C248.7-4.4 202.8-9.2 172 17.5c-35.3 30.6-37.2 85.6-5.6 118.8l108.9 114.2zm290 77.6c-11.8-10.7-30.2-10-42.6 0L430.3 402c-11.3 9.1-25.4 14-40 14H272c-8.8 0-16-7.2-16-16s7.2-16 16-16h78.3c15.9 0 30.7-10.9 33.3-26.6 3.3-20-12.1-37.4-31.6-37.4H192c-27 0-53.1 9.3-74.1 26.3L71.4 384H16c-8.8 0-16 7.2-16 16v96c0 8.8 7.2 16 16 16h356.8c14.5 0 28.6-4.9 40-14L564 377c15.2-12.1 16.4-35.3 1.3-48.9z">' +
+                        "</path>" +
+                    "</g>" +
+                "</svg>" +
+                " Donate Points" +
+            "</a>"
+        );
+    }
+    function setMenu() {
+        console.log('menu');
+        let elM = document.querySelector("#stamped-rewards-cards").querySelectorAll(".stamped-rewards-card.stamped-rewards-card-main");
+        console.log(elM);
+        console.log(elM[elM.length - 2].innerHTML);
+        if (elM[elM.length - 2].querySelector(".stamped-card-section-donation") == null) {                
+            let div = document.createElement("div");
+            div.classList.add("stamped-card-section-donation");
+            div.style.marginTop = "10px";
+            div.style.borderTop = "1px solid #ccc";
+            div.style.paddingTop = "15px";
+            div.innerHTML = donationDivInner();
+            elM[elM.length - 2].append(div);            
+        } else {                
+            console.log(elM[elM.length - 2].innerHTML);
+        }
+    }
+    document.querySelector('span[data-target="rewards"]').addEventListener("click", ()=> {setTimeout(() => {
+        setMenu();
+    }, 300);;}, true);
+
+    var idoc;
+    var el;
+    function getCustomer() {
+        fetch(`https://shp-webserver.glitch.me/stamped-customer-search?storeId=91914&email=nha@superhairpieces.com`, {
+            method: 'get',
+            accept: 'application/json'
+        })
+        .then(response => response.text())
+        .then(result => {            
+            let stampedCustomer = JSON.parse(result);
+            try {
+                stampedCustomer = stampedCustomer.results[0].customer.id;
+            } catch(err) {
+                stampedCustomer = null;
+            }
+            let timer = setInterval(() => {
+                if (document.getElementById("stamped-rewards-init") != null) {
+                    let iframe = document.getElementById("stamped-rewards-init").querySelector("iframe");
+                    idoc = document.getElementById("stamped-rewards-init").querySelector("iframe").contentWindow.document;
+                    el = idoc.getElementsByClassName("stamped-rewards-card");            
+                    if (el.length > 0) {
+                        clearInterval(timer);
+                        addDonationSection();
+                        // let rewardBtn = idoc.getElementsByClassName("stamped-rewards-header-menu")[0].querySelector('[data-target="rewards"]');
+                        // rewardBtn.addEventListener("click", function () {
+                        //     setTimeout(function () {
+                        //         addDonationSection();
+                        //     }, 500);
+                        // });
+                        let script = idoc.createElement("script");                        
+                        script.text = `function setDonationView(){let e=${stampedCustomer};function a(e,a){return e>=a?' style="display:block"':""}function t(e,a){return e>=a?"Donate":""}function s(a,t){return a>=t&&e?' onclick="donate('+t+","+e+')"':""}!function(e){let d='<div class="stamped-rewards-spendings"><div class="stamped-rewards-card stamped-rewards-card-spend" data-campaign-id="11268" data-campaign-redeemable="false" data-coupon-type="FixedAmount"><span class="stamped-reward-card-button-spend"'+a(e,1e4)+s(e,1e4)+">"+t(e,1e4)+'</span><span class="stamped-reward-card-icon"><svg class="svg-inline--fa fa-badge-dollar fa-w-16" data-prefix="fal" data-icon="badge-dollar" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="#adadad" d="M289.94 249.05l-59.06-16.86c-8.75-2.52-14.88-10.61-14.88-19.7 0-11.3 9.19-20.48 20.47-20.48h36.91c8.24 0 16.08 2.56 22.63 7.32 2.99 2.17 7.22 1.46 9.84-1.16l11.42-11.42c3.5-3.5 2.94-9.22-.99-12.23-12.26-9.41-27.18-14.51-42.9-14.51H272v-24c0-4.42-3.58-8-8-8h-16c-4.42 0-8 3.58-8 8v24h-3.53c-30.59 0-55.13 26.3-52.24 57.48 2.06 22.16 19.06 40.12 40.45 46.22l56.44 16.11c8.75 2.52 14.88 10.61 14.88 19.7 0 11.3-9.19 20.48-20.47 20.48h-36.91c-8.24 0-16.08-2.56-22.63-7.32-2.99-2.17-7.22-1.46-9.84 1.16l-11.42 11.42c-3.5 3.5-2.94 9.21.99 12.23 12.26 9.41 27.18 14.51 42.9 14.51H240v24c0 4.42 3.58 8 8 8h16c4.42 0 8-3.58 8-8v-24h1.36c22.81 0 44.33-13.59 51.72-35.17 10.15-29.65-7.28-59.8-35.14-67.78zM512 256c0-35.5-19.4-68.2-49.6-85.5 9.1-33.6-.3-70.4-25.4-95.5s-61.9-34.5-95.5-25.4C324.2 19.4 291.5 0 256 0s-68.2 19.4-85.5 49.6c-33.6-9.1-70.4.3-95.5 25.4s-34.5 61.9-25.4 95.5C19.4 187.8 0 220.5 0 256s19.4 68.2 49.6 85.5c-9.1 33.6.3 70.4 25.4 95.5 26.5 26.5 63.4 34.1 95.5 25.4 17.4 30.2 50 49.6 85.5 49.6s68.1-19.4 85.5-49.6c32.7 8.9 69.4.7 95.5-25.4 25.1-25.1 34.5-61.9 25.4-95.5 30.2-17.3 49.6-50 49.6-85.5zm-91.1 68.3c5.3 11.8 29.5 54.1-6.5 90.1-28.9 28.9-57.5 21.3-90.1 6.5C319.7 433 307 480 256 480c-52.1 0-64.7-49.5-68.3-59.1-32.6 14.8-61.3 22.2-90.1-6.5-36.8-36.7-10.9-80.5-6.5-90.1C79 319.7 32 307 32 256c0-52.1 49.5-64.7 59.1-68.3-5.3-11.8-29.5-54.1 6.5-90.1 36.8-36.9 80.8-10.7 90.1-6.5C192.3 79 205 32 256 32c52.1 0 64.7 49.5 68.3 59.1 11.8-5.3 54.1-29.5 90.1 6.5 36.8 36.7 10.9 80.5 6.5 90.1C433 192.3 480 205 480 256c0 52.1-49.5 64.7-59.1 68.3z"></path></svg></span><span class="stamped-reward-card-title">Donate $1</span><span class="stamped-reward-card-subtitle">10000 Points</span></div><div class="stamped-rewards-card stamped-rewards-card-spend" data-campaign-id="11337" data-campaign-redeemable="false" data-coupon-type="FixedAmount"><span class="stamped-reward-card-button-spend"'+a(e,2e4)+s(e,2e4)+">"+t(e,2e4)+'</span><span class="stamped-reward-card-icon"><svg class="svg-inline--fa fa-badge-dollar fa-w-16" data-prefix="fal" data-icon="badge-dollar" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="#adadad" d="M289.94 249.05l-59.06-16.86c-8.75-2.52-14.88-10.61-14.88-19.7 0-11.3 9.19-20.48 20.47-20.48h36.91c8.24 0 16.08 2.56 22.63 7.32 2.99 2.17 7.22 1.46 9.84-1.16l11.42-11.42c3.5-3.5 2.94-9.22-.99-12.23-12.26-9.41-27.18-14.51-42.9-14.51H272v-24c0-4.42-3.58-8-8-8h-16c-4.42 0-8 3.58-8 8v24h-3.53c-30.59 0-55.13 26.3-52.24 57.48 2.06 22.16 19.06 40.12 40.45 46.22l56.44 16.11c8.75 2.52 14.88 10.61 14.88 19.7 0 11.3-9.19 20.48-20.47 20.48h-36.91c-8.24 0-16.08-2.56-22.63-7.32-2.99-2.17-7.22-1.46-9.84 1.16l-11.42 11.42c-3.5 3.5-2.94 9.21.99 12.23 12.26 9.41 27.18 14.51 42.9 14.51H240v24c0 4.42 3.58 8 8 8h16c4.42 0 8-3.58 8-8v-24h1.36c22.81 0 44.33-13.59 51.72-35.17 10.15-29.65-7.28-59.8-35.14-67.78zM512 256c0-35.5-19.4-68.2-49.6-85.5 9.1-33.6-.3-70.4-25.4-95.5s-61.9-34.5-95.5-25.4C324.2 19.4 291.5 0 256 0s-68.2 19.4-85.5 49.6c-33.6-9.1-70.4.3-95.5 25.4s-34.5 61.9-25.4 95.5C19.4 187.8 0 220.5 0 256s19.4 68.2 49.6 85.5c-9.1 33.6.3 70.4 25.4 95.5 26.5 26.5 63.4 34.1 95.5 25.4 17.4 30.2 50 49.6 85.5 49.6s68.1-19.4 85.5-49.6c32.7 8.9 69.4.7 95.5-25.4 25.1-25.1 34.5-61.9 25.4-95.5 30.2-17.3 49.6-50 49.6-85.5zm-91.1 68.3c5.3 11.8 29.5 54.1-6.5 90.1-28.9 28.9-57.5 21.3-90.1 6.5C319.7 433 307 480 256 480c-52.1 0-64.7-49.5-68.3-59.1-32.6 14.8-61.3 22.2-90.1-6.5-36.8-36.7-10.9-80.5-6.5-90.1C79 319.7 32 307 32 256c0-52.1 49.5-64.7 59.1-68.3-5.3-11.8-29.5-54.1 6.5-90.1 36.8-36.9 80.8-10.7 90.1-6.5C192.3 79 205 32 256 32c52.1 0 64.7 49.5 68.3 59.1 11.8-5.3 54.1-29.5 90.1 6.5 36.8 36.7 10.9 80.5 6.5 90.1C433 192.3 480 205 480 256c0 52.1-49.5 64.7-59.1 68.3z"></path></svg></span><span class="stamped-reward-card-title">Donate $2</span><span class="stamped-reward-card-subtitle">20000 Points</span></div><div class="stamped-rewards-card stamped-rewards-card-spend" data-campaign-id="11338" data-campaign-redeemable="false" data-coupon-type="FixedAmount"><span class="stamped-reward-card-button-spend"'+a(e,4e4)+s(e,4e4)+">"+t(e,4e4)+'</span><span class="stamped-reward-card-icon"><svg class="svg-inline--fa fa-badge-dollar fa-w-16" data-prefix="fal" data-icon="badge-dollar" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="#adadad" d="M289.94 249.05l-59.06-16.86c-8.75-2.52-14.88-10.61-14.88-19.7 0-11.3 9.19-20.48 20.47-20.48h36.91c8.24 0 16.08 2.56 22.63 7.32 2.99 2.17 7.22 1.46 9.84-1.16l11.42-11.42c3.5-3.5 2.94-9.22-.99-12.23-12.26-9.41-27.18-14.51-42.9-14.51H272v-24c0-4.42-3.58-8-8-8h-16c-4.42 0-8 3.58-8 8v24h-3.53c-30.59 0-55.13 26.3-52.24 57.48 2.06 22.16 19.06 40.12 40.45 46.22l56.44 16.11c8.75 2.52 14.88 10.61 14.88 19.7 0 11.3-9.19 20.48-20.47 20.48h-36.91c-8.24 0-16.08-2.56-22.63-7.32-2.99-2.17-7.22-1.46-9.84 1.16l-11.42 11.42c-3.5 3.5-2.94 9.21.99 12.23 12.26 9.41 27.18 14.51 42.9 14.51H240v24c0 4.42 3.58 8 8 8h16c4.42 0 8-3.58 8-8v-24h1.36c22.81 0 44.33-13.59 51.72-35.17 10.15-29.65-7.28-59.8-35.14-67.78zM512 256c0-35.5-19.4-68.2-49.6-85.5 9.1-33.6-.3-70.4-25.4-95.5s-61.9-34.5-95.5-25.4C324.2 19.4 291.5 0 256 0s-68.2 19.4-85.5 49.6c-33.6-9.1-70.4.3-95.5 25.4s-34.5 61.9-25.4 95.5C19.4 187.8 0 220.5 0 256s19.4 68.2 49.6 85.5c-9.1 33.6.3 70.4 25.4 95.5 26.5 26.5 63.4 34.1 95.5 25.4 17.4 30.2 50 49.6 85.5 49.6s68.1-19.4 85.5-49.6c32.7 8.9 69.4.7 95.5-25.4 25.1-25.1 34.5-61.9 25.4-95.5 30.2-17.3 49.6-50 49.6-85.5zm-91.1 68.3c5.3 11.8 29.5 54.1-6.5 90.1-28.9 28.9-57.5 21.3-90.1 6.5C319.7 433 307 480 256 480c-52.1 0-64.7-49.5-68.3-59.1-32.6 14.8-61.3 22.2-90.1-6.5-36.8-36.7-10.9-80.5-6.5-90.1C79 319.7 32 307 32 256c0-52.1 49.5-64.7 59.1-68.3-5.3-11.8-29.5-54.1 6.5-90.1 36.8-36.9 80.8-10.7 90.1-6.5C192.3 79 205 32 256 32c52.1 0 64.7 49.5 68.3 59.1 11.8-5.3 54.1-29.5 90.1 6.5 36.8 36.7 10.9 80.5 6.5 90.1C433 192.3 480 205 480 256c0 52.1-49.5 64.7-59.1 68.3z"></path></svg></span><span class="stamped-reward-card-title">Donate $4</span><span class="stamped-reward-card-subtitle">40000 Points</span></div></div>',n=document.createElement("script");n.text='function donate(e,t){fetch("https://shp-webserver.glitch.me/stamped-donate",{method:"post",headers:{"content-type":"application/json",accept:"application/json"},body:JSON.stringify({id:t,point:e,storeId:91914})}).then(e=>e.json()).then(t=>{console.log(t),e=document.querySelector(".stamped-rewards-header-main-points").getAttribute("data-points")-e,document.querySelector(".stamped-rewards-header-main-points").setAttribute("data-points",0),document.querySelector(".stamped-rewards-header-main-points").innerHTML=e+" Points",document.querySelector(".stamped-rewards-header-small-points").setAttribute("data-points",0),document.querySelector(".stamped-rewards-header-small-points").innerHTML=e+" Points",document.getElementsByClassName("stamped-rewards-header-nav")[0].click()}).catch(e=>console.log(e))}',document.body.appendChild(n),document.getElementById("stamped-rewards-views").innerHTML=d,document.getElementsByClassName("stamped-rewards-window")[0].classList.add("stamped-rewards-nav-small"),document.getElementsByClassName("stamped-rewards-header-main")[0].style.display="none",document.getElementsByClassName("stamped-rewards-header-small-title")[0].innerHTML="Donate Points",document.getElementsByClassName("stamped-rewards-header-small")[0].style.display="block",document.getElementsByClassName("stamped-rewards-background")[0].style.height="200px",document.getElementsByClassName("stamped-rewards-header")[0].style.minHeight="70px",document.getElementById("stamped-rewards-cards").style.display="none",document.getElementById("stamped-rewards-views").style.display="block",document.getElementsByClassName("stamped-rewards-header-nav")[0].addEventListener("click",()=>{StampedFn.loadLauncherView("main")},!0)}(document.querySelector(".stamped-rewards-header-main-points").getAttribute("data-points"))}function donationDivInner(){return'<div>For every 10,000 points you choose to donate, Superhairpieces will donate $1 to our partnered charity!</div><a href="javascript:;" onclick="setDonationView()" data-title="Donate Points" class="stamped-rewards-content-button"><svg class="svg-inline--fa fa-hand-holding-heart fa-w-16" aria-hidden="true" data-prefix="fad" data-icon="gift" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" data-fa-i2svg="" style="font-size: 20px; margin-right: 5px; margin-left: -15px"><g class="fa-group"><path class="fa-primary" style="fill: #adadad !important" d="M275.3 250.5c7 7.4 18.4 7.4 25.5 0l108.9-114.2c31.6-33.2 29.8-88.2-5.6-118.8-30.8-26.7-76.7-21.9-104.9 7.7L288 36.9l-11.1-11.6C248.7-4.4 202.8-9.2 172 17.5c-35.3 30.6-37.2 85.6-5.6 118.8l108.9 114.2zm290 77.6c-11.8-10.7-30.2-10-42.6 0L430.3 402c-11.3 9.1-25.4 14-40 14H272c-8.8 0-16-7.2-16-16s7.2-16 16-16h78.3c15.9 0 30.7-10.9 33.3-26.6 3.3-20-12.1-37.4-31.6-37.4H192c-27 0-53.1 9.3-74.1 26.3L71.4 384H16c-8.8 0-16 7.2-16 16v96c0 8.8 7.2 16 16 16h356.8c14.5 0 28.6-4.9 40-14L564 377c15.2-12.1 16.4-35.3 1.3-48.9z"></path></g></svg> Donate Points</a>'}function setMenu(){console.log("menu");let e=document.querySelector("#stamped-rewards-cards").querySelectorAll(".stamped-rewards-card.stamped-rewards-card-main");if(console.log(e),console.log(e[e.length-2].innerHTML),null==e[e.length-2].querySelector(".stamped-card-section-donation")){let a=document.createElement("div");a.classList.add("stamped-card-section-donation"),a.style.marginTop="10px",a.style.borderTop="1px solid #ccc",a.style.paddingTop="15px",a.innerHTML=donationDivInner(),e[e.length-2].append(a)}else console.log(e[e.length-2].innerHTML)}document.querySelector('span[data-target="rewards"]').addEventListener("click",()=>{setTimeout(()=>{setMenu()},300)},!0);`;
+                        idoc.body.appendChild(script);                        
+                    }
+                }
+            }, 400);
+        })
+        .catch(error => {
+            console.log('error', error);            
+        });        
+    }
+    function donationDivInner() {        
+
+        return (
+            "<div>For every 10,000 points you choose to donate, Superhairpieces will donate $1 to our partnered charity!</div>" +
+            '<a href="javascript:;" onclick="setDonationView()" data-title="Donate Points" class="stamped-rewards-content-button">' +
+                '<svg class="svg-inline--fa fa-hand-holding-heart fa-w-16" aria-hidden="true" data-prefix="fad" data-icon="gift" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" data-fa-i2svg="" style="font-size: 20px; margin-right: 5px; margin-left: -15px">' +
+                    '<g class="fa-group">' +
+                        "<path " +
+                        'class="fa-primary" ' +            
+                        'style="fill: #adadad !important" '+
+                        'd="M275.3 250.5c7 7.4 18.4 7.4 25.5 0l108.9-114.2c31.6-33.2 29.8-88.2-5.6-118.8-30.8-26.7-76.7-21.9-104.9 7.7L288 36.9l-11.1-11.6C248.7-4.4 202.8-9.2 172 17.5c-35.3 30.6-37.2 85.6-5.6 118.8l108.9 114.2zm290 77.6c-11.8-10.7-30.2-10-42.6 0L430.3 402c-11.3 9.1-25.4 14-40 14H272c-8.8 0-16-7.2-16-16s7.2-16 16-16h78.3c15.9 0 30.7-10.9 33.3-26.6 3.3-20-12.1-37.4-31.6-37.4H192c-27 0-53.1 9.3-74.1 26.3L71.4 384H16c-8.8 0-16 7.2-16 16v96c0 8.8 7.2 16 16 16h356.8c14.5 0 28.6-4.9 40-14L564 377c15.2-12.1 16.4-35.3 1.3-48.9z">' +
+                        "</path>" +
+                    "</g>" +
+                "</svg>" +
+                " Donate Points" +
+            "</a>"
+        );
+    }
+    function addDonationSection() {
+        if (el[el.length - 2].querySelector(".stamped-card-section-donation") == null) {
+            let div = idoc.createElement("div");
+            div.classList.add("stamped-card-section-donation");
+            div.style.marginTop = "10px";
+            div.style.borderTop = "1px solid #ccc";
+            div.style.paddingTop = "15px";
+            div.innerHTML = donationDivInner();
+            el[el.length - 2].append(div);            
+        }
+    }
+    getCustomer();
+
+    // function addSocialLinks() {
+    //     let timer = setInterval(() => {            
+    //         if (document.querySelector('iframe[title="Re:amaze Chat"]')) {                
+    //             let iframe = document.querySelector('iframe[title="Re:amaze Chat"]');                
+    //             idoc = iframe.contentWindow.document;                
+    //             el = idoc.querySelector("#misc-channels");                                            
+    //             if (el) {
+    //                 clearInterval(timer);                    
+    //                 let a = idoc.createElement("a");
+    //                 a.setAttribute("href", "#");
+    //                 a.classList.add("anim-btn");
+    //                 a.innerHTML = `<i class="fab rmzfa rmzfa-linkedin"></i>`;
+    //                 el.appendChild(a);
+    //                 let a1 = idoc.createElement("a");
+    //                 a1.setAttribute("href", "#");
+    //                 a1.classList.add("anim-btn");
+    //                 a1.innerHTML = `<i class="fab rmzfa rmzfa-pinterest"></i>`;
+    //                 el.appendChild(a1);
+    //             }
+    //         }
+    //     }, 500);
+    // }
+    // addSocialLinks();
+</script>

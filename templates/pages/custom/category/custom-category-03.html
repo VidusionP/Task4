@@ -1,0 +1,231 @@
+---
+category:
+    shop_by_price: true
+    products:
+        limit: { { theme_settings.categorypage_products_per_page } }
+---
+
+{{inject "categoryProductsPerPage" theme_settings.categorypage_products_per_page}} {{#partial "head"}} {{#if pagination.category.previous}}
+<link rel="prev" href="{{pagination.category.previous}}" />
+{{/if}} {{#if pagination.category.next}}
+<link rel="next" href="{{pagination.category.next}}" />
+{{/if}} {{/partial}} {{#partial "hero"}}
+
+<style>
+    .cat-hero {
+        min-height: 51vw;
+    }
+    .cat-hero picture {
+        animation: fadeIn ease 2s;
+        -webkit-animation: fadeIn ease 2s;
+        -moz-animation: fadeIn ease 2s;
+        -o-animation: fadeIn ease 2s;
+        -ms-animation: fadeIn ease 2s;
+    }
+    @keyframes fadeIn {
+        0% {
+            opacity: 0;
+            display: none;
+        }
+        70% {
+            display: block;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+    @-moz-keyframes fadeIn {
+        0% {
+            opacity: 0;
+            display: none;
+        }
+        70% {
+            display: block;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+    @-webkit-keyframes fadeIn {
+        0% {
+            opacity: 0;
+            display: none;
+        }
+        70% {
+            display: block;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+    @-o-keyframes fadeIn {
+        0% {
+            opacity: 0;
+            display: none;
+        }
+        70% {
+            display: block;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+    @-ms-keyframes fadeIn {
+        0% {
+            opacity: 0;
+            display: none;
+        }
+        70% {
+            display: block;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+    @media only screen and (max-width: 800px) {
+        .cat-menu ul li a {
+            color: #fff !important;
+        }
+    }
+</style>
+<div class="cat-menu light">
+    <ul>
+        {{#each category.subcategories}}
+        <li><a href="{{url}}" alt="{{name}}" title="{{name}}">{{name}}</a></li>
+        {{/each}}
+    </ul>
+</div>
+
+<section class="cat-hero">
+    <picture> </picture>
+</section>
+<script>
+    function languageSet(e) {
+        let i = document.querySelectorAll(".cat-menu ul li a");
+        "fr" == e
+            ? (i.forEach(function (e) {
+                  e.style.color = "#fff";
+              }),
+              (document.querySelector(".cat-hero").innerHTML =
+                  '<picture> <source media="(min-width:1020px)" srcset="/product_images/uploaded_images/extension-fr-1920.jpg"> <source media="(min-width:900px)" srcset="/product_images/uploaded_images/extension-fr-1020.jpg"> <source media="(min-width:700px)" srcset="/product_images/uploaded_images/extension-fr-900.jpg"><img loading="lazy" src="/product_images/uploaded_images/extension-fr-700.jpg" alt="Hair Extension Superhairpieces"> </picture>'))
+            : "de" == e
+            ? (i.forEach(function (e) {
+                  e.style.color = "#333";
+              }),
+              (document.querySelector(".cat-hero").innerHTML =
+                  '<picture> <source media="(min-width:1020px)" srcset="/product_images/uploaded_images/extension-de-1920.jpg"> <source media="(min-width:900px)" srcset="/product_images/uploaded_images/extension-de-1020.jpg"> <source media="(min-width:700px)" srcset="/product_images/uploaded_images/extension-de-900.jpg"><img loading="lazy" src="/product_images/uploaded_images/extension-de-700.jpg" alt="Hair Extension Superhairpieces"> </picture>'))
+            : "es" == e
+            ? (i.forEach(function (e) {
+                  e.style.color = "#fff";
+              }),
+              (document.querySelector(".cat-hero").innerHTML =
+                  '<picture> <source media="(min-width:1020px)" srcset="/product_images/uploaded_images/extension-es-1920.jpg"> <source media="(min-width:900px)" srcset="/product_images/uploaded_images/extension-es-1020.jpg"> <source media="(min-width:700px)" srcset="/product_images/uploaded_images/extension-es-900.jpg"><img loading="lazy" src="/product_images/uploaded_images/extension-es-700.jpg" alt="Hair Extension Superhairpieces"> </picture>'))
+            : (i.forEach(function (e) {
+                  e.style.color = "#fff";
+              }),
+              (document.querySelector(".cat-hero").innerHTML =
+                  '<picture> <source media="(min-width:1020px)" srcset="/product_images/uploaded_images/extension-en-1920.jpg"> <source media="(min-width:900px)" srcset="/product_images/uploaded_images/extension-en-1020.jpg"> <source media="(min-width:700px)" srcset="/product_images/uploaded_images/extension-en-900.jpg"><img loading="lazy" src="/product_images/uploaded_images/extension-en-700.jpg" alt="Hair Extension Superhairpieces"> </picture>'));
+    }
+    Weglot.on("switchersReady", () => {
+        languageSet(Weglot.getCurrentLang());
+    }),
+        (window.location.href.includes("www.superhairpieces.com") || window.location.href.includes("superhairpiecessandbox4.mybigcommerce.com")) &&
+            Weglot.on("languageChanged", () => {
+                languageSet(Weglot.getCurrentLang());
+            });
+</script>
+
+{{/partial}} {{#partial "page"}}
+
+<div class="custom-cat extension">
+    <section class="cta-row">
+        <div class="cta-section">
+            <img class="cta-img" src="/product_images/uploaded_images/extension-cta-01.jpg" />
+        </div>
+        <div class="cta-section">
+            <div class="cta-content">
+                <div class="cta-inner">
+                    <h2>Tape in</h2>
+                    <p>
+                        Tape in Extension seamlessly add length, volume or highlights to your natural hair. Our remy tape-in extensions are made with pure 100% Remy human hair and come with strong,
+                        durable tape that won't damage your hair. We stock 5 lengths, 20 colors in 4 quality level from basic 3A to the highest 6A quality. Best recognized brand name in Canada for
+                        it's supreme quality reputation. Price always the lowest compare with the same quality level. Invisible and flexible in style, low Maintenance, Least Damaging, easy
+                        installation in one hour and reusable after 8 weeks. Perfection solution for either adding hair volume form thin to thick or affordable no damage highlights
+                    </p>
+                    <a href="#" class="button">View Products</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-row">
+        <div class="cta-section">
+            <div class="cta-content">
+                <div class="cta-inner">
+                    <h2>Hot Fusion</h2>
+                    <p>
+                        This strand-by-strand system applies with the use of melting the keratin bond with a fusion gun on to the client’s hair. Shape of Nail tip or U-tips Keratin Bonding forming
+                        bonds between your hair and the 100% Remy human hair bundle provided by Superhairpieces Extensions. The heated Keratin adhesive bond will be hot fused in small bundles with
+                        your hair at the base which causes a completely seamless transition from strand to strand. Compare us with brand name hair extension provider like Cinderella , Hotheads, Great
+                        Lengths, Donna Bella, Klix , Babe, Halo Hair extension. Our hair quality is outstanding and selling mouth to mouth in Canada like a trade secret. Online price shows retail and
+                        only certified hair extension technicians or hairstylist can log in check wholesale price.
+                    </p>
+                    <a href="/extensions/nail-tip/all-nail-extensions/" class="button">View Nail Tip Extensions </a>
+                </div>
+            </div>
+        </div>
+        <div class="cta-section">
+            <img class="cta-img" src="/product_images/uploaded_images/extension-cta-02.jpg" />
+        </div>
+    </section>
+
+    <section class="cta-row">
+        <div class="cta-section">
+            <img class="cta-img" src="/product_images/uploaded_images/extension-cta-03.jpg" />
+        </div>
+        <div class="cta-section">
+            <div class="cta-content">
+                <div class="cta-inner">
+                    <h2>Machine Weft</h2>
+                    <p>
+                        In Hair Extensions market, people generally thinking machine weaves hair are for African American people and Extensions are for caucasians. Superhairpieces luxury machine weft
+                        extensions bring hair type with most European hair texture to make this method possible for Caucasian people add hair volume and length to the hair. Hair is naturally treated
+                        with minimum cuticle damage keep this high-quality hair healthy and strong to last. Weft can be sewn on or micro ring beaded to link attach on your hair. Sew in weaves can also
+                        be used on repair wigs as well.
+                    </p>
+                    <a href="/extensions/machine-weft/all-machine-weft-extensions/" class="button">View Products</a>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+{{/partial}} {{#partial "signup"}}
+<section class="cat-join extension" style="background-image: url(/product_images/uploaded_images/extension-signup.jpg)">
+    <div class="cat-join-inner">
+        <h2>Looking for High End Level ?</h2>
+        <p>Hand Tied Weft <br />for very fine hair truly undetectable integration.</p>
+        {{!--<span onclick="iconPop();" class="button">Check Now</span>
+        --}}
+        <a href="/extensions/hand-tied-weft/" class="button">Check Now</a>
+    </div>
+</section>
+{{/partial}} {{!-- {{#partial "page"}} {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}} {{#if category.image}}
+<img src="{{getImage category.image 'zoom_size'}}" />
+{{/if}}
+<h1 class="page-heading">{{category.name}}</h1>
+{{{category.description}}} {{{snippet 'categories'}}}
+<div class="page">
+    {{#or category.subcategories category.faceted_search_enabled}}
+    <aside class="page-sidebar" id="faceted-search-container">{{> components/category/sidebar}}</aside>
+    {{else}} {{#if theme_settings.shop_by_price_visible}}
+    <aside class="page-sidebar" id="faceted-search-container">{{> components/category/sidebar}}</aside>
+    {{/if}} {{/or}}
+    <main class="page-content" id="product-listing-container">
+        {{#if category.products}} {{> components/category/product-listing}} {{else}}
+        <p>{{lang 'categories.no_products'}}</p>
+        {{/if}}
+    </main>
+</div>
+
+{{/partial}} --}} {{> layout/base}}

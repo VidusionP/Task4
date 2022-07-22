@@ -1,0 +1,113 @@
+---
+product:
+    videos:
+        limit: {{theme_settings.productpage_videos_count}}
+    reviews:
+        limit: {{theme_settings.productpage_reviews_count}}
+    related_products:
+        limit: {{theme_settings.productpage_related_products_count}}
+    similar_by_views:
+        limit: {{theme_settings.productpage_similar_by_views_count}}
+---
+{{#partial "page"}}
+    {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+    {{inject 'product_shipping' product.shipping_messages}}
+    {{#each product.shipping_messages}}
+        {{#if message '!=' ''}}
+          {{> components/common/alert-info message}}
+        {{/if}}
+    {{/each}}
+
+    <div itemscope itemtype="http://schema.org/Product">        
+
+        {{#if product.sku '==' 'CMH1'}}
+          {{> components/products/custom-product-view schema=true}}          
+        {{else}}
+          {{> components/products/product-view schema=true}}
+        {{/if}}
+        {{#if product.videos.list.length}}
+            {{> components/products/videos product.videos}}
+        {{/if}}
+
+        {{#if settings.show_product_reviews}}
+            {{> components/products/reviews reviews=product.reviews product=product urls=urls}}
+        {{/if}}
+
+        {{> components/products/tabs}}
+
+    </div>
+    <!-- <style>
+        .faq-container-bottom {
+          margin: 0 auto;
+          margin-top: 10rem;
+        }
+
+        .faq-container-bottom h2 {
+            text-align: center;
+        }        
+    </style>
+    <div class="faq-container faq-container-bottom">
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-accordion">
+            <div class="faq-accordion-item">
+              <button aria-expanded="true"><span class="faq-accordion-title">How long will my new hair system last?</span><span class="faq-icon" aria-hidden="false"></span></button>
+              <div class="faq-accordion-content">
+                <p>The base material plays an important role in determining the lifespan of a new hair system. Different base materials have different levels of durability. If you want your system to last longer, you may would have to compromise on the natural degree of your system. Honestly, the more natural the system looks, the less durable it is.<br/>
+                  Here are the lifespan of four basic base materials for reference:<br/>
+                  ● 1- 2 months   for 0.03mm thin skin hair systems<br/>
+                  ● 2 - 4 months   for 0.05 mm thin skin hair systems<br/>
+                  ● 4 - 6 months   for 0.10 mm thin skin hair systems<br/>
+                  ● 5 - 8 months   for 0.15 mm thin skin hair systems<br/>
+                  ● 5 - 7 months   for Swiss lace hair system<br/>
+                  ● 6 - 9 months   for French lace hair system<br/>
+                  ● 7-12 months   for mono hair system</p>
+              </div>
+            </div>
+            <div class="faq-accordion-item">
+              <button aria-expanded="false"><span class="faq-accordion-title">How to make a quick reorder?</span><span class="faq-icon" aria-hidden="true"></span></button>
+              <div class="faq-accordion-content">
+                <p>Login to your Hairbro account first on our site, then check your order center. Find the order you want to reorder, then click the “reorder” button in the order detail. Finish the payment, it’s just this easy.</p>
+              </div>
+            </div>
+            <div class="faq-accordion-item">
+              <button aria-expanded="false"><span class="faq-accordion-title">How to send in sample?</span><span class="faq-icon" aria-hidden="true"></span></button>
+              <div class="faq-accordion-content">
+                <p>We always advise our clients to send in the sample by express deliveries like UPS, DHL, Fedex, TNT etc., which is fast and reliable. Compared to say, the normal mail post usually takes more than 2 weeks to get the sample to be delivered. Once the package is sent out, please let us know the tracking number at the very first time, so we can track the delivery status.</p>
+              </div>
+            </div>
+            <div class="faq-accordion-item">
+              <button aria-expanded="false"><span class="faq-accordion-title">How to order a perfect fit custom hair system?</span><span class="faq-icon" aria-hidden="true"></span></button>
+              <div class="faq-accordion-content">
+                <p>"Custom" means your hair replacement system is tailored to fit. Your new unit will be shaped and sized to match your unique balding pattern. It will be color matched, cut and styled to blend naturally with your own growing hair. There are 2 ways to help: 1. Send back a mold and a piece of your own hair sample(to match the color and curl etc.). Click this link to see how to make a mold easily. 2. Send back a old unit you wear for reference. So we can make a perfect duplication.</p>
+              </div>
+            </div>
+            <div class="faq-accordion-item">
+              <button aria-expanded="false"><span class="faq-accordion-title">How soon can I get the hair system?</span><span class="faq-icon" aria-hidden="true"></span></button>
+              <div class="faq-accordion-content">
+                <p>For a custom-made order: Standard Time - 5~7 weeks, Rush Service Time - 4~5 weeks For stock systems: once we have confirmed your payment and shipping information, we will ship the order right away. (Usually within 24 hours)</p>
+              </div>
+            </div>
+          </div>
+    </div> -->
+    <script>
+        const items = document.querySelectorAll(".faq-accordion button");
+        
+        function toggleAccordion() {
+          const itemToggle = this.getAttribute('aria-expanded');
+          
+        //   for (i = 0; i < items.length; i++) {
+        //     items[i].setAttribute('aria-expanded', 'false');
+        //   }
+          
+          if (itemToggle == 'false') {
+            this.setAttribute('aria-expanded', 'true');
+          } else {
+            this.setAttribute('aria-expanded', 'false');
+          }
+        }
+        
+        items.forEach(item => item.addEventListener('click', toggleAccordion));
+    </script>
+
+{{/partial}}
+{{> layout/base}}

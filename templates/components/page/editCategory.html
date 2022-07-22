@@ -1,0 +1,820 @@
+<link rel="stylesheet" href="/content/css/jodit.min.css">
+<link rel="stylesheet" href="/content/css/jstree/style.min.css">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<style>
+    .modal-progress {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: 9;
+        display: none;
+        justify-content: center;
+        align-items: center;
+    }
+    .modal-overlay {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, .8);
+    }    
+    .modal-content {
+        background-color: #fff;
+        width: 250px;
+        height: auto;
+        padding: 1rem;
+        z-index: 9;
+    }
+    .wrap {
+        display: grid;
+        grid-template-columns: 1fr 3fr;
+        grid-column-gap: 10px;
+    }
+    #jstree_category {
+        overflow: auto;
+    }
+    .content-wrap {
+        display: none;
+    }
+    .content-wrap input, .content-wrap textarea, .content-wrap select {
+        border-radius: 8px;
+        width: 100%;        
+        margin-bottom: 1rem;
+        padding: 5px;
+        border: 1px solid #000;
+    }
+    .edited {
+        font-style: italic;
+        color: #ed0000;
+        font-size: 0.8rem;
+        margin-left: 5px;
+    }
+    .button-wrap {
+        display: none;        
+    }
+    .button-wrap button[data-test='button-save-one'], .button-wrap button[data-test='button-save-all'] {
+        float: right;
+        margin: auto 5px;
+    }
+    .button-wrap button {
+        width: 100px;
+        text-align: center;
+        padding: 8px 0;        
+        color: #fff;
+        background-color: #000;
+        border: 1px solid #000;
+    }    
+    .button-wrap button[data-test=button-discard] {
+        color: #000;
+        background-color: #fff;
+    }    
+    .button-wrap button:hover {
+        color: #000;
+        background-color: #fff;
+        transition: all 0.2s;
+    }
+    .button-wrap button[data-test=button-discard]:hover{
+        color: #fff;
+        background: #ccc;        
+    }
+    .group-wrap {
+        padding: 15px;
+        border: 1px solid #767676;
+        margin-bottom: 10px;
+        position: relative;
+    }
+    .group-wrap.inactive {
+        opacity: 0.5;        
+    }    
+    .group-wrap.inactive input[type="text"], .group-wrap.inactive select, .group-wrap.inactive textarea, .group-wrap.inactive .jodit {
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        pointer-events: none;
+        border: 1px solid #cdcdcd;
+    }
+    .group-toogle {
+        position: absolute;
+        top: 5px;
+        right: 15px;        
+    }    
+    .group-toogle label {
+        position: relative;
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        background-color: #FD1015;
+        border-radius: 50%;
+        cursor: pointer;
+        box-shadow: inset 0 0 2px 1px rgba(0, 0, 0, 0.1), 0px 9px 15px 0px #ef4247;
+        -webkit-tap-highlight-color: transparent;
+    }
+    .group-toogle label:before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        transition: width 0.2s cubic-bezier(0, -1.85, 0.27, 1.75);
+        height: 12px;
+        width: 12px;
+        background-color: #fd0f14;
+        border-radius: 50%;
+        box-shadow: inset 0px 0px 0px 8px #fff;
+    }
+    .group-toogle input {
+        display: none;
+    }
+    .group-toogle input:checked + label {
+        background-color: #57de72;
+        box-shadow: inset 0 0 2px 1px rgba(0, 0, 0, 0.1), 0px 9px 15px 0px rgba(3, 132, 28, 0.5411764706);
+    }
+    .group-toogle input:checked + label:before {
+        width: 3px;
+        background-color: #fff;
+    }
+    .desp-preview {
+        margin-bottom: 20px;
+    }
+
+    /*
+    ** img video content style
+    **/
+    .banner2-wrap {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-column-gap: 2rem;
+        position: relative;
+        background-color: transparent;
+        --background-color: #efe9e5;
+    }
+    .banner2-wrap::before {
+        content: "";            
+        width: 90%;
+        height: 90%;
+        background-color: var(--background-color);
+        position: absolute;
+        top: 5%;
+        left: 5%;
+    }
+    .banner-graphic {
+        position: relative; 
+    }
+    .banner2-img {
+        position: absolute;
+        bottom: 10%;
+        left: 0;
+        max-width: 80%;
+        transition: all 0.2s ease;
+        border: 1px solid #f5f5f5;
+        z-index: 2;
+    }        
+    .banner-video {
+        position: absolute;
+        right: 0;
+        top: 0;
+        height: 75%;
+        width: 70%;
+        z-index: 1;
+        transition: all 0.2s ease;
+    }
+    .banner-video:hover {
+        z-index: 9;
+        transform: scale(1.1);
+    }          
+    .banner2-img:hover {
+        transform: scale(1.1);
+        z-index: 10;
+    }        
+    .banner2-desp {
+        position: relative;
+        padding: 7rem 0;
+        text-align: justify;
+    }
+    @media only screen and (max-width: 1024px) {
+        .banner2-wrap {
+            display: block;
+        }
+        .banner2-wrap::before {                
+            content: none;
+        }
+        .banner2-desp {
+            padding: 1rem 0 0;
+        }
+        .banner-graphic {
+            height: 250px;
+        }
+        .banner-video {
+            width: 50%;
+            z-index: 10;
+        }
+        .banner2-img {
+            max-width: 60%;
+        }
+    }
+    @media only screen and (max-width: 575px) {
+        .category-description-wrap-top .banner2-desp {
+            display: none;
+        }                        
+        .banner2-img {
+            width: 100%;
+            position: relative;
+            border: none;
+        }
+        .banner-video {
+            display: none;
+        }
+        .banner-graphic {
+            height: auto;
+        }
+    }
+    /*
+    ** Image content type
+    **/
+    .banner1-wrap {
+        display: flex;        
+    }
+    .banner1-image-wrap {
+        width: 600px;
+        display: flex;
+        justify-content: center;
+        align-items: center;            
+    }                
+    .banner1-image {
+        width: 100%;
+    }
+    .banner1-desp {
+        width: calc(100% - 600px);
+        padding: 25px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    @media only screen and (max-width: 1200px) {
+        .banner1-image-wrap, .banner1-desp {
+            width: 50%;
+        }            
+    }
+    @media only screen and (max-width: 900px) {
+        .banner1-wrap {
+            background-color: transparent;
+        }
+        .banner1-image-wrap {
+            width: 100%;
+            padding: 0;
+            margin-bottom: 20px;
+        }
+        .banner1-wrap, .banner1-desp {
+            display: block;     
+            width: 100%;
+            padding: 0;
+            margin-bottom: 20px;           
+        }
+        .banner1-image {
+            max-width: 600px;
+        }
+    }  
+</style>
+<div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
+<div class="modal-progress">
+    <div class="modal-overlay"></div>
+    <div class="modal-content">
+        <div class="w3-light-grey progress-save-all">
+            <div class="w3-container w3-green w3-center" modal-progress="data" style="width:0%">0%</div>
+        </div>            
+    </div>    
+</div>
+<div class="wrap">    
+    <div id="jstree_category"></div>
+    <div class="content-wrap">
+        <div><label for="cate-url">URL</label></div>
+        <div>            
+            <input type="text" name="url" readonly id="cate-url">            
+        </div>
+        <div class="group-wrap" data-test="group-banner">
+            <div class="group-toogle">
+                <input type="checkbox" id="group-toogle" />
+                <label for="group-toogle"></label>
+            </div>            
+            <div><label for="cate-image">Image link</label></div>
+            <div>
+                <input type="text" name="image" id="cate-image">
+            </div>
+            <div><label for="cate-image-alt">Image Alt</label></div>
+            <div>            
+                <input type="text" name="image-alt" id="cate-image-alt">
+            </div>
+            <!-- <div><label for="cate-video-type">Video type</label></div>
+            <div>
+                <select name="video-type" id="cate-video-type">
+                    <option value="youtube">Youtube</option>
+                    <option value="raw">Raw</option>
+                </select>
+            </div> -->
+            <div><label for="cate-video">Youtube ID</label></div>
+            <div>            
+                <input type="text" name="video" id="cate-video">
+            </div>   
+            <div><label for="cate-content-color">Description Background Color</label></div>        
+            <div>
+                <input type="text" name="content-color" id="cate-content-color" value="#fff">
+            </div>         
+            <div><label for="cate-content">Description</label></div>        
+            <div>
+                <textarea name="content" id="cate-content" cols="30" rows="10"></textarea>
+            </div>
+        </div>
+        <div class="group-wrap" data-test="group-editor">
+            <div class="group-toogle">
+                <input type="checkbox" id="group-toogle-" />
+                <label for="group-toogle-"></label>
+            </div>
+            <div>
+                <label>Editor</label>
+            </div>
+            <textarea id="editor" name="editor"></textarea>
+        </div>
+        <div>
+            <div><label>Preview</label></div>
+            <div class="desp-preview"></div>
+        </div>
+        <div class="button-wrap">
+            <button data-test="button-discard">Discard</button>            
+            <button data-test="button-save-all">Save All</button>
+            <button data-test="button-save-one">Save</button>
+        </div>
+    </div>    
+</div>
+<script src="/content/js/jodit.min.js"></script>
+<script src="/content/js/jstree.min.js"></script>
+<!-- <script src="https://accounts.google.com/gsi/client" async defer></script> -->
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<script>    
+    var edited=[];
+    var editor;
+    var g_data;
+    var ge_edit;
+    var g_desp;    
+    var g_discard=false;
+    var gc_data;
+    // var desp_color=`#e6e6fa`;        
+    function save(data, anchor=null, anchorIdx=null, idx=0, ) {
+        if (idx==data.length) {            
+            $(".modal-progress").hide();
+            if (anchor) {
+                let editedEl = $(anchor).find(".edited");
+                if (editedEl.length>0) {
+                    editedEl.remove();
+                }
+                edited.splice(anchorIdx,1);
+                if (edited.length==1) {
+                    $(".button-wrap").hide();
+                }
+                $("button[data-test='button-save-one']").hide();
+                $("button[data-test='button-discard']").hide();
+            } else {
+                $(".edited").remove();
+                edited = [];
+                $(".button-wrap").hide();
+            }
+        } else {
+            let desp = getDesp(data[idx].url, data[idx].img, data[idx].alt, data[idx].video, data[idx].desp, data[idx].color);            
+            if (desp.includes("banner2-wrap")) {
+                let youtubeID = data[idx].video;
+                let desp_color = data[idx].color;
+                let img_video_css=`.banner2-wrap{display:grid;grid-template-columns:repeat(2,1fr);grid-column-gap:2rem;position:relative;background-color:transparent}.banner2-wrap::before{content:"";width:90%;height:90%;background-color:${desp_color};position:absolute;top:5%;left:5%}.banner-graphic{position:relative}.banner2-img{position:absolute;bottom:10%;left:0;max-width:80%;transition:all .2s ease;border:1px solid #f5f5f5;z-index:2}.banner-video{position:absolute;right:0;top:0;height:75%;width:70%;z-index:1;transition:all .2s ease}.banner-video:hover{z-index:9;transform:scale(1.1)}.banner2-img:hover{transform:scale(1.1);z-index:10}.banner2-desp{position:relative;padding:7rem 0;text-align:justify}@media only screen and (max-width: 1024px){.banner2-wrap{display:block}.banner2-wrap::before{content:none}.banner2-desp{padding:1rem 0 0}.banner-graphic{height:250px}.banner-video{width:50%;z-index:10}.banner2-img{max-width:60%}}@media only screen and (max-width: 575px){.category-description-wrap-top .banner2-desp{display:none}.banner2-img{width:100%;position:relative;border:none}.banner-video{display:none}.banner-graphic{height:auto}}`;    
+                let img_view_script=`var tag=document.createElement("script");tag.src="https://www.youtube.com/iframe_api";var player,firstScriptTag=document.getElementsByTagName("script")[0];function onYouTubeIframeAPIReady(){player=new YT.Player("player",{videoId:"${youtubeID}",playerVars:{playsinline:1},events:{onStateChange:onPlayerStateChange}})}firstScriptTag.parentNode.insertBefore(tag,firstScriptTag);var done=!1;function onPlayerStateChange(e){e.data!=YT.PlayerState.PLAYING||done||(document.querySelector(".banner-video").style.zIndex=10)}`;        
+                desp = `<style>${img_video_css}<\/style>${desp}<script>${img_view_script}<\/script>`;
+            } else if (desp.includes("banner1-wrap")) {
+                let desp_color = data[idx].color;
+                let img_css=`.banner1-wrap{display:flex;background-color:${desp_color}}.banner1-image-wrap{width:600px;display:flex;justify-content:center;align-items:center}.banner1-image{width:100%}.banner1-desp{width:calc(100% - 600px);padding:25px;display:flex;justify-content:center;align-items:center}@media only screen and (max-width: 1200px){.banner1-image-wrap,.banner1-desp{width:50%}}@media only screen and (max-width: 900px){.banner1-wrap{background-color:transparent}.banner1-image-wrap{width:100%;padding:0;margin-bottom:20px}.banner1-wrap,.banner1-desp{display:block;width:100%;padding:0;margin-bottom:20px}.banner1-image{max-width:600px}}`;
+                desp = `<style>${img_css}<\/style>${desp}`;            
+            }            
+            fetch("//shp-webserver-temp.glitch.me/update-bc-category", {
+                method: 'POST',
+                headers: {
+                    accept: 'application/json',
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify({
+                    store_id: 742053,
+                    data: {
+                        id: data[idx].id,
+                        desp
+                    }
+                })
+            })
+            .then(r=>r.json())
+            .then(d=>{
+                console.log(d);
+                let pr = Math.floor((idx+1)/data.length*100);
+                $("[modal-progress='data']").css("width", `${pr}%`).html(`${pr}%`);            
+                save(data, anchor, anchorIdx, idx+1);
+            })
+            .catch(e=>{
+                console.log(e);
+                save(data, anchor, anchorIdx, idx+1);
+            })
+        }        
+    }
+    function getDesp(url, img, alt, video, desp, color) {
+        if (img && video) {        
+            return `
+                <div class="banner2-wrap">
+                    <input class="banner-video-id" type="hidden" value="${video}">
+                    <div class="banner-graphic">
+                        <div class="banner-video" id="player">      
+                            <iframe frameborder="0" allowfullscreen="1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" title="YouTube video player" src="https://www.youtube.com/embed/${video}?playsinline=1&amp;enablejsapi=1&amp;widgetid=1"></iframe>          
+                        </div>            
+                        <a href="${url}" class="banner2-img" data-src="${img}" data-alt="${alt}">
+                            <img src="${img}" border="0" alt="${alt}">                
+                        </a>            
+                    </div>
+                    <div class="banner2-desp" data-color=${color}>${desp}</div>
+                </div>
+            `;
+        } else if (img) {                        
+            return `
+            <div class="banner1-wrap">        
+                <div class="banner1-image-wrap">
+                    <a href="${url}">
+                        <img class="banner1-image" src="${img}" border="0" alt="${alt}">   
+                    </a>
+                </div>
+                <div class="banner1-desp" data-color="${color}">
+                   <div>
+                    ${desp}
+                    </div>                    
+                </div>
+            </div>
+            `;            
+        } else {
+            return desp;
+        }
+    }
+    function setFields(id, desp) {    
+        let testEdit = edited.find(e=>e.id==id);        
+        if (testEdit && !g_discard) {
+            if (testEdit.img && testEdit.video) {
+                $("#cate-image").val(testEdit.img);
+                $("#cate-image-alt").val(testEdit.alt);
+                $("#cate-video").val(testEdit.video);
+                $("#cate-content").val(testEdit.desp);
+            } else if (testEdit.img) {
+                $("#cate-image").val(testEdit.img);
+                $("#cate-image-alt").val(testEdit.alt);                
+                $("#cate-content-color").val(testEdit.color);
+                $("#cate-content").val(testEdit.desp);
+            } else {
+                editor.value = testEdit.desp;
+            }
+        } else {            
+            if (desp.includes("banner2-wrap")) {
+                let despEl = document.createElement("div");
+                despEl.innerHTML = desp;
+                let img = $(despEl).find(".banner2-img");
+                if (img) {
+                    if (img.data("src")) {
+                        $("#cate-image").val(img.data("src"));
+                    } else {
+                        $("#cate-image").val("");
+                    }
+                    if (img.data("alt")) {
+                        $("#cate-image-alt").val(img.data("alt"));
+                    } else {
+                        $("#cate-image-alt").val("");
+                    }
+                } else {
+                    $("#cate-image").val("");
+                    $("#cate-image-alt").val("");
+                }                
+                let video = $(despEl).find(".banner-video-id");
+                if (video) {
+                    $("#cate-video").val(video.val());
+                } else {
+                    $("#cate-video").val();
+
+                }
+                let content = $(despEl).find(".banner2-desp");
+                if (content) {
+                    if (content.data("color")) {
+                        $("#cate-content-color").val(content.data("color"));
+                    } else {
+                        $("#cate-content-color").val("#efe9e5");                        
+                    }
+                    console.log(content.html());
+                    $("#cate-content").val(content.html());
+                } else {
+                    $("#cate-content").val("");
+                }
+                editor.value = "";
+                $("#group-toogle").prop("checked",true);
+                $("#group-toogle").parents(".group-wrap").removeClass("inactive");
+                $("#group-toogle-").prop("checked",false);
+                $("#group-toogle-").parents(".group-wrap").addClass("inactive");
+            } else if (desp.includes("banner1-wrap")) {                
+                let despEl = document.createElement("div");
+                despEl.innerHTML = desp;
+
+                let img = $(despEl).find(".banner1-image");                
+                if (img) {
+                    if (img.attr("src")) {
+                        $("#cate-image").val(img.attr("src"));
+                    } else {
+                        $("#cate-image").val("");
+                    }
+                    if (img.attr("alt")) {
+                        $("#cate-image-alt").val(img.attr("alt"));
+                    } else {
+                        $("#cate-image-alt").val("");
+                    }
+                } else {
+                    $("#cate-image").val("");
+                    $("#cate-image-alt").val("");
+                }
+                $("#cate-video").val();
+                let content = $(despEl).find(".banner1-desp div");
+                if (content) {
+                    console.log(content);
+                    if (content.data("color")) {
+                        $("#cate-content-color").val(content.data("color"));
+                    } else {
+                        $("#cate-content-color").val("#fff");                        
+                    }
+                    console.log(content.html());                            
+                    $("#cate-content").val(content.html());
+                } else {
+                    $("#cate-content").val("");
+                }
+                editor.value = "";
+                $("#group-toogle").prop("checked",true);
+                $("#group-toogle").parents(".group-wrap").removeClass("inactive");
+                $("#group-toogle-").prop("checked",false);
+                $("#group-toogle-").parents(".group-wrap").addClass("inactive");
+            } else {                
+                editor.value = desp;
+                $("#cate-image").val("");
+                $("#cate-image-alt").val("");
+                $("#cate-video").val("");
+                $("#cate-content-color").val("#fff");
+                $("#cate-content").val("");
+                $("#group-toogle").prop("checked",false);
+                $("#group-toogle").parents(".group-wrap").addClass("inactive");
+                $("#group-toogle-").prop("checked",true);
+                $("#group-toogle-").parents(".group-wrap").removeClass("inactive");
+            }
+            $(".desp-preview").html(desp)
+            $(".content-wrap").css({"display":"block"});
+            $("button[data-test='button-save-one']").hide();
+            $("button[data-test='button-discard']").hide();            
+        }        
+    }
+    var ulList = document.createElement("ul");
+    ulList.setAttribute("data-id", 0);
+    function applyCategories(c_data, parentID) {        
+        if (c_data.length==0) {   
+            $("[data-test='loading']").hide();         
+            $("#jstree_category").append(ulList);
+            $("#jstree_category").jstree({
+                core: {
+                    multiple: false
+                }
+            });
+            $('#jstree_category').on("changed.jstree", function (e, data) {
+                g_data=data;
+                ge_edit = true;
+                let el = data.instance.get_node(data.selected[0]);
+                console.log(el);                
+                if (el) {                    
+                    let item = gc_data.filter(ci=>ci.id==el.data.nodeId);
+                    console.log(item);
+                    if (item.length>0) {     
+                        g_desp = item[0].description;   
+                        $("#cate-url").val(item[0].custom_url.url);
+                        setFields(el.id.nodeId, item[0].description);
+                    }                                     
+                }
+            });
+        } else {
+            let ulEl = ulList;            
+            let l = c_data.filter(d=>d.parent_id==parentID);            
+            if (l.length>0) {
+                if (parentID!=0) {
+                    ulEl = document.createElement("ul");
+                    ulEl.setAttribute("data-id", parentID);
+                    ulList.querySelector(`li[data-node-id='${parentID}']`).appendChild(ulEl);
+                }
+                for (let li of l) {
+                    let liEl = document.createElement("li");
+                    liEl.setAttribute("data-node-id", li.id);
+                    liEl.innerHTML = li.name;
+                    ulEl.appendChild(liEl);
+                    let idx = c_data.findIndex(i=>i.id==li.id);
+                    c_data.splice(idx, 1);
+                    applyCategories(c_data, li.id);
+                }
+            }
+        }        
+    }
+    function loadCategories() {
+        fetch('//shp-webserver-temp.glitch.me/get-bc-categories?id=742053')
+        .then(r=>r.json())
+        .then(d=>{            
+            // d.sort((a,b)=>(a.parent_id > b.parent_id) ? 1 : -1);
+            console.log(d);
+            gc_data = [...d];
+            applyCategories(d, 0);                        
+        })
+        .catch(e=>{
+            console.log(e);
+        })
+    }    
+    function onSignIn(googleUser) {
+        let emailList = [
+            "dushyant@superhairpieces.com",
+            "george@superhairpieces.com",
+            "james@superhairpieces.com",
+            "nha@superhairpieces.com",
+            "ryan.l@superhairpieces.com",
+            "jung@superhairpieces.com"
+        ];
+        let profile = googleUser.getBasicProfile();
+        let email = profile.getEmail().toLowerCase();
+        if (emailList.includes(email)) {
+            $(".g-signin2").hide();
+            $(".g-signin2").after(`
+            <svg data-test="loading" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin: auto; background: none; display: block; shape-rendering: auto;" width="200px" height="200px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid"> <circle cx="50" cy="50" r="32" stroke-width="8" stroke="#85a2b6" stroke-dasharray="50.26548245743669 50.26548245743669" fill="none" stroke-linecap="round"> <animateTransform attributeName="transform" type="rotate" dur="1.5384615384615383s" repeatCount="indefinite" keyTimes="0;1" values="0 50 50;360 50 50"></animateTransform> </circle> <circle cx="50" cy="50" r="23" stroke-width="8" stroke="#bbcedd" stroke-dasharray="36.12831551628262 36.12831551628262" stroke-dashoffset="36.12831551628262" fill="none" stroke-linecap="round"> <animateTransform attributeName="transform" type="rotate" dur="1.5384615384615383s" repeatCount="indefinite" keyTimes="0;1" values="0 50 50;-360 50 50"></animateTransform> </circle> </svg>
+            `);
+            loadCategories();
+        } else {
+            $(".g-signin2").after("<div>You have no permission to edit</div>");
+        }
+    }
+    function logInWrap() {
+        $('head').append('<meta name="google-signin-client_id" content="1048779469611-c5sb2jblvpsfngf92dv63iiv4b303r98.apps.googleusercontent.com">');        
+    }
+    window.addEventListener("DOMContentLoaded", (event) => {
+        editor = new Jodit('#editor', {
+            defaultMode: Jodit.MODE_SPLIT
+        });
+        //Change in select section
+        function onChange() {            
+            if (ge_edit) {
+                ge_edit = false;
+                return false;
+            }
+            let el = g_data.instance.get_node(g_data.selected[0]);            
+            let anchor = document.getElementById(g_data.selected[0]+"_anchor");
+            if (anchor) {
+                if (edited.length==0) {
+                    $(".button-wrap").show();
+                }
+                $("button[data-test='button-save-one']").show();
+                $("button[data-test='button-discard']").show();
+                let editedEl = $(anchor).find(".edited");
+                if (editedEl.length==0) {
+                    $(anchor).append(`<span class="edited">Edited</span>`);                                    
+                }
+                let ei = edited.findIndex(ed=>ed.id==el.data.nodeId);
+                if (ei>=0) {
+                    edited[ei].img = $("#cate-image").val();
+                    edited[ei].alt = $("#cate-image-alt").val();
+                    edited[ei].video = $("#cate-video").val();
+                    // edited[ei].videoT = $("#cate-video-type").val();
+                    edited[ei].url = $("#cate-url").val();
+                    edited[ei].color = $("#cate-content-color").val();
+                    edited[ei].desp = $("#cate-content").val();                    
+                } else {
+                    edited.push({
+                        id: el.data.nodeId,
+                        img: $("#cate-image").val(),
+                        alt: $("#cate-image-alt").val(),
+                        video: $("#cate-video").val(),
+                        url: $("#cate-url").val(),
+                        color: $("#cate-content-color").val(),
+                        desp: $("#cate-content").val()
+                    })
+                }                
+                let preview = getDesp($("#cate-url").val(), $("#cate-image").val(), $("#cate-image-alt").val(), $("#cate-video").val(), $("#cate-content").val(), $("#cate-content-color").val());                
+                $(".desp-preview").html(preview);
+                if ($("#cate-content-color").val()) {
+                    let bannerStyle = document.querySelector('.banner2-wrap').style;            
+                    bannerStyle.setProperty('--background-color', $("#cate-content-color").val());
+                    $(".banner1-wrap").css({"background-color": $("#cate-content-color").val()});
+                }
+            }
+        }
+        //Change in jodit section
+        function onChangeEditor() {            
+            if (ge_edit) {
+                ge_edit = false;
+                return false;
+            }                        
+            let anchor = document.getElementById(g_data.selected[0]+"_anchor");
+            let el = g_data.instance.get_node(g_data.selected[0]);            
+            if (anchor) {
+                if (edited.length==0) {
+                    $(".button-wrap").show();
+                }
+                $("button[data-test='button-save-one']").show();
+                $("button[data-test='button-discard']").show();
+                let editedEl = $(anchor).find(".edited");
+                if (editedEl.length==0) {
+                    $(anchor).append(`<span class="edited">Edited</span>`);                                    
+                }
+                let ei = edited.findIndex(ed=>ed.id==el.data.nodeId);
+                if (ei>=0) {
+                    if (edited[ei].img) {
+                        edited.splice(ei, 1);
+                    }
+                    edited[ei].desp = $("#editor").val();                    
+                } else {
+                    edited.push({
+                        id: el.data.nodeId,
+                        desp: $("#editor").val()
+                    })
+                }
+                $(".desp-preview").html($("#editor").val());
+            }
+        }
+        $("[data-test='group-banner'] select").on("change", onChange);
+        $("[data-test='group-banner'] input, [data-test='group-banner'] textarea").on("keyup",onChange);
+        $("[data-test='group-editor'] textarea").on("change", onChangeEditor);
+        $("button[data-test='button-save-one']").on("click", () => {
+            $(".modal-progress").css({"display": "flex"});
+            let el = g_data.instance.get_node(g_data.selected[0]);            
+            let anchor = document.getElementById(g_data.selected[0]+"_anchor");
+            if (anchor) {                                                                
+                let ei = edited.findIndex(ed=>ed.id==el.data.nodeId);                
+                if (ei>=0) {
+                    save([edited[ei]], anchor, ei);                                    
+                }
+            }
+        });
+        $("button[data-test='button-save-all']").on("click", () => {
+            $(".modal-progress").css({"display": "flex"});
+            save(edited);            
+        });
+        $("button[data-test='button-discard']").on("click", ()=> {            
+            let el = g_data.instance.get_node(g_data.selected[0]);            
+            let anchor = document.getElementById(g_data.selected[0]+"_anchor");
+            if (anchor) {
+                if (edited.length==1) {
+                    // $(".button-wrap").hide();
+                }
+                $("button[data-test='button-save-one']").hide();
+                $("button[data-test='button-discard']").hide();
+                let editedEl = $(anchor).find(".edited");
+                if (editedEl.length>0) {
+                    editedEl.remove();
+                }                  
+                let ei = edited.findIndex(ed=>ed.id==el.data.nodeId);
+                console.log(ei);
+                if (ei>=0) {
+                    console.log(edited[ei]);
+                    edited.splice(ei,1);
+                    console.log(edited);
+                }
+                // $(".desp-preview").html(g_desp);
+                ge_edit = true;
+                setFields(-1, g_desp);
+            }            
+        });
+        $("input[id^='group-toogle']").on("change", (event) =>{
+            let cuEl = document.getElementById(event.target.id);
+            console.log($(cuEl).prop("checked"));
+            let els = $("input[id^='group-toogle']");
+            if ($(cuEl).prop("checked")) {
+                for (let el of els) {
+                    if ($(el).attr('id')!=event.target.id) {
+                        $(el).prop("checked", false);
+                        $(el).parents(".group-wrap").addClass("inactive");
+                    } else {
+                        $(el).parents(".group-wrap").removeClass("inactive");
+                    }
+                }
+            } else {
+                for (let el of els) {
+                    if ($(el).attr('id')==event.target.id) {
+                        $(el).parents(".group-wrap").addClass("inactive");
+                    } else {
+                        $(el).prop("checked", true);
+                        $(el).parents(".group-wrap").removeClass("inactive");                                                
+                    }
+                }
+            }
+        })
+        if (window.jQuery) {
+            // loadCategories();
+            logInWrap();
+        } else {
+            let sJquery = document.createElement("script");
+            sJquery.setAttribute("src", "https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js");
+            document.body.appendChild(sJquery);
+
+            sJquery.addEventListener("load", loadCategories(), false);
+        }
+    }, false);
+</script>

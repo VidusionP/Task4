@@ -1,0 +1,137 @@
+<!--
+    Created by: Nana
+    Date created: 2020-01-08
+    
+    How to use: import these code at the end of the file
+    <div id="subMenu-nav"></div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(function(){
+            $("#subMenu-nav").load("medical-wigs-menu");
+        })
+    </script>
+
+    Modified history:
+    2020-01-08: Init code
+-->
+<style>
+    #subMenu {
+        background-color: rgba(255,255,255,0.7);
+        padding: 0.7rem 0.7rem 0.3rem 0.7rem;
+        border-radius: 1rem;
+        position: fixed;
+        bottom: 1rem;
+        left: 1rem;
+        margin: auto;
+        cursor: pointer;
+        z-index: 5;
+        display: flex;
+    }
+    #subMenu div {
+        margin-left: 10px;
+        margin-top: -7px;
+        font-size: 2rem;
+    }
+    #subMenu a {
+        position: relative;
+        top: 60%;
+        width: 100%;
+        color: white;
+        text-decoration: none;
+    }
+    #subMenu-expand {
+        background-color: rgba(255, 255, 255, 0.8);
+        border-radius: 1rem;
+        padding-bottom: 1rem;
+        position: fixed;
+        display: block;
+        bottom: 1rem;
+        left: 1rem;
+        margin: auto;
+        overflow: hidden;
+        z-index: 3;
+        transform: scale(0);
+        transform-origin: bottom;
+        transition: transform 0.4s;
+    }
+    #subMenu-expand a {
+        text-decoration: none;
+    }
+    #subMenu-expand ul {
+        padding: 10px;
+    }
+    #subMenu-expand li {
+        list-style-type: none;
+        margin: 10px 0;
+    }
+    #subMenu-expand.visible {
+        transform: scale(1);
+    }
+    #sideMenu svg path {
+        transform-origin: 50% 50%;
+    }
+    .is-open svg path,
+    #subMenu:hover svg path {
+        transition: transform 0.2s ease-out;
+    }
+    .is-open svg path:first-child,
+    #subMenu:hover svg path:first-child {
+        transform: translate3d(0, 2px, 0);
+    }
+    .is-open svg path:last-child,
+    #subMenu:hover svg path:last-child {
+        transform: translate3d(0, -2px, 0);
+    }
+    .is-open:hover svg path:first-child,
+    .is-open:hover svg path:last-child {
+        transform: translateZ(0) !important;
+    }
+    .menu-featured {
+        font-size: 1.5rem;
+        margin: 2rem 0;
+    }
+</style>
+<div id="subMenu">
+    <!-- <span>&#9776;</span> -->
+    <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="10"
+        height="28"
+        viewBox="0 -6 10 28"
+    >
+        <g fill="#2E3036" fill-rule="nonzero">
+            <path
+                d="M4.5 16c-.1 0-.3 0-.4-.1l-4-4c-.1-.2-.1-.4-.1-.6.1-.2.3-.3.5-.3h8c.2 0 .4.1.5.3.1.2 0 .4-.1.5l-4 4c-.1.2-.3.2-.4.2z"
+            ></path>
+            <path
+                d="M8.5 5h-8c-.2 0-.4-.1-.5-.3 0-.2 0-.4.1-.6l4-4c.2-.1.6-.1.8 0l4 4c.1.2.1.4.1.6 0 .2-.3.3-.5.3z"
+            ></path>
+        </g>
+    </svg>
+    <div>Find out</div>
+</div>
+<div id="subMenu-expand">
+    <ul>
+        <li><a href="">Hair Toppers for Women</a></li>
+        <li><a href="">Hair Pieces for Women</a></li>
+        <li><a href="">Full Cap Wigs</a></li>
+        <li><a href="">Remy Human Hair Wigs</a></li>
+        <div class="menu-featured">
+            <li><a href="">Wigs for Cancer Patients</a></li>
+            <li><a href="">Wigs for Alopecia Patients</a></li>
+            <li><a href="">Wigs for Chemo Patients</a></li>
+        </div>
+    </ul>
+</div>
+<script>
+    document.getElementById("subMenu").addEventListener("click", function () {
+        console.log("click")
+        const expanded = document.getElementById("subMenu-expand").classList;
+        expanded.toggle("visible");
+        if (expanded.contains("visible")) {
+            document.getElementById("subMenu").classList.add("is-open");
+        } else {
+            document.getElementById("subMenu").classList.remove("is-open");
+        }
+    });
+</script>

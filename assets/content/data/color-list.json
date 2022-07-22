@@ -1,0 +1,176 @@
+{
+    "men": {
+        "color": [
+            {
+                "name": "Jet Black",
+                "code": "#1",
+                "img": "https://i.shgcdn.com/f90244b0-3067-472c-a1bc-688cc5667cbc/-/format/auto/-/preview/3000x3000/-/quality/lighter/"
+            },
+            {
+                "name": "Natural Black",
+                "code": "#11B",
+                "img": "https://i.shgcdn.com/c71d62f6-8c8a-46d8-843d-44f425226600/-/format/auto/-/preview/3000x3000/-/quality/lighter/"
+            },
+            {
+                "name": "Off Black/Black Brown",
+                "code": "#1B",
+                "img": "https://i.shgcdn.com/3c17c46f-25eb-47a8-9bbb-97f4a03f2264/-/format/auto/-/preview/3000x3000/-/quality/lighter/"
+            },
+            {
+                "name": "#1B in ash tone",
+                "code": "#1BAsh",
+                "img": "https://i.shgcdn.com/2eb7f55d-de52-4376-a1a7-7f6dbf7ba4ca/-/format/auto/-/preview/3000x3000/-/quality/lighter/"
+            },
+            {
+                "name": "Darkest Brown",
+                "code": "#2",
+                "img": "https://i.shgcdn.com/6b3f6edc-4a1c-4a45-ab0c-c1bf183f8de9/-/format/auto/-/preview/3000x3000/-/quality/lighter/"
+            },
+            {
+                "name": "#2 in ash tone",
+                "code": "#2Ash",
+                "img": "https://i.shgcdn.com/d661c4e0-bf03-4e95-ad04-8cb43426299d/-/format/auto/-/preview/3000x3000/-/quality/lighter/"
+            },
+            {
+                "name": "Dark Brown",
+                "code": "#3",
+                "img": "https://i.shgcdn.com/a2b90acc-ae98-4766-8a1e-23081affb6fb/-/format/auto/-/preview/3000x3000/-/quality/lighter/"
+            },
+            {
+                "name": "#3 in ash tone",
+                "code": "#3Ash",
+                "img": "https://i.shgcdn.com/c62c66b4-4709-4fa4-ae63-58dcdb3f1bca/-/format/auto/-/preview/3000x3000/-/quality/lighter/"
+            },
+            {
+                "name": "Medium Brown",
+                "code": "#4",
+                "img": "https://i.shgcdn.com/a16d31bc-a076-4914-b88f-3962d29476ed/-/format/auto/-/preview/3000x3000/-/quality/lighter/"
+            },
+            {
+                "name": "#4 in ash tone",
+                "code": "#4Ash",
+                "img": "https://i.shgcdn.com/de75b4a5-9231-4282-b507-5d13c50d2ed8/-/format/auto/-/preview/3000x3000/-/quality/lighter/"
+            },
+            {
+                "name": "Medium Light Brown",
+                "code": "#5",
+                "img": "https://i.shgcdn.com/9427b0a4-91fd-4dd0-9129-533e9992dec1/-/format/auto/-/preview/3000x3000/-/quality/lighter/"
+            },
+            {
+                "name": "Medium Light Warm Brown",
+                "code": "#5R",
+                "img": "https://i.shgcdn.com/89b84786-b11d-46e8-bcc5-358defb33de6/-/format/auto/-/preview/3000x3000/-/quality/lighter/"
+            },
+            {
+                "name": "Light Brown",
+                "code": "#6",
+                "img": "https://i.shgcdn.com/b9d22971-67d9-4baf-b2e8-26f1aa2c4daf/-/format/auto/-/preview/3000x3000/-/quality/lighter/"
+            },
+            {
+                "name": "Light Warm Brown",
+                "code": "#6R",
+                "img": "https://i.shgcdn.com/a1fac9d2-1881-4a12-ba56-358ce0ac3b39/-/format/auto/-/preview/3000x3000/-/quality/lighter/"
+            },
+            {
+                "name": "Very Light Brown",
+                "code": "#7",
+                "img": "https://i.shgcdn.com/0e3f49d4-8f4a-47af-9184-e59d6dc374bd/-/format/auto/-/preview/3000x3000/-/quality/lighter/"
+            },
+            {
+                "name": "Warm Brown Blonde",
+                "code": "#8R",
+                "img": "https://i.shgcdn.com/1e165fb0-0beb-4728-a425-52449c61f5cf/-/format/auto/-/preview/3000x3000/-/quality/lighter/"
+            },
+            {
+                "name": "Dark Ask Blonde",
+                "code": "#17",
+                "img": "https://i.shgcdn.com/67cfb2f5-f788-41c7-880b-0bf06d66593c/-/format/auto/-/preview/3000x3000/-/quality/lighter/"
+            },
+            {
+                "name": "Medium Ash Blonde",
+                "code": "#18",
+                "img": "https://i.shgcdn.com/6895cd6a-966a-4177-84d7-db9749810643/-/format/auto/-/preview/3000x3000/-/quality/lighter/"
+            },
+            {
+                "name": "Light Ash Blonde",
+                "code": "#20",
+                "img": "https://i.shgcdn.com/1aaac2a2-691f-4f99-8ee1-80092a25d23f/-/format/auto/-/preview/3000x3000/-/quality/lighter/"
+            },
+            {
+                "name": "Light Warm Blonde",
+                "code": "#20R",
+                "img": "https://i.shgcdn.com/161c3c32-1850-44cf-af16-5a1fa08ddc14/-/format/auto/-/preview/3000x3000/-/quality/lighter/"
+            },
+            {
+                "name": "Very Light Warm Blonde",
+                "code": "#22R",
+                "img": "https://i.shgcdn.com/5bd0ca64-3691-4a04-a0b3-e4fdc8015271/-/format/auto/-/preview/3000x3000/-/quality/lighter/"
+            },
+            {
+                "name": "Copper Blonde",
+                "code": "#30R",
+                "img": "https://i.shgcdn.com/426293f1-1519-4530-b4f4-2488e0f561a1/-/format/auto/-/preview/3000x3000/-/quality/lighter/"
+            },
+            {
+                "name": "Synthetic All Grey",
+                "code": "#60",
+                "img": "https://i.shgcdn.com/f5d76711-d861-4e02-bd62-fbe04ee88b4c/-/format/auto/-/preview/3000x3000/-/quality/lighter/"
+            },
+            {
+                "name": "Human All Grey",
+                "code": "#60H",
+                "img": "https://i.shgcdn.com/8a6932af-a942-4f59-80a3-6eecf28eb417/-/format/auto/-/preview/3000x3000/-/quality/lighter/"
+            }
+        ],
+        "grey": [
+            {
+                "name": "5%",
+                "code": "05"
+            },
+            {
+                "name": "10%",
+                "code": "10"
+            },
+            {
+                "name": "15%",
+                "code": "15"
+            },
+            {
+                "name": "20%",
+                "code": "20"
+            },
+            {
+                "name": "30%",
+                "code": "30"
+            },
+            {
+                "name": "40%",
+                "code": "40"
+            },
+            {
+                "name": "50%",
+                "code": "50"
+            },
+            {
+                "name": "60%",
+                "code": "60"
+            },
+            {
+                "name": "70%",
+                "code": "70"
+            },
+            {
+                "name": "70% Human hair",
+                "code": "70H"
+            },
+            {
+                "name": "80%",
+                "code": "80"
+            },
+            {
+                "name": "80% Human hair",
+                "code": "80H"
+            }
+        ]
+    }
+}

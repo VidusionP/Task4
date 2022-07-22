@@ -1,0 +1,266 @@
+{{inject "product" product.sku}}
+<p class="productView-title">{{lang 'products.description'}}</p>
+<div class="productView-description">
+    {{{product.description}}} {{{snippet 'product_description'}}}
+</div>
+
+{{#if product.warranty}}
+<p class="productView-title">{{lang 'products.warranty'}}</p>
+<div class="productView-description">
+    {{{product.warranty}}}
+</div>
+{{/if}}
+<style>
+    .table-inventory td {
+        background: white !important;
+        text-align: center !important;
+        border-bottom: 1px solid #a0a0a0 !important;
+        font-weight: 400 !important;
+        width: auto !important;
+    }
+    .table-inventory {
+        border-color: black;
+    }
+    .table-inventory th {
+        padding: 1.1rem 0.5rem;
+        font-size: 1rem;
+        background: #99cc00;
+    }
+    .table-inventory .special {
+        color: #0000ff !important;
+        font-size: 1.1rem;
+        font-weight: 500;
+    }
+    .table-inventory tbody tr td {
+        background-color: #cfe2f3 !important;
+    }
+    .table-inventory tbody tr td:nth-child(1) {
+        background-color: #c27ba0 !important;
+    }
+    .table-inventory tbody tr td:nth-child(2) {
+        background-color: white !important;
+    }
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    var authtoken = "3B3A2B5E707E4D19A57D1FCE6FCBD842";
+    var baseurl = "https://www.teamdesk.net/secure/api/v2/56554/";
+    const color = {
+        "#1": "Jet Black",
+        "#11B": "Natural Black",
+        "#1B": "Off Black/Black Brown",
+        "#1BASH": "#1B in ash tone",
+        "#2": "Darkest Brown",
+        "#2ASH": "#2 in ash tone",
+        "#3": "Dark Brown",
+        "#3ASH": "#3 in ash tone",
+        "#4": "Medium Brown",
+        "#4ASH": "#4 in ash tone",
+        "#5": "Medium Light Brown",
+        "#5R": "Medium Light Warm Brown",
+        "#6": "Light Brown",
+        "#6R": "Light Warm Brown",
+        "#7": "Very Light Brown",
+        "#8R": "Warm Brown Blonde",
+        "#17": "Dark Ash Blonde",
+        "#18": "Medium Ash Blonde",
+        "#20": "Light Ash Blonde",
+        "#20R": "Light Warm Blonde",
+        "#22R": "Very Light Warm Blonde",
+        "#30R": "Cooper Blonde",
+        "#60": "Synthetic All Grey",
+        "#60H": "Human All Grey",
+        "#105": "Jet black + 5% Grey",
+        "#110": "Jet black + 10% Grey",
+        "#120": "Jet black + 20% Grey",
+        "#130": "Jet black + 30% Grey",
+        "#140": "Jet black + 40% Grey",
+        "#160": "Jet black + 60% Grey",
+        "#180": "Jet black + 80% Grey",
+        "#11B05": "Natural Black + 5% Grey",
+        "#11B10": "Natural Black + 10% Grey",
+        "#11B15": "Natural Black + 15% Grey",
+        "#11B20": "Natural Black + 20% Grey",
+        "#11B30": "Natural Black + 30% Grey",
+        "#11B40": "Natural Black + 40% Grey",
+        "#11B50": "Natural Black + 50% Grey",
+        "#11B60": "Natural Black + 60% Grey",
+        "#11B70H": "Natural Black + 70% Grey(Human)",
+        "#11B80": "Natural Black + 80% Grey",
+        "#1B05": "Off black + 5% Grey",
+        "#1B10": "Off black + 10% Grey",
+        "#1B15": "Off black + 15% Grey",
+        "#1B20": "Off black + 20% Grey",
+        "#1B30": "Off black + 30% Grey",
+        "#1B40": "Off black + 40% Grey",
+        "#1B50": "Off black + 50% Grey",
+        "#1B60": "Off black + 60% Grey",
+        "#1B70": "Off black + 70% Grey",
+        "#1B80": "Off black + 80% Grey",
+        "#1B80H": "#1B + 80% Human Hair Grey",
+        "#1BASH10": "Off Black Ash Tone + 10% Grey",
+        "#1BASH20": "Off Black Ash Tone + 20% Grey",
+        "#1BASH30": "Off Black Ash Tone + 30% Grey",
+        "#1BASH40": "Off Black Ash Tone + 40% Grey",
+        "#1BASH50": "Off Black Ash Tone + 50% Grey",
+        "#1BASH60": "Off Black Ash Tone + 60% Grey",
+        "#1BASH70": "Off Black Ash Tone + 70% Grey",
+        "#1BASH80": "Off Black Ash Tone + 80% Grey",
+        "#205": "#2 + 5% Grey",
+        "#210": "#2 + 10% Grey",
+        "#215": "#2 + 15% Grey",
+        "#220": "#2 + 20% Grey",
+        "#230": "#2 + 30% Grey",
+        "#240": "#2 + 40% Grey",
+        "#250": "#2 + 50% Grey",
+        "#260": "#2 + 60% Grey",
+        "#270H": "#2 + 20% Human Hair Grey",
+        "#280": "#2 + 80% Grey",
+        "#2ASH10": "#2 Ash Tone + 10% Grey",
+        "#2ASH15": "#2 Ash Tone + 15% Grey",
+        "#2ASH20": "#2 Ash Tone + 20% Grey",
+        "#2ASH30": "#2 Ash Tone + 30% Grey",
+        "#2ASH40": "#2 Ash Tone + 40% Grey",
+        "#2ASH60": "#2 Ash Tone + 60% Grey",
+        "#2ASH70": "#2 Ash Tone + 70% Grey",
+        "#2ASH80": "#2 Ash Tone + 80% Grey",
+        "#305": "#3 + 5% Grey",
+        "#310": "#3 + 10% Grey",
+        "#320": "#3 + 20% Grey",
+        "#330": "#3 + 30% Grey",
+        "#340": "#3 + 40% Grey",
+        "#350": "#3 + 50% Grey",
+        "#360": "#3 + 60% Grey",
+        "#370": "#3 + 70% Grey",
+        "#380": "#3 + 80% Grey",
+        "#3ASH10": "#3 Ash Tone + 10% Grey",
+        "#3ASH20": "#3 Ash Tone + 20% Grey",
+        "#3ASH30": "#3 Ash Tone + 30% Grey",
+        "#3ASH40": "#3 Ash Tone + 40% Grey",
+        "#3ASH50": "#3 Ash Tone + 50% Grey",
+        "#3ASH60": "#3 Ash Tone + 60% Grey",
+        "#3ASH70": "#3 Ash Tone + 70% Grey",
+        "#3ASH80": "#3 Ash Tone + 80% Grey",
+        "#405": "#4 + 5% Grey",
+        "#410": "#4 + 10% Grey",
+        "#415": "#4 + 15% Grey",
+        "#420": "#4 + 20% Grey",
+        "#430": "#4 + 30% Grey",
+        "#440": "#4 + 40% Grey",
+        "#450": "#4 + 50% Grey",
+        "#460": "#4 + 60% Grey",
+        "#470H": "#4 + 70% Human Hair Grey",
+        "#480": "#4 + 80% Grey",
+        "#4ASH10": "#4 Ash Tone + 10% Grey",
+        "#4ASH20": "#4 Ash Tone + 20% Grey",
+        "#4ASH30": "#4 Ash Tone + 30% Grey",
+        "#4ASH40": "#4 Ash Tone + 40% Grey",
+        "#4ASH50": "#4 Ash Tone + 50% Grey",
+        "#4ASH60": "#4 Ash Tone + 60% Grey",
+        "#4ASH70": "#4 Ash Tone + 70% Grey",
+        "#4ASH80": "#4 Ash Tone + 80% Grey",
+        "#505": "#5 + 5% Grey",
+        "#510": "#5 + 10% Grey",
+        "#515": "#5 + 15% Grey",
+        "#520": "#5 + 20% Grey",
+        "#530": "#5 + 30% Grey",
+        "#540": "#5 + 40% Grey",
+        "#550": "#5 + 50% Grey",
+        "#560": "#5 + 60% Grey",
+        "#570": "#5 + 70% Grey",
+        "#580": "#5 + 80% Grey",
+        "#580H": "#5 + 80% Human Hair Grey",
+        "#605": "#6 + 5% Grey",
+        "#610": "#6 + 10% Grey",
+        "#615": "#6 + 15% Grey",
+        "#620": "#6 + 20% Grey",
+        "#630": "#6 + 30% Grey",
+        "#640": "#6 + 40% Grey",
+        "#650": "#6 + 50% Grey",
+        "#660": "#6 + 60% Grey",
+        "#670": "#6 + 70% Grey",
+        "#680": "#6 + 80% Grey",
+        "#705": "#7 + 5% Grey",
+        "#710": "#7 + 10% Grey",
+        "#715": "#7 + 15% Grey",
+        "#720": "#7 + 20% Grey",
+        "#730": "#7 + 30% Grey",
+        "#740": "#7 + 40% Grey",
+        "#750": "#7 + 50% Grey",
+        "#760": "#7 + 60% Grey",
+        "#770H": "#7 + 70% Human Hair Grey",
+        "#780": "#7 + 80% Grey",
+        "#1710": "#17 + 10% Grey",
+        "#1720": "#17 + 20% Grey",
+        "#1730": "#17 + 30% Grey",
+        "#1740": "#17 + 40% Grey",
+        "#1750": "#17 + 50% Grey",
+        "#1760": "#17 + 60% Grey",
+        "#1770": "#17 + 70% Grey",
+        "#1780": "#17 + 80% Grey",
+        "#1810": "#18 + 10% Grey",
+        "#1820": "#18 + 20% Grey",
+        "#1830": "#18 + 30% Grey",
+        "#1840": "#18 + 40% Grey",
+        "#1850": "#18 + 50% Grey",
+        "#1860": "#18 + 60% Grey",
+        "#1870": "#18 + 70% Grey",
+        "#1880": "#18 + 80% Grey",
+        "#2010": "#20 + 10% Grey",
+        "#2020": "#20 + 20% Grey",
+        "#2030": "#20 + 30% Grey",
+        "#2040": "#20 + 40% Grey",
+        "#2050": "#20 + 50% Grey",
+        "#2060": "#20 + 60% Grey",
+        "#2070": "#20 + 70% Grey",
+        "#2080": "#20 + 80% Grey",
+    };
+    var jsContext = JSON.parse({{jsContext}});
+
+    function isNumNull(value) {
+        if (value == null) {
+        return 0;
+        } else return value;
+    }
+
+    function isNumLarge(value) {
+        if (value>0) return " class='special'"
+        else return "";
+    }
+
+    $(function() {
+        $.getJSON(
+            baseurl + authtoken + "/Inventory/select.json?filter=Begins([SKU], '"+jsContext.product+"%23')",
+            function (data) {
+                console.log(data);
+                console.log(jsContext.product);
+                // console.log($(".shogun-tabs-body").children().eq(3));
+                // $(".shogun-tabs-body").children().eq(2).html("<div>Demo</div>")
+                let tb = "<table class='table-inventory'>"+
+                    "<thead>"+
+                    "<tr>"+
+                        "<th>"+jsContext.product+"</th>"+
+                        "<th>Color name"+"</th>"+
+                        "<th>Total In Stock</th>"+
+                        "<th>In Canada Warehouse</th>" +
+                        "<th>In USA Warehouse</th>" +
+                    "</tr>"+
+                    "</thead><tbody>";
+                $.each(data, function(index, value) {
+                    tb=tb+"<tr>"+
+                    "<td>"+value.SKU.replace(jsContext.product, "")+"</td>"+
+                    "<td>"+color[value.SKU.replace(jsContext.product, "").toUpperCase()]+"</td>"+
+                    "<td"+isNumLarge(isNumNull(value["Quantity On Hand"]))+">"+isNumNull(value["Quantity On Hand"])+"</td>"+
+                    "<td"+isNumLarge(isNumNull(value["Quantity Canada"]))+">"+isNumNull(value["Quantity Canada"])+"</td>"+
+                    "<td"+isNumLarge(isNumNull(value["Quantity USA"]))+">"+isNumNull(value["Quantity USA"])+"</td>"+
+                    "</tr>";
+                })
+                tb = tb + "</tbody></table>";
+                $(".shogun-tabs-body").children().eq(2).html(tb)
+                $(".shogun-tabs-body").children().eq(2).on("mousedown mousemove", (e) => {
+                e.preventDefault();
+                })
+            }
+        );
+    })
+</script>

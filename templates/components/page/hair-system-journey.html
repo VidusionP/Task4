@@ -1,0 +1,1345 @@
+<div
+    class="shogun-root"
+    data-shogun-id="611d5d86c1a4d900e372eb92"
+    data-shogun-site-id="fb8c6090-a908-45e2-8617-89b82d7a20e6"
+    data-shogun-page-id="611d5d86c1a4d900e372eb92"
+    data-shogun-page-version-id="612920d9050abf00e05fd15d"
+    data-shogun-platform-type="big_commerce"
+    data-shogun-variant-id="612920da050abf00e05fd76f"
+    data-region="main"
+>
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Poppins:|Poppins:600|Poppins:normal" />
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.getshogun.com/shogun-font-awesome.min.css" />
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.getshogun.com/css-3/612920da050abf00e05fd76f.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+
+    <script type="text/javascript" src="https://lib.getshogun.com/lazysizes/2.0.0/shogun-lazysizes.js" async></script>
+
+    <div id="s-7468a1f1-9108-42f5-ba6a-c6fd0ebb66f2" class="shg-c">
+        <style>
+            .menu-wrap {
+                width: 100%;
+                margin-bottom: 20px;
+                display: none;
+                overflow-x: auto;
+            }
+            @media only screen and (min-width: 1025px) {
+                .menu-wrap {
+                    overflow-x: hidden;
+                }
+                .menu-wrap:hover {
+                    overflow-x: auto;
+                }
+            }
+            .menu-items {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 20px 0 0;
+                margin: 0 auto;
+                flex-wrap: wrap;
+            }
+            .menu-item {
+                font-size: 15px;
+                margin: 0 20px 20px;
+                position: relative;
+                cursor: pointer;
+            }
+            .menu-item a,
+            .menu-submenu-item a {
+                text-decoration: none;
+            }
+            .menu-item:hover {
+                color: #825d41;
+            }
+            .menu-item.active a {
+                color: #825d41;
+            }
+            .menu-submenu-items {
+                padding: 20px 0 0;
+                position: absolute;
+                display: none;
+                background-color: #fff;
+                box-shadow: 1px 1px 9px 0 #e6e6e6;
+                width: fit-content;
+                z-index: 9;
+            }
+            .menu-submenu-item {
+                font-size: 15px;
+                margin: 0 20px 20px;
+                position: relative;
+                cursor: pointer;
+            }
+            .menu-submenu-item:hover,
+            .menu-item:hover {
+                color: #825d41;
+            }
+            .roadmap-wrapper {
+                display: flex;
+                justify-content: center;
+                align-items: center;                                
+                font-family: 'Montserrat', sans-serif;
+            }
+            .roadmap-content {
+                max-width: 1072px;
+            }
+            .roadmap-wrapper img {
+                height: 100px;
+            }
+            .roadmap-style {
+                display: grid;                
+                align-items: center;
+                padding: 2rem 4rem;
+                grid-template-columns: 150px auto;
+                font-size: 1.4rem;
+                font-weight: 300;
+            }
+            .roadmap-style .img-wrapper {                
+                margin-right: 4rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .roadmap-style .roadmap-title {
+                font-size: 1.9rem;
+                margin-bottom: 2rem;
+                font-weight: 500;
+            }            
+            .roadmap-style1 a, .roadmap-style2 a{                
+                color: #fff;
+            }
+            .roadmap-style3 a{                
+                color: #5f5f5f;
+            }
+            /* .roadmap-style .roadmap-title.link::after{
+                content: "#";
+                display: inline-block;                
+            }             */
+            .roadmap-style1 {
+                background: #555555;
+                color: #fff;
+            }                
+            .roadmap-style2 {
+                background: #b76f25;
+                color: #fff;                
+            }
+            .roadmap-style3 {
+                background: #f4f5ef;
+                color: #5f5f5f;                
+            }
+            @media only screen and (max-width: 1024px) {
+                .roadmap-style {
+                    font-size: 1.2rem;
+                }
+                .roadmap-style .roadmap-title {
+                    font-size: 1.5rem;
+                }
+            }
+            @media only screen and (max-width: 875px) {
+                .roadmap-style {
+                    display: block;
+                    text-align: justify;
+                }
+                .roadmap-style .roadmap-title {
+                    text-align: center;
+                    margin: 1rem 0 1.5rem;
+                }
+                .roadmap-style .img-wrapper {
+                    margin: 0;
+                }
+            }
+            @media only screen and (max-width: 700px) {
+                .roadmap-style {
+                    padding: 2rem 2.5rem;
+                }
+            }
+        </style>
+        <div style="position: relative">
+            <div class="menu-wrap">
+                <div class="menu-items"></div>
+            </div>
+        </div>
+        <script>
+            let submenu = [];
+            function openSubMenu(e) {
+                if ($(event.currentTarget).hasClass("active")) $(event.currentTarget).removeClass("active"), $(".menu-submenu-items").remove();
+                else {
+                    $(".menu-item .active").removeClass("active"), $(event.currentTarget).addClass("active");
+                    let n = submenu.filter((n) => n.name == e);
+                    if (n.length > 0) {
+                        $(".menu-submenu-items").remove();
+                        let e = '<div class="menu-submenu-items">';
+                        if (n[0].menu) for (let t of n[0].menu) e += `<div class="menu-submenu-item"><a href="${t.link}">${t.name}</a></div>`;
+                        (e += "</div>"), $(".menu-wrap").append(e);
+                        let t = $(event.currentTarget).offset();
+                        t.left + $(".menu-submenu-items").width() <= $(window).width()
+                            ? $(".menu-submenu-items").css({ left: t.left - $(".menu-wrap").offset().left + "px", top: t.top + 30 - $(".menu-wrap").offset().top + "px" })
+                            : $(".menu-submenu-items").css({ right: "0px", top: t.top + 30 - $(".menu-wrap").offset().top + "px" }),
+                            $(".menu-submenu-items").slideDown();
+                    }
+                }
+            }
+            window.addEventListener("DOMContentLoaded", (e) => {
+                fetch("/content/data/custom-menu.json")
+                    .then((e) => e.json())
+                    .then((e) => {
+                        if ((console.log(e), e.menu)) {
+                            for (let n of e.menu)
+                                n.hasOwnProperty("link")
+                                    ? n.link.includes(window.location.pathname) && n.link.length - window.location.pathname.length <= 2
+                                        ? $(".menu-items").append(`<div class="menu-item active"><a href="${n.link}">${n.name}</a></div>`)
+                                        : $(".menu-items").append(`<div class="menu-item"><a href="${n.link}">${n.name}</a></div>`)
+                                    : (submenu.push({ name: n.name, menu: n.subMenu }),
+                                      $(".menu-items").append(`<div class="menu-item"><a href="#" onclick="openSubMenu('${n.name}')">${n.name}</a></div>`));
+                            $(".menu-wrap").show();
+                        }
+                    })
+                    .catch((e) => console.log(e));
+            });
+        </script>
+    </div>
+
+    <div class="shg-box-vertical-align-wrapper">
+        <div class="shg-box shg-c" id="s-53cee6ff-44b3-4192-80b4-4aa8bb54c054">
+            <div class="shg-box-overlay"></div>
+            <div class="shg-box-content">
+                <div class="shg-c" id="s-db72664b-7e2d-4a63-82d7-710e7a1b631b">
+                    <div class="shg-row" data-col-grid-mode-on="true">
+                        <div class="shg-c-lg-5 shg-c-md-5 shg-c-sm-5 shg-c-xs-12">
+                            <div class="shg-box-vertical-align-wrapper">
+                                <div class="shg-box shg-c" id="s-b1bc6124-adf7-4a3b-837a-debf74adaa0d">
+                                    <div class="shg-box-overlay"></div>
+                                    <div class="shg-box-content">
+                                        <div class="shg-c" id="s-08392799-2304-4621-a566-e20dc42a5ca5">
+                                            <div class="shg-row" data-col-grid-mode-on="">
+                                                <div class="shg-c-lg-2 shg-c-md-2 shg-c-sm-2 shg-c-xs-12"></div>
+                                                <div class="shg-c-lg-8 shg-c-md-8 shg-c-sm-8 shg-c-xs-12">
+                                                    <div id="s-1f61c9fe-9ba0-4d65-9e07-ff5a599a8999" class="shg-c">
+                                                        <div class="shg-rich-text shg-theme-text-content">
+                                                            <div style="text-align: center"><span style="font-size: 20px; color: #ffffff">HAIR SYSTEM FOR MEN</span></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="shg-box-vertical-align-wrapper">
+                                                        <div class="shg-box shg-c" id="s-3ebbd798-23b1-4a2e-bd36-23a01a971962">
+                                                            <div class="shg-box-overlay"></div>
+                                                            <div class="shg-box-content">
+                                                                <div id="s-c812ed42-01ae-4bd7-8e55-9039aacd421e" class="shg-c">
+                                                                    <div class="shg-rich-text shg-theme-text-content">
+                                                                        <div style="text-align: center"><span style="font-size: 36px; font-family: Poppins; font-weight: 600">START YOUR</span></div>
+                                                                        <div style="text-align: center">
+                                                                            <span style="font-size: 36px; font-family: Poppins; font-weight: 600; color: #b06e22">HAIR SYSTEM</span>
+                                                                        </div>
+                                                                        <div style="text-align: center">
+                                                                            <span style="font-size: 36px; font-family: Poppins; font-weight: 600; color: #b06e22">JOURNEY</span>
+                                                                        </div>
+                                                                        <div style="text-align: center"><span style="font-size: 36px; font-family: Poppins; font-weight: 600">TODAY!</span></div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="shg-c-lg-2 shg-c-md-2 shg-c-sm-2 shg-c-xs-12"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="shg-c-lg-7 shg-c-md-7 shg-c-sm-7 shg-c-xs-12">
+                            <div class="shg-c shogun-image-container shg-align-center" style="" id="s-79035cc3-cfca-42ba-8432-03e52f42d6f6">
+                                <video width="" height="" autoplay loop muted webkit-playsinline playsinline style="" preload="none" class="shogun-image">
+                                    <source src="https://i.shgcdn.com/3888bd49-36f1-426b-b52f-af03cd9ab73b/gif2video/-/format/webm/-/quality/lighter/" type="video/webm" />
+                                    <source src="https://i.shgcdn.com/3888bd49-36f1-426b-b52f-af03cd9ab73b/gif2video/-/format/mp4/-/quality/lighter/" type="video/mp4" />
+                                </video>
+                            </div>
+
+                            <script type="text/javascript">
+                                window.SHOGUN_IMAGE_ELEMENTS = window.SHOGUN_IMAGE_ELEMENTS || new Array();
+                                window.SHOGUN_IMAGE_ELEMENTS.push({ hoverImage: "", uuid: "s-79035cc3-cfca-42ba-8432-03e52f42d6f6" });
+                            </script>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="shg-box-vertical-align-wrapper">
+                    <div class="shg-box shg-c" id="s-a9581952-6c85-409e-a3d4-cb8613a88648">
+                        <div class="shg-box-overlay"></div>
+                        <div class="shg-box-content"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="shg-box-vertical-align-wrapper">
+        <div class="shg-box shg-c" id="s-383aa14c-ec93-4c04-bfec-d01129a4f4d5">
+            <div class="shg-box-overlay"></div>
+            <div class="shg-box-content">
+                <div id="s-982af0b0-5103-4ab8-9157-718aa893462d" class="shg-c shg-align-center">
+                    <div class="shogun-heading-component">
+                        <h2>Introduction</h2>
+                    </div>
+                </div>
+                <div id="s-d8868bb4-92e5-4c84-b875-f395bdadc11b" class="shg-c">
+                    <div class="shg-rich-text shg-theme-text-content">
+                        <div style="text-align: center"><span style="font-size: 16px">It takes a lot of courage to start something new.</span></div>
+                        <div style="text-align: center"><span style="font-size: 16px">We understand hair systems can be intimidating</span></div>
+                        <div style="text-align: center"><span style="font-size: 16px">for anyone looking to deal with their hair loss problems.</span></div>
+                        <div style="text-align: center"><span style="font-size: 16px">But here are Superhairpieces, we make things easy for you</span></div>
+                        <div style="text-align: center"><span style="font-size: 16px">and gradually settle you into the world of hair systems</span></div>
+                        <div style="text-align: center"><span style="font-size: 16px">so you not only have a full head of hair, but reclaim your confidence.</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="shg-box-vertical-align-wrapper">
+        <div class="shg-box shg-c" id="s-e9af661e-b0ae-4139-9d4f-f76f540a8792">
+            <div class="shg-box-overlay"></div>
+            <div class="shg-box-content"></div>
+        </div>
+    </div>
+    <div class="shg-box-vertical-align-wrapper">
+        <div class="shg-box shg-c" id="s-d87af66c-3c3a-4cf0-a975-4c05c154e5ad">
+            <div class="shg-box-overlay"></div>
+            <div class="shg-box-content">
+                <div id="s-83d857ce-bed6-4c8b-afc8-edb2211af1c8" class="shg-c shg-align-center">
+                    <div class="shogun-heading-component">
+                        <h2>Roadmap</h2>
+                    </div>
+                </div>
+
+                <!-- <div class="shg-c shogun-image-container shg-align-center" style="" id="s-87f00293-4820-434c-aa0e-c7902b46847b">
+                    <img
+                        data-src="https://i.shgcdn.com/874530b3-34e6-47f7-b2ec-39438e9b3bc1/-/format/auto/-/preview/3000x3000/-/quality/lighter/"
+                        width=""
+                        height=""
+                        style=""
+                        alt=""
+                        class="shogun-image shogun-lazyload"
+                    />
+                </div> -->
+
+                <script type="text/javascript">
+                    window.SHOGUN_IMAGE_ELEMENTS = window.SHOGUN_IMAGE_ELEMENTS || new Array();
+                    window.SHOGUN_IMAGE_ELEMENTS.push({ hoverImage: "", uuid: "s-87f00293-4820-434c-aa0e-c7902b46847b" });
+                </script>
+
+                <div class="roadmap-wrapper">
+                    <div class="roadmap-content">
+                        <div class="roadmap-style roadmap-style1">
+                            <div class="img-wrapper">
+                                <img src="/product_images/uploaded_images/roadmap1.png" alt="hair system consultation">
+                            </div>
+                            <div>
+                                <div class="roadmap-title link"><a href="https://www.superhairpieces.com/online-professional-hair-consultant-for-hair-pieces-toupee/" target="_blank">Step 1 Book a consultation</a></div>
+                                <div>The first step is to book an online consultation with us.</div>
+                                <div>This gives you the chance to speak to one of our experts and determine what hair system is best for you depending on your hair loss stage, needs and preferences. <a href="https://www.superhairpieces.com/toupee-wig-hair-system-blog/faq-on-virtual-consultations-for-hair-system/" target="_blank">See our consultation FAQs</a></div>
+                            </div>
+                        </div>
+                        <div class="roadmap-style roadmap-style2">
+                            <div class="img-wrapper">
+                                <img src="/product_images/uploaded_images/roadmap2.png" alt="hair replacement system">
+                            </div>
+                            <div>
+                                <div class="roadmap-title">Step 2 Order your first hair system</div>
+                                <div>Once our experts recommend the hair system that is best suited for your needs, it is time to place an order. You can do this on your own or have a Superhairpieces customer support agent place it for you for a small handling fee.</div>
+                            </div>
+                        </div>
+                        <div class="roadmap-style roadmap-style3">
+                            <div class="img-wrapper">
+                                <img src="/product_images/uploaded_images/roadmap3.png" alt="install hair system">
+                            </div>
+                            <div>
+                                <div class="roadmap-title link">Step 3 Install your hair system</div>                                
+                                <div><a href="https://www.superhairpieces.com/toupee-wig-hair-system-blog/how-to-attach-and-remove-a-hair-replacement-system/" target="_blank">You can learn how to install it yourself.</a> However as a first-timer, we recommend getting it installed by a professional.</div>
+                            </div>
+                        </div>
+                        <div class="roadmap-style roadmap-style1">
+                            <div class="img-wrapper">
+                                <img src="/product_images/uploaded_images/roadmap4.png" alt="how to care a hairpiece">
+                            </div>
+                            <div>
+                                <div class="roadmap-title">Step 4 Learn how to take care & Maintain your hair system</div>
+                                <div>We will give you tips and provide you with resources so you know how best to take care and maintain your hairpieces so that you get the most out of your new purchase.</div>
+                            </div>
+                        </div>
+                        <div class="roadmap-style roadmap-style2">
+                            <div class="img-wrapper">
+                                <img src="/product_images/uploaded_images/roadmap5.png" alt="leave a review">
+                            </div>
+                            <div>
+                                <div class="roadmap-title link"><a href="https://www.superhairpieces.com/rewards-program" target="_blank">Step 5 Leave a review & Earn incentives!</a></div>
+                                <div>If you're statisfied with your purchase, you can leave us a review and get rewarded!</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="shg-box-vertical-align-wrapper">
+        <div class="shg-box shg-c" id="s-79d41554-225d-4d16-8069-11f088fd0b7b">
+            <div class="shg-box-overlay"></div>
+            <div class="shg-box-content"></div>
+        </div>
+    </div>
+    <div class="shg-box-vertical-align-wrapper">
+        <div class="shg-box shg-c" id="s-6a44defb-ec88-4352-8294-8c3abad82491">
+            <div class="shg-box-overlay"></div>
+            <div class="shg-box-content">
+                <div class="shg-c" id="s-2eed097d-e676-4edf-9a62-eaf1f4641437">
+                    <div class="shg-row" data-col-grid-mode-on="">
+                        <div class="shg-c-lg-2 shg-c-md-2 shg-c-sm-2 shg-c-xs-12"></div>
+                        <div class="shg-c-lg-8 shg-c-md-8 shg-c-sm-8 shg-c-xs-12">
+                            <div id="s-6986bb30-c927-44e9-9594-fc9b5133699b" class="shg-c">
+                                <div class="shogun-video shogun-video-16x9">
+                                    <iframe
+                                        class="shogun-video-embed shogun-lazyload"
+                                        data-src="https://www.youtube.com/embed/QWHdIW-MS5Y?start=0&end=0&autoplay=0&loop=0&rel=0"
+                                        allowfullscreen
+                                        title="Embedded Youtube Video"
+                                    >
+                                    </iframe>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="shg-c-lg-2 shg-c-md-2 shg-c-sm-2 shg-c-xs-12"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="shg-box-vertical-align-wrapper">
+        <div class="shg-box shg-c" id="s-e265e3f0-2062-4bef-a123-bf48318753d2">
+            <div class="shg-box-overlay"></div>
+            <div class="shg-box-content"></div>
+        </div>
+    </div>
+    <div class="shg-box-vertical-align-wrapper">
+        <div class="shg-box shg-c" id="s-499e352b-f69f-494b-a719-3bcff1d045a1">
+            <div class="shg-box-overlay"></div>
+            <div class="shg-box-content">
+                <div class="shg-box-vertical-align-wrapper">
+                    <div class="shg-box shg-c" id="s-9c1fbc61-eb5e-4124-b61d-2e5955dd2561">
+                        <div class="shg-box-overlay"></div>
+                        <div class="shg-box-content">
+                            <div class="shg-c" id="s-77a6e1fe-6daa-4399-b16b-376407146430">
+                                <div class="shg-row" data-col-grid-mode-on="">
+                                    <div class="shg-c-lg-6 shg-c-md-6 shg-c-sm-6 shg-c-xs-12">
+                                        <div class="shg-c" id="s-dcdf0020-9c7b-4bce-8040-b4e70a3a11ab">
+                                            <div class="shg-row" data-col-grid-mode-on="">
+                                                <div class="shg-c-lg-2 shg-c-md-2 shg-c-sm-2 shg-c-xs-12"></div>
+                                                <div class="shg-c-lg-8 shg-c-md-8 shg-c-sm-8 shg-c-xs-12">
+                                                    <div class="shg-box-vertical-align-wrapper">
+                                                        <div class="shg-box shg-c" id="s-aa8c2f40-abad-4ff1-b2b5-51ce0a105c57">
+                                                            <div class="shg-box-overlay"></div>
+                                                            <div class="shg-box-content">
+                                                                <div class="shg-c shogun-image-container shogun-image-linked shg-align-center" style="" id="s-607653ca-400f-451b-80b7-36e90ed15f9f">
+                                                                    <a
+                                                                        class="shogun-image-link"
+                                                                        href="https://www.superhairpieces.com/toupee-wig-hair-system-blog/how-to-attach-and-remove-a-hair-replacement-system/"
+                                                                        target="_blank"
+                                                                    >
+                                                                        <img
+                                                                            data-src="https://i.shgcdn.com/6541d8a1-7819-41db-9760-c8bd78a0ab44/-/format/auto/-/preview/3000x3000/-/quality/lighter/"
+                                                                            width=""
+                                                                            height=""
+                                                                            style=""
+                                                                            alt=""
+                                                                            class="shogun-image shogun-lazyload"
+                                                                        />
+                                                                    </a>
+                                                                </div>
+
+                                                                <script type="text/javascript">
+                                                                    window.SHOGUN_IMAGE_ELEMENTS = window.SHOGUN_IMAGE_ELEMENTS || new Array();
+                                                                    window.SHOGUN_IMAGE_ELEMENTS.push({ hoverImage: "", uuid: "s-607653ca-400f-451b-80b7-36e90ed15f9f" });
+                                                                </script>
+                                                                <div id="s-cb060ad8-4e22-4dea-88db-225c7989ddee" class="shg-c">
+                                                                    <div class="shg-rich-text shg-theme-text-content"><p style="text-align: center">2021 Aug 10th</p></div>
+                                                                </div>
+                                                                <div id="s-bb0f3cc7-861f-470a-8f2d-2cd185dfbb44" class="shg-c">
+                                                                    <div class="shg-rich-text shg-theme-text-content">
+                                                                        <p class="blog-title" style="line-height: 16px; text-align: center">
+                                                                            <strong
+                                                                                ><span style="font-size: 14px"
+                                                                                    ><a
+                                                                                        href="https://www.superhairpieces.com/toupee-wig-hair-system-blog/how-to-attach-and-remove-a-hair-replacement-system/"
+                                                                                        >How to attach and remove a hair replacement system</a
+                                                                                    ></span
+                                                                                ></strong
+                                                                            >
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="shg-c-lg-2 shg-c-md-2 shg-c-sm-2 shg-c-xs-12"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="shg-c-lg-6 shg-c-md-6 shg-c-sm-6 shg-c-xs-12">
+                                        <div class="shg-c" id="s-5e313fea-3b0c-4880-9798-620c87712a5e">
+                                            <div class="shg-row" data-col-grid-mode-on="">
+                                                <div class="shg-c-lg-2 shg-c-md-2 shg-c-sm-2 shg-c-xs-12"></div>
+                                                <div class="shg-c-lg-8 shg-c-md-8 shg-c-sm-8 shg-c-xs-12">
+                                                    <div class="shg-box-vertical-align-wrapper">
+                                                        <div class="shg-box shg-c" id="s-5b5cc95c-ab66-40fa-981f-5babfef0687f">
+                                                            <div class="shg-box-overlay"></div>
+                                                            <div class="shg-box-content">
+                                                                <div class="shg-c shogun-image-container shogun-image-linked shg-align-center" style="" id="s-b611a58d-be13-48c6-932c-439d082b8673">
+                                                                    <a
+                                                                        class="shogun-image-link"
+                                                                        href="https://www.superhairpieces.com/toupee-wig-hair-system-blog/beginners-guide-how-to-buy-toupee-or-wig-hairpieces/"
+                                                                        target="_blank"
+                                                                    >
+                                                                        <img
+                                                                            data-src="https://i.shgcdn.com/5db67040-5755-491a-ad07-9a6c73419084/-/format/auto/-/preview/3000x3000/-/quality/lighter/"
+                                                                            width=""
+                                                                            height=""
+                                                                            style=""
+                                                                            alt=""
+                                                                            class="shogun-image shogun-lazyload"
+                                                                        />
+                                                                    </a>
+                                                                </div>
+
+                                                                <script type="text/javascript">
+                                                                    window.SHOGUN_IMAGE_ELEMENTS = window.SHOGUN_IMAGE_ELEMENTS || new Array();
+                                                                    window.SHOGUN_IMAGE_ELEMENTS.push({ hoverImage: "", uuid: "s-b611a58d-be13-48c6-932c-439d082b8673" });
+                                                                </script>
+                                                                <div id="s-357a9743-7b57-4099-8ed6-bfef815e315e" class="shg-c">
+                                                                    <div class="shg-rich-text shg-theme-text-content"><p style="text-align: center">2021 Jun 23th</p></div>
+                                                                </div>
+                                                                <div id="s-701ad6f4-7829-4406-98e6-17a3b24fa597" class="shg-c">
+                                                                    <div class="shg-rich-text shg-theme-text-content">
+                                                                        <p class="blog-title" style="line-height: 16px; text-align: center">
+                                                                            <strong
+                                                                                ><span style="font-size: 14px"
+                                                                                    ><a
+                                                                                        href="https://www.superhairpieces.com/toupee-wig-hair-system-blog/beginners-guide-how-to-buy-toupee-or-wig-hairpieces/"
+                                                                                        >Beginners Guide: How to Buy Toupee or Wig Hairpieces</a
+                                                                                    ></span
+                                                                                ></strong
+                                                                            >
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="shg-c-lg-2 shg-c-md-2 shg-c-sm-2 shg-c-xs-12"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="shg-c" id="s-22047b64-3dcc-4421-baeb-bfac1bf2a58c">
+                                <div class="shg-row" data-col-grid-mode-on="">
+                                    <div class="shg-c-lg-6 shg-c-md-6 shg-c-sm-6 shg-c-xs-12">
+                                        <div class="shg-c" id="s-34e6ba4b-021f-4b8f-9775-0b3ad87b970a">
+                                            <div class="shg-row" data-col-grid-mode-on="">
+                                                <div class="shg-c-lg-2 shg-c-md-2 shg-c-sm-2 shg-c-xs-12"></div>
+                                                <div class="shg-c-lg-8 shg-c-md-8 shg-c-sm-8 shg-c-xs-12">
+                                                    <div class="shg-box-vertical-align-wrapper">
+                                                        <div class="shg-box shg-c" id="s-de216401-1c31-4289-8c12-b6a2d4e2afb4">
+                                                            <div class="shg-box-overlay"></div>
+                                                            <div class="shg-box-content">
+                                                                <div class="shg-c shogun-image-container shogun-image-linked shg-align-center" style="" id="s-23ffe881-f5a3-4bbe-8725-f0067300bb30">
+                                                                    <a
+                                                                        class="shogun-image-link"
+                                                                        href="https://www.superhairpieces.com/toupee-wig-hair-system-blog/how-to-choose-the-right-hair-density-for-your-wig-or-toupee/"
+                                                                        target="_blank"
+                                                                    >
+                                                                        <img
+                                                                            data-src="https://i.shgcdn.com/8f300f4d-885d-4a77-b0f7-a0a00be8a570/-/format/auto/-/preview/3000x3000/-/quality/lighter/"
+                                                                            width=""
+                                                                            height=""
+                                                                            style=""
+                                                                            alt=""
+                                                                            class="shogun-image shogun-lazyload"
+                                                                        />
+                                                                    </a>
+                                                                </div>
+
+                                                                <script type="text/javascript">
+                                                                    window.SHOGUN_IMAGE_ELEMENTS = window.SHOGUN_IMAGE_ELEMENTS || new Array();
+                                                                    window.SHOGUN_IMAGE_ELEMENTS.push({ hoverImage: "", uuid: "s-23ffe881-f5a3-4bbe-8725-f0067300bb30" });
+                                                                </script>
+                                                                <div id="s-46e48568-2c35-40fe-b780-5b5ebd26c113" class="shg-c">
+                                                                    <div class="shg-rich-text shg-theme-text-content"><p style="text-align: center">2021 Jun 8th</p></div>
+                                                                </div>
+                                                                <div id="s-d4d347a5-21fb-478d-85be-548363d0c18d" class="shg-c">
+                                                                    <div class="shg-rich-text shg-theme-text-content">
+                                                                        <p class="blog-title" style="line-height: 16px; text-align: center">
+                                                                            <strong
+                                                                                ><span style="font-size: 14px"
+                                                                                    ><a
+                                                                                        href="https://www.superhairpieces.com/toupee-wig-hair-system-blog/how-to-choose-the-right-hair-density-for-your-wig-or-toupee/"
+                                                                                        >How to choose the right hair density for your wig or toupee</a
+                                                                                    ></span
+                                                                                ></strong
+                                                                            >
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="shg-c-lg-2 shg-c-md-2 shg-c-sm-2 shg-c-xs-12"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="shg-c-lg-6 shg-c-md-6 shg-c-sm-6 shg-c-xs-12">
+                                        <div class="shg-c" id="s-d2e8421e-1c31-4d11-b2fc-c72d5af6c40c">
+                                            <div class="shg-row" data-col-grid-mode-on="">
+                                                <div class="shg-c-lg-2 shg-c-md-2 shg-c-sm-2 shg-c-xs-12"></div>
+                                                <div class="shg-c-lg-8 shg-c-md-8 shg-c-sm-8 shg-c-xs-12">
+                                                    <div class="shg-box-vertical-align-wrapper">
+                                                        <div class="shg-box shg-c" id="s-c098611a-8260-4006-9017-530db287b725">
+                                                            <div class="shg-box-overlay"></div>
+                                                            <div class="shg-box-content">
+                                                                <div class="shg-c shogun-image-container shogun-image-linked shg-align-center" style="" id="s-55128c44-37a9-4f01-b338-2bb9dceedd98">
+                                                                    <a
+                                                                        class="shogun-image-link"
+                                                                        href="https://www.superhairpieces.com/toupee-wig-hair-system-blog/what-are-the-differences-between-the-thin-skin-base-hair-systems/"
+                                                                        target="_blank"
+                                                                    >
+                                                                        <img
+                                                                            data-src="https://i.shgcdn.com/8f2d7030-7fcb-433f-8574-8cf43c69f04d/-/format/auto/-/preview/3000x3000/-/quality/lighter/"
+                                                                            width=""
+                                                                            height=""
+                                                                            style=""
+                                                                            alt=""
+                                                                            class="shogun-image shogun-lazyload"
+                                                                        />
+                                                                    </a>
+                                                                </div>
+
+                                                                <script type="text/javascript">
+                                                                    window.SHOGUN_IMAGE_ELEMENTS = window.SHOGUN_IMAGE_ELEMENTS || new Array();
+                                                                    window.SHOGUN_IMAGE_ELEMENTS.push({ hoverImage: "", uuid: "s-55128c44-37a9-4f01-b338-2bb9dceedd98" });
+                                                                </script>
+                                                                <div id="s-a6fe43c6-8949-4c29-902b-41af46732f85" class="shg-c">
+                                                                    <div class="shg-rich-text shg-theme-text-content"><p style="text-align: center">2021 Aug 5th</p></div>
+                                                                </div>
+                                                                <div id="s-f6369495-072f-4159-bbf0-febc956f07ec" class="shg-c">
+                                                                    <div class="shg-rich-text shg-theme-text-content">
+                                                                        <p class="blog-title" style="line-height: 16px; text-align: center">
+                                                                            <strong
+                                                                                ><span style="font-size: 14px"
+                                                                                    ><a href="https://superhairpieces.ca/blog/what-is-the-difference-between-a-wig-and-a-weave/"
+                                                                                        >Why You Should Wear Tape-In Hair Extensions in Summer 2021</a
+                                                                                    ></span
+                                                                                ></strong
+                                                                            >
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="shg-c-lg-2 shg-c-md-2 shg-c-sm-2 shg-c-xs-12"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="shg-box-vertical-align-wrapper">
+        <div class="shg-box shg-c" id="s-519d13df-5e58-4c29-b6e7-955b95f822c4">
+            <div class="shg-box-overlay"></div>
+            <div class="shg-box-content"></div>
+        </div>
+    </div>
+    <div class="shg-box-vertical-align-wrapper">
+        <div class="shg-box shg-c" id="s-7c6accff-786b-4e06-b4c8-961b60baf3b1">
+            <div class="shg-box-overlay"></div>
+            <div class="shg-box-content">
+                <div id="s-cb9e112e-fe3b-4a82-901e-4215cf3c1b69" class="shg-c shg-align-center">
+                    <div class="shogun-heading-component">
+                        <h2>Our Most Popular Hair Systems</h2>
+                    </div>
+                </div>
+
+                <div class="shg-c" id="s-577ce900-a86e-4c0b-88a9-63c12eb190eb">
+                    <div class="shg-row" data-col-grid-mode-on="">
+                        <div class="shg-c-lg-1 shg-c-md-1 shg-c-sm-1 shg-c-xs-12"></div>
+                        <div class="shg-c-lg-10 shg-c-md-10 shg-c-sm-10 shg-c-xs-12">
+                            <div class="shg-c" id="s-e7879829-e367-4dfc-aecf-1bcc29242fbf">
+                                <div class="shg-row" data-col-grid-mode-on="">
+                                    <div class="shg-c-lg-6 shg-c-md-6 shg-c-sm-6 shg-c-xs-12">
+                                        <div class="shg-c" id="s-b68e8621-ec18-45e0-a614-e1fa0fd3832d">
+                                            <div class="shg-row" data-col-grid-mode-on="true">
+                                                <div class="shg-c-lg-6 shg-c-md-6 shg-c-sm-6 shg-c-xs-12">
+                                                    <div class="shg-box-vertical-align-wrapper">
+                                                        <div class="shg-box shg-c" id="s-3090d0ba-e608-452e-bac8-b578980a324c">
+                                                            <div class="shg-box-overlay"></div>
+                                                            <div class="shg-box-content">
+                                                                <div id="s-adc3ce96-8c3c-42ee-b7af-6025e37dba05" class="shg-c shg-product" data-is-product-box="true">
+                                                                    <script type="text/javascript">
+                                                                        window.__shgProductInits = window.__shgProductInits || new Array();
+                                                                        window.__shgProductCallbacks = window.__shgProductCallbacks || {};
+                                                                        window.__shgProductComponent = window.__shgProductComponent || {};
+                                                                        window.__shgProductCallbacks["s-adc3ce96-8c3c-42ee-b7af-6025e37dba05"] = new Array();
+                                                                    </script>
+
+                                                                    <div id="s-d4c1950e-06f7-4cb0-b34c-4e33bc15bb01" class="shg-c shg-align-left">
+                                                                        <div class="shg-product-image-wrapper" data-shg-product-target="product-image-wrapper">
+                                                                            <a data-shg-product-target="product-url">
+                                                                                <img class="shogun-image" alt="Thin Skin Hair Piece for Men" data-shg-product-target="product-image" />
+                                                                            </a>
+                                                                        </div>
+
+                                                                        <script type="text/javascript">
+                                                                            window.__shgProductCallbacks["s-adc3ce96-8c3c-42ee-b7af-6025e37dba05"].push({
+                                                                                cb: "image",
+                                                                                data: {
+                                                                                    uuid: "s-d4c1950e-06f7-4cb0-b34c-4e33bc15bb01",
+                                                                                    imageOffsetTop: 3345,
+                                                                                    LAZY_LOAD_OFFSET_TOP: 750,
+                                                                                    LAZY_LOAD_ENABLED: true,
+                                                                                },
+                                                                            });
+                                                                        </script>
+                                                                    </div>
+
+                                                                    <script type="text/javascript">
+                                                                        window.__shgProductInits.push({
+                                                                            uuid: "s-adc3ce96-8c3c-42ee-b7af-6025e37dba05",
+                                                                            platform: "big_commerce",
+                                                                            currency: "USD",
+                                                                            moneyFormat: {
+                                                                                USD: {
+                                                                                    currency: "USD",
+                                                                                    currency_symbol: "USD$",
+                                                                                    currency_symbol_location: "left",
+                                                                                    decimal_places: 2,
+                                                                                    decimal_separator: ".",
+                                                                                    thousands_separator: ",",
+                                                                                },
+                                                                            },
+
+                                                                            productUrl: "https://getshogun.com/api/products",
+                                                                            authToken:
+                                                                                "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzaXRlX2lkIjoiZmI4YzYwOTAtYTkwOC00NWUyLTg2MTctODliODJkN2EyMGU2IiwicHJvZHVjdF9pZCI6IjQzNyJ9.BusTD-eIAiBvV5YW7_pPmnrGxDI_5qeW9Ma_oPB5qDg",
+
+                                                                            productHandle: "toupee-m101-thin-skin-hair-piece-for-men/",
+                                                                            productVariantId: 3511,
+                                                                        });
+
+                                                                        window.__shgProductCallbacks["s-adc3ce96-8c3c-42ee-b7af-6025e37dba05"].push({
+                                                                            cb: "box",
+                                                                            data: {
+                                                                                uuid: "s-adc3ce96-8c3c-42ee-b7af-6025e37dba05",
+                                                                            },
+                                                                        });
+                                                                    </script>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="shg-c-lg-6 shg-c-md-6 shg-c-sm-6 shg-c-xs-12">
+                                                    <div class="shg-box-vertical-align-wrapper">
+                                                        <div class="shg-box shg-c" id="s-3f55968a-ee62-415d-a4da-2221a76ae662">
+                                                            <div class="shg-box-overlay"></div>
+                                                            <div class="shg-box-content">
+                                                                <div id="s-4a1e3ec4-d133-41d6-b456-32260a6dacbf" class="shg-c">
+                                                                    <div class="shg-rich-text shg-theme-text-content">
+                                                                        <p>The M101 is a thin skin hair system that is ideal for those looking for a natural looking yet durable hairpiece.</p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="shg-c-lg-6 shg-c-md-6 shg-c-sm-6 shg-c-xs-12">
+                                        <div class="shg-c" id="s-393c83b4-fd34-4d42-8896-59698a633940">
+                                            <div class="shg-row" data-col-grid-mode-on="true">
+                                                <div class="shg-c-lg-6 shg-c-md-6 shg-c-sm-6 shg-c-xs-12">
+                                                    <div class="shg-box-vertical-align-wrapper">
+                                                        <div class="shg-box shg-c" id="s-9e925010-6c66-4493-814b-1b2465307444">
+                                                            <div class="shg-box-overlay"></div>
+                                                            <div class="shg-box-content">
+                                                                <div id="s-09d97f36-62b8-421d-a6f4-85ebf85e8919" class="shg-c shg-product" data-is-product-box="true">
+                                                                    <script type="text/javascript">
+                                                                        window.__shgProductInits = window.__shgProductInits || new Array();
+                                                                        window.__shgProductCallbacks = window.__shgProductCallbacks || {};
+                                                                        window.__shgProductComponent = window.__shgProductComponent || {};
+                                                                        window.__shgProductCallbacks["s-09d97f36-62b8-421d-a6f4-85ebf85e8919"] = new Array();
+                                                                    </script>
+
+                                                                    <div id="s-900c063d-e432-402b-a5c5-8f0f87b143f1" class="shg-c shg-align-left">
+                                                                        <div class="shg-product-image-wrapper" data-shg-product-target="product-image-wrapper">
+                                                                            <a data-shg-product-target="product-url">
+                                                                                <img class="shogun-image" alt="Most durable cost-effective system" data-shg-product-target="product-image" />
+                                                                            </a>
+                                                                        </div>
+
+                                                                        <script type="text/javascript">
+                                                                            window.__shgProductCallbacks["s-09d97f36-62b8-421d-a6f4-85ebf85e8919"].push({
+                                                                                cb: "image",
+                                                                                data: {
+                                                                                    uuid: "s-900c063d-e432-402b-a5c5-8f0f87b143f1",
+                                                                                    imageOffsetTop: 3345,
+                                                                                    LAZY_LOAD_OFFSET_TOP: 750,
+                                                                                    LAZY_LOAD_ENABLED: true,
+                                                                                },
+                                                                            });
+                                                                        </script>
+                                                                    </div>
+
+                                                                    <script type="text/javascript">
+                                                                        window.__shgProductInits.push({
+                                                                            uuid: "s-09d97f36-62b8-421d-a6f4-85ebf85e8919",
+                                                                            platform: "big_commerce",
+                                                                            currency: "USD",
+                                                                            moneyFormat: {
+                                                                                USD: {
+                                                                                    currency: "USD",
+                                                                                    currency_symbol: "USD$",
+                                                                                    currency_symbol_location: "left",
+                                                                                    decimal_places: 2,
+                                                                                    decimal_separator: ".",
+                                                                                    thousands_separator: ",",
+                                                                                },
+                                                                            },
+
+                                                                            productUrl: "https://getshogun.com/api/products",
+                                                                            authToken:
+                                                                                "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzaXRlX2lkIjoiZmI4YzYwOTAtYTkwOC00NWUyLTg2MTctODliODJkN2EyMGU2IiwicHJvZHVjdF9pZCI6IjQ0MCJ9.4NvGu4f5HQwYPRzTdEa6eGjG4L3HyobN-CMCQp0MU3A",
+
+                                                                            productHandle: "mens-toupee-m102-8x10-mono-silk-top-lace/",
+                                                                            productVariantId: 3765,
+                                                                        });
+
+                                                                        window.__shgProductCallbacks["s-09d97f36-62b8-421d-a6f4-85ebf85e8919"].push({
+                                                                            cb: "box",
+                                                                            data: {
+                                                                                uuid: "s-09d97f36-62b8-421d-a6f4-85ebf85e8919",
+                                                                            },
+                                                                        });
+                                                                    </script>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="shg-c-lg-6 shg-c-md-6 shg-c-sm-6 shg-c-xs-12">
+                                                    <div class="shg-box-vertical-align-wrapper">
+                                                        <div class="shg-box shg-c" id="s-ce8d0229-8af1-44af-9b69-01a9ed47593d">
+                                                            <div class="shg-box-overlay"></div>
+                                                            <div class="shg-box-content">
+                                                                <div id="s-8f162c07-7298-4c0c-905b-5772e37233c2" class="shg-c">
+                                                                    <div class="shg-rich-text shg-theme-text-content">
+                                                                        <p>The M102 is a mono silk top base with poly coating all around. It is durable, breathable and ideal for active people.</p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="shg-c" id="s-a40e7c93-e9c3-48a3-86a0-d1ac7614c6bd">
+                                <div class="shg-row" data-col-grid-mode-on="">
+                                    <div class="shg-c-lg-6 shg-c-md-6 shg-c-sm-6 shg-c-xs-12">
+                                        <div class="shg-c" id="s-13eff154-d467-4627-9f1a-ced92f071dd6">
+                                            <div class="shg-row" data-col-grid-mode-on="true">
+                                                <div class="shg-c-lg-6 shg-c-md-6 shg-c-sm-6 shg-c-xs-12">
+                                                    <div class="shg-box-vertical-align-wrapper">
+                                                        <div class="shg-box shg-c" id="s-9400e3ee-53e3-4e01-9a83-bc7120431009">
+                                                            <div class="shg-box-overlay"></div>
+                                                            <div class="shg-box-content">
+                                                                <div id="s-49fcb31e-b44c-4b29-9968-3c9a2aee206c" class="shg-c shg-product" data-is-product-box="true">
+                                                                    <script type="text/javascript">
+                                                                        window.__shgProductInits = window.__shgProductInits || new Array();
+                                                                        window.__shgProductCallbacks = window.__shgProductCallbacks || {};
+                                                                        window.__shgProductComponent = window.__shgProductComponent || {};
+                                                                        window.__shgProductCallbacks["s-49fcb31e-b44c-4b29-9968-3c9a2aee206c"] = new Array();
+                                                                    </script>
+
+                                                                    <div id="s-f192d4a2-1893-4a8e-8140-5fbc373a0f20" class="shg-c shg-align-left">
+                                                                        <div class="shg-product-image-wrapper" data-shg-product-target="product-image-wrapper">
+                                                                            <a data-shg-product-target="product-url">
+                                                                                <img class="shogun-image" alt="Super soft french lace natural & comfortable" data-shg-product-target="product-image" />
+                                                                            </a>
+                                                                        </div>
+
+                                                                        <script type="text/javascript">
+                                                                            window.__shgProductCallbacks["s-49fcb31e-b44c-4b29-9968-3c9a2aee206c"].push({
+                                                                                cb: "image",
+                                                                                data: {
+                                                                                    uuid: "s-f192d4a2-1893-4a8e-8140-5fbc373a0f20",
+                                                                                    imageOffsetTop: 3586,
+                                                                                    LAZY_LOAD_OFFSET_TOP: 750,
+                                                                                    LAZY_LOAD_ENABLED: true,
+                                                                                },
+                                                                            });
+                                                                        </script>
+                                                                    </div>
+
+                                                                    <script type="text/javascript">
+                                                                        window.__shgProductInits.push({
+                                                                            uuid: "s-49fcb31e-b44c-4b29-9968-3c9a2aee206c",
+                                                                            platform: "big_commerce",
+                                                                            currency: "USD",
+                                                                            moneyFormat: {
+                                                                                USD: {
+                                                                                    currency: "USD",
+                                                                                    currency_symbol: "USD$",
+                                                                                    currency_symbol_location: "left",
+                                                                                    decimal_places: 2,
+                                                                                    decimal_separator: ".",
+                                                                                    thousands_separator: ",",
+                                                                                },
+                                                                            },
+
+                                                                            productUrl: "https://getshogun.com/api/products",
+                                                                            authToken:
+                                                                                "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzaXRlX2lkIjoiZmI4YzYwOTAtYTkwOC00NWUyLTg2MTctODliODJkN2EyMGU2IiwicHJvZHVjdF9pZCI6IjQ1MyJ9.pGKZNQ3FoNP4Yg-p0pEuMaCCgcmC17O7QLpL9bUWcGc",
+
+                                                                            productHandle: "mens-toupee-m105-8x-10-french-lace-in-stock/",
+                                                                            productVariantId: 4115,
+                                                                        });
+
+                                                                        window.__shgProductCallbacks["s-49fcb31e-b44c-4b29-9968-3c9a2aee206c"].push({
+                                                                            cb: "box",
+                                                                            data: {
+                                                                                uuid: "s-49fcb31e-b44c-4b29-9968-3c9a2aee206c",
+                                                                            },
+                                                                        });
+                                                                    </script>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="shg-c-lg-6 shg-c-md-6 shg-c-sm-6 shg-c-xs-12">
+                                                    <div class="shg-box-vertical-align-wrapper">
+                                                        <div class="shg-box shg-c" id="s-43d755d2-d6eb-409c-b8f5-e30476aab5fb">
+                                                            <div class="shg-box-overlay"></div>
+                                                            <div class="shg-box-content">
+                                                                <div id="s-1ad96de7-0c3a-4a4f-a0a7-5e2fdb781f80" class="shg-c">
+                                                                    <div class="shg-rich-text shg-theme-text-content">
+                                                                        <p>The M105 is a super soft French lace men's toupee that is natural looking, comfortable and breathable.</p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="shg-c-lg-6 shg-c-md-6 shg-c-sm-6 shg-c-xs-12">
+                                        <div class="shg-c" id="s-3ff7fa3f-60db-410b-aca7-fdda9775bbc4">
+                                            <div class="shg-row" data-col-grid-mode-on="true">
+                                                <div class="shg-c-lg-6 shg-c-md-6 shg-c-sm-6 shg-c-xs-12">
+                                                    <div class="shg-box-vertical-align-wrapper">
+                                                        <div class="shg-box shg-c" id="s-b41fcc04-72ac-4357-9d10-3fd83f9979fc">
+                                                            <div class="shg-box-overlay"></div>
+                                                            <div class="shg-box-content">
+                                                                <div id="s-40fbdb43-bd6b-4dcf-afc0-fea862b17001" class="shg-c shg-product" data-is-product-box="true">
+                                                                    <script type="text/javascript">
+                                                                        window.__shgProductInits = window.__shgProductInits || new Array();
+                                                                        window.__shgProductCallbacks = window.__shgProductCallbacks || {};
+                                                                        window.__shgProductComponent = window.__shgProductComponent || {};
+                                                                        window.__shgProductCallbacks["s-40fbdb43-bd6b-4dcf-afc0-fea862b17001"] = new Array();
+                                                                    </script>
+
+                                                                    <div id="s-71d294a9-1a07-4007-98bb-e712dfebb2d2" class="shg-c shg-align-left">
+                                                                        <div class="shg-product-image-wrapper" data-shg-product-target="product-image-wrapper">
+                                                                            <a data-shg-product-target="product-url">
+                                                                                <img class="shogun-image" alt="Higher density of french lace system" data-shg-product-target="product-image" />
+                                                                            </a>
+                                                                        </div>
+
+                                                                        <script type="text/javascript">
+                                                                            window.__shgProductCallbacks["s-40fbdb43-bd6b-4dcf-afc0-fea862b17001"].push({
+                                                                                cb: "image",
+                                                                                data: {
+                                                                                    uuid: "s-71d294a9-1a07-4007-98bb-e712dfebb2d2",
+                                                                                    imageOffsetTop: 3586,
+                                                                                    LAZY_LOAD_OFFSET_TOP: 750,
+                                                                                    LAZY_LOAD_ENABLED: true,
+                                                                                },
+                                                                            });
+                                                                        </script>
+                                                                    </div>
+
+                                                                    <script type="text/javascript">
+                                                                        window.__shgProductInits.push({
+                                                                            uuid: "s-40fbdb43-bd6b-4dcf-afc0-fea862b17001",
+                                                                            platform: "big_commerce",
+                                                                            currency: "USD",
+                                                                            moneyFormat: {
+                                                                                USD: {
+                                                                                    currency: "USD",
+                                                                                    currency_symbol: "USD$",
+                                                                                    currency_symbol_location: "left",
+                                                                                    decimal_places: 2,
+                                                                                    decimal_separator: ".",
+                                                                                    thousands_separator: ",",
+                                                                                },
+                                                                            },
+
+                                                                            productUrl: "https://getshogun.com/api/products",
+                                                                            authToken:
+                                                                                "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzaXRlX2lkIjoiZmI4YzYwOTAtYTkwOC00NWUyLTg2MTctODliODJkN2EyMGU2IiwicHJvZHVjdF9pZCI6IjExODUifQ.lNxVO6AKIOkXHEaTTyIXp1Dip7bnGPjwYhifhZU_I2M",
+
+                                                                            productHandle: "hd105-m135-8-x-10-french-lace-in-stock/",
+                                                                            productVariantId: 7486,
+                                                                        });
+
+                                                                        window.__shgProductCallbacks["s-40fbdb43-bd6b-4dcf-afc0-fea862b17001"].push({
+                                                                            cb: "box",
+                                                                            data: {
+                                                                                uuid: "s-40fbdb43-bd6b-4dcf-afc0-fea862b17001",
+                                                                            },
+                                                                        });
+                                                                    </script>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="shg-c-lg-6 shg-c-md-6 shg-c-sm-6 shg-c-xs-12">
+                                                    <div class="shg-box-vertical-align-wrapper">
+                                                        <div class="shg-box shg-c" id="s-35c1592b-4b81-4f06-8539-2983fcc8acb9">
+                                                            <div class="shg-box-overlay"></div>
+                                                            <div class="shg-box-content">
+                                                                <div id="s-5c460129-b3e9-4f22-80af-56d9f571d588" class="shg-c">
+                                                                    <div class="shg-rich-text shg-theme-text-content">
+                                                                        <p>
+                                                                            The HD105 is a super soft French lace system that is natural looking, comfortable and breathable just like the M105, but can
+                                                                            hold a higher hair density.
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="shg-c-lg-1 shg-c-md-1 shg-c-sm-1 shg-c-xs-12"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="shg-box-vertical-align-wrapper">
+        <div class="shg-box shg-c" id="s-4e241dad-fc36-4b57-8dda-42da3bf07f0f">
+            <div class="shg-box-overlay"></div>
+            <div class="shg-box-content"></div>
+        </div>
+    </div>
+    <div class="shg-box-vertical-align-wrapper">
+        <div class="shg-box shg-c" id="s-be285f24-5d40-474b-aa4a-db341b06b064">
+            <div class="shg-box-overlay"></div>
+            <div class="shg-box-content">
+                <div id="s-6d87f1f2-c609-45e0-91c2-430103c401f4" class="shg-c shg-align-center">
+                    <div class="shogun-heading-component">
+                        <h2>What Our Customers Say</h2>
+                    </div>
+                </div>
+
+                <div class="shg-c" id="s-11833052-ee8d-4b77-b09d-0f4ffcdd1ffe">
+                    <div class="shg-row" data-col-grid-mode-on="">
+                        <div class="shg-c-lg-1 shg-c-md-1 shg-c-sm-1 shg-c-xs-12"></div>
+                        <div class="shg-c-lg-10 shg-c-md-10 shg-c-sm-10 shg-c-xs-12">
+                            <div class="shg-c" id="s-477893f8-6fdc-43a2-8c3b-69fc10ba20f0">
+                                <div class="shg-row" data-col-grid-mode-on="true">
+                                    <div class="shg-c-lg-3 shg-c-md-3 shg-c-sm-3 shg-c-xs-12">
+                                        <div class="shg-c shogun-image-container shg-align-center" style="" id="s-9bce9c04-4006-4ad0-8bd7-fdbe7d294fe2">
+                                            <img
+                                                data-src="https://i.shgcdn.com/a3408640-e035-46d8-88ec-ee0f5ac6bcf0/-/format/auto/-/preview/3000x3000/-/quality/lighter/"
+                                                width=""
+                                                height=""
+                                                style=""
+                                                alt=""
+                                                class="shogun-image shogun-lazyload"
+                                            />
+                                        </div>
+
+                                        <script type="text/javascript">
+                                            window.SHOGUN_IMAGE_ELEMENTS = window.SHOGUN_IMAGE_ELEMENTS || new Array();
+                                            window.SHOGUN_IMAGE_ELEMENTS.push({ hoverImage: "", uuid: "s-9bce9c04-4006-4ad0-8bd7-fdbe7d294fe2" });
+                                        </script>
+                                    </div>
+                                    <div class="shg-c-lg-9 shg-c-md-9 shg-c-sm-9 shg-c-xs-12">
+                                        <div class="shg-box-vertical-align-wrapper">
+                                            <div class="shg-box shg-c" id="s-a92c4435-3c5f-4352-aa11-81ac3e2d542d">
+                                                <div class="shg-box-overlay"></div>
+                                                <div class="shg-box-content">
+                                                    <div id="s-cd8d8b3c-334a-44c0-aa40-77af0d13cd01" class="shg-c shg-align-left">
+                                                        <div class="shogun-heading-component">
+                                                            <h2>James T. Verified Buyer</h2>
+                                                        </div>
+                                                    </div>
+                                                    <div id="s-5f8731c5-c8e1-4cbd-828c-2ba49ad03ba2" class="shg-c">
+                                                        <div class="shg-rich-text shg-theme-text-content">
+                                                            <p>
+                                                                This adventure from start to finish was exceptional, the service at the Mississauga location was beyond belief. I would like to thank
+                                                                everyone who involved in what has definitely been one of the best experiences of my life.
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="shg-box-vertical-align-wrapper">
+                                <div class="shg-box shg-c" id="s-8375e24d-d37c-4f62-961f-9132ad9a10ed">
+                                    <div class="shg-box-overlay"></div>
+                                    <div class="shg-box-content">
+                                        <div id="s-a71ecc04-f9d9-468a-9fbe-bd4f5f6d8375" class="shg-c">
+                                            <div
+                                                id="stamped-reviews-widget"
+                                                data-widget-type="visual-gallery"
+                                                data-product-ids="437,440,453,1185"
+                                                data-min-rating="5"
+                                                data-with-photos="true"
+                                                data-with-photos="true"
+                                            ></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="shg-box-vertical-align-wrapper">
+                                <div class="shg-box shg-c" id="s-3c5377ba-8147-42a4-9f51-f4c91419acd6">
+                                    <div class="shg-box-overlay"></div>
+                                    <div class="shg-box-content">
+                                        <div class="shg-c" id="s-60b26702-bf00-418f-a311-f595779cc682">
+                                            <div class="shg-row" data-col-grid-mode-on="true">
+                                                <div class="shg-c-lg-4 shg-c-md-4 shg-c-sm-4 shg-c-xs-12">
+                                                    <div class="shg-c shogun-image-container shg-align-center" style="" id="s-2e1101ee-a970-4fa3-9fcc-6a820b765262">
+                                                        <img
+                                                            data-src="https://i.shgcdn.com/92f80a3e-a852-49ec-8109-2526b8082903/-/format/auto/-/preview/3000x3000/-/quality/lighter/"
+                                                            width=""
+                                                            height=""
+                                                            style=""
+                                                            alt=""
+                                                            class="shogun-image shogun-lazyload"
+                                                        />
+                                                    </div>
+
+                                                    <script type="text/javascript">
+                                                        window.SHOGUN_IMAGE_ELEMENTS = window.SHOGUN_IMAGE_ELEMENTS || new Array();
+                                                        window.SHOGUN_IMAGE_ELEMENTS.push({ hoverImage: "", uuid: "s-2e1101ee-a970-4fa3-9fcc-6a820b765262" });
+                                                    </script>
+                                                </div>
+                                                <div class="shg-c-lg-8 shg-c-md-8 shg-c-sm-8 shg-c-xs-12">
+                                                    <div class="shg-box-vertical-align-wrapper">
+                                                        <div class="shg-box shg-c" id="s-7dda5e7d-e636-4d42-bdb3-af4c8e48378a">
+                                                            <div class="shg-box-overlay"></div>
+                                                            <div class="shg-box-content">
+                                                                <div id="s-096fe0fd-6e87-49b4-9e03-4b92d36a56b5" class="shg-c shg-align-left">
+                                                                    <div class="shogun-heading-component">
+                                                                        <h2>Rick D. Verified Buyer</h2>
+                                                                    </div>
+                                                                </div>
+                                                                <div id="s-069ff647-7323-4a41-9694-a0e2b0535aaf" class="shg-c">
+                                                                    <div class="shg-rich-text shg-theme-text-content">
+                                                                        <p>
+                                                                            At first it was really just for a fluke, I wasn't convinced that it was gonna work, I didn't think it would be worth trying.
+                                                                            I approached it more as a joke. But when it finished I thought, “It looks pretty good. As a matter of fact, that looks
+                                                                            really good!”
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="shg-c" id="s-b471851d-63fc-48e2-a18b-e0c3691b3c49">
+                                                                    <div class="shg-row" data-col-grid-mode-on="">
+                                                                        <div class="shg-c-lg-6 shg-c-md-6 shg-c-sm-6 shg-c-xs-12">
+                                                                            <div class="shg-box-vertical-align-wrapper">
+                                                                                <div class="shg-box shg-c" id="s-88ab80b7-379a-46a9-baf2-6a712ed07099">
+                                                                                    <div class="shg-box-overlay"></div>
+                                                                                    <div class="shg-box-content">
+                                                                                        <div id="s-b972fd0d-b910-422b-bf8c-31fb665c1edb" class="shg-c">
+                                                                                            <div class="shg-rich-text shg-theme-text-content">
+                                                                                                <div style="text-align: center">
+                                                                                                    <span style="color: #ffffff; font-size: 20px"
+                                                                                                        ><a
+                                                                                                            style="color: #ffffff"
+                                                                                                            href="/rick-s-experience-with-hair-systems-superhairpieces-testimonial"
+                                                                                                            target="_blank"
+                                                                                                            rel="noopener"
+                                                                                                            >Watch Rick's Journey here</a
+                                                                                                        ></span
+                                                                                                    >
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="shg-c-lg-6 shg-c-md-6 shg-c-sm-6 shg-c-xs-12"></div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="shg-c-lg-1 shg-c-md-1 shg-c-sm-1 shg-c-xs-12"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="shg-box-vertical-align-wrapper">
+        <div class="shg-box shg-c" id="s-959fa2ca-fe2f-407f-8873-bed55661ff00">
+            <div class="shg-box-overlay"></div>
+            <div class="shg-box-content"></div>
+        </div>
+    </div>
+    <div class="shg-box-vertical-align-wrapper">
+        <div class="shg-box shg-c" id="s-b41cfec3-6dd7-4e9a-bc26-98d912137136">
+            <div class="shg-box-overlay"></div>
+            <div class="shg-box-content">
+                <div id="s-c4926219-23eb-4688-88fb-a2894957d71d" class="shg-c shg-align-center">
+                    <div class="shogun-heading-component">
+                        <h2>Contact Us</h2>
+                    </div>
+                </div>
+                <div id="s-a21971b0-cbc2-4bd1-a0b1-71913cefcf00" class="shg-c">
+                    <div class="shg-rich-text shg-theme-text-content">
+                        <div style="text-align: center">
+                            <span style="font-size: 18px"><strong>Ready to start your hair system journey? Book your consultation today!</strong></span>
+                        </div>
+                        <div style="text-align: center">
+                            <span style="font-size: 18px"><strong>If you have any further questions, feel free to contact us below.</strong></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="shg-box-vertical-align-wrapper">
+                    <div class="shg-box shg-c" id="s-fca0175e-5b57-4a3f-94bc-e0e569ce451c">
+                        <div class="shg-box-overlay"></div>
+                        <div class="shg-box-content">
+                            <div class="shg-c" id="s-ea3de33a-9c7a-48fb-bcf3-358dd2668abe">
+                                <div class="shg-row" data-col-grid-mode-on="true">
+                                    <div class="shg-c-lg-6 shg-c-md-6 shg-c-sm-6 shg-c-xs-12">
+                                        <div class="shg-box-vertical-align-wrapper">
+                                            <div class="shg-box shg-c" id="s-973084b3-9391-4355-a2d9-3a07914590b3">
+                                                <div class="shg-box-overlay"></div>
+                                                <div class="shg-box-content">
+                                                    <div class="shg-c" id="s-5b69a103-71c2-4dcf-91fd-b76a35e17e94">
+                                                        <div class="shg-row" data-col-grid-mode-on="">
+                                                            <div class="shg-c-lg-3 shg-c-md-3 shg-c-sm-3 shg-c-xs-6"></div>
+                                                            <div class="shg-c-lg-1 shg-c-md-1 shg-c-sm-1 shg-c-xs-6">
+                                                                <div id="s-c4d8ce3b-ea20-416f-829c-23af0341d1f9" class="shg-c">
+                                                                    <div class="shogun-icon-wrapper">
+                                                                        <div class="shg-fa shg-fa-phone shogun-icon"></div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="shg-c-lg-7 shg-c-md-7 shg-c-sm-7 shg-c-xs-6">
+                                                                <div id="s-35ec6b51-e8de-428b-b012-2e1ae1184ce6" class="shg-c">
+                                                                    <div class="shg-rich-text shg-theme-text-content">
+                                                                        <p style="text-align: center"><span style="font-size: 22px">Toll Free: 1-866-814-7879</span></p>
+                                                                        <p style="text-align: center"><span style="font-size: 22px">Global: 1-954-835-2288</span></p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="shg-c-lg-1 shg-c-md-1 shg-c-sm-1 shg-c-xs-6"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="shg-c-lg-6 shg-c-md-6 shg-c-sm-6 shg-c-xs-12">
+                                        <div class="shg-box-vertical-align-wrapper">
+                                            <div class="shg-box shg-c" id="s-69db74a3-20bc-471d-9167-1a7719af78ec">
+                                                <div class="shg-box-overlay"></div>
+                                                <div class="shg-box-content">
+                                                    <div id="s-36a24e8a-af77-4817-bb16-a34a061f72b7" class="shg-c shg-align-center">
+                                                        <div class="shogun-heading-component">
+                                                            <h3>Follow Us</h3>
+                                                        </div>
+                                                    </div>
+                                                    <div id="s-9efd9abe-4e1f-438a-abb2-f1f33a096b90" class="shg-c shg-align-center">
+                                                        <div class="shg-social-alignable">
+                                                            <div
+                                                                class="shg-social-container"
+                                                                data-color="#000"
+                                                                data-size="medium"
+                                                                data-gutter="10px"
+                                                                data-orientation="horizontal"
+                                                                data-in-new-tab="true"
+                                                            >
+                                                                <a class="shg-social-element" data-icon="instagram" data-link="superhairpieces"></a>
+
+                                                                <a class="shg-social-element" data-icon="facebook-square" data-link="thesuperhairpieces"></a>
+
+                                                                <a class="shg-social-element" data-icon="youtube-square" data-link="Superhairpieces"></a>
+
+                                                                <a class="shg-social-element" data-icon="pinterest-square" data-link="superhairpieces"></a>
+
+                                                                <a class="shg-social-element" data-icon="linkedin-square" data-link="superhairpieces"></a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="https://cdn.getshogun.com/5/612920da050abf00e05fd76f.js" async></script>
+</div>

@@ -1,0 +1,658 @@
+<link rel="preconnect" href="https://fonts.gstatic.com" /><link
+    href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&family=Poppins:wght@500&display=swap"
+    rel="stylesheet"
+/>
+<link rel="stylesheet" href="/content/css/submenu.css">
+<style>
+    :root {
+        /* --main-color: #0a853e;*/
+        --main-color: #425c9d;
+        /* --second-color: #21267e; */
+        --main-text-color: #000;
+        --second-text-color: #fff;
+        --section-margin: 3rem;
+        --element-margin: 1.5rem;
+        --title-margin: 1.3rem;
+        --title-font-size: 2.5rem;
+        --left-border-width: 1rem;
+        --left-border-distance: 3rem;
+        --navigation-btn-width: 2.85714rem;
+        --navigation-btn-height: 4.35714rem;
+        --border-radius: 10px;
+        --review-quote-size: 40px;
+    }
+    .page-content--centered {
+        width: 100% !important;
+    }    
+    .featured-salon-title {
+        font-size: 1.3rem;
+        font-style: italic;
+        margin-bottom: 1rem;
+        letter-spacing: 0.1rem;
+        font-weight: 300;
+        padding-left: 1rem;
+    }
+    .featured-salon-item-description-wrap {        
+        border-left: 1rem solid var(--main-color);        
+        width: calc(100% + var(--left-border-distance) + var(--left-border-width));
+        transform: translateX(calc(-1 * var(--left-border-distance) - var(--left-border-width)));
+        padding-left: var(--left-border-distance);
+        /* padding-right: 1rem; */
+    }
+    .featured-salon-item-desp-top {
+        display: flex;        
+        margin-bottom: var(--section-margin);
+    }
+    .featured-salon-item-left {
+        width: 60%;
+    }
+    .featured-salon-item-right {
+        width: 40%;
+        position: relative;
+        padding: 0 3rem;
+        align-self: flex-end;
+    }
+    /* .featured-salon-item-right .featured-image-slide-wrapper {
+        position: absolute;
+        bottom: 0;
+        width: calc(100% - var(--element-margin) * 4);
+        padding: 0 calc(var(--element-margin) / 2);
+        overflow-x: hidden;
+    } */    
+    .featured-image-slide-wrapper {
+        height: fit-content;
+        display: none;        
+    }
+    .featured-image-slide-wrapper .feature-image-slide {
+        padding: 0 calc(var(--element-margin) / 2);
+    }
+    .featured-salon-item-right img {
+        width: 100%;
+        /* margin: 0 5px; */
+        /* display: none; */
+    }
+    .featured-salon-item-right img[data-show] {
+        display: block;
+    }
+    .featured-salon-item-title {
+        margin-bottom: var(--title-margin);        
+    }
+    .featured-salon-item-title img {
+        height: 70px;
+    }
+    .featured-salon-item-title img:first-child {
+        margin-right: var(--element-margin);
+    }
+    .featured-salon-item-highlight {
+        color: var(--main-color);
+        font-size: 1.3rem;
+        font-style: italic;
+        margin-bottom: var(--element-margin);
+        font-weight: 500;
+    }
+    .featured-salon-item-owner,
+    .featured-salon-item-service-title,
+    .featured-salon-item-info-title,
+    .featured-salon-item-testimonial-title {
+        font-size: var(--title-font-size);
+        font-weight: 500;
+    }
+    .featured-salon-item-testimonial-title {
+        padding: 1rem 0 0.5rem 1rem;
+    }
+    .featured-salon-item-owner-description,
+    .featured-salon-item-service-description,
+    .featured-salon-item-info-description-wrap {
+        margin-top: var(--title-margin);
+    }
+    .featured-salon-review-highlight {
+        margin-top: var(--title-margin);
+        background: var(--main-color);
+        color: var(--second-text-color);
+        padding: 1rem;
+        margin-left: -1rem;        
+        border-radius: 2rem;
+        font-style: italic;
+    }
+    .featured-salon-review-bold {
+        font-weight: bold;
+        color: var(--main-second-color);
+    }
+    .featured-salon-item-info-description-wrap {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .featured-salon-item-info-description-wrap .item {
+        width: 25%;
+        padding-right: 2rem;
+        margin-bottom: var(--element-margin);
+    }
+    .featured-salon-item-info-description-wrap .title {
+        border-bottom: 1px solid var(--main-color);
+        margin-bottom: 0.5rem;
+        font-size: 1.3rem;
+        font-weight: 500;
+        width: fit-content;
+    }
+    .featured-salon-item-info-description-wrap a {
+        text-decoration: none;
+    }
+    .featured-salon-demo-wrap {
+        position: relative;
+        width: fit-content;
+    }
+    .featured-right-navigation {
+        position: absolute;
+        bottom: 10px;
+        z-index: 1;
+        left: 0;
+        padding: 0 calc(var(--element-margin) / 2);
+        width: 100%;
+    }
+    /* .featured-salon-demo-navigation {
+        position: absolute;
+        top: 45%;
+        z-index: 1;
+        left: 0;
+        padding: 0 10px;
+        width: 100%;
+    }
+    .featured-salon-demo-navigation .nav-left {
+        display: none;
+    }
+    .featured-right-navigation .nav-right, .featured-salon-demo-navigation .nav-right {
+        right: 10px;
+        position: absolute;        
+    }
+    .featured-right-navigation svg, .featured-salon-demo-navigation svg{
+        width: 30px;
+        cursor: pointer;
+        fill: var(--main-color);
+        stroke: var(--second-color);
+        stroke-width: 2px;        
+    }
+    .featured-right-navigation svg:hover, .featured-salon-demo-navigation svg:hover {
+        fill: var(--main-color);
+        stroke: var(--second-color);
+    }
+    .featured-salon-item-demo {
+        display: flex;
+        margin: 3rem 0;
+    }
+    .featured-salon-item-demo.demo-right {
+        display: none;
+    }
+    .featured-salon-item-demo-before,
+    .featured-salon-item-demo-after {        
+        position: relative;
+        color: var(--second-color);
+    }    
+    .featured-salon-item-demo-before::before {
+        content: "Before";
+        position: absolute;
+        top: 0.5rem;
+        left: 1rem;
+        font-weight: 600;
+        font-size: 1.3rem;
+    }
+    .featured-salon-item-demo-after::before {
+        content: "After";
+        position: absolute;
+        top: 0.5rem;
+        left: 1rem;
+        font-weight: 600;
+        font-size: 1.3rem;        
+    }
+    .featured-animate-left{
+        position:relative;
+        animation:animateleft 0.4s
+    }
+    @keyframes animateleft{
+        from{
+            left:-300px;
+            opacity:0
+        } 
+        to{
+            left:0;
+            opacity:1
+        }
+    }
+    .featured-animate-right{
+        position:relative;
+        animation:animateright 0.4s;
+    }
+    @keyframes animateright{
+        from{
+            right:-300px;opacity:0
+        } 
+        to{
+            right:0;opacity:1
+        }
+    } */
+    .featured-salon-item-logo {
+        position: absolute;
+        bottom: 15vw;        
+        right: 0;
+        z-index: -1;
+    }    
+    .featured-salon-item-service-description div::before {
+        content: "";
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        -moz-border-radius: 50%;
+        -webkit-border-radius: 50%;
+        background-color: var(--main-color);
+        display: inline-block;
+        margin-right: 0.4rem;
+    }
+    .featured-salon-item-service-wrap {
+        margin-bottom: var(--section-margin);
+    }
+    .featured-salon-review-wrapper {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-column-gap: var(--element-margin);
+    }
+    .featured-salon-review-item {
+        padding: var(--element-margin);
+        border: 2px solid var(--main-color);
+        border-radius: var(--border-radius);
+        position: relative;
+        text-align: justify;
+    }
+    .featured-salon-review-item img {        
+        margin-bottom: var(--element-margin);
+    }
+    .featured-salon-review-item .author {
+        text-align: right;
+        color: var(--main-color);
+        font-weight: 500;
+        margin-top: var(--element-margin);
+    }
+    .featured-salon-item-title1 {
+        font-size: var(--title-font-size);
+        text-transform: capitalize;
+        margin-bottom: var(--title-margin);
+        color: var(--main-color);
+        font-weight: 500;
+    }
+    .featured-salon-item-desption .highlight{
+        color: var(--main-color);
+        font-weight: 500;
+    }
+    /* .splide__arrow {
+        position: absolute;
+        top: 50%;
+        z-index: 1;        
+    }
+    .splide__arrow--prev {
+        transform: rotate(180deg);
+    } */    
+    .custom-slick-arrow {
+        background-color: transparent;
+        border: 0;        
+    }
+    .custom-slick-next, .custom-slick-prev {
+        z-index: 1;
+        height: var(--navigation-btn-height);
+        /* margin-top: -2.14286rem; */
+        padding: 0.71429rem;
+        width: var(--navigation-btn-width);
+        position: absolute;
+        display: block;
+        line-height: 0px;
+        font-size: 0px;
+        cursor: pointer;
+        background: transparent;
+        color: transparent;
+        /* top: 50%; */
+        bottom: 0;
+        /* transform: translate(0, -50%); */
+        outline: none;
+    }
+    .custom-slick-next {
+        right: calc(var(--left-border-distance) * -1) !important;
+    }
+    .custom-slick-prev {
+        left: calc(-1 * var(--left-border-distance)) !important
+    }
+    .custom-slick-next::before, .custom-slick-prev::before {
+        content: "";
+        background-position: 50%;
+        background-repeat: no-repeat;
+        background-size: 100%;
+        display: block;
+        height: 2.92857rem;
+        width: 1.42857rem;
+    }
+    .custom-slick-prev::before {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 512'%3E%3Cpath fill='%2348487f' d='M34.52 239.03L228.87 44.69c9.37-9.37 24.57-9.37 33.94 0l22.67 22.67c9.36 9.36 9.37 24.52.04 33.9L131.49 256l154.02 154.75c9.34 9.38 9.32 24.54-.04 33.9l-22.67 22.67c-9.37 9.37-24.57 9.37-33.94 0L34.52 272.97c-9.37-9.37-9.37-24.57 0-33.94z'/%3E%3C/svg%3E");
+    }
+    .custom-slick-prev:hover::before {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 512'%3E%3Cpath fill='%237777b2' d='M34.52 239.03L228.87 44.69c9.37-9.37 24.57-9.37 33.94 0l22.67 22.67c9.36 9.36 9.37 24.52.04 33.9L131.49 256l154.02 154.75c9.34 9.38 9.32 24.54-.04 33.9l-22.67 22.67c-9.37 9.37-24.57 9.37-33.94 0L34.52 272.97c-9.37-9.37-9.37-24.57 0-33.94z'/%3E%3C/svg%3E");
+    }
+    .custom-slick-next::before {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 512'%3E%3Cpath fill='%2348487f' d='M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z'/%3E%3C/svg%3E");
+    }
+    .custom-slick-next:hover::before {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 512'%3E%3Cpath fill='%237777b2' d='M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z'/%3E%3C/svg%3E");
+    }
+    @media (max-width: 1500px) {
+        .featured-salon-item-desp-top {
+            display: block;
+        }
+        .featured-salon-item-left, .featured-animate-right {
+            width: 100%;
+        }
+        .featured-salon-item-right {
+            padding: 0;
+            width: 100%;
+            margin-top: var(--section-margin);
+        }
+        .featured-right-navigation {
+            display: none;
+        }        
+        /* .featured-salon-item-right .featured-image-slide-wrapper {
+            position: relative;    
+            display: flex;
+            margin-top: var(--element-margin);
+            width: max-content;
+            padding: 0;
+        } */
+        /* .featured-salon-item-right img {
+            display: block;
+            margin-right: var(--element-margin);
+            width: fit-content;
+        } */
+        .featured-salon-review-highlight {
+            margin-right: -1rem;
+        }
+    }
+    @media only screen and (max-width: 1024px) {
+        .featured-salon-item-info-description-wrap .item {
+            width: 50%;
+        }
+    }
+    /* @media (max-width: 950px) {
+        .featured-right-navigation {
+            display: block;
+            padding: 0;
+        }
+        .featured-salon-item-right {
+            width: fit-content;
+            max-width: 100%;
+            padding: 0 3rem;
+        }
+        .featured-salon-item-right .featured-image-slide-wrapper {
+            max-width: calc(100% - 2rem);
+        }
+        .featured-salon-item-right img {
+            display: none;
+            margin: 1rem;
+            max-width: 100%;
+        }
+    } */        
+    @media only screen and (max-width: 900px) {        
+        .featured-salon-item-description-wrap {
+            display: block;
+        }
+        .featured-salon-item-desption,
+        .featured-salon-item-owner-description {
+            text-align: justify;
+        }      
+        .featured-salon-review-highlight {
+            margin-left: 0;  
+            margin-right: 0;
+        }         
+    }    
+    @media only screen and (max-width: 800px) {              
+        .featured-salon-item-demo-before,
+        .featured-salon-item-demo-after {
+            width: 50%;
+        }
+        .featured-salon-item-right {            
+            width: calc(100% - var(--left-border-distance));
+            padding-left: var(--left-border-distance);
+        }
+        .featured-salon-review-wrapper {
+            display: block;
+        }
+        .featured-salon-review-item:first-child {
+            margin-bottom: var(--element-margin);
+        }
+        .featured-salon-item-desption .hidden {
+            display: none;
+        }
+        .featured-salon-item-title {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-column-gap: var(--element-margin);
+        }
+        .featured-salon-item-title img:first-child {
+            margin-right: 0;
+        }
+    }    
+    @media only screen and (max-width: 550px) {
+        .featured-salon-item-info-description-wrap .item {
+            width: 100%;
+            padding: 0;
+        }
+    }    
+</style>
+<div style="position: relative;">
+    <div class="menu-wrap">
+        <div class="menu-items">            
+        </div>    
+    </div>
+</div>
+<div class="featured-salon-title">
+    Our Digital Media Partners
+</div>
+<div class="featured-salon-item">
+    <div class="featured-salon-item-description-wrap">                
+        <div class="featured-salon-item-desp-top">
+            <div class="featured-salon-item-left">
+                <div class="featured-salon-item-title">
+                    <img src="/content/images/marketing/featuredsalons/ct/logo1.svg" alt="hair prosthesis logo 1">
+                    <img src="/content/images/marketing/featuredsalons/ct/logo2.svg" alt="hair prosthesis logo 2">
+                </div>
+                <div class="featured-salon-item-desption">
+                    <p>We are a full service boutique style environment that offers everything you need on your journey. Whether your in to see us for hair loss reasons or looking for a new fashionable look. We have the professionalism, training and credentials to ensure that you are well taken care of.</p>
+                    <p>We believe its important to ensure that the piece you choose looks natural on you and that you are comfortable in it. You will find that we have taken the time to gather all of the professionals in one place in order to ensure that your experience is one you will enjoy.</p>
+                    <p class="hidden">We have Beauty Expert <span class="highlight">Rich Halliday</span> on site on <span class="highlight">Tues and Wed</span> with his own line of <span class="hightlight">minerally based make-up</span>. Rich has been in the beauty and fashion industry for years and has been a Beauty Expert to the stars. Anglz Hair Boutique is located inside Wig Boutique Barrie. <span class="highlight">Kelly Hewitt</span> is the boutique owner and <span class="highlight">stylist</span>. Kelly has years of experience as well as a compassionate heart. Kelly not only offers a full operational salon however she also caters to our wig wears. On <span class="highlight">Tuesdays</span> we have <span class="highlight">Stefanie</span> a <span class="highlight">permanent make up tattooist</span> who comes in to complete eyebrows, eyeliner, lips and more. Last but not least our owner <span class="highlight">Crystal Taylor</span>, Crystal is a certified <span class="highlight">trichologist, hair loss specialist and wig expert</span>. Crystal’s focus has always been the client and ensuring that each and everyone leaves feeling completely satisfied. Crystal is a full time wig wearer, you will find her working in the boutique and directly with the clients.</p>                    
+                    <div class="hidden">
+                        As you can see from above we have thought of everything. We have everything you need from enhancing your current look to developing an entire new look. All of the professionals are on site and ready to walk you through the process.
+                    </div>
+                </div>
+                <!-- <div class="featured-salon-item-title1">
+                    our reviews
+                </div>
+                <div class="featured-salon-review-wrapper">
+                    <div class="featured-salon-review-item">
+                        <img src="/product_images/uploaded_images/hair-transition-houston-quote.jpg" alt="quote"/>
+                        <div>I have visited the facility, I was surprised to know that she does a great job of hair replacement. She is a great person to get your hair service done. I am very happy to meet Miss. Cristina. I recommend her if anyone needs any Hair Transition, Hair Cut, Hair Color and Hair Replacement</div>
+                        <div class="author">Allen A</div>
+                    </div>
+                    <div class="featured-salon-review-item">
+                        <img src="/product_images/uploaded_images/hair-transition-houston-quote.jpg" alt="quote"/>
+                        <div>                            
+                            Hair Transitions did a great job and provide an excellent service. Very professional and a lot cheaper than most of the other salons around Houston. I will definitely be coming back.
+                        </div>
+                        <div class="author">R S</div>
+                    </div>
+                </div> -->
+            </div>
+            <div class="featured-salon-item-right">
+                <!-- <div class="featured-right-navigation">
+                    <svg class="nav-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">                    
+                        <path d="M34.52 239.03L228.87 44.69c9.37-9.37 24.57-9.37 33.94 0l22.67 22.67c9.36 9.36 9.37 24.52.04 33.9L131.49 256l154.02 154.75c9.34 9.38 9.32 24.54-.04 33.9l-22.67 22.67c-9.37 9.37-24.57 9.37-33.94 0L34.52 272.97c-9.37-9.37-9.37-24.57 0-33.94z"/>
+                    </svg>
+                    <svg class="nav-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"/></svg>
+                </div> -->
+                <div class="featured-image-slide-wrapper">
+                    <picture class="feature-image-slide">
+                        <source media="(max-width: 1500px)" srcset="/content/images/marketing/featuredsalons/ct/1-300w.jpg">
+                        <img data-lazy="/content/images/marketing/featuredsalons/ct/1-400w.jpg" alt="hairprosthesis testimonial"/>
+                    </picture>
+                    <picture class="feature-image-slide">
+                        <source media="(max-width: 1500px)" srcset="/content/images/marketing/featuredsalons/ct/2-300w.jpg">
+                        <img data-lazy="/content/images/marketing/featuredsalons/ct/2-400w.jpg" alt="hairprosthesis testimonial"/>
+                    </picture>
+                    <picture class="feature-image-slide">
+                        <source media="(max-width: 1500px)" srcset="/content/images/marketing/featuredsalons/ct/3-300w.jpg">
+                        <img data-lazy="/content/images/marketing/featuredsalons/ct/3-400w.jpg" alt="hairprosthesis testimonial"/>
+                    </picture>
+                    <picture class="feature-image-slide">
+                        <source media="(max-width: 1500px)" srcset="/content/images/marketing/featuredsalons/ct/4-300w.jpg">
+                        <img data-lazy="/content/images/marketing/featuredsalons/ct/4-400w.jpg" alt="hairprosthesis testimonial"/>
+                    </picture>
+                    <picture class="feature-image-slide">
+                        <source media="(max-width: 1500px)" srcset="/content/images/marketing/featuredsalons/ct/5-300w.jpg">
+                        <img data-lazy="/content/images/marketing/featuredsalons/ct/5-400w.jpg" alt="hairprosthesis testimonial"/>
+                    </picture>
+                    <picture class="feature-image-slide">
+                        <source media="(max-width: 1500px)" srcset="/content/images/marketing/featuredsalons/ct/6-300w.jpg">
+                        <img data-lazy="/content/images/marketing/featuredsalons/ct/6-400w.jpg" alt="hairprosthesis testimonial" loading="lazy"/>
+                    </picture>
+                    <picture class="feature-image-slide">
+                        <source media="(max-width: 1500px)" srcset="/content/images/marketing/featuredsalons/ct/7-300w.jpg">
+                        <img data-lazy="/content/images/marketing/featuredsalons/ct/7-400w.jpg" alt="hairprosthesis testimonial" loading="lazy"/>
+                    </picture>
+                    <picture class="feature-image-slide">
+                        <source media="(max-width: 1500px)" srcset="/content/images/marketing/featuredsalons/ct/8-300w.jpg">
+                        <img data-lazy="/content/images/marketing/featuredsalons/ct/8-400w.jpg" alt="hairprosthesis testimonial" loading="lazy"/>
+                    </picture>
+                    <picture class="feature-image-slide">
+                        <source media="(max-width: 1500px)" srcset="/content/images/marketing/featuredsalons/ct/9-300w.jpg">
+                        <img data-lazy="/content/images/marketing/featuredsalons/ct/9-400w.jpg" alt="hairprosthesis testimonial" loading="lazy"/>
+                    </picture>
+                    <picture class="feature-image-slide">
+                        <source media="(max-width: 1500px)" srcset="/content/images/marketing/featuredsalons/ct/10-300w.jpg">
+                        <img data-lazy="/content/images/marketing/featuredsalons/ct/10-400w.jpg" alt="hairprosthesis testimonial" loading="lazy"/>
+                    </picture>
+                    <picture class="feature-image-slide">
+                        <source media="(max-width: 1500px)" srcset="/content/images/marketing/featuredsalons/ct/11-300w.jpg">
+                        <img data-lazy="/content/images/marketing/featuredsalons/ct/11-400w.jpg" alt="hairprosthesis testimonial" loading="lazy"/>
+                    </picture>
+                    <picture class="feature-image-slide">
+                        <source media="(max-width: 1500px)" srcset="/content/images/marketing/featuredsalons/ct/12-300w.jpg">
+                        <img data-lazy="/content/images/marketing/featuredsalons/ct/12-400w.jpg" alt="hairprosthesis testimonial" loading="lazy"/>
+                    </picture>
+                    <picture class="feature-image-slide">
+                        <source media="(max-width: 1500px)" srcset="/content/images/marketing/featuredsalons/ct/13-300w.jpg">
+                        <img data-lazy="/content/images/marketing/featuredsalons/ct/13-400w.jpg" alt="hairprosthesis testimonial" loading="lazy"/>
+                    </picture>
+                    <picture class="feature-image-slide">
+                        <source media="(max-width: 1500px)" srcset="/content/images/marketing/featuredsalons/ct/14-300w.jpg">
+                        <img data-lazy="/content/images/marketing/featuredsalons/ct/14-400w.jpg" alt="hairprosthesis testimonial" loading="lazy"/>
+                    </picture>
+                    <picture class="feature-image-slide">
+                        <source media="(max-width: 1500px)" srcset="/content/images/marketing/featuredsalons/ct/15-300w.jpg">
+                        <img data-lazy="/content/images/marketing/featuredsalons/ct/15-400w.jpg" alt="hairprosthesis testimonial" loading="lazy"/>
+                    </picture>
+                </div>
+            </div>
+        </div>        
+    </div>
+    <div class="featured-salon-item-service-wrap">
+        <div class="featured-salon-item-service-title">Services</div>
+        <div class="featured-salon-item-service-description">
+            <div>Clinical solutions</div>
+            <div>Boutique solutions</div>
+        </div>
+    </div>
+    <div class="featured-salon-item-info-wrap">
+        <div class="featured-salon-item-info-title">Information</div>
+        <div class="featured-salon-item-info-description-wrap">
+            <div class="item">
+                <div class="title">Address</div>
+                <div>215 Mapleview Dr E, Unit 1, Barrie, ON L4N 0W5</div>
+            </div>
+            <div class="item">
+                <div class="title">Email</div>
+                <div>
+                    <a href="mailto: crystal@wigboutiquebarrie.com"
+                        >crystal@wigboutiquebarrie.com</a
+                    >
+                </div>
+            </div>
+            <div class="item">
+                <div class="title">Website</div>
+                <div>
+                    <a href="https://www.hairprosthesis.com/" target="_blank"
+                        >https://www.hairprosthesis.com/</a
+                    >
+                </div>
+            </div>
+            <div class="item">
+                <div class="title">Tel</div>
+                <a href="tel:+17059849447">705-984-9447</a>
+            </div>
+        </div>
+    </div>    
+</div>
+<script src="/content/js/submenu.js"></script>
+<script
+    src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+    defer
+></script>
+<script>
+    function embededSlick() {
+        $(".featured-image-slide-wrapper").slick({
+            slidesToShow: 1,            
+            dots: false,
+            infinite: true,
+            speed: 300,
+            autoplay: true,
+            autoplaySpeed: 2000,            
+            prevArrow: "<button class='custom-slick-prev custom-slick-arrow' aria-label='Previous' type='button'>Previous</button>",
+            nextArrow: "<button class='custom-slick-next custom-slick-arrow' aria-label='Next' type='button'>Next</button>",
+            lazyLoad: 'ondemand',
+            responsive: [
+                {
+                    breakpoint: 1500,
+                    settings: {
+                        slidesToShow: 5
+                    }
+                },
+                {
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 4
+                    }
+                },
+                {
+                    breakpoint: 800,
+                    settings: {
+                        slidesToShow: 3
+                    }
+                },
+                {
+                    breakpoint: 600,
+                    settings: {
+                        slidesToShow: 2
+                    }
+                },
+                {
+                    breakpoint: 550,
+                    settings: {
+                        slidesToShow: 1
+                    }
+                }
+            ]
+        }); 
+        $(".featured-image-slide-wrapper").show();
+        console.log("here");
+    }
+    window.addEventListener("DOMContentLoaded", function() {        
+        let sSlick = document.createElement("script");
+        sSlick.setAttribute("src", "/content/js/slick.min.js");
+        document.body.appendChild(sSlick);
+
+        sSlick.addEventListener("load", embededSlick, false);
+    })
+    // window.addEventListener("resize", function() {
+    //     console.log($(window).width());
+    // })
+</script>

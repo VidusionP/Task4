@@ -1,0 +1,1224 @@
+<style>   
+    .insta-label {
+        width: calc(100% - 40px);
+        height: 40px;
+        line-height: 40px;
+        vertical-align: middle;
+        text-align: center;
+        margin: 0 auto -20px;
+        background-color: #000;
+        color: #fff;
+        text-transform: uppercase;
+        z-index: 9;
+        position: relative;
+    }
+    .insta-label img {
+        width: 80px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    .insta-wrap {   
+        z-index: 1;             
+        border: 1px solid #f0f0f0;
+        padding: 40px 20px 20px;
+    }
+    .insta-posts {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: auto;
+        justify-items: stretch;
+        align-items: stretch;
+        justify-content: center;
+        gap: 15px;
+        cursor: pointer;
+    }
+    .insta-post {        
+        overflow: hidden;
+        position: relative;
+    }
+    .insta-post:hover .insta-body {
+        display: block;
+    }
+    .insta-body {
+        display: none;
+        position: absolute;
+        left: 0;
+        top: 0;        
+        width: 100%;
+        height: 100%;        
+        padding: 20px;        
+        background-color: rgba(0, 0, 0, 0.5);
+        transition-duration: 0.3s;
+    }
+    .insta-caption {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        color: #fff;
+        text-align: center;
+        text-overflow: ellipsis;
+    }
+    .insta-post img {
+        object-fit: cover;
+        height: 100%;
+        width: 100%;
+    }
+    .insta-viewmore {
+        margin: 20px auto 0;
+        width: max-content;
+        padding: 5px 10px;
+        border: 1px solid #000;
+    }
+    .insta-viewmore:hover {
+        background-color: #000;        
+        transition-duration: 0.3s;
+    }
+    .insta-viewmore:hover a{
+        color: #fff;
+    }
+    .insta-viewmore a {
+        text-decoration: none;
+    }
+    @media only screen and (min-width: 475px) {
+        .insta-viewmore {
+            padding: 10px 20px;
+        }
+        .insta-wrap {                              
+            padding: 40px 30px 30px;
+        }
+        .insta-label {
+            width: calc(100% - 60px);
+        }
+    }
+    @media only screen and (min-width: 600px) {
+        .insta-label {
+            width: 200px;
+        }
+    }
+    @media only screen and (min-width: 1120px) {
+        .insta-posts {            
+            grid-template-columns: repeat(4, 1fr);            
+        }
+    }
+</style>
+<div
+    class="shogun-root"
+    data-shogun-id="5fb17fe273dfec004e9ebe0a"
+    data-shogun-site-id="fb8c6090-a908-45e2-8617-89b82d7a20e6"
+    data-shogun-page-id="5fb17fe273dfec004e9ebe0a"
+    data-shogun-page-version-id="60956950963e9900db6b513b"
+    data-shogun-platform-type="big_commerce"
+    data-shogun-variant-id="60956951963e9900db6b55c9"
+    data-region="main"
+>
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Montserrat:200" />
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.getshogun.com/shogun-font-awesome.min.css" />
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.getshogun.com/60956951963e9900db6b55c9.css" />
+
+    <script type="text/javascript" src="https://lib.getshogun.com/lazysizes/2.0.0/shogun-lazysizes.js" async></script>
+
+    <div id="s-c02356e3-f6ef-4764-b2cc-9e42662ab059" class="shg-c shg-align-center">
+        <div class="shogun-heading-component">
+            <h1>We'd love to hear from you</h1>
+        </div>
+    </div>
+
+    <div id="s-4837164c-d317-4d73-8f8d-14b9c44b177a" class="shg-c">
+        <style>
+            .menu-wrap {
+                width: 100%;
+                margin-bottom: 20px;
+                display: none;
+                overflow-x: auto;
+            }
+            @media only screen and (min-width: 1025px) {
+                .menu-wrap {
+                    overflow-x: hidden;
+                }
+                .menu-wrap:hover {
+                    overflow-x: auto;
+                }
+            }
+            .menu-items {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 20px 0 0;
+                margin: 0 auto;
+                flex-wrap: wrap;
+            }
+            .menu-item {
+                font-size: 15px;
+                margin: 0 20px 20px;
+                position: relative;
+                cursor: pointer;
+            }
+            .menu-item a,
+            .menu-submenu-item a {
+                text-decoration: none;
+            }
+            .menu-item:hover {
+                color: #825d41;
+            }
+            .menu-item.active a {
+                color: #825d41;
+            }
+            .menu-submenu-items {
+                padding: 20px 0 0;
+                position: absolute;
+                display: none;
+                background-color: #fff;
+                box-shadow: 1px 1px 9px 0 #e6e6e6;
+                width: fit-content;
+                z-index: 9;
+            }
+            .menu-submenu-item {
+                font-size: 15px;
+                margin: 0 20px 20px;
+                position: relative;
+                cursor: pointer;
+            }
+            .menu-submenu-item:hover,
+            .menu-item:hover {
+                color: #825d41;
+            }
+        </style>
+        <div style="position: relative">
+            <div class="menu-wrap">
+                <div class="menu-items"></div>
+            </div>
+        </div>
+        <script>
+            let submenu = [];
+            function openSubMenu(e) {
+                if ($(event.currentTarget).hasClass("active")) $(event.currentTarget).removeClass("active"), $(".menu-submenu-items").remove();
+                else {
+                    $(".menu-item .active").removeClass("active"), $(event.currentTarget).addClass("active");
+                    let n = submenu.filter((n) => n.name == e);
+                    if (n.length > 0) {
+                        $(".menu-submenu-items").remove();
+                        let e = '<div class="menu-submenu-items">';
+                        if (n[0].menu) for (let t of n[0].menu) e += `<div class="menu-submenu-item"><a href="${t.link}">${t.name}</a></div>`;
+                        (e += "</div>"), $(".menu-wrap").append(e);
+                        let t = $(event.currentTarget).offset();
+                        t.left + $(".menu-submenu-items").width() <= $(window).width()
+                            ? $(".menu-submenu-items").css({ left: t.left - $(".menu-wrap").offset().left + "px", top: t.top + 30 - $(".menu-wrap").offset().top + "px" })
+                            : $(".menu-submenu-items").css({ right: "0px", top: t.top + 30 - $(".menu-wrap").offset().top + "px" }),
+                            $(".menu-submenu-items").slideDown();
+                    }
+                }
+            }
+            window.addEventListener("DOMContentLoaded", (e) => {
+                fetch("/content/data/custom-menu.json")
+                    .then((e) => e.json())
+                    .then((e) => {
+                        if ((console.log(e), e.menu)) {
+                            for (let n of e.menu)
+                                n.hasOwnProperty("link")
+                                    ? n.link.includes(window.location.pathname) && n.link.length - window.location.pathname.length <= 2
+                                        ? $(".menu-items").append(`<div class="menu-item active"><a href="${n.link}">${n.name}</a></div>`)
+                                        : $(".menu-items").append(`<div class="menu-item"><a href="${n.link}">${n.name}</a></div>`)
+                                    : (submenu.push({ name: n.name, menu: n.subMenu }),
+                                      $(".menu-items").append(`<div class="menu-item"><a href="#" onclick="openSubMenu('${n.name}')">${n.name}</a></div>`));
+                            $(".menu-wrap").show();
+                        }
+                    })
+                    .catch((e) => console.log(e));
+            });
+        </script>
+    </div>
+
+    <div class="shg-box-vertical-align-wrapper">
+        <div class="shg-box shg-c" id="s-25beef25-9122-41cb-a040-f7e8c8d4c748">
+            <div class="shg-box-overlay"></div>
+            <div class="shg-box-content">
+                <div class="shg-c" id="s-b1ec48a9-7555-436f-82b5-aa70812b9a30">
+                    <div class="shg-row" data-col-grid-mode-on="">
+                        <div class="shg-c-lg-4 shg-c-md-4 shg-c-sm-4 shg-c-xs-12">
+                            <div class="shg-box-vertical-align-wrapper">
+                                <div class="shg-box shg-c" id="s-04b0f11c-2f59-4e9d-b567-d2e63cf66216">
+                                    <div class="shg-box-overlay"></div>
+                                    <div class="shg-box-content">
+                                        <div class="shg-c" id="s-30fac5ce-983b-4c55-b3be-5d873ab5be16">
+                                            <div class="shg-row" data-col-grid-mode-on="">
+                                                <div class="shg-c-lg-1 shg-c-md-1 shg-c-sm-1 shg-c-xs-12">
+                                                    <div id="s-5d848f9f-1ead-4b7e-8c3b-7e787ff92ed7" class="shg-c">
+                                                        <div class="shogun-icon-wrapper">
+                                                            <div class="shg-fa shg-fa-phone-square shogun-icon"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="shg-c-lg-11 shg-c-md-11 shg-c-sm-11 shg-c-xs-12">
+                                                    <div id="s-33658006-7b30-4606-a9e0-cb9347f602a0" class="shg-c">
+                                                        <div class="shg-rich-text shg-theme-text-content">
+                                                            <p><span style="font-size: 16px">Toll free Call or Text</span></p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="shg-c" id="s-6306dce8-a4cf-4761-aefd-ae36d2d49572">
+                                            <div class="shg-row" data-col-grid-mode-on="">
+                                                <div class="shg-c-lg-1 shg-c-md-1 shg-c-sm-1 shg-c-xs-12"></div>
+                                                <div class="shg-c-lg-11 shg-c-md-11 shg-c-sm-11 shg-c-xs-12">
+                                                    <div id="s-befae141-15a3-42ff-844f-094c7a09f562" class="shg-c">
+                                                        <div class="shg-rich-text shg-theme-text-content">
+                                                            <p><span style="font-size: 16px">1-866-814-7879</span></p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="shg-c" id="s-ed1c3ff5-0e00-4ddc-9e33-26085b075c23">
+                                            <div class="shg-row" data-col-grid-mode-on="">
+                                                <div class="shg-c-lg-1 shg-c-md-1 shg-c-sm-1 shg-c-xs-12"></div>
+                                                <div class="shg-c-lg-11 shg-c-md-11 shg-c-sm-11 shg-c-xs-12">
+                                                    <div id="s-b5dd7a8f-cad2-4375-8a34-415e1c87966f" class="shg-c">
+                                                        <div class="shg-rich-text shg-theme-text-content">
+                                                            <p><span style="font-size: 16px">1-954-835-2288 (Global)</span></p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="shg-c" id="s-bf33c202-d789-47e0-b2da-30593cb76f73">
+                                            <div class="shg-row" data-col-grid-mode-on="">
+                                                <div class="shg-c-lg-1 shg-c-md-1 shg-c-sm-1 shg-c-xs-12"></div>
+                                                <div class="shg-c-lg-11 shg-c-md-11 shg-c-sm-11 shg-c-xs-12">
+                                                    <div id="s-2c6a86c5-865f-4513-8fa6-50acc40715d8" class="shg-c">
+                                                        <div class="shg-rich-text shg-theme-text-content">
+                                                            <p><span style="font-size: 16px">1-416-800-5056 (Canada)</span></p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="shg-c" id="s-d22d57bf-0493-4ed6-a1bc-be1224316be7">
+                                            <div class="shg-row" data-col-grid-mode-on="">
+                                                <div class="shg-c-lg-1 shg-c-md-1 shg-c-sm-1 shg-c-xs-12"></div>
+                                                <div class="shg-c-lg-11 shg-c-md-11 shg-c-sm-11 shg-c-xs-12">
+                                                    <div id="s-53319f3d-916b-4bd6-87a1-da0beae69924" class="shg-c">
+                                                        <div class="shg-rich-text shg-theme-text-content">
+                                                            <p>
+                                                                <span style="font-size: 16px"><a href="https://wa.me/18668693477">1-866-869-3477</a> (Whatsapp)</span>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="shg-c" id="s-3b5dda64-3eb2-4e16-a741-76b9fc8a80ba">
+                                            <div class="shg-row" data-col-grid-mode-on="">
+                                                <div class="shg-c-lg-1 shg-c-md-1 shg-c-sm-1 shg-c-xs-12"></div>
+                                                <div class="shg-c-lg-11 shg-c-md-11 shg-c-sm-11 shg-c-xs-12">
+                                                    <div id="s-fb6e94b3-ca8e-4d8f-89cd-4ceaaf7e0216" class="shg-c">
+                                                        <div class="shg-rich-text shg-theme-text-content">
+                                                            <p><span style="font-size: 16px">44-20-45326459 (UK)</span></p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="shg-c" id="s-b6062edb-9c37-4cab-99fe-031c631ac16d">
+                                            <div class="shg-row" data-col-grid-mode-on="">
+                                                <div class="shg-c-lg-1 shg-c-md-1 shg-c-sm-1 shg-c-xs-12">
+                                                    <div id="s-35366d01-44da-44b1-b6b1-e32637b29885" class="shg-c">
+                                                        <div class="shogun-icon-wrapper">
+                                                            <div class="shg-fa shg-fa-diamond shogun-icon"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="shg-c-lg-11 shg-c-md-11 shg-c-sm-11 shg-c-xs-12">
+                                                    <div id="s-797672f4-05d7-4de2-90b7-14699db69e5b" class="shg-c">
+                                                        <div class="shg-rich-text shg-theme-text-content">
+                                                            <p>
+                                                                <span style="font-size: 16px"><a href="/open-a-dealer-account" target="_blank" rel="noopener">Open a Dealer Account</a></span>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="shg-c" id="s-a82bbfd4-0953-4776-9058-5730e7ecdd3c">
+                                            <div class="shg-row" data-col-grid-mode-on="">
+                                                <div class="shg-c-lg-1 shg-c-md-1 shg-c-sm-1 shg-c-xs-12">
+                                                    <div id="s-b6d0326a-7ec7-423b-92d1-63133f24756c" class="shg-c">
+                                                        <div class="shogun-icon-wrapper">
+                                                            <div class="shg-fa shg-fa-gift shogun-icon"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="shg-c-lg-11 shg-c-md-11 shg-c-sm-11 shg-c-xs-12">
+                                                    <div id="s-296e5d7b-7b9b-460a-93f4-f22f008c8dbc" class="shg-c">
+                                                        <div class="shg-rich-text shg-theme-text-content">
+                                                            <p>
+                                                                <span style="font-size: 16px"
+                                                                    ><a href="https://www.superhairpieces.com/wish-list/" target="_blank" rel="noopener">Submit your wish list</a></span
+                                                                >
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="shg-c" id="s-09f99427-a8e9-4657-9f9c-7708f9b26693">
+                                            <div class="shg-row" data-col-grid-mode-on="">
+                                                <div class="shg-c-lg-1 shg-c-md-1 shg-c-sm-1 shg-c-xs-12">
+                                                    <div id="s-bf7857eb-d2ae-4f18-a18c-de8ddf832fba" class="shg-c">
+                                                        <div class="shogun-icon-wrapper">
+                                                            <div class="shg-fa shg-fa-sticky-note-o shogun-icon"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="shg-c-lg-11 shg-c-md-11 shg-c-sm-11 shg-c-xs-12">
+                                                    <div id="s-341aaa1d-8928-4302-a18d-5892b5f9e607" class="shg-c">
+                                                        <div class="shg-rich-text shg-theme-text-content">
+                                                            <p>
+                                                                <span style="font-size: 16px"><a href="/support-ticket" target="_blank" rel="noopener">Submit a Ticket (any cases)</a></span>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="shg-c" id="s-3369cd43-176d-4413-9d81-a1afd8ecf5b3">
+                                            <div class="shg-row" data-col-grid-mode-on="">
+                                                <div class="shg-c-lg-1 shg-c-md-1 shg-c-sm-1 shg-c-xs-12">
+                                                    <div id="s-b2071cba-25ca-4284-8d19-4de26947003f" class="shg-c">
+                                                        <div class="shogun-icon-wrapper">
+                                                            <div class="shg-fa shg-fa-envelope shogun-icon"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="shg-c-lg-11 shg-c-md-11 shg-c-sm-11 shg-c-xs-12">
+                                                    <div id="s-a0cdb697-573f-4666-9ee2-039ad0719ad2" class="shg-c">
+                                                        <div class="shg-rich-text shg-theme-text-content">
+                                                            <p>
+                                                                <span style="font-size: 16px"><a href="mailto:sales@superhairpieces.com">sales@superhairpieces.com</a></span>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="shg-c-lg-8 shg-c-md-8 shg-c-sm-8 shg-c-xs-12">
+                            <div class="shg-c" id="s-90fe1a91-7f1e-4fed-8c9b-b5a98983309d">
+                                <div class="shg-row" data-col-grid-mode-on="">
+                                    <div class="shg-c-lg-6 shg-c-md-6 shg-c-sm-6 shg-c-xs-12">
+                                        <div class="shg-c" id="s-49e92c6d-8539-4718-844b-5ad4d1da8c1e">
+                                            <div class="shg-row" data-col-grid-mode-on="">
+                                                <div class="shg-c-lg-1 shg-c-md-1 shg-c-sm-1 shg-c-xs-12">
+                                                    <div class="shg-c shogun-image-container shg-align-center" style="" id="s-35d9245e-3457-4cf8-874d-94b8fb926ab4">
+                                                        <img
+                                                            src="https://i.shgcdn.com/d3f9f0fc-f80d-4e9b-88a1-911de837bb5c/-/format/auto/-/preview/3000x3000/-/quality/lighter/"
+                                                            width=""
+                                                            height=""
+                                                            style=""
+                                                            alt=""
+                                                            class="shogun-image"
+                                                        />
+                                                    </div>
+
+                                                    <script type="text/javascript">
+                                                        window.SHOGUN_IMAGE_ELEMENTS = window.SHOGUN_IMAGE_ELEMENTS || new Array();
+                                                        window.SHOGUN_IMAGE_ELEMENTS.push({ hoverImage: "", uuid: "s-35d9245e-3457-4cf8-874d-94b8fb926ab4" });
+                                                    </script>
+                                                </div>
+                                                <div class="shg-c-lg-11 shg-c-md-11 shg-c-sm-11 shg-c-xs-12">
+                                                    <div id="s-5709c1c7-2203-4fd7-aa2e-075ebd723add" class="shg-c">
+                                                        <div class="shg-rich-text shg-theme-text-content">
+                                                            <p>
+                                                                <strong><span style="font-size: 18px">USA Head Office</span></strong>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div id="s-0f7c6dff-8483-4338-a892-efe7bc909b0e" class="shg-c">
+                                            <div class="shg-rich-text shg-theme-text-content">
+                                                <p><span style="font-size: 16px">13790 NW 4th St. Unit 102</span> <span style="font-size: 16px">Sunrise FL 33325</span></p>
+                                            </div>
+                                        </div>
+                                        <div id="s-06c02cfa-4315-4632-91e0-ac5ed1ca890f" class="shg-c">
+                                            <div class="shg-rich-text shg-theme-text-content">
+                                                <p><span style="font-size: 16px">Operation Hours:</span></p>
+                                            </div>
+                                        </div>
+                                        <div id="s-1400a686-f8a1-4ec8-81d9-ce1f62580c6e" class="shg-c">
+                                            <div class="shg-rich-text shg-theme-text-content">
+                                                <p><span style="font-size: 16px">Mon-Fri / 10:00AM-5:00PM </span> <span style="font-size: 16px">Sat-Sun / Federal Holidays Close</span></p>
+                                            </div>
+                                        </div>
+
+                                        <div class="shg-c" id="s-5fb96d35-f89b-4b6d-bf5b-7eed7841f244">
+                                            <div class="shg-row" data-col-grid-mode-on="">
+                                                <div class="shg-c-lg-1 shg-c-md-1 shg-c-sm-1 shg-c-xs-12">
+                                                    <div class="shg-box-vertical-align-wrapper">
+                                                        <div class="shg-box shg-c" id="s-d65bc67d-4a1b-48c3-9dd0-6adf8ac3e125">
+                                                            <div class="shg-box-overlay"></div>
+                                                            <div class="shg-box-content">
+                                                                <div id="s-6e3fe9a2-c40e-4bf0-b231-3edc7a2e0b0c" class="shg-c">
+                                                                    <div class="shogun-icon-wrapper">
+                                                                        <div class="shg-fa shg-fa-phone-square shogun-icon"></div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="shg-c-lg-11 shg-c-md-11 shg-c-sm-11 shg-c-xs-12">
+                                                    <div id="s-e812bf6e-70f3-4a41-a0eb-db281ab886b9" class="shg-c">
+                                                        <div class="shg-rich-text shg-theme-text-content">
+                                                            <p><span style="font-size: 16px">Call or Text</span></p>
+                                                            <p>
+                                                                <span style="font-size: 16px"><span style="font-size: 18px">1-954-835-2288</span></span>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div id="s-d1f7a29b-5add-4bf5-a2d5-d8df1444dbfb" class="shg-c">
+                                            <div class="shg-rich-text shg-theme-text-content"><p>All Returns and exchange item please mail to USA office address except client from Canada</p></div>
+                                        </div>
+                                    </div>
+                                    <div class="shg-c-lg-6 shg-c-md-6 shg-c-sm-6 shg-c-xs-12">
+                                        <div class="shg-c" id="s-3c70a54f-0b37-4ff5-8107-6bfc01a8e1d7">
+                                            <div class="shg-row" data-col-grid-mode-on="">
+                                                <div class="shg-c-lg-1 shg-c-md-1 shg-c-sm-1 shg-c-xs-12">
+                                                    <div class="shg-c shogun-image-container shg-align-center" style="" id="s-0a164145-fbc3-4a6f-800b-b6baa723c7d5">
+                                                        <img
+                                                            src="https://i.shgcdn.com/62269c56-b4e6-40a3-9050-fc2b4ab03339/-/format/auto/-/preview/3000x3000/-/quality/lighter/"
+                                                            width=""
+                                                            height=""
+                                                            style=""
+                                                            alt=""
+                                                            class="shogun-image"
+                                                        />
+                                                    </div>
+
+                                                    <script type="text/javascript">
+                                                        window.SHOGUN_IMAGE_ELEMENTS = window.SHOGUN_IMAGE_ELEMENTS || new Array();
+                                                        window.SHOGUN_IMAGE_ELEMENTS.push({ hoverImage: "", uuid: "s-0a164145-fbc3-4a6f-800b-b6baa723c7d5" });
+                                                    </script>
+                                                </div>
+                                                <div class="shg-c-lg-11 shg-c-md-11 shg-c-sm-11 shg-c-xs-12">
+                                                    <div id="s-52460895-32ed-4805-b851-01b81683c043" class="shg-c">
+                                                        <div class="shg-rich-text shg-theme-text-content">
+                                                            <p>
+                                                                <strong><span style="font-size: 18px">Canada office</span></strong>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div id="s-59a5e7b7-828a-4989-bab6-836927e515ce" class="shg-c">
+                                            <div class="shg-rich-text shg-theme-text-content">
+                                                <p><span style="font-size: 16px">215 Traders Blvd E Unit 17</span> <span style="font-size: 16px">Mississauga ON L4Z3K5</span></p>
+                                            </div>
+                                        </div>
+                                        <div id="s-94bb9882-16d3-417f-a26d-acef8e6528bc" class="shg-c">
+                                            <div class="shg-rich-text shg-theme-text-content">
+                                                <p><span style="font-size: 16px">Operation Hours:</span></p>
+                                            </div>
+                                        </div>
+                                        <div id="s-7bfd6b1c-4c85-4e15-917b-a91c32487b06" class="shg-c">
+                                            <div class="shg-rich-text shg-theme-text-content">
+                                                <p><span style="font-size: 16px">Mon-Fri / 10:00AM-5:00PM </span> <span style="font-size: 16px">Sat-Sun / Federal Holidays Close</span></p>
+                                            </div>
+                                        </div>
+
+                                        <div class="shg-c" id="s-563adae2-1aed-4cd6-a21a-38ab8a1301b8">
+                                            <div class="shg-row" data-col-grid-mode-on="true">
+                                                <div class="shg-c-lg-1 shg-c-md-1 shg-c-sm-1 shg-c-xs-12">
+                                                    <div class="shg-box-vertical-align-wrapper">
+                                                        <div class="shg-box shg-c" id="s-e593f1ac-decc-4d22-8b21-67bbb813fc27">
+                                                            <div class="shg-box-overlay"></div>
+                                                            <div class="shg-box-content">
+                                                                <div id="s-5359af3c-38db-470b-b1d9-d7a7e57e680d" class="shg-c">
+                                                                    <div class="shogun-icon-wrapper">
+                                                                        <div class="shg-fa shg-fa-phone-square shogun-icon"></div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="shg-c-lg-11 shg-c-md-11 shg-c-sm-11 shg-c-xs-12">
+                                                    <div id="s-eecabe4e-f54d-44e5-a66c-2702c56105f0" class="shg-c">
+                                                        <div class="shg-rich-text shg-theme-text-content">
+                                                            <p><span style="font-size: 16px">Call or Text</span></p>
+                                                            <p><span style="font-size: 18px">1-416-800-5056 </span></p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div id="s-acae691d-1a63-40ee-8e84-17e70866aacb" class="shg-c">
+                                            <div class="shg-rich-text shg-theme-text-content"><p>Accept Returns and exchange item from Canada</p></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="shg-c" id="s-bcb4d307-7072-4a7c-bf4f-feeb5b686dfe">
+                                <div class="shg-row" data-col-grid-mode-on="">
+                                    <div class="shg-c-lg-6 shg-c-md-6 shg-c-sm-6 shg-c-xs-12">
+                                        <div class="shg-c" id="s-39dec364-d4df-443c-826a-cf6c9435e395">
+                                            <div class="shg-row" data-col-grid-mode-on="">
+                                                <div class="shg-c-lg-1 shg-c-md-1 shg-c-sm-1 shg-c-xs-12">
+                                                    <div class="shg-c shogun-image-container shg-align-center" style="" id="s-01cede80-10d8-4866-a630-24e87cc401b7">
+                                                        <img
+                                                            data-src="https://i.shgcdn.com/0eba9eb4-fe8d-4668-b8da-49ac338e3884/-/format/auto/-/preview/3000x3000/-/quality/lighter/"
+                                                            width=""
+                                                            height=""
+                                                            style=""
+                                                            alt=""
+                                                            class="shogun-image shogun-lazyload"
+                                                        />
+                                                    </div>
+
+                                                    <script type="text/javascript">
+                                                        window.SHOGUN_IMAGE_ELEMENTS = window.SHOGUN_IMAGE_ELEMENTS || new Array();
+                                                        window.SHOGUN_IMAGE_ELEMENTS.push({ hoverImage: "", uuid: "s-01cede80-10d8-4866-a630-24e87cc401b7" });
+                                                    </script>
+                                                </div>
+                                                <div class="shg-c-lg-11 shg-c-md-11 shg-c-sm-11 shg-c-xs-12">
+                                                    <div id="s-68284e5d-60ac-43e4-a530-1ae55b45fbd6" class="shg-c">
+                                                        <div class="shg-rich-text shg-theme-text-content">
+                                                            <p>
+                                                                <strong><span style="font-size: 18px">EU office</span></strong>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div id="s-1fc01ff6-56be-4966-a391-579e521ffbf6" class="shg-c">
+                                            <div class="shg-rich-text shg-theme-text-content">
+                                                <p>
+                                                    <span style="font-size: 16px">23, RUE DU CLOS D ORLEANS </span>
+                                                    <span style="font-size: 16px">94120 FONTEYNAY-SOUS-BOIS </span>
+                                                    <span style="font-size: 16px">France </span>
+                                                    VAT No: FR69884392184
+                                                </p>
+                                            </div>
+                                        </div>
+
+                                        <div class="shg-c" id="s-b432f496-8f5b-4919-9e48-6b038cb998fa">
+                                            <div class="shg-row" data-col-grid-mode-on="">
+                                                <div class="shg-c-lg-1 shg-c-md-1 shg-c-sm-1 shg-c-xs-12">
+                                                    <div class="shg-c shogun-image-container shg-align-center" style="" id="s-c242f911-f747-4acc-b97f-8816830f5100">
+                                                        <img
+                                                            data-src="https://i.shgcdn.com/86375246-ad04-49b0-8d32-7d544fe94b2a/-/format/auto/-/preview/3000x3000/-/quality/lighter/"
+                                                            width=""
+                                                            height=""
+                                                            style=""
+                                                            alt=""
+                                                            class="shogun-image shogun-lazyload"
+                                                        />
+                                                    </div>
+
+                                                    <script type="text/javascript">
+                                                        window.SHOGUN_IMAGE_ELEMENTS = window.SHOGUN_IMAGE_ELEMENTS || new Array();
+                                                        window.SHOGUN_IMAGE_ELEMENTS.push({ hoverImage: "", uuid: "s-c242f911-f747-4acc-b97f-8816830f5100" });
+                                                    </script>
+                                                </div>
+                                                <div class="shg-c-lg-11 shg-c-md-11 shg-c-sm-11 shg-c-xs-12">
+                                                    <div id="s-61d11cbd-b732-4260-8533-f3995d4becd7" class="shg-c">
+                                                        <div class="shg-rich-text shg-theme-text-content">
+                                                            <p>
+                                                                <strong><span style="font-size: 18px">UK Direct line</span></strong>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="shg-c" id="s-706bb8ac-9d99-450f-8bb7-71470074e6db">
+                                            <div class="shg-row" data-col-grid-mode-on="true">
+                                                <div class="shg-c-lg-1 shg-c-md-1 shg-c-sm-1 shg-c-xs-12">
+                                                    <div class="shg-box-vertical-align-wrapper">
+                                                        <div class="shg-box shg-c" id="s-767db594-787f-4e53-b854-e0de893ee6d5">
+                                                            <div class="shg-box-overlay"></div>
+                                                            <div class="shg-box-content">
+                                                                <div id="s-ecce49b7-4c4f-4861-b2c9-b7e710cf40e4" class="shg-c">
+                                                                    <div class="shogun-icon-wrapper">
+                                                                        <div class="shg-fa shg-fa-phone-square shogun-icon"></div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="shg-c-lg-11 shg-c-md-11 shg-c-sm-11 shg-c-xs-12">
+                                                    <div id="s-dbb646da-0f3f-47d7-991d-335697d08756" class="shg-c shg-align-left">
+                                                        <div class="shogun-heading-component">
+                                                            <h1>44-20-45326459</h1>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="shg-c-lg-6 shg-c-md-6 shg-c-sm-6 shg-c-xs-12">
+                                        <div class="shg-c" id="s-d820a914-b4d0-4064-a996-6b58f4ca9406">
+                                            <div class="shg-row" data-col-grid-mode-on="">
+                                                <div class="shg-c-lg-1 shg-c-md-1 shg-c-sm-1 shg-c-xs-12">
+                                                    <div class="shg-c shogun-image-container shg-align-center" style="" id="s-c61d257e-a97b-48c4-8644-4fc1de9422a1">
+                                                        <img
+                                                            data-src="https://i.shgcdn.com/75eec081-e392-4510-8b4b-3d47bd676ec5/-/format/auto/-/preview/3000x3000/-/quality/lighter/"
+                                                            width=""
+                                                            height=""
+                                                            style=""
+                                                            alt=""
+                                                            class="shogun-image shogun-lazyload"
+                                                        />
+                                                    </div>
+
+                                                    <script type="text/javascript">
+                                                        window.SHOGUN_IMAGE_ELEMENTS = window.SHOGUN_IMAGE_ELEMENTS || new Array();
+                                                        window.SHOGUN_IMAGE_ELEMENTS.push({ hoverImage: "", uuid: "s-c61d257e-a97b-48c4-8644-4fc1de9422a1" });
+                                                    </script>
+                                                </div>
+                                                <div class="shg-c-lg-11 shg-c-md-11 shg-c-sm-11 shg-c-xs-12">
+                                                    <div id="s-6649156f-0d70-4633-91d3-9cf81442a363" class="shg-c">
+                                                        <div class="shg-rich-text shg-theme-text-content">
+                                                            <p>
+                                                                <strong><span style="font-size: 18px">China office</span></strong>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div id="s-4e1b6552-f7cc-4c4c-a7db-093683a9ba5f" class="shg-c">
+                                            <div class="shg-rich-text shg-theme-text-content">
+                                                <p><span style="font-size: 16px">RM701,NO.1 BLDG, NO.12 HAIKOU RD LAOSHAN DIST QINGDAO, CN, 266101</span></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="shg-box-vertical-align-wrapper">
+        <div class="shg-box shg-c" id="s-170a51bc-ef3b-49e8-8bad-de059942647b">
+            <div class="shg-box-overlay"></div>
+            <div class="shg-box-content"></div>
+        </div>
+    </div>
+
+    <div class="shg-c" id="s-110c9eb2-f300-42c5-9a53-4fbc8e9ef610">
+        <div class="shg-row" data-col-grid-mode-on="">
+            <div class="shg-c-lg-6 shg-c-md-6 shg-c-sm-6 shg-c-xs-12">
+                <div id="s-ce9ea639-9aa0-484a-91a1-24ad5d824df6" class="shg-c">
+                    <div class="shg-rich-text shg-theme-text-content">
+                        <p style="text-align: center"><span style="font-size: 36px; font-weight: 200">Follow </span><span style="font-size: 36px; font-weight: 600">Social Media</span></p>
+                    </div>
+                </div>
+            </div>
+            <div class="shg-c-lg-6 shg-c-md-6 shg-c-sm-6 shg-c-xs-12">
+                <div class="shg-c" id="s-74aca7fa-8e65-403a-badf-9947c41f93e7">
+                    <div class="shg-row" data-col-grid-mode-on="">
+                        <div class="shg-c-lg-3 shg-c-md-3 shg-c-sm-3 shg-c-xs-6">
+                            <div id="s-6c951241-f2bc-44e8-b29e-410f0c5e1632" class="shg-c shg-align-center">
+                                <div class="shg-social-alignable">
+                                    <div class="shg-social-container" data-color="rgba(0, 0, 0, 1)" data-size="medium" data-gutter="20px" data-orientation="horizontal" data-in-new-tab="true">
+                                        <a class="shg-social-element" data-icon="facebook-square" data-link="https://www.facebook.com/thesuperhairpieces"></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="shg-c-lg-2 shg-c-md-2 shg-c-sm-2 shg-c-xs-6">
+                            <div id="s-7eee4f27-a320-42cb-84d2-7b4e293f4e9e" class="shg-c shg-align-center">
+                                <div class="shg-social-alignable">
+                                    <div class="shg-social-container" data-color="rgba(0, 0, 0, 1)" data-size="medium" data-gutter="20px" data-orientation="horizontal" data-in-new-tab="true">
+                                        <a class="shg-social-element" data-icon="youtube-square" data-link="https://www.youtube.com/superhairpieces"></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="shg-c-lg-2 shg-c-md-2 shg-c-sm-2 shg-c-xs-12">
+                            <div id="s-42909fd8-d270-4466-ae30-42969b3b2382" class="shg-c shg-align-center">
+                                <div class="shg-social-alignable">
+                                    <div class="shg-social-container" data-color="rgba(0, 0, 0, 1)" data-size="medium" data-gutter="20px" data-orientation="horizontal" data-in-new-tab="true">
+                                        <a class="shg-social-element" data-icon="instagram" data-link="http://instagram.com/superhairpieces"></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="shg-c-lg-2 shg-c-md-2 shg-c-sm-2 shg-c-xs-6">
+                            <div id="s-6a1a71e9-544b-4b14-ae14-de83bbdbb157" class="shg-c shg-align-center">
+                                <div class="shg-social-alignable">
+                                    <div class="shg-social-container" data-color="#000" data-size="medium" data-gutter="10px" data-orientation="horizontal" data-in-new-tab="true">
+                                        <a class="shg-social-element" data-icon="pinterest-square" data-link="https://www.pinterest.com/superhairpieces"></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="shg-c-lg-3 shg-c-md-3 shg-c-sm-3 shg-c-xs-6">
+                            <div id="s-55d2c932-8c67-42e4-908a-7764810c2662" class="shg-c shg-align-center">
+                                <div class="shg-social-alignable">
+                                    <div class="shg-social-container" data-color="#000" data-size="medium" data-gutter="10px" data-orientation="horizontal" data-in-new-tab="true">
+                                        <a class="shg-social-element" data-icon="linkedin-square" data-link="https://www.linkedin.com/company/superhairpieces/"></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="shg-box-vertical-align-wrapper">
+        <div class="shg-box shg-c" id="s-6dc08066-9943-47c5-99f0-08fbe0442903">
+            <div class="shg-box-overlay"></div>
+            <div class="shg-box-content"></div>
+        </div>
+    </div>
+    <div class="shg-box-vertical-align-wrapper">
+        <div class="shg-box shg-c" id="s-8987de6e-6ebd-43f4-949b-352439b94bbb">
+            <div class="shg-box-overlay"></div>
+            <div class="shg-box-content">
+                <div id="s-98622e71-ac53-476a-b217-837130be9501" class="shg-c">
+                    <div class="shg-rich-text shg-theme-text-content">
+                        <p style="text-align: center">
+                            <span style="font-size: 36px"><span style="font-weight: 100">Trade</span> </span><strong><span style="font-size: 36px">Show</span></strong>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="shg-box-vertical-align-wrapper">
+        <div class="shg-box shg-c" id="s-a9f3500c-85e5-4d52-8e84-6e3acf29ba52">
+            <div class="shg-box-overlay"></div>
+            <div class="shg-box-content">
+                <div id="s-1d4223fa-571b-4af1-80bd-7b728bd26653" class="shg-c">
+                    <div id="slider-s-1d4223fa-571b-4af1-80bd-7b728bd26653" class="shg-sld">
+                        <div class="shg-sld-content">
+                            <div class="shg-sld-nav-button shg-sld-left"></div>
+
+                            <div class="shg-sld-slides shg-sld-slides-padded">
+                                <div class="shg-sld-item shg-sld-active">
+                                    <div class="shg-sld-fade">
+                                        <div class="shg-c shogun-image-container shg-align-center" style="" id="s-65aeac19-4958-47cc-b070-f56623eff610">
+                                            <img
+                                                data-src="https://i.shgcdn.com/0abefe69-cf42-486b-a3cc-4de5640a9171/-/format/auto/-/preview/3000x3000/-/quality/lighter/"
+                                                width=""
+                                                height=""
+                                                style=""
+                                                alt=""
+                                                class="shogun-image shogun-lazyload"
+                                            />
+                                        </div>
+
+                                        <script type="text/javascript">
+                                            window.SHOGUN_IMAGE_ELEMENTS = window.SHOGUN_IMAGE_ELEMENTS || new Array();
+                                            window.SHOGUN_IMAGE_ELEMENTS.push({ hoverImage: "", uuid: "s-65aeac19-4958-47cc-b070-f56623eff610" });
+                                        </script>
+                                        <div id="s-dc1ae0dc-71b0-4856-8a2d-01a1d1e1e9f4" class="shg-c">
+                                            <div class="shg-rich-text shg-theme-text-content"><p style="text-align: center">Premiere Orlando 2019</p></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="shg-sld-item">
+                                    <div class="shg-sld-fade">
+                                        <div class="shg-c shogun-image-container shg-align-center" style="" id="s-42c53c48-b1cc-4bb3-b643-b4324d6e9422">
+                                            <img
+                                                data-src="https://i.shgcdn.com/de11a8b9-7f63-419e-86bc-8d08eec9b85d/-/format/auto/-/preview/3000x3000/-/quality/lighter/"
+                                                width=""
+                                                height=""
+                                                style=""
+                                                alt=""
+                                                class="shogun-image shogun-lazyload"
+                                            />
+                                        </div>
+
+                                        <script type="text/javascript">
+                                            window.SHOGUN_IMAGE_ELEMENTS = window.SHOGUN_IMAGE_ELEMENTS || new Array();
+                                            window.SHOGUN_IMAGE_ELEMENTS.push({ hoverImage: "", uuid: "s-42c53c48-b1cc-4bb3-b643-b4324d6e9422" });
+                                        </script>
+                                    </div>
+                                </div>
+
+                                <div class="shg-sld-item">
+                                    <div class="shg-sld-fade">
+                                        <div class="shg-c shogun-image-container shg-align-center" style="" id="s-530f6a05-bf4e-43bb-baf6-f143c1804e52">
+                                            <img
+                                                data-src="https://i.shgcdn.com/31b76206-52d9-4163-83db-3f9d1d96b49a/-/format/auto/-/preview/3000x3000/-/quality/lighter/"
+                                                width=""
+                                                height=""
+                                                style=""
+                                                alt=""
+                                                class="shogun-image shogun-image-normal shogun-lazyload"
+                                            />
+                                        </div>
+
+                                        <script type="text/javascript">
+                                            window.SHOGUN_IMAGE_ELEMENTS = window.SHOGUN_IMAGE_ELEMENTS || new Array();
+                                            window.SHOGUN_IMAGE_ELEMENTS.push({ hoverImage: "", uuid: "s-530f6a05-bf4e-43bb-baf6-f143c1804e52" });
+                                        </script>
+                                    </div>
+                                </div>
+
+                                <div class="shg-sld-item">
+                                    <div class="shg-sld-fade">
+                                        <div class="shg-c shogun-image-container shg-align-center" style="" id="s-dfd51c88-9e7d-48c8-96c8-7864c8489ecb">
+                                            <img
+                                                data-src="https://i.shgcdn.com/4fbcb84e-68ff-4aca-828d-12842f8fafd5/-/format/auto/-/preview/3000x3000/-/quality/lighter/"
+                                                width=""
+                                                height=""
+                                                style=""
+                                                alt=""
+                                                class="shogun-image shogun-lazyload"
+                                            />
+                                        </div>
+
+                                        <script type="text/javascript">
+                                            window.SHOGUN_IMAGE_ELEMENTS = window.SHOGUN_IMAGE_ELEMENTS || new Array();
+                                            window.SHOGUN_IMAGE_ELEMENTS.push({ hoverImage: "", uuid: "s-dfd51c88-9e7d-48c8-96c8-7864c8489ecb" });
+                                        </script>
+                                    </div>
+                                </div>
+
+                                <div class="shg-sld-item">
+                                    <div class="shg-sld-fade">
+                                        <div class="shg-c shogun-image-container shg-align-center" style="" id="s-481eace3-f9d3-473e-9872-da9e4168c4fc">
+                                            <img
+                                                data-src="https://i.shgcdn.com/0b8d5cdf-acb8-4677-b992-3fedf092c0f9/-/format/auto/-/preview/3000x3000/-/quality/lighter/"
+                                                width=""
+                                                height=""
+                                                style=""
+                                                alt=""
+                                                class="shogun-image shogun-lazyload"
+                                            />
+                                        </div>
+
+                                        <script type="text/javascript">
+                                            window.SHOGUN_IMAGE_ELEMENTS = window.SHOGUN_IMAGE_ELEMENTS || new Array();
+                                            window.SHOGUN_IMAGE_ELEMENTS.push({ hoverImage: "", uuid: "s-481eace3-f9d3-473e-9872-da9e4168c4fc" });
+                                        </script>
+                                        <div id="s-d6eaf41f-90f9-44b7-a73a-71bae2d11288" class="shg-c">
+                                            <div class="shg-rich-text shg-theme-text-content"><p style="text-align: center">IBS Las Vegas 2017</p></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="shg-sld-item">
+                                    <div class="shg-sld-fade">
+                                        <div class="shg-c shogun-image-container shg-align-center" style="" id="s-36c797fb-25aa-4bd2-9396-d680fc156473">
+                                            <img
+                                                data-src="https://i.shgcdn.com/b74e7cfe-2014-4616-b232-8de73fff9134/-/format/auto/-/preview/3000x3000/-/quality/lighter/"
+                                                width=""
+                                                height=""
+                                                style=""
+                                                alt=""
+                                                class="shogun-image shogun-lazyload"
+                                            />
+                                        </div>
+
+                                        <script type="text/javascript">
+                                            window.SHOGUN_IMAGE_ELEMENTS = window.SHOGUN_IMAGE_ELEMENTS || new Array();
+                                            window.SHOGUN_IMAGE_ELEMENTS.push({ hoverImage: "", uuid: "s-36c797fb-25aa-4bd2-9396-d680fc156473" });
+                                        </script>
+                                        <div id="s-2ca19903-44b3-475d-8150-8f8c99b978bf" class="shg-c">
+                                            <div class="shg-rich-text shg-theme-text-content"><p style="text-align: center">Calgary Allied Beauty Association Show 2016</p></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="shg-sld-item">
+                                    <div class="shg-sld-fade">
+                                        <div class="shg-c shogun-image-container shg-align-center" style="" id="s-8c0888cb-e586-4bf0-b55c-b03cee0f8e83">
+                                            <img
+                                                data-src="https://i.shgcdn.com/76f25e33-bd3b-4eb1-84c4-a31fe018c440/-/format/auto/-/preview/3000x3000/-/quality/lighter/"
+                                                width=""
+                                                height=""
+                                                style=""
+                                                alt=""
+                                                class="shogun-image shogun-lazyload"
+                                            />
+                                        </div>
+
+                                        <script type="text/javascript">
+                                            window.SHOGUN_IMAGE_ELEMENTS = window.SHOGUN_IMAGE_ELEMENTS || new Array();
+                                            window.SHOGUN_IMAGE_ELEMENTS.push({ hoverImage: "", uuid: "s-8c0888cb-e586-4bf0-b55c-b03cee0f8e83" });
+                                        </script>
+                                        <div id="s-75a3023f-7f40-40cf-b62f-9bb59b93234b" class="shg-c">
+                                            <div class="shg-rich-text shg-theme-text-content"><p style="text-align: center">ABA Vancouver 2014</p></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="shg-sld-item">
+                                    <div class="shg-sld-fade">
+                                        <div class="shg-c shogun-image-container shg-align-center" style="" id="s-7e442d2c-85b5-4463-a904-78aa54ea40e3">
+                                            <img
+                                                data-src="https://i.shgcdn.com/b7b698ea-c570-44f4-879f-ce46b7332d14/-/format/auto/-/preview/3000x3000/-/quality/lighter/"
+                                                width=""
+                                                height=""
+                                                style=""
+                                                alt=""
+                                                class="shogun-image shogun-lazyload"
+                                            />
+                                        </div>
+
+                                        <script type="text/javascript">
+                                            window.SHOGUN_IMAGE_ELEMENTS = window.SHOGUN_IMAGE_ELEMENTS || new Array();
+                                            window.SHOGUN_IMAGE_ELEMENTS.push({ hoverImage: "", uuid: "s-7e442d2c-85b5-4463-a904-78aa54ea40e3" });
+                                        </script>
+                                        <div id="s-d73bc82d-59c1-4377-8415-689bd089cb43" class="shg-c">
+                                            <div class="shg-rich-text shg-theme-text-content"><p style="text-align: center">American Beauty Show 2009</p></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="shg-sld-nav-button shg-sld-right"></div>
+                        </div>
+
+                        <div class="shg-sld-dots">
+                            <div class="shg-sld-dot shg-sld-active"></div>
+
+                            <div class="shg-sld-dot"></div>
+
+                            <div class="shg-sld-dot"></div>
+
+                            <div class="shg-sld-dot"></div>
+
+                            <div class="shg-sld-dot"></div>
+
+                            <div class="shg-sld-dot"></div>
+
+                            <div class="shg-sld-dot"></div>
+
+                            <div class="shg-sld-dot"></div>
+                        </div>
+                    </div>
+
+                    <script type="text/javascript">
+                        window.SHOGUN_SLIDERS = window.SHOGUN_SLIDERS || new Array();
+                        window.SHOGUN_SLIDERS.push({
+                            id: "#slider-s-1d4223fa-571b-4af1-80bd-7b728bd26653",
+                            intervalTime: 5,
+                            autoplay: true,
+                            pauseOnHover: true,
+                            interval: null,
+                        });
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="shg-box-vertical-align-wrapper">
+        <div class="shg-box shg-c" id="s-a6def6e4-db48-4d46-9ac5-79ac387cf3a8">
+            <div class="shg-box-overlay"></div>
+            <div class="shg-box-content"></div>
+        </div>
+    </div>
+    <div id="s-41a4a96f-797e-4266-9052-03bd095491e5" class="shg-c">
+        <div class="shg-rich-text shg-theme-text-content">
+            <p style="text-align: center">
+                <span style="font-size: 36px"><span style="font-weight: 200">Company</span> </span
+                ><span style="font-weight: 200"
+                    ><strong><span style="font-size: 36px">Team</span></strong></span
+                >
+            </p>
+        </div>
+    </div>
+
+    <div id="s-cc52082e-9c09-40df-bcff-83e28e48bfe1" class="shg-c">
+        <div id="slider-s-cc52082e-9c09-40df-bcff-83e28e48bfe1" class="shg-sld">
+            <div class="shg-sld-content">
+                <div class="shg-sld-nav-button shg-sld-left"></div>
+
+                <div class="shg-sld-slides shg-sld-slides-padded">
+                    <div class="shg-sld-item shg-sld-active">
+                        <div class="shg-sld-fade">
+                            <div class="shg-c shogun-image-container shg-align-center" style="" id="s-00b18f3e-b931-44da-ac8f-0909974e2994">
+                                <img
+                                    data-src="https://i.shgcdn.com/9e5b374f-df7a-4094-adf8-8a912895b8aa/-/format/auto/-/preview/3000x3000/-/quality/lighter/"
+                                    width=""
+                                    height=""
+                                    style=""
+                                    alt=""
+                                    class="shogun-image shogun-lazyload"
+                                />
+                            </div>
+
+                            <script type="text/javascript">
+                                window.SHOGUN_IMAGE_ELEMENTS = window.SHOGUN_IMAGE_ELEMENTS || new Array();
+                                window.SHOGUN_IMAGE_ELEMENTS.push({ hoverImage: "", uuid: "s-00b18f3e-b931-44da-ac8f-0909974e2994" });
+                            </script>
+                        </div>
+                    </div>
+
+                    <div class="shg-sld-item">
+                        <div class="shg-sld-fade">
+                            <div class="shg-c shogun-image-container shg-align-center" style="" id="s-065fda39-b0a3-41d1-99a2-148c88bc342f">
+                                <img
+                                    data-src="https://i.shgcdn.com/4c31b7e3-b3a8-4b11-8815-475773db425d/-/format/auto/-/preview/3000x3000/-/quality/lighter/"
+                                    width=""
+                                    height=""
+                                    style=""
+                                    alt=""
+                                    class="shogun-image shogun-lazyload"
+                                />
+                            </div>
+
+                            <script type="text/javascript">
+                                window.SHOGUN_IMAGE_ELEMENTS = window.SHOGUN_IMAGE_ELEMENTS || new Array();
+                                window.SHOGUN_IMAGE_ELEMENTS.push({ hoverImage: "", uuid: "s-065fda39-b0a3-41d1-99a2-148c88bc342f" });
+                            </script>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="shg-sld-nav-button shg-sld-right"></div>
+            </div>
+
+            <div class="shg-sld-dots">
+                <div class="shg-sld-dot shg-sld-active"></div>
+
+                <div class="shg-sld-dot"></div>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+            window.SHOGUN_SLIDERS = window.SHOGUN_SLIDERS || new Array();
+            window.SHOGUN_SLIDERS.push({
+                id: "#slider-s-cc52082e-9c09-40df-bcff-83e28e48bfe1",
+                intervalTime: 5,
+                autoplay: false,
+                pauseOnHover: false,
+                interval: null,
+            });
+        </script>
+    </div>
+
+    <div class="shg-box-vertical-align-wrapper">
+        <div class="shg-box shg-c" id="s-f29f377f-2d78-4dc3-bd3e-850742ce5823">
+            <div class="shg-box-overlay"></div>
+            <div class="shg-box-content"></div>
+        </div>
+    </div>
+    <script type="text/javascript" src="https://cdn.getshogun.com/60956951963e9900db6b55c9.js" async></script>
+</div>
+<div class="insta-label"><img src="/product_images/uploaded_images/instagram-logo.jpg" loading="lazy"/></div>
+<div class="insta-wrap">
+    <div class="insta-posts"></div>
+    <div class="insta-viewmore"><a href="https://www.instagram.com/superhairpieces/" target="_blank">View on Instagram</a></div>
+</div>
+<script>
+    function initInstagram() {
+        fetch('https://shp-webserver-temp.glitch.me/instagram-post')
+        .then(r=>r.json())
+        .then(d=>{
+            console.log(d);
+            if (d.data) {
+                if (d.data.length>0) {
+                    let ins = '';
+                    for (let i=0; i<d.data.length; i++) {
+                        let post = d.data[i];
+                        if (i>=12) {
+                            break;
+                        }
+                        let link = post.media_type=='VIDEO'?post.thumbnail_url:post.media_url;
+                        ins+=`<div class="insta-post" onclick="window.open('${post.permalink}','_blank')">
+                                <div class="insta-body"><div class="insta-caption">${post.caption}</div></div>
+                                <img src="${link}" loading="lazy">
+                            </div>`;
+                    }                
+                    $(".insta-posts").html(ins);
+                    $(".insta-post").css({"height": $(".insta-post").width()});
+                    $(window).resize(function() {
+                        $(".insta-post").css({"height": $(".insta-post").width()});
+                    })
+                } else {
+                    $(".insta-label").remove();
+                    $(".insta-wrap").remove();
+                }                
+            } else {
+                $(".insta-label").remove();
+                $(".insta-wrap").remove();
+            }
+        })
+    }
+    window.addEventListener('DOMContentLoaded', (event) => {
+        if (window.jQuery) {   
+            initInstagram();         
+        } else {
+            if (typeof scriptLoader == 'function') {
+                scriptLoader(['//ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js'], function() {
+                    initInstagram();
+                })
+            } else {
+                function scriptLoader(scripts, callback) {
+
+                    var count = scripts.length;
+
+                    function urlCallback(url) {
+                        return function () {                
+                            console.log(url + ' was loaded (' + --count + ' more scripts remaining).');
+                            if (count < 1) {
+                                callback();
+                            }
+                        };
+                    }
+
+                    function loadScript(url) {
+                        var s = document.createElement('script');
+                        s.setAttribute('src', url);
+                        s.onload = urlCallback(url);
+                        document.head.appendChild(s);
+                    }
+
+                    for (var script of scripts) {
+                        loadScript(script);
+                    }
+                };
+                scriptLoader(['//ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js'], function() {
+                    initInstagram();
+                })
+            }
+        }        
+    }, true);
+</script>

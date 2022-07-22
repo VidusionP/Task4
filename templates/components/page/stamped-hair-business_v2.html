@@ -1,0 +1,834 @@
+<!-- <link
+  rel="stylesheet"
+  href="/content/css/swiper-bundle.min.css"
+/> -->
+<!-- <style>
+    .review-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 8rem;
+    }
+    .review-media {
+        width: 250px;
+        height: 250px;
+        border-radius: 50%;
+        object-fit: cover;
+        z-index: 9;
+    }
+    .review-content {
+        background: #f8f8f8;
+        border-top-left-radius: 50px;
+        border-bottom-right-radius: 50px;
+        padding: 3rem 1rem 3rem calc(1rem + 70px);
+        width: calc(100% - 550px);
+        display: flex;        
+        align-items: center;
+        margin-left: -50px;
+        position: relative;
+    }
+    .review-content .title {
+        font-size: 1.2rem;
+        margin: 1rem 0 .8rem;
+        font-weight: 600;
+    }
+    .review-content .message {
+        font-weight: 200;
+    }
+    .review-content svg {
+        width: 15px;        
+        -webkit-filter: drop-shadow( 1px 1px 1px #9a8703);
+        filter: drop-shadow( 1px 1px 1px #9a8703);
+        margin-right: 3px;
+    }
+    .swiper-wrapper {
+        height: auto;        
+    }
+    .review-profile {
+        position: absolute;        
+        right: 1rem;
+        top: -4rem;
+        padding: 1rem;
+        font-size: .8rem;
+        border-radius: 10px;
+        border: 1px solid #fff;
+    }
+    .review-profile img {        
+        max-height: 100px;
+        max-width: 100px;
+        margin-bottom: .5rem;
+    }
+    .review-pagination {
+        float: right;
+    }
+    .swiper-button-next, .swiper-button-prev {
+        position: relative;
+        top: unset;
+        margin-top: unset;
+        right: unset;
+        left: unset;
+    }
+    .swiper-pagination-fraction {
+        width: max-content;
+    }
+</style> -->
+<style>
+    .review-wrapper {
+        position: relative;
+    }
+    .review-menu-wrapper {
+        /* display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        grid-column-gap: 1rem; */
+        margin-top: 2rem;
+        border-bottom: 1px solid #ccc;
+    }
+    .review-menu-item {
+        text-align: center;
+        filter: grayscale(100%);
+        padding-bottom: 1rem; 
+        margin-bottom: -2px;   
+        cursor: pointer;     
+    }
+    .review-menu-item.focus {
+        filter: grayscale(0);
+        border-bottom: 2px solid #000097;
+    }    
+    .review-menu-item img {
+        height: 60px;
+        max-width: 90%;
+        width: auto;
+        margin-bottom: 1rem;       
+        object-fit: contain; 
+        margin: 0 auto 10px;
+    }    
+    .slick-slide {
+        height: auto !important;
+    }
+    .slick-list {
+        overflow:visible;
+    }
+    .review-content-wrapper {
+        margin-top: 1rem;
+        display: flex;
+        flex-wrap: wrap;
+        width: calc(100% + 1rem);
+        margin-left: -.5rem;        
+    }    
+    .review-content-item {
+        background-color: #f5f5f5;
+        box-shadow: 0 1px 1px 0 rgb(0 0 0 / 18%);   
+        margin: .5rem;
+        width: calc(25% - 1rem);
+        position: relative;
+    }
+    .review-content {
+        padding: 1rem 1rem 4rem;        
+    }
+    .review-link {
+        position: absolute;
+        bottom: 1rem;
+        right: 1rem;
+        font-size: .9rem;
+    }
+    .review-link .highlight {
+        font-weight: bold;
+    }
+    .review-media {
+        width: 100%;
+    }    
+    .review-wrapper-title {
+        font-size: 29px;
+    }
+    .review-title {
+        font-size: 1.2rem;
+        margin-bottom: 1rem;        
+    }
+    @media only screen and (max-width: 1200px) {
+        .review-content-item {
+            width: calc(33.33% - 1rem);
+        }
+    }
+    @media only screen and (max-width: 900px) {
+        .review-content-item {
+            width: calc(50% - 1rem);
+        }
+    }
+    @media only screen and (max-width: 540px) {
+        .review-content-item {
+            width: calc(100% - 1rem)
+        }
+    }
+</style>
+<div
+    class="shogun-root"
+    data-shogun-id="61572e5019425300c6cd12ce"
+    data-shogun-site-id="fb8c6090-a908-45e2-8617-89b82d7a20e6"
+    data-shogun-page-id="61572e5019425300c6cd12ce"
+    data-shogun-page-version-id="615f59f10b20cb00b156915f"
+    data-shogun-platform-type="big_commerce"
+    data-shogun-variant-id="615f59f10b20cb00b1569492"
+    data-region="main"
+>
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Poppins:600" />
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.getshogun.com/css-4/615f59f10b20cb00b1569492.css" />
+
+    <script type="text/javascript" src="https://lib.getshogun.com/lazysizes/2.0.0/shogun-lazysizes.js" async></script>
+
+    <div class="shg-box-vertical-align-wrapper">
+        <div class="shg-box shg-c" id="s-9534e131-3e68-46df-a0b9-48836b82af58">
+            <div class="shg-box-overlay"></div>
+            <div class="shg-box-content">
+                <div class="shg-c shogun-image-container shg-align-center" style="" id="s-3bdd05aa-0996-4b66-bbab-0056882dd7d9">
+                    <img src="https://i.shgcdn.com/bae843c3-171d-494c-8851-40f6e44ad6b2/-/format/auto/-/preview/3000x3000/-/quality/lighter/" width="" height="" style="" alt="" class="shogun-image" />
+                </div>
+
+                <script type="text/javascript">
+                    window.SHOGUN_IMAGE_ELEMENTS = window.SHOGUN_IMAGE_ELEMENTS || new Array();
+                    window.SHOGUN_IMAGE_ELEMENTS.push({ hoverImage: "", uuid: "s-3bdd05aa-0996-4b66-bbab-0056882dd7d9" });
+                </script>
+            </div>
+        </div>
+    </div>
+    <div class="shg-box-vertical-align-wrapper">
+        <div class="shg-box shg-c" id="s-51435b07-6976-40dd-a696-d31da930a794">
+            <div class="shg-box-overlay"></div>
+            <div class="shg-box-content"></div>
+        </div>
+    </div>
+    <div class="shg-box-vertical-align-wrapper">
+        <div class="shg-box shg-c" id="s-0408b9ec-369f-4291-a3f8-1a6e41806985">
+            <div class="shg-box-overlay"></div>
+            <div class="shg-box-content">
+                <div class="shg-c" id="s-2228eba9-e5cf-4926-9f05-f4688027bff2">
+                    <div class="shg-row" data-col-grid-mode-on="true">
+                        <div class="shg-c-lg-6 shg-c-md-6 shg-c-sm-6 shg-c-xs-12">
+                            <div class="shg-box-vertical-align-wrapper">
+                                <div class="shg-box shg-c" id="s-1af2ce59-72c4-454d-bfdd-7380850378e4">
+                                    <div class="shg-box-overlay"></div>
+                                    <div class="shg-box-content">
+                                        <div id="s-caaa7e44-a194-4828-bd10-048bd1e6d283" class="shg-c shg-align-center">
+                                            <div class="shogun-heading-component">
+                                                <h2>Inventory & Ordering</h2>
+                                            </div>
+                                        </div>
+
+                                        <div class="shg-c shogun-image-container shg-align-center" style="" id="s-ff33e200-d0f2-45e3-94cf-40fb2826fecc">
+                                            <img
+                                                data-src="https://i.shgcdn.com/91e6ccf1-6e19-4386-a220-3c94bbaff4b9/-/format/auto/-/preview/3000x3000/-/quality/lighter/"
+                                                width=""
+                                                height=""
+                                                style=""
+                                                alt=""
+                                                class="shogun-image shogun-lazyload"
+                                            />
+                                        </div>
+
+                                        <script type="text/javascript">
+                                            window.SHOGUN_IMAGE_ELEMENTS = window.SHOGUN_IMAGE_ELEMENTS || new Array();
+                                            window.SHOGUN_IMAGE_ELEMENTS.push({ hoverImage: "", uuid: "s-ff33e200-d0f2-45e3-94cf-40fb2826fecc" });
+                                        </script>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="shg-c-lg-6 shg-c-md-6 shg-c-sm-6 shg-c-xs-12">
+                            <div class="shg-box-vertical-align-wrapper">
+                                <div class="shg-box shg-c" id="s-511a691c-df2d-4cde-b3a8-16d1ea5a1973">
+                                    <div class="shg-box-overlay"></div>
+                                    <div class="shg-box-content">
+                                        <div id="s-5ea6362e-b19f-46d2-823b-c33130720af7" class="shg-c shg-align-left">
+                                            <div class="shogun-heading-component">
+                                                <h2>Fully recovered production capacity</h2>
+                                            </div>
+                                        </div>
+                                        <div id="s-2c10c68f-c407-4a01-9046-2a10997dfb4e" class="shg-c">
+                                            <div class="shg-rich-text shg-theme-text-content">
+                                                <p>
+                                                    <span style="font-size: 16px"
+                                                        >Our production capacity is at 120% and we expect it to increase even more as we continue to recover from the pandemic. Avoid the long wait
+                                                        times from other suppliers.</span
+                                                    >
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div id="s-f162df80-351d-44ac-b58b-8772ad14e25b" class="shg-c shg-align-left">
+                                            <div class="shogun-heading-component">
+                                                <h2>Sort the products based on how <br />soon they will ship out</h2>
+                                            </div>
+                                        </div>
+                                        <div id="s-1726c949-c5c9-40e4-86af-e684f8c02436" class="shg-c">
+                                            <div class="shg-rich-text shg-theme-text-content">
+                                                <p><span style="font-size: 16px">Our current system allows you to view our available hair units sorted by the earliest ship-out times.</span></p>
+                                            </div>
+                                        </div>
+                                        <div id="s-2ebf37da-dd93-4914-b443-c977acfd521a" class="shg-c shg-align-left">
+                                            <div class="shogun-heading-component">
+                                                <h2>Faster customized order</h2>
+                                            </div>
+                                        </div>
+                                        <div id="s-10cb03f7-86a7-4396-8176-a50125f34405" class="shg-c">
+                                            <div class="shg-rich-text shg-theme-text-content">
+                                                <p>
+                                                    <span style="font-size: 16px"
+                                                        ><strong>Customized Stock </strong>— 2 month for the basic version, 3 months for the lace-based hair systems, and 2-3 months for the skin-based
+                                                        hair systems.</span
+                                                    >
+                                                    <em><span style="font-size: 12px">*A few models (e.g. M107) require more time to finish.</span></em>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div id="s-2661579a-b296-4fec-81f5-460943cc2645" class="shg-c">
+                                            <div class="shg-rich-text shg-theme-text-content">
+                                                <p>
+                                                    <span style="font-size: 15px"><strong>Custom Orders</strong> — Average waiting time is around 4 months.</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div id="s-26578adc-9519-4076-ab41-96c1b4e35903" class="shg-c shg-align-left">
+                                            <div class="shogun-heading-component">
+                                                <h2>Fast shipping</h2>
+                                            </div>
+                                        </div>
+                                        <div id="s-a23d7fe6-4093-417d-9e04-d006d7fd6b49" class="shg-c">
+                                            <div class="shg-rich-text shg-theme-text-content">
+                                                <p>
+                                                    <span style="font-size: 16px"
+                                                        >With warehouses in Ontario and Florida, we are able to provide fast shipping within 24 hours for any in-stock hair system throughout North
+                                                        America!</span
+                                                    >
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="shg-box-vertical-align-wrapper">
+        <div class="shg-box shg-c" id="s-d0b908bd-cee0-4b81-9727-0427e119c5b6">
+            <div class="shg-box-overlay"></div>
+            <div class="shg-box-content">
+                <div id="s-bbdb95b2-7075-4083-afb0-65c7f1a1151d" class="shg-c shg-align-center">
+                    <div class="shogun-heading-component">
+                        <h2>High Quality, best price</h2>
+                    </div>
+                </div>
+
+                <div class="shg-c" id="s-8fcd46c5-ecf7-476e-b43b-3ea1ec0c7bf0">
+                    <div class="shg-row" data-col-grid-mode-on="">
+                        <div class="shg-c-lg-2 shg-c-md-2 shg-c-sm-2 shg-c-xs-12"></div>
+                        <div class="shg-c-lg-8 shg-c-md-8 shg-c-sm-8 shg-c-xs-12">
+                            <div id="s-7e122960-9e97-4ea7-8937-bb027d33b9b1" class="shg-c">
+                                <div class="shg-rich-text shg-theme-text-content">
+                                    <div style="text-align: center">
+                                        <span style="color: #ffffff; font-size: 16px"
+                                            >We don’t play with the illusion of discounts because we know we have the best prices. With in-house manufacturing in our own factory, we have no need for
+                                            any middleman or markup in prices. You can compare our prices with other major hair system suppliers.</span
+                                        >
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="shg-c-lg-2 shg-c-md-2 shg-c-sm-2 shg-c-xs-12"></div>
+                    </div>
+                </div>
+
+                <div class="shg-c" id="s-223bbed3-6cda-47f8-94a8-b49f21f36b9f">
+                    <div class="shg-row" data-col-grid-mode-on="">
+                        <div class="shg-c-lg-3 shg-c-md-3 shg-c-sm-3 shg-c-xs-6"></div>
+                        <div class="shg-c-lg-2 shg-c-md-2 shg-c-sm-2 shg-c-xs-6">
+                            <div id="s-43037a6d-af65-4bd7-b6ea-6f63aa7dc581" class="shg-c shg-align-center">
+                                <div class="shogun-heading-component">
+                                    <h3>Superhairpieces</h3>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="shg-c-lg-2 shg-c-md-2 shg-c-sm-2 shg-c-xs-6">
+                            <div id="s-cfd9ebfa-2324-4b33-b8fc-dbac12da4181" class="shg-c shg-align-center">
+                                <div class="shogun-heading-component">
+                                    <h3>Competitor 1</h3>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="shg-c-lg-2 shg-c-md-2 shg-c-sm-2 shg-c-xs-6">
+                            <div id="s-6edc07e0-3719-48b8-8dad-7eae8a900aa7" class="shg-c shg-align-center">
+                                <div class="shogun-heading-component">
+                                    <h3>Competitor 2</h3>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="shg-c-lg-2 shg-c-md-2 shg-c-sm-2 shg-c-xs-6">
+                            <div id="s-d6f819f4-d78d-4339-b2a8-4fc45db54e33" class="shg-c shg-align-center">
+                                <div class="shogun-heading-component">
+                                    <h3>Competitor 3</h3>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="shg-c-lg-1 shg-c-md-1 shg-c-sm-1 shg-c-xs-6"></div>
+                    </div>
+                </div>
+
+                <div class="shg-c" id="s-c6b6d448-b533-422e-b3de-121c0cef6567">
+                    <div class="shg-row" data-col-grid-mode-on="true">
+                        <div class="shg-c-lg-3 shg-c-md-3 shg-c-sm-3 shg-c-xs-2">
+                            <div class="shg-c shogun-image-container shg-align-center" style="" id="s-81c2e7ee-f3ca-4143-bf78-ff2e917c7aaa">
+                                <img
+                                    data-src="https://i.shgcdn.com/f0349994-aa32-44ae-ab3f-22fa19e91f20/-/format/auto/-/preview/3000x3000/-/quality/lighter/"
+                                    width=""
+                                    height=""
+                                    style=""
+                                    alt=""
+                                    class="shogun-image shogun-lazyload"
+                                />
+                            </div>
+
+                            <script type="text/javascript">
+                                window.SHOGUN_IMAGE_ELEMENTS = window.SHOGUN_IMAGE_ELEMENTS || new Array();
+                                window.SHOGUN_IMAGE_ELEMENTS.push({ hoverImage: "", uuid: "s-81c2e7ee-f3ca-4143-bf78-ff2e917c7aaa" });
+                            </script>
+                            <div id="s-f956d3a8-0239-4a01-bf1e-55fe160cfb9f" class="shg-c shg-align-center">
+                                <div class="shogun-heading-component">
+                                    <h3>Skin base<br />Medium density<br /></h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="shg-c-lg-2 shg-c-md-2 shg-c-sm-2 shg-c-xs-2">
+                            <div class="shg-box-vertical-align-wrapper">
+                                <div class="shg-box shg-c" id="s-d57744cd-6214-4deb-ae37-4e6c69e75f85">
+                                    <div class="shg-box-overlay"></div>
+                                    <div class="shg-box-content">
+                                        <div id="s-1893cee2-e8a6-49e3-8057-c49aa026078c" class="shg-c shg-align-center">
+                                            <div class="shogun-heading-component">
+                                                <h3>M101<br />$179<br /><br /></h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="shg-c-lg-2 shg-c-md-2 shg-c-sm-2 shg-c-xs-2">
+                            <div class="shg-box-vertical-align-wrapper">
+                                <div class="shg-box shg-c" id="s-220ecbc0-8ee1-4b00-aa07-d5938fc83ee3">
+                                    <div class="shg-box-overlay"></div>
+                                    <div class="shg-box-content">
+                                        <div id="s-77fd642e-cbf4-4526-82dd-5359cdc2fba4" class="shg-c shg-align-center">
+                                            <div class="shogun-heading-component">
+                                                <h3>Superskin<br />$239<br />(after $30 discount)<br /></h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="shg-c-lg-2 shg-c-md-2 shg-c-sm-2 shg-c-xs-2">
+                            <div class="shg-box-vertical-align-wrapper">
+                                <div class="shg-box shg-c" id="s-88c06cf9-c7f1-4bdf-abca-30b22a4571d3">
+                                    <div class="shg-box-overlay"></div>
+                                    <div class="shg-box-content">
+                                        <div id="s-debb777a-0155-4caa-98a3-c003cf1c51ec" class="shg-c shg-align-center">
+                                            <div class="shogun-heading-component">
+                                                <h3>Mirage<br />$299<br /><br /></h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="shg-c-lg-2 shg-c-md-2 shg-c-sm-2 shg-c-xs-2">
+                            <div class="shg-box-vertical-align-wrapper">
+                                <div class="shg-box shg-c" id="s-02daeb73-8242-4fba-9cb5-081f99a7348a">
+                                    <div class="shg-box-overlay"></div>
+                                    <div class="shg-box-content">
+                                        <div id="s-b285c535-fe12-4b1f-bdde-1aaab512597b" class="shg-c shg-align-center">
+                                            <div class="shogun-heading-component">
+                                                <h3>0.15mm All<br />Poly Skin in Medium<br />Thickness<br />$319<br />(on sale)<br /></h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="shg-c-lg-1 shg-c-md-1 shg-c-sm-1 shg-c-xs-2"></div>
+                    </div>
+                </div>
+
+                <div class="shg-c" id="s-481409b9-34d7-4d3a-94e0-b019767cfd8a">
+                    <div class="shg-row" data-col-grid-mode-on="true">
+                        <div class="shg-c-lg-3 shg-c-md-3 shg-c-sm-3 shg-c-xs-2">
+                            <div class="shg-c shogun-image-container shg-align-center" style="" id="s-fea6c196-8ba6-45e2-adb7-bcbae837576e">
+                                <img
+                                    data-src="https://i.shgcdn.com/da3e31b2-e189-4bfb-a48a-a8360cfc7378/-/format/auto/-/preview/3000x3000/-/quality/lighter/"
+                                    width=""
+                                    height=""
+                                    style=""
+                                    alt=""
+                                    class="shogun-image shogun-lazyload"
+                                />
+                            </div>
+
+                            <script type="text/javascript">
+                                window.SHOGUN_IMAGE_ELEMENTS = window.SHOGUN_IMAGE_ELEMENTS || new Array();
+                                window.SHOGUN_IMAGE_ELEMENTS.push({ hoverImage: "", uuid: "s-fea6c196-8ba6-45e2-adb7-bcbae837576e" });
+                            </script>
+                            <div id="s-9d53eb98-c53f-485e-9f4c-437a1f51588c" class="shg-c shg-align-center">
+                                <div class="shogun-heading-component">
+                                    <h3>French lace<br />Light-medium<br />density<br /></h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="shg-c-lg-2 shg-c-md-2 shg-c-sm-2 shg-c-xs-2">
+                            <div class="shg-box-vertical-align-wrapper">
+                                <div class="shg-box shg-c" id="s-dc9ee7d1-0726-4ddc-86ed-d6113a76141a">
+                                    <div class="shg-box-overlay"></div>
+                                    <div class="shg-box-content">
+                                        <div id="s-e819c3e6-fe14-42fe-9b92-6cde4c750417" class="shg-c shg-align-center">
+                                            <div class="shogun-heading-component">
+                                                <h3>M105<br />$239<br /></h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="shg-c-lg-2 shg-c-md-2 shg-c-sm-2 shg-c-xs-2">
+                            <div class="shg-box-vertical-align-wrapper">
+                                <div class="shg-box shg-c" id="s-abc3f081-0de5-4e89-a712-3411de20d827">
+                                    <div class="shg-box-overlay"></div>
+                                    <div class="shg-box-content">
+                                        <div id="s-13e1ed43-6f93-4463-94f7-70066b29ca73" class="shg-c shg-align-center">
+                                            <div class="shogun-heading-component">
+                                                <h3>Champion Remy<br />$339<br />(after $30 discount)<br /></h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="shg-c-lg-2 shg-c-md-2 shg-c-sm-2 shg-c-xs-2">
+                            <div class="shg-box-vertical-align-wrapper">
+                                <div class="shg-box shg-c" id="s-9d49c1a2-30fd-46f3-9692-0965051bbecb">
+                                    <div class="shg-box-overlay"></div>
+                                    <div class="shg-box-content">
+                                        <div id="s-658e2263-a833-4e92-baba-ecdeb3b96242" class="shg-c shg-align-center">
+                                            <div class="shogun-heading-component">
+                                                <h3>Thor<br />$349<br /></h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="shg-c-lg-2 shg-c-md-2 shg-c-sm-2 shg-c-xs-2">
+                            <div class="shg-box-vertical-align-wrapper">
+                                <div class="shg-box shg-c" id="s-7986150d-ed1a-4782-967e-86938322938d">
+                                    <div class="shg-box-overlay"></div>
+                                    <div class="shg-box-content">
+                                        <div id="s-b3378fe5-4e79-4e87-b7bc-55984bd9d300" class="shg-c shg-align-center">
+                                            <div class="shogun-heading-component">
+                                                <h3>Full French<br />Lace<br />(N-French)<br />$319<br />(on sale)<br /></h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="shg-c-lg-1 shg-c-md-1 shg-c-sm-1 shg-c-xs-2"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="shg-fw">
+        <div class="shg-box-vertical-align-wrapper">
+            <div class="shg-box shg-c" id="s-9682329c-cc24-4868-9034-0ac116ca04ac">
+                <div class="shg-box-overlay"></div>
+                <div class="shg-box-content">
+                    <div class="shg-c" id="s-87ae11fd-9775-4faa-97a6-27bfa938c27b">
+                        <div class="shg-row" data-col-grid-mode-on="">
+                            <div class="shg-c-lg-6 shg-c-md-6 shg-c-sm-6 shg-c-xs-12">
+                                <div class="shg-c shogun-image-container shogun-image-linked shg-align-center" style="" id="s-d7da4934-9b19-4d6b-9107-41fcc99e5829">
+                                    <a class="shogun-image-link" href="/men-hair-pieces-toupees/" target="_blank">
+                                        <img
+                                            data-src="https://i.shgcdn.com/5e7597ac-eccd-4faa-a454-b3ecae5b1af2/-/format/auto/-/preview/3000x3000/-/quality/lighter/"
+                                            width=""
+                                            height=""
+                                            style=""
+                                            alt=""
+                                            class="shogun-image shogun-lazyload"
+                                        />
+                                    </a>
+                                </div>
+
+                                <script type="text/javascript">
+                                    window.SHOGUN_IMAGE_ELEMENTS = window.SHOGUN_IMAGE_ELEMENTS || new Array();
+                                    window.SHOGUN_IMAGE_ELEMENTS.push({ hoverImage: "", uuid: "s-d7da4934-9b19-4d6b-9107-41fcc99e5829" });
+                                </script>
+                            </div>
+                            <div class="shg-c-lg-6 shg-c-md-6 shg-c-sm-6 shg-c-xs-12">
+                                <div class="shg-c shogun-image-container shogun-image-linked shg-align-center" style="" id="s-fff9d45e-03b2-4cbe-8dad-2cca8e3b4ccf">
+                                    <a class="shogun-image-link" href="https://www.superhairpieces.com/womens-hair-pieces-toppers-wigs/" target="_blank">
+                                        <img
+                                            data-src="https://i.shgcdn.com/9a775dfb-8790-46c0-aa31-5281eb556803/-/format/auto/-/preview/3000x3000/-/quality/lighter/"
+                                            width=""
+                                            height=""
+                                            style=""
+                                            alt=""
+                                            class="shogun-image shogun-lazyload"
+                                        />
+                                    </a>
+                                </div>
+
+                                <script type="text/javascript">
+                                    window.SHOGUN_IMAGE_ELEMENTS = window.SHOGUN_IMAGE_ELEMENTS || new Array();
+                                    window.SHOGUN_IMAGE_ELEMENTS.push({ hoverImage: "", uuid: "s-fff9d45e-03b2-4cbe-8dad-2cca8e3b4ccf" });
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="shg-box-vertical-align-wrapper">
+        <div class="shg-box shg-c" id="s-a4d059db-d3b8-4c51-9eae-f3a6dfbd8536">
+            <div class="shg-box-overlay"></div>
+            <div class="shg-box-content">
+                <div class="shg-c shogun-image-container shogun-image-linked shg-align-center" style="" id="s-0775cfa5-cb17-4bc9-8888-f0a185315ccd">
+                    <a class="shogun-image-link" href="https://www.youtube.com/embed/o4Yg2lsd24Y" target="_blank">
+                        <img
+                            data-src="https://i.shgcdn.com/b404dddf-dc84-4e2a-91e5-207153549407/-/format/auto/-/preview/3000x3000/-/quality/lighter/"
+                            width=""
+                            height=""
+                            style=""
+                            alt=""
+                            class="shogun-image shogun-lazyload"
+                        />
+                    </a>
+                </div>
+
+                <script type="text/javascript">
+                    window.SHOGUN_IMAGE_ELEMENTS = window.SHOGUN_IMAGE_ELEMENTS || new Array();
+                    window.SHOGUN_IMAGE_ELEMENTS.push({ hoverImage: "", uuid: "s-0775cfa5-cb17-4bc9-8888-f0a185315ccd" });
+                </script>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="https://cdn.getshogun.com/5/615f59f10b20cb00b1569492.js" async></script>
+</div>
+<div>
+    <div class="page-heading review-wrapper-title">Checkout our partners' reviews</div>
+    <div class="review-wrapper">        
+        <div class="review-content-wrapper">
+            <svg class="loading" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin: auto; background: none; display: block; shape-rendering: auto;" width="200px" height="200px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
+                <path d="M10 50A40 40 0 0 0 90 50A40 42 0 0 1 10 50" fill="#444" stroke="none">
+                  <animateTransform attributeName="transform" type="rotate" dur="1s" repeatCount="indefinite" keyTimes="0;1" values="0 50 51;360 50 51"></animateTransform>
+                </path>
+            </svg>
+        </div>
+    </div>
+    <!-- <div review-section class="swiper mySwiper">
+        <div class="swiper-wrapper"></div>
+        <div class="review-pagination">
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </div>     -->
+</div>
+<script>
+    window.addEventListener("DOMContentLoaded", function() {
+        let salons = [
+            {
+                name: "Hair's Your Answer",
+                author: "Nancy",
+                location: "PA, US",
+                picture: "https://superhairpieces.com/product_images/uploaded_images/featured-salon-nancy-logo.gif"
+            },
+            {
+                name: "Hair Solutions",
+                author: "Marianne",
+                location: "WV, US",
+                picture: "https://superhairpieces.com/product_images/uploaded_images/annie-logo.png"
+            },
+            {
+                name: "True Hair",
+                author: "Teresha",
+                location: "ON, CA",
+                picture: "https://superhairpieces.com/product_images/uploaded_images/teresha-logo.png"
+            },
+            {
+                name: "Headline Studio",
+                location: "NC, US",
+                author: "Deanna",
+                picture: "https://superhairpieces.com/product_images/uploaded_images/headline-profile.png"
+            },
+            {
+                name: "Headline Studio",
+                location: "NC, US",
+                author: "Vicky",
+                picture: "https://superhairpieces.com/product_images/uploaded_images/headline-profile.png"
+            },
+            {
+                name: "xTremehairextensions",
+                author: "Juliana",
+                location: "ON, CA",
+                picture: "https://superhairpieces.com/product_images/uploaded_images/juliana-logo-w250.jpg"
+            },
+            {
+                name: "Your Mane Girl",
+                author: "Kayla",
+                location: "ON, CA",
+                picture: "https://superhairpieces.com/product_images/uploaded_images/kayla-profile.png"
+            }
+        ];
+        fetch(`//shp-webserver-temp.glitch.me/stamped-review-by-emails?email=hairsyouranswer@verizon.net&store=www.superhairpieces.com&email=anniepadgett1@gmail.com&store=www.superhairpieces.com&email=sales@truehair.ca&store=superhairpieces.ca&email=headlinestudio@yahoo.com&store=www.superhairpieces.com&email=xtremeextensions@gmail.com&store=superhairpieces.ca&email=yourmanegirlkayla@gmail.com&store=superhairpieces.ca`)
+        .then(r=>r.json())
+        .then(r=>{
+            r.sort((a,b)=> {
+                if (new Date(a.dateCreated)<new Date(b.dateCreated)) {
+                    return 1;
+                } else if (new Date(a.dateCreated)>new Date(b.dateCreated)) {
+                    return -1;
+                } else {
+                    return 0;
+                }
+            })            
+            let cnt = "";
+            for (let rr of r) {
+                let ath = salons.findIndex(s=>rr.author.includes(s.author));
+                cnt+=`<div class="review-content-item" author="${rr.author}">
+                ${rr.reviewUserPhotos?`<img src="https://s3-us-west-2.amazonaws.com/stamped.io/uploads/photos/thumb/${rr.reviewUserPhotos.split(",")[0]}" class="review-media"/>`:`<video class="review-media" controls loop playsinline muted><source src="https://s3.us-west-2.amazonaws.com/stamped.io/uploads/videos/${rr.reviewUserVideos.split(",")[0]}.mp4"></video>`}
+                    <div class="review-content">
+                        <div>
+                            <div class="review-title">${rr.reviewTitle}</div>
+                            <div>${rr.reviewMessage}</div>
+                        </div>
+                        ${ath>=0?`<div class="review-link"><span class="highlight">${salons[ath].name}</span>, ${salons[ath].location}</div>`:""}
+                    </div>                    
+                </div>`;
+            }
+            $(".review-content-wrapper").append(cnt);
+            $(".loading").hide();            
+        })
+        .catch(e=>console.log(e));           
+        
+    })
+</script>
+<!-- <script src="/content/js/swiper-bundle.min.js"></script> -->
+<!-- <script>
+    window.addEventListener("DOMContentLoaded", function() {
+        let salons = [
+            {
+                name: "Hair's Your Answer",
+                author: "Nancy S.",
+                location: "PA.US",
+                picture: "https://superhairpieces.com/product_images/uploaded_images/featured-salon-nancy-logo.gif"
+            },
+            {
+                name: "Hair Solutions",
+                author: "Marianne s.",
+                location: "WV.US",
+                picture: "https://superhairpieces.com/product_images/uploaded_images/annie-logo.png"
+            },
+            {
+                name: "True Hair",
+                author: "Teresha C.",
+                location: "ON.CA",
+                picture: "https://superhairpieces.com/product_images/uploaded_images/teresha-logo.png"
+            },
+            {
+                name: "Headline Studio",
+                location: "NC.US",
+                author: "Deanna N.",
+                picture: "https://superhairpieces.com/product_images/uploaded_images/headline-profile.png"
+            },
+            {
+                name: "Headline Studio",
+                location: "NC.US",
+                author: "Vicky",
+                picture: "https://superhairpieces.com/product_images/uploaded_images/headline-profile.png"
+            },
+            {
+                name: "xTremehairextensions",
+                author: "Juliana R.",
+                location: "ON.CA",
+                picture: "https://superhairpieces.com/product_images/uploaded_images/juliana-logo-w250.jpg"
+            },
+            {
+                name: "Your Mane Girl",
+                author: "Kayla C.",
+                location: "ON.CA",
+                picture: "https://superhairpieces.com/product_images/uploaded_images/kayla-profile.png"
+            }
+        ];
+        fetch(`//shp-webserver-temp.glitch.me/stamped-review-by-emails?email=hairsyouranswer@verizon.net&store=www.superhairpieces.com&email=anniepadgett1@gmail.com&store=www.superhairpieces.com&email=sales@truehair.ca&store=superhairpieces.ca&email=headlinestudio@yahoo.com&store=www.superhairpieces.com&email=xtremeextensions@gmail.com&store=superhairpieces.ca&email=yourmanegirlkayla@gmail.com&store=superhairpieces.ca`)
+        .then(r=>r.json())
+        .then(r=>{            
+            r.sort((a,b)=> {
+                if (new Date(a.dateCreated)<new Date(b.dateCreated)) {
+                    return 1;
+                } else if (new Date(a.dateCreated)>new Date(b.dateCreated)) {
+                    return -1;
+                } else {
+                    return 0;
+                }
+            })
+            console.log(r);
+            let cnt = "";
+            for (let rr of r) {
+                let pf = salons.findIndex(s=>rr.author.includes(s.author));  
+                let str = "";
+                for (let i=1; i<=rr.reviewRating; i++) {
+                    str+=`<svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="star" class="svg-inline--fa fa-star fa-w-18" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path fill="#fdee85" d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"></path></svg>`;
+                }              
+                cnt+=`<div class="swiper-slide review-wrapper">
+                        ${rr.reviewUserPhotos?`<img src="https://s3-us-west-2.amazonaws.com/stamped.io/uploads/photos/thumb/${rr.reviewUserPhotos.split(",")[0]}" class="review-media"/>`:`<video class="review-media" controls loop playsinline muted><source src="https://s3.us-west-2.amazonaws.com/stamped.io/uploads/videos/${rr.reviewUserVideos.split(",")[0]}.mp4"></video>`}
+                        <div class="review-content">
+                            <div>
+                                <div>${str}</div>
+                                <div class="title">${rr.reviewTitle}</div>
+                                <div class="message">${rr.reviewMessage}</div>
+                            </div>
+                            ${pf>=0?`<div class="review-profile">
+                                <img src="${salons[pf].picture}"/>
+                                <div>${salons[pf].name}</div>
+                                <div>${salons[pf].location}</div>
+                            </div>`:``}
+                        </div>                        
+                    </div>`;
+            }
+            $("[review-section] .swiper-wrapper").append(cnt);
+            let swiper = new Swiper(".mySwiper", {
+                loop: true,                
+                pagination: {
+                    el: ".swiper-pagination",
+                    type: "fraction",
+                },
+                navigation: {
+                    nextEl: ".swiper-button-next",
+                    prevEl: ".swiper-button-prev",
+                }
+            })
+        })
+        .catch(e=>console.log(e));
+    });
+</script> -->

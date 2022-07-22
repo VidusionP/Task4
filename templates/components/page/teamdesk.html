@@ -1,0 +1,59 @@
+<!-- <script src="https://s3.amazonaws.com/stitch-sdks/js/bundles/4.6.0/stitch.js"></script>
+<script>
+  const client = stitch.Stitch.initializeDefaultAppClient('application-0-zlltj');
+  const db = client.getServiceClient(stitch.RemoteMongoClient.factory, 'mongodb-atlas').db('sample_restaurants');
+  client.auth.loginWithCredential(new stitch.AnonymousCredential()).then(user =>
+    // db.collection('restaurants').updateOne({name: 'Riviera Caterer'}, {$set:{cuisine:'Vietnamese'}}, {upsert:true})
+    // db.collection('restaurants').find({cuisine: 'American'}, { limit: 100}).asArray()
+    db.collection('restaurants').find({}, {limit: 100}).asArray()
+  ).then(docs => {
+      console.log("Found docs", docs)
+      console.log("[MongoDB Realm] Connected to Realm")
+  }).catch(err => {
+    console.error(err)
+  });
+</script> -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    var authtoken = "3B3A2B5E707E4D19A57D1FCE6FCBD842";
+    var baseurl = "https://www.teamdesk.net/secure/api/v2/56554/";
+    // user
+    // $.getJSON(
+    //     "https://www.teamdesk.net/secure/api/v2/56554/" +
+    //         authtoken +
+    //         "/user.json",
+    //     function (data) {
+    //         console.log(data);
+    //     }
+    // );
+    // database information
+    $.getJSON(baseurl + authtoken + "/describe.json", function (data) {
+        console.log(data);
+    });
+    // table information
+    $.getJSON(
+        baseurl + authtoken + "/Inventory/describe.json",
+        function (data) {
+            console.log(data);
+        }
+    );
+    // select data from table Client
+    // $.getJSON(baseurl + authtoken + "/Inventory/select.json", function (data) {
+    //     console.log(data);
+    // });
+
+    // var settings = {
+    //     url:
+    //         "https://www.teamdesk.net/secure/api/v2/56554/3B3A2B5E707E4D19A57D1FCE6FCBD842/Inventory/update.json",
+    //     method: "POST",
+    //     timeout: 0,
+    //     data: JSON.stringify([
+    //         { "@row.id": "4201", "Quantity in Canada": "1" },
+    //         { "@row.id": "4203", "Quantity in Canada": "1" },
+    //     ]),
+    // };
+
+    // $.ajax(settings).done(function (response) {
+    //     console.log(response);
+    // });
+</script>

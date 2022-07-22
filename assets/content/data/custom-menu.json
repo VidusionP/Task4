@@ -1,0 +1,99 @@
+{
+    "menu": [        
+        {
+            "name": "Featured Salons",
+            "link": "/featured-salons/"
+        },
+        {
+            "name": "Become a Media Partner",
+            "link": "/become-a-media-partner/"
+        },
+	    {
+            "name": "Our Media Partners",
+            "subMenu": [
+                {
+                    "name": "Hair's Your Answer PA.US.",
+                    "link": "/featured-digital-media-partner-nancy-s/"
+                },
+                {
+                    "name": "Hair Solutions WV.US.",
+                    "link": "/featured-digital-media-partner-annie-s/"
+                },
+                {
+                    "name": "True Hair ON.CA.",
+                    "link": "/featured-digital-media-partner-teresa-c/"
+                },
+		{
+                    "name": "Headline Studio NC.US.",
+                    "link": "/featured-digital-media-partner-deanna/"
+                },
+		{
+                    "name": "Xtremehairextensions ON.CA.",
+                    "link": "/featured-digital-media-partner-juliana/"
+                },
+		{
+                    "name": "Your Mane Girl ON.CA.",
+                    "link": "/featured-digital-media-partner-kayla/"
+                }
+
+            ]
+        },
+	        {
+            "name": "Reviews",
+            "subMenu": [
+	    {
+               "name": "Rick's Experience with Hair System",
+               "link": "/rick-s-experience-with-hair-systems-superhairpieces-testimonial"
+                },
+                {
+               "name": "Starting A Hair System Journey",
+               "link": "/starting-a-hair-system-journey"
+                },
+		{
+               "name": "Reviews From Verified Buyer (Photo&Video)",
+               "link": "/reviews-and-testimonials/"
+                },
+                {
+               "name": "Reviews From Verified Buyer (Full Version)",
+               "link": "/reviews-and-testimonials-all/"
+                },
+                {
+               "name": "How to Write Review",
+               "link": "/how-to-write-a-review-on-superhairpieces/"
+              }
+            ]
+        },
+	    {
+            "name": "Resources",
+	        "subMenu": [
+	            {
+                    "name": "Superhair Creator",
+                    "link": "/superhair-creator"
+                },
+	            {
+                    "name": "Hair Systems for Your Hair Business",
+                    "link": "/hair-systems-for-your-hair-business"
+                },
+
+                {
+                    "name": "Our Response to the Pandemic",
+                    "link": "/our-response-to-the-pandemic/"
+                },
+                {
+                    "name": "How long to wait during the pandemic?",
+                    "link": "/hair-systems-order-processing-time-during-the-pandemic/"
+                },
+		        {
+                    "name": "New Models during Pandemic",
+                    "link": "/new-models-designed-during-pandemic"
+                },
+		        {
+                    "name": "The 4 Best Human Hair Toppers for Women",
+                    "link": "/the-4-best-human-hair-toppers-for-women-with-fine-thin-hair"
+                }
+               
+            ]
+              
+        }
+    ]
+}

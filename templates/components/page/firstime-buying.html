@@ -1,0 +1,818 @@
+<style>
+    :root {
+        --main-color: #202124;
+        --main-less-color: #444;
+        --second-color: #bf7e58;
+        --second-less-color: #dbb5a0;
+        --third-color: #fcfcfc;
+        --third-less-color: #eee;
+        --forth-color: #d1d3d4;
+        --font-size-large: 23px;
+        --font-size-medium: 18px;
+        --font-size-normal: 13px;
+        --font-size-small: 12px;
+        --border-radius: 10px;
+        --section-margin: 3rem;
+        --element-margin: 1.5rem;
+        --step-size: 25px;
+    }    
+    .sb-step-title {
+        font-size: var(--font-size-large);        
+        position: absolute;        
+        left: 0;
+        width: 100%;        
+        transform: translateY(-20px);
+    }    
+    .sb-step-num-wrap.applied::before {
+        content: "";
+        background-color: var(--forth-color);
+        position: absolute;
+        top: 11px;
+        left: 0;
+        height: 5px;
+        width: 100%;
+        z-index: 0;
+    }
+    .sb-step-num-wrap {
+        list-style: none;
+        display: flex;
+        justify-content: space-between;
+        margin: 0;
+        padding: 0;
+    }
+    .sb-step-num-wrap .step {
+        border: 3px solid var(--forth-color);
+        border-radius: 100%;
+        width: var(--step-size);
+        height: var(--step-size);
+        line-height: var(--step-size);        
+        background-color: #fff;                
+        position: relative;
+        z-index: 1;
+    }
+    .sb-step-num-wrap .step::after {
+        content: attr(title);
+        display: block;
+        position: absolute;
+        top: 0;        
+        /* left: calc(var(--element-margin) * -1); */
+        left: 0;
+        transform: translateX(-28%) translateY(calc(var(--step-size) + 5px));
+        font-size: var(--font-size-small);        
+        font-weight: bold;
+        color: var(--main-color);
+        display: none;
+        text-transform: uppercase;
+    }
+    .sb-step-num-wrap .step.active::after {
+        display: block;
+    }
+    .sb-step-num-wrap .step.active, .sb-step-num-wrap .step.done {
+        /* border-color: var(--second-color);
+        background-color: var(--second-color);         */
+        border-color: var(--second-less-color);
+        background-color: var(--second-less-color);
+    }    
+    .sb-step-label {
+        color: var(--second-color);        
+    }
+    .sb-step-bar {
+        position: absolute;
+        background: var(--second-less-color);
+        height: 5px;
+        width: 0%;
+        top: 11px;
+        left: 0;
+        z-index: 1;
+    }
+    .sb-step-content-wrap {
+        min-height: 75vh;
+    }
+    .sb-step-selection-wrap {        
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* min-height: calc(100vh - 120px - 5rem - 50px); */
+        min-height: calc(100vh - 150px);
+    }
+    .sb-step-selection {
+        display: flex;        
+        justify-content: center;
+        align-items: center;     
+        flex-wrap: wrap; 
+        position: relative;  
+    }
+    .sb-step-selection::before {
+        font-size: calc(var(--font-size-normal) + 2px);
+        content: attr(question);
+        display: block;
+        top: calc(var(--element-margin) * -2);
+        text-align: center;
+        position: absolute;        
+    }
+    .sb-step-selection .selection {
+        border: 1px solid var(--main-less-color);
+        padding: var(--element-margin) 0;
+        text-align: center;
+        text-transform: capitalize;
+        margin: calc(var(--element-margin) / 2);
+        width: 130px;
+    }
+    .sb-step-selection .selection.disable {
+        position: relative;
+    }
+    .sb-step-selection .selection.disable::after {
+        content: "";
+        width: 30px;
+        height: 30px;
+        background-image: url(/content/images/common/unavailable.svg);
+        background-size: 30px 30px;
+        background-repeat: no-repeat;
+        position: absolute;
+        right: 10px;
+        top: 10px;
+    }
+    .sb-step-selection .selection-img-wrap {
+        width: 100%;
+        height: 80px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: var(--element-margin);
+    }
+    .sb-step-selection .selection img {
+        max-width: 100%;
+        max-height: 100%;        
+    }     
+    .sb-step-selection .selection img[select] {
+        display: none;
+    }
+    .sb-step-selection .selection.select {
+        border-color: var(--second-color);
+        color: var(--second-color);
+        font-weight: bold;
+    }
+    .sb-step-selection .selection.select img {
+        display: none;
+    }
+    .sb-step-selection .selection.select img[select] {
+        display: block;
+    }
+    .sb-navigation {
+        position: absolute;
+        bottom: 50px;
+        left: 0;
+        width: 100%;        
+        /* padding: 0 var(--element-margin); */
+    }
+    .sb-navigation button {
+        border-radius: var(--border-radius);
+        padding: calc(var(--element-margin) / 2) 0;
+        text-align: center;
+        width: 122px;
+    }
+    .sb-navigation .prev {        
+        border: 1px solid var(--main-less-color);
+        color: var(--main-less-color);        
+    }    
+    .sb-navigation .prev.disable {
+        background-color: var(--third-less-color);
+    }
+    .sb-navigation .next {        
+        border: 1px solid var(--second-color);
+        background-color: var(--second-color);
+        color: var(--third-less-color);
+        float: right;
+    }
+    .sb-navigation .next.disable {
+        background-color: var(--second-less-color);
+        border-color: var(--second-less-color);
+    }
+    .page-heading {
+        display: none;
+    }
+    .sb-title {
+        text-align: center;
+        font-size: var(--font-size-large);
+        text-transform: capitalize;
+        margin-bottom: var(--section-margin);
+    }
+    .sb-product-wrap {        
+        width: 100%;        
+        display: flex;
+        margin: 0 auto;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        /* grid-template-columns: repeat(var(--product-length), 1fr);
+        grid-column-gap: var(--element-margin);
+        grid-row-gap: calc(var(--element-margin) * 2);         */
+    }
+    .sb-product-wrap .product {
+        text-align: center;
+        width: calc(50% - var(--element-margin));
+        margin: calc(var(--element-margin) / 2);
+        display: block;
+        text-decoration: none;
+    }
+    .sb-product-wrap .product img {
+        margin-bottom: calc(var(--element-margin) / 2);
+        width: 100%;
+    }
+    .sb-product-wrap .product .price {
+        font-weight: bold;
+        margin-top: calc(var(--element-margin) / 2);
+    }
+    .sb-button {
+        margin: var(--section-margin) auto;
+        width: fit-content;
+        padding: calc(var(--element-margin) / 2) 0;
+        width: 150px;
+        border-radius: var(--border-radius);
+        display: block;
+        border: 1px solid var(--second-color);
+    }
+    .sb-change {        
+        background-color: var(--second-color);        
+        color: var(--third-less-color);
+        border: 1px solid var(--third-less-color);
+    }
+    .sb-restart {
+        color: var(--second-color);
+    }
+    .sb-container, .sb-result-container, .sb-loading {
+        position: relative;
+        max-width: 1280px;
+        margin: 0 auto;
+    }
+    .sb-result-container, .sb-loading{
+        display: none;
+    }
+    .sb-result-container.no-result {
+        text-align: center;
+    }
+    .sb-bc-section-wrap {
+        margin-top: var(--section-margin);
+        max-width: 1000px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .sb-bc-section-wrap .title {
+        font-size: var(--font-size-medium);
+        margin-bottom: var(--element-margin);        
+    }
+    .sb-bc-section-wrap .title.title-pc {
+        display: none;
+    }
+    .sb-bc-section-wrap .title::before {
+        content: "_";
+        margin-right: 5px;
+        display: inline-block;
+    }
+    .sb-bc-section-wrap .title::after {
+        content: ".";
+        margin-left: 5px;
+        display: inline-block;
+    }
+    .sb-bc-section-wrap .sb-bc-item {
+        margin-bottom: var(--element-margin);
+    }
+    .sb-bad-combination-wrap .record {
+        padding: var(--element-margin);    
+        border: 1px solid var(--main-less-color);
+        border-radius: var(--border-radius);
+    }    
+    .sb-bad-combination-wrap .record .item {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .sb-bad-combination-wrap .record img {
+        width: 50px;
+        margin: 5px;
+    }
+    .sb-bad-combination-wrap .record img.cross {
+        width: 20px;
+    }
+    .sb-bad-combination-wrap .explanation {
+        padding: var(--element-margin);
+        text-align: justify;
+    }
+    .sb-result-button-wrap {
+        display: flex;
+        margin: 0 auto;
+    }
+    .sb-info-wrap {
+        position: fixed;
+        left: 0;
+        top: 50px;
+        width: 100%;
+        height: calc(100% - 50px);
+        display: flex;
+        justify-content: center;
+        align-items: center;        
+    }
+    .sb-info-wrap .overlay {
+        background-color: rgba(21,21,20,0.65);
+        backdrop-filter: blur(5px);
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+    }
+    .sb-info-wrap .content {
+        width: 80%;
+        max-width: 500px;
+        max-height: 80%;
+        border-radius: var(--border-radius);
+        background-color: var(--third-color);
+        z-index: 9;
+        padding: var(--section-margin);
+    }
+    .sb-info-wrap .content .title {
+        text-align: center;        
+        font-size: var(--font-size-medium);
+        font-weight: bold;
+    }    
+    .sb-info-wrap .content .item {
+        margin: var(--element-margin) auto;
+        width: fit-content;
+    }
+    .sb-info-wrap .content img {
+        height: 50px;
+        width: auto;
+    }
+    .sb-info-wrap .content img.cross {
+        height: 20px;
+        margin: 0 5px;
+    }
+    .sb-info-wrap .content .explanation {
+        text-align: center;        
+        font-size: var(--font-size-small);        
+    }    
+    @media (max-height: 739px) {
+        .sb-step-selection .selection-img-wrap {
+            display: none;
+        }
+        .sb-step-selection::before {
+            font-size: 11px;
+        }
+    }
+    @media (max-width: 310px) {
+        .sb-navigation button {
+            width: 45%;
+            font-size: 11px;
+        }
+    }
+    @media (min-width: 320px) {
+        .sb-navigation {
+            bottom: 90px;            
+        }
+    }
+    @media (min-width: 475px) {
+        .sb-product-wrap .product {
+            width: 250px;
+        }
+        .sb-result-button-wrap {
+            max-width: 400px;
+        }
+        .sb-info-wrap .content .explanation {
+            text-align: center;        
+            font-size: var(--font-size-normal);
+        }
+    }
+    @media (min-width: 551px) {
+        .sb-step-selection-wrap {
+            min-height: calc(100vh - 200px);
+        }
+    }
+    @media (min-width: 600px) {
+        .sb-step-title {
+            transform: translateY(0);
+        }  
+        .sb-step-selection::before {
+            font-size: var(--font-size-medium);            
+            top: calc(var(--element-margin) * -3);   
+            min-width: 500px;                     
+        }
+    }
+    @media (min-width: 801px) {
+        .sb-step-selection-wrap {
+            min-height: calc(100vh - 150px);
+        }        
+    }
+    @media (min-width: 900px) {  
+        .sb-step-selection::before {
+            min-width: 800px;
+        }      
+        .sb-product-wrap .product:hover img {
+            transform: scale(1.1);
+            transition: all .2s ease;
+        }        
+        .sb-bad-combination-wrap {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            align-items: center;        
+        }
+        .sb-bc-section-wrap .title {
+            display: none;
+        }
+        .sb-bc-section-wrap .title.title-pc {
+            display: block;
+            text-align: left;
+        }
+        .sb-bad-combination-wrap .explanation {
+            padding-top: 0;
+            padding-bottom: 0;
+        }        
+        .sb-step-title, .sb-navigation {
+            max-width: 900px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .sb-step-num-wrap .step::after {
+            display: block;
+        }
+        .sb-button:hover {
+            transition: all .2s ease;
+        }
+        .sb-change:hover {
+            color: var(--second-color);
+            background-color: var(--third-color);
+            border-color: var(--second-color);
+        }
+        .sb-restart:hover {
+            background-color: var(--second-color);
+            color: var(--third-less-color);            
+        }
+        .sb-step-num-wrap .step.done {
+            cursor: pointer;
+        }
+        .sb-step-num-wrap .step.done:hover {
+            background-color: var(--second-color);
+        }
+        .sb-navigation .next:not(.disable):hover {
+            color: var(--second-color);
+            background-color: var(--third-color);
+            border-color: var(--second-color);
+            transition: all .2s ease;
+        }
+        .sb-navigation .prev:not(.disable):hover {
+            border: 1px solid var(--third-less-color);
+            background-color: var(--second-color);
+            color: var(--third-less-color);
+            transition: all .2s ease;
+        }        
+    }
+    @media (min-width: 1150px) {
+        .sb-navigation {
+            bottom: 130px;
+        }
+    }
+</style>
+<link rel="preload" as="image" href="/content/images/marketing/firstbuyer/durable-natural looking 1.svg">
+<link rel="preload" as="image" href="/content/images/marketing/firstbuyer/natural looking 1.svg">
+<link rel="preload" as="image" href="/content/images/marketing/firstbuyer/color - durable - natural looking 1.svg">
+<link rel="preload" as="image" href="/content/images/marketing/firstbuyer/color - natural looking 1.svg">
+<div class="sb-container">    
+    <div class="sb-step-title">        
+        <div class="sb-step-bar"></div>
+        <ul class="sb-step-num-wrap">
+        </ul>        
+    </div>    
+    <div class="sb-step-content-wrap">                
+    </div>    
+    <div class="sb-navigation">
+        <button class="prev disable">Back</button>
+        <button class="next disable">Next</button>
+    </div>
+</div>
+<div class="sb-result-container">
+    <div class="sb-title">your recommended products</div>
+    <div class="sb-result-button-wrap">
+        <button class="sb-button sb-restart">Start Again</button>
+        <button class="sb-button sb-change">Change Options</button>
+    </div>
+</div>
+<div class="sb-loading">
+    <img class="lazyload" src="https://cdn11.bigcommerce.com/s-cavofu/stencil/c34dbbf0-44bd-013a-4668-5e87dd2cc182/e/e22ce390-4718-013a-88dc-16792fab9778/img/loading.svg" loading="lazy" alt="loading" hp-social-video-loading="" width="100px" style="width: 100px; margin: 0 auto;display: block;">
+</div>
+<div class="sb-info-wrap">
+    <div class="overlay"></div>
+    <div class="content">
+        <div class="title">Durable, Light Density</div>
+        <div class="item">
+            <img src="/content/images/marketing/firstbuyer/durable 1.svg" alt="durable">
+            <img src="/content/images/marketing/firstbuyer/cross.svg" class="cross">
+            <img src="/content/images/marketing/firstbuyer/light - density.svg" alt="light density">
+        </div>
+        <div class="explanation">
+            In order for light density units to look natural, lace materials are used so the base is not visible on the scalp. Since lace materials are not very durable, this combination of attributes is not possible. Please select "Natural-looking" or a higher hair density.
+        </div>
+    </div>
+</div>
+<script>
+    // var filter={
+    //     type:"",
+    //     "durable-natural":"",
+    //     material: "",
+    //     "hair-type": "",
+    //     density:"",
+    //     breathability:"",
+    //     "head-shape":""
+    // };
+    let filter={};
+    let currentStep=0;
+    function noProductContent() {
+        return `<div section=result>
+                    <div>This combination is <strong>not available</strong> with our hair systems for the following reason:</div>
+                    <div class="sb-bc-section-wrap">
+                        <div class="sb-bc-item">
+                            <div class="title">Durable, Light Density</div>
+                            <div class="sb-bad-combination-wrap">
+                                <div class="record">
+                                    <div class="item">
+                                        <img src="/content/images/marketing/firstbuyer/durable 1.svg" alt="durable">
+                                        <img src="/content/images/marketing/firstbuyer/cross.svg" class="cross">
+                                        <img src="/content/images/marketing/firstbuyer/light - density.svg" alt="light density">
+                                    </div>
+                                </div>
+                                <div class="explanation">
+                                    <div class="title title-pc">Durable, Light Density</div>
+                                    <div>In order for light density units to look natural, lace materials are used so the base is not visible on the scalp. Since lace materials are not very durable, this combination of attributes is not possible. Please select "Natural-looking" or a higher hair density.  </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sb-bc-item">
+                            <div class="title">Natural-looking, High Density</div>
+                            <div class="sb-bad-combination-wrap">
+                                <div class="record">
+                                    <div class="item">
+                                        <img src="/content/images/marketing/firstbuyer/natural looking 1.svg" alt="natural looking">
+                                        <img src="/content/images/marketing/firstbuyer/cross.svg" class="cross">
+                                        <img src="/content/images/marketing/firstbuyer/high - density.svg" alt="high density">
+                                    </div>
+                                </div>
+                                <div class="explanation">
+                                    <div class="title title-pc">Natural-looking, High Density</div>
+                                    <div>High-density units require the base materials to be thicker to hold more hair, which affects how natural the unit will look. Please select "Durable" or a lower hair density.</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sb-bc-item">
+                            <div class="title">Curly, Light or High Density</div>
+                            <div class="sb-bad-combination-wrap">
+                                <div class="record">
+                                    <div class="item">
+                                        <img src="/content/images/marketing/firstbuyer/curl hair 1.svg" alt="curly">
+                                        <img src="/content/images/marketing/firstbuyer/cross.svg" class="cross">
+                                        <img src="/content/images/marketing/firstbuyer/light - density.svg" alt="light density">
+                                        <img src="/content/images/marketing/firstbuyer/high - density.svg" alt="high density">
+                                    </div>
+                                </div>
+                                <div class="explanation">
+                                    <div class="title title-pc">Curly, Light or High Density</div>
+                                    <div>Unfortunately, permed units are only available for medium-density units at this time.</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sb-bc-item">
+                            <div class="title">Full Cap, anything not Durable and Medium Density</div>
+                            <div class="sb-bad-combination-wrap">
+                                <div class="record">
+                                    <div class="item">
+                                        <img src="/content/images/marketing/firstbuyer/full cap 1.svg" alt="ful cap">
+                                        <img src="/content/images/marketing/firstbuyer/cross.svg" class="cross">
+                                        <img src="/content/images/marketing/firstbuyer/natural looking 1.svg" alt="natural looking">
+                                        <img src="/content/images/marketing/firstbuyer/durable-natural looking 1.svg" alt="durable natural-looking">
+                                    </div>
+                                    <div class="item">
+                                        <img src="/content/images/marketing/firstbuyer/full cap 1.svg" alt="ful cap">
+                                        <img src="/content/images/marketing/firstbuyer/cross.svg" class="cross">
+                                        <img src="/content/images/marketing/firstbuyer/light - density.svg" alt="light density">
+                                        <img src="/content/images/marketing/firstbuyer/high - density.svg" alt="hight density">
+                                    </div>
+                                </div>
+                                <div class="explanation">
+                                    <div class="title title-pc">Full Cap, anything not Durable and Medium Density</div>
+                                    <div>Unfortunately, full cap units are only available in durable and medium density units at this time.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>`;
+    }
+    function embededSelection(r) {
+        let op = "", idx=currentStep;   
+        let questions = r.men.questions;     
+        $(".sb-step-num-wrap").find(".step").eq(idx).addClass("active");                
+        $(".sb-step-bar").css({width: `${Number(currentStep) / (questions.length-1) * 100}%`});
+        if (filter[questions[idx].code] == undefined) {
+            filter[questions[idx].code]="";
+        }
+        $(".sb-navigation button").removeClass("disable");
+        if (idx==questions.length-1) {
+            $(".sb-navigation .next").html("Submit");
+        } else {
+            $(".sb-navigation .next").html("Next");
+            if (idx==0) {
+                $(".sb-navigation .prev").addClass("disable");
+            }            
+            if (filter[questions[idx].code].length==0) {
+                $(".sb-navigation .next").addClass("disable");
+            }
+        }        
+        for (let opp of questions[idx].options) {
+            op+=`
+                <div class="selection${filter[questions[idx].code].length>0?opp.code==filter[questions[idx].code]?" select":"":""}" code="${opp.code}" option="${questions[idx].code}">
+                    <div class="selection-img-wrap">
+                        <img src="${opp.img}" loading="lazy" alt="${opp.name}" non-select>
+                        <img src="${opp["img-select"]}" select alt="${opp.name}">
+                    </div>
+                    <div class="selection-name">${opp.name}</div>
+                </div>
+            `;
+        }
+        // $(".sb-step-title").html(`
+        //     <div><span class="sb-step-label" step-index=1>${idx+1}</span> / <span step-total>${r.men.length}</span> <span step-title>${r.men[idx].name}</span></div>
+        //     <div class="question">${r.men[idx].question}</div>
+        // `);
+        $(".sb-step-content-wrap").html(`
+        <div class="sb-step-selection-wrap">
+            <div class="sb-step-selection">
+                ${op}
+            </div>
+        </div>
+        `).attr("step-idx",idx).animate({opacity: 1});
+        $(".sb-step-selection").attr("question",questions[idx].question);
+        // console.log(`calc($(window).height() - $(".sb-step-selection-wrap").position().top - $(".header").height() - $(".header").position().top - 50px - 3.5rem)`);
+        // console.log(`calc(${$(window).height()} - ${$(".sb-step-selection-wrap").position().top} - ${$(".header").height()} - ${$(".header").position().top} - 50px - 3.5rem)`);
+        // $(".sb-step-selection-wrap").css({"min-height": `calc(${$(window).height()-$(".sb-step-selection-wrap").position().top-$(".header").height()-$(".header").position().top-50}px - 3.5rem)`});
+        $(".sb-step-selection .selection").on("click", function() {
+            if ($(this).hasClass("disable")) {
+                if (r.unavailable) {
+                    let unarr = r.unavailable;
+                    for (let [idx,f] of filter.entries()) {
+                        let ck = unarr.filter(ff=>ff.condition.includes(`${filter[idx]}: ${f}`))
+                    }
+                }
+            } else {
+                $(".sb-step-selection .selection").removeClass("select");
+                $(this).addClass("select");
+                filter[$(this).attr("option")]=$(this).attr("code");
+                $(".sb-navigation .next").removeClass("disable");
+            }
+        });
+    }
+    function resultFinder(data, property) {
+        if (property=="head-shape") {                        
+            return data.filter(rr=>rr[property].includes(filter[property]));
+        } else {
+            return data.filter(rr=>rr[property]==filter[property]);
+        }
+    }
+    function submit() {
+        $(".sb-result-container [section=result]").remove();
+        $(".sb-result-container").removeClass("no-result");
+        $(".sb-container").hide();
+        $(".sb-loading").show();        
+        fetch(`/content/data/firsttime-products.json`)
+        .then(r=>r.json())
+        .then(r=>{
+            if (r.men) {
+                // let result = r.men.filter(rr=>rr.type==filter.type&&rr["durable-natural"]==filter["durable-natural"]&&rr.material==filter.material&&rr["hair-type"]==filter["hair-type"]);                
+                let result = r.men;
+                for (let key in filter) {
+                    result = resultFinder(result, key);
+                }
+                console.log(result);
+                console.log(filter);
+                if (result.length>0) {
+                    let ids = result.map(rr=>rr["us-id"]);
+                    fetch(`https://shp-webserver-temp.glitch.me/bc-products`, {
+                        method: 'POST',
+                        headers: {
+                            accept: 'application/json',
+                            'content-type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            storeid:742053,
+                            query: `include_fields=id%2Cprimary_image%2Csku%2Cprice%2Ccustom_url%2Cname&include=primary_image&id%3Ain=${ids.join("%2C")}`
+                        })
+                    })
+                    .then(r1=>r1.json())
+                    .then(r1=>{       
+                        console.log(r1);
+                        $(".sb-loading").hide();
+                        if (r1.data) {
+                            if (r1.data.length>0) {
+                                let rs = `<div class="sb-product-wrap" section=result>`;
+                                for (let rr of r1.data) {
+                                    rs+=`
+                                        <a class="product" href="${rr.custom_url.url}">
+                                            <img src="${$(window).width()<475?rr.primary_image.url_thumbnail:rr.primary_image.url_standard}" loading="lazy" alt="${rr.sku}">
+                                            <div>${rr.name}</div>
+                                            <div class="price">USD$${rr.price}</div>
+                                        </a>                                                                    
+                                    `;
+                                }
+                                rs+=`</div>`;                                
+                                $(".sb-result-container .sb-result-button-wrap").before(rs);  
+                                $(".sb-result-container").show();                                
+                            }
+                        }
+                    })
+                    .catch(e=>{
+                        console.log(e);
+                        $(".sb-loading").hide();
+                        $(".sb-result-container .sb-result-button-wrap").before(`<div section=result>There are no products available based on your selections. Please try another selection.</div>`);
+                        // $(".sb-result-container .sb-result-button-wrap").after(noProductContent());
+                        $(".sb-result-container").addClass("no-result");                        
+                        $(".sb-result-container").show();    
+                    });                    
+                } else {
+                    $(".sb-loading").hide();
+                    $(".sb-result-container .sb-result-button-wrap").before(`<div section=result>There are no products available based on your selections. Please try another selection.</div>`);
+                    // $(".sb-result-container .sb-result-button-wrap").after(noProductContent());    
+                    $(".sb-result-container").addClass("no-result");
+                    $(".sb-result-container").show();    
+                }            
+            }
+        })
+        .catch(e=>{
+            console.log(e);
+            $(".sb-loading").hide();
+            $(".sb-result-container .sb-result-button-wrap").before(`<div section=result>There are no products available based on your selections. Please try another selection.</div>`);
+            $(".sb-result-container .sb-result-button-wrap").after(noProductContent());    
+            $(".sb-result-container").addClass("no-result");
+            $(".sb-result-container").show();
+        });
+    }
+    window.addEventListener("DOMContentLoaded", function() {
+        fetch(`/content/data/firstbuyer.json`)
+        .then(r=>r.json())
+        .then(r=>{
+            if (r.men) {
+                let questions = r.men.questions;
+                console.log(questions);
+                $(".sb-step-content-wrap").css({"min-height": "unset"});
+                let steps = "";
+                for (let [idx, rr] of questions.entries()) {
+                    steps +=`<li class="step" title="${rr.name}" step="${idx}"></step>`;
+                }
+                $(".sb-step-num-wrap").html(steps).addClass("applied");
+                $(".sb-step-num-wrap").find(".step").eq(0).addClass("active");                
+                currentStep = 0;
+                embededSelection(r);
+                $(".sb-step-num-wrap").find(".step").on("click", function() {
+                    if ($(this).hasClass("done")) {
+                        currentStep = Number($(this).attr("step"));
+                        for (let i=currentStep+1; i<questions.length; i++) {    
+                            $(".sb-step-num-wrap").find(".step").removeClass("active");
+                            $(".sb-step-num-wrap").find(".step").eq(i).removeClass("done");
+                        }
+                        embededSelection(r);
+                    }                    
+                });
+                $(".sb-navigation .prev").on("click", function() {
+                    if ($(this).hasClass("disable")) {
+                        return false;
+                    }
+                    $(".sb-step-content-wrap").css({opacity: 0});                    
+                    if (currentStep>0) {
+                        $(".sb-step-num-wrap").find(".step").removeClass("active");
+                        $(".sb-step-num-wrap").find(".step").eq(currentStep).removeClass("done");
+                        currentStep--;
+                        embededSelection(r);
+                    }
+                });
+                $(".sb-navigation .next").on("click", function() {                     
+                    if ($(this).hasClass("disable")) {
+                        return false;
+                    }                                        
+                    if ($(this).html()=="Submit") {
+                        submit();
+                    } else {
+                        $(".sb-step-content-wrap").css({opacity: 0});
+                        if (currentStep>=0) {
+                            $(".sb-step-num-wrap").find(".step").removeClass("active");
+                            $(".sb-step-num-wrap").find(".step").eq(currentStep).addClass("done");
+                            currentStep++;
+                            embededSelection(r);                        
+                        }         
+                    }                               
+                })
+                $(".sb-restart").on("click", function() {
+                    location.reload();
+                })
+                $(".sb-change").on("click", function() {
+                    $(".sb-result-container").hide();
+                    $(".sb-container").show();
+                });
+            }
+        })
+        .catch(e=>console.log(e));        
+    });
+</script>

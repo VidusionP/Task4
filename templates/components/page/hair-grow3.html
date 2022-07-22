@@ -1,0 +1,360 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+    :root {
+        --element-margin:1.3rem;
+        --section-margin:2.3rem;
+        --font-family1: 'Montserrat', sans-serif;
+        --color1: #A33A8C;
+        --color2: #f8f9fa;
+        --color3: #0D4060;
+        --color4: #878787;
+        --color5: #ebebeb;
+    }
+    .body.page .container {
+        padding: 0;        
+    }
+    .body.page .page {
+        margin: 0;
+    }
+    .body.page .page-content {
+        padding: 0;
+    }
+    .hg-wrap {
+        font-family: var(--font-family1);
+    }
+    section {
+        padding: var(--element-margin);
+        margin-bottom: var(--section-margin);
+    }
+    section .title {
+        font-size: 25px;
+        text-align: center;
+    }
+    .hg-header {
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        grid-gap: var(--element-margin);
+        padding: 0;
+        align-items: center;
+        justify-content: center;        
+    }        
+    .hg-header .c-img {
+        grid-column-start: 2;        
+        grid-row-start: 1;        
+    }
+    .hg-header img {
+        width: 100%;
+        height: auto;
+    }
+    .hg-header .c-content1 {
+        grid-column-start: 1;
+        grid-row-start: 1;
+        color: var(--color1);
+        font-size: 25px;
+        padding-left: var(--element-margin);
+    }
+    .hg-header .c-content2 {
+        grid-row-start: 2;
+        grid-column: 1 / span 2;
+        font-size: 15px;
+        text-align: center;
+        padding: 0 var(--element-margin);
+    }    
+    .hg-header .c-content {     
+        font-weight: bold;
+    }
+    .hg-header .cc-content1 {
+        font-style: italic;
+        margin: var(--element-margin) 0;
+    }
+    .hg-wrap .desp {
+        text-align: center;
+        padding: var(--section-margin) var(--element-margin);
+        font-size: 15px;
+    }    
+    .hg-wrap .sub-desp {
+        display: none;
+    }
+    .hg-special {
+        background: var(--color1);
+        color: var(--color2);
+        text-align: center;
+        position: relative;        
+        border-radius: 33px;       
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); 
+    }                
+    .hg-special .content {
+        margin-top: var(--element-margin);
+        font-size: 14px;
+    }    
+    .hg-steps {
+        padding: 0;
+    }    
+    .hg-steps .c-step {
+        padding: var(--element-margin);
+        margin-top: var(--section-margin);
+    }
+    .hg-steps .c-step .title {
+        font-size: 27px;
+    }
+    .hg-steps .c-step .c-content {
+        font-size: 40px;
+        color: var(--color1);
+        font-weight: bold;
+        margin-bottom: var(--element-margin);
+    }
+    .hg-steps .c-step img {
+        width: 100%;
+        margin-bottom: var(--element-margin);
+    }
+    .hg-steps .cc-content {
+        font-size: 17px;
+    }
+    .hg-steps .c-step--grey {
+        background-color: var(--color5);
+    }
+    .hg-steps .cc-content .comment {
+        font-style: italic;
+    }    
+    .hg-disclaimer {
+        color: var(--color4);
+        font-size: 12px;
+        text-align: center;
+    }
+    .hg-disclaimer .c-title {
+        font-weight: bold;
+        font-size: 15px;
+    }
+    .hg-steps .c-step a {
+        display: block;
+        margin: 0 auto;
+        max-width: 320px;
+    }
+    @media (min-width:475px) {
+        .hg-header .content, section .title{
+            font-size: 23px;
+        }
+        .hg-wrap .desp, .hg-disclaimer .c-title, .hg-special .content {
+            font-size: 17px;
+        }
+        .hg-disclaimer {
+            font-size: 14px;
+        }
+    }
+    @media (min-width: 600px) {        
+        .hg-header .c-img {
+            grid-row: 1 / span 2;
+        }
+        .hg-header .c-content2 {
+            grid-column-start: 1;
+            grid-column-end: 1;
+            grid-row-start: 2;
+            text-align: left;
+            padding: 0;
+            padding-left: var(--element-margin);
+            align-self: flex-start;
+        }
+        .hg-header .c-content1 {
+            align-self: end;
+            font-size: 32px;
+        }        
+    }
+    @media (min-width: 625px) {
+        .hg-steps .c-step-summary-wrap {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-column-gap: 5px;
+            padding: 0 var(--element-margin);
+        }
+        .hg-steps .c-step-summary-wrap .cs-step{
+            width: 100%;
+        }
+    }
+    @media (min-width: 801px) {
+        .body.page {
+            padding: 2rem 0;
+        }        
+        section .title {
+            font-size: 27px;
+        }
+    }
+    @media (min-width: 900px) {        
+        .hg-header .content, section .title {
+            font-size: 25px;
+        }        
+        .hg-special {
+            border-radius: 42px;
+        }
+        .hg-steps .c-step {
+            display: grid;                 
+        }
+        .hg-steps .c-step.c-step--grey div {
+            grid-column-start: 1;
+        }
+        .hg-steps .c-step.c-step--grey a {
+            grid-row: 1 / span 3;
+            grid-column-start: 2;
+        }
+        .hg-steps .c-step.c-step--white div {
+            grid-column-start: 2;
+        }
+        .hg-steps .c-step.c-step--white a {
+            grid-row: 1 / span 3;
+            grid-column-start: 1;
+        }
+        .hg-steps .c-step .c-title {
+            font-size: 18px;
+            align-self: flex-end;
+        }
+    }
+    @media (min-width: 1024px) {                
+        .hg-header .content, section .title {
+            font-size: 30px;
+        }
+    }
+    @media (min-width: 1280px) {
+        .body.page .container {
+            max-width: unset !important;
+        }
+        .hg-wrap {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+        .hg-header {
+            grid-column-gap: var(--section-margin);
+        }
+        .hg-header .c-content1 {
+            font-size: 40px;
+        }
+        .hg-special {
+            padding: var(--element-margin) var(--section-margin);
+        }
+        .hg-steps .c-step--grey {
+            padding-left: var(--section-margin);
+        }
+        .hg-steps .c-step--white {
+            padding-right: var(--section-margin);
+        }
+        .hg-special .c-benefit {
+            left: var(--section-margin);
+        }
+    }
+    /*
+    @media (min-width: 1024px) {
+        .hg-header .content, section .title{
+            font-size: 50px;
+        }
+        .hg-wrap .desp {
+            font-size: 25px;
+        }
+        .hg-disclaimer .c-title {
+            font-size: 24px;
+        }        
+        .hg-wrap .sub-desp, .hg-special .content, .hg-goal .c-desp {
+            font-size: 20px;
+        }
+        .hg-goal .item .c-desp {
+            font-size: 17px;
+        }
+        .hg-disclaimer {
+            font-size: 15px;
+        }        
+    }*/
+</style>
+<div class="hg-wrap">
+    <section class="hg-header">        
+        <div class="c-content1">
+            <div class="c-title">Pro-Gen</div>
+            <div class="c-content">Active Care</div>
+        </div>
+        <a href="/progen-active-care-active-3-step-kit-for-thinning-hair/" class="c-img">
+            <picture>
+                <source media="(min-width:450px)" srcset="/content/images/marketing/hairGrow/progen-pc.webp" type="image/webp">
+                <source media="(min-width:450px)" srcset="/content/images/marketing/hairGrow/progen-pc.jpg" type="image/jpeg">
+                <source srcset="/content/images/marketing/hairGrow/progen-mobile.webp" type="image/webp">
+                <source srcset="/content/images/marketing/hairGrow/progen-mobile.jpg" type="image/jpeg">
+                <img src="/content/images/marketing/hairGrow/progen-mobile.jpg" alt="">
+            </picture>
+        </a>
+        <div class="c-content2">            
+            <div class="cc-content2">Helps reduce hair loss and extend the growth cycle to stimulate renewed growth.</div>
+        </div>        
+    </section>    
+    <section class="hg-special">
+        <div class="c-content">
+            <div class="title">How it works</div>
+            <div class="content">
+                ProGen Active care for thinning hair works by detoxifying the scalp while strengthening weakened hair follicles and stimulating the scalp. It uses the power of plants to strengthen, revitalize, and nourish the scalp.
+            </div>
+        </div>        
+    </section>
+    <section class="hg-steps">                
+        <div class="c-step c-step--grey">
+            <div class="c-title">Step 1</div>
+            <div class="c-content">Booster</div>
+            <a href="/progen-active-care-booster-for-thinning-hair-1-69oz/">
+                <picture>
+                    <source srcset="/content/images/marketing/hairGrow/progen-booster.webp" type="image/webp">
+                    <source srcset="/content/images/marketing/hairGrow/progen-booster.png" type="image/png">
+                    <img src="/content/images/marketing/hairGrow/progen-booster.png" alt="">
+                </picture>
+            </a>
+            <div class="cc-content">
+                <div>The Active Care Hair Volumizing Booster was specially formulated with plant extracts to revitalize the hair follicle. Provides intense hydrating and volumizing benefits for those with thinning hair.</div>
+                <div class="comment">Apply onto the scalp once or thrice a week for two </div>
+            </div>
+        </div>
+        <div class="c-step c-step--white">
+            <div class="c-title">Step 2</div>
+            <div class="c-content">Hair Volumizing Serum</div>
+            <a href="/progen-active-care-active-hair-serum-for-thinning-hair-1-69oz/">
+                <picture>
+                    <source srcset="/content/images/marketing/hairGrow/progen-serum.webp" type="image/webp">
+                    <source srcset="/content/images/marketing/hairGrow/progen-serum.jpg" type="image/jpeg">
+                    <img src="/content/images/marketing/hairGrow/progen-serum.jpg" alt="">
+                </picture>
+            </a>
+            <div class="cc-content">
+                <div>The Active Care Hair Volumizing Serum was specially formulated with plant extracts that work in harmony to optimize the contribution of energizing elements. Cleanses and revitalizes the scalp. The use of the serum intensifies the action of the other products from the Active Hair Volumizing Line. Hair will look more beautiful and stronger.</div>
+                <div class="comment">Use before shampooing onto the scalp for 15-20 minutes. </div>
+            </div>
+        </div>
+        <div class="c-step c-step--grey">
+            <div class="c-title">Step 3</div>
+            <div class="c-content">Hair Volumizing Shampoo</div>
+            <a href="/progen-active-care-active-hair-volumizing-shampoo-for-thinning-hair-6-76oz/">
+                <picture>
+                    <source srcset="/content/images/marketing/hairGrow/progen-shampoo.webp" type="image/webp">
+                    <source srcset="/content/images/marketing/hairGrow/progen-shampoo.png" type="image/png">
+                    <img src="/content/images/marketing/hairGrow/progen-shampoo.png" alt="">
+                </picture>
+            </a>
+            <div class="cc-content">
+                <div>The Active Care Hair Volumizing Shampoo was specially formulated to strengthen, revitalize, and nourish the hair. The stimulating properties of Pine, Tea Tree, and Rosemary fortify and strengthen the hair.</div>
+                <div class="comment">Apply as a general shampoo, massage slightly and rinse thoroughly.</div>
+            </div>
+        </div>
+        <div class="c-step c-step--white">
+            <div class="c-title">Step 4</div>
+            <div class="c-content">Hair Volumizing Lotion</div>
+            <a href="/progen-active-care-active-lotion-for-thinning-hair-3-33oz/">
+                <picture>
+                    <source srcset="/content/images/marketing/hairGrow/progen-lotion.webp" type="image/webp">
+                    <source srcset="/content/images/marketing/hairGrow/progen-lotion.jpg" type="image/jpeg">
+                    <img src="/content/images/marketing/hairGrow/progen-lotion.jpg" alt="">
+                </picture>
+            </a>
+            <div class="cc-content">
+                <div>The Active Care Hair Volumizing Lotion was specially formulated to strengthen, revitalize, and nourish the hair with Pine, Tea Tree, and Rosemary. </div>
+                <div class="comment">Apply on the scalp, then massage lightly. Use daily or once a week, </div>
+            </div>
+        </div>
+    </section>    
+    <section class="hg-disclaimer">
+        <div class="c-title">Disclaimer:</div>
+        <div>Superhairpieces does not bear any responsibility for the claims, safety, reliability, durability  and performance of any of the mentioned products. </div>
+        <div>Please make sure to read each product's label and instructions carefully before using.</div>
+    </section>
+</div>

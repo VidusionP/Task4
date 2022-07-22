@@ -1,0 +1,206 @@
+<style>
+    :root {
+        --element-margin-y: 20px;
+        --element-margin-x: 25px;
+        --section-margin-x: 60px;
+        --section-margin-y: 20px;
+        --border-color: #BCBCBC;
+        --icon-color: #f7c34a;
+        --icon-size: 54px;
+    }
+    .desp-wrap {
+        padding: var(--section-margin-y) var(--section-margin-x);
+        font-size: 1.1rem;
+    }
+    .desp-wrap .item {
+        padding: var(--element-margin-y) var(--element-margin-x);
+        border-top: 1px solid var(--border-color);
+        display: grid;
+        grid-template-columns: 250px auto;
+    }
+    .desp-wrap .item:first-child {
+        border: 0;
+    }
+    .desp-wrap .item .desp-title {
+        text-transform: uppercase;
+    }
+    .desp-short {
+        display: none;
+    }
+    .productView-shortDesc .desp-short {
+        display: block;
+    }
+    .productView-shortDesc .desp-wrap {
+        display: none;
+    }
+    .productView-bottomInfo .productView-shortDesc {
+        max-height: unset;
+    }
+    .desp-feature-wrap {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-column-gap: var(--element-margin-x);
+        grid-row-gap: var(--element-margin-y);
+    }
+    .desp-feature-wrap .item {
+        position: relative;        
+    }
+    .desp-feature-wrap .item .item-text {        
+        margin-left: calc(var(--icon-size) + 15px);
+        display: flex;        
+        align-items: center;
+        height: var(--icon-size);
+    }    
+    .desp-feature-wrap .item::before {     
+        position: absolute;
+        top: 0;
+        left: 0;   
+        width: var(--icon-size);
+        height: var(--icon-size);
+        background-color: var(--icon-color);
+        border-radius: 50%;
+        content: "";
+        display: inline-block;
+    }
+    .desp-feature-wrap .item::after {
+        width: var(--icon-size);
+        height: var(--icon-size);
+        display: flex;
+        justify-self: center;
+        align-self: center;
+        content: "";
+        background-position: center;        
+        position: absolute;
+        left: 0;
+        top: 0;
+        background-repeat: no-repeat;
+        background-size: 50% 50%;
+    }
+    .desp-feature-wrap .item.item-review::after {        
+        background-image: url("/content/images/common/star.svg");
+    }
+    .desp-feature-wrap .item.item-hairline::after {        
+        background-image: url("/content/images/common/short-male-hair-shape.svg");
+    }
+    .desp-feature-wrap .item.item-appearance::after {
+        background-image: url("/content/images/common/man-hair.svg");
+    }
+    .desp-feature-wrap .item.item-time::after {
+        background-image: url("/content/images/common/time.svg");
+    }
+    .desp-feature-wrap .item.item-attach::after {
+        background-image: url("/content/images/common/heart.svg");
+    }
+    .desp-feature-wrap .item.item-clean::after {
+        background-image: url("/content/images/common/clean.svg");
+    }
+    .desp-feature-wrap .item.item-tape::after {        
+        background-image: url("/content/images/common/tape.svg");
+    }
+    .desp-feature-wrap .item.item-clip::after {        
+        background-image: url("/content/images/common/hair-clip.svg");
+    }
+    .desp-feature-wrap .item.item-glue::after {        
+        background-image: url("/content/images/common/glue.svg");
+    }
+    @media (max-width: 900px) {
+        .desp-wrap .item {
+            display: block;
+        }
+        .desp-wrap .item .desp-title {            
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: calc(var(--element-margin-y) / 2);
+        }
+        .desp-feature-wrap {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+    @media (max-width: 600px) {
+        :root {
+            --element-margin-y: 13px;
+            --element-margin-x: 20px;
+            --section-margin-x: 30px;
+            --section-margin-y: 15px;
+            --icon-size: 41px;
+        }
+        .desp-feature-wrap .item .item-text {
+            margin-left: 0;
+            text-align: center;
+            justify-content: center;
+            margin-top: calc(var(--icon-size) + 5px);
+            font-weight: bold;
+        }
+        .desp-feature-wrap .item::before, .desp-feature-wrap .item::after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    }
+</style>
+<div class="desp-short">
+    <ul>
+        <li>Can be used for daily wear as it is easy to attach, maintain and remove due to the poly skin material.</li>
+        <li>The poly skin material contributes in providing a medium to long durability so there is a longer replacement period.</li>
+        <li>Comes with a scallop front to provide a realistic and natural looking front hairline.</li>
+    </ul>
+</div>
+<div class="desp-wrap">
+    <div class="item">
+        <div class="desp-title">base</div>
+        <div>Monofilament silk top, 1” Clear Poly edge, Small scallop front</div>
+    </div>
+    <div class="item">
+        <div class="desp-title">size</div>
+        <div>6.5"x 8.5" Can be cut down to 5.5" x8"</div>
+    </div>
+    <div class="item">
+        <div class="desp-title">density</div>
+        <div>120% Medium density</div>
+    </div>
+    <div class="item">
+        <div class="desp-title">hair</div>
+        <div>High quality soft fine Indian Remy hair. If grey hair, grey is Japanese Kanekalon synthetic fiber</div>
+    </div>
+    <div class="item">
+        <div class="desp-title">hair length</div>
+        <div>6" finished length overall</div>
+    </div>
+    <div class="item">
+        <div class="desp-title">front contour</div>
+        <div>A Shape</div>
+    </div>
+</div>
+<div class="desp-feature-wrap" loaded=false>
+    <div class="item item-review">
+        <div class="item-text">
+            Review: Durable, Cut away, Easy attach
+        </div>
+    </div>
+    <div class="item item-hairline">
+        <div class="item-text">Natural Hairline: Good</div>
+    </div>
+    <div class="item item-appearance">
+        <div class="item-text">Top Appearance: Better</div>
+    </div>
+    <div class="item item-time">
+        <div class="item-text">Daily on/off: Yes</div>
+    </div>
+    <div class="item item-attach">
+        <div class="item-text">Attach on: Easy</div>
+    </div>
+    <div class="item item-clean">
+        <div class="item-text">Take off and clean: Easy</div>
+    </div>
+    <div class="item item-tape">
+        <div class="item-text">Tape on: All kind of tape</div>
+    </div>
+    <div class="item item-clip">
+        <div class="item-text">Clip on: Yes</div>
+    </div>
+    <div class="item item-glue">
+        <div class="item-text">Glue: Yes on poly skin</div>
+    </div>
+</div>
+<script>
+    window.addEventListener("")
+</script>

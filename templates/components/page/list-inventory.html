@@ -1,0 +1,1593 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="/product_images/uploaded_images/list-inventory-link-product-30.jpg">
+<link rel="preload" as="image" href="/product_images/uploaded_images/list-inventory-add-v2-30.jpg">
+<style>    
+    [section-part-number] {
+        display: grid;
+        grid-template-columns: repeat(13, 1fr);        
+        /* flex-wrap: wrap;         */
+        /* justify-content: space-around; */
+        /* justify-content: center;
+        align-items: center; */
+    }
+    [section-sku] .sku-content {
+        display: flex;
+        flex-wrap: wrap;
+    }    
+    [section-production] {
+        flex-wrap: wrap;
+        display: none;
+        justify-content: center;
+        align-items: center;
+    }
+    [section-category] {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 2rem;
+    }
+    [section-category] .data-item {
+        width: 150px;
+        height: 150px;
+        margin: 0 10px;
+        padding: 0;        
+    }    
+    [section-category] .data-item.selected .category-content {
+        display: none;
+    }
+    [section-category] .category-content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        position: relative;
+        color: #fff;
+        z-index: 9;
+        font-size: 1.8rem;
+    }
+    [section-category] .category-content::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        left: 0;
+        top: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: -1;
+    }
+    [section-category] .category-overlay {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+    }
+    [section-category] [data-filter='Mens Toupee Instock'] {
+        background-image: url("/product_images/uploaded_images/list-inventory-men-c128-w200.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+    [section-category] [data-filter='Womens Toupee Instock'] {
+        background-image: url("/product_images/uploaded_images/list-inventory-women-c128-w200.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+    [section-production-desp] {
+        margin: 10px auto;
+        display: none;
+        text-align: center;
+        font-size: .93rem;
+    }
+    .section-production-desp-wrapper {
+        display: none;
+    }
+    [section-production-desp][data-option=stock] {
+        display: block;
+    }
+    [section-title] {
+        text-align: center;
+    }
+    [section-title] div {
+        margin: 15px auto;
+    }
+    [section-title] .title {
+        font-size: 2.5rem;
+        font-weight: 500;
+    }
+    [section-title] img {
+        max-width: 100%;
+        margin: 5px auto;
+    }
+    [section-title] .subtext {
+        color: #57a1db;
+    }
+    .section-filter {
+        display: none;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 10px;
+        font-weight: 500;
+    }
+    .section-filter .title {
+        font-weight: 500;
+        font-style: italic;
+    }
+    .section-filter select, .section-filter label {
+        cursor: pointer;
+    }
+    .section-filter select {
+        padding: 5px 25px 5px 5px;
+        -webkit-appearance: none;
+        background-color: #fff;
+        border: 0;
+        background-image: url("data:image/svg+xml;charset=utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z' fill='rgba(117, 117, 117, 0.999)'/></svg>");
+        background-position: right center;
+        background-repeat: no-repeat;
+        text-align: center;
+    }
+    .section-filter input[type=radio] {
+        display: none;
+    }
+    .section-filter label {        
+        display: block;
+        width: 40px;
+        height: 40px;        
+        position: relative;
+    }
+    .section-filter label span {
+        display: none;
+    }
+    .section-filter label::after {
+        border-radius: 50%;
+        position: absolute;
+        left: 4px;
+        top: 4px;
+        width: 30px;
+        height: 30px;
+        content: "";
+    }
+    .section-filter label[for=color-none],.section-filter label[for=color-none2] {
+        color: #000;
+        font-style: italic;
+        font-weight: 500;
+        width: fit-content;
+        height: fit-content;
+        border-radius: 0;        
+    }        
+    .section-filter label[for=color-none]::after, .section-filter label[for=color-none2]::after {
+        display: none;
+    }
+    .section-filter input[type=radio]:checked + label[for=color-black], .section-filter input[type=radio]:checked + label[for=color-black2] {
+        border: 1px solid #000;
+        border-radius: 50%;
+    }
+    .section-filter label[for=color-black]::after, .section-filter label[for=color-black2]::after {
+        background: #000;        
+    }
+    .section-filter input[type=radio]:checked + label[for=color-dark-brown] {
+        border: 1px solid #683500;
+        border-radius: 50%;
+    }
+    .section-filter label[for=color-dark-brown]::after {
+        background: #683500;        
+    }
+    .section-filter input[type=radio]:checked + label[for=color-medium-brown] {
+        border: 1px solid #875715;
+        border-radius: 50%;
+    }
+    .section-filter label[for=color-medium-brown]::after {
+        background: #875715;        
+    }
+    .section-filter input[type=radio]:checked + label[for=color-light-brown] {
+        border: 1px solid #966a45;
+        border-radius: 50%;
+    }
+    .section-filter label[for=color-light-brown]::after {
+        background: #966a45;        
+    }
+    .section-filter input[type=radio]:checked + label[for=color-blonde], .section-filter input[type=radio]:checked + label[for=color-blonde2] {
+        border: 1px solid #efdabd;
+        border-radius: 50%;
+    }
+    .section-filter label[for=color-blonde]::after, .section-filter label[for=color-blonde2]::after {
+        background: #efdabd;        
+    }
+    .section-filter input[type=radio]:checked + label[for=color-full-grey] {
+        border: 1px solid #f2f2f2;
+        border-radius: 50%;
+    }
+    .section-filter label[for=color-full-grey]::after {
+        background: #f2f2f2;        
+    }
+    .section-filter input[type=radio]:checked + label[for=color-red] {
+        border: 1px solid #a83731;
+        border-radius: 50%;
+    }
+    .section-filter label[for=color-red]::after {
+        background: #a83731;        
+    }
+    .section-filter input[type=radio]:checked + label[for=color-allure] {
+        border: 1px solid #444;
+        border-radius: 50%;
+    }
+    .section-filter label[for=color-allure]::after {
+        background: url(/content/images/common/allure-round.jpg);   
+        background-size: cover;     
+    }
+    .section-step{
+        font-size: 2rem;
+        text-align: center;
+        font-weight: 500;
+        margin: 2rem 0 .8rem;
+    }
+    .section-step.step1 {
+        margin-top: 0;
+    }
+    /* .section-step:not(.step1) {                
+        display: none;
+        border-top: 1px solid #f4f4f4;
+        padding-top: 2rem;
+    } */
+    .section-step {                
+        display: none;
+        border-top: 1px solid #f4f4f4;
+        padding-top: 2rem;
+    }
+    .section-title {
+        text-align: center;
+        font-size: 1.8rem;
+        position: relative;
+        text-transform: uppercase;
+        margin-bottom: .8rem;        
+        font-weight: 500;
+    }
+    /* .section-title:not(.step1) {
+        display: none;
+    } */
+    .section-title {
+        display: none;
+    }
+    /* .section-title::before, .section-title::after {
+        content: "";
+        width: 50px;
+        height: 1px;
+        background: #000;
+        display: inline-block;
+    }
+    .section-title::before {        
+        margin-right: 10px;        
+    }
+    .section-title::after {        
+        margin-left: 10px;
+    } */
+    .filter-item {
+        padding: 5px 10px;
+    }
+    .data-item {
+        padding: 5px 10px;        
+        /* color: #959595; */
+        cursor: pointer;
+        position: relative;
+        width: fit-content;
+    }
+    [section-production] .data-item {
+        font-weight: 500;
+        border: 1px solid #444;
+        border-radius: 50px;
+    }    
+    /* [section-production] .data-item[data-option=transit]::after, [section-production] .data-item[data-option=transit]::before {
+        content: url("data:image/svg+xml;base64,PHN2ZyBhcmlhLWhpZGRlbj0idHJ1ZSIgZm9jdXNhYmxlPSJmYWxzZSIgZGF0YS1wcmVmaXg9ImZhcyIgZGF0YS1pY29uPSJzbGFzaCIgY2xhc3M9InN2Zy1pbmxpbmUtLWZhIGZhLXNsYXNoIGZhLXctMjAiIHJvbGU9ImltZyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2aWV3Qm94PSIwIDAgNjQwIDUxMiI+PHBhdGggZmlsbD0iY3VycmVudENvbG9yIiBkPSJNNTk0LjUzIDUwOC42M0w2LjE4IDUzLjljLTYuOTctNS40Mi04LjIzLTE1LjQ3LTIuODEtMjIuNDVMMjMuMDEgNi4xOEMyOC40My0uOCAzOC40OS0yLjA2IDQ1LjQ3IDMuMzdMNjMzLjgyIDQ1OC4xYzYuOTcgNS40MiA4LjIzIDE1LjQ3IDIuODEgMjIuNDVsLTE5LjY0IDI1LjI3Yy01LjQyIDYuOTgtMTUuNDggOC4yMy0yMi40NiAyLjgxeiI+PC9wYXRoPjwvc3ZnPg==");
+        display: inline-block;
+        width: 20px;
+        transform: rotate(254deg) translate(-5px, 10px);
+    }
+    [section-production] .data-item[data-option=stock] {
+        padding-right: 0;
+    }
+    [section-production] .data-item[data-option=transit] {
+        padding-left: 0;
+    }
+    [section-production] .data-item[data-option=transit]::before {
+        margin-right: 15px;
+    } */
+    [section-production] .data-item[data-option=transit] {
+        margin: 0 10px;
+    }
+    [section-sku] .data-item, [section-part-number] .data-item {
+        color: #959595;
+    }
+    [section-sku] .data-item {
+        margin: 0 5px 5px 0;
+    }
+    .data-item.active {
+        /* color:#fff;
+        background:#000; */
+        color: #000;
+        font-weight: bold;
+        position: relative;
+        width: max-content;
+    }
+    /* .data-item.active::after {
+        content: "";
+        width: 50%;
+        height: 1px;
+        background: #000;
+        display: block;
+    } */
+    .data-item.focus {
+        background: #000;        
+        color: #fff;
+    }        
+    /* .data-item.selected {
+        color: #B55A30;        
+        border: 1px solid #B55A30;
+    } */
+    .search-loading {
+        display: none;
+        justify-content: center;
+        align-items: center;
+    }
+    .search-loading svg{
+        width: 100px;
+        height: 100px;
+    }
+    [icon-mobile-tooltip] {
+        display: none;
+        position: fixed;
+        right: 22px;
+        bottom: 90px;
+        z-index: 99;
+        width: 58px;
+        height: 58px;
+        background: linear-gradient(135deg, rgb(29, 29, 29) 0%, rgb(97, 97, 97) 100%);        
+        border-radius: 50%;                
+        box-shadow: rgb(0 0 0 / 20%) 0px 3px 3px;                
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+    }
+    [icon-mobile-tooltip] svg {
+        height: 30px;
+    }
+    [icon-mobile-tooltip]:hover {
+        transform: translateY(-5px);
+        box-shadow: rgb(0 0 0 / 20%) 0px 4px 3px; 
+        transition: all .2s ease;
+    }
+    [icon-mobile-tooltip] .content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #fff;
+        width: 95%;
+        height: 95%;
+        border-radius: 50%;
+    }
+    [icon-mobile-tooltip] img {
+        width: 78%;
+    }
+    [icon-tooltip] {
+        position: absolute;
+        right: 0;
+        top: 0;
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        grid-column-gap: 5px;
+        transform: translate(30px, -41px);
+        width: 60px;
+        cursor: default;
+        -webkit-border-radius: 50%;
+        -moz-border-radius: 50%;
+        border-radius: 30px;
+        border: #444 solid 1px;
+        padding: 5px 8px;
+        z-index: 9;
+        background-color: #fff;
+    }
+    [icon-tooltip][flex] {
+        display: flex;
+        justify-content: center;        
+    }
+    [icon-tooltip][flex] img {
+        width: 18.5px;
+    }
+    [icon-tooltip]:after {
+        content: '';
+        position: absolute;
+        border-style: solid;
+        border-width: 5px 8px 0;
+        border-color: #FFFFFF transparent;
+        display: block;
+        width: 0;
+        z-index: 1;
+        bottom: -5px;
+        left: 15px;
+    }
+    [icon-tooltip]:before {
+        content: '';
+        position: absolute;
+        border-style: solid;
+        border-width: 5px 8px 0;
+        border-color: #444 transparent;
+        display: block;
+        width: 0;
+        z-index: 0;
+        bottom: -6px;
+        left: 15px;
+    }
+    [icon-tooltip] img {
+        cursor: pointer;
+    }
+    [icon-tooltip] img:hover {
+        transform: scale(1.1);
+    }
+    [modal-add-cart] {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        /* display: flex; */
+        justify-content: center;
+        align-items: center;
+        z-index: 10;
+        display: none;
+    }
+    [modal-add-cart] .overlay {
+        position: absolute;
+        left:0;
+        top:0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.8);
+    }
+    [modal-add-cart] .modal-add-cart-content {
+        background-color: #fff;
+        padding: 1rem;
+        max-height: 80%;
+        max-width: 90%;
+        overflow-y: auto;
+        z-index: 9;
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+    [modal-add-cart] .modal-add-cart-content .modal-add-cart-option {
+        margin: 15px;
+        width: 60px;
+        height: 60px;
+        line-height: 60px;
+        text-align: center;
+        vertical-align: middle;
+        position: relative;
+        border-radius: 50%;
+        text-decoration: none;        
+        font-size: .8rem;
+    }
+    [modal-add-cart] .modal-add-cart-content .modal-add-cart-option:hover {
+        box-shadow: 3px 2px 6px 3px #ccc;
+    }
+    [modal-add-cart] .modal-add-cart-content .modal-add-cart-option:hover .modal-icon-add{
+        transform: scale(1.1);
+    }
+    .modal-add-cart-option[color=color-none] {
+        border: 1px solid #000;
+    }
+    .modal-add-cart-option[color=color-black] {
+        background-color: #000;
+        color: #fff;
+        border: 1px solid #000;
+    }
+    .modal-add-cart-option[color=color-dark-brown] {
+        background-color: #683500;
+        color: #fff;
+        border: 1px solid #683500;
+    }
+    .modal-add-cart-option[color=color-medium-brown] {
+        background-color: #875715;
+        color: #fff;
+        border: 1px solid #875715;
+    }
+    .modal-add-cart-option[color=color-light-brown] {
+        background-color: #966a45;
+        color: #fff;
+        border: 1px solid #966a45;
+    }
+    .modal-add-cart-option[color=color-light-brown] {
+        background-color: #966a45;
+        color: #fff;
+    }
+    .modal-add-cart-option[color=color-blonde] {
+        background-color: #efdabd;
+        color: #000;
+        border: 1px solid #7c7c7c;
+    }
+    .modal-add-cart-option[color=color-full-grey] {
+        background-color: #f2f2f2;
+        color: #000;
+        border: 1px solid #7c7c7c;
+    }
+    [modal-add-cart] .modal-add-cart-content .modal-icon-add{
+        text-decoration: none;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        position: absolute;
+        bottom: -13px;
+        right: -8px;
+        z-index: 9;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid #444;
+        padding: 5px;
+        background: #fff;
+    }
+    [modal-add-cart] .modal-add-cart-content .modal-icon-add svg {
+        height: 30px;
+        color: #000;
+    }    
+    [modal-add-cart] .modal-add-cart-title {
+        text-align: center;
+        font-size: 1.3rem;
+        margin: 15px;        
+    }    
+    @media only screen and (min-width:800px) {
+        .data-item.active:hover::before {
+            content: attr(tooltip-content);
+            display: inline-block;
+            position: absolute;
+            top: 30px;
+            left: 0;
+            background: #444;
+            color: #fff;
+            padding: .8rem;
+            width: max-content;
+            font-size: .8rem;
+            z-index: 9;
+            font-weight: normal;
+            white-space: pre;
+        }
+    }
+    @media only screen and (min-width:1024px) {
+        .section-filter label:hover span {
+            display: block;            
+            position: absolute;
+            font-size: .8rem;
+            transform: translateY(40px);
+            z-index: 9;
+            width: max-content;
+        }
+        [section-category] .data-item:hover .category-content {
+            visibility: hidden;
+            /* transition: all .2s ease;
+            -o-transition: all .2s ease;
+            -moz-transition: all .2s ease;
+            -webkit-transition: all .2s ease; */
+        }        
+    }    
+    @media only screen and (max-width: 1090px) {
+        [section-part-number] {
+            grid-template-columns: repeat(11,1fr);
+        }
+    }
+    @media only screen and (max-width: 745px) {
+        [section-part-number] {
+            grid-template-columns: repeat(9,1fr);
+        }
+    }
+    @media only screen and (max-width: 675px) {
+        [section-part-number] {
+            grid-template-columns: repeat(5,1fr);
+        }
+        [section-filter-color] .filter-item {
+            padding: 5px;
+        }
+        [icon-tooltip], [icon-tooltip][flex] {
+            display: none;
+        }
+        [icon-mobile-tooltip] {
+            display: flex;
+        }
+    }
+    @media only screen and (max-width: 475px) {
+        [section-part-number] {
+            grid-template-columns: repeat(3,1fr);
+        }        
+        .section-filter[section-filter-model] .title{
+            text-align: center;
+            font-style: normal;
+        }
+        [section-category] .data-item {
+            width: 100px;
+            height: 100px;
+        }
+        [section-category] .category-content {
+            font-size: 1.5rem;
+        }
+    }
+    @media only screen and (max-width: 420px) {
+        [section-filter-color] .filter-item {
+            padding: 2px;
+        }
+    }
+</style>
+<!-- <div section-title>    
+    <div>Find your own unit in stock</div>
+    <div class="subtext">Select your option ></div>
+    <div>
+        <img src="/product_images/uploaded_images/color-search-label.jpg" alt="List Inventory">
+    </div>
+</div> -->
+<div modal-add-cart>
+    <div class="overlay"></div>
+    <div class="modal-add-cart-content">        
+    </div>
+</div>
+<div section-category>
+    <div class="data-item" data-filter="Mens Toupee Instock">
+        <div class="category-content">
+            Men
+        </div>        
+    </div>
+    <div class="data-item" data-filter="Womens Toupee Instock">
+        <div class="category-content">
+            Women
+        </div>
+    </div>    
+</div>
+<div class="section-step step1">Step 1</div>
+<div class="section-title step1">Choose status</div>
+<div section-production>
+    <div class="data-item focus" data-stock=1 data-option="stock" section-option="production">In stock</div>
+    <div class="data-item" data-transit=1 data-option="transit" section-option="production">In transit</div>
+    <div class="data-item" data-incoming=1 data-option="incoming" section-option="production">In production</div>
+</div>
+<div class="section-production-desp-wrapper">
+    <div section-production-desp data-option="stock">These units are in stock and can be shipped out as soon as possible.</div>
+    <div section-production-desp data-option="transit">These units are in transit to our warehouses and can be shipped out in a few days.</div>
+    <div section-production-desp data-option="incoming">These units are still in production. Once they are complete, they will be in transit to our warehouses ready to be shipped out.</div>
+</div>
+<div class="search-loading">
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin: auto; background: none; display: block; shape-rendering: auto;" width="200px" height="200px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
+        <path d="M10 50A40 40 0 0 0 90 50A40 42 0 0 1 10 50" fill="#000" stroke="none">
+          <animateTransform attributeName="transform" type="rotate" dur="1s" repeatCount="indefinite" keyTimes="0;1" values="0 50 51;360 50 51"></animateTransform>
+        </path>
+    </svg>
+</div>
+<div class="section-step">Step 2</div>
+<div class="section-title">Model options</div>
+<div class="section-filter" section-filter-model men>
+    <div class="title">Filter</div>
+    <div class="filter-item">
+        <select filter-option="base">
+            <option value="" selected disabled>Base</option>
+            <option value="">Show All</option>
+            <option value="Mono">Mono</option>
+            <option value="Skin">Skin</option>
+            <option value="Lace">Lace</option>            
+            <option value="Lace Front">Lace Front</option>
+            <option value="Lace (BF)">Lace (BF)</option>
+        </select>
+    </div>
+    <div class="filter-item">
+        <select filter-option="size">
+            <option value="" selected disabled>Size</option>
+            <option value="">Show All</option>
+            <option value="Small">Small</option>
+            <option value="Medium">Medium</option>
+            <option value="Large">Large</option>
+            <option value="Full Cap">Full Cap</option>
+        </select>
+    </div>
+    <div class="filter-item">
+        <select filter-option="density">
+            <option value="" selected disabled>Hair Density</option>
+            <option value="">Show All</option>
+            <option value="Light">Light</option>
+            <option value="Medium">Medium</option>
+            <option value="Heavy">Heavy</option>
+        </select>
+    </div>
+</div>
+<div class="section-filter" section-filter-model women>
+    <div class="title">Filter</div>
+    <div class="filter-item">
+        <select filter-option="base">
+            <option value="" selected disabled>Base</option>
+            <option value="">Show All</option>
+            <option value="mono top ">Mono Top</option>
+            <option value="Silicone">Silicone</option>
+            <option value="Lace">Lace</option>
+            <option value="Intergration">Intergration</option>
+            <option value="Poly">Poly</option>
+        </select>
+    </div>
+    <div class="filter-item">
+        <select filter-option="size">
+            <option value="" selected disabled>Size</option>
+            <option value="">Show All</option>
+            <option value="full cap">Full Cap</option>
+            <option value="Topper">Topper</option>            
+        </select>
+    </div>
+    <div class="filter-item">
+        <select filter-option="length">
+            <option value="" selected disabled>Hair Length</option>
+            <option value="">Show All</option>
+            <option value="short">Short</option>
+            <option value="Medium">Medium</option>
+            <option value="long">Long</option>            
+        </select>
+    </div>
+</div>
+<div section-part-number></div>
+<div class="section-step">Step 3</div>
+<div class="section-title">Color options</div>
+<div class="section-filter" section-filter-color men>
+    <div class="filter-item"><input type="radio" id="color-none" name="color-option" value=""><label for="color-none">Show all</label></div>
+    <div class="filter-item"><input type="radio" id="color-black" name="color-option" value="Black"><label for="color-black"><span>Black</span></label></div>
+    <div class="filter-item"><input type="radio" id="color-dark-brown" name="color-option" value="Dark Brown"><label for="color-dark-brown"><span>Dark Brown</span></label></div>
+    <div class="filter-item"><input type="radio" id="color-medium-brown" name="color-option" value="Medium Brown"><label for="color-medium-brown"><span>Medium Brown</span></label></div>
+    <div class="filter-item"><input type="radio" id="color-light-brown" name="color-option" value="Light Brown"><label for="color-light-brown"><span>Light Brown</span></label></div>
+    <div class="filter-item"><input type="radio" id="color-blonde" name="color-option" value="Blonde"><label for="color-blonde"><span>Blonde</span></label></div>
+    <div class="filter-item"><input type="radio" id="color-full-grey" name="color-option" value="Full Grey"><label for="color-full-grey"><span>Full Grey</span></label></div>
+</div>
+<div class="section-filter" section-filter-color women>
+    <div class="filter-item"><input type="radio" id="color-none2" name="color-option" value=""><label for="color-none2">Show all</label></div>
+    <div class="filter-item"><input type="radio" id="color-allure" name="color-option" value="Allure"><label for="color-allure"><span>Allure</span></label></div>
+    <div class="filter-item"><input type="radio" id="color-black2" name="color-option" value="Dark"><label for="color-black2"><span>Dark</span></label></div>
+    <div class="filter-item"><input type="radio" id="color-blonde2" name="color-option" value="Light"><label for="color-blonde2"><span>Light</span></label></div>
+    <div class="filter-item"><input type="radio" id="color-red" name="color-option" value="Red Tone"><label for="color-red"><span>Red Tone</span></label></div>
+</div>
+<div section-sku></div>
+<script>
+    const colorOrder= [{
+        color: '1',
+        group: 'Black'
+    },{
+        color: '11B',
+        group: 'Black'
+    },{
+        color: '1B',
+        group: 'Black'
+    },{
+        color: '1BASH',
+        group: 'Black'
+    },{
+        color: '2',
+        group: 'Dark Brown'
+    },{
+        color: '2ASH',
+        group: 'Dark Brown'
+    },{
+        color: '3',
+        group: 'Dark Brown'
+    },{
+        color: '3ASH',
+        group: 'Dark Brown'
+    },{
+        color: '4',
+        group: 'Medium Brown'
+    },{
+        color: '4ASH',
+        group: 'Medium Brown'
+    },{
+        color: '5',
+        group: 'Medium Brown'
+    },{
+        color: '5R',
+        group: 'Medium Brown'
+    },{
+        color: '6',
+        group: 'Medium Brown'
+    },{
+        color: '6R',
+        group: 'Medium Brown'
+    },{
+        color: '7',
+        group: 'Light Brown'
+    },{
+        color: '8R',
+        group: 'Light Brown'
+    },{
+        color: '17',
+        group: 'Blonde'
+    },{
+        color: '18',
+        group: 'Blonde'
+    },{
+        color: '20',
+        group: 'Blonde'
+    },{
+        color: '20R',
+        group: 'Blonde'
+    },{
+        color: '22R',
+        group: 'Blonde'
+    },{
+        color: '30R',
+        group: 'Blonde'
+    },{
+        color: '60',
+        group: 'Full Grey'
+    }, {
+        color: '60H',
+        group: 'Full Grey'
+    }];
+    let womenColor={
+        "S1": "Allure",
+        "S2": "Allure",
+        "S3": "Allure",
+        "S4": "Allure",
+        "S7": "Allure",
+        "S9": "Allure",
+        "S10": "Allure",
+        "S11": "Allure",
+        "S16": "Allure",
+        "S18": "Allure",
+        "1": "Dark",
+        "1B": "Dark",
+        "2": "Dark",
+        "3": "Dark",
+        "4": "Dark",
+        "6": "Dark",
+        "5": "Dark",
+        "8": "Dark",
+        "10": "Light",
+        "10_16": "Light",
+        "10_12": "Light",
+        "12": "Light",
+        "14": "Light",
+        "14_24": "Light",
+        "16": "Light",
+        "16_613": "Light",
+        "18": "Light",
+        "22": "Light",
+        "24": "Light",
+        "25": "Light",
+        "26": "Light",
+        "27": "Light",
+        "613": "Light",
+        "28": "Red Tone",
+        "30": "Red Tone",
+        "33": "Red Tone",
+        "BUG": "Red Tone",
+    };    
+    const mModelOrder=['M100','M101','M102','M103','M103BF','M104','M105','M105BF','HD105','HD105BF','M106','M106L','M107','M108','M109','M110','M110BF','M111','HD111','M112','M115','M115BF','M116S','M116M','M116L','M118','M121','M151','M158','M159','M161','M161V','M162','M178','M179','M204','M258','W1','W8']
+    const mModelBasicOrder=['M100MBSC','M101MBSC','M102LBSC','M104MBSC','M108MBSC','M109LBSC','M112SBSC'];
+    function sortByProperty(p1, p2){  
+        return function(a,b){  
+            if(a[p1] > b[p1])  
+                return 1;  
+            else if(a[p1] < b[p1])  
+                return -1;  
+            else {
+                if (a[p2] > b[p2]) return 1;
+                else return -1;
+            }            
+        }  
+    }
+    function applyWomenData(r) {
+        if (r.length>0) {
+            let btnGroup = [];
+            let btnColor = [];
+            for (let inv of r) {                
+                let sP = inv["SKU"].indexOf("#");
+                if (sP<0) {                                    
+                    sP = inv["SKU"].replace(inv["Part Number"],"").indexOf("_")+inv["Part Number"].length;
+                }
+                let color = inv["SKU"].substring(sP+1).toUpperCase();                                
+                let stock = inv["Available Quantity"];
+                let transit = inv["Lock Status"]!="Locked for processing"?Number(inv["Available Quantity"])<0?Number(inv["Unlocked for sale quantity"])+Number(inv["Available Quantity"]):Number(inv["Unlocked for sale quantity"]):0;
+                let incoming = Number(inv["Available Quantity"])<0?Number(inv["Quantity Incoming"])+Number(inv["Available Quantity"])-2:Number(inv["Quantity Incoming"])-2;
+                let stockUS = inv["Available Quantity"]!=inv["Total On Hand"]?0:inv["2"];
+                let stockCA =inv["Available Quantity"]!=inv["Total On Hand"]?0:inv["WH1"];
+                let pending = Number(inv["Total On Hand"])-Number(inv["Available Quantity"]);
+                if (incoming<0) incoming = 0;
+                if (stock<0) stock=0;
+                if (transit<0) transit=0;
+                let ffIdx = btnGroup.findIndex(ff=>ff.part==inv["Part Number"]);
+                if (ffIdx>=0) {
+                    btnGroup[ffIdx].stock +=stock;
+                    btnGroup[ffIdx].transit += transit;
+                    btnGroup[ffIdx].incoming += incoming;                                    
+                    btnGroup[ffIdx]["SKUs"].push({
+                        sku: inv["SKU"],
+                        stock,
+                        transit,
+                        incoming,
+                        stockUS,
+                        stockCA,
+                        pending
+                    })
+                } else {
+                    btnGroup.push({
+                        part: inv["Part Number"],
+                        stock,
+                        transit,
+                        incoming,
+                        url: inv["URLUS"],          
+                        base: inv["Base"]?inv["Base"]:"",
+                        size: inv["Size"]?inv["Size"]:"",
+                        length: inv["Hair Length"]?inv["Hair Length"]:"",              
+                        SKUs: [{
+                            sku: inv["SKU"],
+                            stock,
+                            transit,
+                            incoming,
+                            stockUS,
+                            stockCA,
+                            pending
+                        }]
+                    })
+                }                         
+                let fIdx = btnColor.findIndex(f=>f.color==color);
+                if (fIdx>=0) {
+                    btnColor[fIdx].array.push({
+                        part: inv["Part Number"],
+                        sku: inv["SKU"],
+                        stock,
+                        transit,
+                        incoming,
+                        stockUS,
+                        stockCA,
+                        pending
+                    })
+                } else {
+                    btnColor.push({                        
+                        color,
+                        array: [{
+                            part: inv["Part Number"],
+                            sku: inv["SKU"],
+                            stock,
+                            transit,
+                            incoming,
+                            stockUS,
+                            stockCA,
+                            pending
+                        }]
+                    })
+                }                                
+            }            
+            let g = "", c="";
+            btnGroup.sort((a,b)=> {
+                if (a.part<b.part) {
+                    return -1;
+                } else if (a.part>b.part) {
+                    return 1;
+                } else {
+                    return 0;
+                }
+            })
+            for (let bg of btnGroup) {
+                g+=`<div class="data-item" section-option="model" data-stock=${bg.stock} data-transit=${bg.transit} data-incoming=${bg.incoming} data-part-number='${bg.part}' data-url='${bg.url}' data-base='${bg.base}' data-size='${bg.size}' data-length='${bg.length}'>${bg.part}</div>`;
+            }
+            $(".search-loading").hide();
+            $("[section-part-number]").html(g);
+            
+            btnColor.sort((a,b)=> {
+                if (a.color<b.color) {
+                    return -1;
+                } else if (a.color>b.color) {
+                    return 1;
+                } else {
+                    return 0;
+                }
+            });
+            c+=`<div class="sku-content">`;
+            for (let co of btnColor) {
+                let att="";
+                let part = "";
+                let stock=0, transit=0, incoming=0;
+                for (let b1 of co.array) {
+                    stock+=b1.stock;
+                    transit+=b1.transit;
+                    incoming+=b1.incoming;
+                    att+=` ${b1.part}-stock=${b1.stock} ${b1.part}-transit=${b1.transit} ${b1.part}-incoming=${b1.incoming} ${b1.part}-stockus=${b1.stockUS} ${b1.part}-stockca=${b1.stockCA} ${b1.part}-pending=${b1.pending}`;
+                    if (part.length==0) {
+                        part=`${b1.part}`;
+                    } else {
+                        part+=`-${b1.part}`;
+                    }
+                }        
+                if (womenColor[co.color]) {
+                    c+=`<div class="data-item" section-option="color" color-group="${womenColor[co.color]}" color-code="${co.color}" data-stock=${stock} data-transit=${transit} data-incoming=${incoming} data-part-number='${part}' ${att}>
+                    #${co.color}
+                </div>`;
+                } else {
+                    console.log("color group does not exist");
+                    console.log(co.color);
+                    c+=`<div class="data-item" section-option="color" color-code="${co.color}" data-stock=${stock} data-transit=${transit} data-incoming=${incoming} data-part-number='${part}' ${att}>
+                    #${co.color}
+                </div>`;
+                }
+            }
+            c+=`</div>`;            
+            $("[section-sku]").html(c);
+            // $("[section-production]").css({display: "flex"});                
+            // $("[section-production-desp][data-option='stock']").show();
+            $(".section-title").show();
+            $(".section-step").show();
+            $(".section-filter[men]").hide();
+            $("[section-category] .data-item").css({"pointer-events": "auto"});
+            if ($(window).width()<475) {
+                $(".section-filter[section-filter-model][women]").css({display:"block"});
+            } else {
+                $(".section-filter[section-filter-model][women]").css({display:"flex"});
+            }
+            $(".section-filter[section-filter-color][women]").css({display:"flex"});            
+            function production_color(pEl, cEl) {
+                let pOption = pEl.attr("data-option");
+                let txt = "";
+                switch(pOption) {
+                    case "stock": txt="In Stock"; break;
+                    case "transit": txt="In transit"; break;
+                    case "incoming": txt="In production"; break;
+                }
+                let pn = cEl.attr("data-part-number").split("-");
+                let listOptions=[];
+                for (let p of pn) {
+                    if (cEl.attr(`${p}-${pOption}`)>0) {                                                              
+                        $(`[section-part-number] .data-item[data-part-number='${p}']`).addClass("active");
+                        if (pOption=="stock") {
+                            if (Number(cEl.attr(`${p}-pending`))>0) {
+                                $(`[section-part-number] .data-item[data-part-number='${p}']`).attr("tooltip-content", `Qty ${txt}: ${Number(cEl.attr(`${p}-${pOption}`))>10?"More than 10":cEl.attr(`${p}-${pOption}`)}`);
+                            } else {
+                                $(`[section-part-number] .data-item[data-part-number='${p}']`).attr("tooltip-content", `Qty in US: ${Number(cEl.attr(`${p}-stockus`))>10?"More than 10":cEl.attr(`${p}-stockus`)}\nQty in Canada: ${Number(cEl.attr(`${p}-stockca`))>10?"More than 10":cEl.attr(`${p}-stockca`)}`);                                
+                            }
+                        } else {
+                            $(`[section-part-number] .data-item[data-part-number='${p}']`).attr("tooltip-content", `Qty ${txt}: ${Number(cEl.attr(`${p}-${pOption}`))>10?"More than 10":cEl.attr(`${p}-${pOption}`)}`);
+                        }                        
+                    }
+                }
+                for (let el of $(`[section-part-number] .data-item.active`)) {
+                    let c = r.findIndex(rr=>rr.SKU==$(el).html().trim()+$(cEl).html().trim());
+                    let value = c>=0?$(el).html().trim()+$(cEl).html().trim():$(el).html().trim()+"_"+$(cEl).html().trim().substring(1);
+                    listOptions.push({
+                        value,
+                        text: $(el).html().trim(),
+                        color: "none"
+                    })
+                }
+                $(cEl).append(`
+                <div icon-tooltip flex>                    
+                    <img src="/product_images/uploaded_images/list-inventory-add-v2-30.jpg" icon-add/>
+                </div>
+                `);
+                $("[section-sku]").after(`
+                <div icon-mobile-tooltip icon-add>
+                    <div class="content"><svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 892.13 758.83"><defs><style>.cls-1{fill:#1d1918;}</style></defs><path class="cls-1" d="M776.27,473.69H721.45V418.86a20,20,0,0,0-20-20h0a20,20,0,0,0-20,20v54.83H626.66a20,20,0,0,0-20,20h0a20,20,0,0,0,20,20h54.82v54.82a20,20,0,0,0,20,20h0a20.05,20.05,0,0,0,20-20V513.65h54.82a20,20,0,0,0,20-20h0A20,20,0,0,0,776.27,473.69Z"/><path class="cls-1" d="M335.33,566.75a96,96,0,1,0,96,96A96.14,96.14,0,0,0,335.33,566.75Zm0,147.36a51.32,51.32,0,1,1,51.32-51.32A51.38,51.38,0,0,1,335.33,714.11Z"/><path class="cls-1" d="M828.3,398.88A162.54,162.54,0,0,0,787,359.24a160.45,160.45,0,0,0-89.26-27c-86.68,0-157.6,68.67-161.27,154.46-.1,2.31-.16,4.63-.16,7a161.43,161.43,0,1,0,292-94.79Zm-67.57,195A117.75,117.75,0,0,1,701.46,612a51,51,0,0,0-7.56-.56,51.92,51.92,0,0,0-5.32.27,117.63,117.63,0,0,1-58.33-20.81,119.14,119.14,0,0,1-42.61-53.61,117.73,117.73,0,0,1-8.34-43.65c0-2.34.08-4.66.21-7A118.42,118.42,0,1,1,760.73,593.9Z"/><path class="cls-1" d="M511.62,486.7H248.45l-103.71-461c0-.14,0-.28,0-.43A25.39,25.39,0,0,0,119.46,0H25.31a25.31,25.31,0,0,0,0,50.62H98.46L203.34,516.8a25.39,25.39,0,0,0,21.17,19.47,25.25,25.25,0,0,0,7.16,1.05h285a186.41,186.41,0,0,1-5.18-43.65C511.47,491.33,511.53,489,511.62,486.7Z"/><path class="cls-1" d="M886.6,156.32a25.38,25.38,0,0,0-23.15-15.14H296.63a25.31,25.31,0,0,0,0,50.62H834.86L794.1,334.36c2.24,1.35,4.44,2.75,6.62,4.2a187.89,187.89,0,0,1,35.91,31.19L891.17,179A25.31,25.31,0,0,0,886.6,156.32Z"/><path class="cls-1" d="M744,674.11a51.31,51.31,0,0,1-100.56-2.29c-2.07-.63-4.13-1.29-6.16-2a185.76,185.76,0,0,1-38.67-18.6,96,96,0,1,0,191.38,11.56c0-2.43-.11-4.83-.29-7.21a185.24,185.24,0,0,1-39.46,16.81Q747.1,673.31,744,674.11Z"/></svg></div>
+                </div>
+                `);
+                bindAddToCartAction(listOptions,$(cEl).html().trim());
+            }
+            function production_model(pEl, mEl) {
+                let pOption = pEl.attr("data-option");
+                let txt = "";
+                switch(pOption) {
+                    case "stock": txt="In Stock"; break;
+                    case "transit": txt="In transit"; break;
+                    case "incoming": txt="In production"; break;
+                }
+                let pn = mEl.attr("data-part-number");
+                let listOptions=[];
+                $("[section-sku] .data-item").filter(function() {
+                    if ($(this).attr(`${pn.toLowerCase()}-${pOption}`)>0) {         
+                        if (pOption=="stock") {
+                            if (Number($(this).attr(`${pn.toLowerCase()}-pending`))>0) {
+                                $(this).attr("tooltip-content",`Qty ${txt}: ${Number($(this).attr(`${pn.toLowerCase()}-${pOption}`))>10?"More than 10":$(this).attr(`${pn.toLowerCase()}-${pOption}`)}`);
+                            } else {
+                                $(this).attr("tooltip-content",`Qty in US: ${Number($(this).attr(`${pn.toLowerCase()}-stockus`))>10?"More than 10":$(this).attr(`${pn.toLowerCase()}-stockus`)}\nQty in Canada: ${Number($(this).attr(`${pn.toLowerCase()}-stockca`))>10?"More than 10":$(this).attr(`${pn.toLowerCase()}-stockca`)}`);
+                            }
+                        } else {
+                            $(this).attr("tooltip-content",`Qty ${txt}: ${Number($(this).attr(`${pn.toLowerCase()}-${pOption}`))>10?"More than 10":$(this).attr(`${pn.toLowerCase()}-${pOption}`)}`);
+                        }
+                        return true;
+                    } else {
+                        return false;
+                    }
+                    // return $(this).attr(`${pn.toLowerCase()}-${pOption}`)>0
+                }).addClass("active");
+                for (let el of $(`[section-sku] .data-item.active`)) {
+                    let c = r.findIndex(rr=>rr.SKU==pn+$(el).html().trim());
+                    let value = c>=0?pn+$(el).html().trim():pn+"_"+$(el).html().trim().substring(1);
+                    listOptions.push({
+                        value,
+                        text: $(el).html().trim(),
+                        color: "none"
+                    })
+                }
+                $(mEl).append(`
+                <div icon-tooltip>
+                    <a href="${$(mEl).attr("data-url")}" target="_blank"><img src="/product_images/uploaded_images/list-inventory-link-product-30.jpg"/></a>
+                    <img src="/product_images/uploaded_images/list-inventory-add-v2-30.jpg" icon-add/>
+                </div>
+                `);
+                $("[section-sku]").after(`
+                <div icon-mobile-tooltip icon-add>
+                    <div class="content"><svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 892.13 758.83"><defs><style>.cls-1{fill:#1d1918;}</style></defs><path class="cls-1" d="M776.27,473.69H721.45V418.86a20,20,0,0,0-20-20h0a20,20,0,0,0-20,20v54.83H626.66a20,20,0,0,0-20,20h0a20,20,0,0,0,20,20h54.82v54.82a20,20,0,0,0,20,20h0a20.05,20.05,0,0,0,20-20V513.65h54.82a20,20,0,0,0,20-20h0A20,20,0,0,0,776.27,473.69Z"/><path class="cls-1" d="M335.33,566.75a96,96,0,1,0,96,96A96.14,96.14,0,0,0,335.33,566.75Zm0,147.36a51.32,51.32,0,1,1,51.32-51.32A51.38,51.38,0,0,1,335.33,714.11Z"/><path class="cls-1" d="M828.3,398.88A162.54,162.54,0,0,0,787,359.24a160.45,160.45,0,0,0-89.26-27c-86.68,0-157.6,68.67-161.27,154.46-.1,2.31-.16,4.63-.16,7a161.43,161.43,0,1,0,292-94.79Zm-67.57,195A117.75,117.75,0,0,1,701.46,612a51,51,0,0,0-7.56-.56,51.92,51.92,0,0,0-5.32.27,117.63,117.63,0,0,1-58.33-20.81,119.14,119.14,0,0,1-42.61-53.61,117.73,117.73,0,0,1-8.34-43.65c0-2.34.08-4.66.21-7A118.42,118.42,0,1,1,760.73,593.9Z"/><path class="cls-1" d="M511.62,486.7H248.45l-103.71-461c0-.14,0-.28,0-.43A25.39,25.39,0,0,0,119.46,0H25.31a25.31,25.31,0,0,0,0,50.62H98.46L203.34,516.8a25.39,25.39,0,0,0,21.17,19.47,25.25,25.25,0,0,0,7.16,1.05h285a186.41,186.41,0,0,1-5.18-43.65C511.47,491.33,511.53,489,511.62,486.7Z"/><path class="cls-1" d="M886.6,156.32a25.38,25.38,0,0,0-23.15-15.14H296.63a25.31,25.31,0,0,0,0,50.62H834.86L794.1,334.36c2.24,1.35,4.44,2.75,6.62,4.2a187.89,187.89,0,0,1,35.91,31.19L891.17,179A25.31,25.31,0,0,0,886.6,156.32Z"/><path class="cls-1" d="M744,674.11a51.31,51.31,0,0,1-100.56-2.29c-2.07-.63-4.13-1.29-6.16-2a185.76,185.76,0,0,1-38.67-18.6,96,96,0,1,0,191.38,11.56c0-2.43-.11-4.83-.29-7.21a185.24,185.24,0,0,1-39.46,16.81Q747.1,673.31,744,674.11Z"/></svg></div>
+                </div>
+                `);
+                bindAddToCartAction(listOptions, pn);
+            }
+            function clear(el) {
+                $(".data-item").removeAttr("tooltip-content");
+                if (el) {
+                    el.removeClass("focus"); 
+                }               
+                $(".data-item").removeClass("active");
+                $("[section-sku] .data-item").removeClass("focus");
+                $("[section-part-number] .data-item").removeClass("focus");
+                $("[icon-tooltip]").remove();
+                $("[icon-mobile-tooltip]").remove();
+            }
+            
+            $("[section-production] .data-item").on("click", function() {              
+                clear($("[section-production] .data-item"));
+                $("[section-production-desp]").hide();
+                $(`[section-production-desp][data-option='${$(this).attr("data-option")}']`).show();         
+                $(".data-item").removeClass("focus");
+                $(this).addClass("focus");                
+            });
+
+            $("[section-part-number] .data-item").on("click", function() {                    
+                clear(null);                
+                production_model($("[section-production] .data-item.focus"), $(this));
+                $(this).addClass("focus");
+            });
+
+            $("[section-sku] .data-item").on("click", function() {
+                clear(null);                
+                production_color($("[section-production] .data-item.focus"), $(this));
+                $(this).addClass("focus");
+            });
+        }
+    }
+    
+    function applyMenData(r) {
+        if (r.length>0) {
+            let btnGroup = [];
+            let btnColor = [];
+            for (let inv of r) {                
+                let sP = inv["SKU"].indexOf("#");                
+                let color = inv["SKU"].substring(sP+1).toUpperCase();
+                let cCode = color, gCode="";
+                if (color.length>=3) {
+                    if (color[color.length-1]=="H") {
+                        if (color.includes("ASH")==false && color.length>=4) {
+                            gCode = color.substring(color.length-3);
+                            cCode = color.substring(0,color.length-3);
+                        }                                                            
+                    } else if (Number(color[color.length-1])>=0){
+                        gCode = color.substring(color.length-2);
+                        cCode = color.substring(0, color.length-2)
+                    }
+                }
+                let stock = inv["Available Quantity"];
+                let transit = inv["Lock Status"]!="Locked for processing"?Number(inv["Available Quantity"])<0?Number(inv["Unlocked for sale quantity"])+Number(inv["Available Quantity"]):Number(inv["Unlocked for sale quantity"]):0;
+                let incoming = Number(inv["Available Quantity"])<0?Number(inv["Quantity Incoming"])+Number(inv["Available Quantity"])-2:Number(inv["Quantity Incoming"])-2;                      
+                let stockUS = inv["Available Quantity"]!=inv["Total On Hand"]?0:inv["2"];
+                let stockCA =inv["Available Quantity"]!=inv["Total On Hand"]?0:inv["WH1"];
+                let pending = Number(inv["Total On Hand"])-Number(inv["Available Quantity"]);
+                if (incoming<0) incoming = 0;
+                if (stock<0) stock=0;
+                if (transit<0) transit=0;
+                let ffIdx = btnGroup.findIndex(ff=>ff.part==inv["Part Number"]);
+                if (ffIdx>=0) {
+                    btnGroup[ffIdx].stock +=stock;
+                    btnGroup[ffIdx].transit += transit;
+                    btnGroup[ffIdx].incoming += incoming;                                    
+                    btnGroup[ffIdx]["SKUs"].push({
+                        sku: inv["SKU"],
+                        stock,
+                        transit,
+                        incoming,
+                        stockUS,
+                        stockCA,
+                        pending
+                    })
+                } else {
+                    btnGroup.push({
+                        part: inv["Part Number"],
+                        stock,
+                        transit,
+                        incoming,
+                        url: inv["URLUS"],
+                        base: inv["Base"]?inv["Base"]:"",
+                        size: inv["Size"]?inv["Size"]:"",
+                        density: inv["Hair Density"]?inv["Hair Density"]:"",
+                        SKUs: [{
+                            sku: inv["SKU"],
+                            stock,
+                            transit,
+                            incoming,
+                            stockUS,
+                            stockCA,
+                            pending
+                        }]
+                    })
+                }                         
+                let fIdx = btnColor.findIndex(f=>f.code==`${cCode.toUpperCase()}--${gCode.toUpperCase()}`);                
+                if (fIdx>=0) {
+                    btnColor[fIdx].array.push({
+                        part: inv["Part Number"],
+                        sku: inv["SKU"],
+                        stock,
+                        transit,
+                        incoming,
+                        stockUS,
+                        stockCA,
+                        pending
+                    })
+                } else {
+                    btnColor.push({
+                        code: `${cCode.toUpperCase()}--${gCode.toUpperCase()}`,
+                        color: cCode,
+                        grey: gCode,
+                        combination: color,
+                        array: [{
+                            part: inv["Part Number"],
+                            sku: inv["SKU"],
+                            stock,
+                            transit,
+                            incoming,
+                            stockUS,
+                            stockCA,
+                            pending
+                        }]
+                    })
+                }                                
+            }                      
+            let g = "", c="";
+            for (let b of mModelOrder) {
+                let bg = btnGroup.find(m=>m.part==b);                
+                if (bg) {
+                    g+=`<div class="data-item" section-option="model" data-stock=${bg.stock} data-transit=${bg.transit} data-incoming=${bg.incoming} data-part-number='${b}' data-base='${bg.base}' data-size='${bg.size}' data-density='${bg.density}' data-url='${bg.url}'>${b}</div>`;
+                }
+            }
+            $(".search-loading").hide();
+            $("[section-part-number]").html(g);
+            g="";
+            for (let b of mModelBasicOrder) {
+                let bg = btnGroup.find(m=>m.part==b);                
+                if (bg) {
+                    g+=`<div class="data-item" section-option="model" data-stock=${bg.stock} data-transit=${bg.transit} data-incoming=${bg.incoming} data-part-number='${b}' data-base='${bg.base}' data-size='${bg.size}' data-density='${bg.density}' data-url='${bg.url}'>${b}</div>`;
+                }
+            }
+            $("[section-part-number]").after(`<div section-part-number>${g}</div>`);
+            btnColor.sort((a,b)=> {
+                if (a.code<b.code) {
+                    return -1;
+                } else if (a.code>b.code) {
+                    return 1;
+                } else {
+                    return 0;
+                }
+            })            
+            for (let co of colorOrder) {                
+                let btnC = btnColor.filter(b=>b.color==co.color);                
+                if (btnC.length>0) {
+                    c+=`<div class="sku-content">`;
+                    for (let b of btnC) {                        
+                        let att="";
+                        let part = "";
+                        let stock=0, transit=0, incoming=0;
+                        for (let b1 of b.array) {
+                            stock+=b1.stock;
+                            transit+=b1.transit;
+                            incoming+=b1.incoming;
+                            att+=` ${b1.part}-stock=${b1.stock} ${b1.part}-transit=${b1.transit} ${b1.part}-incoming=${b1.incoming} ${b1.part}-stockus=${b1.stockUS} ${b1.part}-stockca=${b1.stockCA} ${b1.part}-pending=${b1.pending}`;
+                            if (part.length==0) {
+                                part=`${b1.part}`;
+                            } else {
+                                part+=`-${b1.part}`;
+                            }
+                        }                                                
+                        c+=`<div class="data-item" section-option="color" color-group="${co.group}" color-code="${b.color}" grey-code="${b.grey}" data-stock=${stock} data-transit=${transit} data-incoming=${incoming} data-part-number='${part}' ${att}>
+                            #${b.combination}
+                        </div>`;
+                    }
+                    c+=`</div>`;
+                }                
+            }
+            $("[section-sku]").html(c);
+            // $("[section-production]").css({display: "flex"});                
+            // $("[section-production-desp][data-option='stock']").show();                
+            $(".section-title").show();
+            $(".section-step").show();                        
+            $("[section-category] .data-item").css({"pointer-events": "auto"});
+            if ($(window).width()<475) {
+                $(".section-filter[section-filter-model][men]").css({display:"block"});
+            } else {
+                $(".section-filter[section-filter-model][men]").css({display:"flex"});
+            }
+            $(".section-filter[section-filter-color][men]").css({display:"flex"});
+            $(".section-filter[women]").hide();
+            // $(".data-item").filter(function() {
+            //     return $(this).attr("data-stock")>0
+            // }).addClass("active");         
+            
+            // function model_color(mEl, cEl) {
+            //     let pn = mEl.attr("data-part-number");
+            //     if (cEl.attr(`${pn.toLowerCase()}-stock`)>0) {
+            //         $(".data-item[data-option='stock']").addClass("active");
+            //         $(".data-item[data-option='stock']").attr("tooltip-content",`Qty In Stock: ${cEl.attr(`${pn.toLowerCase()}-stock`)}`);
+            //     }
+            //     if (cEl.attr(`${pn.toLowerCase()}-transit`)>0) {
+            //         $(".data-item[data-option='transit']").addClass("active");
+            //         $(".data-item[data-option='transit']").attr("tooltip-content",`Qty In Transit: ${cEl.attr(`${pn.toLowerCase()}-transit`)}`);
+            //     }
+            //     if (cEl.attr(`${pn.toLowerCase()}-incoming`)>0) {
+            //         $(".data-item[data-option='incoming']").addClass("active");
+            //         $(".data-item[data-option='incoming']").attr("tooltip-content",`Qty In Production: ${cEl.attr(`${pn.toLowerCase()}-incoming`)}`);
+            //     }
+            // }
+            function production_color(pEl, cEl) {
+                let pOption = pEl.attr("data-option");
+                let txt = "";
+                switch(pOption) {
+                    case "stock": txt="In Stock"; break;
+                    case "transit": txt="In transit"; break;
+                    case "incoming": txt="In production"; break;
+                }
+                let pn = cEl.attr("data-part-number").split("-");
+                let listOptions=[];
+                for (let p of pn) {
+                    if (cEl.attr(`${p}-${pOption}`)>0) {                                                              
+                        $(`[section-part-number] .data-item[data-part-number='${p}']`).addClass("active");
+                        if (pOption=="stock") {
+                            if (Number(cEl.attr(`${p}-pending`))>0) {
+                                $(`[section-part-number] .data-item[data-part-number='${p}']`).attr("tooltip-content", `Qty ${txt}: ${Number(cEl.attr(`${p}-${pOption}`))>10?"More than 10":cEl.attr(`${p}-${pOption}`)}`);
+                            } else {
+                                $(`[section-part-number] .data-item[data-part-number='${p}']`).attr("tooltip-content", `Qty in US: ${Number(cEl.attr(`${p}-stockus`))>10?"More than 10":cEl.attr(`${p}-stockus`)}\nQty in Canada: ${Number(cEl.attr(`${p}-stockca`))>10?"More than 10":cEl.attr(`${p}-stockca`)}`);                                
+                            }
+                        } else {
+                            $(`[section-part-number] .data-item[data-part-number='${p}']`).attr("tooltip-content", `Qty ${txt}: ${Number(cEl.attr(`${p}-${pOption}`))>10?"More than 10":cEl.attr(`${p}-${pOption}`)}`);
+                        }                        
+                    }
+                }
+                for (let el of $(`[section-part-number] .data-item.active`)) {
+                    listOptions.push({
+                        value: $(el).html().trim()+$(cEl).html().trim(),
+                        text: $(el).html().trim(),
+                        color: "none"
+                    })
+                }
+                $(cEl).append(`
+                <div icon-tooltip flex>                    
+                    <img src="/product_images/uploaded_images/list-inventory-add-v2-30.jpg" icon-add/>
+                </div>
+                `);
+                $("[section-sku]").after(`
+                <div icon-mobile-tooltip icon-add>
+                    <div class="content"><svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 892.13 758.83"><defs><style>.cls-1{fill:#1d1918;}</style></defs><path class="cls-1" d="M776.27,473.69H721.45V418.86a20,20,0,0,0-20-20h0a20,20,0,0,0-20,20v54.83H626.66a20,20,0,0,0-20,20h0a20,20,0,0,0,20,20h54.82v54.82a20,20,0,0,0,20,20h0a20.05,20.05,0,0,0,20-20V513.65h54.82a20,20,0,0,0,20-20h0A20,20,0,0,0,776.27,473.69Z"/><path class="cls-1" d="M335.33,566.75a96,96,0,1,0,96,96A96.14,96.14,0,0,0,335.33,566.75Zm0,147.36a51.32,51.32,0,1,1,51.32-51.32A51.38,51.38,0,0,1,335.33,714.11Z"/><path class="cls-1" d="M828.3,398.88A162.54,162.54,0,0,0,787,359.24a160.45,160.45,0,0,0-89.26-27c-86.68,0-157.6,68.67-161.27,154.46-.1,2.31-.16,4.63-.16,7a161.43,161.43,0,1,0,292-94.79Zm-67.57,195A117.75,117.75,0,0,1,701.46,612a51,51,0,0,0-7.56-.56,51.92,51.92,0,0,0-5.32.27,117.63,117.63,0,0,1-58.33-20.81,119.14,119.14,0,0,1-42.61-53.61,117.73,117.73,0,0,1-8.34-43.65c0-2.34.08-4.66.21-7A118.42,118.42,0,1,1,760.73,593.9Z"/><path class="cls-1" d="M511.62,486.7H248.45l-103.71-461c0-.14,0-.28,0-.43A25.39,25.39,0,0,0,119.46,0H25.31a25.31,25.31,0,0,0,0,50.62H98.46L203.34,516.8a25.39,25.39,0,0,0,21.17,19.47,25.25,25.25,0,0,0,7.16,1.05h285a186.41,186.41,0,0,1-5.18-43.65C511.47,491.33,511.53,489,511.62,486.7Z"/><path class="cls-1" d="M886.6,156.32a25.38,25.38,0,0,0-23.15-15.14H296.63a25.31,25.31,0,0,0,0,50.62H834.86L794.1,334.36c2.24,1.35,4.44,2.75,6.62,4.2a187.89,187.89,0,0,1,35.91,31.19L891.17,179A25.31,25.31,0,0,0,886.6,156.32Z"/><path class="cls-1" d="M744,674.11a51.31,51.31,0,0,1-100.56-2.29c-2.07-.63-4.13-1.29-6.16-2a185.76,185.76,0,0,1-38.67-18.6,96,96,0,1,0,191.38,11.56c0-2.43-.11-4.83-.29-7.21a185.24,185.24,0,0,1-39.46,16.81Q747.1,673.31,744,674.11Z"/></svg></div>
+                </div>
+                `);
+                bindAddToCartAction(listOptions,$(cEl).html().trim());
+            }
+            function production_model(pEl, mEl) {
+                let pOption = pEl.attr("data-option");
+                let txt = "";
+                switch(pOption) {
+                    case "stock": txt="In Stock"; break;
+                    case "transit": txt="In transit"; break;
+                    case "incoming": txt="In production"; break;
+                }
+                let pn = mEl.attr("data-part-number");
+                let listOptions=[];
+                $("[section-sku] .data-item").filter(function() {
+                    if ($(this).attr(`${pn.toLowerCase()}-${pOption}`)>0) {         
+                        if (pOption=="stock") {
+                            if (Number($(this).attr(`${pn.toLowerCase()}-pending`))>0) {
+                                $(this).attr("tooltip-content",`Qty ${txt}: ${Number($(this).attr(`${pn.toLowerCase()}-${pOption}`))>10?"More than 10":$(this).attr(`${pn.toLowerCase()}-${pOption}`)}`);
+                            } else {
+                                $(this).attr("tooltip-content",`Qty in US: ${Number($(this).attr(`${pn.toLowerCase()}-stockus`))>10?"More than 10":$(this).attr(`${pn.toLowerCase()}-stockus`)}\nQty in Canada: ${Number($(this).attr(`${pn.toLowerCase()}-stockca`))>10?"More than 10":$(this).attr(`${pn.toLowerCase()}-stockca`)}`);
+                            }
+                        } else {
+                            $(this).attr("tooltip-content",`Qty ${txt}: ${Number($(this).attr(`${pn.toLowerCase()}-${pOption}`))>10?"More than 10":$(this).attr(`${pn.toLowerCase()}-${pOption}`)}`);
+                        }
+                        listOptions.push({
+                            value: pn+$(this).html().trim(),
+                            text: $(this).html().trim(),
+                            color: $(this).attr("color-group")
+                        })
+                        return true;
+                    } else {
+                        return false;
+                    }
+                    // return $(this).attr(`${pn.toLowerCase()}-${pOption}`)>0
+                }).addClass("active");
+                $(mEl).append(`
+                <div icon-tooltip>
+                    <a href="${$(mEl).attr("data-url")}" target="_blank"><img src="/product_images/uploaded_images/list-inventory-link-product-30.jpg"/></a>
+                    <img src="/product_images/uploaded_images/list-inventory-add-v2-30.jpg" icon-add/>
+                </div>
+                `);
+                $("[section-sku]").after(`
+                <div icon-mobile-tooltip icon-add>
+                    <div class="content"><svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 892.13 758.83"><defs><style>.cls-1{fill:#1d1918;}</style></defs><path class="cls-1" d="M776.27,473.69H721.45V418.86a20,20,0,0,0-20-20h0a20,20,0,0,0-20,20v54.83H626.66a20,20,0,0,0-20,20h0a20,20,0,0,0,20,20h54.82v54.82a20,20,0,0,0,20,20h0a20.05,20.05,0,0,0,20-20V513.65h54.82a20,20,0,0,0,20-20h0A20,20,0,0,0,776.27,473.69Z"/><path class="cls-1" d="M335.33,566.75a96,96,0,1,0,96,96A96.14,96.14,0,0,0,335.33,566.75Zm0,147.36a51.32,51.32,0,1,1,51.32-51.32A51.38,51.38,0,0,1,335.33,714.11Z"/><path class="cls-1" d="M828.3,398.88A162.54,162.54,0,0,0,787,359.24a160.45,160.45,0,0,0-89.26-27c-86.68,0-157.6,68.67-161.27,154.46-.1,2.31-.16,4.63-.16,7a161.43,161.43,0,1,0,292-94.79Zm-67.57,195A117.75,117.75,0,0,1,701.46,612a51,51,0,0,0-7.56-.56,51.92,51.92,0,0,0-5.32.27,117.63,117.63,0,0,1-58.33-20.81,119.14,119.14,0,0,1-42.61-53.61,117.73,117.73,0,0,1-8.34-43.65c0-2.34.08-4.66.21-7A118.42,118.42,0,1,1,760.73,593.9Z"/><path class="cls-1" d="M511.62,486.7H248.45l-103.71-461c0-.14,0-.28,0-.43A25.39,25.39,0,0,0,119.46,0H25.31a25.31,25.31,0,0,0,0,50.62H98.46L203.34,516.8a25.39,25.39,0,0,0,21.17,19.47,25.25,25.25,0,0,0,7.16,1.05h285a186.41,186.41,0,0,1-5.18-43.65C511.47,491.33,511.53,489,511.62,486.7Z"/><path class="cls-1" d="M886.6,156.32a25.38,25.38,0,0,0-23.15-15.14H296.63a25.31,25.31,0,0,0,0,50.62H834.86L794.1,334.36c2.24,1.35,4.44,2.75,6.62,4.2a187.89,187.89,0,0,1,35.91,31.19L891.17,179A25.31,25.31,0,0,0,886.6,156.32Z"/><path class="cls-1" d="M744,674.11a51.31,51.31,0,0,1-100.56-2.29c-2.07-.63-4.13-1.29-6.16-2a185.76,185.76,0,0,1-38.67-18.6,96,96,0,1,0,191.38,11.56c0-2.43-.11-4.83-.29-7.21a185.24,185.24,0,0,1-39.46,16.81Q747.1,673.31,744,674.11Z"/></svg></div>
+                </div>
+                `);
+                bindAddToCartAction(listOptions, pn);
+            }
+            function clear(el) {
+                $(".data-item").removeAttr("tooltip-content");
+                if (el) {
+                    el.removeClass("focus"); 
+                }               
+                $(".data-item").removeClass("active");
+                $("[section-sku] .data-item").removeClass("focus");
+                $("[section-part-number] .data-item").removeClass("focus");
+                $("[icon-tooltip]").remove();
+                $("[icon-mobile-tooltip]").remove();
+            }
+            
+            $("[section-production] .data-item").on("click", function() {              
+                clear($("[section-production] .data-item"));
+                $("[section-production-desp]").hide();
+                $(`[section-production-desp][data-option='${$(this).attr("data-option")}']`).show();         
+                $(".data-item").removeClass("focus");
+                $(this).addClass("focus");
+            });
+
+            $("[section-part-number] .data-item").on("click", function() {                    
+                clear(null);                
+                production_model($("[section-production] .data-item.focus"), $(this));
+                $(this).addClass("focus");                
+            });
+
+            $("[section-sku] .data-item").on("click", function() {
+                clear(null);                
+                production_color($("[section-production] .data-item.focus"), $(this));
+                $(this).addClass("focus");
+            });
+        }
+    }
+    function bindAddToCartAction(listOptions, title) {        
+        $("[icon-add]").on("click", function() {
+            let ops = `<div class="modal-add-cart-title">${title}</div>`;
+            for (let op of listOptions) {
+                ops+=`                
+                <a href="/cart.php?action=add&sku=${encodeURIComponent(op.value)}" target="_blank" class="modal-add-cart-option" color="color-${op.color.replaceAll(" ","-")}">
+                    <span>${op.text}</span>
+                    <span class="modal-icon-add">
+                        <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="plus" class="svg-inline--fa fa-plus fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"></path></svg>
+                    </span>                    
+                </div>                
+                `;
+            }
+            $("[modal-add-cart] .modal-add-cart-content").empty();
+            $("[modal-add-cart] .modal-add-cart-content").append(ops);
+            $("[modal-add-cart]").css({display: "flex"});
+        })
+    }    
+    window.addEventListener("DOMContentLoaded", () => {        
+        $("[section-category] .data-item").on("click", function() {
+            let el = $("[section-category] .selected");            
+            let fOption = $(this).attr("data-filter");
+            if (el.attr("data-filter") != fOption) {
+                $("[section-category] .data-item").removeClass("selected");
+                $("[section-category] .data-item").css({"pointer-events": "none"});
+                $(this).addClass("selected");               
+                $("[section-sku]").html("");
+                $("[section-part-number]").html("");
+                $(".section-title").hide();
+                $(".section-step").hide();
+                $(".section-filter").hide();
+                $(".search-loading").css({display:"flex"});   
+                $("[section-production]").css({display:"flex"});                
+                $(".step1").show();
+                $(".section-production-desp-wrapper").show();
+                // $(".section-step.step1").show();
+                if ($("[section-part-number").length==2) {
+                    $("[section-part-number").eq(1).remove();
+                }
+                let filter = `[Classification]='${fOption}' and not Contains([Part Number],'PERM') and (Sum([Available Quantity])>0 or ([Unlocked for sale quantity]>0 and [Lock Status] <> "Locked for processing") or [Quantity Incoming]>2)`;                        
+                fetch(`https://shp-webserver-temp.glitch.me/search-inventory`, {
+                    method: 'POST',            
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        filter
+                    })
+                })
+                .then(r=>r.json())
+                .then(r=>{
+                    // console.log(r);                    
+                    if (fOption.includes("Women")) {
+                        applyWomenData(r);
+                    } else if (fOption.includes("Men")) {
+                        // console.log(r);
+                        applyMenData(r);
+                    }
+                })
+                .catch(e=>console.log(e));
+            }
+        });
+        $("[section-filter-model] select").on("change", function() {            
+            // let mof = $("[section-filter-model] select");    
+            $(`[section-part-number] .data-item`).hide();         
+            let mof = $(this).parents("[section-filter-model]").find("select");
+            let filter = "";            
+            for (let el of mof) {                
+                if ($(el).val()) {                    
+                    filter+=`[data-${$(el).attr("filter-option")}='${$(el).val()}']`;
+                }
+            }                            
+            $(`[section-part-number] .data-item${filter}`).show();            
+        });
+        $("[section-filter-color] input").on("change", function() {
+            let val = $("input[name='color-option']:checked").val();
+            if (val) {
+                $(`[section-sku] .data-item`).hide();
+                $(`[section-sku] .data-item[color-group='${val}']`).show();
+            } else {
+                $(`[section-sku] .data-item`).show();
+            }
+        })
+        $("[modal-add-cart] .overlay").on("click", function() {
+            $("[modal-add-cart]").hide();
+        })
+    })    
+</script>
+
+<!-- <script type="text/javascript">
+    if (!document.querySelector('script#remazejs_script')){
+        var rmzScript = document.createElement('script');
+        rmzScript.async = true;
+        rmzScript.id = 'reamazejs_script';
+        rmzScript.setAttribute('src', 'https://cdn.reamaze.com/assets/reamaze.js');
+        document.head.appendChild(rmzScript);
+    }
+    var _support = _support || {'ui': {}, 'user': {}};
+    _support.account = "superhairpieces";
+    if (!document.querySelector('script[src=\'https://cdn.reamaze.com/assets/reamaze.js\']')) {
+        var rmzScript = document.createElement('script');
+        rmzScript.async = true;
+        rmzScript.setAttribute('src', 'https://cdn.reamaze.com/assets/reamaze.js');
+        document.head.appendChild(rmzScript);
+    }
+    var _support = _support || {'ui': {}, 'user': {}};
+    _support['account'] = 'superhairpieces';
+    _support['ui']['contactMode'] = 'default';
+    _support['ui']['enableKb'] = 'true';
+    _support['ui']['styles'] = {
+        widgetColor: 'rgb(29,29,29)',
+        gradient: true
+    };
+    _support['ui']['widget'] = {
+        icon: 'chat',
+        displayOn: 'all',
+        label: {
+        	text: 'Let us know if you have any questions! &#128522;',
+        	mode: 'notification',
+        	delay: 3,
+        	duration: 30,
+        	sound: true
+    	},
+        position: 'bottom-right',
+        mobilePosition: 'bottom-right'
+    }
+    _support['custom_fields'] = {
+        'Phone Number': {
+            pos: 1576863633906,
+            type: 'phone',
+            value: '',
+            required: false,
+            placeholder: ''
+        }
+    };
+    _support['app'] = {
+        faq: {'enabled': true, 'header': 'Find the a nswers from knowledge base'},
+        recentConversation: {},
+        orders: {'enabled': false}
+    };
+</script> -->

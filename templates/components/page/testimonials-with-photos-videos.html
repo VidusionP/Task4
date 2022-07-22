@@ -1,0 +1,42 @@
+<style>
+    #s-9db044ca-f446-4eea-8094-4a518ba7acb0 .show-photo{order:2}#s-9db044ca-f446-4eea-8094-4a518ba7acb0 .show-content{order:1;overflow-wrap:break-word}#s-263c1ba3-a699-47e9-ba04-999e46a26322{margin-bottom:1rem!important}#s-5b1aaea8-6dce-477b-bbbd-b32c98031939{margin-bottom:2.3rem!important}#s-885b1f57-1930-4040-8a05-64d47a22c4d8{padding-top:0!important}#s-cd0b4d6e-6c6a-4b31-b62a-8c5a3bea0c56{padding-bottom:0!important}@media only screen and (max-width: 1124px){#s-9db044ca-f446-4eea-8094-4a518ba7acb0 .shg-row{display:block}#s-9db044ca-f446-4eea-8094-4a518ba7acb0 .show-content,#s-9db044ca-f446-4eea-8094-4a518ba7acb0 .show-photo{width:100%}}@media only screen and (max-width: 520px){#s-9db044ca-f446-4eea-8094-4a518ba7acb0 h1{font-size:30px!important}}@media only screen and (max-width: 400px){#s-6b3d0e28-2101-47c0-8064-eda1fb030e5d{padding:10px!important}}.menu-wrap{width:100%;margin-bottom:20px;display:none;overflow-x:auto}@media only screen and (min-width: 1025px){.menu-wrap{overflow-x:hidden}.menu-wrap:hover{overflow-x:auto}}.menu-items{display:flex;align-items:center;justify-content:center;padding:20px 0;margin-bottom:20px;width:max-content;margin:0 auto}.menu-item{font-size:15px;margin:0 20px;position:relative;cursor:pointer}.menu-item a,.menu-submenu-item a{text-decoration:none}.menu-item:hover{color:#825d41}.menu-item.active a{color:#825d41}.menu-submenu-items{display:flex;align-items:center;justify-content:center;padding:20px 0;margin-bottom:20px;width:max-content;margin:0 auto;position:relative;display:none}.menu-submenu-items::before{content:'';width:100px;height:2px;background-color:#000;position:absolute;top:0;left:calc(50% - 50px)}.menu-submenu-item{font-size:15px;margin:0 20px;position:relative;cursor:pointer}#s-202ccbec-cfac-4b35-9444-1543a4843bf4{margin-bottom:2rem !important;}
+</style>
+<div
+    class="shogun-root"
+    data-shogun-id="6079df060020c600ce8e40fd"
+    data-shogun-site-id="fb8c6090-a908-45e2-8617-89b82d7a20e6"
+    data-shogun-page-id="6079df060020c600ce8e40fd"
+    data-shogun-page-version-id="6079ea2c87faf100d8de4bae"
+    data-shogun-platform-type="big_commerce"
+    data-shogun-variant-id="6079ea2c87faf100d8de4c64"
+    data-region="main"
+>
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Poppins:100|Poppins:200" />
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.getshogun.com/6079ea2c87faf100d8de4c64.css" />
+    <div class="menu-wrap">
+        <div class="menu-items">            
+        </div>        
+    </div>
+    <div class="shg-box-vertical-align-wrapper">
+        <div class="shg-box shg-c" id="s-80caf908-6ef2-467d-9259-f944c60bfc33">
+            <div class="shg-box-overlay"></div>
+            <div class="shg-box-content">
+                <div id="s-89d8f2cd-b0c0-48b7-ae9a-4b521131180e" class="shg-c shg-align-center">
+                    <div class="shogun-heading-component">
+                        <h1>Many thanks to our loyal customers</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>    
+
+    <div id="s-8c5442ec-cc35-4ba1-a980-b070e455c515" class="shg-c">
+        <div id="stamped-reviews-widget" data-widget-type="wall-photos" data-min-rating="3" data-with-photos="true"></div>
+    </div>
+
+    <script type="text/javascript" src="https://cdn.getshogun.com/6079ea2c87faf100d8de4c64.js" async></script>
+</div>
+<script>
+    let submenu=[];function openSubMenu(e){if($(event.currentTarget).hasClass("active"))$(event.currentTarget).removeClass("active"),$(".menu-submenu-items").remove();else{$(".menu-item .active").removeClass("active"),$(event.currentTarget).addClass("active");let n=submenu.filter(n=>n.name==e);if(n.length>0){$(".menu-submenu-items").remove();let e='<div class="menu-submenu-items">';if(n[0].menu)for(let t of n[0].menu)e+=`<div class="menu-submenu-item"><a href="${t.link}">${t.name}</a></div>`;e+="</div>",$(".menu-wrap").append(e),$(".menu-submenu-items").slideDown({start:function(){$(this).css({display:"flex"})}}),$(".menu-wrap").hasScrollBar()&&$(".menu-wrap").scrollLeft(0)}}}window.addEventListener("DOMContentLoaded",e=>{!function(e){jQuery.fn.hasScrollBar=function(){return this.get(0).scrollWidth>this.get(0).clientWidth}}(),fetch("/content/data/custom-menu.json").then(e=>e.json()).then(e=>{if(console.log(e),e.menu){for(let n of e.menu)n.hasOwnProperty("link")?n.link.includes(window.location.pathname)?$(".menu-items").append(`<div class="menu-item active"><a href="${n.link}">${n.name}</a></div>`):$(".menu-items").append(`<div class="menu-item"><a href="${n.link}">${n.name}</a></div>`):(submenu.push({name:n.name,menu:n.subMenu}),$(".menu-items").append(`<div class="menu-item"><a href="#" onclick="openSubMenu('${n.name}')">${n.name}</a></div>`));$(".menu-wrap").show()}}).catch(e=>console.log(e))});
+</script>

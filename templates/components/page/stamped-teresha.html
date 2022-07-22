@@ -1,0 +1,1286 @@
+<link rel="preconnect" href="https://fonts.gstatic.com" /><link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap"
+    rel="stylesheet"
+/>
+<style>
+    .page-content--centered {
+        width: 100% !important;
+    }
+    .stamped-wall-photos-wrapper1 {
+        margin: 15px;
+        padding-top: 10px;
+        -moz-column-count: 3;
+        -webkit-column-count: 3;
+        column-count: 3;
+        position: relative;
+        min-height: 300px;
+    }
+    .stamped-wall-photos-wrapper1 .loading {
+        position: absolute;        
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .stamped-photo-wrapper1 {
+        display: inline-block;
+        background: #f5f5f5;
+        margin: 0 0 1em;
+        width: 100%;
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.18);
+        border-radius: 3px;
+        -moz-border-radius: 3px;
+        -webkit-border-radius: 3px;
+        cursor: pointer;
+        transform: translateZ(0);
+    }
+    .stamped-photo-wrapper1:hover {
+        box-shadow: 0 -10px 20px -10px rgba(0, 0, 0, 0.18);
+        transition: box-shadow 0.3s ease;
+    }
+    .stamped-reviews-message-image-block1 {
+        position: relative;
+        margin-top: 0 !important;
+    }
+    .stamped-reviews-message-image-block1 a {
+        cursor: pointer;
+        margin: 0;
+        padding: 0;
+        line-height: 0;
+    }
+    .stamped-reviews-message-image-block1 img,
+    .stamped-reviews-message-image-block1 video {
+        display: inline-block;
+        height: auto;
+        max-width: 100%;
+        vertical-align: middle;
+        width: 100%;
+    }
+    .stamped-reviews-holder1 {
+        padding: 10px 12px;
+        font-weight: 400;
+    }
+    .stamped-reviews-author1 {
+        font-weight: 700;
+    }
+    .stamped-reviews-location1 {
+        color: #777;
+        font-size: 12px;
+    }
+    .stamped-reviews-rating1 {
+        margin: 5px 0;
+    }
+    .stamped-reviews-rating1 svg {
+        width: 1rem;
+        fill: #ffd200;
+        margin-right: 0.2rem;
+    }
+    .stamped-reviews-image-wrapper1 {
+        font-size: 13px;
+        margin-top: 20px;
+        border-top: 1px solid #eee;
+        padding-top: 10px;
+        padding-bottom: 20px;
+    }
+    .stamped-reviews-image-wrapper1 img {
+        float: left;
+        margin-right: 10px;
+        margin-bottom: 10px;
+        width: 50px;
+    }
+    .stamped-ugc-modal1 {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-color: rgba(116, 99, 99, 0.65);
+        z-index: -1;
+        opacity: 0;
+        -webkit-transition: opacity 0.2s ease-in;
+        -moz-transition: opacity 0.2s ease-in;
+        transition: opacity 0.2s ease-in;
+        text-align: left;
+        white-space: initial;
+    }
+    .stamped-modal-close1 {
+        cursor: pointer;
+        line-height: 30px;
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        text-align: center;
+        width: 45px;
+        height: 50px;
+        box-shadow: none;
+        font-weight: 400;
+        font-size: 0;
+        float: right;
+        z-index: 9;
+    }
+    .stamped-modal-close1 svg {
+        width: 100%;
+    }
+    .stamped-ugc-modal1.open {
+        opacity: 1;
+        pointer-events: auto;
+        z-index: 999999;
+        overflow-y: scroll;
+    }
+    .stamped-ugc-modal1-wrapper {
+        display: flex;
+        max-height: calc(100vh - 100px);
+        top: 2rem;
+        position: relative;
+        min-height: 100px;
+        margin: auto;
+        padding: 0 70px;
+        box-shadow: none;
+        justify-content: center;
+    }
+    .stamped-ugc-modal1-nav-next,
+    .stamped-ugc-modal1-nav-previous {
+        width: 50px;
+        height: 100%;
+        padding: 0;
+        border: none;
+        background: 0 0;
+        color: #bfbfbf;
+        z-index: 2;
+        cursor: pointer;
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        margin-top: 30vh;
+    }
+    .stamped-ugc-modal1-nav-previous {
+        margin-right: 1rem;
+    }
+    .stamped-ugc-modal1-nav-next {
+        margin-left: 1rem;
+    }
+    .stamped-ugc-modal1-nav svg {
+        width: 20px;
+        fill: #eee;
+    }
+    .stamped-ugc-modal1-content,
+    .stamped-ugc-modal1-image-wrapper {
+        display: table-cell;
+        vertical-align: top;
+        position: relative;
+        min-height: initial;
+        z-index: 1;
+        background: #fff;
+        -moz-backface-visibility: hidden;
+        -ms-backface-visibility: hidden;
+        display: inline-block;
+        margin: 0;
+    }
+    .stamped-ugc-modal1-image-wrapper {
+        overflow: hidden;
+        min-width: 40%;
+    }
+    .stamped-ugc-modal1-content-wrapper {
+        padding: 60px 20px 50px;
+        height: 100%;
+    }
+    .stamped-ugc-modal1-content {
+        height: 100%;
+        overflow-y: auto;
+        position: relative;
+        z-index: 3;
+    }
+    .stamped-ugc-modal1-image {
+        box-sizing: border-box;
+        vertical-align: top;
+        background-repeat: no-repeat !important;
+        background-position: center center !important;
+        background-size: contain !important;
+        -webkit-backface-visibility: hidden;
+        width: calc(100% - 40px);
+        margin: 20px;
+        min-width: 300px;
+        max-height: calc(100vh - 100px);
+    }
+    .stamped-ugc-modal1-image img,
+    .stamped-ugc-modal1-video {
+        max-width: 100%;
+        width: unset;
+        min-width: 50%;
+        max-width: 100%;
+        background-color: #fff;
+        display: inline-block;
+        vertical-align: middle;
+        max-height: calc(100vh - 100px);
+    }
+    .stamped-ugc-modal1-user {
+        display: inline-block;
+        font-size: 18px;
+        font-weight: 700;
+        width: 100%;
+    }
+    .stamped-ugc-modal1-user-username {
+        float: left;
+        margin-top: 6px;
+    }
+    .stamped-ugc-modal1-user-username .stamped-verified-badge {
+        margin-left: 7px;
+        color: #1cc286;
+    }
+    .stamped-ugc-modal1-caption {
+        margin-top: 15px;
+        line-height: 20px;
+        clear: both;
+        border-top: 0 solid #ddd;
+        padding-top: 0;
+    }
+    .stamped-ugc-modal1-date {
+        color: #999;
+        margin: 0;
+        font-size: 0.9em;
+        float: right;
+    }
+    .stamped-ugc-modal1-caption-rating {
+        margin-bottom: 5px;
+    }
+    .stamped-ugc-modal1-caption-rating svg {
+        width: 1rem;
+        fill: #ffd200;
+        margin-right: 0.2rem;
+    }
+    .stamped-ugc-modal1-caption-title {
+        font-size: 1.1em;
+        font-weight: 700;
+        margin-bottom: 5px;
+        margin-top: 10px;
+        clear: both;
+    }
+    .stamped-ugc-modal1-caption-body {
+        line-height: 25px;
+        word-break: break-word;
+    }
+    .stamped-ugc-modal1-votes {
+        font-size: 15px;
+        text-align: right;
+        margin-top: 15px;
+    }
+    span.stamped-ugc-modal1-vote-up {
+        margin-right: 15px;
+    }
+    span.stamped-ugc-modal1-vote-down,
+    span.stamped-ugc-modal1-vote-up {
+        letter-spacing: 3px;
+        cursor: pointer;
+    }
+    span.stamped-ugc-modal1-vote-down svg,
+    span.stamped-ugc-modal1-vote-up svg {
+        width: 1rem;
+    }
+    .stamped-ugc-modal1-tags {
+        margin-top: 20px;
+        margin-bottom: 0;
+        display: inline-block;
+        width: 100%;
+        border-top: 1px solid #eee;
+        padding-top: 20px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        box-sizing: border-box !important;
+    }
+    .stamped-ugc-modal1-tags > .stamped-ugc-modal1-tag,
+    .stamped-ugc-modal1-tags > a {
+        display: flex;
+        clear: both;
+        max-width: 49%;
+        vertical-align: top;
+        text-decoration: none;
+        color: #000;
+    }
+    .stamped-ugc-modal1-tags a {
+        text-decoration: none;
+        color: #000;
+        flex: 1;
+    }
+    .stamped-ugc-modal1-tags-product-image-wrapper {
+        display: inline-block;
+        padding: 10px;
+        border: 1px solid #ececec;
+        line-height: 0;
+        text-align: center;
+        width: 100%;
+        box-sizing: border-box !important;
+    }
+    .stamped-ugc-modal1-tags-product-image {
+        max-height: 100px;
+        height: auto;
+        width: auto;
+    }
+    .stamped-ugc-modal1-tags-product-title {
+        align-items: center;
+        margin-top: 10px;
+        margin-bottom: 15px;
+        min-height: 40px;
+        font-size: 12px;
+        line-height: 16px;
+        text-align: center;
+    }
+    .stamped-ugc-modal1-list-photos {
+        position: absolute;
+        text-align: center;
+        width: 100%;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin-top: 10px;
+        white-space: nowrap;
+        height: 56px !important;
+        overflow-x: scroll;
+        overflow-y: hidden;
+    }
+    .stamped-ugc-modal1-list-photos ul li {
+        background-repeat: no-repeat;
+        display: inline-block;
+        width: 80px;
+        height: 50px;
+        margin-right: 6px;
+        border: 3px solid #d4d4d4;
+        background-size: cover !important;
+        -ms-background-size: cover !important;
+        -o-background-size: cover !important;
+        -moz-background-size: cover !important;
+        -webkit-background-size: cover !important;
+        font-size: 0;
+        opacity: 0.6;
+        cursor: pointer;
+        background-position-y: center !important;
+        vertical-align: top;
+    }
+    .stamped-ugc-modal1-list-photos ul li.active {
+        opacity: 1;
+    }
+    .stamped-modal-image-content-wrapper {
+        display: flex;
+        position: relative;
+    }
+    .featured-salon-title {
+        font-size: 1.3rem;
+        font-style: italic;
+        margin-bottom: 1rem;
+        letter-spacing: 0.1rem;
+        font-weight: 300;
+        padding-left: 1rem;
+    }
+    .featured-salon-item-description-wrap {
+        border-left: 1rem solid #00adef;        
+        width: calc(100% + 3rem);
+        transform: translateX(-3rem);
+        padding-left: 3rem;
+        padding-right: 1rem;
+    }
+    .featured-salon-item-desp-top {
+        display: flex;
+        border-bottom: 1px solid #00adef;
+        padding-bottom: 3rem;
+    }
+    .featured-salon-item-left {
+        width: 70%;
+    }
+    .featured-salon-item-right {
+        width: 30%;
+        position: relative;
+        padding-left: 1rem;
+    }    
+    .featured-salon-item-right picture {
+        position: absolute;
+        bottom: -3rem;
+    }
+    .featured-salon-item-right img {
+        width: 100%;
+    }
+    .featured-salon-item-title {
+        color: #1a5183;
+        font-size: 3rem;
+        margin-bottom: 1.5rem;
+        font-weight: 500;
+    }
+    .featured-salon-item-desption {
+        margin-bottom: 0.5rem;
+    }
+    .featured-salon-item-highlight {
+        color: #5197db;
+        font-size: 1.3rem;
+        font-style: italic;
+        margin-bottom: 2rem;
+        font-weight: 500;
+    }
+    .featured-salon-item-owner,
+    .featured-salon-item-service-title,
+    .featured-salon-item-info-title,
+    .featured-salon-item-testimonial-title {
+        font-size: 2.5rem;
+        font-weight: 500;
+    }
+    .featured-salon-item-testimonial-title {
+        padding: 1rem 0 0.5rem 1rem;
+    }
+    .featured-salon-item-owner-description,
+    .featured-salon-item-service-description,
+    .featured-salon-item-info-description-wrap {
+        margin-top: 1rem;
+    }
+    .featured-salon-item-info-description-wrap {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .featured-salon-item-info-description-wrap .item {
+        width: 25%;
+        padding-right: 2rem;
+        margin-bottom: 1.5rem;
+    }
+    .featured-salon-item-info-description-wrap .title {
+        border-bottom: 1px solid #00adef;
+        margin-bottom: 0.5rem;
+        font-size: 1.3rem;
+        font-weight: 500;
+        width: fit-content;
+    }
+    .featured-salon-item-info-description-wrap a {
+        text-decoration: none;
+    }
+    .featured-salon-demo-wrap {
+        position: relative;
+        width: fit-content;
+    }
+    .featured-salon-demo-navigation {
+        position: absolute;
+        top: 45%;
+        z-index: 1;
+        left: 0;
+        padding: 0 10px;
+        width: 100%;
+    }    
+    .featured-salon-item-demo {
+        display: flex;
+        margin: 3rem 0;
+    }
+    .featured-salon-item-demo-before,
+    .featured-salon-item-demo-after {        
+        position: relative;
+        max-width: 400px;
+        border: 1px solid #000;
+    }
+    .featured-salon-item-demo-before {
+        margin-right: 1rem;
+    }
+    .featured-salon-item-demo-before::before {
+        content: "Before";
+        position: absolute;
+        top: 0.5rem;
+        left: 1rem;
+        font-weight: 600;
+        font-size: 1.3rem;
+    }
+    .featured-salon-item-demo-after::before {
+        content: "After";
+        position: absolute;
+        top: 0.5rem;
+        left: 1rem;
+        font-weight: 600;
+        font-size: 1.3rem;        
+    }
+    .featured-salon-item-logo {
+        position: absolute;
+        bottom: 15vw;        
+        right: 0;
+        z-index: -1;
+    }
+    .featured-salon-item-service-description {
+        margin-bottom: 3rem;
+    }
+    .featured-salon-item-service-description div::before {
+        content: "";
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        -moz-border-radius: 50%;
+        -webkit-border-radius: 50%;
+        background-color: #00adef;
+        display: inline-block;
+        margin-right: 0.4rem;
+    }
+    .featured-salon-item-service-wrap,
+    .featured-salon-item-info-wrap {
+        padding: 0 1rem;
+    }
+    /* .splide__arrow {
+        position: absolute;
+        top: 50%;
+        z-index: 1;        
+    }
+    .splide__arrow--prev {
+        transform: rotate(180deg);
+    } */
+    @media only screen and (max-width: 1024px) {
+        .featured-salon-item-info-description-wrap .item {
+            width: 50%;
+        }
+    }
+    @media only screen and (max-width: 900px) {
+        .featured-salon-item-right {
+            display: none;
+        }
+        .featured-salon-item-left {
+            width: 100%;
+        }
+        .featured-salon-item-description-wrap {
+            display: block;
+        }
+        .featured-salon-item-desption,
+        .featured-salon-item-owner-description {
+            text-align: justify;
+        }        
+    }
+    @media only screen and (max-width: 800px) {
+        .stamped-modal-image-content-wrapper {
+            display: block;
+            overflow: scroll;
+            position: initial;
+        }
+        .stamped-ugc-modal1-content {
+            width: 100%;
+            height: auto;
+        }
+        .stamped-ugc-modal1-image-wrapper {
+            width: 100%;
+        }
+        .stamped-modal-close1 {
+            top: -10px;
+        }
+        .stamped-modal-close1 svg {
+            fill: #fff;
+        }                
+    }
+    @media only screen and (max-width: 600px) {
+        .stamped-ugc-modal1-wrapper {
+            padding: 0 30px;
+        }
+        .stamped-wall-photos-wrapper1 {
+            -moz-column-count: 2;
+            -webkit-column-count: 2;
+            column-count: 2;
+        }
+    }
+    @media only screen and (max-width: 550px) {
+        .featured-salon-item-info-description-wrap .item {
+            width: 100%;
+            padding: 0;
+        }
+    }
+    @media only screen and (max-width: 500px) {
+        .stamped-ugc-modal1-wrapper {
+            padding: 0 15px;
+        }
+        .stamped-ugc-modal1-image {
+            min-width: auto;
+        }
+    }
+    @media only screen and (max-width: 470px) {
+        .featured-salon-item-demo-before,
+        .featured-salon-item-demo-after {
+            width: 50%;
+        }
+    }
+    @media only screen and (max-width: 420px) {
+        .stamped-wall-photos-wrapper1 {
+            -moz-column-count: 1;
+            -webkit-column-count: 1;
+            column-count: 1;
+        }
+        .stamped-ugc-modal1-nav-previous {
+            margin-right: -2rem;
+            z-index: 9;
+        }
+        .stamped-ugc-modal1-nav-next {
+            margin-left: -2rem;
+            z-index: 9;
+        }
+        .stamped-ugc-modal1-nav-previous svg,
+        .stamped-ugc-modal1-nav-next svg,
+        .stamped-modal-close1 svg {
+            fill: #000;
+        }
+        .stamped-ugc-modal1-nav-previous svg path,
+        .stamped-ugc-modal1-nav-next svg path,
+        .stamped-modal-close1 svg path {
+            stroke: #fff;
+            stroke-width: 10;
+        }
+        .stamped-modal-close1 svg path {
+            stroke-width: 2;
+            stroke: #fff;
+        }
+    }
+    /**
+    * Menu navigation
+    */    
+    .menu-wrap {                
+        width: 100%;        
+        margin-bottom: 20px;
+        display: none;
+        overflow-x: auto;
+    }    
+    @media only screen and (min-width: 1025px) {
+        .menu-wrap {
+            overflow-x: hidden;
+        }
+        .menu-wrap:hover {
+            overflow-x: auto;
+        }
+    }
+    .menu-items {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px 0 0;        
+        margin: 0 auto;
+        flex-wrap: wrap;        
+    }
+    .menu-item {
+        font-size: 15px;
+        margin: 0 20px 20px;
+        position: relative;
+        cursor: pointer;        
+    }
+    .menu-item a, .menu-submenu-item a{
+        text-decoration: none;
+    }
+    .menu-item:hover {
+        color: #825d41;
+    }
+    .menu-item.active a {        
+        color: #825d41;
+        /* background: rgb(186,160,144);
+        background: -moz-linear-gradient(141deg, rgba(186,160,144,1) 0%, rgba(90,75,76,1) 45%, rgba(171,139,116,1) 100%, rgba(2,0,36,1) 255%);
+        background: -webkit-linear-gradient(141deg, rgba(186,160,144,1) 0%, rgba(90,75,76,1) 45%, rgba(171,139,116,1) 100%, rgba(2,0,36,1) 255%);
+        background: linear-gradient(141deg, rgba(186,160,144,1) 0%, rgba(90,75,76,1) 45%, rgba(171,139,116,1) 100%, rgba(2,0,36,1) 255%);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#baa090",endColorstr="#020024",GradientType=1);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent; */
+    }
+    .menu-submenu-items {                
+        padding: 20px 0 0;                
+        position: absolute;
+        display: none;
+        background-color: #fff;
+        box-shadow: 1px 1px 9px 0 #e6e6e6;
+        width: fit-content;
+        z-index: 9;
+    }
+    /* .menu-submenu-items::before {
+        content: '';
+        width: 100px;
+        height: 2px;
+        background-color: #000;
+        position: absolute;
+        top: 0;
+        left: calc(50% - 50px);
+    } */
+    .menu-submenu-item {
+        font-size: 15px;
+        margin: 0 20px 20px;
+        position: relative;
+        cursor: pointer;
+    }
+    .menu-submenu-item:hover, .menu-item:hover {
+        color: #825d41;
+    }
+    /*Only apply for .com version*/
+    /* @media only screen and (min-width: 1335px) {
+        .page-content--centered {
+            width: 90% !important;
+        }
+    }
+    @media only screen and (min-width: 1450px) {
+        .page-content--centered {
+            width: 80% !important;
+        }
+    } */
+</style>
+<div style="position: relative;">
+    <div class="menu-wrap">
+        <div class="menu-items">            
+        </div>    
+    </div>
+</div>
+<div class="featured-salon-title">
+    Our Digital Media Partners
+</div>
+<div class="featured-salon-item">
+    <div class="featured-salon-item-description-wrap">
+        <div class="featured-salon-item-desp-top">
+            <div class="featured-salon-item-left">
+                <div class="featured-salon-item-title">
+                    <img
+                        src="/product_images/uploaded_images/teresha-logo.png"
+                        loading="lazy"
+                        alt="True Hair Logo"
+                    />
+                </div>
+                <div class="featured-salon-item-desption">
+                    <div>
+                        True Hair Replacement & Cosmetics Centre Inc. specializes in Surgical Hair Transplants and Non-Surgical Hair Replacement for both Men and Women and is currently servicing the Greater Toronto Area. With over 25 years of experience, advanced state-of-the-art technology and thousands of satisfied clients, True Hair ensures a safe and reliable choice for attractive and natural hair replacement.
+                    </div>
+                    <div>
+                        And at the forefront of this competitive field, in terms of experience, expertise, quality, results and customer service, is the True Hair's exclusive money back guarantee.
+                    </div>                    
+                </div>
+                <div class="featured-salon-item-highlight">
+                    Our expert advice will help you make the right decision!
+                </div>
+                <div class="featured-salon-item-owner">Meet Teresha Chu</div>
+                <div class="featured-salon-item-owner-description">
+                    <div>
+                        From world-class stylists and friendly receptionists to one of the best technical teams in the industry, we believe our well trained and skilled staff is second to none and challenge anyone to find a technical staff in the industry with as much cumulative experience (over 55 years and millions of transplanted follicles).
+                    </div>
+                    <div>
+                        This experience translates into our very own PERFECT HAIRLINE<sup>TM</sup> dense-packing technique that ensures you as natural a look as is available anywhere. At True Hair we can say unequivocally that NO ONE does better work.
+                    </div>
+                    <div>You'll simply have to come see it to believe it.</div>
+                </div>      
+            </div>
+            <div class="featured-salon-item-right">                
+                <picture>                
+                    <img
+                        src="/product_images/uploaded_images/teresha-profile.png"
+                        loading="lazy"
+                        alt="Annie Scott Hair Solution Profile picture"
+                    />
+                </picture>
+            </div>
+        </div>
+        <div>            
+            <div class="featured-salon-item-demo">
+                <div class="featured-salon-item-demo-before">
+                    <img src="/product_images/uploaded_images/teresha-before.jpg" alt="True Hair demo before" loading="lazy">
+                </div>
+                <div class="featured-salon-item-demo-after">
+                    <img src="/product_images/uploaded_images/teresha-after.jpg" alt="True Hair demo after" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="featured-salon-item-service-wrap">
+        <div class="featured-salon-item-service-title">Services</div>
+        <div class="featured-salon-item-service-description">
+            <div>Private hair consultations.</div>
+            <div>Expert & caring personal service.</div>
+            <div>Experience, trust & Amazing results.</div>
+            <div>Money back guarantee.</div>
+        </div>
+    </div>
+    <div class="featured-salon-item-info-wrap">
+        <div class="featured-salon-item-info-title">Information</div>
+        <div class="featured-salon-item-info-description-wrap">
+            <div class="item">
+                <div class="title">Address</div>
+                <div>201 Consumers Road, Suite 301 Toronto, Ontario, M2J 4G8 Canada</div>
+            </div>
+            <div class="item">
+                <div class="title">Email</div>
+                <div>
+                    <a href="mailto: sales@truehair.ca"
+                        >sales@truehair.ca</a
+                    >
+                </div>
+            </div>
+            <div class="item">
+                <div class="title">Website</div>
+                <div>
+                    <a href="http://www.truehair.ca/" target="_blank"
+                        >http://www.truehair.ca/
+                    </a>
+                </div>
+            </div>
+            <div class="item">
+                <div class="title">Tel</div>
+                <div>416-492-7873</div>
+            </div>
+        </div>
+    </div>
+    <div class="featured-salon-item-testimonial-title">Testimonials</div>
+    <div class="featured-salon-item-testimonial"></div>
+    <div class="stamped-wall-photos-wrapper1">
+        <svg class="loading" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin: auto; background: none; display: block; shape-rendering: auto;" width="200px" height="200px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
+            <path d="M10 50A40 40 0 0 0 90 50A40 42 0 0 1 10 50" fill="#00adef" stroke="none">
+              <animateTransform attributeName="transform" type="rotate" dur="1s" repeatCount="indefinite" keyTimes="0;1" values="0 50 51;360 50 51"></animateTransform>
+            </path>
+        </svg>
+    </div>
+</div>
+<div class="stamped-ugc-modal1">
+    <div class="stamped-ugc-modal1-wrapper">
+        <div class="stamped-ugc-modal1-nav-previous stamped-ugc-modal1-nav">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+                <path
+                    d="M34.52 239.03L228.87 44.69c9.37-9.37 24.57-9.37 33.94 0l22.67 22.67c9.36 9.36 9.37 24.52.04 33.9L131.49 256l154.02 154.75c9.34 9.38 9.32 24.54-.04 33.9l-22.67 22.67c-9.37 9.37-24.57 9.37-33.94 0L34.52 272.97c-9.37-9.37-9.37-24.57 0-33.94z"
+                />
+            </svg>
+        </div>
+        <div class="stamped-modal-image-content-wrapper">
+            <span
+                title="Close"
+                aria-label="Close"
+                role="button"
+                class="stamped-modal-close1"
+                onclick="closeReviewModal()"
+            >
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="48"
+                    height="48"
+                    viewBox="0 0 48 48"
+                >
+                    <path
+                        d="M38 12.83L35.17 10 24 21.17 12.83 10 10 12.83 21.17 24 10 35.17 12.83 38 24 26.83 35.17 38 38 35.17 26.83 24z"
+                    />
+                </svg>
+            </span>
+            <div class="stamped-ugc-modal1-image-wrapper">
+                <div class="stamped-ugc-modal1-image">
+                    <img alt="Review picture" />
+                    <video
+                        class="stamped-ugc-modal1-video"
+                        controls
+                        autoplay
+                    ></video>
+                </div>
+            </div>
+            <div class="stamped-ugc-modal1-content">
+                <div class="stamped-ugc-modal1-content-wrapper">
+                    <div class="stamped-ugc-modal1-user">
+                        <div class="stamped-ugc-modal1-user-username">
+                            <span></span>
+                            <span class="stamped-verified-badge"> </span>
+                        </div>
+                    </div>
+                    <div class="stamped-ugc-modal1-caption">
+                        <div class="stamped-ugc-modal1-date"></div>
+                        <div class="stamped-ugc-modal1-caption-rating"></div>
+                        <div class="stamped-ugc-modal1-caption-title"></div>
+                        <div class="stamped-ugc-modal1-caption-body"></div>
+                        <div class="stamped-ugc-modal1-caption-reply"></div>
+                    </div>
+                    <div class="stamped-ugc-modal1-votes">
+                        <span class="stamped-ugc-modal1-vote-up">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 512 512"
+                            >
+                                <path
+                                    d="M104 224H24c-13.255 0-24 10.745-24 24v240c0 13.255 10.745 24 24 24h80c13.255 0 24-10.745 24-24V248c0-13.255-10.745-24-24-24zM64 472c-13.255 0-24-10.745-24-24s10.745-24 24-24 24 10.745 24 24-10.745 24-24 24zM384 81.452c0 42.416-25.97 66.208-33.277 94.548h101.723c33.397 0 59.397 27.746 59.553 58.098.084 17.938-7.546 37.249-19.439 49.197l-.11.11c9.836 23.337 8.237 56.037-9.308 79.469 8.681 25.895-.069 57.704-16.382 74.757 4.298 17.598 2.244 32.575-6.148 44.632C440.202 511.587 389.616 512 346.839 512l-2.845-.001c-48.287-.017-87.806-17.598-119.56-31.725-15.957-7.099-36.821-15.887-52.651-16.178-6.54-.12-11.783-5.457-11.783-11.998v-213.77c0-3.2 1.282-6.271 3.558-8.521 39.614-39.144 56.648-80.587 89.117-113.111 14.804-14.832 20.188-37.236 25.393-58.902C282.515 39.293 291.817 0 312 0c24 0 72 8 72 81.452z"
+                                />
+                            </svg>
+                            <span></span>
+                        </span>
+                        <span class="stamped-ugc-modal1-vote-down">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 512 512"
+                            >
+                                <path
+                                    d="M0 56v240c0 13.255 10.745 24 24 24h80c13.255 0 24-10.745 24-24V56c0-13.255-10.745-24-24-24H24C10.745 32 0 42.745 0 56zm40 200c0-13.255 10.745-24 24-24s24 10.745 24 24-10.745 24-24 24-24-10.745-24-24zm272 256c-20.183 0-29.485-39.293-33.931-57.795-5.206-21.666-10.589-44.07-25.393-58.902-32.469-32.524-49.503-73.967-89.117-113.111a11.98 11.98 0 0 1-3.558-8.521V59.901c0-6.541 5.243-11.878 11.783-11.998 15.831-.29 36.694-9.079 52.651-16.178C256.189 17.598 295.709.017 343.995 0h2.844c42.777 0 93.363.413 113.774 29.737 8.392 12.057 10.446 27.034 6.148 44.632 16.312 17.053 25.063 48.863 16.382 74.757 17.544 23.432 19.143 56.132 9.308 79.469l.11.11c11.893 11.949 19.523 31.259 19.439 49.197-.156 30.352-26.157 58.098-59.553 58.098H350.723C358.03 364.34 384 388.132 384 430.548 384 504 336 512 312 512z"
+                                />
+                            </svg>
+                            <span></span>
+                        </span>
+                    </div>
+                    <div class="stamped-ugc-modal1-tags">
+                        <span class="stamped-ugc-modal1-tag"
+                            ><a
+                                aria-label="Link to Product"
+                                href=""
+                                target="_top"
+                                ><div
+                                    class="stamped-ugc-modal1-tags-product-image-wrapper"
+                                >
+                                    <img
+                                        src=""
+                                        class="stamped-ugc-modal1-tags-product-image"
+                                        alt=""
+                                    />
+                                </div>
+                                <div
+                                    class="stamped-ugc-modal1-tags-product-title"
+                                ></div>
+                            </a>
+                            <div
+                                class="stamped-ugc-modal1-tags-btn"
+                                data-shoppable-url=""
+                            ></div>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="stamped-ugc-modal1-nav stamped-ugc-modal1-nav-next">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+                <path
+                    d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"
+                />
+            </svg>
+        </div>
+    </div>
+    <div class="stamped-ugc-modal1-list-photos"><ul></ul></div>
+</div>
+<script
+    src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+    defer
+></script>
+<script>
+    var settings = {
+            url:
+                "https://stamped.io/api/v2/95220/dashboard/reviews/?search=sales@truehair.ca",
+            method: "GET",
+            headers: {
+                Authorization:
+                    "Basic cHVia2V5LVNOMUswRDNickQ3OFVjMThhUTdvMTIwd1MycXhrMTprZXktNmZ4WDN4NjUxMTg3NHNwanhXa0Q2cEM4MHRzM2I4",
+            },
+        },
+        DateDiff = {
+            inDays: function (e, t) {
+                var a = t.getTime(),
+                    o = e.getTime();
+                return parseInt((a - o) / 864e5);
+            },
+            inWeeks: function (e, t) {
+                var a = t.getTime(),
+                    o = e.getTime();
+                return parseInt((a - o) / 6048e5);
+            },
+            inMonths: function (e, t) {
+                var a = e.getFullYear(),
+                    o = t.getFullYear(),
+                    d = e.getMonth();
+                return t.getMonth() + 12 * o - (d + 12 * a);
+            },
+            inYears: function (e, t) {
+                return t.getFullYear() - e.getFullYear();
+            },
+        };
+    function openReviewModal(e) {
+        $(".stamped-ugc-modal1-nav-previous").prop("onclick", null).off("click"),
+            $(".stamped-ugc-modal1-nav-next").prop("onclick", null).off("click"),
+            $(".stamped-ugc-modal1-vote-up").prop("onclick", null).off("click"),
+            $(".stamped-ugc-modal1-vote-down")
+                .prop("onclick", null)
+                .off("click"),
+            $(".stamped-ugc-modal1-list-photos ul li").removeClass("active");
+        let t = e.attr("data-image"),
+            a = e.attr("data-author"),
+            o = e.attr("data-verified-type"),
+            d = e.attr("data-rating"),
+            i = e.attr("data-created"),
+            s = e.attr("data-title"),
+            r = e.attr("data-body"),
+            p = e.attr("data-vote-up"),
+            l = e.attr("data-vote-down"),
+            c = e.attr("data-product-id"),
+            m = e.attr("data-product-url"),
+            n = e.attr("data-product-image-url"),
+            u = e.attr("data-product-title"),
+            v = e.attr("data-reply"),
+            g = e.attr("data-index"),
+            w = e.attr("data-id"),
+            h = e.attr("data-video");
+        $(".stamped-ugc-modal1-list-photos ul li").eq(g).addClass("active"),
+            "null" != h
+                ? ($(".stamped-ugc-modal1-video").css("display", "initial"),
+                  $(".stamped-ugc-modal1-video").attr(
+                      "src",
+                      "https://s3.us-west-2.amazonaws.com/stamped.io/uploads/videos/" +
+                          h +
+                          ".mp4"
+                  ),
+                  $(".stamped-ugc-modal1-video").trigger("play"),
+                  $(".stamped-ugc-modal1-image img").css("display", "none"))
+                : ($(".stamped-ugc-modal1-image img").css("display", "initial"),
+                  $(".stamped-ugc-modal1-image img").attr("src", t),
+                  $(".stamped-ugc-modal1-video").css("display", "none"),
+                  $(".stamped-ugc-modal1-video").trigger("pause")),
+            $(".stamped-ugc-modal1-user-username span").first().text(a),
+            2 == o && $(".stamped-verified-badge").text("Verified Buyer");
+        let f = new Date(i),
+            y = new Date(),
+            x = DateDiff.inMonths(f, y);
+        0 == x
+            ? $(".stamped-ugc-modal1-date").text(
+                  DateDiff.inDays(f, y) + " day(s) ago"
+              )
+            : $(".stamped-ugc-modal1-date").text(x + " month(s) ago");
+        let b = "";
+        for (j = 1; j <= d; j++)
+            b +=
+                '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">\x3c!-- Font Awesome Free 5.15.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --\x3e<path d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"/></svg>';
+        $(".stamped-ugc-modal1-caption-rating").html(b),
+            $(".stamped-ugc-modal1-caption-title").text(s),
+            $(".stamped-ugc-modal1-caption-body").text(r),
+            "null" != v && $(".stamped-ugc-modal1-caption-reply").text(v),
+            $(".stamped-ugc-modal1-vote-up span").text(p),
+            $(".stamped-ugc-modal1-vote-down span").text(l),
+            $(".stamped-ugc-modal1-tag a").attr("href", m),
+            $(".stamped-ugc-modal1-tags-product-image-wrapper img").attr(
+                "src",
+                n
+            ),
+            $(".stamped-ugc-modal1-tags-product-image-wrapper img").attr(
+                "alt",
+                u
+            ),
+            $(".stamped-ugc-modal1-tags-product-title").text(u),
+            0 == g
+                ? ($(".stamped-ugc-modal1-nav-previous").css("opacity", "0"),
+                  $(".stamped-ugc-modal1-nav-next").css("opacity", "1"),
+                  $(".stamped-ugc-modal1-nav-next").on("click", function () {
+                      openReviewModal(
+                          $(".stamped-photo-wrapper1").eq(Number(g) + 1)
+                      );
+                  }))
+                : ($(".stamped-ugc-modal1-nav-previous").css("opacity", "1"),
+                  $(".stamped-ugc-modal1-nav-previous").on("click", function () {
+                      openReviewModal(
+                          $(".stamped-photo-wrapper1").eq(Number(g) - 1)
+                      );
+                  }),
+                  g == $(".stamped-photo-wrapper1").length - 1
+                      ? $(".stamped-ugc-modal1-nav-next").css("opacity", "0")
+                      : ($(".stamped-ugc-modal1-nav-next").css("opacity", "1"),
+                        $(".stamped-ugc-modal1-nav-next").on(
+                            "click",
+                            function () {
+                                openReviewModal(
+                                    $(".stamped-photo-wrapper1").eq(
+                                        Number(g) + 1
+                                    )
+                                );
+                            }
+                        ))),
+            $(".stamped-ugc-modal1-vote-up").on("click", function () {
+                var e = {
+                    url: "https://stamped.io/api/reviews/vote",
+                    method: "POST",
+                    timeout: 0,
+                    headers: {
+                        "Content-Type": "application/x-www-form-urlencoded",
+                    },
+                    data: {
+                        productId: c,
+                        reviewId: w,
+                        vote: "1",
+                        apiKey: "pubkey-SN1K0D3brD78Uc18aQ7o120wS2qxk1",
+                        storeUrl: "www.superhairpieces.com",
+                    },
+                };
+                $.ajax(e).done(function (e) {
+                    e &&
+                        ($(".stamped-photo-wrapper1")
+                            .eq(g)
+                            .attr("data-vote-up", Number(p) + 1),
+                        $(".stamped-ugc-modal1-vote-up span").text(
+                            Number(p) + 1
+                        ));
+                });
+            }),
+            $(".stamped-ugc-modal1-vote-down").on("click", function () {
+                var e = {
+                    url: "https://stamped.io/api/reviews/vote",
+                    method: "POST",
+                    timeout: 0,
+                    headers: {
+                        "Content-Type": "application/x-www-form-urlencoded",
+                    },
+                    data: {
+                        productId: c,
+                        reviewId: w,
+                        vote: "-1",
+                        apiKey: "pubkey-SN1K0D3brD78Uc18aQ7o120wS2qxk1",
+                        storeUrl: "www.superhairpieces.com",
+                    },
+                };
+                $.ajax(e).done(function (e) {
+                    e &&
+                        ($(".stamped-photo-wrapper1")
+                            .eq(g)
+                            .attr("data-vote-down", Number(l) - 1),
+                        $(".stamped-ugc-modal1-vote-down span").text(
+                            Number(l) - 1
+                        ));
+                });
+            }),
+            $(".stamped-ugc-modal1").css({ opacity: "1", "z-index": "99999" });
+    }
+    function closeReviewModal() {
+        $(".stamped-ugc-modal1").css({ opacity: "0", "z-index": "-1" }),
+            $(".stamped-ugc-modal1-video").trigger("pause");
+    }
+    window.addEventListener("DOMContentLoaded", function () {        
+        var e;
+        (e = jQuery).ajax(settings).done(function (t) {
+            if (t.total > 0) {
+                let idx = 0;
+                for (i = 0; i < t.total; i++) {                    
+                    let a = t.results[i],
+                        o = "";
+                    if ((a.review.imagesFileName==null || a.review.imagesFileName.length==0) && (a.review.videosFileNamePublished==null || a.review.videosFileNamePublished.length==0)) {                        
+                        continue;
+                    }                    
+                    o =
+                        null != a.review.imagesFileName &&
+                        a.review.imagesFileName.length > 0
+                            ? "https://s3-us-west-2.amazonaws.com/stamped.io/uploads/photos/thumb/" +
+                              a.review.imagesFileName.split(',')[0]
+                            : a.review.productImageUrl;
+                    let d = "";
+                    for (j = 1; j <= a.review.rating; j++)
+                        d +=
+                            '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"/></svg>';
+                    let s = "";
+                    null != a.review.videosFileNamePublished
+                        ? a.review.videosFileNamePublished.length > 0 &&
+                          (s =
+                              "<video controls loop playsinline muted><source src='https://s3.us-west-2.amazonaws.com/stamped.io/uploads/videos/" +
+                              a.review.videosFileNamePublished +
+                              ".mp4' type='video/mp4'>Your browser does not support the video tag.</video>")
+                        : (s =
+                              "<img alt='Customer Photo' src='" +
+                              o +
+                              "' loading='lazy'>"),
+                        e(".stamped-wall-photos-wrapper1").append(
+                            "<div class='stamped-photo-wrapper1' data-index='" +
+                                idx +
+                                "' data-image='" +
+                                o +
+                                "' data-video='" +
+                                a.review.videosFileNamePublished +
+                                "' data-author='" +
+                                a.review.author +
+                                "' data-verified-type='" +
+                                a.review.verifiedType +
+                                "' data-rating='" +
+                                a.review.rating +
+                                "' data-created='" +
+                                a.review.dateCreated +
+                                "' data-title='" +
+                                a.review.title +
+                                "' data-body='" +
+                                a.review.body +
+                                "' data-vote-up='" +
+                                a.voteUp +
+                                "' data-vote-down='" +
+                                a.voteDown +
+                                "' data-product-url='" +
+                                a.review.productUrl +
+                                "' data-product-image-url='" +
+                                a.review.productImageUrl +
+                                "' data-product-title='" +
+                                a.review.productTitle +
+                                "' data-product-id='" +
+                                a.review.productId +
+                                "' data-reply='" +
+                                a.review.reply +
+                                "' data-id='" +
+                                a.review.id +
+                                "' onclick='openReviewModal($(this))'><div class='stamped-reviews-message-image-block1'>" +
+                                s +
+                                "</div><div class='stamped-reviews-holder1'><div class='stamped-reviews-author1'>" +
+                                a.review.author +
+                                "</div><div class='stamped-reviews-location1'>" +
+                                a.review.location +
+                                "</div><div class='stamped-reviews-rating1'>" +
+                                d +
+                                "</div><div>" +
+                                a.review.body +
+                                "</div><div class='stamped-reviews-image-wrapper1'><a href='" +
+                                a.review.productUrl +
+                                "'><img alt='Product Image' src='" +
+                                a.review.productImageUrl +
+                                "' loading='lazy'><span>" +
+                                a.review.productTitle +
+                                "</span></a></div></div></div>"
+                        ),
+                        e(".stamped-ugc-modal1-list-photos ul").append(
+                            "<li style=\"background-image: url('" +
+                                o +
+                                "');\" onclick=\"openReviewModal($('.stamped-photo-wrapper1').eq(" +
+                                idx +
+                                '));"></li>'
+                        );
+                    idx++;
+                }
+                $(".stamped-wall-photos-wrapper1 .loading").hide();
+            }
+        });        
+    });
+</script>
+<script type="text/javascript">
+    let submenu = [];
+
+    function openSubMenu(name) {
+        if ($(event.currentTarget).hasClass("active")) {
+            $(event.currentTarget).removeClass("active");
+            $(".menu-submenu-items").remove();
+        } else {
+            $(".menu-item .active").removeClass("active");
+            $(event.currentTarget).addClass("active");
+            let mns = submenu.filter(mn => mn.name==name);        
+            if (mns.length>0) {
+                $(".menu-submenu-items").remove();
+                let div = `<div class="menu-submenu-items">`;
+                if (mns[0].menu) {
+                    for (let menu of mns[0].menu) {
+                        div+=`<div class="menu-submenu-item"><a href="${menu.link}">${menu.name}</a></div>`;
+                    }
+                }
+                div+="</div>";
+                $(".menu-wrap").append(div);
+                let position = $(event.currentTarget).offset();
+                if (position.left+$(".menu-submenu-items").width()<=$(window).width()) {
+                    $(".menu-submenu-items").css({"left": (position.left-$(".menu-wrap").offset().left)+"px", "top": (position.top+30-$(".menu-wrap").offset().top)+"px"});
+                } else {
+                    $(".menu-submenu-items").css({"right": "0px", "top": (position.top+30-$(".menu-wrap").offset().top)+"px"});
+                }
+                $(".menu-submenu-items").slideDown();
+                // console.log($(event.currentTarget).offset());
+                // console.log($(event.currentTarget).width());
+                // console.log($(window).width());
+            }
+        }        
+    }    
+
+    window.addEventListener("DOMContentLoaded", (event)=> {        
+
+        fetch("/content/data/custom-menu.json")
+        .then(result=>result.json())
+        .then(data=>{
+            console.log(data);
+            if (data.menu) {
+                for (let menu of data.menu) {
+                    if (menu.hasOwnProperty("link")) {
+                        if (menu.link.includes(window.location.pathname) && menu.link.length-window.location.pathname.length<=2) {
+                            $('.menu-items').append(`<div class="menu-item active"><a href="${menu.link}">${menu.name}</a></div>`);
+                        } else {
+                            $('.menu-items').append(`<div class="menu-item"><a href="${menu.link}">${menu.name}</a></div>`);
+                        }
+                    } else {
+                        submenu.push({"name": menu.name, "menu": menu.subMenu});
+                        $('.menu-items').append(`<div class="menu-item"><a href="#" onclick="openSubMenu('${menu.name}')">${menu.name}</a></div>`)
+                    }
+                }
+                $(".menu-wrap").show();
+            }
+        })
+        .catch(err=>console.log(err));
+    })
+</script>

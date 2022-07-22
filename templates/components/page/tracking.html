@@ -1,0 +1,125 @@
+<style>
+    :root {
+        --element-margin: 2rem;
+        --section-margin: 3rem;
+        --font-large: 23px;
+        --main-color: #444;
+        --second-color: #fefefe;
+        --border-radius: 8px;
+    }
+    .track-title {
+        font-size: var(--font-large);
+        text-align: center;
+        margin-bottom: var(--section-margin);
+    }
+    .input-wrap {
+        margin-top: var(--section-margin);
+    }
+    .track-container input {
+        padding: calc(var(--element-margin) / 2) var(--element-margin);
+        margin-bottom: var(--element-margin);
+        width: 100%;
+        border: 1px solid var(--main-color);
+        border-radius: var(--border-radius);
+    }
+    .track-container input[action=track] {
+        background-color: var(--main-color);
+        color: var(--second-color);                
+        margin: 0 auto;        
+    }
+    .tracking-result {
+        margin-top: var(--element-margin);
+    }
+    .tracking-result .status {
+        margin-bottom: var(--element-margin);
+    }
+    .tracking-result ul {
+        margin-bottom: var(--element-margin);
+    }
+    .tracking-result li {
+        word-break: break-all;
+    }
+    @media (min-width:675px) {
+        :root {
+            --font-large: 30px;
+        }
+        .input-wrap {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-column-gap: var(--element-margin);
+        }        
+    }
+    @media (min-width: 800px) {
+        :root {
+            --element-margin: 1.5rem;
+        }
+        .input-wrap {
+            width: calc(100% - 200px - var(--element-margin));
+            float: left;
+        }
+        .track-container input[action=track] {
+            width: 200px;
+            margin-left: var(--element-margin);
+            margin-top: var(--section-margin);
+            clear: both;
+        }
+        .track-container input[action=track]:hover {
+            background-color: var(--second-color);
+            color: var(--main-color);
+            transition: all .2s ease;            
+        }
+    }
+    @media (min-width: 900px) {
+        .track-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+    }
+</style>
+<div class="track-container">    
+    <div>Please enter your order number and email address to see the status of your order.</div>
+    <div class="input-wrap">
+        <input type="text" maxlength="100" placeholder="Email" email>
+        <input type="number" maxlength="100" placeholder="Order Number" orderId>
+    </div>
+    <input type="button" value="Track" action="track">
+</div>
+<script>
+    window.addEventListener("DOMContentLoaded", function() {
+        $("input[action=track]").on("click", function() {
+            $(this).attr("disabled", true).css({"background-color":"#ccc"});            
+            if (document.querySelector("[email]").value && document.querySelector("[orderId]").value) {
+                fetch(`https://shp-webserver-temp.glitch.me/track-by-email-order?storeId=742053&email=${document.querySelector("[email]").value}&orderId=${document.querySelector("[orderId]").value}`)
+                .then(r=>r.json())
+                .then(r=>{             
+                    console.log(r);       
+                    if (r.status) {
+                        let ct = `<div class="tracking-result"><div class="status">Order status: <strong>${r.status}</strong></div>`
+                        document.querySelector("[type=button]").style.display="none";
+                        $(".input-wrap").css({width: "100%", float: "none"});
+                        if (r.urls) {
+                            ct+=`<div>Tracking list:</div><ul>`;
+                            for (let u of r.urls) {
+                                ct+=`<li><a href="${u}" target="_blank">${u}</li>`;
+                            }
+                            ct+="</ul>";
+                        }
+                        ct+=`</div>`;
+                        $(".track-container").append(ct);
+                    } else {
+                        alert("There is error, please contact our customer support");
+                    }
+                    $(this).removeAttr("disabled");
+                })
+                .catch(e=>{
+                    console.log(e);
+                    $(this).removeAttr("disabled").css({"background-color":"var(--main-color)"});                    
+                    alert("There is error, please contact our customer support");
+                })
+            } else {
+                $(this).removeAttr("disabled").css({"background-color":"var(--main-color)"});
+                alert("Please fill your email and order number");
+            }
+        });
+    })
+</script>

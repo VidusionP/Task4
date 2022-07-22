@@ -1,0 +1,21 @@
+<div class="pl-option-wrap">
+    {{> components/category/shortcut-categories}}
+    {{> components/products/filter sort=pagination.category.sort}}    
+</div>   
+<form action="{{urls.compare}}" method='POST' data-product-compare>
+    {{#if theme_settings.product_list_display_mode '===' 'grid'}}        
+        {{#if breadcrumbs.[1].name '!=' 'Women'}}
+        {{> components/products/grid products=category.products show_compare=category.show_compare theme_settings=theme_settings}}
+        {{else}}
+            {{#contains breadcrumbs.[2].name 'Limited Edition'}}
+            {{> components/products/grid products=category.products show_compare=category.show_compare theme_settings=theme_settings show_hover=true}}
+            {{else}}
+            {{> components/products/grid products=category.products show_compare=category.show_compare theme_settings=theme_settings}}
+            {{/contains}}
+        {{/if}}
+    {{else}}
+        {{> components/products/list products=category.products show_compare=category.show_compare theme_settings=theme_settings}}
+    {{/if}}
+</form>
+
+{{> components/common/paginator pagination.category}}

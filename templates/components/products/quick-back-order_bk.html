@@ -1,0 +1,114 @@
+<div class="form-action">
+    <input id="action-book" data-wait-message="{{lang 'products.adding_to_cart'}}" class="button button--primary" type="button"
+        value="{{lang 'products.book_now'}}">
+</div>
+<style>
+    .modal-book-wrapper {
+        width: 100vw;
+        height: 100vh;
+        position: fixed;
+        left: 0;
+        top: 0;
+        z-index: 9;
+        background-color: rgba(51, 51, 51, 0.95);;        
+        display: none;
+    }
+    .modal-book-content {
+        max-width: 95%;        
+        background-color: #fff;
+        padding: 2rem;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        display: flex;
+    }
+</style>
+<div class="modal-book-wrapper">
+    <div class="modal-book-content">
+        {{> components/products/preorder-product-view schema=false}}
+        <!-- <div>
+            <img class="modal-book-img-preview" src="" alt="Book image" loading="lazy">
+        </div>
+        <div>
+            {{inject "product_options" product.options}}
+            {{inject "product_customizations" product.customizations}}
+            {{#each product.customizations}}
+                {{{dynamicComponent 'components/products/customizations'}}}
+            {{/each}}
+            <div data-product-option-change style="display:none;">                                
+                {{#each product.options}}
+                    {{#if display_name '!=' 'Pre-Order Store Policy:'}}
+                        {{{dynamicComponent 'components/products/options'}}}
+                    {{/if}}
+                {{/each}}                                
+            </div>
+            <div class="form-field form-field--increments">
+                <label class="form-label form-label--alternate"
+                       for="qty[]">{{lang 'products.quantity'}}</label>
+            
+                <div class="form-increment" data-quantity-change>
+                    <button class="button button--icon">
+                        <span class="is-srOnly">{{lang 'products.quantity_decrease'}}</span>
+                        <i class="icon" aria-hidden="true">
+                            <svg>
+                                <use xlink:href="#icon-keyboard-arrow-down"/>
+                            </svg>
+                        </i>
+                    </button>
+                    <input class="form-input form-input--incrementTotal"                                           
+                           name="qty[]"
+                           type="tel"
+                           value="1"
+                           data-quantity-min="{{product.min_purchase_quantity}}"
+                           data-quantity-max="{{product.max_purchase_quantity}}"
+                           min="1"
+                           pattern="[0-9]*"
+                           aria-live="polite">
+                    <button class="button button--icon">
+                        <span class="is-srOnly">{{lang 'products.quantity_increase'}}</span>
+                        <i class="icon" aria-hidden="true">
+                            <svg>
+                                <use xlink:href="#icon-keyboard-arrow-up"/>
+                            </svg>
+                        </i>
+                    </button>
+                </div>
+            </div>
+            <div class="form-action">
+                <input id="action-bookToCart" data-wait-message="{{lang 'products.adding_to_cart'}}" class="button button--primary" type="button"
+                    value="{{lang 'products.add_to_cart'}}">
+            </div>
+            <script>
+                var jsContext = JSON.parse({{jsContext}});
+                console.log(jsContext);
+            </script>
+        </div> -->
+    </div>
+</div>
+<!-- <script type="module" src="/assets//js//pre-order/pre-order.js"></script> -->
+<!-- <script>window.__webpack_public_path__ = "{{cdn 'assets/dist/'}}";</script>
+<script src="{{cdn 'assets/dist/theme-bundle.main.js'}}"></script> -->
+<script>
+    // document.getElementById("action-book").addEventListener("click", function() {                       
+    //     document.querySelector(".modal-book-wrapper").style.display = "block";
+    //     document.querySelector(".modal-book-img-preview").src = document.querySelector(".productView-image--default").getAttribute("src");
+    // });
+    // document.querySelector(".modal-book-wrapper").addEventListener("click", function() {
+    //     document.querySelector(".modal-book-wrapper").style.display = "none";
+    // })
+    // document.querySelector(".modal-book-content").addEventListener("click", function(event) {
+    //     event.stopPropagation();
+    // })
+    // window.addEventListener("DOMContentLoaded", event=> {
+    //     let sels = document.querySelector(".modal-book-content").querySelectorAll("select");
+    //     sels.forEach(sel => {
+    //         sel.removeAttribute("id");
+    //         let opels = '';
+    //         Array.from(sel.options).forEach(op => {
+    //             opels += `<option value="${op.value}" data-product-attribute-value="${op.value}">${op.text}</option>`;
+    //         })
+    //         sel.innerHTML = opels;
+    //     });
+    // });                    
+</script>

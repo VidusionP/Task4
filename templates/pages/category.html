@@ -1,0 +1,1506 @@
+---
+category:
+    shop_by_price: true
+    products:
+        limit: 20
+        top_sellers:
+            limit: 40
+customer:
+    orders:
+        limit: 1
+---
+
+{{inject "categoryProductsPerPage" 20}} {{#partial "head"}} {{#if pagination.category.previous}}
+<link rel="prev" href="{{pagination.category.previous}}" />
+{{/if}} {{#if pagination.category.next}}
+<link rel="next" href="{{pagination.category.next}}" />
+{{/if}} {{/partial}} {{#partial "page"}} {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}} {{#if category.image}}
+<img src="{{getImage category.image 'zoom_size'}}" />
+{{/if}}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
+<!-- <link rel="stylesheet" href="/content/css/category.min.css"> -->
+<style>
+:root {
+    --element-margin: 1.3rem;
+    --section-margin: 2.5rem;
+    --border-length: 70px;
+    --black-color: #202124;
+    --border-radius: 4px;
+    --font-size-normal: 14px;
+    --font-size-medium: 18px;
+    --font-size-large: 22px;
+}
+.btn-url-back {
+    display: none;
+}
+.btn-url-back:hover svg {
+    transform: translateX(-0.5rem);
+    transition: transform 0.5s ease;
+}
+.faq-wrap {    
+    padding: var(--section-margin) 0;    
+}
+.faq-wrap h2:not(.faq-accordion-title) {
+    text-align: center;
+    position: relative;
+    padding-bottom: calc(var(--element-margin) / 2);
+    font-weight: 700;
+    margin-bottom: var(--section-margin);
+    font-size: var(--font-size-large);
+}
+.faq-wrap h2 .pc {
+    display: block;
+}
+.faq-wrap h2 .mobile {
+    display: none;
+}
+.faq-wrap h2:not(.faq-accordion-title)::after {
+    position: absolute;
+    content: "";
+    display: block;
+    width: var(--border-length);
+    left: calc(50% - var(--border-length) / 2);
+    bottom: 0;
+    height: 1px;
+    background-color: var(--black-color);
+}
+.faq-title {
+    text-align: center;
+    font-size: 30px;
+    font-weight: 200;
+    margin-bottom: 20px;
+}
+.faq-container {
+    margin: 0 auto;
+}
+
+.faq-accordion .faq-accordion-item {
+    background-color: #F3F3F3;
+    margin-bottom: var(--element-margin);
+    border-radius: var(--border-radius);
+    padding: var(--element-margin) calc(var(--element-margin) + 25px) var(--element-margin) calc(var(--element-margin) + 15px);    
+}
+.faq-accordion button {
+    position: relative;
+    display: block;
+    text-align: left;
+    width: 100%;
+    padding-top: 1em;
+    color: #7288a2;
+    font-size: 1.15rem;
+    font-weight: 400;
+    border: none;
+    background: none;
+    outline: none;
+}
+.faq-accordion button:hover,
+.faq-accordion button:focus {
+    cursor: pointer;
+    color: #333333;
+}
+.faq-accordion button:hover::after,
+.faq-accordion button:focus::after {
+    cursor: pointer;
+    color: #333333;
+    border: 1px solid #333333;
+}
+.faq-accordion button .faq-accordion-title {    
+    margin-top: -1rem;    
+    font-size: var(--font-size-medium);
+    font-weight: 500;
+    margin-bottom: 0;
+}
+.faq-accordion button .faq-accordion-title::before {
+    content: attr(step);
+    display: block;
+    position: absolute;
+    left: -15px;
+}
+.faq-accordion button .faq-icon {
+    display: inline-block;
+    position: absolute;
+    top: 5px;
+    right: 0;
+    width: 12px;
+    height: 12px;
+    margin-right: -25px;
+}
+.faq-accordion button .faq-icon::before {
+    display: block;
+    position: absolute;
+    content: "";
+    top: 9px;
+    left: 5px;
+    width: 12px;
+    height: 2px;
+    background: var(--black-color);
+}
+.faq-accordion button .faq-icon::after {
+    display: block;
+    position: absolute;
+    content: "";
+    top: 4px;
+    left: 10px;
+    width: 2px;
+    height: 12px;
+    background: var(--black-color);
+}
+.faq-accordion button[aria-expanded="true"] {
+    color: #333333;
+}
+.faq-accordion button[aria-expanded="true"] .faq-icon::after {
+    width: 0;
+}
+.faq-accordion button[aria-expanded="true"] + .faq-accordion-content {
+    opacity: 1;
+    max-height: fit-content;
+    max-height: -moz-fit-content;    
+    margin-top: calc(var(--element-margin) / 2);
+    -webkit-transition: all 200ms linear;
+    transition: all 200ms linear;
+    will-change: opacity, max-height;
+}
+.faq-accordion .faq-accordion-content {
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    -webkit-transition: opacity 200ms linear, max-height 200ms linear;
+    transition: opacity 200ms linear, max-height 200ms linear;
+    will-change: opacity, max-height;
+    padding: 0 0.3rem;
+}
+.faq-accordion .faq-accordion-content img {
+    max-width: 800px;
+    width: 100%;
+    cursor: pointer;
+}
+.faq-accordion .faq-accordion-content p {
+    font-size: var(--font-size-normal);    
+    margin: calc(var(--element-margin) / 2) 0;
+}
+.faq-accordion .faq-accordion-content iframe[title="YouTube video player"] {
+    max-width: 100%;
+}
+.stamped-fa.stamped-fa-star-o {
+    color: #ccc !important;
+}
+.stamped-badge[data-rating="0"], .stamped-badge[data-rating="0,0"], .stamped-badge[data-rating="0.0"] {
+    display: block !important;
+}
+.category-heading  {
+    text-align: left;
+    /* height: 49px;
+    overflow: hidden; */
+}
+.category-name[has-sub]::after {
+    content: url(/content/images/common/arrow-down2.svg);
+    width: 20px;
+    display: inline-block;
+    margin-left: 15px;
+    transform: translateY(-3px);
+}
+.category-name[has-sub].open::after {
+    content: url(/content/images/common/arrow-up2.svg);    
+}
+.sct-mobile-wrap {
+    --distance: 30px;
+    position: absolute;
+    display: none;
+    border: 1px solid #C4C4C4;
+    padding: 25px;
+    background-color: #fefefe;
+    z-index: 3;
+    left: 0;
+    /* width: calc(100% - 3rem - var(--distance)); */
+    margin: 0 calc(1.5rem + var(--distance)) 0 1.5rem;    
+    margin-top: -80px;    
+}
+.sct-mobile-wrap.overflow::after {
+    content: "";
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    background-image: linear-gradient(rgba(255,255,255,0), rgba(255,255,255,1));    
+}
+.sct-mobile-wrap.overflow .sct-mobile-content-wrap {
+    padding-bottom: 25px;
+}
+.sct-mobile-wrap .top {
+    font-size: 23px;
+    margin-bottom: .8rem;
+}
+.sct-mobile-wrap .top::after {
+    content: url(/content/images/common/arrow-up2.svg);
+    width: 14px;
+    display: inline-block;
+    margin-left: 15px;
+    transform: translateY(-3px);
+}
+.sct-mobile-wrap.overflow .sct-mobile-content-wrap {
+    overflow-y: auto;
+    max-height: 350px;
+}
+.sct-mobile-wrap a {
+    display: block;
+    text-decoration: none;
+    margin: 1.2rem 0;
+}
+.sct-mobile-wrap [action=close] {
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: var(--distance);
+    width: var(--distance);
+    border: 1px solid #C4C4C4;    
+    /* margin-right: calc(var(--distance) * -1); */
+    background-color: #fefefe;
+    margin-top: -1px;
+}
+.sct-mobile-wrap [action=close] img {
+    width: 15px;
+    height: 15px;
+}
+.pl-filter-wrap {
+    margin-top: 1rem;
+    /* border: 1px solid #7c7c7c; */
+    border: 1px solid #dcdddb;
+    border-radius: 4px;    
+    display: flex;
+    padding: 8px;    
+}
+.pl-filter-wrap:hover {
+    border-color: #999999;
+}
+.pl-option-wrap select{
+    border: none;
+    -webkit-appearance: none;
+    appearance: none;
+    font-size: 13px;
+    --icon-size: 24px;
+    padding: 8px; 
+    padding-left: 0.21429rem;       
+    background-repeat: no-repeat;
+    background-color: #fefefe;
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z' fill='rgba(117, 117, 117, 0.999)' /%3E%3C/svg%3E");    
+    background-position: right 0.5rem top 0rem;
+    background-size: 2rem;   
+    width: 100% !important;     
+    max-width: 100% !important;
+    line-height: 1rem;    
+}
+.actionBar-section .form-select {
+    width: 100% !important;     
+    max-width: 100% !important;
+}
+.pl-option-wrap select:focus {
+    outline: none;
+}
+.pl-filter-wrap img, .actionBar img {
+    width: 24px;
+    margin-right: 5px;
+    margin-top: 3px;
+}
+.actionBar-section .form-field {   
+    display: flex; 
+    padding: 8px;   
+    border: 1px solid #dcdddb;     
+}
+.pl-supply-option-wrap {
+    display: flex;
+}
+.c-search-wrap {
+    background-image: url(/content/images/common/search1.svg);
+    background-size: 1.1rem;
+    background-position: left 8px top 2.3rem;
+    background-repeat: no-repeat;
+    padding-left: 2rem;
+    border-bottom: 1px solid #dcdddb;
+}
+.c-search-wrap[for=mobile] {
+    order: 2;
+    width: 130px;    
+    margin-left: 1rem;
+}
+.pl-supply-option-wrap .pl-filter-wrap {
+    flex: 1;
+}
+.c-search-wrap input {
+    border: 0;    
+}
+.c-search-wrap[for=mobile] input {    
+    width: 100%;
+    margin-top: 2rem;
+}
+.c-search-wrap[for=mobile] input:focus {
+    outline: 0;
+}
+.c-search-wrap[for=mobile] button[action=search] {
+    display: none;
+}
+.c-search-clear {
+    display: none;
+}
+.pl-supply-option-wrap[search=open] .pl-filter-wrap {
+    max-width: 0;
+    padding: 0;    
+    border: 0;
+    transition: all 1s ease;
+}
+.pl-supply-option-wrap[search=open] .pl-filter-wrap label {
+    display: none;
+}
+.pl-supply-option-wrap[search=open] .c-search-wrap[for=mobile] {
+    margin-left: 0;
+    width: 100%;
+    background: none;
+    padding-left: 0.3rem;    
+    margin-right: 1rem;
+    order: 1;
+    position: relative;
+}
+.pl-supply-option-wrap[search=open] .c-search-wrap[for=mobile] input {
+    width: calc(100% - 5.5rem);
+    margin-top: 1rem;
+}
+.pl-supply-option-wrap[search=open] .c-search-clear {
+    display: block;    
+    order: 2;
+    margin-top: 0.8rem;
+}
+.pl-supply-option-wrap[search=open] button[action=search]:not([pc]) {
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 1rem;
+    width: 5rem;
+    text-align: right;
+}
+.pl-supply-option-wrap[search=open] button[action=search] img {
+    width: 1rem;
+    height: auto;
+}
+.c-search-wrap[for=pc] {
+    display: none;
+}
+.c-search-wrap[for=pc] button[action=search] {
+    display: none;
+}
+.category-description-wrap-top {
+    display: none;
+}
+.stamped-badge-caption {
+    display: none;
+}
+.card-link {
+    font-size: 10px;
+}
+@media (min-width: 350px) {
+    .stamped-badge-caption[data-reviews][data-label][data-version="2"]>span {
+        font-size: 9px;
+    }
+    .card-link {
+        font-size: 1rem;
+    }
+    .stamped-badge-caption {
+        display: inline-block;
+    }
+}
+@media (min-width: 500px) {
+    .pl-option-wrap:not([search]) {
+        display: flex;
+        justify-content: flex-end;
+        margin-bottom: 2rem;
+        margin: 1.5rem 0;
+    }
+    .pl-option-wrap:not([search]) .actionBar {
+        margin: 0;
+    }
+    .pl-option-wrap:not([search]) .pl-filter-wrap {
+        width: 250px;
+        margin-right: 10px;
+        margin-top: 0;
+    }
+    .pl-option-wrap:not([search]) .actionBar-section .form-field {
+        margin-bottom: 0;
+    }
+    /* .pl-option-wrap:not([search]) .actionBar-section {
+        width: 220px;
+        float: right;
+    } */
+    .actionBar-section {
+        width: 220px;
+        float: right;
+    }
+    .stamped-badge-caption[data-reviews][data-label][data-version="2"]>span {
+        font-size: 11px;
+    }
+}
+@media (min-width: 551px) {
+    .pl-option-wrap[search] .actionBar-section {
+        float: none;
+    }
+}
+@media (min-width: 675px) {    
+    .pl-option-wrap[search] {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 2rem;
+        margin: 1.5rem 0;
+    }
+    .pl-option-wrap[search]  .actionBar {
+        margin: 0;
+    }
+    .pl-option-wrap[search]  .pl-filter-wrap {
+        width: 170px;
+        margin-right: 10px;
+        margin-top: 0;
+    }
+    .pl-option-wrap[search]  .actionBar-section .form-field {
+        margin-bottom: 0;
+    }
+    .pl-option-wrap[search]  .actionBar-section {
+        width: 220px;
+        float: right;
+    }
+    .c-search-wrap[for=mobile] {
+        display: none;
+    }
+    .c-search-wrap[for=pc] {        
+        margin-left: 0;
+        margin-right: 1rem;        
+        width: 208px;
+        background-position: left 8px top 1.2rem;
+        display: flex;
+        margin-left: 10px;
+        /* border: 1px solid #dcdddb; */
+    }
+    .c-search-wrap[for=pc] input {
+        /* margin-top: .5rem; */
+        width: 100%;
+    }
+    .c-search-wrap[for=pc] input:focus {
+        outline: none;
+    }
+    /* .c-search-wrap[for=pc] button[pc] {
+        margin-top: .5rem;
+    } */
+    .pl-s-option-pc-wrap {
+        display: flex;
+    }
+}
+@media (min-width:700px) {
+    .c-search-wrap[for=pc] {
+        width: 220px;        
+    }
+}
+@media (min-width: 801px) {
+    .category-name[has-sub]::after {
+        display: none;
+    }
+    .category-heading {
+        text-align: center;
+    }
+    .c-search-wrap[for=pc] {
+        display: none;
+    }
+    .category-description-wrap-top {
+        display: block;
+    }
+}
+@media (min-width:900px) {
+    .c-search-wrap[for=pc] {
+        width: 200px;
+        display: flex;        
+    }    
+}
+@media (min-width: 1024px) {
+    .stamped-badge-caption[data-reviews][data-label][data-version="2"]>span {
+        font-size: 13px;
+    }
+}
+@media only screen and (max-width: 800px) {
+    .page-sidebar {
+        display: none;
+    }
+    .faq-wrap h2 .pc {
+        display: none;
+    }
+    .faq-wrap h2 .mobile {
+        display: block;
+    }
+}
+@media only screen and (max-width: 414px) {
+    /* .category-description-wrap-top {
+        display: none;
+    } */
+    .btn-url-back {
+        display: inline;
+        font-size: 1.5rem;
+        transform: translateX(-1.4rem) translateY(0.2rem);
+        width: 5rem;
+        text-align: center;
+    }
+    .btn-url-back svg {
+        width: 1rem;
+    }
+}    
+</style>
+
+<h1 class="page-heading category-heading">    
+    <span class="category-name" {{#if category.subcategories}}has-sub{{/if}}>{{category.name}}</span>
+</h1>
+{{>components/category/subcategories}}
+<div class="category-description-wrap-top">    
+    {{{category.description}}}
+</div>
+{{{snippet 'categories'}}}
+<div class="page">
+    {{#or category.subcategories category.faceted_search_enabled}} 
+        {{> components/category/sidebar}} 
+    {{else}} 
+        {{#if theme_settings.shop_by_price_visible}} {{> components/category/sidebar}} {{/if}}
+    {{/or}}
+    <main class="page-content" id="product-listing-container">
+        {{#if customer}}
+            {{#if breadcrumbs.[3].name '==' 'Hairpiece Styling'}}
+                {{#if (length customer.orders) '>' 0}}
+                    {{#if category.products}} 
+                        {{> components/category/product-listing}}
+                    {{else}}
+                        <p>{{lang 'categories.no_products'}}</p>
+                    {{/if}}
+                {{else}}
+                    <p>{{lang 'categories.no_products'}}</p>
+                {{/if}}
+            {{else}}
+                {{#if category.products}} 
+                    {{> components/category/product-listing}}
+                {{else}}
+                    <p>{{lang 'categories.no_products'}}</p>
+                {{/if}}
+            {{/if}}
+        {{else}}
+            {{#if category.products}} 
+                {{> components/category/product-listing}}
+            {{else}}
+                <p>{{lang 'categories.no_products'}}</p>
+            {{/if}}
+        {{/if}}        
+    </main>
+</div>
+{{#if breadcrumbs.[3].name "==" "Pre-Order"}}
+<style>
+    .modal1{display:none;position:fixed;z-index:1;padding-top:100px;left:0;top:0;width:100%;height:100%;overflow:auto;background-color:#000;background-color:rgba(0,0,0,0.9)}.modal-content1{margin:auto;display:block;width:80%;max-width:900px}@keyframes zoom{from{transform:scale(0)}to{transform:scale(1)}}.close1{position:absolute;top:55px;right:35px;color:#f1f1f1;font-size:40px;font-weight:700;transition:.3s}.close1:hover,.close1:focus{color:#bbb;text-decoration:none;cursor:pointer}@media only screen and (max-width: 900px){.modal-content1{width:100%}.close1{right:10px}}
+</style>
+<div id="faq-section">
+    <div class="faq-wrap">
+        <h2>
+            <span class="mobile">FAQs</span>
+            <span class="pc">Frequently Asked Questions</span>
+        </h2>
+        <div class="faq-accordion">
+            <div class="faq-accordion-item">
+                <button aria-expanded="true">
+                    <h3 class="faq-accordion-title" step="1.">Pre-Order fulfillment rate during the pandemic, how long do you I to wait?</h3>
+                    <span class="faq-icon" aria-hidden="false"></span>
+                </button>
+                <div class="faq-accordion-content">
+                    <p>
+                        The average waiting time for pre-orders is <strong>2 month for Basic version, 3 months for lace-based</strong> hairpieces and <strong>2-3 months for skin-based</strong> hairpieces. However, your order may arrive much sooner if the factory was already working on that particular unit before you placed the order.
+                    </p>
+                    <p>Here's how it looks now:</p>
+                    <center>
+                        <img src="/content/images/pre-orders-chart1.jpg" alt="pre-orders 2021" loading="lazy" onclick="onZoomImg(event)">
+                    </center>
+                    <p>And here's the progress we have made since last month:</p>
+                    <center>
+                        <img src="/content/images/pre-orders-chart.jpg" alt="pre-order" loading="lazy" onclick="onZoomImg(event)">
+                    </center>
+                </div>
+            </div>
+            <div class="faq-accordion-item">
+                <button aria-expanded="false">
+                    <h3 class="faq-accordion-title" step="2.">How do I know when I will receive my pre-order?</h3>
+                    <span class="faq-icon" aria-hidden="true"></span>
+                </button>
+                <div class="faq-accordion-content">
+                    {{#if breadcrumbs.[1].name "==" "Men"}}
+                    <p>
+                        Pre-order might take up to 3 months, or 4 months for Lace and Men's stock hairpieces . Once we receive your pre-order in our warehouse in Florida, US, and the hair system is
+                        ready to ship out, you will receive a notification email from us.
+                    </p>
+                    {{else}}
+                    <p>
+                        Pre-order might take up to 3 months, or 4 months for Lace and Women's stock hairpieces . Once we receive your pre-order in our warehouse in Florida, US, and the hair system is
+                        ready to ship out, you will receive a notification email from us.
+                    </p>
+                    {{/if}}
+                </div>
+            </div>
+            <div class="faq-accordion-item">
+                <button aria-expanded="false">
+                    <h3 class="faq-accordion-title" step="3.">Why should I need to place a pre-order?</h3>
+                    <span class="faq-icon" aria-hidden="true"></span>
+                </button>
+                <div class="faq-accordion-content">
+                    <p>That is the best option at the moment considering the issue with inventory availability caused by COVID-19 pandemic, and the very high demand for hair systems.</p>
+                    <p>
+                        By placing a pre-order, you can sleep soundly ensuring that a few months from now, the hair system and the color that you prefer will be available when you need it most, rather
+                        than looking around for a similar hair system with a color that you have never tried before!
+                    </p>
+                </div>
+            </div>
+            <div class="faq-accordion-item">
+                <button aria-expanded="false">
+                    <h3 class="faq-accordion-title" step="4.">Why did my pre-order come before the given 3-4 months?</h3>
+                    <span class="faq-icon" aria-hidden="true"></span>
+                </button>
+                <div class="faq-accordion-content">
+                    <p>
+                        If your order came earlier, that means the stock unit you ordered was one of the ones the factory was already working on before you placed your order. At the time we do not
+                        know the progress of each unit the factory is currently working on. By placing a pre-order, you are placed on a priority list which is a first come first serve list.
+                    </p>
+                </div>
+            </div>
+            <div class="faq-accordion-item">
+                <button aria-expanded="false">
+                    <h3 class="faq-accordion-title" step="5.">Can I cancel a pre-order?</h3>
+                    <span class="faq-icon" aria-hidden="true"></span>
+                </button>
+                <div class="faq-accordion-content">
+                    <p>
+                        Yes, you can cancel a pre-order as long as the pre-order has the standard stock specifications. Meaning, when you ordered it, you did not change the density and size of the
+                        stock unit. If the density or size were changed, then the pre-order is the final sale and cannot be cancelled.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="myModal1" class="modal1">
+    <span class="close1">&times;</span>
+
+    <img class="modal-content1" id="img01" />
+</div>
+<script>
+    let modal1 = document.getElementById("myModal1");
+    let modalImg = document.getElementById("img01");    
+
+    function onZoomImg(e) {
+        console.log(e.target.src);
+        modal1.style.display = "block";
+        modalImg.src = e.target.src;
+    }    
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close1")[0];
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function () {
+        modal1.style.display = "none";
+    };
+    modal1.onclick = function() {
+        modal1.style.display = "none";
+    }
+    modal1.querySelector(".modal-content1").onclick = function() {
+        event.stopPropagation();
+    }
+</script>
+{{else if breadcrumbs.[2].name "==" "Custom Made"}}
+<style>
+    .modal1 {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        padding-top: 100px; /* Location of the box */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0, 0, 0); /* Fallback color */
+        background-color: rgba(0, 0, 0, 0.9); /* Black w/ opacity */
+    }
+
+    /* Modal Content (Image) */
+    .modal-content1 {
+        margin: auto;
+        display: block;
+        width: 80%;
+        max-width: 900px;
+    }
+
+    @keyframes zoom {
+        from {
+            transform: scale(0);
+        }
+        to {
+            transform: scale(1);
+        }
+    }
+
+    /* The Close Button */
+    .close1 {
+        position: absolute;
+        top: 55px;
+        right: 35px;
+        color: #f1f1f1;
+        font-size: 40px;
+        font-weight: bold;
+        transition: 0.3s;
+    }
+
+    .close1:hover,
+    .close1:focus {
+        color: #bbb;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    /* 100% Image Width on Smaller Screens */
+    @media only screen and (max-width: 900px) {
+        .modal-content1 {
+            width: 100%;
+        }
+        .close1{
+            right: 10px;
+        }
+    }
+</style>
+<div id="faq-section">
+    <div class="faq-wrap">
+        <h2>
+            <span class="mobile">FAQs</span>
+            <span class="pc">Frequently Asked Questions</span>
+        </h2>
+        <div class="faq-accordion">
+            <div class="faq-accordion-item">
+                <button aria-expanded="true">
+                    <h3 class="faq-accordion-title" step="1.">Custom Order fulfillment rate during the pandemic, how long do you I to wait?</h3>
+                    <span class="faq-icon" aria-hidden="false"></span>
+                </button>
+                <div class="faq-accordion-content">
+                    <p>There's a good chance you will get your custom order placed in March or April in June (2-3 months waiting time).</p>
+                    <p>However, with all the disruptions and uncertainties during the pandemic —and depending on the type of hairpiece you order— the average waiting time for custom orders is <strong> 5-6 months</strong>.</p>
+                    <p>Here’s how it looks now <strong>in June 2021</strong></p>
+                    <center>
+                        <img src="/product_images/uploaded_images/custom-order-chart1.jpg" alt="custom order May 2021" loading="lazy" onclick="onZoomImg(event)" />
+                    </center>
+                    <p>And here's our custom order <span style="text-decoration: underline;">fulfillment progress in 3 months</span> (since April):</p>
+                    <center>
+                        <img src="/product_images/uploaded_images/custom-order-chart.jpg" alt="custom order" loading="lazy" onclick="onZoomImg(event)" />
+                    </center>                    
+                </div>
+            </div>            
+        </div>
+    </div>
+</div>
+<div id="myModal1" class="modal1">
+    <span class="close1">&times;</span>
+
+    <img class="modal-content1" id="img01" />
+</div>
+<script>
+    let modal1 = document.getElementById("myModal1");
+    let modalImg = document.getElementById("img01");    
+
+    function onZoomImg(e) {
+        console.log(e.target.src);
+        modal1.style.display = "block";
+        modalImg.src = e.target.src;
+    }    
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close1")[0];
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function () {
+        modal1.style.display = "none";
+    };
+    modal1.onclick = function() {
+        modal1.style.display = "none";
+    }
+    modal1.querySelector(".modal-content1").onclick = function() {
+        event.stopPropagation();
+    }
+</script>
+{{else if breadcrumbs.[1].name "==" "Extensions"}}
+    {{#if breadcrumbs.[2].name "==" "Tape In"}}
+    <div id="faq-section">
+        <div class="faq-wrap">
+            <h2>
+                <span class="mobile">FAQs</span>
+                <span class="pc">Frequently Asked Questions</span>
+            </h2>
+            <div class="faq-accordion">
+                <div class="faq-accordion-item">
+                    <button aria-expanded="true">
+                        <h3 class="faq-accordion-title" step="1.">How long do tape in hair extensions last?</h3>
+                        <span class="faq-icon" aria-hidden="false"></span>
+                    </button>
+                    <div class="faq-accordion-content">
+                        <p>
+                            Each installation lasts 6-8 weeks depending on the speed of the client's hair growth. You need to book your clients to do a re-taping and reinstallation service to move the
+                            tape in extension up to the root for the hair again. Depending on the quality of the hair, and the clients wearing and maintenance habits, the tape in extension can be
+                            reinstalled 3-6 times. We recommend 3 reinstallations for our 3A/4A hair extensions and 6 reinstallations for our 5A/6A hair extensions. Overall, 3A/4A tape in extensions will
+                            last 3-5 months and 5A/6A tape in extensions will last 6-10 months.
+                        </p>
+                    </div>
+                </div>
+                <div class="faq-accordion-item">
+                    <button aria-expanded="false">
+                        <h3 class="faq-accordion-title" step="2.">How much does tape in hair extensions cost?</h3>
+                        <span class="faq-icon" aria-hidden="true"></span>
+                    </button>
+                    <div class="faq-accordion-content">
+                        <p>The cost of tape extensions depends on 3 factors; the length, quality, and colour. Depending on what length, quality, and colour you select, the price will change.</p>
+                    </div>
+                </div>
+                <div class="faq-accordion-item">
+                    <button aria-expanded="false">
+                        <h3 class="faq-accordion-title" step="3.">How to put in tape in hair extensions?</h3>
+                        <span class="faq-icon" aria-hidden="true"></span>
+                    </button>
+                    <div class="faq-accordion-content">
+                        <p>
+                            First, wash and dry your hair so your extensions last longer. Then part your hair at the back and apply the extension right near the scalp where your hair is parted. Take a
+                            thin portion of your hair and place it below the extension before applying another extension to sandwich it. Make sure to press the tape in extensions firmly for 10-20 seconds
+                            and then you're all set. Repeat the process for others.
+                        </p>
+                    </div>
+                </div>
+                <div class="faq-accordion-item">
+                    <button aria-expanded="false">
+                        <h3 class="faq-accordion-title" step="4.">How to wash tape in hair extensions?</h3>
+                        <span class="faq-icon" aria-hidden="true"></span>
+                    </button>
+                    <div class="faq-accordion-content">
+                        <p>
+                            Hair extensions tend to tangle so it's important to brush your hair regularly. When you take a shower, apply shampoo right at the roots of your hair extensions and work your
+                            way down. Apply conditioner, wash, and dry your hair with a towel carefully. Use a hair dryer to ensure none of your hair extensions are wet.
+                        </p>
+                    </div>
+                </div>
+                <div class="faq-accordion-item">
+                    <button aria-expanded="false">
+                        <h3 class="faq-accordion-title" step="5.">How to remove tape in hair extensions at home?</h3>
+                        <span class="faq-icon" aria-hidden="true"></span>
+                    </button>
+                    <div class="faq-accordion-content">
+                        <p>
+                            Tie your hair up so your extensions are in full view. Apply a non-chemical tape glue remover to the extension tape and let it seep for a bit before removing the extension. You
+                            can also apply the remover for any leftover residue on your hair.
+                            <a href="https://www.superhairpieces.com/toupee-wig-hair-system-blog/how-to-remove-clean-prep-tape-extensions/">Read More</a>
+                        </p>
+                    </div>
+                </div>
+                <div class="faq-accordion-item">
+                    <button aria-expanded="false">
+                        <h3 class="faq-accordion-title" step="6.">How to Choose the Correct Length of Hair Extensions?</h3>
+                        <span class="faq-icon" aria-hidden="true"></span>
+                    </button>
+                    <div class="faq-accordion-content">
+                        <p>
+                            In general, we would recommend a hair extension length at a maximum of 3’’ to 4’’ inches more than your natural hair length, but it also depends on your personal preferences. We also recommend having your natural hair length be at least 4’’ to 5’’ inches long to help you conceal and blend the extensions into your hair. Guide: <a href="//www.superhairpieces.com/toupee-wig-hair-system-blog/guide-how-to-choose-the-correct-length-of-hair-extensions/" target="_blank">Hair Extension Length</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{else if breadcrumbs.[2].name "==" "Clip In"}}
+    <div id="faq-section">
+        <div class="faq-wrap">
+            <h2>
+                <span class="mobile">FAQs</span>
+                <span class="pc">Frequently Asked Questions</span>
+            </h2>
+            <div class="faq-accordion">
+                <div class="faq-accordion-item">
+                    <button aria-expanded="true">
+                        <h3 class="faq-accordion-title" step="1.">How many clip-in extensions do I need?</h3>
+                        <span class="faq-icon" aria-hidden="false"></span>
+                    </button>
+                    <div class="faq-accordion-content">
+                        <p>For a full head installation, we typically recommend 100g - 150g. Each pack of our clip in extensions is 100g so 1-2 packs for a full head installation should be fine.</p>
+                    </div>
+                </div>
+                <div class="faq-accordion-item">
+                    <button aria-expanded="false">
+                        <h3 class="faq-accordion-title" step="2.">How do I select which hair extensions are perfect for me? Are they all human hair?</h3>
+                        <span class="faq-icon" aria-hidden="true"></span>
+                    </button>
+                    <div class="faq-accordion-content">
+                        <p>
+                            All our hair extensions are made with real human hair. As for which hair extension you should go for, it ultimately depends on your hair and needs. If you have thin hair, you
+                            may require a different hair extension than someone who might have more thick hair. Or if you’re looking for hair extensions for special occasions, a particular hair extension
+                            may suit you more than one which is for a more permanent basis. For more information,
+                            <a href="https://superhairpieces.ca/blog/what-are-the-different-types-of-hair-extensions/" target="_blank">click here</a>.
+                        </p>
+                    </div>
+                </div>
+                <div class="faq-accordion-item">
+                    <button aria-expanded="false">
+                        <h3 class="faq-accordion-title" step="3.">How long do clip-in hair extensions last?</h3>
+                        <span class="faq-icon" aria-hidden="true"></span>
+                    </button>
+                    <div class="faq-accordion-content">
+                        <p>
+                            It's hard to say. It depends on the grade and how often they are worn. For someone who wears theirs every day vs. someone who only wears it occasionally, the one who wears it
+                            only occasionally will last longer.
+                        </p>
+                    </div>
+                </div>
+                <div class="faq-accordion-item">
+                    <button aria-expanded="false">
+                        <h3 class="faq-accordion-title" step="4.">What is the cost of clip-in hair extensions?</h3>
+                        <span class="faq-icon" aria-hidden="true"></span>
+                    </button>
+                    <div class="faq-accordion-content">
+                        <p>The cost of tape extensions depends on three factors; the length, quality, and colour. Depending on what length, quality, and colour you select, the price will change.</p>
+                    </div>
+                </div>
+                <div class="faq-accordion-item">
+                    <button aria-expanded="false">
+                        <h3 class="faq-accordion-title" step="5.">How do you install clip-in hair extensions?</h3>
+                        <span class="faq-icon" aria-hidden="true"></span>
+                    </button>
+                    <div class="faq-accordion-content">
+                        <p>
+                            Brush your hair first. Part your hair so that it is in line with your ears. Clip in the middle part of the hair extension onto the parting line first before clipping in the
+                            sides. Brush the hair extensions before blending it with your own hair.
+                            <a href="https://superhairpieces.ca/blog/clip-in-vs-tape-in-hair-extensions-which-one-should-you-go-for/" target="_blank">Read More</a>
+                        </p>
+                    </div>
+                </div>
+                <div class="faq-accordion-item">
+                    <button aria-expanded="false">
+                        <h3 class="faq-accordion-title" step="6.">How do you wash clip-in hair extensions?</h3>
+                        <span class="faq-icon" aria-hidden="true"></span>
+                    </button>
+                    <div class="faq-accordion-content">
+                        <p>
+                            Brush your extensions. Then holding the wefts from the top, submerge the hair in water and apply shampoo gently. Set it aside on a towel to dry before applying conditioner and
+                            doing the same. Rinse it out and use a hair dryer to ensure it's not wet anymore.
+                        </p>
+                    </div>
+                </div>
+                <div class="faq-accordion-item">
+                    <button aria-expanded="false">
+                        <h3 class="faq-accordion-title" step="7.">How do you take care of clip-in extensions?</h3>
+                        <span class="faq-icon" aria-hidden="true"></span>
+                    </button>
+                    <div class="faq-accordion-content">
+                        <p>
+                            Store your hair extensions properly when not in use. Regularly brush your extensions carefully. Don't wash the extensions too frequently but when it is washed, make sure to do
+                            it gently and not overwash otherwise it can be dry and damaged. Use shampoo and conditioner and a hair dryer after the wash to make sure it's not wet.
+                        </p>
+                    </div>
+                </div>
+                <div class="faq-accordion-item">
+                    <button aria-expanded="false">
+                        <h3 class="faq-accordion-title" step="8.">How to Choose the Correct Length of Hair Extensions?</h3>
+                        <span class="faq-icon" aria-hidden="true"></span>
+                    </button>
+                    <div class="faq-accordion-content">
+                        <p>
+                            We recommend going for hair extensions that are 3’’ to 4’’ inches longer than your natural hair length. It is also best if your natural hair length is at least 4’’ to 5’’ inches long to help you conceal and blend the extensions into your hair. To learn more: <a href="//www.superhairpieces.com/toupee-wig-hair-system-blog/guide-how-to-choose-the-correct-length-of-hair-extensions/" target="_blank">Hair Extension Length Guide</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{else if breadcrumbs.[3].name '==' 'Eyelash extension'}}
+    <div id="faq-section">
+        <div class="faq-wrap">
+            <h2>
+                <span class="mobile">FAQs</span>
+                <span class="pc">Frequently Asked Questions</span>
+            </h2>
+            <div class="faq-accordion">
+                <div class="faq-accordion-item">
+                    <button aria-expanded="true">
+                        <h3 class="faq-accordion-title" step="1.">How to apply eyelash extensions? Is it safe?</h3>
+                        <span class="faq-icon" aria-hidden="false"></span>
+                    </button>
+                    <div class="faq-accordion-content">
+                        <p>
+                            <strong>Note:</strong> It may be best to have a professional install them for you. Make sure to clean your eye area with a cleanser first. Apply an eye patch to the lashes you
+                            aren't applying yet (lower or upper) so they don't make contact as you apply the extensions on the other set of lashes. Brush the lashes you are applying extensions to so that
+                            none are tangled. Apply the lash extensions one by one using proper eyelash glue. Once they are bonded, allow the glue to dry for a couple of minutes. Repeat this process for
+                            the other set of lashes.
+                        </p>
+                        <p>Eyelash extensions are very safe as long as they are installed correctly with the right adhesive and are maintained properly.</p>
+                    </div>
+                </div>
+                <div class="faq-accordion-item">
+                    <button aria-expanded="false">
+                        <h3 class="faq-accordion-title" step="2.">How long do eyelash extensions last?</h3>
+                        <span class="faq-icon" aria-hidden="true"></span>
+                    </button>
+                    <div class="faq-accordion-content">
+                        <p>Lash extensions usually last anywhere from two to four weeks. However, they can also last longer depending on how well they are maintained and cleaned.</p>
+                    </div>
+                </div>
+                <div class="faq-accordion-item">
+                    <button aria-expanded="false">
+                        <h3 class="faq-accordion-title" step="3.">What's the difference between D curl and DD curl?</h3>
+                        <span class="faq-icon" aria-hidden="true"></span>
+                    </button>
+                    <div class="faq-accordion-content">
+                        <p>
+                            Both D and DD curls are types of lash extensions that are designed to produce a more curled look when applied on your natural lashes. The difference between them is simply that
+                            the DD has a tighter and more pronounced and dramatic curl compared to the D curl.
+                        </p>
+                    </div>
+                </div>
+                <div class="faq-accordion-item">
+                    <button aria-expanded="false">
+                        <h3 class="faq-accordion-title" step="4.">How to remove eyelash extensions at home?</h3>
+                        <span class="faq-icon" aria-hidden="true"></span>
+                    </button>
+                    <div class="faq-accordion-content">
+                        <p>
+                            <strong>Note: </strong>It is best to have a professional remove them for your safety. Make sure to use an oil-free remover. There are two types of remover you can use -- the
+                            cream remover or the gel remover. The cream remover is more ideal for those with sensitive skin as it causes less irritation. Apply an eye patch to the lashes you aren’t
+                            removing yet (upper or lower). Using a cotton swab, apply the remover from the base of your natural lashes up to the extensions. Make sure the eyes are closed during this
+                            process. Try not to make contact with the skin or lash line. Let it sit for a few minutes to allow the bonds to weaken. Gently slide them off with a cotton swab and they should
+                            come off easily. You can also use a tweezer but be careful as it can damage your natural lashes. Using fresh cotton swabs, remove any leftover remover on the natural lashes.
+                            Gently remove the eye patch and apply foam cleanser thoroughly to your lashes before rinsing. Repeat the process for the other set of lashes.
+                        </p>
+                    </div>
+                </div>
+                <div class="faq-accordion-item">
+                    <button aria-expanded="false">
+                        <h3 class="faq-accordion-title" step="5.">Do eyelash extensions damage your natural lashes?</h3>
+                        <span class="faq-icon" aria-hidden="true"></span>
+                    </button>
+                    <div class="faq-accordion-content">
+                        <p>No, lash extensions do not damage your natural eyelashes as long as they are applied and maintained properly.</p>
+                    </div>
+                </div>
+                <div class="faq-accordion-item">
+                    <button aria-expanded="false">
+                        <h3 class="faq-accordion-title" step="6.">Can I sleep or shower with eyelash extensions?</h3>
+                        <span class="faq-icon" aria-hidden="true"></span>
+                    </button>
+                    <div class="faq-accordion-content">
+                        <p>
+                            Yes, but avoid getting your lashes wet within the first 48 hours after application. You can sleep and shower with eyelash extensions but some precautions need to be taken. For
+                            more information on <a href="https://superhairpieces.ca/blog/can-you-sleep-with-eyelash-extensions/" target="_blank">sleeping with lash extensions</a>, For more information on
+                            <a href="https://superhairpieces.ca/blog/can-you-shower-with-eyelash-extensions/" target="_blank">showering with lash extensions</a>.
+                        </p>
+                    </div>
+                </div>
+                <div class="faq-accordion-item">
+                    <button aria-expanded="false">
+                        <h3 class="faq-accordion-title" step="7.">Why are my eyelash extensions falling out?</h3>
+                        <span class="faq-icon" aria-hidden="true"></span>
+                    </button>
+                    <div class="faq-accordion-content">
+                        <p>
+                            The first major reason your eyelash extensions are falling out could be natural shedding; as your natural lashes shed, so will the extensions that are attached to them.
+                            However, there could be many other reasons as to why your extensions are falling.
+                            <a href="https://superhairpieces.ca/blog/6-reasons-why-your-eyelash-extensions-are-falling-out/" target="_blank">Click here</a> to learn more and how to take care of your lash
+                            extensions.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{/if}} 
+{{else if breadcrumbs.[1].name '==' 'Men'}}
+    {{#lengthEqual breadcrumbs 3}}    
+        {{#if breadcrumbs.[2].name '==' 'In Stock'}}
+        <div id="faq-section">
+            <div class="faq-wrap">
+                <h2>
+                    <span class="mobile">FAQs</span>
+                    <span class="pc">Frequently Asked Questions</span>
+                </h2>
+                <div class="faq-accordion">
+                    <div class="faq-accordion-item">
+                        <button aria-expanded="true">
+                            <h3 class="faq-accordion-title" step="1.">What are hair replacement systems?</h3>
+                            <span class="faq-icon" aria-hidden="false"></span>
+                        </button>
+                        <div class="faq-accordion-content">
+                            <p>
+                                A hair replacement system — also known as a non-surgical hair replacement system — is any sort of hairpiece that replaces your thinning or balding hair. Examples of hair replacement systems include human hair wigs and men's toupees which not only conceal hair loss, but provide additional hair coverage to your scalp.
+                            </p>   
+                        </div>                 
+                    </div>
+                    <div class="faq-accordion-item">
+                        <button aria-expanded="false">
+                            <h3 class="faq-accordion-title" step="2."
+                                >What is a toupee?</h3
+                            ><span class="faq-icon" aria-hidden="true"></span>
+                        </button>
+                        <div class="faq-accordion-content">
+                            <p>Toupees — also known as partial wigs or half-wigs — are a type of hair replacement system designed to cover certain areas of the scalp but not the full head. These hairpieces are typically worn by men as they cover the main areas affected by male pattern baldness. Superhairpieces offers a wide range of natural looking, comfortable and durable men's toupees.</p>
+                        </div>
+                    </div>
+                    <div class="faq-accordion-item">
+                        <button aria-expanded="false">
+                            <h3 class="faq-accordion-title" step="3."
+                                >What is the difference between a toupee and a wig?</h3
+                            ><span class="faq-icon" aria-hidden="true"></span>
+                        </button>
+                        <div class="faq-accordion-content">
+                            <p>A wig covers the entire scalp of the hair system wearer while a toupee only covers the areas affected by male pattern baldness. This is because the majority of balding men will still have hair on the sides and back of their heads (donor hair) so toupees only cover the balding or thinning areas of hair.</p>
+                            <p>Read more: <a href="https://www.superhairpieces.com/toupee-wig-hair-system-blog/what-is-the-difference-between-a-wig-and-a-toupee/" target="_blank">Differences between wigs and toupees</a></p>
+                        </div>
+                    </div>
+                    <div class="faq-accordion-item">
+                        <button aria-expanded="false">
+                            <h3 class="faq-accordion-title" step="4."
+                                >How do I buy the perfect hair system for myself?</h3
+                            ><span class="faq-icon" aria-hidden="true"></span>
+                        </button>
+                        <div class="faq-accordion-content">
+                            <p>
+                                There are many factors to consider when buying a hair system that is ideal for yourself. To help make things easier, we have provided the following resources to help you pick out the perfect hair system.
+                            </p>
+                            <p><a href="https://www.superhairpieces.com/toupee-wig-hair-system-blog/beginners-guide-how-to-buy-toupee-or-wig-hairpieces/" target="_blank">Beginners guide: How to buy a toupee or wig</a></p>
+                            <p><a href="https://www.superhairpieces.com/toupee-wig-hair-system-blog/how-to-choose-the-right-hair-density-for-your-wig-or-toupee/" target="_blank">How to choose the right hair density for your wig or toupee</a></p>
+                            <p><a href="https://www.superhairpieces.com/toupee-wig-hair-system-blog/how-to-choose-a-color-for-your-wig/" target="_blank">How to select a hair color for your hair system</a></p>
+                        </div>
+                    </div>
+                    <div class="faq-accordion-item">
+                        <button aria-expanded="false">
+                            <h3 class="faq-accordion-title" step="5."
+                                >How do you wear a toupee hair system?</h3
+                            ><span class="faq-icon" aria-hidden="true"></span>
+                        </button>
+                        <div class="faq-accordion-content">
+                            <p>
+                                You just need a few items to install or apply your toupee hair system on your scalp and it only takes a couple of steps. You can read about it below or watch our hairstylist install a toupee on one of our clients.
+                            </p>
+                            <p><a href="https://www.superhairpieces.com/toupee-wig-hair-system-blog/how-to-attach-and-remove-a-hair-replacement-system/" target="_blank">How to attach and remove a hair replacement system</a></p>
+                            <p><iframe width="560" height="315" src="https://www.youtube.com/embed/pooa01EyCxM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{else}}
+            {{#if breadcrumbs.[2].name '==' 'Search In Stock'}}
+            <style>
+                .yt-wrap {
+                    display: grid;
+                    grid-template-columns: repeat(2, 1fr);
+                    grid-column-gap: 1rem;
+                }
+                .yt-wrap iframe {
+                    width: 100%;
+                }
+                .faq-accordion-title {
+                    font-size: 22px;
+                }                
+                @media (max-width:900px) {
+                    .yt-wrap {
+                        display: block;
+                    }
+                    .yt-wrap iframe {
+                        width: 560px;
+                        max-width: 100%;
+                        margin: 0 auto 1rem;
+                        display: block;
+                    }
+                }
+            </style>
+            <div id="faq-section">
+                <div class="faq-wrap">
+                    <div class="faq-accordion">
+                        <div class="faq-accordion-item">
+                            <button aria-expanded="true">
+                                <h2 class="faq-accordion-title" step="1.">Why do you need toupees wigs for men?</h2>
+                                <span class="faq-icon" aria-hidden="false"></span>
+                            </button>
+                            <div class="faq-accordion-content">
+                                <p>
+                                    For many men who deal with male pattern baldness, they simply accept their balding or thinning hair or go ahead and do a complete shave. While for many, the look can suit them, for others, they don't quite have the head shape for a completely bald look or they simply don't look as good in general, looking many years older than they are. This is where toupee wigs for men are extremely useful. For any balding man who misses their hair, men’s hair pieces can instantly give them a full head of hair again. If installed and styled correctly, it will look extremely natural looking and realistic while providing them with a huge confidence boost. Hair systems can truly bring your life back and with Superhairpieces offering a wide range of men’s toupees in various styles, sizes and colors, there is one out there for you!
+                                </p>   
+                                <h3>Shop human hair pieces for men</h3>
+                                <p>Superhairpieces provides a number of different men's hair systems and wigs for men. These range from thin skin poly hair systems, v-looped hair systems, <a href="/full-lace-base-mens-toupee-1/">French lace hair systems</a>, Swiss lace hair systems, <a href="/silk-top-mens-toupee-1/">monofilament hair systems</a>, lace front hair systems, full cap wigs for men and plenty more depending on your preferences!</p>
+                                <p>If you require further customization, you can also get a <a href="/mens-hairpiece-custom-made-2/">custom made hair system</a> so that it fits your exact needs as well as head measurements. Customization options include but are not limited to hair length, hair type, bleached knots, base color, hair density and plenty more!</p>
+                            </div>                 
+                        </div>
+                        <div class="faq-accordion-item">
+                            <button aria-expanded="false">
+                                <h3 class="faq-accordion-title" step="2."
+                                    >For first-time toupee hair system buyers</h3
+                                ><span class="faq-icon" aria-hidden="true"></span>
+                            </button>
+                            <div class="faq-accordion-content">
+                                <p>
+                                    If you are a first-time toupee hair system buyer, you will definitely need some help and resources. Superhairpieces is here to provide you with all the help you need to <a href="https://www.superhairpieces.com/starting-a-hair-system-journey/" target="_blank">prepare for your first men's hairpiece</a>. You can call or text us at 1-866-814-7879 or check out our various guides and <a href="https://www.superhairpieces.com/toupee-wig-hair-system-blog/" target="_blank">blogs</a>.
+                                </p>
+                                <p class="yt-wrap">
+                                    <iframe width="560" height="315" src="https://www.youtube.com/embed/x4wiDYnV3xg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                    <iframe width="560" height="315" src="https://www.youtube.com/embed/xAo4UqIjY-Q" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                </p>
+                            </div>
+                        </div>                        
+                    </div>
+                </div>
+            </div>
+            {{/if}}
+        {{/if}}
+    {{else lengthEqual breadcrumbs 5}}
+        {{#if breadcrumbs.[4].name '==' 'Poly Skin Mens Toupee'}}
+        <div id="faq-section">
+            <div class="faq-wrap">
+                <h2>
+                    <span class="mobile">FAQs</span>
+                    <span class="pc">Frequently Asked Questions</span>
+                </h2>
+                <div class="faq-accordion">
+                    <div class="faq-accordion-item">
+                        <button aria-expanded="true">
+                            <h3 class="faq-accordion-title" step="1.">What is a poly/skin base hair system?</h3>
+                            <span class="faq-icon" aria-hidden="false"></span>
+                        </button>
+                        <div class="faq-accordion-content">
+                            <p>
+                                A poly base toupee hair system — also known as a skin base hair system or thin skin hairpiece — is made of pure polyurethane material. The hair used is directly knotted onto the poly toupee and sealed off by layers of more clear poly skin. These hair systems are generally some of the thinnest and lightest bases with many offering a very natural and realistic look for the wearer.
+                            </p>   
+                            <p>Here is how Superhairpieces client Rick looks with a skin base system:</p>
+                            <p><iframe width="560" height="315" src="https://www.youtube.com/embed/6SZnnDAqVOk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+                        </div>                 
+                    </div>
+                    <div class="faq-accordion-item">
+                        <button aria-expanded="false">
+                            <h3 class="faq-accordion-title" step="2."
+                                >Why should I use a poly skin toupee?</h3
+                            ><span class="faq-icon" aria-hidden="true"></span>
+                        </button>
+                        <div class="faq-accordion-content">
+                            <p>Poly skin toupees are generally very easy to install, maintain and remove in addition to being very comfortable and lightweight. They are ideal for those who don't have the time to deal with maintenance as well as those who prefer a hair system that offers a very natural look more than anything else, especially if they opt for the very thin skin hair systems such as the M111 or HD111 hairpieces Superhairpieces offer.</p>
+                        </div>
+                    </div>
+                    <div class="faq-accordion-item">
+                        <button aria-expanded="false">
+                            <h3 class="faq-accordion-title" step="3."
+                                >How long does a poly hair system last?</h3
+                            ><span class="faq-icon" aria-hidden="true"></span>
+                        </button>
+                        <div class="faq-accordion-content">
+                            <p>This depends on the particular poly base toupee but in general, most skin bases — especially thin skin — only last four to six weeks as they are more of a disposable hairpiece. This is because the thinner the skin base, the less durable it is. The M101, on the other hand, has a thickness of 8 mils and is the most durable skin base Superhairpieces offers with a medium to long durability.</p>
+                        </div>
+                    </div>
+                    <div class="faq-accordion-item">
+                        <button aria-expanded="false">
+                            <h3 class="faq-accordion-title" step="4."
+                                >Are poly hair systems breathable?</h3
+                            ><span class="faq-icon" aria-hidden="true"></span>
+                        </button>
+                        <div class="faq-accordion-content">
+                            <p>
+                                Because of how thin skin bases are, they are generally not breathable compared to lace or mono units. And so, it is not advised to wear skin bases in warm climates or if you are a very active person. However, not all hair systems that have poly are unbreathable. Many systems such as our M158 include a fusion of lace and poly with four lace windows on the top for breathability and poly on the perimeter for easy installation and maintenance.</p>
+                        </div>
+                    </div>
+                    <div class="faq-accordion-item">
+                        <button aria-expanded="false">
+                            <h3 class="faq-accordion-title" step="5."
+                                >Do I use tape or glue to attach a poly/skin base hair system?</h3
+                            ><span class="faq-icon" aria-hidden="true"></span>
+                        </button>
+                        <div class="faq-accordion-content">
+                            <p>You can use <a href="https://www.superhairpieces.com/liquid-adhesive/" target="_blank">wig glue</a> or <a href="https://www.superhairpieces.com/hairpiece-toupee-tape/" target="_blank">wig tape</a> to attach your poly skin base toupee to your scalp. However, with the M111 and HD111, it is best to use glue given the thinness of their base material and the fact that tape could be seen through the base. Glue, meanwhile, is largely invisible and won’t seep into the poly base either which results in less cleaning required.</p>
+                        </div>
+                    </div>
+                    <div class="faq-accordion-item">
+                        <button aria-expanded="false">
+                            <h3 class="faq-accordion-title" step="6."
+                                >How do you clean a poly base toupee?</h3
+                            ><span class="faq-icon" aria-hidden="true"></span>
+                        </button>
+                        <div class="faq-accordion-content">
+                            <p>In general, skin bases are meant to be disposed of when removed. However, if you wish to reuse it or require to clean it, you can follow the same method as any other hair system:</p>
+                            <p>
+                                <ol>
+                                    <li>First, brush the hair of your poly base to make sure it is tangle-free and smooth. Start from the roots and brush your way down.</li>
+                                    <li>Rinse and then submerge the base in a large bowl or sink with cold or lukewarm water mixed with <a href="https://www.superhairpieces.com/hair-shampoo/" target="_blank">wig shampoo</a>. Leave it to soak for at least five minutes. Turn the base inside out and soak for another five minutes.</li>
+                                    <li>Drain the water and rinse the base again before applying <a href="https://www.superhairpieces.com/conditioner/" target="_blank">wig conditioner</a> from the ends of the hair and work your way up. Make sure not to touch the base as it can be damaged. Leave the conditioner on the hair for five minutes.</li>
+                                    <li>Rinse the base with cold water and dry off with a towel. Leave to dry on a wig stand afterwards or any place with little to no sunlight.</li>
+                                </ol>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="faq-accordion-item">
+                        <button aria-expanded="false">
+                            <h3 class="faq-accordion-title" step="7."
+                                >Why is the poly base hair system more suitable for beginners?</h3
+                            ><span class="faq-icon" aria-hidden="true"></span>
+                        </button>
+                        <div class="faq-accordion-content">
+                            <p>Many poly base hair systems — particularly thin skin models such as the M111 and HD111 — are disposable hairpieces which only last four to six weeks (though they can last longer if maintained well). Because of this, they are more affordable than other systems and ideal for beginners who just want to experiment with hair replacement systems initially and see if it is something right for them.</p>
+                            <p>
+                                Because of the poly material, skin base systems are also generally easy to install, maintain and remove compared to other bases which makes them perfect for first-time hair system wearers who are just starting their journey and/or don’t have time to worry about maintenance. Additionally, the poly material allows more room for error when applying adhesives such as wig tape or wig glue.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{/if}}    
+    {{/lengthEqual}}
+{{else if breadcrumbs.[1].name '===' 'Women'}}
+    {{#lengthEqual breadcrumbs 4}}
+        {{#if breadcrumbs.[3].name '==' 'All Toppers In Stock'}}
+            <div id="faq-section">
+                <div class="faq-wrap">
+                    <h2>
+                        <span class="mobile">FAQs</span>
+                        <span class="pc">Frequently Asked Questions</span>
+                    </h2>
+                    <div class="faq-accordion">
+                        <div class="faq-accordion-item">
+                            <button aria-expanded="true">
+                                <h3 class="faq-accordion-title" step="1.">Why wear hair toppers for thinning hair?</h3>
+                                <span class="faq-icon" aria-hidden="false"></span>
+                            </button>
+                            <div class="faq-accordion-content">
+                                <p>
+                                    Hair toppers are a great option for women with thinning hair as it instantly conceals and covers specific areas on the top of the scalp that are thinning or partially balding. Additionally, they provide plenty of volume and density to your natural hair provided it is blended properly.
+                                </p>   
+                                <ul>
+                                    <li><strong>Do hair toppers cause hair loss?</strong> Hair toppers should not have any effect on your hair loss by increasing or decreasing it.</li>
+                                    <li><strong>Do hair toppers damage your hair?</strong> Provided they are installed, maintained and removed gently and with care, hair toppers will not damage your existing, natural hair.</li>
+                                    <li><strong>Are hair toppers secure?</strong> If your hair topper is installed correctly with the right adhesive/attachment, you should not have any concerns about it not being secure and falling off.</li>
+                                </ul>
+                            </div>                 
+                        </div>
+                        <div class="faq-accordion-item">
+                            <button aria-expanded="false">
+                                <h3 class="faq-accordion-title" step="2."
+                                    >How do I choose a hair topper color?</h3
+                                ><span class="faq-icon" aria-hidden="true"></span>
+                            </button>
+                            <div class="faq-accordion-content">
+                                <p>With hair toppers in particular, it is best to choose a color that is closest to your natural hair color given that they only cover part of your hair. That said, there are bigger hair toppers that cover more of the scalp and in the end, it’s always down to one’s personal preference and how they would like their hair to look.</p>
+                                <p><a href="https://www.superhairpieces.com/toupee-wig-hair-system-blog/how-to-choose-a-color-for-your-wig/" target="_blank">How to choose a hair color</a></p>
+                            </div>
+                        </div>
+                        <div class="faq-accordion-item">
+                            <button aria-expanded="false">
+                                <h3 class="faq-accordion-title" step="3."
+                                    >How do I attach a hair topper?</h3
+                                ><span class="faq-icon" aria-hidden="true"></span>
+                            </button>
+                            <div class="faq-accordion-content">
+                                <p>Similar to a wig or toupee or hairpiece, you can use glue or tape to attach your hair topper on your hair loss area whether it is a thinning crown or the top of your head. Using either will allow the hair system to stay flat on your scalp compared to toppers that are attached with clips.</p>
+                                <ul>
+                                    <li><strong>Do I use tape or glue to attach hair toppers?</strong> You can use either tape or glue to attach your hair topper depending on which type of adhesive is most comfortable on your scalp.</li>
+                                    <li><strong>How do I attach a hair topper with clips?</strong> Simply open the clips, apply the hair topper on the area where you are thinning or balding and clip them on to your natural hair. Make sure the clips have silicon strips so they protect your hair and prevent potential slippage.</li>
+                                    <li><strong>How do you secure a hair topper without clips?</strong> You can use glue or tape to attach your hair topper if you prefer not to use clips as they can be bulky if not attached or blended properly. If your hair topper comes with clips, you should be able to remove the clips without affecting the overall hairpiece.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="faq-accordion-item">
+                            <button aria-expanded="false">
+                                <h3 class="faq-accordion-title" step="4."
+                                    >How do I wash and care for my hair toppers?</h3
+                                ><span class="faq-icon" aria-hidden="true"></span>
+                            </button>
+                            <div class="faq-accordion-content">
+                                <p>
+                                    Just like any other hair system, you should <a href="https://www.superhairpieces.com/toupee-wig-hair-system-blog/why-you-should-not-use-regular-shampoo-conditioner-on-your-wig/" target="_blank">use a wig shampoo or wig conditioner</a> or any other that is designed for hairpieces when washing your hair topper.
+                                </p>
+                                <ol>
+                                    <li>First, brush the hair of your hair topper to make sure it is tangle-free and smooth.</li>
+                                    <li>Rinse and then submerge the hair topper in a large bowl or sink with cold or lukewarm water mixed with <a href="https://www.superhairpieces.com/hair-shampoo/" target="_blank">wig shampoo</a>. Leave it to soak for at least five minutes. Turn the base inside out and soak for another five minutes. You can also wash the hair topper without submerging it by simply rinsing and applying shampoo on it for five minutes.</li>
+                                    <li>Drain the water and/or rinse the hair topper again before applying <a href="https://www.superhairpieces.com/conditioner/" target="_blank">wig conditioner</a> from the ends of the hair and work your way up. Make sure not to touch the base as it can be damaged. Leave the conditioner on the hair for five minutes.</li>
+                                    <li>Rinse the hair topper with cold water and dry off with a towel. Leave to dry on a wig stand afterwards.</li>
+                                </ol>
+                                <p>As far as caring and maintaining the hair topper is concerned, make sure to clean it at least every other week if not once a week. If you’re not using your hair topper, take it off and store it on a stand or mannequin, but make sure to avoid exposure to sunlight. Following these steps will help prolong your hair topper’s lifespan.</p>
+                            </div>
+                        </div>
+                        <div class="faq-accordion-item">
+                            <button aria-expanded="false">
+                                <h3 class="faq-accordion-title" step="5."
+                                    >Which one is better: a hair topper or a wig?</h3
+                                ><span class="faq-icon" aria-hidden="true"></span>
+                            </button>
+                            <div class="faq-accordion-content">
+                                <p>This depends on your needs and lifestyle. A hair topper is more suitable for you if you have thinning or balding hair only in certain areas such as the crown of the head or if you want to add more density and volume to your hair in general. They are more lightweight and affordable than wigs which are meant to cover the entire head as opposed to certain areas.</p>
+                                <p><center><img src="https://www.superhairpieces.com/product_images/uploaded_images/hair-topper-vs-wig.jpg" width="100%" alt=""></center></p>
+                                <ul>
+                                    <li><strong>Are hair toppers more comfortable than wigs?</strong> Hair toppers are more comfortable than wigs simply because they only cover certain areas of the scalp compared to a wig which covers the full scalp. As a result, hair toppers are more lightweight and hence, more comfortable than wigs.</li>
+                                </ul>
+                            </div>
+                        </div>                        
+                    </div>
+                </div>
+            </div>
+        {{/if}}
+    {{/lengthEqual}}
+{{/if}}
+{{inject "products" category.products}}
+<script>
+    var jsContext = JSON.parse({{jsContext}});    
+    window.addEventListener("DOMContentLoaded", (event) => {
+        const items = document.querySelectorAll(".faq-accordion button");
+        items.forEach((item) => item.addEventListener("click", toggleAccordion));    
+        $(".category-heading [has-sub], .sct-mobile-wrap .top, .sct-mobile-wrap [action=close]").on("click", function() {
+            if ($(window).width()<=800) {
+                $(".sct-mobile-wrap").toggle();
+            }            
+        });       
+        $("#sort").on("change", function() {
+            console.log(new Date());
+            $(this).css({"background-image": ""});
+        });
+        $(".c-search-wrap input").on("click", function() {
+            if ($(window).width()<658) {                
+                $(".c-search-wrap").parents(".pl-supply-option-wrap").attr("search","open");
+                $(this).focus();
+            }
+        });
+        $(".c-search-wrap input").on("keyup", function(event) {            
+            if ($(this).val().length>0) {
+                $(this).parent().find("img").prop("src","/content/images/common/search1.svg");
+                if ($(window).width()>=658) {
+                    $(this).parent().find("button[pc]").show();                
+                }
+                if (event.keyCode === 13) {
+                    location.href="/brands?kw="+$(this).val();
+                }
+            } else {
+                $(this).parent().find("img").prop("src","/content/images/common/search.svg");
+                $(this).parent().find("button[pc]").hide();
+            }
+            if ($(this).parents(".c-search-wrap").attr("for")=="mobile") {
+                $(".c-search-wrap[for=pc] input").val($(this).val());
+            } else {
+                $(".c-search-wrap[for=mobile] input").val($(this).val());
+            }
+        });
+        $(".c-search-wrap button[action=search]").on("click", function() {
+            location.href="/brands?kw="+$(this).val();
+        });
+        $(".c-search-clear").on("click", function() {
+            $(".c-search-wrap").parents(".pl-supply-option-wrap").attr("search","close");
+            $(".c-search-wrap input").val("");
+        });
+    });
+    function toggleAccordion() {
+        const itemToggle = this.getAttribute("aria-expanded");
+        if (itemToggle == "false") {
+            this.setAttribute("aria-expanded", "true");
+        } else {
+            this.setAttribute("aria-expanded", "false");
+        }
+    }
+</script>
+{{/partial}} {{> layout/base}}
