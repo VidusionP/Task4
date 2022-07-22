@@ -90,7 +90,7 @@
         </div>   
     </div>    
 </article>
-<div class="card-price {{#if alternate}}card-price--alternate{{/if}}">
+<div id="{{id}}" class="card-price {{#if alternate}}card-price--alternate{{/if}}">
     <div class="card-text" data-test-info-type="price">
         {{#or customer (if theme_settings.restrict_to_login '!==' true)}}
             {{> components/products/price price=price customer=customer}}

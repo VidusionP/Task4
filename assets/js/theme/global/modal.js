@@ -166,7 +166,15 @@ export class Modal {
             this.clearContent();
         }
 
+        var style = [
+            'top: ' +pos+'px !important',
+            'left: ' +pos1+'% !important'
+        ].join(';');
         this.$modal.foundation('reveal', 'open');
+        $('.modal-background').css({'background':'none', 'display':'none'})
+
+        this.$modal.attr('style', style)
+        $('body').removeClass(bodyActiveClass);
     }
 
     close() {
