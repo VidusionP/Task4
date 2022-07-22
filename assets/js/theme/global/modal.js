@@ -172,7 +172,7 @@ export class Modal {
         ].join(';');
         this.$modal.foundation('reveal', 'open');
         $('.modal-background').css({'background':'none', 'display':'none'})
-
+        console.log('hi')
         this.$modal.attr('style', style)
         $('body').removeClass(bodyActiveClass);
     }
